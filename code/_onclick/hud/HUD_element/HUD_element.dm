@@ -85,8 +85,6 @@ element identifiers are used to manage different hud parts for clients, f.e. the
 	if (_data)
 		_data.Cut()
 
-	vis_contents.Cut()
-
 	var/list/HUD_element/elements = getElements()
 	for(var/HUD_element/E in elements)
 		elements -= E
@@ -101,6 +99,7 @@ element identifiers are used to manage different hud parts for clients, f.e. the
 	for(var/name in _iconsBuffer)
 		qdel(_iconsBuffer[name])
 
+	..()
 	return QDEL_HINT_QUEUE
 
 /HUD_element/Click(location,control,params)

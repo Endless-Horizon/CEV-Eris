@@ -21,9 +21,9 @@
 	if(!isAI(user))
 		user.set_machine(src)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/engines/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/engines/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(!linked)
 		to_chat(user, "<span class='warning'>Unable to connect to ship control systems.</span>")
 		return

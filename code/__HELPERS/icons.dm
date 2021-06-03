@@ -1082,3 +1082,137 @@ proc/get_average_color(var/icon, var/icon_state, var/image_dir)
 /atom/proc/cut_overlays(Start=1, End=0)
 	return overlays.Cut(Start, End)
 
+
+/// Generate a filename for this asset
+/// The same asset will always lead to the same asset name
+/// (Generated names do not include file extention.)
+/proc/generate_asset_name(file)
+	return "asset.[md5(fcopy_rsc(file))]"
+
+/**
+ * Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
+ * exporting it as text, and then parsing the base64 from that.
+ * (This relies on byond automatically storing icons in savefiles as base64)
+ */
+/proc/icon2base64(icon/icon)
+	if (!isicon(icon))
+		return FALSE
+	var/savefile/dummySave = new("tmp/dummySave.sav")
+	WRITE_FILE(dummySave["dummy"], icon)
+	var/iconData = dummySave.ExportText("dummy")
+	var/list/partial = splittext(iconData, "{")
+	. = replacetext(copytext_char(partial[2], 3, -5), "\n", "") //if cleanup fails we want to still return the correct base64
+	dummySave.Unlock()
+	dummySave = null
+	fdel("tmp/dummySave.sav") //if you get the idea to try and make this more optimized, make sure to still call unlock on the savefile after every write to unlock it.
+
+/proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
+	if (!thing)
+		return
+
+	var/key
+	var/icon/I = thing
+
+	if (!target)
+		return
+	if (target == world)
+		target = clients
+
+	var/list/targets
+	if (!islist(target))
+		targets = list(target)
+	else
+		targets = target
+		if (!targets.len)
+			return
+
+	if (!isicon(I))
+		if (isfile(thing)) //special snowflake
+			var/name = sanitize_filename("[generate_asset_name(thing)].png")
+			if (!SSassets.cache[name])
+				SSassets.transport.register_asset(name, thing)
+			for (var/thing2 in targets)
+				SSassets.transport.send_assets(thing2, name)
+			if(sourceonly)
+				return SSassets.transport.get_asset_url(name)
+			return "<img class='[extra_classes] icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
+		var/atom/A = thing
+
+		I = A.icon
+
+		if (isnull(icon_state))
+			icon_state = A.icon_state
+			//Despite casting to atom, this code path supports mutable appearances, so let's be nice to them
+			if(isnull(icon_state) || (isatom(thing) && A.flags_1 & HTML_USE_INITAL_ICON_1))
+				icon_state = initial(A.icon_state)
+				if (isnull(dir))
+					dir = initial(A.dir)
+
+		if (isnull(dir))
+			dir = A.dir
+
+		if (ishuman(thing)) // Shitty workaround for a BYOND issue.
+			var/icon/temp = I
+			I = icon()
+			I.Insert(temp, dir = SOUTH)
+			dir = SOUTH
+	else
+		if (isnull(dir))
+			dir = SOUTH
+		if (isnull(icon_state))
+			icon_state = ""
+
+	I = icon(I, icon_state, dir, frame, moving)
+
+	key = "[generate_asset_name(I)].png"
+	if(!SSassets.cache[key])
+		SSassets.transport.register_asset(key, I)
+	for (var/thing2 in targets)
+		SSassets.transport.send_assets(thing2, key)
+	if(sourceonly)
+		return SSassets.transport.get_asset_url(key)
+	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
+
+/proc/icon2base64html(thing)
+	if (!thing)
+		return
+	var/static/list/bicon_cache = list()
+	if (isicon(thing))
+		var/icon/I = thing
+		var/icon_base64 = icon2base64(I)
+
+		if (I.Height() > world.icon_size || I.Width() > world.icon_size)
+			var/icon_md5 = md5(icon_base64)
+			icon_base64 = bicon_cache[icon_md5]
+			if (!icon_base64) // Doesn't exist yet, make it.
+				bicon_cache[icon_md5] = icon_base64 = icon2base64(I)
+
+
+		return "<img class='icon icon-misc' src='data:image/png;base64,[icon_base64]'>"
+
+	// Either an atom or somebody fucked up and is gonna get a runtime, which I'm fine with.
+	var/atom/A = thing
+	var/key = "[istype(A.icon, /icon) ? "[REF(A.icon)]" : A.icon]:[A.icon_state]"
+
+
+	if (!bicon_cache[key]) // Doesn't exist, make it.
+		var/icon/I = icon(A.icon, A.icon_state, SOUTH, 1)
+		if (ishuman(thing)) // Shitty workaround for a BYOND issue.
+			var/icon/temp = I
+			I = icon()
+			I.Insert(temp, dir = SOUTH)
+
+		bicon_cache[key] = icon2base64(I)
+
+	return "<img class='icon icon-[A.icon_state]' src='data:image/png;base64,[bicon_cache[key]]'>"
+
+//Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
+/proc/costly_icon2html(thing, target, sourceonly = FALSE)
+	if (!thing)
+		return
+
+	if (isicon(thing))
+		return icon2html(thing, target)
+
+	var/icon/I = getFlatIcon(thing)
+	return icon2html(I, target, sourceonly = sourceonly)

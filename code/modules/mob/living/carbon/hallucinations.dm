@@ -269,7 +269,7 @@
 		to_chat(usr, "<span class = 'warning'>Chemicals in your blood prevent you from using your power!'</span>")
 
 	var/list/creatures = list()
-	for(var/mob/living/carbon/C in SSmobs.mob_list)
+	for(var/mob/living/carbon/C in GLOB.mob_living_list)
 		creatures += C
 	creatures -= usr
 	var/mob/target = input("Who do you want to project your mind to ?") as null|anything in creatures

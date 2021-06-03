@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(explosion_watcher_list)
 /obj/item/device/radio/beacon/explosion_watcher/proc/react_explosion(turf/epicenter, power)
 	power = round(power)
 	var/calculated_research_points = -1
-	for(var/obj/machinery/computer/rdconsole/RD in SSmachines.machinery)
+	for(var/obj/machinery/computer/rdconsole/RD in GLOB.machines)
 		if(RD.id == 1) // only core gets the science
 			var/saved_power_level = RD.files.experiments.saved_best_explosion
 

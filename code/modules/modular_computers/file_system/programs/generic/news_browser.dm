@@ -80,7 +80,7 @@
 /datum/nano_module/program/computer_newsbrowser
 	name = "News Browser"
 
-/datum/nano_module/program/computer_newsbrowser/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/program/computer_newsbrowser/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 
 	var/datum/computer_file/program/newsbrowser/PRG
 	var/list/data = list()

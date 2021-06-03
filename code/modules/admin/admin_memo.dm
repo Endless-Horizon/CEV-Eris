@@ -28,7 +28,7 @@ ADMIN_VERB_ADD(/client/proc/admin_memo, R_ADMIN, FALSE)
 				return
 		if( findtext(memo,"<script",1,0) )
 			return
-		F[ckey] << "[key] on [time2text(world.realtime,"(DDD) DD MMM hh:mm")]<br>[memo]"
+		F[ckey] << "<span class='prefix'>[key]</span> on [time2text(world.realtime,"(DDD) DD MMM hh:mm")]<br>[memo]"
 		message_admins("[key] set an admin memo:<br>[memo]")
 
 //show all memos
@@ -37,7 +37,7 @@ ADMIN_VERB_ADD(/client/proc/admin_memo, R_ADMIN, FALSE)
 		var/savefile/F = new(MEMOFILE)
 		if(F)
 			for(var/ckey in F.dir)
-				to_chat(src, "<center><span class='motd'><b>Admin Memo</b><i> by [F[ckey]]</i></span></center>")
+				to_chat(src, "<span class='memo'>Memo by [F[ckey]]</span><br>")
 
 //delete your own or somebody else's memo
 /client/proc/admin_memo_delete()

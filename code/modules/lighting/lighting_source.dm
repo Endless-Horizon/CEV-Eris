@@ -6,9 +6,10 @@
 	var/atom/source_atom    // The atom that we belong to.
 
 	var/turf/source_turf    // The turf under the above.
+	var/turf/pixel_turf      // The turf the top_atom appears to over.
 	var/light_power         // Intensity of the emitter light.
 	var/light_range         // The range of the emitted light.
-	var/light_color         // The colour of the light, string, decomposed by parse_light_color()
+	var/light_color         // The colour of the light, string, decomposed by PARSE_LIGHT_COLOR()
 
 	// Variables for keeping track of the colour.
 	var/lum_r
@@ -30,25 +31,23 @@
 	var/destroyed           // Whether we are destroyed and need to stop emitting light.
 	var/force_update
 
-/datum/light_source/New(var/atom/owner, var/atom/top)
+/datum/light_source/New(atom/owner, atom/top)
+	if(source_turf)
+		CRASH("Light tried to spawn on nullspace or a null tile")
 	source_atom = owner // Set our new owner.
-	if (!source_atom.light_sources)
-		source_atom.light_sources = list()
-
-	source_atom.light_sources += src // Add us to the lights of our owner.
+	LAZYADD(source_atom.light_sources, src)
 	top_atom = top
 	if (top_atom != source_atom)
-		if (!top.light_sources)
-			top.light_sources     = list()
-
-		top_atom.light_sources += src
+		LAZYADD(top_atom.light_sources, src)
 
 	source_turf = top_atom
+	pixel_turf = get_turf_pixel(top_atom) || source_turf
+
 	light_power = source_atom.light_power
 	light_range = source_atom.light_range
 	light_color = source_atom.light_color
 
-	parse_light_color()
+	PARSE_LIGHT_COLOR(src)
 
 	effect_str      = list()
 	affecting_turfs = list()
@@ -57,19 +56,28 @@
 
 	return ..()
 
+/datum/light_source/Destroy(force)
+	remove_lum()
+	if (source_atom)
+		LAZYREMOVE(source_atom.light_sources, src)
+
+	if (top_atom)
+		LAZYREMOVE(top_atom.light_sources, src)
+
+	if (needs_update)
+		global.lighting_update_lights -= src
+
+	top_atom = null
+	source_atom = null
+	source_turf = null
+	pixel_turf = null
+	. = ..()
+
 // Kill ourselves.
 /datum/light_source/proc/destroy()
-	destroyed = TRUE
-	force_update()
-	if (source_atom && source_atom.light_sources)
-		source_atom.light_sources -= src
-		source_atom                = null
+	Destroy() // use normal gc delete
 
-	if (top_atom && top_atom.light_sources)
-		top_atom.light_sources    -= src
-		top_atom                   = null
-
-#define effect_update                   \
+#define EFFECT_UPDATE                   \
 	if (!needs_update)                  \
 	{                                   \
 		global.lighting_update_lights += src;  \
@@ -77,33 +85,30 @@
 	}
 
 // This proc will cause the light source to update the top atom, and add itself to the update queue.
-/datum/light_source/proc/update(var/atom/new_top_atom)
+/datum/light_source/proc/update(atom/new_top_atom)
 	// This top atom is different.
 	if (new_top_atom && new_top_atom != top_atom)
 		if(top_atom != source_atom) // Remove ourselves from the light sources of that top atom.
-			top_atom.light_sources -= src
+			LAZYREMOVE(top_atom.light_sources, src)
 
 		top_atom = new_top_atom
 
 		if(top_atom != source_atom)
-			if(!top_atom.light_sources)
-				top_atom.light_sources = list()
+			LAZYADD(top_atom.light_sources, src) // Add ourselves to the light sources of our new top atom.
 
-			top_atom.light_sources += src // Add ourselves to the light sources of our new top atom.
-
-	effect_update
+	EFFECT_UPDATE
 
 // Will force an update without checking if it's actually needed.
 /datum/light_source/proc/force_update()
-	force_update = 1
+	force_update = TRUE
 
-	effect_update
+	EFFECT_UPDATE
 
 // Will cause the light source to recalculate turfs that were removed or added to visibility only.
 /datum/light_source/proc/vis_update()
-	vis_update = 1
+	vis_update = TRUE
 
-	effect_update
+	EFFECT_UPDATE
 
 // Will check if we actually need to update, and update any variables that may need to be updated.
 /datum/light_source/proc/check()
@@ -136,38 +141,27 @@
 
 	if (source_atom.light_color != light_color)
 		light_color = source_atom.light_color
-		parse_light_color()
+		PARSE_LIGHT_COLOR(src)
 		. = 1
-
-// Decompile the hexadecimal colour into lumcounts of each perspective.
-/datum/light_source/proc/parse_light_color()
-	if (light_color)
-		lum_r = GetRedPart   (light_color) / 255
-		lum_g = GetGreenPart (light_color) / 255
-		lum_b = GetBluePart  (light_color) / 255
-	else
-		lum_r = 1
-		lum_g = 1
-		lum_b = 1
 
 // Macro that applies light to a new corner.
 // It is a macro in the interest of speed, yet not having to copy paste it.
 // If you're wondering what's with the backslashes, the backslashes cause BYOND to not automatically end the line.
 // As such this all gets counted as a single line.
 // The braces and semicolons are there to be able to do this on a single line.
+#define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
 
-#define APPLY_CORNER(C)              \
-	. = LUM_FALLOFF(C, source_turf); \
-                                     \
-	. *= light_power;                \
-                                     \
-	effect_str[C] = .;               \
-                                     \
-	C.update_lumcount                \
-	(                                \
-		. * applied_lum_r,           \
-		. * applied_lum_g,           \
-		. * applied_lum_b            \
+#define APPLY_CORNER(C)                      \
+	. = LUM_FALLOFF(C, pixel_turf);          \
+	. *= light_power;                        \
+	var/OLD = effect_str[C];                 \
+	effect_str[C] = .;                       \
+											\
+	C.update_lumcount                        \
+	(                                        \
+		(. * lum_r) - (OLD * applied_lum_r), \
+		(. * lum_g) - (OLD * applied_lum_g), \
+		(. * lum_b) - (OLD * applied_lum_b)  \
 	);
 
 // I don't need to explain what this does, do I?
@@ -181,7 +175,6 @@
 	);
 
 // This is the define used to calculate falloff.
-#define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
 
 /datum/light_source/proc/apply_lum()
 	var/static/update_gen = 1
@@ -203,7 +196,7 @@
 				continue
 
 			C.update_gen = update_gen
-			C.affecting += src
+			LAZYADD(C.affecting, src)
 
 			if (!C.active)
 				effect_str[C] = 0
@@ -211,38 +204,40 @@
 
 			APPLY_CORNER(C)
 
-		if (!T.affecting_lights)
-			T.affecting_lights = list()
-
-		T.affecting_lights += src
-		affecting_turfs    += T
+		LAZYADD(T.affecting_lights, src)
+		LAZYADD(affecting_turfs, T)
 	END_FOR_DVIEW
 
 	update_gen++
 
+// This is the define used to calculate falloff.
+
 /datum/light_source/proc/remove_lum()
 	applied = FALSE
-
-	for (var/A in affecting_turfs)
-		var/turf/T = A
-		if (T.affecting_lights)
-			T.affecting_lights -= src
+	var/thing
+	for (thing in affecting_turfs)
+		var/turf/T = thing
+		LAZYREMOVE(T.affecting_lights, src)
 
 	affecting_turfs.Cut()
 
-	for(var/A in effect_str)
-		var/datum/lighting_corner/C = A
+	var/datum/lighting_corner/C
+	for (thing in effect_str)
+		C = thing
 		REMOVE_CORNER(C)
 
-		C.affecting -= src
+		LAZYREMOVE(C.affecting, src)
 
 	effect_str.Cut()
 
-/datum/light_source/proc/recalc_corner(var/datum/lighting_corner/C)
-	if(effect_str.Find(C)) // Already have one.
+/datum/light_source/proc/recalc_corner(datum/lighting_corner/C)
+	LAZYINITLIST(effect_str)
+	if (effect_str[C]) // Already have one.
 		REMOVE_CORNER(C)
+		effect_str[C] = 0
 
 	APPLY_CORNER(C)
+	// UNSETEMPTY(effect_str)
 
 /datum/light_source/proc/smart_vis_update()
 	var/list/datum/lighting_corner/corners = list()
@@ -280,7 +275,7 @@
 		C.affecting -= src
 		effect_str -= C
 
-#undef effect_update
+#undef EFFECT_UPDATE
 #undef LUM_FALLOFF
 #undef REMOVE_CORNER
 #undef APPLY_CORNER

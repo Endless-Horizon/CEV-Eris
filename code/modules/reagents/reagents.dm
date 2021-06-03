@@ -2,7 +2,6 @@
 //Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 /proc/initialize_chemical_reagents()
 	var/paths = typesof(/datum/reagent) - /datum/reagent
-	GLOB.chemical_reagents_list = list()
 	for(var/path in paths)
 		var/datum/reagent/D = new path()
 		if(!D.name)

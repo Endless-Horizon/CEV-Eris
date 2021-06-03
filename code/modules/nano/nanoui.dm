@@ -97,13 +97,6 @@ nanoui is used to open and update nano browser uis
 		ref = nref
 
 	add_common_assets()
-	if(user.client)
-		var/datum/asset/assets = get_asset_datum(/datum/asset/directories/nanoui)
-
-		// Avoid opening the window if the resources are not loaded yet.
-		if(!assets.check_sent(user.client))
-			to_chat(user, "Resources are still loading. Please wait.")
-			close()
 
 //Do not qdel nanouis. Use close() instead.
 /datum/nanoui/Destroy()
@@ -581,4 +574,4 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/update(var/force_open = 0)
-	src_object.ui_interact(user, ui_key, src, force_open, master_ui, state)
+	src_object.nano_ui_interact(user, ui_key, src, force_open, master_ui, state)

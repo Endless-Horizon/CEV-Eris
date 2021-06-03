@@ -14,7 +14,7 @@
 
 	/* There was an attempt at optimization, but it was unsanitized, and was more expensive than just checking hearers.
 	var/list/list_to_return = new
-	for(var/atom/thing in SSmobs.mob_living_by_zlevel[((get_turf(src)).z)])
+	for(var/atom/thing in SSmobs.clients_by_zlevel[((get_turf(src)).z)])
 		if(get_dist(src, thing) <= viewRange)
 			list_to_return += thing
 

@@ -13,7 +13,6 @@
 #define TICKET_STAFF_MESSAGE_ADMIN_CHANNEL 1
 #define TICKET_STAFF_MESSAGE_PREFIX 2
 
-#define ADMIN_QUE(user,display) "<a href='?_src_=holder;adminmoreinfo=\ref[user]'>[display]</a>"
 #define ADMIN_PP(user,display) "<a href='?_src_=holder;adminplayeropts=\ref[user]'>[display]</a>"
 #define ADMIN_VV(atom,display) "<a href='?_src_=vars;Vars=\ref[atom]'>[display]</a>"
 #define ADMIN_SM(user,display) "<a href='?_src_=holder;subtlemessage=\ref[user]'>[display]</a>"
@@ -23,7 +22,7 @@ SUBSYSTEM_DEF(tickets)
 	name = "Admin Tickets"
 	init_order = INIT_ORDER_TICKETS
 	wait = 300
-	priority = SS_PRIORITY_TICKETS
+	priority = FIRE_PRIORITY_TICKETS
 	flags = SS_BACKGROUND
 
 	var/span_class = "adminticket"
@@ -127,7 +126,7 @@ SUBSYSTEM_DEF(tickets)
 /datum/controller/subsystem/tickets/proc/makeUrlMessage(client/C, msg, ticketNum)
 	var/list/L = list()
 	L += "<span class='[ticket_help_span]'>[ticket_help_type]: </span><span class='boldnotice'>[key_name(C, TRUE, ticket_help_type)] "
-	L += "([ADMIN_QUE(C.mob,"?")]) ([ADMIN_PP(C.mob,"PP")]) ([ADMIN_VV(C.mob,"VV")]) ([ADMIN_TP(C.mob,"TP")]) ([ADMIN_SM(C.mob,"SM")]) "
+	L += "([ADMIN_QUE(C.mob)]) ([ADMIN_PP(C.mob,"PP")]) ([ADMIN_VV(C.mob,"VV")]) ([ADMIN_TP(C.mob,"TP")]) ([ADMIN_SM(C.mob,"SM")]) "
 	L += "([admin_jump_link(C.mob)]) (<a href='?_src_=holder;openticket=[ticketNum][anchor_link_extra]'>TICKET</a>) "
 	L += "[isAI(C.mob) ? "(<a href='?_src_=holder;adminchecklaws=\ref[C.mob]'>CL</a>)" : ""] (<a href='?_src_=holder;take_question=[ticketNum][anchor_link_extra]'>TAKE</a>) "
 	L += "(<a href='?_src_=holder;resolve=[ticketNum][anchor_link_extra]'>RESOLVE</a>) (<a href='?_src_=holder;autorespond=[ticketNum][anchor_link_extra]'>AUTO</a>) "

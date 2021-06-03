@@ -26,7 +26,7 @@ var/global/excelsior_last_draft = 0
 	var/reinforcements_delay = 20 MINUTES
 	var/reinforcements_cost = 2000
 
-	var/list/nanoui_data = list()			// Additional data for NanoUI use
+	var/list/nanonano_ui_data = list()			// Additional data for NanoUI use
 	var/list/materials_list = list(
 		MATERIAL_STEEL = list("amount" = 30, "price" = 50), //base prices doubled untill new item are in
 		MATERIAL_WOOD = list("amount" = 30, "price" = 50),
@@ -142,20 +142,20 @@ var/global/excelsior_last_draft = 0
 
 
  /**
-  * The ui_interact proc is used to open and update Nano UIs
-  * If ui_interact is not used then the UI will not update correctly
-  * ui_interact is currently defined for /atom/movable
+  * The nano_ui_interact proc is used to open and update Nano UIs
+  * If nano_ui_interact is not used then the UI will not update correctly
+  * nano_ui_interact is currently defined for /atom/movable
   *
   * @param user /mob The mob who is interacting with this ui
   * @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (defaut value "main")
   *
   * @return nothing
   */
-/obj/machinery/complant_teleporter/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+/obj/machinery/complant_teleporter/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	if(stat & (BROKEN|NOPOWER)) return
 	if(user.stat || user.restrained()) return
 
-	var/list/data = ui_data()
+	var/list/data = nano_ui_data()
 
 	time_until_scan = time2text((1800 - ((world.time - round_start_time) % 1800)), "mm:ss")
 
@@ -165,7 +165,7 @@ var/global/excelsior_last_draft = 0
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/complant_teleporter/ui_data()
+/obj/machinery/complant_teleporter/nano_ui_data()
 	var/list/data = list()
 	data["energy"] = round(excelsior_energy)
 	data["maxEnergy"] = round(excelsior_max_energy)
@@ -174,7 +174,7 @@ var/global/excelsior_last_draft = 0
 	data["time_until_scan"] = time_until_scan
 	data["conscripts"] = excelsior_conscripts
 	data["reinforcements_ready"] = reinforcements_check()
-	data += nanoui_data
+	data += nanonano_ui_data
 
 	var/list/order_list_m = list()
 	for(var/item in materials_list)
@@ -241,7 +241,7 @@ var/global/excelsior_last_draft = 0
 
 
 /obj/machinery/complant_teleporter/proc/update_nano_data()
-	nanoui_data["menu"] = nanoui_menu
+	nanonano_ui_data["menu"] = nanoui_menu
 	if (nanoui_menu == 1)
 		var/list/available_mandates = list()
 		var/list/completed_mandates = list()
@@ -256,8 +256,8 @@ var/global/excelsior_last_draft = 0
 				available_mandates.Add(entry)
 			else
 				completed_mandates.Add(entry)
-		nanoui_data["available_mandates"] = available_mandates
-		nanoui_data["completed_mandates"] = completed_mandates
+		nanonano_ui_data["available_mandates"] = available_mandates
+		nanonano_ui_data["completed_mandates"] = completed_mandates
 
 /obj/machinery/complant_teleporter/proc/send_order(order_path, order_cost, amount)
 	if(order_cost > excelsior_energy)
@@ -290,7 +290,7 @@ var/global/excelsior_last_draft = 0
 	if(stat & BROKEN)
 		return
 	current_user = user
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/complant_teleporter/affect_grab(var/mob/user, var/mob/target)
 	try_put_inside(target, user)

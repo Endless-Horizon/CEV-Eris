@@ -45,7 +45,7 @@
 	if(!T)
 		return
 	var/valid_z_levels = (GetConnectedZlevels(T.z) & GLOB.maps_data.station_levels)
-	for(var/obj/machinery/power/supermatter/S in SSmachines.machinery)
+	for(var/obj/machinery/power/supermatter/S in GLOB.machines)
 		// Delaminating, not within coverage, not on a tile.
 		if(S.grav_pulling || S.exploded || !(S.z in valid_z_levels) || !istype(S.loc, /turf/))
 			continue
@@ -59,7 +59,7 @@
 	for(var/obj/machinery/power/supermatter/S in supermatters)
 		. = max(., S.get_status())
 
-/datum/nano_module/supermatter_monitor/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/supermatter_monitor/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 	if(istype(active))
 		var/turf/T = get_turf(active)

@@ -11,12 +11,12 @@
 	if(href_list["track"])
 		if(isAI(usr))
 			var/mob/living/silicon/ai/AI = usr
-			var/mob/living/carbon/human/H = locate(href_list["track"]) in SSmobs.mob_list
+			var/mob/living/carbon/human/H = locate(href_list["track"]) in GLOB.mob_living_list
 			if(hassensorlevel(H, SUIT_SENSOR_TRACKING))
 				AI.ai_actual_track(H)
 		return 1
 
-/datum/nano_module/crew_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/datum/nano_module/crew_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/list/data = host.initial_data()
 	var/turf/T = get_turf(nano_host())
 

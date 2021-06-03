@@ -652,8 +652,7 @@
 
 // called when area power state changes
 /obj/machinery/light/power_change()
-	spawn(10)
-		seton(has_power())
+	seton(has_power())
 
 // called when on fire
 

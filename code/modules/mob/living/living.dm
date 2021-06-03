@@ -1,23 +1,57 @@
+/mob/living/Initialize(mapload)
+	. = ..()
+	// register_init_signals()
+	// if(unique_name)
+	// 	set_name()
+	// var/datum/atom_hud/data/human/medical/advanced/medhud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
+	// medhud.add_to_hud(src)
+	// for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
+	// 	diag_hud.add_to_hud(src)
+	// faction += "[REF(src)]"
+	GLOB.mob_living_list += src
+
+/mob/living/ComponentInitialize()
+	. = ..()
+	// AddElement(/datum/element/movetype_handler)
+
+/mob/living/Destroy()
+	// if(LAZYLEN(status_effects))
+	// 	for(var/s in status_effects)
+	// 		var/datum/status_effect/S = s
+	// 		if(S.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
+	// 			qdel(S)
+	// 		else
+	// 			S.be_replaced()
+	// if(ranged_ability)
+	// 	ranged_ability.remove_ranged_ability(src)
+	if(buckled)
+		buckled.unbuckle_mob() //src,force=1)
+
+	// remove_from_all_data_huds()
+	GLOB.mob_living_list -= src
+	// QDEL_LAZYLIST(diseases)
+	return ..()
+
 //mob verbs are faster than object verbs. See mob/verb/examine.
 /mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
 	set name = "Pull"
 	set category = "Object"
 
-	if(AM.Adjacent(src))
-		src.start_pulling(AM)
+	if(istype(AM) && Adjacent(AM)) // do not pull areas
+		start_pulling(AM)
 
 	return
 
 //mob verbs are faster than object verbs. See above.
-/mob/living/pointed(atom/A as mob|obj|turf in view())
-	if(src.stat || !src.canmove || src.restrained())
+/mob/living/pointed(atom/A as mob|obj|turf in view(client.view, src))
+	if(stat || !canmove || restrained() || incapacitated())
 		return FALSE
 	if(src.status_flags & FAKEDEATH)
 		return FALSE
 	if(!..())
 		return FALSE
 
-	usr.visible_message("<b>[src]</b> points to [A]")
+	visible_message("<span class='infoplain'><span class='name'>[src]</span> points at [A].</span>", "<span class='notice'>You point at [A].</span>")
 	return TRUE
 
 /*one proc, four uses
@@ -27,7 +61,7 @@ default behaviour is:
  - passive mob checks to see if its mob_bump_flag is in the non-passive's mob_bump_flags
  - if si, the proc returns
 */
-/mob/living/proc/can_move_mob(var/mob/living/swapped, swapping = 0, passive = 0)
+/mob/living/proc/can_move_mob(mob/living/swapped, swapping = 0, passive = 0)
 	if(!swapped)
 		return TRUE
 	if(!passive)

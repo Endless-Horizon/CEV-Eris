@@ -10,11 +10,11 @@
 	size = 8
 
 	var/list/access_lookup = list(access_change_sec, 	//Lookup list for all the accesses that can use the ID computer.
-									access_change_medbay, 
-									access_change_research, 
-									access_change_engineering, 
-									access_change_ids, 
-									access_change_nt, 
+									access_change_medbay,
+									access_change_research,
+									access_change_engineering,
+									access_change_ids,
+									access_change_nt,
 									access_change_cargo,
 									access_change_club)
 
@@ -24,7 +24,7 @@
 	var/is_centcom = 0
 	var/show_assignments = 0
 
-/datum/nano_module/program/card_mod/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/program/card_mod/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	data["src"] = "\ref[src]"

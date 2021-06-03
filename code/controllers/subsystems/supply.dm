@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(supply)
 	name = "Supply"
 	wait = 30 SECONDS
-	priority = SS_PRIORITY_SUPPLY
+	priority = FIRE_PRIORITY_SUPPLY
 	flags = SS_NO_FIRE
 
 /datum/controller/subsystem/supply

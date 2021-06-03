@@ -1,7 +1,7 @@
 /obj/machinery/computer/shuttle_control/multi
 	ui_template = "shuttle_control_console_multi.tmpl"
 
-/obj/machinery/computer/shuttle_control/multi/get_ui_data(var/datum/shuttle/autodock/multi/shuttle)
+/obj/machinery/computer/shuttle_control/multi/get_nano_ui_data(var/datum/shuttle/autodock/multi/shuttle)
 	. = ..()
 	if(istype(shuttle))
 		. += list(
@@ -23,7 +23,7 @@
 /obj/machinery/computer/shuttle_control/multi/antag
 	ui_template = "shuttle_control_console_antag.tmpl"
 
-/obj/machinery/computer/shuttle_control/multi/antag/get_ui_data(var/datum/shuttle/autodock/multi/antag/shuttle)
+/obj/machinery/computer/shuttle_control/multi/antag/get_nano_ui_data(var/datum/shuttle/autodock/multi/antag/shuttle)
 	. = ..()
 	if(istype(shuttle))
 		. += list(

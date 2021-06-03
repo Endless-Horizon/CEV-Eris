@@ -88,8 +88,7 @@
 /obj/item/proc/is_used_on(obj/O, mob/user)
 
 /obj/Process()
-	STOP_PROCESSING(SSobj, src)
-	return 0
+	return ..()
 
 /obj/assume_air(datum/gas_mixture/giver)
 	if(loc)
@@ -148,11 +147,8 @@
 			in_use = 0
 
 /obj/attack_ghost(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 	..()
-
-/obj/proc/interact(mob/user)
-	return
 
 /mob/proc/unset_machine()
 	src.machine = null

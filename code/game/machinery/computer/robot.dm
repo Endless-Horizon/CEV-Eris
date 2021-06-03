@@ -13,9 +13,9 @@
 /obj/machinery/computer/robotics/attack_hand(var/mob/user)
 	if(..())
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/robotics/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/robotics/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 	data["robots"] = get_cyborgs(user)
 	data["safety"] = safety
@@ -148,7 +148,7 @@
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] detonated all cyborgs!"))
 		log_game("[key_name(usr)] detonated all cyborgs!")
 
-		for(var/mob/living/silicon/robot/R in SSmobs.mob_list)
+		for(var/mob/living/silicon/robot/R in GLOB.mob_living_list)
 			if(isdrone(R))
 				continue
 			// Ignore antagonistic cyborgs
@@ -165,7 +165,7 @@
 /obj/machinery/computer/robotics/proc/get_cyborgs(var/mob/operator)
 	var/list/robots = list()
 
-	for(var/mob/living/silicon/robot/R in SSmobs.mob_list)
+	for(var/mob/living/silicon/robot/R in GLOB.mob_living_list)
 		// Ignore drones
 		if(isdrone(R))
 			continue
@@ -206,6 +206,6 @@
 /obj/machinery/computer/robotics/proc/get_cyborg_by_name(var/name)
 	if (!name)
 		return
-	for(var/mob/living/silicon/robot/R in SSmobs.mob_list)
+	for(var/mob/living/silicon/robot/R in GLOB.mob_living_list)
 		if(R.name == name)
 			return R

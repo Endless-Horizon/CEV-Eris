@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-
 /proc/dopage(src, target)
 	var/href_list
 	var/href
@@ -17,23 +15,16 @@
 	for(var/area/A in GLOB.map_areas)
 		if(A.name == N)
 			return A
-	return 0
+	return
 
 /proc/get_area_master(const/O)
 	var/area/A = get_area(O)
 	if (isarea(A))
 		return A
 
-/proc/in_range(source, user)
-	if(get_dist(source, user) <= 1)
-		return TRUE
-
-	return FALSE //not in range and not telekinetic
-
 // Like view but bypasses luminosity check
 
 /proc/hear(range, atom/source)
-
 	var/lum = source.luminosity
 	source.luminosity = world.view
 	var/list/heard = view(range, source)
@@ -142,8 +133,9 @@
 
 
 /proc/get_mobs_and_objs_in_view_fast(turf/T, range, list/mobs, list/objs, checkghosts = GHOSTS_ALL_HEAR)
-	var/list/hear = list()
-	DVIEW(hear, range, T, INVISIBILITY_MAXIMUM)
+	if(!T) // fucking lobby on nullspace
+		return
+	var/list/hear = dview(range, T.loc, INVISIBILITY_MAXIMUM)
 	var/list/hearturfs = list()
 
 	for(var/am in hear)
@@ -268,13 +260,15 @@
 			return get_step(start, EAST)
 
 /proc/get_mob_by_key(key)
-	for(var/mob/M in SSmobs.mob_list)
-		if(M.ckey == lowertext(key))
+	var/ckey = ckey(key)
+	for(var/i in GLOB.player_list)
+		var/mob/M = i
+		if(M.ckey == ckey)
 			return M
 	return null
 
 /proc/get_client_by_ckey(key)
-	for(var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.ckey == lowertext(key))
 			return M.client
 	return null
@@ -355,16 +349,16 @@
 
 	return new /datum/projectile_data(src_x, src_y, time, distance, power_x, power_y, dest_x, dest_y)
 
-/proc/GetRedPart(const/hexa)
-	return hex2num(copytext(hexa, 2, 4))
+/proc/GetRedPart(hexa)
+	return GETREDPART(hexa)
 
-/proc/GetGreenPart(const/hexa)
-	return hex2num(copytext(hexa, 4, 6))
+/proc/GetGreenPart(hexa)
+	return GETGREENPART(hexa)
 
-/proc/GetBluePart(const/hexa)
-	return hex2num(copytext(hexa, 6, 8))
+/proc/GetBluePart(hexa)
+	return GETBLUEPART(hexa)
 
-/proc/GetHexColors(const/hexa)
+/proc/GetHexColors(hexa)
 	return list(
 			GetRedPart(hexa),
 			GetGreenPart(hexa),
@@ -502,7 +496,7 @@
 
 /proc/get_vents()
 	var/list/vents = list()
-	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in SSmachines.machinery)
+	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in GLOB.machines)
 		if(!temp_vent.welded && temp_vent.network && isOnStationLevel(temp_vent))
 			if(temp_vent.network.normal_members.len > 15)
 				vents += temp_vent

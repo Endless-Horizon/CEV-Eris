@@ -39,6 +39,15 @@
 	post_buckle_mob(M)
 	return 1
 
+/**
+ * Set a mob as unbuckled from src
+ *
+ * The mob must actually be buckled to src or else bad things will happen.
+ * Arguments:
+ * buckled_mob - The mob to be unbuckled
+ * force - TRUE if we should ignore buckled_mob.can_buckle_to
+ * (args are a lie, adding those soon:tm: also move to AM)
+ */
 /atom/proc/unbuckle_mob()
 	if(buckled_mob && buckled_mob.buckled == src)
 		. = buckled_mob

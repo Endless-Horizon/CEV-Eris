@@ -146,7 +146,7 @@
 
 /obj/item/device/electronics/integrated/debugger/afterattack(atom/target, mob/living/user, proximity)
 	if(accepting_refs && proximity)
-		data_to_write = weakref(target)
+		data_to_write = WEAKREF(target)
 		visible_message(SPAN_NOTICE("[user] slides \a [src]'s over \the [target]."))
 		to_chat(user, SPAN_NOTICE("You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
 		now off."))
@@ -157,7 +157,7 @@
 		io.write_data_to_pin(data_to_write)
 		var/data_to_show = data_to_write
 		if(isweakref(data_to_write))
-			var/weakref/w = data_to_write
+			var/datum/weakref/w = data_to_write
 			var/atom/A = w.resolve()
 			data_to_show = A.name
 		to_chat(user, "<span class='notice'>You write '[data_to_write ? data_to_show : "NULL"]' to the '[io]' pin of \the [io.holder].</span>")

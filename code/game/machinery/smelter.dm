@@ -262,10 +262,10 @@
 
 
 /obj/machinery/smelter/attack_hand(mob/user as mob)
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
 
-/obj/machinery/smelter/ui_data()
+/obj/machinery/smelter/nano_ui_data()
 	var/list/data = list()
 	data["currentItem"] = current_item?.name
 	data["progress"] = progress
@@ -288,8 +288,8 @@
 	return data
 
 
-/obj/machinery/smelter/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	var/list/data = ui_data()
+/obj/machinery/smelter/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+	var/list/data = nano_ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

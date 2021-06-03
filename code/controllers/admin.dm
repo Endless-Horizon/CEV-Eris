@@ -5,10 +5,20 @@
 
 INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 
-/obj/effect/statclick/Initialize(mapload, text, target) //Don't port this to Initialize it's too critical
+/obj/effect/statclick/Initialize(mapload, text, target)
 	. = ..()
 	name = text
 	src.target = target
+	if(istype(target, /datum)) //Harddel man bad
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/cleanup)
+
+/obj/effect/statclick/Destroy()
+	target = null
+	return ..()
+
+/obj/effect/statclick/proc/cleanup()
+	SIGNAL_HANDLER
+	qdel(src)
 
 /obj/effect/statclick/proc/update(text)
 	name = text
@@ -19,7 +29,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 
 /obj/effect/statclick/debug/Click()
 	if(!usr.client.holder || !target)
-		return TRUE
+		return
 	if(!class)
 		if(istype(target, /datum/controller/subsystem))
 			class = "subsystem"
@@ -46,7 +56,9 @@ ADMIN_VERB_ADD(/client/proc/restart_controller, R_DEBUG, null)
 	switch(controller)
 		if("Master")
 			Recreate_MC()
+			// SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Master Controller")
 		if("Failsafe")
 			new /datum/controller/failsafe()
+			// SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
 
 	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")

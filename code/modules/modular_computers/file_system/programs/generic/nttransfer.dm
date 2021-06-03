@@ -79,7 +79,7 @@ var/global/nttransfer_uid = 0
 /datum/nano_module/program/computer_nttransfer
 	name = "P2P Transfer Client"
 
-/datum/nano_module/program/computer_nttransfer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/program/computer_nttransfer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	if(!program)
 		return
 	var/datum/computer_file/program/nttransfer/PRG = program

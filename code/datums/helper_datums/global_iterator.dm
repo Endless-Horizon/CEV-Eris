@@ -46,7 +46,7 @@ Data storage vars:
 
 	result - stores the value returned by process() proc
 */
-
+/// DIPSHIT GO USE TICKERS
 /datum/global_iterator
 	var/control_switch = 0
 	var/delay = 10
@@ -151,9 +151,11 @@ Data storage vars:
 			start()
 		return active()
 
-/datum/global_iterator/Destroy()
+/datum/global_iterator/Destroy(forced)
 	tag = null
 	arg_list.Cut()
 	stop()
+	if(forced)
+		return ..()
 	return QDEL_HINT_LETMELIVE
 	//Do not call ..()

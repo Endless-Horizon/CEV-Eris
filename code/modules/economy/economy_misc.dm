@@ -92,7 +92,7 @@ var/global/datum/computer_file/data/email_account/service/payroll/payroll_mailer
 	station_account = department_accounts[DEPARTMENT_COMMAND]
 	vendor_account = department_accounts[DEPARTMENT_GUILD] //Vendors are operated by the guild and purchases pay into their stock
 
-	for(var/obj/machinery/vending/V in SSmachines.machinery)
+	for(var/obj/machinery/vending/V in GLOB.machines)
 		if(!V.custom_vendor)
 			V.earnings_account = V.vendor_department ? department_accounts[V.vendor_department] : vendor_account
 

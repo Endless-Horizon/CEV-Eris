@@ -101,9 +101,9 @@ var/global/list/default_medbay_channels = list(
 	if(b_stat)
 		wires.Interact(user)
 
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
-/obj/item/device/radio/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/device/radio/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data["mic_status"] = broadcasting
@@ -704,7 +704,7 @@ var/global/list/default_medbay_channels = list(
 
 	. = ..()
 
-/obj/item/device/radio/borg/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/device/radio/borg/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data["mic_status"] = broadcasting

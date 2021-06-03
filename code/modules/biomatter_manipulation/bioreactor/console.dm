@@ -15,10 +15,10 @@
 
 /obj/machinery/multistructure/bioreactor_part/console/attack_hand(mob/user as mob)
 	if(MS)
-		ui_interact(user)
+		nano_ui_interact(user)
 
 
-/obj/machinery/multistructure/bioreactor_part/console/ui_data()
+/obj/machinery/multistructure/bioreactor_part/console/nano_ui_data()
 	var/list/data = list()
 	if(MS_bioreactor.is_operational())
 		if(MS_bioreactor.chamber_solution)
@@ -56,8 +56,8 @@
 	return data
 
 
-/obj/machinery/multistructure/bioreactor_part/console/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
-	var/list/data = ui_data()
+/obj/machinery/multistructure/bioreactor_part/console/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
+	var/list/data = nano_ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

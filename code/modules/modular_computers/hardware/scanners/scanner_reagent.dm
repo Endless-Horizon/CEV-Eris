@@ -19,4 +19,4 @@
 		driver.data_buffer = dat
 		if(!SSnano.update_uis(driver.NM))
 			holder2.run_program(driver.filename)
-			driver.NM.ui_interact(user)
+			driver.NM.nano_ui_interact(user)

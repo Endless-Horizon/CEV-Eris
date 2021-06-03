@@ -88,7 +88,7 @@
 
 	var/subsystem = input(src, "Choose a sybsystem:", "Subsystems") as null|anything in silicon_subsystems_by_name
 	var/stat_silicon_subsystem/SSS = silicon_subsystems_by_name[subsystem]
-	
+
 	if(istype(SSS))
 		SSS.Click()
 
@@ -133,6 +133,6 @@
 
 /stat_silicon_subsystem/Click(var/mob/given = usr)
 	if (istype(given))
-		subsystem.ui_interact(given, state = ui_state)
+		subsystem.nano_ui_interact(given, state = ui_state)
 	else
-		subsystem.ui_interact(usr, state = ui_state)
+		subsystem.nano_ui_interact(usr, state = ui_state)

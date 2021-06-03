@@ -628,6 +628,8 @@
 
 	//Set the maintshroom to the hue of the chem
 	var/datum/reagent/chem = GLOB.chemical_reagents_list[new_chem]
+	if(!chem.color)
+		CRASH("Chem [new_chem] does not have a color, this datum will be NULL.")
 	var/color = chem.color
 
 	//Color Wizardry

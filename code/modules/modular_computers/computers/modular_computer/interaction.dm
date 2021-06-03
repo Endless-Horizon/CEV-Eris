@@ -14,18 +14,6 @@
 
 	verbs |= /obj/item/modular_computer/verb/emergency_shutdown
 
-/obj/item/modular_computer/proc/can_interact(var/mob/user)
-	if(usr.incapacitated())
-		to_chat(user, "<span class='warning'>You can't do that.</span>")
-		return FALSE
-
-	if(!Adjacent(usr))
-		to_chat(user, "<span class='warning'>You can't reach it.</span>")
-		return FALSE
-
-	return TRUE
-
-
 // Forcibly shut down the device. To be used when something bugs out and the UI is nonfunctional.
 /obj/item/modular_computer/verb/emergency_shutdown()
 	set name = "Forced Shutdown"
@@ -143,7 +131,7 @@
 
 /obj/item/modular_computer/attack_ghost(var/mob/observer/ghost/user)
 	if(enabled)
-		ui_interact(user)
+		nano_ui_interact(user)
 	else if(check_rights(R_ADMIN, 0, user))
 		var/response = alert(user, "This computer is turned off. Would you like to turn it on?", "Admin Override", "Yes", "No")
 		if(response == "Yes")
@@ -160,7 +148,7 @@
 // On-click handling. Turns on the computer if it's off and opens the GUI.
 /obj/item/modular_computer/attack_self(var/mob/user)
 	if(enabled && screen_on)
-		ui_interact(user)
+		nano_ui_interact(user)
 	else if(!enabled && screen_on)
 		turn_on(user)
 

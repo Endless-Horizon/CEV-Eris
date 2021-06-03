@@ -40,7 +40,7 @@
 	..()
 	crew_announcement.newscast = 1
 
-/datum/nano_module/program/comm/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/program/comm/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 
 	var/list/data = host.initial_data()
 
@@ -331,7 +331,7 @@ var/last_message_id = 0
 
 
 /proc/is_relay_online()
-	for(var/obj/machinery/bluespacerelay/M in SSmachines.machinery)
+	for(var/obj/machinery/bluespacerelay/M in GLOB.machines)
 		if(M.stat == 0)
 			return 1
 	return 0

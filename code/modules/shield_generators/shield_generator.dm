@@ -331,7 +331,7 @@
 			S.fail(1)
 
 
-/obj/machinery/power/shield_generator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/power/shield_generator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data["running"] = running
@@ -384,7 +384,7 @@
 
 
 /obj/machinery/power/shield_generator/attack_hand(var/mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 	if(panel_open)
 		wires.Interact(user)
 
@@ -465,7 +465,7 @@
 		log_event(EVENT_RECONFIGURED, src)
 		. = 1
 
-	ui_interact(usr)
+	nano_ui_interact(usr)
 
 /obj/machinery/power/shield_generator/proc/field_integrity()
 	if(max_energy)

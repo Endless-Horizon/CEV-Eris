@@ -90,7 +90,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 
 /obj/machinery/computer/rdconsole/proc/griefProtection() //Have it automatically push research to the centcomm server so wild griffins can't fuck up R&D's work
-	for(var/obj/machinery/r_n_d/server/centcom/C in SSmachines.machinery)
+	for(var/obj/machinery/r_n_d/server/centcom/C in GLOB.machines)
 		C.files.download_from(files)
 
 /obj/machinery/computer/rdconsole/Initialize()
@@ -332,7 +332,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	reset_screen()
 
 /obj/machinery/computer/rdconsole/proc/sync_tech()
-	for(var/obj/machinery/r_n_d/server/S in SSmachines.machinery)
+	for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
 		var/server_processed = FALSE
 		if((id in S.id_with_upload) || istype(S, /obj/machinery/r_n_d/server/centcom))
 			S.files.download_from(files)
@@ -371,7 +371,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 					can_build = min(can_build, can_build_temp)
 
 				designs_list += list(list(
-					"data" = D.ui_data(),
+					"data" = D.nano_ui_data(),
 					"id" = "\ref[D]",
 					"can_create" = can_build,
 					"missing_materials" = missing_materials,
@@ -382,10 +382,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 /obj/machinery/computer/rdconsole/attack_hand(mob/user)
 	if(..())
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
 
-/obj/machinery/computer/rdconsole/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null) // Here we go again
+/obj/machinery/computer/rdconsole/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null) // Here we go again
 	if((screen == SCREEN_PROTO && !linked_lathe) || (screen == SCREEN_IMPRINTER && !linked_imprinter))
 		screen = SCREEN_MAIN // Kick us from protolathe or imprinter screen if they were destroyed
 

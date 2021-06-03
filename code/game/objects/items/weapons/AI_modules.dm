@@ -43,7 +43,7 @@ AI MODULES
 			to_chat(usr, "Upload failed. Only a faint signal is being detected from the AI, and it is not responding to our requests. It may be low on power.")
 		else
 			src.transmitInstructions(comp.current, usr)
-			for(var/mob/living/silicon/robot/R in SSmobs.mob_list)
+			for(var/mob/living/silicon/robot/R in GLOB.mob_living_list)
 				if(R.lawupdate && (R.connected_ai == comp.current))
 					to_chat(R, "These are your laws now:")
 					R.show_laws()

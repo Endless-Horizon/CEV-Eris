@@ -12,7 +12,7 @@
 
 SUBSYSTEM_DEF(wireless)
 	name = "Wireless"
-	priority = SS_PRIORITY_WIRELESS
+	priority = FIRE_PRIORITY_WIRELESS
 	flags = SS_KEEP_TIMING | SS_BACKGROUND | SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 5 SECONDS

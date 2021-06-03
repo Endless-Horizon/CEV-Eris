@@ -202,7 +202,7 @@
 	last_message_count = 0
 	read_message_count = 0
 
-/datum/nano_module/email_client/ui_data(mob/user)
+/datum/nano_module/email_client/nano_ui_data(mob/user)
 	var/list/data = host.initial_data()
 	// Password has been changed by other client connected to this email account
 	if(current_account)
@@ -300,8 +300,8 @@
 		data["stored_password"] = stars(stored_password, 0)
 	return data
 
-/datum/nano_module/email_client/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
-	var/list/data = ui_data(user)
+/datum/nano_module/email_client/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+	var/list/data = nano_ui_data(user)
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -360,7 +360,7 @@
 	var/mob/living/user = usr
 
 	if(href_list["open"])
-		ui_interact()
+		nano_ui_interact()
 
 	check_for_new_messages(1)		// Any actual interaction (button pressing) is considered as acknowledging received message, for the purpose of notification icons.
 	if(href_list["login"])
@@ -499,7 +499,7 @@
 		var/atom/movable/AM = host
 		if(istype(AM))
 			if(ismob(AM.loc))
-				ui_interact(AM.loc)
+				nano_ui_interact(AM.loc)
 		return 1
 
 	if(href_list["view"])

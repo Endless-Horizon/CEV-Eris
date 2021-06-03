@@ -446,7 +446,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
-	var/list/sortmob = sortNames(SSmobs.mob_list)
+	var/list/sortmob = sortNames(GLOB.mob_list)
 	for(var/mob/observer/eye/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/living/silicon/ai/M in sortmob)
@@ -626,16 +626,25 @@ proc/GaussRandRound(var/sigma, var/roundto)
 /proc/return_sorted_areas()
 	return sortNames(GLOB.map_areas)
 
+//Takes: Area type as a text string from a variable.
+//Returns: Instance for the area in the world.
+/proc/get_area_instance_from_text(areatext)
+	if(istext(areatext))
+		areatext = text2path(areatext)
+	return get_area_name(areatext)
+
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all areas of that type in the world.
 /proc/get_areas(var/areatype)
-	if(!areatype) return null
-	if(istext(areatype)) areatype = text2path(areatype)
-	if(isarea(areatype))
+	if(istext(areatype))
+		areatype = text2path(areatype)
+	else if(isarea(areatype))
 		var/area/areatemp = areatype
 		areatype = areatemp.type
+	else if(!ispath(areatype))
+		return null
 
-	var/list/areas = new/list()
+	var/list/areas = list()
 	for(var/area/N in GLOB.map_areas)
 		if(istype(N, areatype)) areas += N
 	return areas
@@ -998,7 +1007,7 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 
 /proc/get_mob_with_client_list()
 	var/list/mobs = list()
-	for(var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in GLOB.mob_living_list)
 		if(M.client)
 			mobs += M
 	return mobs
@@ -1208,38 +1217,142 @@ var/list/FLOORITEMS = list(
 			colour += temp_col
 	return "#[colour]"
 
-//Version of view() which ignores darkness, because BYOND doesn't have it.
+//gives us the stack trace from CRASH() without ending the current proc.
+/proc/stack_trace(msg)
+	CRASH(msg)
+
+/datum/proc/stack_trace(msg)
+	CRASH(msg)
+
+GLOBAL_REAL_VAR(list/stack_trace_storage)
+/proc/gib_stack_trace()
+	stack_trace_storage = list()
+	stack_trace()
+	stack_trace_storage.Cut(1, min(3,stack_trace_storage.len))
+	. = stack_trace_storage
+	stack_trace_storage = null
+
+GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
+
+//Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
 /proc/dview(range = world.view, center, invis_flags = 0)
 	if(!center)
 		return
 
-	dview_mob.loc = center
-	dview_mob.see_invisible = invis_flags
-	. = view(range, dview_mob)
-	dview_mob.loc = null
+	GLOB.dview_mob.loc = center
 
-/var/mob/dview/dview_mob = new
+	GLOB.dview_mob.see_invisible = invis_flags
+
+	. = view(range, GLOB.dview_mob)
+	GLOB.dview_mob.loc = null
 
 /mob/dview
+	name = "INTERNAL DVIEW MOB"
 	invisibility = 101
 	density = FALSE
-
+	see_in_dark = 1e6
+	// move_resist = INFINITY
+	var/ready_to_die = FALSE
+	// eris specific
 	anchored = TRUE
 	simulated = FALSE
 
-	see_in_dark = 1e6
+/mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
+	SHOULD_CALL_PARENT(FALSE)
+	if(flags_1 & INITIALIZED_1)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags_1 |= INITIALIZED_1
+	return INITIALIZE_HINT_NORMAL
 
-/mob/dview/Destroy()
-	crash_with("Prevented attempt to delete dview mob: [log_info_line(src)]")
-	return QDEL_HINT_LETMELIVE // Prevents destruction
+/mob/dview/Destroy(force = FALSE)
+	if(!ready_to_die)
+		stack_trace("ALRIGHT WHICH FUCKER TRIED TO DELETE *MY* DVIEW?")
+
+		if (!force)
+			return QDEL_HINT_LETMELIVE
+
+		log_world("EVACUATE THE SHITCODE IS TRYING TO STEAL MUH JOBS")
+		GLOB.dview_mob = new
+	return ..()
+
+#define UNTIL(X) while(!(X)) stoplag()
 
 /atom/proc/get_light_and_color(atom/origin)
 	if(origin)
 		color = origin.color
 		set_light(origin.light_range, origin.light_power, origin.light_color)
 
-/mob/dview/Initialize() // Properly prevents this mob from gaining huds or joining any global lists
-	return INITIALIZE_HINT_NORMAL
+
+//counts the number of bits in Byond's 16-bit width field
+//in constant time and memory!
+/proc/BitCount(bitfield)
+	var/temp = bitfield - ((bitfield>>1)&46811) - ((bitfield>>2)&37449) //0133333 and 0111111 respectively
+	temp = ((temp + (temp>>3))&29127) % 63 //070707
+	return temp
+
+//returns a GUID like identifier (using a mostly made up record format)
+//guids are not on their own suitable for access or security tokens, as most of their bits are predictable.
+// (But may make a nice salt to one)
+/proc/GUID()
+	var/const/GUID_VERSION = "b"
+	var/const/GUID_VARIANT = "d"
+	var/node_id = copytext_char(md5("[rand()*rand(1,9999999)][world.name][world.hub][world.hub_password][world.internet_address][world.address][world.contents.len][world.status][world.port][rand()*rand(1,9999999)]"), 1, 13)
+
+	var/time_high = "[num2hex(text2num(time2text(world.realtime,"YYYY")), 2)][num2hex(world.realtime, 6)]"
+
+	var/time_mid = num2hex(world.timeofday, 4)
+
+	var/time_low = num2hex(world.time, 3)
+
+	var/time_clock = num2hex(TICK_DELTA_TO_MS(world.tick_usage), 3)
+
+	return "{[time_high]-[time_mid]-[GUID_VERSION][time_low]-[GUID_VARIANT][time_clock]-[node_id]}"
+
+// \ref behaviour got changed in 512 so this is necesary to replicate old behaviour.
+// If it ever becomes necesary to get a more performant REF(), this lies here in wait
+// #define REF(thing) (thing && istype(thing, /datum) && (thing:datum_flags & DF_USE_TAG) && thing:tag ? "[thing:tag]" : "\ref[thing]")
+/proc/REF(input)
+	if(istype(input, /datum))
+		var/datum/thing = input
+		if(thing.datum_flags & DF_USE_TAG)
+			if(!thing.tag)
+				stack_trace("A ref was requested of an object with DF_USE_TAG set but no tag: [thing]")
+				thing.datum_flags &= ~DF_USE_TAG
+			else
+				return "\[[url_encode(thing.tag)]\]"
+	return "\ref[input]"
+
+// Makes a call in the context of a different usr
+// Use sparingly
+/world/proc/PushUsr(mob/M, datum/callback/CB, ...)
+	var/temp = usr
+	usr = M
+	if (length(args) > 2)
+		. = CB.Invoke(arglist(args.Copy(3)))
+	else
+		. = CB.Invoke()
+	usr = temp
+
+//datum may be null, but it does need to be a typed var
+#define NAMEOF(datum, X) (#X || ##datum.##X)
+
+#define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##target, ##var_name, ##var_value)
+//dupe code because dm can't handle 3 level deep macros
+#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
+
+/proc/___callbackvarset(list_or_datum, var_name, var_value)
+	if(length(list_or_datum))
+		list_or_datum[var_name] = var_value
+		return
+	var/datum/D = list_or_datum
+	// if(IsAdminAdvancedProcCall())
+	// 	D.vv_edit_var(var_name, var_value) //same result generally, unless badmemes
+	// else
+	D.vars[var_name] = var_value
+
+/proc/CallAsync(datum/source, proctype, list/arguments)
+	set waitfor = FALSE
+	return call(source, proctype)(arglist(arguments))
 
 // call to generate a stack trace and print to runtime logs
 /proc/crash_with(msg)

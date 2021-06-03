@@ -38,7 +38,7 @@
 	)
 	organ.open = !organ.open
 	organ.diagnosed = FALSE
-	organ.ui_interact(user)
+	organ.nano_ui_interact(user)
 
 
 

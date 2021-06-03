@@ -19,11 +19,11 @@
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 
-/obj/item/weapon/electronics/airlock/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.hands_state)
-	var/list/data = ui_data()
+/obj/item/weapon/electronics/airlock/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.hands_state)
+	var/list/data = nano_ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -31,7 +31,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/item/weapon/electronics/airlock/ui_data()
+/obj/item/weapon/electronics/airlock/nano_ui_data()
 	var/list/data = list()
 	var/list/regions = list()
 

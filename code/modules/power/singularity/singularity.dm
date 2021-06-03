@@ -40,7 +40,7 @@
 
 	..()
 	START_PROCESSING(SSobj, src)
-/*	for(var/obj/machinery/power/singularity_beacon/singubeacon in SSmachines.machinery)
+/*	for(var/obj/machinery/power/singularity_beacon/singubeacon in GLOB.machines)
 		if(singubeacon.active)
 			target = singubeacon
 			break

@@ -82,11 +82,6 @@
 #define EQUIP_SOUNDS               0x100// Play sound when equipped/unequipped
 #define ABSTRACT			       0x200//For items that don't really exist. Can't be put on tables or interacted with.
 
-// Flags for pass_flags.
-#define PASSTABLE  0x1
-#define PASSGLASS  0x2
-#define PASSGRILLE 0x4
-
 // Bitmasks for the flags_inv variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
 // WARNING: The following flags apply only to the external suit!
 #define HIDEGLOVES      0x1

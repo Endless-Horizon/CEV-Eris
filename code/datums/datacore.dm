@@ -1,7 +1,7 @@
 var/global/list/PDA_Manifest = list()
 var/global/ManifestJSON
 
-/hook/startup/proc/createDatacore()
+/hook/startup_sync/proc/createDatacore()
 	data_core = new /datum/datacore()
 	return 1
 
@@ -85,10 +85,10 @@ var/global/ManifestJSON
 			misc[name] = rank
 
 	// Synthetics don't have actual records, so we will pull them from here.
-/*	for(var/mob/living/silicon/ai/ai in SSmobs.mob_list)
+/*	for(var/mob/living/silicon/ai/ai in GLOB.mob_living_list)
 		bot[ai.name] = "Artificial Intelligence"
 
-	for(var/mob/living/silicon/robot/robot in SSmobs.mob_list)
+	for(var/mob/living/silicon/robot/robot in GLOB.mob_living_list)
 		// No combat/syndicate cyborgs, no drones.
 		if(robot.module && robot.module.hide_on_manifest)
 			continue

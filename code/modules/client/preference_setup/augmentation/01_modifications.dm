@@ -30,10 +30,10 @@
 			pref.modifications_colors[tag] = "#000000"
 
 
-/datum/category_item/player_setup_item/augmentation/modifications/content(var/mob/user)
+/datum/category_item/player_setup_item/augmentation/modifications/content(mob/user)
 	if(!pref.preview_icon)
 		pref.update_preview_icon(naked = TRUE)
-	if(pref.preview_north && pref.preview_south && pref.preview_east && pref.preview_west)
+	if(pref?.preview_north && pref.preview_south && pref.preview_east && pref.preview_west)
 		user << browse_rsc(pref.preview_north, "new_previewicon[NORTH].png")
 		user << browse_rsc(pref.preview_south, "new_previewicon[SOUTH].png")
 		user << browse_rsc(pref.preview_east, "new_previewicon[EAST].png")

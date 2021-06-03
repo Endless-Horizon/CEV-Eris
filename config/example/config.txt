@@ -1,3 +1,7 @@
+$include game_options.txt
+$include dbconfig.txt
+$include resources.txt
+
 ## Server name: This appears at the top of the screen in-game. In this case it will read "tgstation: station_name" where station_name is the randomly generated name of the station for the round. Remove the # infront of SERVERNAME and replace 'spacestation13' with the name of your choice
 SERVERNAME CEV Eris: Endless Horizon
 
@@ -38,7 +42,7 @@ JOBS_HAVE_MINIMAL_ACCESS
 ## log OOC channel
 LOG_OOC
 
-## log client Say 
+## log client Say
 LOG_SAY
 
 ## log admin actions
@@ -90,7 +94,7 @@ SQL_ENABLED
 
 
 ## probablities for game modes chosen in "secret" and "random" modes
-## 
+##
 ## default probablity is 1, increase to make that mode more likely to be picked
 ## set to 0 to disable that mode
 PROBABILITY EXTENDED 1
@@ -203,7 +207,7 @@ GITHUBURL https://github.com/Endless-Horizon/CEV-Eris
 ##Remove the # mark infront of this to forbid admins from posssessing the singularity.
 #FORBID_SINGULO_POSSESSION
 
-## Remove the # to show a popup 'reply to' window to every non-admin that recieves an adminPM. 
+## Remove the # to show a popup 'reply to' window to every non-admin that recieves an adminPM.
 ## The intention is to make adminPMs more visible. (although I fnd popups annoying so this defaults to off)
 #POPUP_ADMIN_PM
 
@@ -306,7 +310,7 @@ JOIN_UNASSIGNED
 ## Clients will be unable to connect unless their build is equal to or higher than this (a number, e.g. 1000)
 #MINIMUM_BYOND_BUILD
 
-## Time in minutes before empty server will restart	
+## Time in minutes before empty server will restart
 EMPTY_SERVER_RESTART_TIME 30
 
 ## EMOJI ###
@@ -314,7 +318,7 @@ EMPTY_SERVER_RESTART_TIME 30
 EMOJIS
 
 ## MOB AI SLEEPING ###
-## Uncomment this out if you want to disable mob AI sleeping 
+## Uncomment this out if you want to disable mob AI sleeping
 #ENABLE_MOB_SLEEP
 
 WEBHOOK_URL http://localhost:44303/webhook/en
@@ -357,3 +361,15 @@ RANDOM_START
 
 # Generate loot data.
 #GENERATE_LOOT_DATA
+
+# TG configs
+
+##Error handling related options
+## The "cooldown" time for each occurence of a unique error
+#ERROR_COOLDOWN 600
+## How many occurences before the next will silence them
+#ERROR_LIMIT 90
+## How long a unique error will be silenced for
+#ERROR_SILENCE_TIME 6000
+##How long to wait between messaging admins about occurences of a unique error
+#ERROR_MSG_DELAY 50

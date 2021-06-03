@@ -24,7 +24,7 @@
 			child_names[tags[i]] = names[i]
 
 
-/obj/machinery/embedded_controller/radio/docking_port_multi/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/embedded_controller/radio/docking_port_multi/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	var/list/airlocks[child_names.len]
@@ -62,7 +62,7 @@
 	airlock_program = new/datum/computer/file/embedded_program/airlock/multi_docking(src)
 	program = airlock_program
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data = list(

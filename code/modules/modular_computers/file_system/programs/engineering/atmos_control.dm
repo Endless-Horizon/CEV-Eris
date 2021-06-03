@@ -34,7 +34,7 @@
 		log_debug("\The [src] given an unepxected req_one_access: [req_one_access]")
 
 	if(monitored_alarm_ids)
-		for(var/obj/machinery/alarm/alarm in SSmachines.machinery)
+		for(var/obj/machinery/alarm/alarm in GLOB.machines)
 			if(alarm.alarm_id && (alarm.alarm_id in monitored_alarm_ids))
 				monitored_alarms += alarm
 		// machines may not yet be ordered at this point
@@ -46,18 +46,18 @@
 
 	if(href_list["alarm"])
 		if(ui_ref)
-			var/obj/machinery/alarm/alarm = locate(href_list["alarm"]) in (monitored_alarms.len ? monitored_alarms : SSmachines.machinery)
+			var/obj/machinery/alarm/alarm = locate(href_list["alarm"]) in (monitored_alarms.len ? monitored_alarms : GLOB.machines)
 			if(alarm)
 				var/datum/topic_state/TS = generate_state(alarm)
-				alarm.ui_interact(usr, master_ui = ui_ref, state = TS)
+				alarm.nano_ui_interact(usr, master_ui = ui_ref, state = TS)
 		return 1
 
-/datum/nano_module/atmos_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/master_ui = null, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/atmos_control/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/master_ui = null, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 	var/alarms[0]
 
 	// TODO: Move these to a cache, similar to cameras
-	for(var/obj/machinery/alarm/alarm in (monitored_alarms.len ? monitored_alarms : SSmachines.machinery))
+	for(var/obj/machinery/alarm/alarm in (monitored_alarms.len ? monitored_alarms : GLOB.machines))
 		alarms[++alarms.len] = list("name" = sanitize(alarm.name), "ref"= "\ref[alarm]", "danger" = max(alarm.danger_level, alarm.alarm_area.atmosalm))
 	data["alarms"] = alarms
 

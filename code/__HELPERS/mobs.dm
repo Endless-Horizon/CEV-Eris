@@ -349,31 +349,82 @@ Proc for attack log creation, because really why not
 	remove_from_dead_mob_list()
 	. = add_to_living_mob_list()
 
+///Adds the mob reference to the list and directory of all mobs. Called on Initialize().
+/mob/proc/add_to_mob_list()
+	GLOB.mob_list |= src
+	// GLOB.mob_directory[tag] = src
+
+///Removes the mob reference from the list and directory of all mobs. Called on Destroy().
+/mob/proc/remove_from_mob_list()
+	GLOB.mob_list -= src
+	// GLOB.mob_directory -= tag
+
 // Returns true if the mob was in neither the dead or living list
 /mob/proc/add_to_living_mob_list()
 	return FALSE
+
 /mob/living/add_to_living_mob_list()
 	if((src in GLOB.living_mob_list) || (src in GLOB.dead_mob_list))
 		return FALSE
-	GLOB.living_mob_list += src
+	GLOB.living_mob_list |= src
 	return TRUE
 
 // Returns true if the mob was removed from the living list
 /mob/proc/remove_from_living_mob_list()
 	return GLOB.living_mob_list.Remove(src)
 
-// Returns true if the mob was in neither the dead or living list
-/mob/proc/add_to_dead_mob_list()
-	return FALSE
-/mob/living/add_to_dead_mob_list()
-	if((src in GLOB.living_mob_list) || (src in GLOB.dead_mob_list))
-		return FALSE
-	GLOB.dead_mob_list += src
-	return TRUE
 
-// Returns true if the mob was removed form the dead list
+///Adds the mob reference to the list of all mobs alive. If mob is cliented, it adds it to the list of all living player-mobs.
+/mob/proc/add_to_alive_mob_list()
+	if(QDELETED(src))
+		return
+	GLOB.living_mob_list |= src
+	// if(client)
+	// 	add_to_current_living_players()
+
+///Removes the mob reference from the list of all mobs alive. If mob is cliented, it removes it from the list of all living player-mobs.
+/mob/proc/remove_from_alive_mob_list()
+	// GLOB.alive_mob_list -= src
+	GLOB.living_mob_list -= src
+	// if(client)
+	// 	remove_from_current_living_players()
+
+///Adds the mob reference to the list of all the dead mobs. If mob is cliented, it adds it to the list of all dead player-mobs.
+/mob/proc/add_to_dead_mob_list()
+	if(QDELETED(src))
+		return
+	GLOB.dead_mob_list |= src
+	// if(client)
+	// 	add_to_current_dead_players()
+
+///Remvoes the mob reference from list of all the dead mobs. If mob is cliented, it adds it to the list of all dead player-mobs.
 /mob/proc/remove_from_dead_mob_list()
-	return GLOB.dead_mob_list.Remove(src)
+	GLOB.dead_mob_list -= src
+	// if(client)
+	// 	remove_from_current_dead_players()
+
+///Adds the cliented mob reference to the list of all player-mobs, besides to either the of dead or alive player-mob lists, as appropriate. Called on Login().
+/mob/proc/add_to_player_list()
+	SHOULD_CALL_PARENT(TRUE)
+	GLOB.player_list |= src
+	// if(!SSticker?.mode)
+	// 	return
+	// if(stat == DEAD)
+	// 	add_to_current_dead_players()
+	// else
+	// 	add_to_current_living_players()
+
+///Removes the mob reference from the list of all player-mobs, besides from either the of dead or alive player-mob lists, as appropriate. Called on Logout().
+/mob/proc/remove_from_player_list()
+	SHOULD_CALL_PARENT(TRUE)
+	GLOB.player_list -= src
+	// if(!SSticker?.mode)
+	// 	return
+	// if(stat == DEAD)
+	// 	remove_from_current_dead_players()
+	// else
+	// 	remove_from_current_living_players()
+
 
 //Find a dead mob with a brain and client.
 /proc/find_dead_player(var/find_key, var/include_observers = 0)
@@ -427,3 +478,7 @@ Proc for attack log creation, because really why not
 	var/obj/item/organ/internal/eyes/eyes = random_organ_by_process(OP_EYES)
 	if(eyes) //If they're not, check to see if their eyes got one of them there colour matrices. Will be null if eyes are robotic/the mob isn't colourblind and they have no default colour matrix.
 		return eyes.get_colourmatrix()
+
+/// Gets the client of the mob, allowing for mocking of the client.
+/// You only need to use this if you know you're going to be mocking clients somewhere else.
+#define GET_CLIENT(mob) (##mob.client) // || ##mob.mock_client)

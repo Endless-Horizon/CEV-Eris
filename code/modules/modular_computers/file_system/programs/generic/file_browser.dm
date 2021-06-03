@@ -151,7 +151,7 @@
 /datum/nano_module/program/computer_filemanager
 	name = "File Manager"
 
-/datum/nano_module/program/computer_filemanager/ui_data()
+/datum/nano_module/program/computer_filemanager/nano_ui_data()
 	var/list/data = host.initial_data()
 
 	var/datum/computer_file/program/filemanager/PRG
@@ -165,10 +165,10 @@
 
 	else
 		if(PRG.computer.hard_drive)
-			data["internal_disk"] = PRG.computer.hard_drive.ui_data()
+			data["internal_disk"] = PRG.computer.hard_drive.nano_ui_data()
 
 		if(PRG.computer.portable_drive)
-			data["portable_disk"] = PRG.computer.portable_drive.ui_data()
+			data["portable_disk"] = PRG.computer.portable_drive.nano_ui_data()
 
 		if(PRG.open_file)
 			var/datum/computer_file/data/file
@@ -184,8 +184,8 @@
 
 	return data
 
-/datum/nano_module/program/computer_filemanager/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
-	var/list/data = ui_data()
+/datum/nano_module/program/computer_filemanager/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
+	var/list/data = nano_ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

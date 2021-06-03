@@ -135,7 +135,7 @@
 	return data
 
 
-/obj/machinery/autolathe/ui_data()
+/obj/machinery/autolathe/nano_ui_data()
 	var/list/data = list()
 
 	data["have_disk"] = have_disk
@@ -169,12 +169,12 @@
 	for(var/d in design_list())
 		var/datum/computer_file/binary/design/design_file = d
 		if(!show_category || design_file.design.category == show_category)
-			L.Add(list(design_file.ui_data()))
+			L.Add(list(design_file.nano_ui_data()))
 	data["designs"] = L
 
 
 	if(current_file)
-		data["current"] = current_file.ui_data()
+		data["current"] = current_file.nano_ui_data()
 		data["progress"] = progress
 
 	var/list/Q = list()
@@ -183,7 +183,7 @@
 
 	for(var/i = 1; i <= queue.len; i++)
 		var/datum/computer_file/binary/design/design_file = queue[i]
-		var/list/QR = design_file.ui_data()
+		var/list/QR = design_file.nano_ui_data()
 
 		QR["ind"] = i
 
@@ -228,8 +228,8 @@
 	return data
 
 
-/obj/machinery/autolathe/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
-	var/list/data = ui_data(user, ui_key)
+/obj/machinery/autolathe/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+	var/list/data = nano_ui_data(user, ui_key)
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -280,7 +280,7 @@
 		return
 
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/autolathe/proc/check_user(mob/user)
 	return TRUE
@@ -293,7 +293,7 @@
 		return TRUE
 
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 	wires.Interact(user)
 
 /obj/machinery/autolathe/Topic(href, href_list)

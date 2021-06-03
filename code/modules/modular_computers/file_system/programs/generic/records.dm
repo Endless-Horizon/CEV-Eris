@@ -15,7 +15,7 @@
 	var/datum/computer_file/report/crew_record/active_record
 	var/message = null
 
-/datum/nano_module/records/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, state = GLOB.default_state)
+/datum/nano_module/records/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, state = GLOB.default_state)
 	var/list/data = host.initial_data()
 	var/list/user_access = get_record_access(user)
 
@@ -117,13 +117,13 @@
 		var/photo = get_photo(usr)
 		if(photo && active_record)
 			active_record.photo_front = photo
-			ui_interact(usr)
+			nano_ui_interact(usr)
 		return 1
 	if(href_list["edit_photo_side"])
 		var/photo = get_photo(usr)
 		if(photo && active_record)
 			active_record.photo_side = photo
-			ui_interact(usr)
+			nano_ui_interact(usr)
 		return 1
 	if(href_list["edit_field"])
 		edit_field(usr, text2num(href_list["edit_field"]))

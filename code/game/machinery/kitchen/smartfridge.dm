@@ -145,7 +145,7 @@
 
 	if(panel_open && icon_panel)
 		add_overlays(image(icon, icon_panel))
-	
+
 	if(contents.len && !(stat & NOPOWER))
 		add_overlays(image(icon, icon_fill))
 
@@ -267,7 +267,7 @@
 
 	if(panel_open && icon_panel)
 		add_overlays(image(icon, icon_panel))
-	
+
 	if(contents.len)
 		if(contents.len <= 10)
 			add_overlays(image(icon, icon_fill10))
@@ -344,7 +344,7 @@
 	if(stat & (NOPOWER|BROKEN))
 		return
 	wires.Interact(user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 
 /obj/machinery/smartfridge/proc/update_contents()
@@ -355,7 +355,7 @@
 *   SmartFridge Menu
 ********************/
 
-/obj/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/smartfridge/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	user.set_machine(src)
 
 	var/data[0]

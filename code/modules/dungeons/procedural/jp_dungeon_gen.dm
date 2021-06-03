@@ -1274,7 +1274,7 @@ the arms of the plus sign - there are only four.
 
 /obj/procedural/jp_DungeonRoom/preexist/square/submap/finalise()
 	if(border.len < 1)
-		testing("ROOM [my_map.name] HAS NO BORDERS! at [centre.x], [centre.y]!")
+		log_mapping("ROOM [my_map.name] HAS NO BORDERS! at [centre.x], [centre.y]!")
 	if(my_map)
 		my_map.load(centre, centered = TRUE, orientation = SOUTH, post_init = 1)
 	else

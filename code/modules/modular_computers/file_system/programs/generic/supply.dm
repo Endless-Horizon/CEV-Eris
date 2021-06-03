@@ -25,7 +25,7 @@
 	var/emagged = FALSE	// TODO: Implement synchronisation with modular computer framework.
 	var/current_security_level
 
-/datum/nano_module/supply/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, state = GLOB.default_state)
+/datum/nano_module/supply/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, state = GLOB.default_state)
 	var/list/data = host.initial_data()
 	var/is_admin = check_access(user, access_cargo)
 	var/decl/security_state/security_state = decls_repository.get_decl(maps_data.security_state)

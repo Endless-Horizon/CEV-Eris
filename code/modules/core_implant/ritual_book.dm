@@ -18,7 +18,7 @@
 		), rand(40,80), 1)
 	interact(H)
 
-/obj/item/weapon/book/ritual/ui_data(mob/user)
+/obj/item/weapon/book/ritual/nano_ui_data(mob/user)
 	var/obj/item/weapon/implant/core_implant/cruciform/CI
 	if(isliving(user))
 		var/mob/living/L = user
@@ -81,8 +81,8 @@
 	return data
 
 
-/obj/item/weapon/book/ritual/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	var/list/data = ui_data(user, ui_key)
+/obj/item/weapon/book/ritual/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+	var/list/data = nano_ui_data(user, ui_key)
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -96,7 +96,7 @@
 
 
 /obj/item/weapon/book/ritual/interact(mob/living/carbon/human/H)
-	ui_interact(H)
+	nano_ui_interact(H)
 
 
 /obj/item/weapon/book/ritual/Topic(href, href_list)

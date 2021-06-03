@@ -246,5 +246,5 @@ var/global/list/big_deepmaint_room_templates = list()
 		generate.generate()
 		generate.populateCorridors()
 		generate.makeLadders()
-		testing("Finished procedural generation of [name]. [generate.errString(generate.out_error)] -  Z-level [z], in [(REALTIMEOFDAY - start) / 10] seconds.")
+		log_mapping("Finished procedural generation of [name]. [generate.errString(generate.out_error)] -  Z-level [z], in [(REALTIMEOFDAY - start) / 10] seconds.")
 

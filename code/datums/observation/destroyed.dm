@@ -12,6 +12,7 @@ GLOBAL_DATUM_INIT(destroyed_event, /decl/observ/destroyed, new)
 	name = "Destroyed"
 
 /datum/Destroy()
+	// basicaly, their shitty comsig
 	GLOB.destroyed_event && GLOB.destroyed_event.raise_event(src)
-	. = ..()
 	cleanup_events(src)
+	. = ..()

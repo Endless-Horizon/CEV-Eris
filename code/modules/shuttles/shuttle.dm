@@ -63,7 +63,7 @@
 
 	. = ..()
 
-/datum/shuttle/proc/short_jump(var/obj/effect/shuttle_landmark/destination)
+/datum/shuttle/proc/short_jump(obj/effect/shuttle_landmark/destination)
 	if(moving_status != SHUTTLE_IDLE) return
 
 	var/obj/effect/shuttle_landmark/start_location = current_location
@@ -72,7 +72,7 @@
 		playsound(current_location, sound_takeoff, 100, 20, 0.2)
 	spawn(warmup_time*10)
 		if (moving_status == SHUTTLE_IDLE)
-			return FALSE	//someone cancelled the launch
+			return
 
 		if(!fuel_check()) //fuel error (probably out of fuel) occured, so cancel the launch
 			var/datum/shuttle/autodock/S = src

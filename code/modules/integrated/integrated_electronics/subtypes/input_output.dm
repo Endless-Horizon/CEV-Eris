@@ -160,7 +160,7 @@
 	O.data = null
 	if(assembly)
 		if(istype(assembly.loc, /mob/living)) // Now check if someone's holding us.
-			O.data = weakref(assembly.loc)
+			O.data = WEAKREF(assembly.loc)
 
 	O.push_data()
 
@@ -196,7 +196,7 @@
 			continue
 		valid_things.Add(thing)
 	if(valid_things.len)
-		O.data = weakref(pick(valid_things))
+		O.data = WEAKREF(pick(valid_things))
 	O.push_data()
 
 /obj/item/integrated_circuit/input/signaler
@@ -416,7 +416,7 @@
 		if(istype(A, /obj/item/weapon/storage))
 			return FALSE
 
-	set_pin_data(IC_OUTPUT, 1, weakref(A))
+	set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
 	push_data()
 	activate_pin(1)
 	return TRUE

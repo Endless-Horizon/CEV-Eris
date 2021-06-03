@@ -36,11 +36,10 @@
 	var/stasis_timeofdeath = 0
 	var/pulse = PULSE_NORM
 	var/global/list/overlays_cache = null
+	/// temporary banaid as one of the mobs have no species (theorized corpse spawner, though it shouldn't happen in the first place!)
+	var/higgs_bugson_spam = FALSE
 
-/mob/living/carbon/human/Life()
-	set invisibility = 0
-	set background = BACKGROUND_ENABLED
-
+/mob/living/carbon/human/Life(delta_time = SSMOBS_DT, times_fired)
 	if(in_stasis && (stat == DEAD))
 		timeofdeath = world.time - stasis_timeofdeath
 
@@ -57,6 +56,11 @@
 	if(wearing_rig && wearing_rig.offline)
 		wearing_rig = null
 
+	if(!species)
+		if(!higgs_bugson_spam)
+			stack_trace("Mob with no species tried to live, this will be aborted due to bugs. Mob named [src] at [COORD(src)]")
+			higgs_bugson_spam = TRUE
+		return FALSE
 	. = ..()
 
 	if(life_tick%30==15)
@@ -951,16 +955,21 @@
 
 	return 1
 
-/mob/living/carbon/human/handle_random_events()
+/mob/living/carbon/human/handle_random_events(delta_time, times_fired)
+	//Puke if toxloss is too high
+	if(stat)
+		return
 	if(in_stasis)
 		return
 
-	// Puke if toxloss is too high
-	if(!stat)
-		if (getToxLoss() >= 45 && nutrition > 20)
-			vomit()
+	if(getToxLoss() < 45 || nutrition <= 20)
+		return
 
-	//0.1% chance of playing a scary sound to someone who's in complete darkness
+	lastpuke += DT_PROB(30, delta_time)
+	if(lastpuke >= 50) // about 25 second delay I guess // This is actually closer to 150 seconds
+		vomit(20)
+		lastpuke = 0
+
 	if(isturf(loc) && rand(1,1000) == 1)
 		var/turf/T = loc
 		if(T.get_lumcount() == 0)

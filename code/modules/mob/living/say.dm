@@ -263,10 +263,12 @@ var/list/channel_to_radio_key = new
 		var/list/hear = hear(message_range, T)
 		var/list/hear_falloff = hear(falloff, T)
 
-		for(var/X in SSmobs.mob_list)
+		for(var/X in GLOB.player_list)
 			if(!ismob(X))
 				continue
 			var/mob/M = X
+			if(QDELETED(M)) //Some times nulls and deleteds stay in this list. This is a workaround to prevent ic chat breaking for everyone when they do.
+				continue //Remove if underlying cause (likely byond issue) is fixed. See TG PR #49004.
 			if(M.stat == DEAD && M.get_preference_value(/datum/client_preference/ghost_ears) == GLOB.PREF_ALL_SPEECH)
 				listening |= M
 				continue
@@ -344,9 +346,9 @@ var/list/channel_to_radio_key = new
 	if(!client)
 		return
 
-	if(sdisabilities&DEAF || ear_deaf)
+	if((sdisabilities & DEAF) || ear_deaf)
 		// INNATE is the flag for audible-emote-language, so we don't want to show an "x talks but you cannot hear them" message if it's set
-		if(!language || !language.flags&INNATE)
+		if(!language || !(language.flags & INNATE))
 			if(speaker == src)
 				to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
 			else

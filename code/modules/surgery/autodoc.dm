@@ -198,7 +198,7 @@
 /datum/autodoc/proc/fail()
 	current_step++
 
-/datum/autodoc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 2, var/datum/topic_state/state)
+/datum/autodoc/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 2, var/datum/topic_state/state)
 	if(!patient)
 		if(ui)
 			ui.close()

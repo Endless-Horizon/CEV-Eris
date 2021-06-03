@@ -146,7 +146,7 @@ are technically visible but obscured, for example by catwalks or trash sitting o
 ***************************************/
 /obj/item/device/t_scanner/attack_self(mob/user)
 	set_user(user)
-	ui_interact(user)
+	nano_ui_interact(user)
 	//set_enabled(!enabled)
 
 //Alt click provides a rapid way to turn it on and off
@@ -154,7 +154,7 @@ are technically visible but obscured, for example by catwalks or trash sitting o
 	if(loc == M)
 		set_enabled(!enabled)
 
-/obj/item/device/t_scanner/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/device/t_scanner/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	// this is the data which will be sent to the ui
 	var/data[0]
 	data["enabled"] = enabled ? 1 : 0
@@ -190,7 +190,7 @@ are technically visible but obscured, for example by catwalks or trash sitting o
 	playsound(loc, 'sound/machines/machine_switch.ogg', 40, 1, -2)
 	add_fingerprint(usr)
 	spawn()
-		ui_interact(usr)
+		nano_ui_interact(usr)
 
 
 /************************************

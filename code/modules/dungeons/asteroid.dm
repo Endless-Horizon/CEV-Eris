@@ -5,13 +5,12 @@
 /turf/simulated/mineral/random/rogue
 	var/floor_under	= /turf/simulated/floor/asteroid
 
-/turf/simulated/mineral/random/rogue/New()
-	spawn(25)
-		for(var/turf/T in oview(src,1))
-			if(istype(get_turf(T),/turf/space))
-				var/turf/simulated/floor/asteroid/flooring = new /turf/simulated/floor/asteroid(T)
-				flooring.updateMineralOverlays(1)
-	. = ..()
+/turf/simulated/mineral/random/rogue/Initialize()
+	. = ..() // STOP SLOWING THE world DOWN
+	for(var/turf/T in oview(src,1))
+		if(istype(get_turf(T),/turf/space))
+			var/turf/simulated/floor/asteroid/flooring = new /turf/simulated/floor/asteroid(T)
+			flooring.updateMineralOverlays(1)
 
 
 

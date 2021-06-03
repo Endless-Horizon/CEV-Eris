@@ -105,7 +105,7 @@
 
 /datum/sanity/proc/onLife()
 	handle_breakdowns()
-	if(owner.stat == DEAD || owner.life_tick % life_tick_modifier || owner.in_stasis || (owner.species.lower_sanity_process && !owner.client))
+	if(owner.stat == DEAD || owner.life_tick % life_tick_modifier || owner.in_stasis || (owner?.species?.lower_sanity_process && !owner.client))
 		return
 	var/affect = SANITY_PASSIVE_GAIN * sanity_passive_gain_multiplier
 	if(owner.stat) //If we're unconscious

@@ -147,7 +147,7 @@
 	active = 1
 	icon_state = "launcher1"
 
-	for(var/obj/machinery/flasher/M in SSmachines.machinery)
+	for(var/obj/machinery/flasher/M in GLOB.machines)
 		if(M.id == src.id)
 			spawn()
 				M.flash()

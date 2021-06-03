@@ -181,42 +181,46 @@
 
 // Defined here solely to take species flags into account without having to recast at mob/living level.
 /mob/living/carbon/human/getOxyLoss()
-	if(species.flags & NO_BREATHE)
+	if(species?.flags & NO_BREATHE)
 		oxyloss = 0
 	return ..()
 
 /mob/living/carbon/human/adjustOxyLoss(amount)
+	if(!species)
+		return ..()
 	if(species.flags & NO_BREATHE)
 		oxyloss = 0
 	else
 		amount = amount*species.oxy_mod
 		if(stats.getPerk(PERK_LUNGS_OF_IRON) && amount > 0)
 			amount *= 0.5
-		..(amount)
+		return ..()
 
-/mob/living/carbon/human/setOxyLoss(var/amount)
-	if(species.flags & NO_BREATHE)
+/mob/living/carbon/human/setOxyLoss(amount)
+	if(species?.flags & NO_BREATHE)
 		oxyloss = 0
 	else
-		..()
+		return ..()
 
 /mob/living/carbon/human/getToxLoss()
-	if(species.flags & NO_POISON)
+	if(species?.flags & NO_POISON)
 		toxloss = 0
 	return ..()
 
 /mob/living/carbon/human/adjustToxLoss(amount)
+	if(!species)
+		return ..()
 	if(species.flags & NO_POISON)
 		toxloss = 0
 	else
 		amount = amount*species.toxins_mod
 		if(stats.getPerk(PERK_BLOOD_OF_LEAD) && amount > 0)
 			amount *= 0.5
-		..(amount)
+		return ..()
 
-/mob/living/carbon/human/setToxLoss(var/amount)
-	if(!(species.flags & NO_POISON) && !isSynthetic())
-		adjustToxLoss(amount-getToxLoss())
+/mob/living/carbon/human/setToxLoss(amount)
+	if(species && !(species.flags & NO_POISON) && !isSynthetic())
+		adjustToxLoss(amount - getToxLoss())
 
 ////////////////////////////////////////////
 

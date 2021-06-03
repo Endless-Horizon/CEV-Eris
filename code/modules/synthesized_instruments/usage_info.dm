@@ -8,7 +8,7 @@
 	src.player = player
 
 //This will let you easily monitor when you're going overboard with tempo and sound duration, generally if the bars fill up it is BAD
-/datum/nano_module/usage_info/ui_interact(mob/user, ui_key = "usage_info", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/datum/nano_module/usage_info/nano_ui_interact(mob/user, ui_key = "usage_info", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/global/list/data = list()
 	data.Cut()
 	data["channels_left"] = GLOB.sound_channels.available_channels.stack.len

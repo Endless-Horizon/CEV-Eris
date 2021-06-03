@@ -26,7 +26,7 @@
 		driver.data_buffer = data
 		if(!SSnano.update_uis(driver.NM))
 			holder2.run_program(driver.filename)
-			driver.NM.ui_interact(user)
+			driver.NM.nano_ui_interact(user)
 
 /obj/item/weapon/computer_hardware/scanner/atmos/proc/scan_data(mob/user, atom/target, proximity = TRUE)
 	if(!can_use_scanner(user, target, proximity))

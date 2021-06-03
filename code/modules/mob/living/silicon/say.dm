@@ -87,7 +87,9 @@
 	if(T)
 		var/list/hear = hear(7, T)
 
-		for(var/mob/M in SSmobs.mob_list)
+		for(var/mob/M in GLOB.player_list)
+			if(QDELETED(M)) //Some times nulls and deleteds stay in this list. This is a workaround to prevent ic chat breaking for everyone when they do.
+				continue //Remove if underlying cause (likely byond issue) is fixed. See TG PR #49004.
 			if(M.locs.len && (M.locs[1] in hear))
 				listening |= M
 			else if(M.stat == DEAD && M.get_preference_value(/datum/client_preference/ghost_ears) == GLOB.PREF_ALL_SPEECH)

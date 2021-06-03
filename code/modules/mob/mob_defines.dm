@@ -1,9 +1,12 @@
 /mob
+	datum_flags = DF_USE_TAG
 	density = TRUE
-	layer = 4
-	animate_movement = 2
+	layer = MOB_LAYER
+	animate_movement = SLIDE_STEPS
 	flags = PROXMOVE
+
 	var/datum/mind/mind
+	var/static/next_mob_id = 0
 
 	movement_handlers = list(
 	/datum/movement_handler/mob/relayed_movement,

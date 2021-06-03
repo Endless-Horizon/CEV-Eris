@@ -42,9 +42,9 @@
 				src.mob.unset_machine()
 
  /**
-  * The ui_interact proc is used to open and update Nano UIs
-  * If ui_interact is not used then the UI will not update correctly
-  * ui_interact is currently defined for /atom/movable
+  * The nano_ui_interact proc is used to open and update Nano UIs
+  * If nano_ui_interact is not used then the UI will not update correctly
+  * nano_ui_interact is currently defined for /atom/movable
   *
   * @param user /mob The mob who is interacting with this UI
   * @param ui_key string A string key to use for this UI. Allows for multiple unique UIs on one obj/mob (defaut value "main")
@@ -53,7 +53,7 @@
   *
   * @return nothing
   */
-/datum/proc/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/nanoui/master_ui = null, datum/topic_state/state = GLOB.default_state)
+/datum/proc/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/nanoui/master_ui = null, datum/topic_state/state = GLOB.default_state)
 	return
 
  /**
@@ -65,7 +65,7 @@
   *
   * @return data /list Data to be sent to the UI
  **/
-/datum/proc/ui_data(mob/user, ui_key = "main")
+/datum/proc/nano_ui_data(mob/user, ui_key = "main")
 	return list() // Not implemented.
 
 // Used by SSnano (/datum/controller/subsystem/processing/nano) to track UIs opened by this mob

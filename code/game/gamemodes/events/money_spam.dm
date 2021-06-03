@@ -61,7 +61,7 @@
 					message = pick("Luxury watches for Blowout sale prices!",\
 					"Watches, Jewelry & Accessories, Bags & Wallets !",\
 					"Deposit 100[CREDS] and get 300[CREDS] totally free!",\
-					" 100K NT.|WOWGOLD õnly [CREDS]89            <HOT>",\
+					" 100K NT.|WOWGOLD ï¿½nly [CREDS]89            <HOT>",\
 					"We have been filed with a complaint from one of your customers in respect of their business relations with you.",\
 					"We kindly ask you to open the COMPLAINT REPORT (attached) to reply on this complaint..")
 				if(4)
@@ -96,7 +96,7 @@
 			last_spam_time = world.time
 
 			if (prob(50)) //Give the AI an increased chance to intercept the message
-				for(var/mob/living/silicon/ai/ai in SSmobs.mob_list)
+				for(var/mob/living/silicon/ai/ai in GLOB.mob_living_list)
 					// Allows other AIs to intercept the message but the AI won't intercept their own message.
 					if(ai.aiPDA != P && ai.aiPDA != src)
 						ai.show_message("<i>Intercepted message from <b>[sender]</b></i> (Unknown / spam?) <i>to <b>[P:owner]</b>: [message]</i>")

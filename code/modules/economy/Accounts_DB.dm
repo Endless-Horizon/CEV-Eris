@@ -52,9 +52,9 @@
 
 /obj/machinery/account_database/attack_hand(mob/user as mob)
 	if(stat & (NOPOWER|BROKEN)) return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/account_database/ui_interact(mob/user, ui_key="main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/account_database/nano_ui_interact(mob/user, ui_key="main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	user.set_machine(src)
 
 	var/data[0]

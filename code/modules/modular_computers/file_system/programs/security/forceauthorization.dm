@@ -14,7 +14,7 @@
 /datum/nano_module/forceauthorization/
 	name = "Use of Force Authorization Manager"
 
-/datum/nano_module/forceauthorization/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/forceauthorization/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 	data["is_silicon_usr"] = issilicon(user)
 

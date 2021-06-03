@@ -21,20 +21,34 @@ ADMIN_VERB_ADD(/client/proc/debug_variables, R_ADMIN | R_MOD, FALSE)
 	if(!D)
 		return
 
+	var/title = ""
 	var/icon/sprite
+	var/hash
+
+	var/no_icon = FALSE
+
 	if(istype(D, /atom))
-		var/atom/A = D
-		if(A.icon && A.icon_state)
-			sprite = icon(A.icon, A.icon_state)
-			usr << browse_rsc(sprite, "view_vars_sprite.png")
+		sprite = getFlatIcon(D)
+		if(sprite)
+			hash = md5(sprite)
+			src << browse_rsc(sprite, "vv[hash].png")
+		else
+			no_icon = TRUE
+
+	title = "[D] ([REF(D)]) = [type]"
+
+	var/sprite_text
+	if(sprite)
+		sprite_text = no_icon? "\[NO ICON\]" : "<img src='vv[hash].png'></td><td>"
 
 	usr << browse_rsc('code/js/view_variables.js', "view_variables.js")
 
 	var/html = {"
-		<html>
+	<html>
 		<head>
+			<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 			<script src='view_variables.js'></script>
-			<title>[D] (\ref[D] - [D.type])</title>
+			<title>[title]</title>
 			<style>
 				body { font-family: Verdana, sans-serif; font-size: 9pt; }
 				.value { font-family: "Courier New", monospace; font-size: 8pt; }
@@ -45,8 +59,12 @@ ADMIN_VERB_ADD(/client/proc/debug_variables, R_ADMIN | R_MOD, FALSE)
 				<table width='100%'><tr>
 					<td width='50%'>
 						<table align='center' width='100%'><tr>
-							[sprite ? "<td><img src='view_vars_sprite.png'></td>" : ""]
-							<td><div align='center'>[D.get_view_variables_header()]</div></td>
+							<td>
+								[sprite_text]
+								<div align='center'>
+									[D.get_view_variables_header()]
+								</div>
+							</td>
 						</tr></table>
 						<div align='center'>
 							<b><font size='1'>[replacetext("[D.type]", "/", "/<wbr>")]</font></b>

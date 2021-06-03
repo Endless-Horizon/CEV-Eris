@@ -20,10 +20,10 @@
 
 	Ok. What if you want to get every machine in the SSmachine process list? Looping through world is kinda slow.
 
-	"SELECT * IN SSmachines.machinery"
+	"SELECT * IN GLOB.machines"
 
 	Here "*" as type functions as a wildcard.
-	We know everything in the global SSmachines.machinery list is a machine.
+	We know everything in the global GLOB.machines list is a machine.
 
 	You can specify "IN <expression>" to return a list to operate on.
 	This can be any list that you can wizard together from global variables and global proc calls.
@@ -32,9 +32,9 @@
 	So yeah SDQL is unironically better than VV for complex single-object operations.
 
 	You can of course combine these.
-	"SELECT * IN SSmachines.machinery WHERE z == 4"
-	"SELECT * IN SSmachines.machinery WHERE stat & 2" // (2 is NOPOWER, can't use defines from SDQL. Sorry!)
-	"SELECT * IN SSmachines.machinery WHERE stat & 2 && z == 4"
+	"SELECT * IN GLOB.machines WHERE z == 4"
+	"SELECT * IN GLOB.machines WHERE stat & 2" // (2 is NOPOWER, can't use defines from SDQL. Sorry!)
+	"SELECT * IN GLOB.machines WHERE stat & 2 && z == 4"
 
 	The possibilities are endless (just don't crash the server, ok?).
 
@@ -136,12 +136,7 @@
 
 // Used by update statements, this is to handle shit like preventing editing the /datum/admins though SDQL but WITHOUT +PERMISSIONS.
 // Assumes the variable actually exists.
-/datum/proc/SDQL_update(var/const/var_name, var/new_value)
-	vars[var_name] = new_value
-	return 1
-
-// Because /client isn't a subtype of /datum...
-/client/proc/SDQL_update(var/const/var_name, var/new_value)
+/datum/proc/SDQL_update(const/var_name, new_value)
 	vars[var_name] = new_value
 	return 1
 

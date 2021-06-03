@@ -161,51 +161,82 @@
 
 	return cell.drain_power(drain_check, surge, amount)
 
-/obj/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
+/obj/machinery/power/apc/New(turf/loc, ndir, building=0)
+	if (!req_access)
+		req_access = list(access_engine_equip)
 	..()
+	// GLOB.apcs_list += src
+
 	wires = new(src)
 
 	// offset 28 pixels in direction of dir
 	// this allows the APC to be embedded in a wall, yet still inside an area
 	if (building)
 		set_dir(ndir)
+
 	tdir = dir		// to fix Vars bug
 	set_dir(SOUTH)
 
-	pixel_x = (tdir & 3)? 0 : (tdir == 4 ? 28 : -28)
-	pixel_y = (tdir & 3)? (tdir ==1 ? 28 : -28) : 0
-	if (building==0)
-		init()
-	else
+	switch(tdir)
+		if(NORTH)
+			if((pixel_y != initial(pixel_y)) && (pixel_y != 28))
+				log_mapping("APC: ([src]) at [AREACOORD(src)] with dir ([tdir] | [uppertext(dir2text(tdir))]) has pixel_y value ([pixel_y] - should be 23.)")
+			pixel_y = 28
+		if(SOUTH)
+			if((pixel_y != initial(pixel_y)) && (pixel_y != -23))
+				log_mapping("APC: ([src]) at [AREACOORD(src)] with dir ([tdir] | [uppertext(dir2text(tdir))]) has pixel_y value ([pixel_y] - should be -23.)")
+			pixel_y = -28
+		if(EAST)
+			if((pixel_y != initial(pixel_x)) && (pixel_x != 28))
+				log_mapping("APC: ([src]) at [AREACOORD(src)] with dir ([tdir] | [uppertext(dir2text(tdir))]) has pixel_x value ([pixel_x] - should be 24.)")
+			pixel_x = 28
+		if(WEST)
+			if((pixel_y != initial(pixel_x)) && (pixel_x != -28))
+				log_mapping("APC: ([src]) at [AREACOORD(src)] with dir ([tdir] | [uppertext(dir2text(tdir))]) has pixel_x value ([pixel_x] - should be -25.)")
+			pixel_x = -28
+
+	if (building)
 		area = get_area(src)
-		area.apc = src
 		opened = 1
 		operating = FALSE
-		name = "[area.name] APC"
+		name = "\improper [get_area_name(area)] APC"
 		stat |= MAINT
 		update_icon()
+		addtimer(CALLBACK(src, .proc/update), 5)
+
 
 /obj/machinery/power/apc/Destroy()
-	update()
-	area.apc = null
-	SEND_SIGNAL(area, COMSIG_AREA_APC_DELETED)
-	area.power_light = 0
-	area.power_equip = 0
-	area.power_environ = 0
-	area.power_change()
-	qdel(wires)
-	wires = null
-	qdel(terminal)
-	terminal = null
-	if(cell)
-		cell.forceMove(loc)
-		cell = null
+	// GLOB.apcs_list -= src
 
 	// Malf AI, removes the APC from AI's hacked APCs list.
 	if((hacker) && (hacker.hacked_apcs) && (src in hacker.hacked_apcs))
 		hacker.hacked_apcs -= src
 
+	update()
+	area.apc = null
+
+	SEND_SIGNAL(area, COMSIG_AREA_APC_DELETED)
+	area.power_light = FALSE
+	area.power_equip = FALSE
+	area.power_environ = FALSE
+	area.power_change()
+	// area.poweralert(FALSE, src)
+	qdel(wires)
+	wires = null
+	qdel(terminal)
+	terminal = null
+	if(cell)
+		qdel(cell)
+	if(terminal)
+		disconnect_terminal()
+
 	return ..()
+
+/obj/machinery/power/apc/handle_atom_del(atom/A)
+	if(A == cell)
+		cell = null
+		update_icon()
+		updateUsrDialog()
 
 /obj/machinery/power/apc/proc/energy_fail(var/duration)
 	failure_timer = max(failure_timer, duration)
@@ -219,28 +250,37 @@
 	terminal.set_dir(tdir)
 	terminal.master = src
 
-/obj/machinery/power/apc/proc/init()
+/obj/machinery/power/apc/Initialize(mapload)
+	. = ..()
+	// AddElement(/datum/element/atmos_sensitive, mapload)
+
+	if(!mapload)
+		return
 	has_electronics = 2 //installed and secured
 	// is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
 		cell = new cell_type(src)
-		cell.charge = start_charge * cell.maxcharge / 100		// (convert percentage to actual value)
+		cell.charge = start_charge * cell.maxcharge / 100 // (convert percentage to actual value)
 
 	var/area/A = loc.loc
 
 	//if area isn't specified use current
-	if(isarea(A) && areastring == null)
+	if(areastring)
+		area = get_area_instance_from_text(areastring)
+		if(!area)
+			area = A
+			stack_trace("Bad areastring path for [src], [areastring]")
+	else if(isarea(A) && areastring == null)
 		area = A
-	else
-		area = get_area_name(areastring)
-	name = "[strip_improper(area.name)] APC"
-	area.apc = src
+
+	// if(auto_name)
+	// 	name = "\improper [get_area_name(area, TRUE)] APC"
+
 	update_icon()
 
 	make_terminal()
 
-	spawn(5)
-		update()
+	addtimer(CALLBACK(src, .proc/update), 5)
 
 /obj/machinery/power/apc/examine(mob/user)
 	if(..(user, 1))
@@ -771,7 +811,7 @@
 	if(wiresexposed && !isAI(user))
 		wires.Interact(user)
 
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
 /obj/machinery/power/apc/proc/toggle_lock(mob/user)
 	if(emagged)
@@ -800,7 +840,7 @@
 	else
 		toggle_lock(user)
 
-/obj/machinery/power/apc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/power/apc/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(!user)
 		return
 

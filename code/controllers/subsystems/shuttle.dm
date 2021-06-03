@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(shuttle)
 	name = "Shuttle"
 	wait = 2 SECONDS
-	priority = SS_PRIORITY_SHUTTLE
+	priority = FIRE_PRIORITY_SHUTTLE
 	init_order = INIT_ORDER_SHUTTLE                // Should be initialized after all maploading is over and atoms are initialized, to ensure that landmarks have been initialized.
 
 	var/list/shuttles = list()                     // maps shuttle tags to shuttle datums, so that they can be looked up.

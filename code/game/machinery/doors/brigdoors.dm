@@ -40,15 +40,15 @@
 /obj/machinery/door_timer/LateInitialize()
 	..()
 
-	for(var/obj/machinery/door/window/brigdoor/M in SSmachines.machinery)
+	for(var/obj/machinery/door/window/brigdoor/M in GLOB.machines)
 		if (M.id == src.id)
 			targets += M
 
-	for(var/obj/machinery/flasher/F in SSmachines.machinery)
+	for(var/obj/machinery/flasher/F in GLOB.machines)
 		if(F.id == src.id)
 			targets += F
 
-	for(var/obj/machinery/cellshower/S in SSmachines.machinery)
+	for(var/obj/machinery/cellshower/S in GLOB.machines)
 		if(S.id == src.id)
 			targets += S
 

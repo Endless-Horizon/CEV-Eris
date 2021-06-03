@@ -7,7 +7,7 @@
 	reagents = bloodstr
 	..()
 
-/mob/living/carbon/Life()
+/mob/living/carbon/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
 	handle_viruses()
 	// Increase germ_level regularly

@@ -26,7 +26,7 @@ The answer was five and a half years -ZeroBits
 	var/obj/machinery/libraryscanner/scanner
 	var/sort_by = "id"
 
-/datum/nano_module/library/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/library/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	if(error_message)

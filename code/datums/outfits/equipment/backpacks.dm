@@ -44,7 +44,7 @@
 /decl/backpack_outfit/New()
 	tweaks = tweaks || list()
 
-	if(FLAGS_EQUALS(flags, BACKPACK_HAS_TYPE_SELECTION|BACKPACK_HAS_SUBTYPE_SELECTION))
+	if((flags & BACKPACK_HAS_TYPE_SELECTION) && (flags & BACKPACK_HAS_SUBTYPE_SELECTION))
 		CRASH("May not have both type and subtype selection tweaks")
 
 	if(flags & BACKPACK_HAS_TYPE_SELECTION)

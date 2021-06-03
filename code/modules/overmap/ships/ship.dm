@@ -41,7 +41,7 @@
 		if (E.holder.z in map_z)
 			engines |= E
 			//testing("Engine at level [E.holder.z] linked to overmap object '[name]'.")
-	for(var/obj/machinery/computer/engines/E in SSmachines.machinery)
+	for(var/obj/machinery/computer/engines/E in GLOB.machines)
 		if (E.z in map_z)
 			E.linked = src
 			//testing("Engines console at level [E.z] linked to overmap object '[name]'.")
@@ -51,13 +51,13 @@
 			//testing("Scanner at level [LRS.z] linked to overmap object '[name]'.")
 			scanners |= LRS
 
-	for(var/obj/machinery/computer/helm/H in SSmachines.machinery)
+	for(var/obj/machinery/computer/helm/H in GLOB.machines)
 		if (H.z in map_z)
 			nav_control = H
 			H.linked = src
 			H.get_known_sectors()
 			//testing("Helm console at level [H.z] linked to overmap object '[name]'.")
-	for(var/obj/machinery/computer/navigation/N in SSmachines.machinery)
+	for(var/obj/machinery/computer/navigation/N in GLOB.machines)
 		if (N.z in map_z)
 			N.linked = src
 			//testing("Navigation console at level [N.z] linked to overmap object '[name]'.")
@@ -71,7 +71,7 @@
 		if (E.holder.z in map_z)
 			engines |= E
 			//testing("Engine at level [E.holder.z] linked to overmap object '[name]'.")
-	for(var/obj/machinery/computer/engines/E in SSmachines.machinery)
+	for(var/obj/machinery/computer/engines/E in GLOB.machines)
 		if (E.z in map_z)
 			E.linked = src
 			//testing("Engines console at level [E.z] linked to overmap object '[name]'.")
@@ -81,13 +81,13 @@
 			//testing("Scanner at level [LRS.z] linked to overmap object '[name]'.")
 			scanners |= LRS
 
-	for(var/obj/machinery/computer/helm/H in SSmachines.machinery)
+	for(var/obj/machinery/computer/helm/H in GLOB.machines)
 		if (H.z in map_z)
 			nav_control = H
 			H.linked = src
 			H.get_known_sectors()
 			//testing("Helm console at level [H.z] linked to overmap object '[name]'.")
-	for(var/obj/machinery/computer/navigation/N in SSmachines.machinery)
+	for(var/obj/machinery/computer/navigation/N in GLOB.machines)
 		if (N.z in map_z)
 			N.linked = src
 			//testing("Navigation console at level [N.z] linked to overmap object '[name]'.")

@@ -162,23 +162,28 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		UpdateUI()
 
 // Get a DNA UI block's raw value.
-/datum/dna/proc/GetUIValue(var/block)
-	if (block<=0) return 0
+/datum/dna/proc/GetUIValue(block)
+	if (block <= 0)
+		return 0
 	return UI[block]
 
 // Set a DNA UI block's value, given a value and a max possible value.
 // Used in hair and facial styles (value being the index and maxvalue being the len of the hairstyle list)
-/datum/dna/proc/SetUIValueRange(var/block,var/value,var/maxvalue,var/defer=0)
-	if (block<=0) return
-	if (value==0) value = 1   // FIXME: hair/beard/eye RGB values if they are 0 are not set, this is a work around we'll encode it in the DNA to be 1 instead.
-	ASSERT(maxvalue<=4095)
+/datum/dna/proc/SetUIValueRange(block, value, maxvalue, defer = 0)
+	if (block<=0)
+		return
+	if (value == 0)
+		value = 1   // FIXME: hair/beard/eye RGB values if they are 0 are not set, this is a work around we'll encode it in the DNA to be 1 instead.
+	ASSERT(maxvalue != 0) // SHOULD EXIST AND NOT === 0 (div by 0)
+	ASSERT(maxvalue <= 4095)
 	var/range = (4095 / maxvalue)
 	if(value)
-		SetUIValue(block,round(value * range),defer)
+		SetUIValue(block, round(value * range), defer)
 
 // Getter version of above.
-/datum/dna/proc/GetUIValueRange(var/block,var/maxvalue)
-	if (block<=0) return 0
+/datum/dna/proc/GetUIValueRange(block, maxvalue)
+	if (block<=0)
+		return 0
 	var/value = GetUIValue(block)
 	return round(1 +(value / 4096)*maxvalue)
 

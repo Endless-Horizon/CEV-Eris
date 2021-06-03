@@ -13,7 +13,7 @@
 /datum/nano_module/crew_manifest
 	name = "Crew Manifest"
 
-/datum/nano_module/crew_manifest/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, state = GLOB.default_state)
+/datum/nano_module/crew_manifest/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	data["crew_manifest"] = html_crew_manifest(TRUE)

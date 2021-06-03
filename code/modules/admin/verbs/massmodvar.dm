@@ -136,7 +136,7 @@
 			O.vars[variable] = initial(O.vars[variable])
 			if(method)
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -152,7 +152,7 @@
 
 			else
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -176,7 +176,7 @@
 
 			if(method)
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -191,7 +191,7 @@
 							A.vars[variable] = O.vars[variable]
 			else
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -217,7 +217,7 @@
 
 			if(method)
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if ( istype(M , O.type) )
 							if(variable=="light_range")
 								M.set_light(new_value)
@@ -242,7 +242,7 @@
 
 			else
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if (M.type == O.type)
 							if(variable=="light_range")
 								M.set_light(new_value)
@@ -272,7 +272,7 @@
 			O.vars[variable] = new_value
 			if(method)
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -287,7 +287,7 @@
 							A.vars[variable] = O.vars[variable]
 			else
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -308,7 +308,7 @@
 
 			if(method)
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -323,7 +323,7 @@
 							A.vars[variable] = O.vars[variable]
 			else
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
@@ -343,7 +343,7 @@
 			O.vars[variable] = new_value
 			if(method)
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
@@ -359,7 +359,7 @@
 
 			else
 				if(ismob(O))
-					for(var/mob/M in SSmobs.mob_list)
+					for(var/mob/M in world)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 

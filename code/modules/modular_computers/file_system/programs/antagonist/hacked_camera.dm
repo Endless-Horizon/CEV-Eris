@@ -23,7 +23,7 @@
 			ntnet_global.add_log("IDS WARNING - Unauthorised access detected to camera network [HNM.current_network] by device with NID [computer.network_card.get_network_tag()]")
 			ntnet_global.intrusion_detection_alarm = 1
 
-/datum/computer_file/program/camera_monitor/hacked/ui_interact(mob/user)
+/datum/computer_file/program/camera_monitor/hacked/nano_ui_interact(mob/user)
 	operator_skill = get_operator_skill(user, STAT_COG)
 	. = ..() // Actual work done by nanomodule's parent.
 

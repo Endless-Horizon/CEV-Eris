@@ -17,7 +17,7 @@
 	var/min_mat = 20
 	var/min_insight = 40
 
-/obj/machinery/autolathe/artist_bench/ui_data()
+/obj/machinery/autolathe/artist_bench/nano_ui_data()
 	var/list/data = list()
 
 	data["have_disk"] = have_disk
@@ -37,8 +37,8 @@
 	return data
 
 
-/obj/machinery/autolathe/artist_bench/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui, force_open = NANOUI_FOCUS)
-	var/list/data = ui_data(user, ui_key)
+/obj/machinery/autolathe/artist_bench/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui, force_open = NANOUI_FOCUS)
+	var/list/data = nano_ui_data(user, ui_key)
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)

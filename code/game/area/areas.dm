@@ -8,37 +8,64 @@
 
 // ===
 /area
+	name = "Space"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "unknown"
+	layer = AREA_LAYER
+	//Keeping this on the default plane, GAME_PLANE, will make area overlays fail to render on FLOOR_PLANE.
+	plane = BLACKNESS_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = INVISIBILITY_LIGHTING
+
 	var/global/global_uid = 0
 	var/uid
 	var/tmp/camera_id = 0 // For automatic c_tag setting
-	//Keeping this on the default plane, GAME_PLANE, will make area overlays fail to render on FLOOR_PLANE.
-	plane = BLACKNESS_PLANE
-	layer = AREA_LAYER
 	var/ship_area = FALSE
 
+/**
+ * Called when an area loads
+ *
+ *  Adds the item to the GLOB.areas_by_type list based on area type
+ */
 /area/New()
+	// This interacts with the map loader, so it needs to be set immediately
+	// rather than waiting for atoms to initialize.
 	icon_state = ""
-	layer = AREA_LAYER
 	uid = ++global_uid
 	all_areas += src
 	if (ship_area)
 		ship_areas[src] = TRUE //Adds ourselves to the list of all ship areas
 
-	if(!requires_power)
-		power_light = 0
-		power_equip = 0
-		power_environ = 0
-
 	sanity = new(src)
+	return ..()
 
-	..()
+/*
+ * Initalize this area
+ *
+ * intializes the dynamic area lighting and also registers the area with the z level via
+ * reg_in_areas_in_z
+ *
+ * returns INITIALIZE_HINT_LATELOAD
+ */
+/area/Initialize(mapload)
+	icon_state = ""
+	if(requires_power)
+		luminosity = 0
+	else
+		power_light = TRUE
+		power_equip = TRUE
+		power_environ = TRUE
 
-/area/Initialize()
 	. = ..()
-	if(!requires_power || !apc)
-		power_light = 0
-		power_equip = 0
-		power_environ = 0
+
+	blend_mode = BLEND_MULTIPLY // Putting this in the constructor so that it stops the icons being screwed up in the map editor.
+
+	return INITIALIZE_HINT_LATELOAD
+
+/**
+ * Sets machine power levels in the area
+ */
+/area/LateInitialize()
 	power_change()		// all machines set to current power level, also updates lighting icon
 
 
@@ -206,8 +233,7 @@
 	for(var/obj/machinery/M in src)	// for each machine in the area
 		M.power_change()			// reverify power status (to update icons etc.)
 	SEND_SIGNAL(src, COMSIG_AREA_APC_POWER_CHANGE)
-	if (fire || eject || party)
-		updateicon()
+	updateicon()
 
 /area/proc/usage(var/chan)
 	var/used = 0

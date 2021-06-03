@@ -146,7 +146,7 @@
 		cell = C
 		update_icon()
 
-/obj/item/weapon/gun/energy/ui_data(mob/user)
+/obj/item/weapon/gun/energy/nano_ui_data(mob/user)
 	var/list/data = ..()
 	data["charge_cost"] = charge_cost
 	var/obj/item/weapon/cell/C = get_cell()

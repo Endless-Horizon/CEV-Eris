@@ -8,11 +8,11 @@ var/global/floorIsLava = 0
 
 ////////////////////////////////
 /proc/message_admins(msg)
-	msg = "<span class=\"log_message\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
+	msg = "<span class=\"admin filter_adminlog\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
 		if(R_ADMIN & C.holder.rights)
-			to_chat(C, msg)
+			to_chat(C, msg, confidential = TRUE)
 
 /proc/msg_admin_attack(text) //Toggleable Attack Messages
 	log_attack(text)
@@ -21,7 +21,7 @@ var/global/floorIsLava = 0
 		if(R_ADMIN & C.holder.rights)
 			if(C.get_preference_value(/datum/client_preference/staff/show_attack_logs) == GLOB.PREF_SHOW)
 				var/msg = rendered
-				to_chat(C, msg)
+				to_chat(C, msg, confidential = TRUE)
 
 /**
  * Sends a message to the staff able to see admin tickets
@@ -51,10 +51,10 @@ var/global/floorIsLava = 0
 			if(important || (C.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping) == GLOB.PREF_HEAR))
 				sound_to(C, 'sound/effects/adminhelp.ogg')
 
-proc/admin_notice(message, rights)
-	for(var/mob/M in SSmobs.mob_list)
-		if(check_rights(rights, 0, M))
-			to_chat(M, message)
+/proc/admin_notice(message, rights)
+	for(var/mob/M in GLOB.mob_list)
+		if(check_rights(rights, FALSE, M))
+			to_chat(M, "<span class='notice'><b>Admin Notice:</b>\n \t [message]</span>")
 
 // Not happening.
 /datum/admins/SDQL_update(const/var_name, new_value)
@@ -91,7 +91,7 @@ proc/admin_notice(message, rights)
 
 ADMIN_VERB_ADD(/datum/admins/proc/show_player_panel, null, TRUE)
 //shows an interface for individual players, with various links (links require additional flags
-/datum/admins/proc/show_player_panel(mob/M in SSmobs.mob_list)
+/datum/admins/proc/show_player_panel(mob/M in GLOB.mob_living_list)
 	set category = null
 	set name = "Show Player Panel"
 	set desc = "Edit player (respawn, ban, heal, etc)"
@@ -925,7 +925,7 @@ ADMIN_VERB_ADD(/datum/admins/proc/spawn_atom, R_DEBUG, FALSE)
 	log_and_message_admins("spawned [chosen] at ([usr.x],[usr.y],[usr.z])")
 
 //interface which shows a mob's mind
-/datum/admins/proc/show_traitor_panel(var/mob/M in SSmobs.mob_list)
+/datum/admins/proc/show_traitor_panel(var/mob/M in GLOB.mob_living_list)
 	set category = "Admin"
 	set desc = "Edit mobs's memory and role"
 	set name = "Show Traitor Panel"
@@ -1004,7 +1004,7 @@ ADMIN_VERB_ADD(/datum/admins/proc/toggleguests, R_ADMIN, FALSE)
 
 /datum/admins/proc/output_ai_laws()
 	var/ai_number = 0
-	for(var/mob/living/silicon/S in SSmobs.mob_list)
+	for(var/mob/living/silicon/S in GLOB.mob_living_list)
 		ai_number++
 		if(isAI(S))
 			to_chat(usr, "<b>AI [key_name(S, usr)]'s laws:</b>")

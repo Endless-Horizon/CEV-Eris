@@ -1,4 +1,4 @@
-/client/proc/cmd_admin_drop_everything(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_drop_everything(mob/M as mob in GLOB.mob_list)
 	set category = null
 	set name = "Drop Everything"
 	if(!holder)
@@ -18,7 +18,7 @@
 
 ADMIN_VERB_ADD(/client/proc/cmd_admin_subtle_message, R_ADMIN, FALSE)
 //send an message to somebody as a 'voice in their head'
-/client/proc/cmd_admin_subtle_message(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_subtle_message(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Subtle Message"
 
@@ -85,7 +85,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_direct_narrate, R_ADMIN, FALSE)
 	message_admins("\blue \bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]<BR>", 1)
 
 
-/client/proc/cmd_admin_godmode(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_godmode(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Godmode"
 	if(!holder)
@@ -178,7 +178,7 @@ Ccomp's first proc.
 
 	var/list/mobs = list()
 	var/list/ghosts = list()
-	var/list/sortmob = sortNames(SSmobs.mob_list)                           // get the mob list.
+	var/list/sortmob = sortNames(GLOB.mob_list)                           // get the mob list.
 	var/any=0
 	for(var/mob/observer/ghost/M in sortmob)
 		mobs.Add(M)                                             //filter it where it's only ghosts
@@ -427,14 +427,14 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_add_freeform_ai_law, R_FUN, FALSE)
 	var/input = sanitize(input(usr, "Please enter anything you want the AI to do. Anything. Serious.", "What?", "") as text|null)
 	if(!input)
 		return
-	for(var/mob/living/silicon/ai/M in SSmobs.mob_list)
+	for(var/mob/living/silicon/ai/M in GLOB.mob_living_list)
 		if (M.stat == 2)
 			to_chat(usr, "Upload failed. No signal is being detected from the AI.")
 		else if (M.see_in_dark == 0)
 			to_chat(usr, "Upload failed. Only a faint signal is being detected from the AI, and it is not responding to our requests. It may be low on power.")
 		else
 			M.add_ion_law(input)
-			for(var/mob/living/silicon/ai/O in SSmobs.mob_list)
+			for(var/mob/living/silicon/ai/O in GLOB.mob_living_list)
 				to_chat(O, "\red " + input + "\red...LAWS UPDATED")
 				O.show_laws()
 
@@ -447,7 +447,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_add_freeform_ai_law, R_FUN, FALSE)
 
 
 ADMIN_VERB_ADD(/client/proc/cmd_admin_rejuvenate, R_ADMIN, FALSE)
-/client/proc/cmd_admin_rejuvenate(mob/living/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_rejuvenate(mob/living/M as mob in GLOB.mob_living_list)
 	set category = "Special Verbs"
 	set name = "Rejuvenate"
 	if(!holder)
@@ -458,7 +458,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_rejuvenate, R_ADMIN, FALSE)
 	if(!istype(M))
 		alert("Cannot revive a ghost")
 		return
-		
+
 	M.revive()
 
 	log_admin("[key_name(usr)] healed / revived [key_name(M)]")
@@ -571,7 +571,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_list_open_jobs, R_DEBUG, FALSE)
 	else
 		return
 
-/client/proc/cmd_admin_gib(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_gib(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Gib"
 
@@ -671,7 +671,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_gib_self, R_FUN, FALSE)
 
 ADMIN_VERB_ADD(/client/proc/cmd_admin_check_contents, R_ADMIN, FALSE)
 //displays the contents of an instance
-/client/proc/cmd_admin_check_contents(mob/living/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_check_contents(mob/living/M as mob in GLOB.mob_living_list)
 	set category = "Special Verbs"
 	set name = "Check Contents"
 
@@ -785,7 +785,7 @@ ADMIN_VERB_ADD(/client/proc/admin_cancel_shuttle, R_ADMIN, FALSE)
 	log_admin("[key_name(src)] has [evacuation_controller.deny ? "denied" : "allowed"] the shuttle to be called.")
 	message_admins("[key_name_admin(usr)] has [evacuation_controller.deny ? "denied" : "allowed"] the shuttle to be called.")
 
-/client/proc/cmd_admin_attack_log(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_attack_log(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Attack Log"
 

@@ -21,11 +21,11 @@ D [1]/  ||
 /datum/integrated_io
 	var/name = "input/output"
 	var/obj/item/integrated_circuit/holder = null
-	var/weakref/data = null // This is a weakref, to reduce typecasts.  Note that oftentimes numbers and text may also occupy this.
+	var/datum/weakref/data = null // This is a weakref, to reduce typecasts.  Note that oftentimes numbers and text may also occupy this.
 	var/list/linked = list()
 	var/io_type = DATA_CHANNEL
 
-/datum/integrated_io/New(var/newloc, var/name, var/data)
+/datum/integrated_io/New(newloc, name, data)
 	..()
 	src.name = name
 	src.data = data
@@ -43,10 +43,10 @@ D [1]/  ||
 	return holder.nano_host()
 
 
-/datum/integrated_io/proc/data_as_type(var/as_type)
+/datum/integrated_io/proc/data_as_type(as_type)
 	if(!isweakref(data))
 		return
-	var/weakref/w = data
+	var/datum/weakref/w = data
 	var/output = w.resolve()
 	return istype(output, as_type) ? output : null
 
@@ -56,7 +56,7 @@ D [1]/  ||
 	if(istext(data))
 		return "(\"[data]\")" // Wraps the 'string' in escaped quotes, so that people know it's a 'string'.
 	if(isweakref(data))
-		var/weakref/w = data
+		var/datum/weakref/w = data
 		var/atom/A = w.resolve()
 		//return A ? "([A.name] \[Ref\])" : "(null)" // For refs, we want just the name displayed.
 		return A ? "(\ref[A] \[Ref\])" : "(null)"

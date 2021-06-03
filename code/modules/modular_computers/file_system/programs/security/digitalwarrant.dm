@@ -19,7 +19,7 @@ LEGACY_RECORD_STRUCTURE(all_warrants, warrant)
 	name = "Warrant Assistant"
 	var/datum/computer_file/data/warrant/activewarrant
 
-/datum/nano_module/digitalwarrant/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/digitalwarrant/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	var/list/data = host.initial_data()
 
 	if(activewarrant)

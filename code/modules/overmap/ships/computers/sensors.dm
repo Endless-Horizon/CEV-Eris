@@ -19,12 +19,12 @@
 	. = ..()
 
 /obj/machinery/computer/sensors/proc/find_sensors()
-	for(var/obj/machinery/shipsensors/S in SSmachines.machinery)
+	for(var/obj/machinery/shipsensors/S in GLOB.machines)
 		if (S.z in GetConnectedZlevels(z))
 			sensors = S
 			break
 
-/obj/machinery/computer/sensors/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/computer/sensors/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(!linked)
 		return
 
@@ -76,7 +76,7 @@
 		user.set_machine(src)
 		if(linked)
 			user.reset_view(linked)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/computer/sensors/Topic(href, href_list, state)
 	if(..())

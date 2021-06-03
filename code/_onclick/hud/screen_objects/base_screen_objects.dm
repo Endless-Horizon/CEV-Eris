@@ -431,7 +431,7 @@
 	if(!ishuman(parentmob))
 		return FALSE
 	var/mob/living/carbon/human/H = parentmob
-	H.ui_interact(H)
+	H.nano_ui_interact(H)
 	return	TRUE
 
 //--------------------------------------------------sanity end---------------------------------------------------------

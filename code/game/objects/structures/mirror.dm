@@ -30,7 +30,7 @@
 			AC.name = "SalonPro Nano-Mirror&trade;"
 			AC.flags = appearance_changer_flags
 			ui_users[user] = AC
-		AC.ui_interact(user)
+		AC.nano_ui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
 	if(shattered)	return
@@ -96,7 +96,7 @@
 			AC.name = "SalonPro Nano-Mirror&trade;"
 			AC.flags = APPEARANCE_HAIR
 			ui_users[user] = AC
-		AC.ui_interact(user)
+		AC.nano_ui_interact(user)
 
 /obj/item/weapon/mirror/Destroy()
 	for(var/user in ui_users)

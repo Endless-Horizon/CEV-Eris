@@ -2,8 +2,12 @@
 	layer = TURF_LAYER
 	plane = GAME_PLANE
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
+
 	var/level = ABOVE_PLATING_LEVEL
+	///the lesser flag_1
 	var/flags = 0
+	///First atom flags var
+	var/flags_1 = NONE
 	var/list/fingerprints
 	var/list/fingerprintshidden
 	var/fingerprintslast
@@ -47,32 +51,76 @@
 /atom/proc/on_update_icon()
 	return
 
+/**
+ * Called when an atom is created in byond (built in engine proc)
+ *
+ * Not a lot happens here in SS13 code, as we offload most of the work to the
+ * [Intialization][/atom/proc/Initialize] proc, mostly we run the preloader
+ * if the preloader is being used and then call [InitAtom][/datum/controller/subsystem/atoms/proc/InitAtom] of which the ultimate
+ * result is that the Intialize proc is called.
+ *
+ * We also generate a tag here if the DF_USE_TAG flag is set on the atom
+ */
 /atom/New(loc, ...)
+	//atom creation method that preloads variables at creation
 	init_plane()
 	update_plane()
-	var/do_initialize = SSatoms.init_state
-	if(do_initialize > INITIALIZATION_INSSATOMS)
+	// if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+	// 	world.preloader_load(src)
+
+	if(datum_flags & DF_USE_TAG)
+		GenerateTag()
+
+	var/do_initialize = SSatoms.initialized
+	if(do_initialize != INITIALIZATION_INSSATOMS)
 		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
-		if(SSatoms.InitAtom(src, args))
+		if(SSatoms.InitAtom(src, FALSE, args))
 			//we were deleted
 			return
 
-	var/list/created = SSatoms.created_atoms
-	if(created)
-		created += src
 
-
-//Called after New if the map is being loaded. mapload = TRUE
-//Called from base of New if the map is not being loaded. mapload = FALSE
-//This base must be called or derivatives must set initialized to TRUE
-//must not sleep
-//Other parameters are passed from New (excluding loc), this does not happen if mapload is TRUE
-//Must return an Initialize hint. Defined in __DEFINES/subsystems.dm
-
+/**
+ * The primary method that objects are setup in SS13 with
+ *
+ * we don't use New as we have better control over when this is called and we can choose
+ * to delay calls or hook other logic in and so forth
+ *
+ * During roundstart map parsing, atoms are queued for intialization in the base atom/New(),
+ * After the map has loaded, then Initalize is called on all atoms one by one. NB: this
+ * is also true for loading map templates as well, so they don't Initalize until all objects
+ * in the map file are parsed and present in the world
+ *
+ * If you're creating an object at any point after SSInit has run then this proc will be
+ * immediately be called from New.
+ *
+ * mapload: This parameter is true if the atom being loaded is either being intialized during
+ * the Atom subsystem intialization, or if the atom is being loaded from the map template.
+ * If the item is being created at runtime any time after the Atom subsystem is intialized then
+ * it's false.
+ *
+ * You must always call the parent of this proc, otherwise failures will occur as the item
+ * will not be seen as initalized (this can lead to all sorts of strange behaviour, like
+ * the item being completely unclickable)
+ *
+ * You must not sleep in this proc, or any subprocs
+ *
+ * Any parameters from new are passed through (excluding loc), naturally if you're loading from a map
+ * there are no other arguments
+ *
+ * Must return an [initialization hint][INITIALIZE_HINT_NORMAL] or a runtime will occur.
+ *
+ * Note: the following functions don't call the base for optimization and must copypasta handling:
+ * * [/turf/proc/Initialize]
+ * * [/turf/open/space/proc/Initialize]
+ */
 /atom/proc/Initialize(mapload, ...)
-	if(initialized)
+	if(initialized || (flags_1 & INITIALIZED_1))
 		crash_with("Warning: [src]([type]) initialized multiple times!")
+	flags_1 |= INITIALIZED_1
 	initialized = TRUE
+
+	// if(loc)
+	// 	SEND_SIGNAL(loc, COMSIG_ATOM_CREATED, src) /// Sends a signal that the new atom `src`, has been created at `loc`
 
 	if(light_power && light_range)
 		update_light()
@@ -88,18 +136,53 @@
 		for(var/reagent in preloaded_reagents)
 			reagents.add_reagent(reagent, preloaded_reagents[reagent])
 
+	if(opacity && isturf(loc))
+		var/turf/T = loc
+		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
+
+	ComponentInitialize()
 
 	return INITIALIZE_HINT_NORMAL
 
-//called if Initialize returns INITIALIZE_HINT_LATELOAD
+/**
+ * Late Intialization, for code that should run after all atoms have run Intialization
+ *
+ * To have your LateIntialize proc be called, your atoms [Initalization][/atom/proc/Initialize]
+ *  proc must return the hint
+ * [INITIALIZE_HINT_LATELOAD] otherwise you will never be called.
+ *
+ * useful for doing things like finding other machines on GLOB.machines because you can guarantee
+ * that all atoms will actually exist in the "WORLD" at this time and that all their Intialization
+ * code has been run
+ */
 /atom/proc/LateInitialize()
+	set waitfor = FALSE
+
+/// Put your [AddComponent] calls here
+/atom/proc/ComponentInitialize()
 	return
 
+/**
+ * Top level of the destroy chain for most atoms
+ *
+ * Cleans up the following:
+ * * Removes alternate apperances from huds that see them
+ * * qdels the reagent holder from atoms if it exists
+ * * clears the orbiters list
+ * * clears overlays and priority overlays
+ * * clears the light object
+ */
 /atom/Destroy()
-	QDEL_NULL(reagents)
-	spawn()
-		update_openspace()
-	. = ..()
+	if(reagents)
+		QDEL_NULL(reagents)
+
+	// LAZYCLEARLIST(overlays)
+	// LAZYCLEARLIST(managed_overlays)
+
+	QDEL_NULL(light)
+	INVOKE_ASYNC(src, .proc/update_openspace)
+
+	return ..()
 
 /atom/proc/reveal_blood()
 	return
@@ -161,6 +244,10 @@
 /atom/proc/bullet_act(obj/item/projectile/P, def_zone)
 	P.on_hit(src, def_zone)
 	. = FALSE
+
+///Generate a tag for this atom
+/atom/proc/GenerateTag()
+	return
 
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))
@@ -635,18 +722,44 @@ its easier to just keep the beam vertical.
 		var/obj/O = o
 		O.show_message(message,2,deaf_message,1)
 
-/atom/Entered(var/atom/movable/AM, var/atom/old_loc, var/special_event)
+/**
+ * An atom has entered this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_ENTERED]
+ */
+/atom/Entered(atom/movable/AM, atom/oldLoc, special_event)
+	// SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, AM, oldLoc)
+	// SEND_SIGNAL(AM, COMSIG_ATOM_ENTERING, src, oldLoc)
 	if(loc)
 		for(var/i in AM.contents)
 			var/atom/movable/A = i
-			A.entered_with_container(old_loc)
+			A.entered_with_container(oldLoc)
 		if(MOVED_DROP == special_event)
 			AM.forceMove(loc, MOVED_DROP)
 			return CANCEL_MOVE_EVENT
 	return ..()
 
-/turf/Entered(var/atom/movable/AM, var/atom/old_loc, var/special_event)
-	return ..(AM, old_loc, 0)
+/**
+ * An atom is attempting to exit this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXIT]
+ */
+/atom/Exit(atom/movable/AM, atom/newLoc)
+	// Don't call `..()` here, otherwise `Uncross()` gets called.
+	// See the doc comment on `Uncross()` to learn why this is bad.
+
+	// if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, AM, newLoc) & COMPONENT_ATOM_BLOCK_EXIT)
+	// 	return FALSE
+
+	return TRUE
+
+/**
+ * An atom has exited this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXITED]
+ */
+/atom/Exited(atom/movable/AM, atom/newLoc)
+	// SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, newLoc)
 
 /atom/proc/get_footstep_sound()
 	return

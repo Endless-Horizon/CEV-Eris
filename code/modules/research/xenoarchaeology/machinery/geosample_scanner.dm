@@ -63,7 +63,7 @@
 	coolant_reagents_purity["adminordrazine"] = 2
 
 /obj/machinery/radiocarbon_spectrometer/attack_hand(var/mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/radiocarbon_spectrometer/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(scanning)
@@ -120,7 +120,7 @@
 	if(total_purity && fresh_coolant)
 		coolant_purity = total_purity / fresh_coolant
 
-/obj/machinery/radiocarbon_spectrometer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/radiocarbon_spectrometer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 
 	if(user.stat)
 		return

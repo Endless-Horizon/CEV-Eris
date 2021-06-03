@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY(rolesTips)
 GLOBAL_LIST_EMPTY(jobsTips)
 SUBSYSTEM_DEF(tips)
 	name = "Tips and Tricks"
-	priority = SS_PRIORITY_TIPS
+	priority = FIRE_PRIORITY_TIPS
 	wait = 60 MINUTES //Ticks once per 60 minute
 
 /client/verb/showRandomTip()
@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(tips)
 				to_chat(mob, SStips.formatTip(T, "Tip for your character: "))
 
 /datum/controller/subsystem/tips/fire()
-	for(var/mob/living/L in SSmobs.mob_list)
+	for(var/mob/living/L in GLOB.player_list)
 		if(L.client)
 			L.client.showSmartTip()
 

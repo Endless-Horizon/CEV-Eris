@@ -39,48 +39,77 @@
 			height = bounds[MAP_MAXY]
 	return bounds
 
-/datum/map_template/proc/initTemplateBounds(var/list/bounds)
-	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
-		return // let proper initialisation handle it later
+/datum/map_template/proc/initTemplateBounds(list/bounds)
+	if (!bounds) //something went wrong
+		stack_trace("[name] template failed to initialize correctly!")
+		return
 
-	var/machinery_was_awake = SSmachines.suspend() // Suspend machinery (if it was not already suspended)
-
-	var/list/atom/atoms = list()
-	var/list/area/areas = list()
-	var/list/obj/structure/cable/cables = list()
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
-	var/list/turf/turfs = block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
-	                   			locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
-	for(var/L in turfs)
-		var/turf/B = L
-		atoms += B
-		areas |= B.loc
-		for(var/A in B)
-			atoms += A
-			if(istype(A, /obj/structure/cable))
-				cables += A
-			else if(istype(A, /obj/machinery/atmospherics))
-				atmos_machines += A
-	atoms |= areas
+	var/list/obj/structure/cable/cables = list()
+	var/list/atom/movable/movables = list()
+	var/list/area/areas = list()
 
-	////admin_notice("<span class='danger'>Initializing newly created atom(s) in submap.</span>", R_DEBUG)
-	SSatoms.InitializeAtoms(atoms)
+	var/list/turfs = block(
+		locate(
+			bounds[MAP_MINX],
+			bounds[MAP_MINY],
+			bounds[MAP_MINZ]
+			),
+		locate(
+			bounds[MAP_MAXX],
+			bounds[MAP_MAXY],
+			bounds[MAP_MAXZ]
+			)
+		)
+	for(var/turf/current_turf as anything in turfs)
+		var/area/current_turfs_area = current_turf.loc
+		areas |= current_turfs_area
+		if(!SSatoms.initialized)
+			continue
 
-	//admin_notice("<span class='danger'>Initializing atmos pipenets and machinery in submap.</span>", R_DEBUG)
-	SSmachines.setup_atmos_machinery(atmos_machines)
+		for(var/movable_in_turf in current_turf)
+			movables += movable_in_turf
+			if(istype(movable_in_turf, /obj/structure/cable))
+				cables += movable_in_turf
+				continue
+			if(istype(movable_in_turf, /obj/machinery/atmospherics))
+				atmos_machines += movable_in_turf
 
-	//admin_notice("<span class='danger'>Rebuilding powernets due to submap creation.</span>", R_DEBUG)
+	// Not sure if there is some importance here to make sure the area is in z
+	// first or not.  Its defined In Initialize yet its run first in templates
+	// BEFORE so... hummm
+	// SSmapping.reg_in_areas_in_z(areas)
+	// SSnetworks.assign_areas_root_ids(areas, src)
+	if(!SSatoms.initialized)
+		return
+
+	SSatoms.InitializeAtoms(areas + turfs + movables, null)
+
+	// NOTE, now that Initialize and LateInitialize run correctly, do we really
+	// need these two below?
+	// SSmachines.setup_template_powernets(cables)
 	SSmachines.setup_powernets_for_cables(cables)
+	SSair.setup_template_machinery(atmos_machines)
+	// SSmachines.setup_atmos_machinery(atmos_machines)
 
-	// Ensure all machines in loaded areas get notified of power status
-	for(var/I in areas)
-		var/area/A = I
-		A.power_change()
 
-	if(machinery_was_awake)
-		SSmachines.wake() // Wake only if it was awake before we tried to suspended it.
+	//calculate all turfs inside the border
+	var/list/template_and_bordering_turfs = block(
+		locate(
+			max(bounds[MAP_MINX]-1, 1),
+			max(bounds[MAP_MINY]-1, 1),
+			bounds[MAP_MINZ]
+			),
+		locate(
+			min(bounds[MAP_MAXX]+1, world.maxx),
+			min(bounds[MAP_MAXY]+1, world.maxy),
+			bounds[MAP_MAXZ]
+			)
+		)
+	for(var/turf/affected_turf as anything in template_and_bordering_turfs)
+		// affected_turf.air_update_turf(TRUE, TRUE)
+		affected_turf.levelupdate()
 
-	//admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 
 /datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH)
 	var/x = 1

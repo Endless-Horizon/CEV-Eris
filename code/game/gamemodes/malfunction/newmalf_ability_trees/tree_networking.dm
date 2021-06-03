@@ -145,7 +145,7 @@
 			to_chat(user, "You already started the system override sequence.")
 		return
 	var/list/remaining_apcs = list()
-	for(var/obj/machinery/power/apc/A in SSmachines.machinery)
+	for(var/obj/machinery/power/apc/A in GLOB.machines)
 		if(isNotStationLevel(A.z))
 			continue
 		if(A.hacker == user || A.aidisabled) 	// This one is already hacked, or AI control is disabled on it.
@@ -191,7 +191,7 @@
 	to_chat(user, "## REACHABLE APC SYSTEMS OVERTAKEN. BYPASSING PRIMARY FIREWALL.")
 	sleep(300)
 	// Hack all APCs, including those built during hack sequence.
-	for(var/obj/machinery/power/apc/A in SSmachines.machinery)
+	for(var/obj/machinery/power/apc/A in GLOB.machines)
 		if((!A.hacker || A.hacker != src) && !A.aidisabled && isStationLevel(A.z))
 			A.ai_hack(src)
 

@@ -1,23 +1,46 @@
-PROCESSING_SUBSYSTEM_DEF(mobs)
+SUBSYSTEM_DEF(mobs)
 	name = "Mobs"
-	priority = SS_PRIORITY_MOB
-	flags = SS_KEEP_TIMING|SS_NO_INIT
-	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
+	priority = FIRE_PRIORITY_MOB
+	flags = SS_KEEP_TIMING | SS_NO_INIT
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 2 SECONDS
 
-	process_proc = /mob/proc/Life
+	var/list/currentrun = list()
 
-	var/list/mob_list
-	var/list/mob_living_by_zlevel[][]
+	var/static/list/clients_by_zlevel[][]
+	var/static/list/dead_players_by_zlevel[][] = list(list()) // Needs to support zlevel 1 here, MaxZChanged only happens when z2 is created and new_players can login before that.
 
-/datum/controller/subsystem/processing/mobs/PreInit()
-	mob_list = processing // Simply setups a more recognizable var name than "processing"
+/datum/controller/subsystem/mobs/stat_entry(msg)
+	msg = "P:[length(GLOB.mob_living_list)]"
+	return ..()
+
+/datum/controller/subsystem/mobs/PreInit()
 	MaxZChanged()
 
-/datum/controller/subsystem/processing/mobs/proc/MaxZChanged()
-	if(!islist(mob_living_by_zlevel))
-		mob_living_by_zlevel = new /list(world.maxz, 0)
+/datum/controller/subsystem/mobs/proc/MaxZChanged()
+	if (!islist(clients_by_zlevel))
+		clients_by_zlevel = new /list(world.maxz,0)
+		dead_players_by_zlevel = new /list(world.maxz,0)
+	while (clients_by_zlevel.len < world.maxz)
+		clients_by_zlevel.len++
+		clients_by_zlevel[clients_by_zlevel.len] = list()
+		dead_players_by_zlevel.len++
+		dead_players_by_zlevel[dead_players_by_zlevel.len] = list()
 
-	while(mob_living_by_zlevel.len < world.maxz)
-		mob_living_by_zlevel.len++
-		mob_living_by_zlevel[mob_living_by_zlevel.len] = list()
+/datum/controller/subsystem/mobs/fire(resumed = FALSE)
+	if (!resumed)
+		src.currentrun = GLOB.mob_living_list.Copy()
+
+	//cache for sanic speed (lists are references anyways)
+	var/list/currentrun = src.currentrun
+	var/times_fired = src.times_fired
+	var/delta_time = wait / (1 SECONDS) // TODO: Make this actually responsive to stuff like pausing and resuming
+	while(currentrun.len)
+		var/mob/living/L = currentrun[currentrun.len]
+		currentrun.len--
+		if(L)
+			L.Life(delta_time, times_fired)
+		else
+			GLOB.mob_living_list.Remove(L)
+		if (MC_TICK_CHECK)
+			return

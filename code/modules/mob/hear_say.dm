@@ -112,7 +112,7 @@
 			changed_voice = TRUE
 			var/mob/living/carbon/human/I
 
-			for(var/mob/living/carbon/human/M in SSmobs.mob_list)
+			for(var/mob/living/carbon/human/M in GLOB.mob_living_list)
 				if(M.real_name == speaker_name)
 					I = M
 					break

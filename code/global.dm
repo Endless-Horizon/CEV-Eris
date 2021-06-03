@@ -1,8 +1,3 @@
-//#define TESTING
-#if DM_VERSION < 506
-#warn This compiler is out of date. You may experience issues with projectile animations.
-#endif
-
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core
 var/global/datum/DB_search/db_search = new()
@@ -32,7 +27,6 @@ var/list/hit_appends = list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
 
 var/runtime_diary
 var/diary
-var/world_qdel_log
 var/href_logfile
 var/station_name        = "CEV Eris"
 var/station_short       = "Eris"

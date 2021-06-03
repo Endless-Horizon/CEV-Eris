@@ -215,7 +215,7 @@ SUBSYSTEM_DEF(job)
 
 	Debug("DO, Len: [unassigned.len]")
 	if(unassigned.len == 0)
-		return FALSE
+		return TRUE
 
 	//Shuffle players and jobs
 	unassigned = shuffle(unassigned)

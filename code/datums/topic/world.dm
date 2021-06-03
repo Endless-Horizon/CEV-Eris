@@ -133,8 +133,8 @@
 	keyword = "revision"
 
 /datum/world_topic/revision/Run(list/input)
-	if(revdata.revision)
-		return list(branch = revdata.branch, date = revdata.date, revision = revdata.revision)
+	if(GLOB.revdata.commit)
+		return list(branch = GLOB.revdata.originmastercommit, date = GLOB.revdata.date, revision = GLOB.revdata.commit)
 	else
 		return "unknown"
 
@@ -150,7 +150,7 @@
 
 	var/list/match = list()
 
-	for(var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in GLOB.player_list)
 		var/strings = list(M.name, M.ckey)
 		if(M.mind)
 			strings += M.mind.assigned_role

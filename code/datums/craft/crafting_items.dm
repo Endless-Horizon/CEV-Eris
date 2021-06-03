@@ -135,10 +135,10 @@
 		to_chat(user, SPAN_WARNING("[src] is not yet complete."))
 	else
 		view_only = round((total_items - 1) * (1 - user.stats.getMult(req_sat, STAT_LEVEL_GODLIKE))) + 1
-		ui_interact(user)
+		nano_ui_interact(user)
 		SSnano.update_uis(src)
 
-/obj/item/craft_frame/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui, force_open = NANOUI_FOCUS)
+/obj/item/craft_frame/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui, force_open = NANOUI_FOCUS)
 	var/list/data = list()
 
 	var/list/listed_products = list()

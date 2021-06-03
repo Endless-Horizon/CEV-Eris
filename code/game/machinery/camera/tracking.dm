@@ -103,7 +103,7 @@
 		return list()
 
 	var/datum/trackable/TB = new()
-	for(var/mob/living/M in SSmobs.mob_list)
+	for(var/mob/living/M in GLOB.mob_living_list)
 		if(M == usr)
 			continue
 		if(M.tracking_status() != TRACKING_POSSIBLE)

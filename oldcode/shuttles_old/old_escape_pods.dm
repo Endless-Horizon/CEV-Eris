@@ -37,7 +37,7 @@
 	name = "escape pod controller"
 	var/datum/shuttle/ferry/escape_pod/pod
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data = list(
@@ -84,7 +84,7 @@
 	docking_program = new/datum/computer/file/embedded_program/docking/simple/escape_pod(src)
 	program = docking_program
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	var/armed

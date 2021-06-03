@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(inactivity)
 	name = "Inactivity"
 	wait = 1 MINUTES
-	priority = SS_PRIORITY_INACTIVITY
+	priority = FIRE_PRIORITY_INACTIVITY
 	var/tmp/list/client_list
 	var/number_kicked = 0
 

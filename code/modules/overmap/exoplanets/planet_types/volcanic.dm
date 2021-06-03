@@ -118,18 +118,18 @@
 	/*if (istype(L) && L.can_overcome_gravity())
 		return*/
 	//if(AM.is_burnable())
-	LAZYADD(victims, weakref(AM))
+	LAZYADD(victims, WEAKREF(AM))
 	START_PROCESSING(SSobj, src)
 
 /turf/simulated/floor/exoplanet/lava/Exited(atom/movable/AM)
 	. = ..()
-	LAZYREMOVE(victims, weakref(AM))
+	LAZYREMOVE(victims, WEAKREF(AM))
 
 /turf/simulated/floor/exoplanet/lava/Process()
 	if(locate(/obj/structure/catwalk/) in src)
 		victims = null
 		return PROCESS_KILL
-	for(var/weakref/W in victims)
+	for(var/datum/weakref/W in victims)
 		var/atom/movable/AM = W.resolve()
 		if (AM == null || get_turf(AM) != src || !(isliving(AM) || isobj(AM)) || istype(AM,/obj/effect/effect/light)) //|| AM.is_burnable() == FALSE
 			victims -= W

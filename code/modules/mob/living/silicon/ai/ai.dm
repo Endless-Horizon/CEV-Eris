@@ -135,7 +135,7 @@ var/list/ai_verbs_default = list(
 	var/pickedName = null
 	while(!pickedName)
 		pickedName = pick(GLOB.ai_names)
-		for (var/mob/living/silicon/ai/A in SSmobs.mob_list)
+		for (var/mob/living/silicon/ai/A in GLOB.mob_living_list)
 			if (A.real_name == pickedName && possibleNames.len > 1) //fixing the theoretically possible infinite loop
 				possibleNames -= pickedName
 				pickedName = null
@@ -422,7 +422,7 @@ var/list/ai_verbs_default = list(
 			else
 				to_chat(src, SPAN_NOTICE("Unable to locate the holopad."))
 	if (href_list["track"])
-		var/mob/target = locate(href_list["track"]) in SSmobs.mob_list
+		var/mob/target = locate(href_list["track"]) in GLOB.mob_living_list
 		if(target && (!ishuman(target) || target.real_name == target.get_face_name()))
 			ai_actual_track(target)
 		else

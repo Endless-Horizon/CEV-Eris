@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(event)
 	name = "Event Manager"
 	wait = 2 SECONDS
-	priority = SS_PRIORITY_EVENT
+	priority = FIRE_PRIORITY_EVENT
 
 	var/tmp/list/processing_events = list()
 	var/tmp/pos = EVENT_LEVEL_MUNDANE

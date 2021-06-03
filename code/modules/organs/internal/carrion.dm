@@ -97,7 +97,7 @@
 
 		owner.put_in_active_hand(spider)
 
-/obj/item/organ/internal/carrion/core/ui_interact(mob/user, ui_key, datum/nanoui/ui, force_open, datum/nanoui/master_ui, datum/topic_state/state)
+/obj/item/organ/internal/carrion/core/nano_ui_interact(mob/user, ui_key, datum/nanoui/ui, force_open, datum/nanoui/master_ui, datum/topic_state/state)
 	var/list/data = list()
 
 	var/list/spiders_in_list = list()
@@ -127,7 +127,7 @@
 		var/obj/item/weapon/implant/carrion_spider/activated_spider = locate(href_list["activate_spider"]) in active_spiders
 		if(activated_spider)
 			activated_spider.activate()
-	
+
 	if(href_list["pop_out_spider"])
 		var/obj/item/weapon/implant/carrion_spider/activated_spider = locate(href_list["pop_out_spider"]) in active_spiders
 		if(activated_spider)
@@ -163,7 +163,7 @@
 	set category = "Carrion"
 	set name = "Open spider menu"
 
-	ui_interact(owner)
+	nano_ui_interact(owner)
 
 /obj/item/organ/internal/carrion/core/removed(mob/living/user)
 	if(!associated_spider && owner)
@@ -299,7 +299,7 @@
 				visible_message(SPAN_DANGER("\The [owner] tears off \the [H]'s \the [E]!"))
 				return
 		else
-			to_chat(owner, SPAN_WARNING("You can only tear limbs off of humanoids!"))	
+			to_chat(owner, SPAN_WARNING("You can only tear limbs off of humanoids!"))
 			return
 
 	if(istype(food, /obj/item/organ) || istype(food, /obj/item/weapon/reagent_containers/food/snacks/meat))

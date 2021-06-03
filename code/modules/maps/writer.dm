@@ -72,7 +72,7 @@ dmm_suite{
 			dmm_text += {""[keys[key_pos]]" = ([templates[key_pos]])\n"}
 			}
 		var/z_level = 0
-		for(var/z_pos=1;TRUE;z_pos=findtext(template_buffer,".",z_pos)+1){
+		for(var/z_pos=1; TRUE; z_pos = findtext(template_buffer,".",z_pos) + 1){
 			if(z_pos>=length(template_buffer)){break}
 			if(z_level){dmm_text+={"\n"}}
 			dmm_text += {"\n(1,1,[++z_level]) = {"\n"}

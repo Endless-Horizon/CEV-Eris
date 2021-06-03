@@ -363,7 +363,7 @@ var/list/mob_hat_cache = list()
 
 /proc/too_many_active_drones()
 	var/drones = 0
-	for(var/mob/living/silicon/robot/drone/D in SSmobs.mob_list)
+	for(var/mob/living/silicon/robot/drone/D in GLOB.mob_living_list)
 		if(D.key && D.client)
 			drones++
 	return drones >= config.max_maint_drones

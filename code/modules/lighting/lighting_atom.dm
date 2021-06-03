@@ -11,13 +11,24 @@
 // The proc you should always use to set the light of this atom.
 // Nonesensical value for l_color default, so we can detect if it gets set to null.
 #define NONSENSICAL_VALUE -99999
-/atom/proc/set_light(l_range, l_power, l_color=NONSENSICAL_VALUE)
+/atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, l_on)
 	if(l_range > 0 && l_range < MINIMUM_USEFUL_LIGHT_RANGE)
 		l_range = MINIMUM_USEFUL_LIGHT_RANGE	//Brings the range up to 1.4, which is just barely brighter than the soft lighting that surrounds players.
 
-	if(l_range != null) light_range = l_range
-	if(l_power != null) light_power = l_power
-	if(l_color != NONSENSICAL_VALUE) light_color = l_color
+	// if(SEND_SIGNAL(src, COMSIG_ATOM_SET_LIGHT, l_range, l_power, l_color, l_on) & COMPONENT_BLOCK_LIGHT_UPDATE)
+	// 	return
+
+	if(!isnull(l_power))
+		// set_light_power(l_power)
+		light_power = l_power
+
+	if(!isnull(l_range))
+		// set_light_range(l_range)
+		light_range = l_range
+
+	if(l_color != NONSENSICAL_VALUE)
+		// set_light_color(l_color)
+		light_color = l_color
 
 	update_light()
 
@@ -31,11 +42,9 @@
 		return
 
 	if(!light_power || !light_range) // We won't emit light anyways, destroy the light source.
-		if(light)
-			light.destroy()
-			light = null
+		QDEL_NULL(light)
 	else
-		if(!istype(loc, /atom/movable)) // We choose what atom should be the top atom of the light here.
+		if (!ismovable(loc)) // We choose what atom should be the top atom of the light here.
 			. = src
 		else
 			. = loc
@@ -45,55 +54,25 @@
 		else
 			light = new/datum/light_source(src, .)
 
-// Incase any lighting vars are on in the typepath we turn the light on in New().
-/atom/New()
-	. = ..()
-	if(light_power && light_range)
-		update_light()
-
-	if(opacity && isturf(loc))
-		var/turf/T = loc
-		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
-
-// Destroy our light source so we GC correctly.
-/atom/Destroy()
-	if(light)
-		light.destroy()
-		light = null
-	return ..()
-
-/atom/movable/New()
-	. = ..()
-
-	if(opacity && isturf(loc))
-		var/turf/T = loc
-		T.reconsider_lights()
-
-	if(istype(loc, /turf/simulated/open))
-		var/turf/simulated/open/open = loc
-		if(open.isOpen())
-			open.fallThrough(src)
-
-// If we have opacity, make sure to tell (potentially) affected light sources.
-/atom/movable/Destroy()
-	var/turf/T = loc
-	if(opacity && istype(T))
-		set_opacity(FALSE)
-	return ..()
-
-// Should always be used to change the opacity of an atom.
-// It notifies (potentially) affected light sources so they can update (if needed).
+/**
+ * Updates the atom's opacity value.
+ *
+ * This exists to act as a hook for associated behavior.
+ * It notifies (potentially) affected light sources so they can update (if needed).
+ */
 /atom/movable/set_opacity(new_opacity)
-	. = ..()
-	if (!.)
+	..() // we dont really give a fuck about the old comsig
+	if (new_opacity == opacity)
 		return
-
+	// SEND_SIGNAL(src, COMSIG_ATOM_SET_OPACITY, new_opacity)
+	. = opacity
 	opacity = new_opacity
+
 	var/turf/T = loc
 	if (!isturf(T))
 		return
 
-	if (new_opacity == TRUE)
+	if (new_opacity == 1)
 		T.has_opaque_atom = TRUE
 		T.reconsider_lights()
 	else

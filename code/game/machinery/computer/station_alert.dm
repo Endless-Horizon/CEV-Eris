@@ -45,11 +45,11 @@
 /obj/machinery/computer/station_alert/attack_hand(mob/user)
 	if(..())
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/station_alert/ui_interact(mob/user)
+/obj/machinery/computer/station_alert/nano_ui_interact(mob/user)
 	if(alarm_monitor)
-		alarm_monitor.ui_interact(user)
+		alarm_monitor.nano_ui_interact(user)
 
 /obj/machinery/computer/station_alert/nano_container()
 	return alarm_monitor

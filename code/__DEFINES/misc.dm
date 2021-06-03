@@ -1,7 +1,4 @@
 #define DEBUG
-// Turf-only flags.
-#define NOJAUNT 1 // This is used in literally one place, turf.dm, to block ethereal jaunt.
-#define TURF_FLAG_NORUINS 2
 
 #define TRANSITIONEDGE 7 // Distance from edge to move to another z-level.
 #define RUIN_MAP_EDGE_PAD 15
@@ -337,3 +334,16 @@
 
 //Sounds list
 #define WALLHIT_SOUNDS list('sound/effects/wallhit.ogg', 'sound/effects/wallhit2.ogg', 'sound/effects/wallhit3.ogg')
+
+
+//Force the log directory to be something specific in the data/logs folder
+#define OVERRIDE_LOG_DIRECTORY_PARAMETER "log-directory"
+//Prevent the master controller from starting automatically
+#define NO_INIT_PARAMETER "no-init"
+//Force the config directory to be something other than "config"
+#define OVERRIDE_CONFIG_DIRECTORY_PARAMETER "config-directory"
+
+//Dummy mob reserve slots
+#define DUMMY_HUMAN_SLOT_PREFERENCES "dummy_preference_preview"
+#define DUMMY_HUMAN_SLOT_ADMIN "admintools"
+#define DUMMY_HUMAN_SLOT_MANIFEST "dummy_manifest_generation"

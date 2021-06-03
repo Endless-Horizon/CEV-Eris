@@ -193,7 +193,7 @@
 /datum/nano_module/program/computer_chatclient
 	name = "NTNet Relay Chat Client"
 
-/datum/nano_module/program/computer_chatclient/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/program/computer_chatclient/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS, var/datum/topic_state/state = GLOB.default_state)
 	if(!ntnet_global || !ntnet_global.chat_channels)
 		return
 

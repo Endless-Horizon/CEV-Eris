@@ -175,16 +175,16 @@
 
 /obj/machinery/multistructure/biogenerator_part/console/attack_hand(mob/user as mob)
 	if(MS)
-		return ui_interact(user)
+		return nano_ui_interact(user)
 
 //UI
 
-/obj/machinery/multistructure/biogenerator_part/console/ui_data()
+/obj/machinery/multistructure/biogenerator_part/console/nano_ui_data()
 	return metrics
 
 
-/obj/machinery/multistructure/biogenerator_part/console/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
-	var/list/data = ui_data()
+/obj/machinery/multistructure/biogenerator_part/console/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
+	var/list/data = nano_ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -264,7 +264,7 @@
 								P.enable()
 							tank.pixel_x = 8
 							playsound(src, 'sound/machines/airlock_ext_close.ogg', 60, 1)
-							to_chat(user, SPAN_NOTICE("You attached [tank] to [src]."))	
+							to_chat(user, SPAN_NOTICE("You attached [tank] to [src]."))
 				if(!set_canister)
 					to_chat(user, SPAN_WARNING("Ugh. You done something wrong!"))
 					tank = null

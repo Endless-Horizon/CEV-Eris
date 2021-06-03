@@ -144,7 +144,7 @@
 	for(var/reagent in required_reagents)
 		. += reagent
 
-/datum/chemical_reaction/proc/process(datum/reagents/holder)
+/datum/chemical_reaction/process(dt, datum/reagents/holder)
 	//determine how far the reaction can proceed
 	var/list/reaction_limits = list()
 	for(var/reactant in required_reagents)
@@ -209,7 +209,7 @@
 	return null
 
 // UI data used by chemical catalog
-/datum/chemical_reaction/ui_data()
+/datum/chemical_reaction/nano_ui_data()
 	var/list/dat = list()
 	if(required_reagents)
 		dat["reagents"] = list()
@@ -949,7 +949,7 @@
 /datum/chemical_reaction/slime
 	var/required = null
 
-/datum/chemical_reaction/slime/ui_data()
+/datum/chemical_reaction/slime/nano_ui_data()
 	var/list/dat = ..()
 	dat["required_object"] = required
 	return dat

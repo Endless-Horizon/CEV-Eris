@@ -19,7 +19,7 @@
 	name = "Bounty board"
 	var/datum/computer_file/report/bounty_entry/selectedEntry
 
-/datum/nano_module/bounty_board/ui_data(mob/user)
+/datum/nano_module/bounty_board/nano_ui_data(mob/user)
 	var/list/data = host.initial_data()
 	var/list/user_access = get_record_access(user)
 	if(selectedEntry)
@@ -52,8 +52,8 @@
 	data["claimed_bounties"] = claimed_bounties
 	return data
 
-/datum/nano_module/bounty_board/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
-	var/list/data = ui_data(user)
+/datum/nano_module/bounty_board/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
+	var/list/data = nano_ui_data(user)
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

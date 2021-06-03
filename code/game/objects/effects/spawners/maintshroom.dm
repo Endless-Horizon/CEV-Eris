@@ -19,11 +19,16 @@
 	new /obj/effect/plant(get_turf(src), new /datum/seed/mushroom/maintshroom)
 	find_or_create_burrow(get_turf(src))
 
+
 /obj/effect/spawner/maintshroom/Initialize()
-	.=..()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/spawner/maintshroom/LateInitialize() // have to LI due to race condition
+	. = ..()
 	if (instant)
 		spawn_shroom()
-		return INITIALIZE_HINT_QDEL
+	qdel(src)
 
 //New maintshroom spawner
 //Delay on spawning. The object may wait up to 2 hours before spawning the shrooms
@@ -32,8 +37,7 @@
 	var/delaymax = 3 HOURS
 	instant = FALSE
 
-/obj/effect/spawner/maintshroom/delayed/Initialize()
-	.=..()
+/obj/effect/spawner/maintshroom/delayed/LateInitialize()
 	//We spawn a burrow immediately, but the plants come later
 	find_or_create_burrow(get_turf(src))
 
@@ -42,7 +46,7 @@
 
 	addtimer(CALLBACK(src, .proc/spawn_shroom), delay)
 	alpha = 0 //Make it invisible
-
+	. = ..()
 
 /obj/effect/spawner/maintshroom/delayed/spawn_shroom()
 	//If all the burrows in the area were destroyed before we spawned, then our spawning is cancelled

@@ -1,4 +1,4 @@
-#if DM_VERSION > 513
+#if DM_VERSION > 514
 #warn Remie said that lummox was adding a way to get a lists
 #warn contents via list.values, if that is true remove this
 #warn otherwise, update the version and bug lummox

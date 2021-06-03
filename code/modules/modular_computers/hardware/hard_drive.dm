@@ -249,7 +249,7 @@
 
 
 // Disk UI data, used by file browser UI
-/obj/item/weapon/computer_hardware/hard_drive/ui_data()
+/obj/item/weapon/computer_hardware/hard_drive/nano_ui_data()
 	var/list/data = list(
 		"read_only" = read_only,
 		"disk_name" = get_disk_name(),

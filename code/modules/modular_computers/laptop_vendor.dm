@@ -233,9 +233,9 @@
 	return FALSE
 
 /obj/machinery/lapvend/attack_hand(var/mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/lapvend/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/lapvend/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(stat & (BROKEN | NOPOWER | MAINT))
 		if(ui)
 			ui.close()

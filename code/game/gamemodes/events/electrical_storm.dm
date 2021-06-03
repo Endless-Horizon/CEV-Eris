@@ -37,7 +37,7 @@
 		var/list/apcs = list()
 		var/list/epicentreList = list()
 
-		for(var/obj/machinery/power/apc/apc in SSmachines.machinery)
+		for(var/obj/machinery/power/apc/apc in GLOB.machines)
 			if(is_valid_apc(apc))
 				// Greatly reduce the chance for APCs in maintenance areas to be selected
 				var/area/A = get_area(apc)
@@ -62,7 +62,7 @@
 					apc.overload_lighting()
 
 	else
-		for(var/obj/machinery/power/apc/apc in SSmachines.machinery)
+		for(var/obj/machinery/power/apc/apc in GLOB.machines)
 			apc.overload_lighting()
 
 	return

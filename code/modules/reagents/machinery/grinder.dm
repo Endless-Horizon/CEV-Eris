@@ -27,7 +27,7 @@
 		return
 	//Useability tweak for borgs
 	if (istype(I,/obj/item/weapon/gripper))
-		ui_interact(user)
+		nano_ui_interact(user)
 		return
 	return insert(I, user)
 
@@ -85,16 +85,16 @@
 		return
 
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/reagentgrinder/on_deconstruction()
 	eject()
 
-/obj/machinery/reagentgrinder/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+/obj/machinery/reagentgrinder/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	if(!nano_template)
 		return
 
-	var/list/data = ui_data()
+	var/list/data = nano_ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -102,7 +102,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/reagentgrinder/ui_data()
+/obj/machinery/reagentgrinder/nano_ui_data()
 	var/list/data = list()
 
 	data["contents"] = list()
@@ -195,12 +195,12 @@
 
 	return ..()
 
-/obj/machinery/reagentgrinder/portable/ui_data()
+/obj/machinery/reagentgrinder/portable/nano_ui_data()
 	var/list/data = ..()
 	data["on"] = inuse
 
 	if(beaker)
-		data["beaker"] = beaker.reagents.ui_data()
+		data["beaker"] = beaker.reagents.nano_ui_data()
 	return data
 
 /obj/machinery/reagentgrinder/portable/Topic(href, href_list)
@@ -292,10 +292,10 @@
 	if(panel_open)
 		add_overlays(image(icon, "[icon_state]_p"))
 
-/obj/machinery/reagentgrinder/industrial/ui_data()
+/obj/machinery/reagentgrinder/industrial/nano_ui_data()
 	var/list/data = ..()
 
-	data["reagents"] = reagents.ui_data()
+	data["reagents"] = reagents.nano_ui_data()
 	return data
 
 /obj/machinery/reagentgrinder/industrial/Topic(href, href_list)

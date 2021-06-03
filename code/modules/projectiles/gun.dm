@@ -688,7 +688,7 @@
 
 	toggle_carry_state(usr)
 
-/obj/item/weapon/gun/ui_data(mob/user)
+/obj/item/weapon/gun/nano_ui_data(mob/user)
 	var/list/data = list()
 	data["damage_multiplier"] = damage_multiplier
 	data["pierce_multiplier"] = pierce_multiplier
@@ -705,7 +705,7 @@
 	data["recoil_buildup"] = recoil_buildup
 	data["recoil_buildup_max"] = initial(recoil_buildup)*10
 
-	data += ui_data_projectile(get_dud_projectile())
+	data += nano_ui_data_projectile(get_dud_projectile())
 
 	if(firemodes.len)
 		var/list/firemodes_info = list()
@@ -723,7 +723,7 @@
 				)
 			if(F.settings["projectile_type"])
 				var/proj_path = F.settings["projectile_type"]
-				var/list/proj_data = ui_data_projectile(new proj_path)
+				var/list/proj_data = nano_ui_data_projectile(new proj_path)
 				firemode_info += proj_data
 			firemodes_info += list(firemode_info)
 		data["firemode_info"] = firemodes_info
@@ -731,7 +731,7 @@
 	if(item_upgrades.len)
 		data["attachments"] = list()
 		for(var/atom/A in item_upgrades)
-			data["attachments"] += list(list("name" = A.name, "icon" = getAtomCacheFilename(A)))
+			data["attachments"] += list(list("name" = A.name, "icon" = icon2html(A, user, sourceonly = TRUE)))
 
 	return data
 
@@ -748,7 +748,7 @@
 /obj/item/weapon/gun/proc/get_dud_projectile()
 	return null
 
-/obj/item/weapon/gun/proc/ui_data_projectile(var/obj/item/projectile/P)
+/obj/item/weapon/gun/proc/nano_ui_data_projectile(var/obj/item/projectile/P)
 	if(!P)
 		return list()
 	var/list/data = list()

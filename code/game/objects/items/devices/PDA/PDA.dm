@@ -319,7 +319,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	return ..()
 
 
-/obj/item/device/pda/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/device/pda/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	ui_tick++
 	var/datum/nanoui/old_ui = SSnano.get_open_ui(user, src, "main")
 	var/auto_update = 1
@@ -488,7 +488,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				for(var/datum/feed_message/FM in FC.messages)
 					++index
 					if(FM.img)
-						send_asset(usr.client, "newscaster_photo_[sanitize(FC.channel_name)]_[index].png")
+						usr << browse_rsc(FM.img, "tmp_photo_[sanitize(FC.channel_name)]_[index].png")
 					// News stories are HTML-stripped but require newline replacement to be properly displayed in NanoUI
 					var/body = replacetext(FM.body, "\n", "<br>")
 					messages[++messages.len] = list("author" = FM.author, "body" = body, "message_type" = FM.message_type, "time_stamp" = FM.time_stamp, "has_image" = (FM.img != null), "caption" = FM.caption, "index" = index)
@@ -522,7 +522,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	if(active_uplink_check(user))
 		return
 
-	ui_interact(user) //NanoUI requires this proc
+	nano_ui_interact(user) //NanoUI requires this proc
 	return
 
 /obj/item/device/pda/Topic(href, href_list)

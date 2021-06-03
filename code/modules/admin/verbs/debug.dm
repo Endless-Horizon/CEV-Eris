@@ -50,7 +50,7 @@ ADMIN_VERB_ADD(/client/proc/Debug2, R_DEBUG, FALSE)
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_animalize(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
 
@@ -73,7 +73,7 @@ ADMIN_VERB_ADD(/client/proc/Debug2, R_DEBUG, FALSE)
 	set desc = "Specify a location to spawn a pAI device, then specify a key to play that pAI"
 
 	var/list/available = list()
-	for(var/mob/C in SSmobs.mob_list)
+	for(var/mob/C in GLOB.mob_list)
 		if(C.key)
 			available.Add(C)
 	var/mob/choice = input("Choose a player to play the pAI", "Spawn pAI") in available
@@ -109,7 +109,7 @@ ADMIN_VERB_ADD(/client/proc/Debug2, R_DEBUG, FALSE)
 		alert("Invalid mob")
 
 /*
-/client/proc/cmd_admin_monkeyize(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_admin_monkeyize(var/mob/M in GLOB.mob_living_list)
 	set category = "Fun"
 	set name = "Make Monkey"
 
@@ -124,7 +124,7 @@ ADMIN_VERB_ADD(/client/proc/Debug2, R_DEBUG, FALSE)
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_changelinginize(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_admin_changelinginize(var/mob/M in GLOB.mob_living_list)
 	set category = "Fun"
 	set name = "Make Changeling"
 
@@ -142,7 +142,7 @@ ADMIN_VERB_ADD(/client/proc/Debug2, R_DEBUG, FALSE)
 		alert("Invalid mob")
 */
 /*
-/client/proc/cmd_admin_abominize(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_admin_abominize(var/mob/M in GLOB.mob_living_list)
 	set category = null
 	set name = "Make Abomination"
 
@@ -159,7 +159,7 @@ ADMIN_VERB_ADD(/client/proc/Debug2, R_DEBUG, FALSE)
 
 */
 /*
-/client/proc/make_cultist(var/mob/M in SSmobs.mob_list) // -- TLE, modified by Urist
+/client/proc/make_cultist(var/mob/M in GLOB.mob_living_list) // -- TLE, modified by Urist
 	set category = "Fun"
 	set name = "Make Cultist"
 	set desc = "Makes target a cultist"
@@ -254,7 +254,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_debug_make_powernets, R_DEBUG, FALSE)
 	log_admin("[key_name(src)] has remade the powernet. makepowernets() called.")
 	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Grant Full Access"
 
@@ -279,7 +279,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_debug_make_powernets, R_DEBUG, FALSE)
 	log_admin("[key_name(src)] has granted [M.key] full access.")
 	message_admins("\blue [key_name_admin(usr)] has granted [M.key] full access.", 1)
 
-/client/proc/cmd_assume_direct_control(var/mob/M in SSmobs.mob_list)
+/client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Assume direct control"
 	set desc = "Direct intervention"
@@ -398,7 +398,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_dress, R_FUN, FALSE)
 	set category = "Fun"
 	set name = "Select equipment"
 
-	var/mob/living/carbon/human/M = input("Select mob.", "Select equipment.") as null|anything in GLOB.human_mob_list
+	var/mob/living/carbon/human/M = input("Select mob.", "Select equipment.") as null|anything in GLOB.human_mob_list // CURRENTLY HUMAN, but this should be mob_list in the future!!!
 	if(!M) return
 
 	var/list/dresspacks = outfits()
@@ -471,7 +471,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_debug_mob_lists, R_DEBUG, FALSE)
 		if("Admins")
 			to_chat(usr, jointext(admins,","))
 		if("Mobs")
-			to_chat(usr, jointext(SSmobs.mob_list,","))
+			to_chat(usr, jointext(GLOB.mob_list,","))
 		if("Living Mobs")
 			to_chat(usr, jointext(GLOB.living_mob_list,","))
 		if("Dead Mobs")
@@ -496,8 +496,12 @@ ADMIN_VERB_ADD(/client/proc/view_runtimes, R_DEBUG, FALSE)
 /client/proc/view_runtimes()
 	set category = "Debug"
 	set name = "View Runtimes"
-	set desc = "Open the Runtime Viewer"
-	error_cache.showTo(usr)
+	set desc = "Open the runtime Viewer"
+
+	if(!holder)
+		return
+
+	GLOB.error_cache.show_to(src)
 
 
 ADMIN_VERB_ADD(/client/proc/spawn_disciple, R_DEBUG, FALSE)

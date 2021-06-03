@@ -10,7 +10,7 @@
 	src.player = player
 
 
-/datum/nano_module/echo_editor/ui_interact(mob/user, ui_key = "echo_editor", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/datum/nano_module/echo_editor/nano_ui_interact(mob/user, ui_key = "echo_editor", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/list/list/data = list()
 	data["echo_params"] = list()
 	for (var/i=1 to 18)

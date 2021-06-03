@@ -157,7 +157,7 @@
 				addiction_list[A] = -15 // you're satisfied for a good while.
 
 
-/datum/metabolism_effects/proc/process()
+/datum/metabolism_effects/process()
 	process_withdrawals()
 	handle_nsa()
 

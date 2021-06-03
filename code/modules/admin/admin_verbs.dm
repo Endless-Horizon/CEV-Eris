@@ -27,6 +27,7 @@ var/list/admin_verbs = list("default" = list(), "hideable" = list())
 		for(var/text_right in admin_verbs)
 			if(text2num(text_right) & holder.rights)
 				verbs += admin_verbs[text_right]
+		control_freak = CONTROL_FREAK_SKIN | CONTROL_FREAK_MACROS
 
 		if(check_rights(config.profiler_permission))
 			control_freak = 0 // enable profiler
@@ -269,7 +270,7 @@ ADMIN_VERB_ADD(/client/proc/drop_bomb, R_FUN, FALSE)
 	message_admins("\blue [ckey] creating an admin explosion at [epicenter.loc].")
 
 
-/client/proc/give_disease2(mob/T as mob in SSmobs.mob_list) // -- Giacom
+/client/proc/give_disease2(mob/T as mob in GLOB.mob_living_list) // -- Giacom
 	set category = "Fun"
 	set name = "Give Disease"
 	set desc = "Gives a Disease to a mob."
@@ -444,7 +445,7 @@ ADMIN_VERB_ADD(/client/proc/manage_silicon_laws, R_ADMIN, TRUE)
 	if(!S) return
 
 	var/datum/nano_module/law_manager/L = new(S)
-	L.ui_interact(usr, state = GLOB.admin_state)
+	L.nano_ui_interact(usr, state = GLOB.admin_state)
 	log_and_message_admins("has opened [S]'s law manager.")
 
 
@@ -544,24 +545,30 @@ ADMIN_VERB_ADD(/client/proc/toggledrones, R_ADMIN, FALSE)
 		if(config.allow_drone_spawn)
 			config.allow_drone_spawn = 0
 			to_chat(src, "<b>Disallowed maint drones.</b>")
-			message_admins("Admin [key_name_admin(usr)] has disabled maint drones.", 1)
+			message_admins("<span class='adminnotice'>Admin [key_name_admin(usr)] has disabled maint drones.</span>", 1)
 		else
 			config.allow_drone_spawn = 1
 			to_chat(src, "<b>Enabled maint drones.</b>")
-			message_admins("Admin [key_name_admin(usr)] has enabled maint drones.", 1)
+			message_admins("<span class='adminnotice'>Admin [key_name_admin(usr)] has enabled maint drones.</span>", 1)
 
 
 ADMIN_VERB_ADD(/client/proc/man_up, R_ADMIN, FALSE)
-/client/proc/man_up(mob/T as mob in SSmobs.mob_list)
+/client/proc/man_up(mob/M as mob in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Man Up"
 	set desc = "Tells mob to man up and deal with it."
 
-	to_chat(T, SPAN_NOTICE("<b><font size=3>Man up and deal with it.</font></b>"))
-	to_chat(T, SPAN_NOTICE("Move on."))
+	if(!M)
+		return
 
-	log_admin("[key_name(usr)] told [key_name(T)] to man up and deal with it.")
-	message_admins("\blue [key_name_admin(usr)] told [key_name(T)] to man up and deal with it.", 1)
+	to_chat(M, "<span class='warning bold reallybig'>Man up, and deal with it.</span><br><span class='warning big'>Move on.</span>")
+	// M.playsound_local(M, 'sound/voice/manup.ogg', 50, FALSE, pressure_affected = FALSE)
+	SEND_SOUND(M, 'sound/voice/ManUp1.ogg')
+
+	log_admin("Man up: [key_name(usr)] told [key_name(M)] to man up")
+	var/message = "<span class='adminnotice'>[key_name_admin(usr)] told [key_name_admin(M)] to man up.</span>"
+	message_admins(message)
+	// admin_ticket_log(M, message)
 
 ADMIN_VERB_ADD(/client/proc/global_man_up, R_ADMIN, FALSE)
 /client/proc/global_man_up()
@@ -569,12 +576,12 @@ ADMIN_VERB_ADD(/client/proc/global_man_up, R_ADMIN, FALSE)
 	set name = "Man Up Global"
 	set desc = "Tells everyone to man up and deal with it."
 
-	for (var/mob/T as mob in SSmobs.mob_list)
-		to_chat(T, "<br><center><span class='notice'><b><font size=4>Man up.<br> Deal with it.</font></b><br>Move on.</span></center><br>")
-		T << 'sound/voice/ManUp1.ogg'
+	to_chat(world, "<span class='warning bold reallybig'>Man up, and deal with it.</span><br><span class='warning big'>Move on.</span>")
+	for (var/mob/M as mob in GLOB.player_list)
+		M.playsound_local(M, 'sound/voice/ManUp1.ogg', 50, FALSE, use_pressure = FALSE)
 
-	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
-	message_admins("\blue [key_name_admin(usr)] told everyone to man up and deal with it.", 1)
+	log_admin("Man up global: [key_name(usr)] told everybody to man up")
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] told everybody to man up.</span>")
 
 ADMIN_VERB_ADD(/client/proc/toggleUIDebugMode, R_DEBUG, FALSE)
 /client/proc/toggleUIDebugMode()

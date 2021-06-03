@@ -1,18 +1,87 @@
-/mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
-	STOP_PROCESSING(SSmobs, src)
-	GLOB.dead_mob_list -= src
-	GLOB.living_mob_list -= src
-	GLOB.mob_list -= src
+/**
+ * Delete a mob
+ *
+ * Removes mob from the following global lists
+ * * GLOB.mob_list
+ * * GLOB.dead_mob_list
+ * * GLOB.alive_mob_list
+ * * GLOB.all_clockwork_mobs
+ * * GLOB.mob_directory
+ *
+ * Unsets the focus var
+ *
+ * Clears alerts for this mob
+ *
+ * Resets all the observers perspectives to the tile this mob is on
+ *
+ * qdels any client colours in place on this mob
+ *
+ * Ghostizes the client attached to this mob
+ *
+ * Parent call
+ */
+/mob/Destroy()
+	remove_from_mob_list()
+	remove_from_dead_mob_list()
+	remove_from_alive_mob_list()
 	unset_machine()
-	qdel(hud_used)
+	// focus = null
+	if(length(progressbars))
+		stack_trace("[src] destroyed with elements in its progressbars list")
+		progressbars = null
 	if(client)
 		for(var/atom/movable/AM in client.screen)
 			qdel(AM)
 		client.screen = list()
 
+	qdel(hud_used)
 	ghostize()
 	..()
 	return QDEL_HINT_HARDDEL
+
+/**
+ * Intialize a mob
+ *
+ * Sends global signal COMSIG_GLOB_MOB_CREATED
+ *
+ * Adds to global lists
+ * * GLOB.mob_list
+ * * GLOB.mob_directory (by tag)
+ * * GLOB.dead_mob_list - if mob is dead
+ * * GLOB.alive_mob_list - if the mob is alive
+ *
+ * Other stuff:
+ * * Sets the mob focus to itself
+ * * Generates huds
+ * * If there are any global alternate apperances apply them to this mob
+ * * set a random nutrition level
+ * * Intialize the movespeed of the mob
+ */
+/mob/Initialize(mapload)
+	// SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_CREATED, src)
+	add_to_mob_list()
+	if(stat == DEAD)
+		add_to_dead_mob_list()
+	else
+		add_to_alive_mob_list()
+	// set_focus(src)
+	// prepare_huds()
+	// for(var/v in GLOB.active_alternate_appearances)
+	// 	if(!v)
+	// 		continue
+	// 	var/datum/atom_hud/alternate_appearance/AA = v
+	// 	AA.onNewMob(src)
+
+	move_intent = decls_repository.get_decl(move_intent)
+	. = ..()
+
+/**
+ * Generate the tag for this mob
+ *
+ * This is simply "mob_"+ a global incrementing counter that goes up for every mob
+ */
+/mob/GenerateTag()
+	tag = "mob_[next_mob_id++]"
 
 /mob/proc/despawn()
 	return
@@ -26,29 +95,22 @@
 /mob/proc/take_overall_damage(var/brute, var/burn, var/used_weapon = null)
 	return
 
-/mob/Initialize()
-	START_PROCESSING(SSmobs, src)
-	if(stat == DEAD)
-		GLOB.dead_mob_list += src
-	else
-		GLOB.living_mob_list += src
-	GLOB.mob_list += src
-	move_intent = decls_repository.get_decl(move_intent)
-	. = ..()
+/**
+ * Show a message to this mob (visual or audible)
+ */
+/mob/proc/show_message(msg, type, alt, alt_type, avoid_highlighting = FALSE)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+	if(!client)
+		return
 
-/mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
-
-	if(!client)	return
-
-	if (type)
+	if(type)
 		if(type & 1 && (sdisabilities & BLIND || blinded || paralysis) )//Vision related
-			if (!( alt ))
+			if(!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-		if (type & 2 && (sdisabilities & DEAF || ear_deaf))//Hearing related
-			if (!( alt ))
+		if(type & 2 && (sdisabilities & DEAF || ear_deaf))//Hearing related
+			if (!alt)
 				return
 			else
 				msg = alt
@@ -57,10 +119,10 @@
 					return
 	// Added voice muffling for Issue 41.
 	if(stat == UNCONSCIOUS || sleeping > 0)
-		to_chat(src, "<I>... You can almost hear someone talking ...</I>")
-	else
-		to_chat(src, msg)
-	return
+		if(type & 2) //audio
+			to_chat(src, "<I>... You can almost hear something ...</I>")
+		return
+	to_chat(src, msg, avoid_highlighting = avoid_highlighting)
 
 // Show a message to all mobs and objects in sight of this one
 // This would be for visible actions by the src mob
@@ -137,7 +199,7 @@
 
 
 /mob/proc/findname(msg)
-	for(var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in GLOB.mob_living_list)
 		if (M.real_name == text("[]", msg))
 			return M
 	return 0
@@ -152,8 +214,9 @@
 	. += move_intent.move_delay
 
 
-/mob/proc/Life()
-	SEND_SIGNAL(src, COMSIG_MOB_LIFE)
+/mob/proc/Life(delta_time = SSMOBS_DT, times_fired)
+	set waitfor = FALSE
+	SEND_SIGNAL(src, COMSIG_MOB_LIFE) //possible comsig microwave background issue here
 //	if(organStructure)
 //		organStructure.ProcessOrgans()
 	//handle_typing_indicator() //You said the typing indicator would be fine. The test determined that was a lie.
@@ -375,34 +438,17 @@
 
 
 
-/client/verb/changes()
+/client/verb/changelog()
 	set name = "Changelog"
 	set category = "OOC"
-	getFiles(
-		'html/88x31.png',
-		'html/bug-minus.png',
-		'html/cross-circle.png',
-		'html/hard-hat-exclamation.png',
-		'html/image-minus.png',
-		'html/image-plus.png',
-		'html/map-pencil.png',
-		'html/music-minus.png',
-		'html/music-plus.png',
-		'html/tick-circle.png',
-		'html/wrench-screwdriver.png',
-		'html/spell-check.png',
-		'html/burn-exclamation.png',
-		'html/chevron.png',
-		'html/chevron-expand.png',
-		'html/changelog.css',
-		'html/changelog.js',
-		'html/changelog.html'
-		)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != changelog_hash)
-		prefs.lastchangelog = changelog_hash
+	if(!GLOB.changelog_tgui)
+		GLOB.changelog_tgui = new /datum/changelog()
+
+	GLOB.changelog_tgui.ui_interact(mob)
+	if(prefs.lastchangelog != GLOB.changelog_hash)
+		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()
-		winset(src, "rpane.changelog", "background-color=none;font-style=;")
+		winset(src, "infowindow.changelog", "font-style=;")
 
 /mob/verb/observe()
 	set name = "Observe"
@@ -456,7 +502,7 @@
 			creatures[name] = O
 
 
-	for(var/mob/M in sortNames(SSmobs.mob_list))
+	for(var/mob/M in sortNames(GLOB.mob_living_list))
 		var/name = M.name
 		if (names.Find(name))
 			namecounts[name]++
@@ -1115,10 +1161,8 @@ mob/proc/yank_out_object()
 	if (stats) // Check if mob has stats. Otherwise we cannot read null.perks
 		for(var/perk in stats.perks)
 			var/datum/perk/P = perk
-			var/filename = sanitizeFileName("[P.type].png")
-			var/asset = asset_cache.cache[filename] // this is definitely a hack, but getAtomCacheFilename accepts only atoms for no fucking reason whatsoever.
-			if(asset)
-				Plist += "<td valign='middle'><img src=[filename]></td><td><span style='text-align:center'>[P.name]<br>[P.desc]</span></td>"
+			var/filename = sanitize_filename("[P.type].png")
+			Plist += "<td valign='middle'><img src=[SSassets.transport.get_asset_url(filename)]></td><td><span style='text-align:center'>[P.name]<br>[P.desc]</span></td>"
 	data += {"
 		<table width=80%>
 			<th colspan=2>Perks</th>

@@ -34,7 +34,7 @@
 				return console_id
 
 /obj/machinery/bssilk_hub/proc/sync_with_parts()
-	for(var/obj/machinery/computer/bssilk_control/CON in SSmachines.machinery)
+	for(var/obj/machinery/computer/bssilk_control/CON in GLOB.machines)
 		if(!CON.connected_hub && CON.hub_id && CON.hub_id == console_id)
 			connected_console = CON
 			CON.connected_hub = src
@@ -107,10 +107,10 @@
 
 /obj/machinery/computer/bssilk_control/attack_hand(mob/user)
 	if(connected_hub) connected_hub.sync_with_parts()
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/bssilk_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/list/data = ui_data()
+/obj/machinery/computer/bssilk_control/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	var/list/data = nano_ui_data()
 
 	if(!connected_hub)
 		data["fail_connect"] = TRUE
@@ -125,7 +125,7 @@
 		ui.open()
 
 /obj/machinery/computer/bssilk_control/proc/find_hub()
-	for(var/obj/machinery/bssilk_hub/HUB in SSmachines.machinery)
+	for(var/obj/machinery/bssilk_hub/HUB in GLOB.machines)
 		if(!HUB.connected_console && HUB.console_id && HUB.console_id == hub_id)
 			connected_hub = HUB
 			HUB.connected_console = src

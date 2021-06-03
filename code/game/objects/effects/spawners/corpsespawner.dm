@@ -5,7 +5,7 @@
 //To do: Allow corpses to appear mangled, bloody, etc. Allow customizing the bodies appearance (they're all bald and white right now).
 
 /obj/landmark/corpse
-	name = "Unknown"
+	name = "Corpse Spawner"
 	icon_state = "player-black"
 	var/mobname = "Unknown"  //Unused now but it'd fuck up maps to remove it now
 	var/corpseuniform //Set this to an object path to have the slot filled with said object on the corpse.
@@ -31,10 +31,9 @@
 	return INITIALIZE_HINT_QDEL
 
 /obj/landmark/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
-	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
-	M.set_species(species)
-	M.real_name = src.name
-	M.death(1) //Kills the new mob
+	var/mob/living/carbon/human/M = new /mob/living/carbon/human(get_turf(src), species)
+	M.real_name = mobname // you fucking pepega we have mobname for a reason
+	M.death(TRUE) //Kills the new mob
 	if(src.corpseuniform)
 		M.equip_to_slot_or_del(new src.corpseuniform(M), slot_w_uniform)
 	if(src.corpsesuit)

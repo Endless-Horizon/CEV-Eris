@@ -1,6 +1,6 @@
 ADMIN_VERB_ADD(/client/proc/cmd_admin_pm_context, R_ADMIN|R_MOD|R_MENTOR, FALSE)
 //allows right clicking mobs to send an admin PM to their client, forwards the selected mob's client to cmd_admin_pm
-/client/proc/cmd_admin_pm_context(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_pm_context(mob/M as mob in GLOB.mob_living_list)
 	set category = null
 	set name = "Admin PM Mob"
 	if(!holder)

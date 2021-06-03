@@ -11,7 +11,7 @@
 // #define DEBUG_MEDIAPLAYER
 
 #ifdef DEBUG_MEDIAPLAYER
-#define MP_DEBUG(x) to_chat(owner,x)
+#define MP_DEBUG(x) testing(x)
 #warn Please comment out #define DEBUG_MEDIAPLAYER before committing.
 #else
 #define MP_DEBUG(x)
@@ -28,10 +28,10 @@
 /hook/roundend/proc/stop_all_media()
 	log_debug("Stopping all playing media...")
 	// Stop all music.
-	for(var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if(M && M.client)
 			M.stop_all_music()
-	//  SHITTY HACK TO AVOID RACE CONDITION WITH SERVER REBOOT.
+	//  SHITTY HACK TO AVOID RACE CONDITION WITH SERVER REBOOT. (haha async go bonk)
 	sleep(10)  // TODO - Leshana - see if this is needed
 
 // Update when moving between areas.

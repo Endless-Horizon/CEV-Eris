@@ -50,11 +50,8 @@
 
 	return input
 
-/proc/sanitizeFileName(var/input)
-	input = replace_characters(input, list(" "="_", "\\" = "_", "\""="'", "/" = "_", ":" = "_", "*" = "_", "?" = "_", "|" = "_", "<" = "_", ">" = "_"))
-	if(findtext(input,"_") == 1)
-		input = copytext(input, 2)
-	return input
+/proc/sanitizeFileName(input)
+	return sanitize_filename(input)
 //Run sanitize(), but remove <, >, " first to prevent displaying them as &gt; &lt; &34; in some places, after html_encode().
 //Best used for sanitize object names, window titles.
 //If you have a problem with sanitize() in chat, when quotes and >, < are displayed as html entites -
@@ -151,6 +148,18 @@
 				non_whitespace = TRUE
 	if(non_whitespace)
 		return text		//only accepts the text if it has some non-spaces
+
+//Removes a few problematic characters
+/proc/tg_sanitize_simple(t,list/repl_chars = list("\n"="#","\t"="#"))
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index + length(char))
+			index = findtext(t, char, index + length(char))
+	return t
+
+/proc/sanitize_filename(t)
+	return tg_sanitize_simple(t, list("\n"="", "\t"="", "/"="", "\\"="", "?"="", "%"="", "*"="", ":"="", "|"="", "\""="", "<"="", ">"=""))
 
 
 //Old variant. Haven't dared to replace in some places.
@@ -355,10 +364,10 @@ proc/TextPreview(var/string, var/len=40)
 //The icon var could be local in the proc, but it's a waste of resources
 //	to always create it and then throw it out.
 /var/icon/text_tag_icons = new('./icons/chattags.dmi')
-/proc/create_text_tag(var/tagname, var/tagdesc = tagname, var/client/C = null)
+/proc/create_text_tag(tagname, tagdesc = tagname, client/C)
 	if(!(C && C.get_preference_value(/datum/client_preference/chat_tags) == GLOB.PREF_SHOW))
 		return tagdesc
-	return icon2html(icon(text_tag_icons, tagname), world, realsize=TRUE)
+	return icon2html(text_tag_icons, world, tagname)
 
 /proc/contains_az09(var/input)
 	for(var/i=1, i<=length(input), i++)

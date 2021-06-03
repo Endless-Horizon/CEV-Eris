@@ -7,23 +7,36 @@
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/UI_compact_style = 0
+	// tgui part
+	var/tgui_fancy = TRUE
+	var/tgui_lock = FALSE
 
+	// dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</a><br>"
+	// dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</a><br>"
 /datum/category_item/player_setup_item/player_global/ui
 	name = "UI"
 	sort_order = 1
 
-/datum/category_item/player_setup_item/player_global/ui/load_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/ui/load_preferences(savefile/S)
 	S["UI_style"]		>> pref.UI_style
 	S["UI_style_color"]	>> pref.UI_style_color
 	S["UI_style_alpha"]	>> pref.UI_style_alpha
 	S["ooccolor"]		>> pref.ooccolor
+	READ_FILE(S["tgui_fancy"], pref.tgui_fancy)
+	READ_FILE(S["tgui_lock"], pref.tgui_lock)
 	//S["clientfps"]		>> pref.clientfps
 
-/datum/category_item/player_setup_item/player_global/ui/save_preferences(var/savefile/S)
+/datum/category_item/player_setup_item/player_global/ui/save_preferences(savefile/S)
 	S["UI_style"]		<< pref.UI_style
 	S["UI_style_color"]	<< pref.UI_style_color
 	S["UI_style_alpha"]	<< pref.UI_style_alpha
 	S["ooccolor"]		<< pref.ooccolor
+	WRITE_FILE(S["tgui_fancy"], pref.tgui_fancy)
+	WRITE_FILE(S["tgui_lock"], pref.tgui_lock)
+
+	pref.tgui_fancy = sanitize_integer(pref.tgui_fancy, FALSE, TRUE, initial(pref.tgui_fancy))
+	pref.tgui_lock = sanitize_integer(pref.tgui_lock, FALSE, TRUE, initial(pref.tgui_lock))
+
 	//S["clientfps"]		<< pref.clientfps
 
 /datum/category_item/player_setup_item/player_global/ui/sanitize_preferences()

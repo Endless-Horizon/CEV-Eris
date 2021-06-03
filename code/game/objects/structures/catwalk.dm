@@ -1,25 +1,27 @@
 /obj/structure/catwalk
-	layer = TURF_LAYER + 0.5
-	icon = 'icons/turf/catwalks.dmi'
-	icon_state = "catwalk"
 	name = "catwalk"
 	desc = "Cats really don't like these things."
+	icon = 'icons/turf/catwalks.dmi'
+	icon_state = "catwalk"
+	layer = TURF_LAYER + 0.5
 	density = FALSE
 	anchored = TRUE
 
 
-/obj/structure/catwalk/New()
-	..()
+/obj/structure/catwalk/Initialize(mapload)
+	. = ..()
 	if (istype(loc, /turf/simulated/open))
 		var/turf/simulated/open/T = loc
 		T.updateFallability()
-	spawn(4)
-		if(src)
-			for(var/obj/structure/catwalk/C in get_turf(src))
-				if(C != src)
-					qdel(C)
-			update_icon()
-			redraw_nearby_catwalks()
+
+	for(var/obj/structure/catwalk/CAT in loc)
+		if(CAT == src)
+			continue
+		stack_trace("multiple lattices found in ([loc.x], [loc.y], [loc.z])")
+		return INITIALIZE_HINT_QDEL
+	// old smoothing
+	update_icon()
+	redraw_nearby_catwalks()
 
 /obj/structure/catwalk/Destroy()
 	if (istype(loc, /turf/simulated/open))

@@ -15,7 +15,7 @@ var/datum/appearance_test/appearance_test = new
 	var/cache_generation_log = ""
 
 /datum/appearance_test/proc/rebuild_humans()
-	for(var/mob/living/carbon/human/H in SSmobs.mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.mob_living_list)
 		H.update_body()
 
 /datum/appearance_test/proc/interact(var/mob/user)

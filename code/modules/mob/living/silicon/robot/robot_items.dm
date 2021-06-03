@@ -60,7 +60,7 @@
 			to_chat(user, "The [src] is empty.  Put something inside it first.")
 	if(response == "Sync")
 		var/success = 0
-		for(var/obj/machinery/r_n_d/server/S in SSmachines.machinery)
+		for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
 			S.files.download_from(files)
 			files.download_from(S.files)
 			success = TRUE

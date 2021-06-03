@@ -14,7 +14,7 @@ var/list/dreams = list(
 	"the ai core","the mining station","the research station","a beaker of strange liquid",
 	)
 
-mob/living/carbon/proc/dream()
+/mob/living/carbon/proc/dream()
 	dreaming = 1
 
 	spawn(0)
@@ -23,9 +23,9 @@ mob/living/carbon/proc/dream()
 			sleep(rand(40,70))
 			if(paralysis <= 0)
 				dreaming = 0
-				return 0
+				return
 		dreaming = 0
-		return 1
+		return
 
 mob/living/carbon/proc/handle_dreams()
 	if(client && !dreaming && prob(5))

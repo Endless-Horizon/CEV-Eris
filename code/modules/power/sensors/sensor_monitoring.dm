@@ -49,11 +49,11 @@
 
 	if(..())
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
 // Uses dark magic to operate the NanoUI of this computer.
-/obj/machinery/computer/power_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
-	power_monitor.ui_interact(user, ui_key, ui, force_open)
+/obj/machinery/computer/power_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+	power_monitor.nano_ui_interact(user, ui_key, ui, force_open)
 
 
 // Verifies if any warnings were registered by connected sensors.

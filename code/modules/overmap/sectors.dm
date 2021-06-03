@@ -87,7 +87,7 @@
 				admin_notice("Sector \"[name_stages[1]]\" containing Z [english_list(map_z)] could not find waypoint with tag [waypoint_tag]!")
 		restricted_waypoints[shuttle_name] = found_waypoints
 
-	for(var/obj/machinery/computer/sensors/S in SSmachines.machinery)
+	for(var/obj/machinery/computer/sensors/S in GLOB.machines)
 		if (S.z in map_z)
 			S.linked = src
 
@@ -107,7 +107,7 @@
 	if(known)
 		layer = 2
 		set_plane(-1)
-		for(var/obj/machinery/computer/helm/H in SSmachines.machinery)
+		for(var/obj/machinery/computer/helm/H in GLOB.machines)
 			H.get_known_sectors()
 
 /obj/effect/overmap/proc/add_landmark(obj/effect/shuttle_landmark/landmark)

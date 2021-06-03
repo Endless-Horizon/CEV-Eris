@@ -181,7 +181,7 @@
 	return
 
 
-/obj/item/weapon/tool/ui_data(mob/user)
+/obj/item/weapon/tool/nano_ui_data(mob/user)
 	var/list/data = list()
 
 	if(tool_qualities)
@@ -207,7 +207,7 @@
 		data["use_power_cost_max"] = initial(use_power_cost) * 10
 
 	if(use_fuel_cost)
-		data["fuel"] = reagents ? reagents.ui_data() : null
+		data["fuel"] = reagents ? reagents.nano_ui_data() : null
 		data["max_fuel"] = max_fuel
 		data["use_fuel_cost"] = use_fuel_cost
 		data["use_fuel_cost_state"] = initial(use_fuel_cost) > use_fuel_cost ? "good" : initial(use_fuel_cost) < use_fuel_cost ? "bad" : ""
@@ -229,12 +229,12 @@
 	if(item_upgrades.len)
 		data["attachments"] = list()
 		for(var/atom/A in item_upgrades)
-			data["attachments"] += list(list("name" = A.name, "icon" = getAtomCacheFilename(A)))
+			data["attachments"] += list(list("name" = A.name, "icon" = icon2html(A, user, sourceonly = TRUE)))
 
 	return data
 
-/obj/item/weapon/tool/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
-	var/list/data = ui_data(user)
+/obj/item/weapon/tool/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = GLOB.default_state)
+	var/list/data = nano_ui_data(user)
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -1071,4 +1071,4 @@
 /obj/item/weapon/tool/ui_action_click(mob/living/user, action_name)
 	switch(action_name)
 		if("Tool information")
-			ui_interact(user)
+			nano_ui_interact(user)

@@ -4,7 +4,7 @@
 		for(var/turf/simulated/floor/T in RANGE_TURFS(1,xmas))
 			for(var/i=1,i<=rand(1,5),i++)
 				new /obj/item/weapon/a_gift(T)
-	//for(var/mob/living/simple_animal/corgi/Ian/Ian in SSmobs.mob_list)
+	//for(var/mob/living/simple_animal/corgi/Ian/Ian in GLOB.mob_living_list)
 	//	Ian.place_on_head(new /obj/item/clothing/head/space/santahat(Ian))
 
 /proc/ChristmasEvent()

@@ -14,16 +14,14 @@
 	maximum_volume = max
 	my_atom = A
 
-	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
-	if(!GLOB.chemical_reagents_list)
-		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
-		var/paths = typesof(/datum/reagent) - /datum/reagent
-		GLOB.chemical_reagents_list = list()
-		for(var/path in paths)
-			var/datum/reagent/D = new path()
-			if(!D.name)
-				continue
-			GLOB.chemical_reagents_list[D.id] = D
+	/// SILENCE
+	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
+	var/paths = typesof(/datum/reagent) - /datum/reagent
+	for(var/path in paths)
+		var/datum/reagent/D = new path()
+		if(!D.name)
+			continue
+		GLOB.chemical_reagents_list[D.id] = D
 
 /datum/reagents/proc/get_price()
 	var/price = 0
@@ -199,7 +197,8 @@
 
 	for(var/thing in active_reactions)
 		var/datum/chemical_reaction/C = thing
-		C.process(src, active_reactions[C])
+		// todo: deshit chem
+		C.process("DT_INTERNAL" , src, active_reactions[C])
 
 	for(var/thing in active_reactions)
 		var/datum/chemical_reaction/C = thing
@@ -580,7 +579,7 @@
 			return X
 
 // NanoUI / TG UI data
-/datum/reagents/ui_data()
+/datum/reagents/nano_ui_data()
 	var/list/data = list()
 
 	data["total_volume"] = total_volume

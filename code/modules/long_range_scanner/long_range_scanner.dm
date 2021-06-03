@@ -200,7 +200,7 @@ var/list/ship_scanners = list()
 		overloaded = 1
 
 
-/obj/machinery/power/long_range_scanner/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/power/long_range_scanner/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data["running"] = running
@@ -224,7 +224,7 @@ var/list/ship_scanners = list()
 
 
 /obj/machinery/power/long_range_scanner/attack_hand(var/mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 	if(panel_open)
 		wires.Interact(user)
 
@@ -291,7 +291,7 @@ var/list/ship_scanners = list()
 		log_event(EVENT_RECONFIGURED, src)
 		. = 1
 
-	ui_interact(usr)
+	nano_ui_interact(usr)
 
 /obj/machinery/power/long_range_scanner/proc/charge_level()
 	if(max_energy)

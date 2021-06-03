@@ -339,7 +339,7 @@ var/const/GRAV_NEEDS_WRENCH = 3
 
 // Shake everyone to let them know that gravity was enagaged/disenagaged.
 /obj/machinery/gravity_generator/main/proc/shake_everyone()
-	for(var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		var/turf/our_turf = get_turf(src.loc)
 		if(M.client)
 			shake_camera(M, 15, 1)

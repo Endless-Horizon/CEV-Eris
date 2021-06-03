@@ -87,6 +87,8 @@
 	var/obj/item/device/radio/radio
 
 	var/debug = 0
+	///Disables the sm's proccessing totally.
+	var/processes = TRUE
 
 /obj/machinery/power/supermatter/Initialize()
 	. = ..()
@@ -180,13 +182,18 @@
 
 	return ..()
 
-/obj/machinery/power/supermatter/Process()
+/obj/machinery/power/supermatter/process_atmos()
+	if(!processes) //Just fuck me up bro
+		return
 	var/turf/L = loc
 
 	if(isnull(L))		// We have a null turf...something is wrong, stop processing this entity.
 		return PROCESS_KILL
 
 	if(!istype(L)) 	//We are in a crate or somewhere that isn't turf, if we return to turf resume processing but for now.
+		return  //Yeah just stop.
+
+	if(!istype(L))//We are in a crate or somewhere that isn't turf, if we return to turf resume processing but for now.
 		return  //Yeah just stop.
 
 	if(damage > explosion_point)
@@ -302,11 +309,11 @@
 	if(Adjacent(user))
 		return attack_hand(user)
 	else
-		ui_interact(user)
+		nano_ui_interact(user)
 	return
 
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/power/supermatter/attack_hand(mob/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... \his body starts to glow and bursts into flames before flashing into ash.</span>",\
@@ -316,7 +323,7 @@
 	Consume(user)
 
 // This is purely informational UI that may be accessed by AIs or robots
-/obj/machinery/power/supermatter/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/power/supermatter/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 
 	data["integrity_percentage"] = round(get_integrity())

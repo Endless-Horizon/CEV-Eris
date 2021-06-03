@@ -3,7 +3,7 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 /datum/controller/global_vars
 	name = "Global Variables"
 
-	var/list/gvars_datum_protected_varlist
+	var/static/list/gvars_datum_protected_varlist
 	var/list/gvars_datum_in_built_vars
 	var/list/gvars_datum_init_order
 
@@ -13,54 +13,42 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 	GLOB = src
 
 	var/datum/controller/exclude_these = new
-	gvars_datum_in_built_vars = exclude_these.vars + list("gvars_datum_protected_varlist", "gvars_datum_in_built_vars", "gvars_datum_init_order")
-	qdel(exclude_these)
+	gvars_datum_in_built_vars = exclude_these.vars + list(NAMEOF(src, gvars_datum_protected_varlist), NAMEOF(src, gvars_datum_in_built_vars), NAMEOF(src, gvars_datum_init_order))
+	QDEL_IN(exclude_these, 0) //signal logging isn't ready
 
-	var/global_vars = vars.len - gvars_datum_in_built_vars.len
-	var/global_procs = length(typesof(/datum/controller/global_vars/proc))
+	log_world("[vars.len - gvars_datum_in_built_vars.len] global variables")
 
-	report_progress("[global_vars] global variables")
-	report_progress("[global_procs] global init procs")
-	try
-		if(global_vars == global_procs)
-			Initialize()
-		else
-			crash_with("Expected [global_vars] global init procs, were [global_procs].")
-	catch(var/exception/e)
-		to_world_log("Vars to be initialized: [json_encode((vars - gvars_datum_in_built_vars))]")
-		to_world_log("Procs used to initialize: [json_encode(typesof(/datum/controller/global_vars/proc))]")
-		throw e
-
+	Initialize()
 
 /datum/controller/global_vars/Destroy(force)
-	crash_with("There was an attempt to qdel the global vars holder!")
-	if(!force)
-		return QDEL_HINT_LETMELIVE
+	// This is done to prevent an exploit where admins can get around protected vars
+	SHOULD_CALL_PARENT(FALSE)
+	return QDEL_HINT_IWILLGC
 
-	QDEL_NULL(statclick)
-	gvars_datum_protected_varlist.Cut()
-	gvars_datum_in_built_vars.Cut()
+/datum/controller/global_vars/stat_entry(msg)
+	msg = "Edit"
+	return msg
 
-	GLOB = null
-
-	return ..()
-
-/datum/controller/global_vars/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-
-	stat("Globals:", statclick.update("Edit"))
-
-/datum/controller/global_vars/VV_hidden()//Part of bay var viewer improvements
-	return ..() + gvars_datum_protected_varlist
+// /datum/controller/global_vars/vv_edit_var(var_name, var_value)
+// 	if(gvars_datum_protected_varlist[var_name])
+// 		return FALSE
+// 	return ..()
 
 /datum/controller/global_vars/Initialize()
 	gvars_datum_init_order = list()
-	gvars_datum_protected_varlist = list("gvars_datum_protected_varlist")
-
-	//See https://github.com/tgstation/tgstation/issues/26954
-	for(var/I in typesof(/datum/controller/global_vars/proc))
+	gvars_datum_protected_varlist = list(NAMEOF(src, gvars_datum_protected_varlist) = TRUE)
+	var/list/global_procs = typesof(/datum/controller/global_vars/proc)
+	var/expected_len = vars.len - gvars_datum_in_built_vars.len
+	if(global_procs.len != expected_len)
+		warning("Unable to detect all global initialization procs! Expected [expected_len] got [global_procs.len]!")
+		if(global_procs.len)
+			var/list/expected_global_procs = vars - gvars_datum_in_built_vars
+			for(var/I in global_procs)
+				expected_global_procs -= replacetext("[I]", "InitGlobal", "")
+			log_world("Missing procs: [expected_global_procs.Join(", ")]")
+	for(var/I in global_procs)
 		var/start_tick = world.time
 		call(src, I)()
-		if(world.time - start_tick)
-			warning("[I] slept during initialization!")
+		var/end_tick = world.time
+		if(end_tick - start_tick)
+			warning("Global [replacetext("[I]", "InitGlobal", "")] slept during initialization!")

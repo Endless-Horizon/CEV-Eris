@@ -148,7 +148,7 @@ var/bomb_set
 		if (panel_open)
 			wires.Interact(user)
 		else
-			ui_interact(user)
+			nano_ui_interact(user)
 	else if (deployable)
 		if(removal_stage < 5)
 			src.anchored = TRUE
@@ -161,7 +161,7 @@ var/bomb_set
 			update_icon()
 	return
 
-/obj/machinery/nuclearbomb/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/nuclearbomb/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 	data["hacking"] = 0
 	data["auth"] = is_auth(user)

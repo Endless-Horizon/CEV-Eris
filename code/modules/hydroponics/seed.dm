@@ -19,7 +19,7 @@
 /datum/computer_file/binary/plantgene/proc/update_name()
 	filename = "PL_GENE_[plant_controller.gene_tag_masks[genetype]]_[genesource_uid]"
 
-/datum/computer_file/binary/plantgene/ui_data()
+/datum/computer_file/binary/plantgene/nano_ui_data()
 	var/list/data = list(
 		"filename" = filename,
 		"source" = genesource,

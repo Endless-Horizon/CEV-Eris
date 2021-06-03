@@ -36,7 +36,7 @@
 
 	return design_files
 
-/obj/machinery/autolathe/mechfab/ui_interact()
+/obj/machinery/autolathe/mechfab/nano_ui_interact()
 	if(!categories)
 		update_categories()
 	..()

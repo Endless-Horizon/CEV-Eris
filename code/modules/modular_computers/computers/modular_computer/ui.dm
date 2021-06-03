@@ -1,5 +1,5 @@
 // Operates NanoUI
-/obj/item/modular_computer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/modular_computer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(!screen_on || !enabled || bsod)
 		if(ui)
 			ui.close()
@@ -13,7 +13,7 @@
 	if(active_program)
 		if(ui) // This is the main laptop screen. Since we are switching to program's UI close it for now.
 			ui.close()
-		active_program.ui_interact(user)
+		active_program.nano_ui_interact(user)
 		return
 
 	// We are still here, that means there is no program loaded. Load the BIOS/ROM/OS/whatever you want to call it.

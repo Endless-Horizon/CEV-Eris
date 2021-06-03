@@ -1,9 +1,37 @@
-/mob/living/Life()
-	set invisibility = 0
-	set background = BACKGROUND_ENABLED
+/**
+ * Handles the biological and general over-time processes of the mob.
+ *
+ *
+ * Arguments:
+ * - delta_time: The amount of time that has elapsed since this last fired.
+ * - times_fired: The number of times SSmobs has fired
+ */
+/mob/living/Life(delta_time = SSMOBS_DT, times_fired)
+	if (client)
+		var/turf/T = get_turf(src)
+		if(!T)
+			// move_to_error_room() too bad
+			var/msg = "[ADMIN_LOOKUPFLW(src)] was found to have no .loc with an attached client, if the cause is unknown it would be wise to ask how this was accomplished."
+			message_admins(msg)
+			send2adminchat("Mob", msg) //, R_ADMIN)
+			log_game("[key_name(src)] was found to have no .loc with an attached client.")
 
-	. = FALSE
-	..()
+		// This is a temporary error tracker to make sure we've caught everything
+		else if (registered_z != T.z)
+#ifdef TESTING
+			message_admins("[ADMIN_LOOKUPFLW(src)] has somehow ended up in Z-level [T.z] despite being registered in Z-level [registered_z]. If you could ask them how that happened and notify coderbus, it would be appreciated.")
+#endif
+			log_game("Z-TRACKING: [src] has somehow ended up in Z-level [T.z] despite being registered in Z-level [registered_z].")
+			update_z(T.z)
+	else if (registered_z)
+		log_game("Z-TRACKING: [src] of type [src.type] has a Z-registration despite not having a client.")
+		update_z(null)
+
+	if (transforming || HasMovementHandler(/datum/movement_handler/mob/transformation/))
+		return
+	if(!loc) // you may live. For now
+		return
+
 	if(config.enable_mob_sleep)
 		if(life_cycles_before_scan > 0)
 			life_cycles_before_scan--
@@ -20,30 +48,34 @@
 
 
 	if(!stasis)
-		if (HasMovementHandler(/datum/movement_handler/mob/transformation/))
-			return
-		if(!loc)
-			return
 		var/datum/gas_mixture/environment = loc.return_air()
 
 		if(stat != DEAD)
-			//Breathing, if applicable
-			handle_breathing()
-
 			//Mutations and radiation
-			handle_mutations_and_radiation()
+			handle_mutations_and_radiation(delta_time, times_fired)
 
+		if(stat != DEAD)
+			//Breathing, if applicable
+			handle_breathing(delta_time, times_fired)
+
+		if(stat != DEAD) // basicaly wounds
 			//Blood
 			handle_blood()
 
+		if (QDELETED(src)) // diseases can qdel the mob via transformations
+			return
+
+
+		if(stat != DEAD)
 			//Random events (vomiting etc)
-			handle_random_events()
+			handle_random_events(delta_time, times_fired)
 
 			. = TRUE
 
 		//Handle temperature/pressure differences between body and environment
+		// var/datum/gas_mixture/environment = loc.return_air()
 		if(environment)
-			handle_environment(environment)
+			handle_environment(environment, delta_time, times_fired)
 
 		//Chemicals in the body
 		handle_chemicals_in_body()
@@ -68,15 +100,16 @@
 
 		handle_regular_hud_updates()
 
-	var/turf/T = get_turf(src)
-	if(T)
-		if(registered_z != T.z)
-			update_z(T.z)
+	if(machine)
+		machine.check_eye(src)
 
-/mob/living/proc/handle_breathing()
+	if(stat != DEAD)
+		return 1
+
+/mob/living/proc/handle_breathing(delta_time, times_fired)
 	return
 
-/mob/living/proc/handle_mutations_and_radiation()
+/mob/living/proc/handle_mutations_and_radiation(delta_time, times_fired)
 	return
 
 /mob/living/proc/handle_chemicals_in_body()
@@ -85,10 +118,11 @@
 /mob/living/proc/handle_blood()
 	return
 
-/mob/living/proc/handle_random_events()
+/mob/living/proc/handle_random_events(delta_time, times_fired)
 	return
 
-/mob/living/proc/handle_environment(var/datum/gas_mixture/environment)
+// Base mob environment handler for body temperature
+/mob/living/proc/handle_environment(datum/gas_mixture/environment, delta_time, times_fired)
 	return
 
 /mob/living/proc/update_pulling()

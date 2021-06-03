@@ -90,13 +90,28 @@
 		if (2)
 			use_power(active_power_usage)
 
-/obj/machinery/proc/power_change()		// called whenever the power settings of the containing area change
-										// by default, check equipment channel & set flag
-										// can override if needed
+/**
+ * Called whenever the power settings of the containing area change
+ *
+ * by default, check equipment channel & set flag, can override if needed
+ *
+ * Returns TRUE if the NOPOWER flag was toggled
+ */
+/obj/machinery/proc/power_change()
+	SIGNAL_HANDLER
+	SHOULD_CALL_PARENT(TRUE)
+
+	if(stat & BROKEN)
+		return
 	if(powered(power_channel))
+		if(stat & NOPOWER)
+			// SEND_SIGNAL(src, COMSIG_MACHINERY_POWER_RESTORED)
+			. = TRUE
 		stat &= ~NOPOWER
 	else
-
+		if(!(stat & NOPOWER))
+			// SEND_SIGNAL(src, COMSIG_MACHINERY_POWER_LOST)
+			. = TRUE
 		stat |= NOPOWER
 	return
 

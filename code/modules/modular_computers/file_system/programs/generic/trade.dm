@@ -111,7 +111,7 @@
 		var/good_amount = station.get_good_amount(choosed_category, ind)
 		if(!good_amount)
 			return
-		
+
 		set_2d_matrix_cell(shoppinglist, choosed_category, path, clamp(get_2d_matrix_cell(shoppinglist, choosed_category, path) + count2buy, 0, good_amount))
 		return 1
 
@@ -152,8 +152,8 @@
 /datum/nano_module/program/trade
 	name = "Trading Program"
 
-/datum/nano_module/program/trade/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, state = GLOB.default_state)
-	var/list/data = ui_data()
+/datum/nano_module/program/trade/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, state = GLOB.default_state)
+	var/list/data = nano_ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -162,7 +162,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/datum/nano_module/program/trade/ui_data()
+/datum/nano_module/program/trade/nano_ui_data()
 	. = ..()
 	var/datum/computer_file/program/trade/PRG = program
 	if(!istype(PRG))
@@ -252,7 +252,7 @@
 		.["offers"] += list(offer)
 	if(!recursiveLen(.["offers"]))
 		.["offers"] = null
-	
+
 
 #undef GOODS_SCREEN
 #undef OFFER_SCREEN

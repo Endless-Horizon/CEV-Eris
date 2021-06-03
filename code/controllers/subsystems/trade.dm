@@ -2,7 +2,7 @@
 GLOBAL_LIST_EMPTY(price_cache)
 SUBSYSTEM_DEF(trade)
 	name = "Trade"
-	priority = SS_PRIORITY_SUPPLY
+	priority = FIRE_PRIORITY_SUPPLY
 	flags = SS_NO_FIRE
 
 	var/trade_stations_budget = 8 //how many trade stations should spawned
@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(trade)
 		else
 			crash_with("Unacceptable get_new_cost() by path ([path]) and type ([A?.type]).")
 			return 0
-	
+
 	if(!GLOB.price_cache[path])
 		var/atom/movable/AM = new path
 		GLOB.price_cache[path] = get_cost(AM)
@@ -190,7 +190,7 @@ SUBSYSTEM_DEF(trade)
 /datum/controller/subsystem/trade/proc/sell_thing(obj/machinery/trade_beacon/sending/senderBeacon, datum/money_account/account, atom/movable/thing, datum/trade_station/station)
 	if(QDELETED(senderBeacon) || !istype(senderBeacon) || !account || !istype(thing) || !istype(station))
 		return
-	
+
 	var/cost = get_export_cost(thing)
 
 	qdel(thing)

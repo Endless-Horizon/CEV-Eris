@@ -489,7 +489,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	return
 
 /obj/item/proc/pwr_drain()
-	return 0 // Process Kill
+	return PROCESS_KILL // Process Kill
 
 
 //Called when a human swaps hands to a hand which is holding this item

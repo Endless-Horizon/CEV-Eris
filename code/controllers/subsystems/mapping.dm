@@ -29,9 +29,9 @@ SUBSYSTEM_DEF(mapping)
 		if(!GLOB.maps_data.overmap_z)
 			build_overmap()
 		else
-			testing("Overmap already exist in GLOB.maps_data for [GLOB.maps_data.overmap_z].")
+			log_mapping("Overmap already exist in GLOB.maps_data for [GLOB.maps_data.overmap_z].")
 	else
-		testing("Overmap generation disabled in config.")
+		log_mapping("Overmap generation disabled in config.")
 
 //	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
 	maploader = new()
@@ -72,7 +72,7 @@ SUBSYSTEM_DEF(mapping)
 
 
 /datum/controller/subsystem/mapping/proc/build_overmap()
-	testing("Building overmap...")
+	log_mapping("Building overmap...")
 	world.incrementMaxZ()
 	GLOB.maps_data.overmap_z = world.maxz
 	var/list/turfs = list()
@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(mapping)
 	new /obj/effect/star(T)
 
 	GLOB.maps_data.sealed_levels |= GLOB.maps_data.overmap_z
-	testing("Overmap build complete.")
+	log_mapping("Overmap build complete.")
 
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT
@@ -100,12 +100,12 @@ SUBSYSTEM_DEF(mapping)
 /hook/roundstart/proc/init_overmap_events()
 	if (config.use_overmap)
 		if (GLOB.maps_data.overmap_z)
-			testing("Creating overmap events...")
+			log_mapping("Creating overmap events...")
 			var/t1 = world.tick_usage
 			overmap_event_handler.create_events(GLOB.maps_data.overmap_z, GLOB.maps_data.overmap_size, GLOB.maps_data.overmap_event_areas)
-			testing("Overmap events created in [(world.tick_usage-t1)*0.01*world.tick_lag] seconds")
+			log_mapping("Overmap events created in [(world.tick_usage-t1)*0.01*world.tick_lag] seconds")
 		else
-			testing("Overmap failed to create events.")
+			log_mapping("Overmap failed to create events.")
 			return FALSE
 	return TRUE
 

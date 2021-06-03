@@ -22,13 +22,14 @@
 	var/max_power = 5e9				// Detonation point.
 	var/mode = 0					// 0 = off, 1=clamped (off), 2=operating
 	var/drained_this_tick = 0		// This is unfortunately necessary to ensure we process powersinks BEFORE other machinery such as APCs.
+	var/admins_warned = FALSE // stop spam, only warn the admins once that we are about to boom
 
 	var/datum/powernet/PN			// Our powernet
 	var/obj/structure/cable/attached		// the attached cable
 
 /obj/item/device/powersink/Destroy()
 	if(mode == 2)
-		STOP_PROCESSING_POWER_OBJECT(src)
+		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/device/powersink/attackby(obj/item/I, mob/user)
@@ -51,7 +52,7 @@
 					return
 			else
 				if (mode == 2)
-					STOP_PROCESSING_POWER_OBJECT(src)
+					STOP_PROCESSING(SSobj, src)
 				anchored = FALSE
 				mode = 0
 				src.visible_message(SPAN_NOTICE("[user] detaches [src] from the cable!"))
@@ -73,13 +74,13 @@
 			src.visible_message(SPAN_NOTICE("[user] activates [src]!"))
 			mode = 2
 			icon_state = "powersink1"
-			START_PROCESSING_POWER_OBJECT(src)
+			START_PROCESSING(SSobj, src)
 		if(2)  //This switch option wasn't originally included. It exists now. --NeoFite
 			src.visible_message(SPAN_NOTICE("[user] deactivates [src]!"))
 			mode = 1
 			set_light(0)
 			icon_state = "powersink0"
-			STOP_PROCESSING_POWER_OBJECT(src)
+			STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/powersink/pwr_drain()
 	if(!attached)
@@ -116,12 +117,16 @@
 	return 1
 
 
-/obj/item/device/powersink/Process()
+/obj/item/device/powersink/process()
 	drained_this_tick = 0
 	power_drained -= min(dissipation_rate, power_drained)
 	if(power_drained > max_power * 0.95)
-		playsound(src, 'sound/effects/screech.ogg', 100, 1, 1)
+		if (!admins_warned)
+			admins_warned = TRUE
+			message_admins("Power sink at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>) is 95% full. Explosion imminent.")
+		playsound(src, 'sound/effects/screech.ogg', 100, TRUE, TRUE)
 	if(power_drained >= max_power)
+		STOP_PROCESSING(SSobj, src)
 		explosion(src.loc, 3,6,9,12)
 		qdel(src)
 		return

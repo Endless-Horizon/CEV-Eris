@@ -22,8 +22,55 @@
 
 	A.attack_hand(src)
 
-/atom/proc/attack_hand(mob/user as mob)
-	return
+/// Return TRUE to cancel other attack hand effects that respect it. Modifiers is the assoc list for click info such as if it was a right click.
+/atom/proc/attack_hand(mob/user, list/modifiers)
+	. = FALSE
+	// if(!(interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND))
+	// 	add_fingerprint(user)
+	// if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
+	// 	. = TRUE
+	// if(interaction_flags_atom & INTERACT_ATOM_ATTACK_HAND)
+	. = _try_interact(user)
+
+//Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
+/atom/proc/_try_interact(mob/user)
+	// if(isAdminGhostAI(user)) //admin abuse
+	// 	return interact(user)
+	if(can_interact(user))
+		return interact(user)
+	return FALSE
+
+/atom/proc/can_interact(mob/user)
+	// if(!user.can_interact_with(src))
+	// 	return FALSE
+	if(!user.IsAdvancedToolUser()) // (interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) &&
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	return TRUE
+
+/atom/ui_status(mob/user)
+	. = ..()
+	if(!can_interact(user))
+		. = min(., UI_UPDATE)
+
+/atom/movable/can_interact(mob/user)
+	. = ..()
+	if(!.)
+		return
+	if(!anchored) // && (interaction_flags_atom & INTERACT_ATOM_REQUIRES_ANCHORED))
+		return FALSE
+
+/atom/proc/interact(mob/user)
+	// if(interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_INTERACT)
+	// 	add_hiddenprint(user)
+	// else
+	add_fingerprint(user)
+	// if(interaction_flags_atom & INTERACT_ATOM_UI_INTERACT)
+	// 	SEND_SIGNAL(src, COMSIG_ATOM_UI_INTERACT, user)
+	return ui_interact(user) || nano_ui_interact(user)
+	// return FALSE
 
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A)
 	return
@@ -67,7 +114,7 @@
 			return
 
 	//PERK_ABSOLUTE_GRAB
-	
+
 	if(get_dist_euclidian(get_turf(A), get_turf(src)) < 3 && ishuman(A))
 		if(stats.getPerk(PERK_ABSOLUTE_GRAB) && a_intent == I_GRAB)
 			absolute_grab(A) // moved into a proc belowaa

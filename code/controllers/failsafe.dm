@@ -1,11 +1,10 @@
- /**
-  * Failsafe
-  *
-  * Pretty much pokes the MC to make sure it's still alive.
+/**
+ * Failsafe
+ *
+ * Pretty much pokes the MC to make sure it's still alive.
  **/
 
-
-var/datum/controller/failsafe/Failsafe
+GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 
 /datum/controller/failsafe // This thing pretty much just keeps poking the master controller
 	name = "Failsafe"
@@ -16,7 +15,7 @@ var/datum/controller/failsafe/Failsafe
 	// The alert level. For every failed poke, we drop a DEFCON level. Once we hit DEFCON 1, restart the MC.
 	var/defcon = 5
 	//the world.time of the last check, so the mc can restart US if we hang.
-	//	(Real friends look out for *eachother*)
+	// (Real friends look out for *eachother*)
 	var/lasttick = 0
 
 	// Track the MC iteration to make sure its still on track.
@@ -32,7 +31,7 @@ var/datum/controller/failsafe/Failsafe
 	Initialize()
 
 /datum/controller/failsafe/Initialize()
-	set waitfor = 0
+	set waitfor = FALSE
 	Failsafe.Loop()
 	if(!QDELETED(src))
 		qdel(src) //when Loop() returns, we delete ourselves and let the mc recreate us
@@ -51,21 +50,34 @@ var/datum/controller/failsafe/Failsafe
 		// Only poke it if overrides are not in effect.
 		if(processing_interval > 0)
 			if(Master.processing && Master.iteration)
+				if (defcon > 1 && (!Master.stack_end_detector || !Master.stack_end_detector.check()))
+
+					to_chat(admins, "<span class='boldannounce'>ERROR: The Master Controller code stack has exited unexpectedly, Restarting...</span>")
+					defcon = 0
+					var/rtn = Recreate_MC()
+					if(rtn > 0)
+						master_iteration = 0
+						to_chat(admins, "<span class='adminnotice'>MC restarted successfully</span>")
+					else if(rtn < 0)
+						log_game("FailSafe: Could not restart MC, runtime encountered. Entering defcon 0")
+						to_chat(admins, "<span class='boldannounce'>ERROR: DEFCON [defcon_pretty()]. Could not restart MC, runtime encountered. I will silently keep retrying.</span>")
 				// Check if processing is done yet.
 				if(Master.iteration == master_iteration)
 					switch(defcon)
 						if(4,5)
 							--defcon
+
 						if(3)
-							to_chat(admins, "<span class='adminnotice'>Notice: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks.</span>")
-							--defcon
+							message_admins("<span class='adminnotice'>Notice: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks.</span>")
 							send2coders(message = "Warning: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks.", color = "#ff0000", admiralty = 1)
+							--defcon
+
 						if(2)
 							to_chat(admins, "<span class='boldannounce'>Warning: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks. Automatic restart in [processing_interval] ticks.</span>")
-							--defcon
 							send2coders(message = "Warning: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks. Automatic restart in [processing_interval] ticks.", color = "#ff0000", admiralty = 1)
-						if(1)
+							--defcon
 
+						if(1)
 							to_chat(admins, "<span class='boldannounce'>Warning: DEFCON [defcon_pretty()]. The Master Controller has still not fired within the last [(5-defcon) * processing_interval] ticks. Killing and restarting...</span>")
 							--defcon
 							var/rtn = Recreate_MC()
@@ -79,6 +91,7 @@ var/datum/controller/failsafe/Failsafe
 								send2coders(message = "ERROR: DEFCON [defcon_pretty()]. Could not restart MC, runtime encountered. I will silently keep retrying", color = "#ff0000", admiralty = 1)
 							//if the return number was 0, it just means the mc was restarted too recently, and it just needs some time before we try again
 							//no need to handle that specially when defcon 0 can handle it
+
 						if(0) //DEFCON 0! (mc failed to restart)
 							var/rtn = Recreate_MC()
 							if(rtn > 0)
@@ -99,8 +112,6 @@ var/datum/controller/failsafe/Failsafe
 /datum/controller/failsafe/proc/defcon_pretty()
 	return defcon
 
-/datum/controller/failsafe/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-
-	stat("Failsafe Controller:", statclick.update("Defcon: [defcon_pretty()] (Interval: [Failsafe.processing_interval] | Iteration: [Failsafe.master_iteration])"))
+/datum/controller/failsafe/stat_entry(msg)
+	msg = "Defcon: [defcon_pretty()] (Interval: [Failsafe.processing_interval] | Iteration: [Failsafe.master_iteration])"
+	return msg

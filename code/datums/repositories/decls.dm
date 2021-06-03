@@ -41,6 +41,8 @@
 /decl/proc/Initialize()
 	return
 
-/decl/Destroy()
+/decl/Destroy(force)
 	crash_with("Prevented attempt to delete a decl instance: [log_info_line(src)]")
+	if(force)
+		return ..()
 	return QDEL_HINT_LETMELIVE // Prevents Decl destruction

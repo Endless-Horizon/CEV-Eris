@@ -86,6 +86,9 @@ proc/create_test_mob_with_mind(var/turf/mobloc = null, var/mobtype = /mob/living
 proc/damage_check(var/mob/living/M, var/damage_type)
 	var/loss
 
+	if(!istype(M))
+		return 0
+
 	switch(damage_type)
 		if(BRUTE)
 			loss = M.getBruteLoss()

@@ -14,7 +14,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	var/list/ItemsReference				// List of references with an associated item
 	var/list/nanoui_items				// List of items for NanoUI use
 	var/nanoui_menu = 0					// The current menu we are in
-	var/list/nanoui_data = new 			// Additional data for NanoUI use
+	var/list/nanonano_ui_data = new 			// Additional data for NanoUI use
 
 	var/list/purchase_log = new
 	var/datum/mind/uplink_owner
@@ -90,7 +90,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 		if(!istype(src.loc, /obj))
 			qdel(src)
 	..()
-	nanoui_data = list()
+	nanonano_ui_data = list()
 	update_nano_data()
 
 // Toggles the uplink on and off. Normally this will bypass the item's normal functions and go to the uplink menu, if activated.
@@ -115,7 +115,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 /*
 	NANO UI FOR UPLINK WOOP WOOP
 */
-/obj/item/device/uplink/hidden/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/device/uplink/hidden/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/title = "Remote Uplink"
 	var/data[0]
 
@@ -124,7 +124,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	data["menu"] = nanoui_menu
 	data["has_contracts"] = uplink_owner ? player_is_antag_in_list(uplink_owner, ROLES_CONTRACT | ROLES_CONTRACT_VIEWONLY)\
 	                                     : !!length(owner_roles & ROLES_CONTRACT | ROLES_CONTRACT_VIEWONLY)
-	data += nanoui_data
+	data += nanonano_ui_data
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -139,7 +139,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 
 // Interaction code. Gathers a list of items purchasable from the paren't uplink and displays it. It also adds a lock button.
 /obj/item/device/uplink/interact(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 // The purchasing code.
 /obj/item/device/uplink/hidden/Topic(href, href_list)
@@ -167,13 +167,13 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	return 1
 
 /obj/item/device/uplink/hidden/proc/update_nano_data()
-	nanoui_data["menu"] = nanoui_menu
+	nanonano_ui_data["menu"] = nanoui_menu
 	if(nanoui_menu == 0)
 		var/categories[0]
 		for(var/datum/uplink_category/category in uplink.categories)
 			if(category.can_view(src))
 				categories[++categories.len] = list("name" = category.name, "ref" = "\ref[category]")
-		nanoui_data["categories"] = categories
+		nanonano_ui_data["categories"] = categories
 	else if(nanoui_menu == 1)
 		var/items[0]
 		for(var/datum/uplink_item/item in category.items)
@@ -186,30 +186,30 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 					cost = "???"
 				items[++items.len] = list("name" = item.name, "description" = replacetext(item.description(), "\n", "<br>"), "can_buy" = item.can_buy(src), "cost" = cost, "ref" = "\ref[item]")
 
-		nanoui_data["items"] = items
+		nanonano_ui_data["items"] = items
 	else if(nanoui_menu == 2)
 		var/permanentData[0]
 		for(var/datum/data/record/L in sortRecord(data_core.locked))
 			permanentData[++permanentData.len] = list(Name = L.fields["name"],"id" = L.fields["id"])
-		nanoui_data["exploit_records"] = permanentData
+		nanonano_ui_data["exploit_records"] = permanentData
 	else if(nanoui_menu == 21)
-		nanoui_data["exploit_exists"] = 0
+		nanonano_ui_data["exploit_exists"] = 0
 
 		for(var/datum/data/record/L in data_core.locked)
 			if(L.fields["id"] == exploit_id)
-				nanoui_data["exploit"] = list()  // Setting this to equal L.fields passes it's variables that are lists as reference instead of value.
+				nanonano_ui_data["exploit"] = list()  // Setting this to equal L.fields passes it's variables that are lists as reference instead of value.
 								 // We trade off being able to automatically add shit for more control over what gets passed to json
 								 // and if it's sanitized for html.
-				nanoui_data["exploit"]["nanoui_exploit_record"] = html_encode(L.fields["exploit_record"])                         		// Change stuff into html
-				nanoui_data["exploit"]["nanoui_exploit_record"] = replacetext(nanoui_data["exploit"]["nanoui_exploit_record"], "\n", "<br>")    // change line breaks into <br>
-				nanoui_data["exploit"]["name"] =  html_encode(L.fields["name"])
-				nanoui_data["exploit"]["sex"] =  html_encode(L.fields["sex"])
-				nanoui_data["exploit"]["age"] =  html_encode(L.fields["age"])
-				nanoui_data["exploit"]["species"] =  html_encode(L.fields["species"])
-				nanoui_data["exploit"]["rank"] =  html_encode(L.fields["rank"])
-				nanoui_data["exploit"]["fingerprint"] =  html_encode(L.fields["fingerprint"])
+				nanonano_ui_data["exploit"]["nanoui_exploit_record"] = html_encode(L.fields["exploit_record"])                         		// Change stuff into html
+				nanonano_ui_data["exploit"]["nanoui_exploit_record"] = replacetext(nanonano_ui_data["exploit"]["nanoui_exploit_record"], "\n", "<br>")    // change line breaks into <br>
+				nanonano_ui_data["exploit"]["name"] =  html_encode(L.fields["name"])
+				nanonano_ui_data["exploit"]["sex"] =  html_encode(L.fields["sex"])
+				nanonano_ui_data["exploit"]["age"] =  html_encode(L.fields["age"])
+				nanonano_ui_data["exploit"]["species"] =  html_encode(L.fields["species"])
+				nanonano_ui_data["exploit"]["rank"] =  html_encode(L.fields["rank"])
+				nanonano_ui_data["exploit"]["fingerprint"] =  html_encode(L.fields["fingerprint"])
 
-				nanoui_data["exploit_exists"] = 1
+				nanonano_ui_data["exploit_exists"] = 1
 				break
 	else if(nanoui_menu == 3 && (uplink_owner ? player_is_antag_in_list(uplink_owner, ROLES_CONTRACT | ROLES_CONTRACT_VIEWONLY) : !!length(owner_roles & ROLES_CONTRACT | ROLES_CONTRACT_VIEWONLY)))
 		var/list/available_contracts = list()
@@ -225,8 +225,8 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 				available_contracts.Add(entry)
 			else
 				completed_contracts.Add(entry)
-		nanoui_data["available_contracts"] = available_contracts
-		nanoui_data["completed_contracts"] = completed_contracts
+		nanonano_ui_data["available_contracts"] = available_contracts
+		nanonano_ui_data["completed_contracts"] = completed_contracts
 
 // I placed this here because of how relevant it is.
 // You place this in your uplinkable item to check if an uplink is active or not.

@@ -7,19 +7,40 @@
 	plane = PLANE_SPACE
 	layer = SPACE_LAYER
 
-	temperature = T20C
+	temperature = TCMB
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	is_hole = TRUE
 //	heat_capacity = 700000 No.
+	vis_flags = VIS_INHERIT_ID //when this be added to vis_contents of something it be associated with something on clicking, important for visualisation of turf in openspace and interraction with openspace that show you turf.
 
-/turf/space/New()
+/turf/space/basic/New() //Do not convert to Initialize
+	//This is used to optimize the map loader
+	return
+
+/**
+ * Space Initialize
+ *
+ * Doesn't call parent, see [/atom/proc/Initialize]
+ */
+/turf/space/Initialize()
+	SHOULD_CALL_PARENT(FALSE)
 	if(!istype(src, /turf/space/transit))
 		icon_state = "white"
+	vis_contents.Cut() //removes inherited overlays
 	update_starlight()
-	..()
+
+	if((flags_1 & INITIALIZED_1) || initialized)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags_1 |= INITIALIZED_1
+	initialized = TRUE
+
+	ComponentInitialize()
+
+	return INITIALIZE_HINT_NORMAL
 
 /turf/space/update_plane()
 	return
+
 
 /turf/space/set_plane(var/np)
 	plane = np
@@ -39,10 +60,13 @@
 /turf/space/proc/update_starlight()
 	if(!config.starlight)
 		return
-	if(locate(/turf/simulated) in RANGE_TURFS(1, src))
+	for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
+		if(istype(t, /turf/space))
+			//let's NOT update this that much pls
+			continue
 		set_light(2, 1, config.starlight)
-	else
-		set_light(0)
+		return
+	set_light(0)
 
 /turf/space/attackby(obj/item/C as obj, mob/user as mob)
 

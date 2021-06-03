@@ -82,7 +82,7 @@
 	src.add_fingerprint(usr)
 	if(stat & (NOPOWER|BROKEN))
 		autodoc_processor.set_patient(L)
-		ui_interact(L)
+		nano_ui_interact(L)
 		update_use_power(2)
 		L.set_machine(src)
 	update_icon()
@@ -130,11 +130,11 @@
 		return
 	if(occupant)
 		locked = autodoc_processor.active
-		ui_interact(occupant)
+		nano_ui_interact(occupant)
 	update_icon()
 
-/obj/machinery/autodoc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FORCE_OPEN, var/datum/topic_state/state = GLOB.default_state)
-	autodoc_processor.ui_interact(user, ui_key, ui, force_open, state)
+/obj/machinery/autodoc/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FORCE_OPEN, var/datum/topic_state/state = GLOB.default_state)
+	autodoc_processor.nano_ui_interact(user, ui_key, ui, force_open, state)
 
 /obj/machinery/autodoc/Topic(href, href_list)
 	return autodoc_processor.Topic(href, href_list)

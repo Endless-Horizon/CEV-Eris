@@ -5,8 +5,9 @@ var/list/admin_datums = list()
 	var/client/owner	= null
 	var/rights = 0
 	var/fakekey			= null
+	var/name = "nobody's admin datum (no rank)" //Makes for better runtimes
 
-	var/weakref/marked_datum_weak
+	var/datum/marked_datum
 
 	var/admincaster_screen = 0	//See newscaster.dm under machinery for a full description
 	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as holders.
@@ -14,17 +15,19 @@ var/list/admin_datums = list()
 	var/admincaster_signature	//What you'll sign the newsfeeds as
 
 /datum/admins/proc/marked_datum()
-	if(marked_datum_weak)
-		return marked_datum_weak.resolve()
+	if(marked_datum)
+		return marked_datum
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
-		error("Admin datum created without a ckey argument. Datum has been deleted")
-		qdel(src)
-		return
-	admincaster_signature = "[company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
+		QDEL_IN(src, 0)
+		CRASH("Admin datum created without a ckey")
+	name = "[ckey]'s admin datum ([initial_rank])"
 	rank = initial_rank
+	admincaster_signature = "[company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rights = initial_rights
+	if(rights & R_DEBUG) //grant profile access
+		world.SetConfig("APP/admin", ckey, "role=admin")
 	admin_datums[ckey] = src
 
 /datum/admins/proc/associate(client/C)
@@ -59,7 +62,7 @@ proc/admin_proc()
 	if(!check_rights(R_ADMIN)) return
 	to_chat(world, "you have enough rights!")
 
-NOTE: It checks usr by default. Supply the "Ñ" argument if you wish to check for a specific client/mob.
+NOTE: It checks usr by default. Supply the "ï¿½" argument if you wish to check for a specific client/mob.
 */
 /proc/check_rights(rights_required, show_msg=1, client/C = usr)
 	if(ismob(C))

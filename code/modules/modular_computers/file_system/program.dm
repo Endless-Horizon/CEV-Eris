@@ -5,7 +5,7 @@
 	var/required_access = null						// Access level required to run/download the program.
 	var/requires_access_to_run = 1					// Whether the program checks for required_access when run.
 	var/requires_access_to_download = 1				// Whether the program checks for required_access when downloading.
-	var/datum/nano_module/NM = null					// If the program uses NanoModule, put it here and it will be automagically opened. Otherwise implement ui_interact.
+	var/datum/nano_module/NM = null					// If the program uses NanoModule, put it here and it will be automagically opened. Otherwise implement nano_ui_interact.
 	var/nanomodule_path = null						// Path to nanomodule, make sure to set this if implementing new program.
 	var/program_state = PROGRAM_STATE_KILLED		// PROGRAM_STATE_KILLED or PROGRAM_STATE_BACKGROUND or PROGRAM_STATE_ACTIVE - specifies whether this program is running.
 	var/obj/item/modular_computer/computer			// Device that runs this program.
@@ -185,13 +185,13 @@
 
 // This is called every tick when the program is enabled. Ensure you do parent call if you override it. If parent returns 1 continue with UI initialisation.
 // It returns 0 if it can't run or if NanoModule was used instead. I suggest using NanoModules where applicable.
-/datum/computer_file/program/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+/datum/computer_file/program/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	if(program_state != PROGRAM_STATE_ACTIVE) // Our program was closed. Close the ui if it exists.
 		if(ui)
 			ui.close()
-		return computer.ui_interact(user)
+		return computer.nano_ui_interact(user)
 	if(istype(NM))
-		NM.ui_interact(user, ui_key, null, force_open)
+		NM.nano_ui_interact(user, ui_key, null, force_open)
 		return 0
 	return 1
 

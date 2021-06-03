@@ -20,7 +20,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 		shuttle.init_docking_controllers()
 		shuttle.dock() //makes all shuttles docked to something at round start go into the docked state
 
-	for(var/obj/machinery/embedded_controller/C in SSmachines.machinery)
+	for(var/obj/machinery/embedded_controller/C in GLOB.machines)
 		if(istype(C.program, /datum/computer/file/embedded_program/docking))
 			C.program.tag = null //clear the tags, 'cause we don't need 'em anymore
 

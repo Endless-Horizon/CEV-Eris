@@ -12,7 +12,7 @@
 	if(!CM)
 		CM = new(src)
 	CM.set_category(category, src)
-	CM.ui_interact(src)
+	CM.nano_ui_interact(src)
 
 /datum/nano_module/craft
 	name = "Craft menu"
@@ -37,7 +37,7 @@
 /datum/nano_module/craft/proc/set_item(item_ref, mob/mob)
 	SScraft.current_item[mob.ckey] = locate(item_ref)
 
-/datum/nano_module/craft/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
+/datum/nano_module/craft/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS, datum/topic_state/state = GLOB.default_state)
 	if(!usr)
 		return
 	if(usr.incapacitated())
@@ -55,7 +55,7 @@
 	if(CR)
 		data["cur_item"] = list(
 			"name" = CR.name,
-			"icon" = getAtomCacheFilename(CR.result),
+			"icon" = icon2html(CR.result, user, sourceonly=TRUE),
 			"ref"  = "\ref[CR]",
 			"desc" = CR.get_description(),
 			"batch" = CR.flags & CRAFT_BATCH

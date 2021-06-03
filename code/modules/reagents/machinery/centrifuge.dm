@@ -125,10 +125,10 @@
 		return TRUE
 
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/centrifuge/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	var/list/data = ui_data()
+/obj/machinery/centrifuge/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+	var/list/data = nano_ui_data()
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -142,7 +142,7 @@
 		ui.open()
 
 
-/obj/machinery/centrifuge/ui_data()
+/obj/machinery/centrifuge/nano_ui_data()
 	var/data = list()
 	data["on"] = on
 	data["mode"] = mode
@@ -152,14 +152,14 @@
 	data["UPS"] = unitsPerSec
 
 	if(mainBeaker)
-		data["mainBeaker"] = mainBeaker.reagents.ui_data()
+		data["mainBeaker"] = mainBeaker.reagents.nano_ui_data()
 	var/list/beakersData = list()
 	for(var/i = 1, i <= beakerSlots, i++)
 		var/list/beakerInfo = list()
 		if(i <= separationBeakers.len)
 			var/obj/item/weapon/reagent_containers/B = separationBeakers[i]
 			if(B && B.reagents)
-				beakerInfo = B.reagents.ui_data()
+				beakerInfo = B.reagents.nano_ui_data()
 		beakerInfo["slot"] = i
 		beakersData.Add(list(beakerInfo))
 	data["beakers"] = beakersData
@@ -292,10 +292,10 @@
 	if(loc != user && ..())
 		return TRUE
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/item/device/makeshift_centrifuge/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
-	var/list/data = ui_data()
+/obj/item/device/makeshift_centrifuge/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+	var/list/data = nano_ui_data()
 
 	// update the ui if it exists, returns null if no ui is passed/found
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -308,7 +308,7 @@
 		// open the new ui window
 		ui.open()
 
-/obj/item/device/makeshift_centrifuge/ui_data()
+/obj/item/device/makeshift_centrifuge/nano_ui_data()
 	var/data = list()
 	data["on"] = on
 	data["mode"] = mode
@@ -316,14 +316,14 @@
 	data["minimal"] = TRUE
 
 	if(mainBeaker)
-		data["mainBeaker"] = mainBeaker.reagents.ui_data()
+		data["mainBeaker"] = mainBeaker.reagents.nano_ui_data()
 	var/list/beakersData = list()
 	for(var/i = 1, i <= beakerSlots, i++)
 		var/list/beakerInfo = list()
 		if(i <= separationBeakers.len)
 			var/obj/item/weapon/reagent_containers/B = separationBeakers[i]
 			if(B && B.reagents)
-				beakerInfo = B.reagents.ui_data()
+				beakerInfo = B.reagents.nano_ui_data()
 		beakerInfo["slot"] = i
 		beakersData.Add(list(beakerInfo))
 	data["beakers"] = beakersData

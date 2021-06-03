@@ -26,7 +26,7 @@
 
 /mob/living/carbon/proc/get_blood_data()
 	var/data = list()
-	data["donor"] = weakref(src)
+	data["donor"] = WEAKREF(src)
 	if (!data["virus2"])
 		data["virus2"] = list()
 	data["virus2"] |= virus_copylist(virus2)
@@ -57,7 +57,7 @@
 	if(in_stasis)
 		return
 
-	if(!species.has_process[OP_HEART])
+	if(!species?.has_process[OP_HEART])
 		return
 
 

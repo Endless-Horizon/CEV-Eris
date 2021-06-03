@@ -66,8 +66,8 @@
 	return TRUE
 
 
-/datum/computer_file/binary/design/ui_data()
-	var/list/data = design.ui_data().Copy()
+/datum/computer_file/binary/design/nano_ui_data()
+	var/list/data = design.nano_ui_data().Copy()
 	data["copy_protected"] = copy_protected
 	data["filename"] = filename
 	data["point_cost"] = point_cost

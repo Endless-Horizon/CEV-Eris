@@ -2,7 +2,7 @@
 // NOTES:
 // music files should be in ogg extention
 
-/hook/startup/proc/initLobbyScreen()
+/hook/startup_sync/proc/initLobbyScreen()
 	var/list/variations = subtypesof(/datum/lobbyscreen)
 	var/datum/lobbyscreen/LS = pick(variations)
 	GLOB.lobbyScreen = new LS()

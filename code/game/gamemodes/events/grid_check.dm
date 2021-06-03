@@ -40,12 +40,12 @@ So sometimes this event can result in people finding new and interesting things
 	if(announce)
 		command_announcement.Announce("Abnormal activity detected in [station_name()]'s powernet. As a precautionary measure, the ship's power will be shut off for an indeterminate duration.", "Critical Power Failure", new_sound = 'sound/AI/poweroff.ogg')
 
-	for(var/obj/machinery/power/smes/buildable/S in SSmachines.machinery)
+	for(var/obj/machinery/power/smes/buildable/S in GLOB.machines)
 		if (is_valid_smes(S))
 			S.energy_fail(rand(30 * severity*severity,40 * severity*severity))
 
 
-	for(var/obj/machinery/power/apc/C in SSmachines.machinery)
+	for(var/obj/machinery/power/apc/C in GLOB.machines)
 		if(is_valid_apc(C) && (!affected_z_levels || (C.z in affected_z_levels)))
 			C.energy_fail(rand(90 * severity*severity,200 * severity*severity))
 
@@ -54,11 +54,11 @@ So sometimes this event can result in people finding new and interesting things
 
 	if(announce)
 		command_announcement.Announce("Power has been restored to [station_name()]. We apologize for the inconvenience.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')
-	for(var/obj/machinery/power/apc/C in SSmachines.machinery)
+	for(var/obj/machinery/power/apc/C in GLOB.machines)
 		C.failure_timer = 0
 		if(C.cell)
 			C.cell.charge = C.cell.maxcharge
-	for(var/obj/machinery/power/smes/S in SSmachines.machinery)
+	for(var/obj/machinery/power/smes/S in GLOB.machines)
 		var/area/current_area = get_area(S)
 		if(current_area.type in skipped_areas)
 			continue
@@ -71,7 +71,7 @@ So sometimes this event can result in people finding new and interesting things
 
 	if(announce)
 		command_announcement.Announce("All SMESs on [station_name()] have been recharged. We apologize for the inconvenience.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')
-	for(var/obj/machinery/power/smes/S in SSmachines.machinery)
+	for(var/obj/machinery/power/smes/S in GLOB.machines)
 		S.failure_timer = 0
 		S.charge = S.capacity
 		S.output_level = S.output_level_max

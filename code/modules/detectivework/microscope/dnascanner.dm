@@ -35,7 +35,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] only accepts used swabs."))
 		return
 
-/obj/machinery/dnaforensics/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/dnaforensics/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	if(stat & (NOPOWER)) return
 	if(user.stat || user.restrained()) return
 	var/list/data = list()
@@ -123,7 +123,7 @@
 	return
 
 /obj/machinery/dnaforensics/attack_hand(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/dnaforensics/verb/toggle_lid()
 	set category = "Object"

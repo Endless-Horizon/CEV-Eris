@@ -422,7 +422,7 @@
 	if(autodoc_processor.active)
 		autodoc_processor.stop()
 	autodoc_processor.set_patient(holder.wearer)
-	ui_interact(usr)
+	nano_ui_interact(usr)
 	return 1
 /obj/item/rig_module/autodoc/Topic(href, href_list)
 	return autodoc_processor.Topic(href, href_list)
@@ -442,8 +442,8 @@
 		passive_power_cost = 0
 		wearer_loc = null
 
-/obj/item/rig_module/autodoc/ui_interact(mob/user, ui_key, datum/nanoui/ui, force_open, datum/nanoui/master_ui, datum/topic_state/state = GLOB.deep_inventory_state)
-	autodoc_processor.ui_interact(user, ui_key, ui, force_open, state = GLOB.deep_inventory_state)
+/obj/item/rig_module/autodoc/nano_ui_interact(mob/user, ui_key, datum/nanoui/ui, force_open, datum/nanoui/master_ui, datum/topic_state/state = GLOB.deep_inventory_state)
+	autodoc_processor.nano_ui_interact(user, ui_key, ui, force_open, state = GLOB.deep_inventory_state)
 /obj/item/rig_module/autodoc/activate()
 	return
 /obj/item/rig_module/autodoc/deactivate()

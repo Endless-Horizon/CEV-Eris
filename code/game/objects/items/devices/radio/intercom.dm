@@ -11,6 +11,40 @@
 	var/number = 0
 	var/area/linked_area
 
+/obj/item/device/radio/intercom/Initialize(mapload, ndir, building)
+	. = ..()
+	// if(building)
+	// 	setDir(ndir)
+	var/area/current_area = get_area(src)
+	if(!current_area)
+		return
+	// GOOD FUCKING LORD DO **NOT** LOOP ADDING SIGNALS
+	// todo: remove apc delete because you can just rebuild apcs
+	RegisterSignal(current_area, COMSIG_AREA_APC_DELETED, .proc/on_apc_removal)
+	RegisterSignal(current_area, COMSIG_AREA_APC_POWER_CHANGE, .proc/AreaPowerCheck)
+
+/**
+ * Proc called whenever the intercom's area loses or gains power. Responsible for setting the `on` variable and calling `update_icon()`.
+ *
+ * Normally called after the intercom's area recieves the `COMSIG_AREA_POWER_CHANGE` signal, but it can also be called directly.
+ * Arguments:
+ * * source - the area that just had a power change.
+ */
+/obj/item/device/radio/intercom/proc/AreaPowerCheck(datum/source)
+	var/area/current_area = get_area(src)
+	if(!current_area)
+		on = FALSE
+	else
+		on = current_area.powered(EQUIP) // set "on" to the equipment power status of our area.
+
+	icon_state = on ? initial(icon_state) : "intercom-p"
+
+/obj/item/device/radio/intercom/proc/on_apc_removal()
+	SIGNAL_HANDLER
+	linked_area = null
+	on = FALSE
+	icon_state = "intercom-p"
+
 /obj/item/device/radio/intercom/custom
 	name = "station intercom (Custom)"
 	broadcasting = 0
@@ -37,10 +71,6 @@
 	name = "station intercom (Security)"
 	frequency = SEC_I_FREQ
 
-/obj/item/device/radio/intercom/New()
-	..()
-	loop_area_check()
-
 /obj/item/device/radio/intercom/department/medbay/New()
 	..()
 	internal_channels = default_medbay_channels.Copy()
@@ -51,7 +81,6 @@
 		num2text(PUB_FREQ) = list(),
 		num2text(SEC_I_FREQ) = list(access_security)
 	)
-
 
 /obj/item/device/radio/intercom/syndicate
 	name = "illicit intercom"
@@ -66,13 +95,11 @@
 
 /obj/item/device/radio/intercom/attack_ai(mob/user as mob)
 	src.add_fingerprint(user)
-	spawn (0)
-		attack_self(user)
+	attack_self(user)
 
 /obj/item/device/radio/intercom/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)
-	spawn (0)
-		attack_self(user)
+	attack_self(user)
 
 /obj/item/device/radio/intercom/receive_range(freq, level)
 	if (!on)
@@ -89,26 +116,6 @@
 
 	return canhear_range
 
-/obj/item/device/radio/intercom/proc/change_status()
-	on = linked_area.powered(EQUIP)
-	icon_state = on ? "intercom" : "intercom-p"
-
-/obj/item/device/radio/intercom/proc/loop_area_check()
-	var/area/target_area = get_area(src)
-	if(!target_area?.apc)
-		addtimer(CALLBACK(src, .proc/loop_area_check), 30 SECONDS) // We don't proces if there is no APC , no point in doing so is there ?
-		return FALSE
-	linked_area = target_area
-	RegisterSignal(target_area, COMSIG_AREA_APC_DELETED, .proc/on_apc_removal)
-	RegisterSignal(target_area, COMSIG_AREA_APC_POWER_CHANGE, .proc/change_status)
-
-/obj/item/device/radio/intercom/proc/on_apc_removal()
-	UnregisterSignal(linked_area , COMSIG_AREA_APC_DELETED)
-	UnregisterSignal(linked_area, COMSIG_AREA_APC_POWER_CHANGE)
-	linked_area = null
-	on = FALSE
-	icon_state = "intercom-p"
-	addtimer(CALLBACK(src, .proc/loop_area_check), 30 SECONDS)
 
 /obj/item/device/radio/intercom/broadcasting
 	broadcasting = 1

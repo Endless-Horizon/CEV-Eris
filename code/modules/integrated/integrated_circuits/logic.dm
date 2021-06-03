@@ -37,7 +37,7 @@
 
 /datum/unit_test/integrated_circuits/equals_6/arrange()
 	A = new(get_standard_turf())
-	inputs_to_give = list(weakref(A), weakref(A))
+	inputs_to_give = list(WEAKREF(A), WEAKREF(A))
 	..()
 
 /datum/unit_test/integrated_circuits/equals_6/clean_up()
@@ -55,7 +55,7 @@
 /datum/unit_test/integrated_circuits/equals_7/arrange()
 	A = new(get_standard_turf())
 	B = new(get_standard_turf())
-	inputs_to_give = list(weakref(A), weakref(B))
+	inputs_to_give = list(WEAKREF(A), WEAKREF(B))
 	..()
 
 /datum/unit_test/integrated_circuits/equals_7/clean_up()

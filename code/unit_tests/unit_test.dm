@@ -24,6 +24,7 @@
  *
  */
 
+GLOBAL_VAR(test_log)
 
 var/all_unit_tests_passed = 1
 var/failed_unit_tests = 0
