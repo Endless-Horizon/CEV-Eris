@@ -5,7 +5,7 @@
 	desc = "Used to teleport objects to and from the telescience telepad."
 	icon_screen = "teleport"
 	light_color = "#6496fa"
-	//circuit = /obj/item/weapon/stock_parts/circuitboard/telesci_console
+	//circuit = /obj/item/stock_parts/circuitboard/telesci_console
 	var/sending = 1
 	var/obj/machinery/telepad/telepad = null
 	var/temp_msg = "Telescience control console initialized.<BR>Welcome."
@@ -64,8 +64,8 @@
 			user.unEquip(W)
 			W.forceMove(src)
 			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", SPAN_NOTICE("<span class='notice'>You insert [W] into \the [src]'s GPS device slot.</span>"))
-	else if(istype(W, /obj/item/weapon/tool/multitool))
-		var/obj/item/weapon/tool/multitool/M = W
+	else if(istype(W, /obj/item/tool/multitool))
+		var/obj/item/tool/multitool/M = W
 		if(M.buffer_object && istype(M.buffer_object, /obj/machinery/telepad))
 			telepad = M.buffer_object
 			M.buffer_object = null

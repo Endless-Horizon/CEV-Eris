@@ -1,4 +1,4 @@
-/obj/item/weapon/mine
+/obj/item/mine
 	name = "Excelsior Mine"
 	desc = "An anti-personnel mine. IFF technology grants safe passage to Excelsior agents, and a mercifully brief end to others, unless they have a Pulse tool nearby"
 	icon = 'icons/obj/machines/excelsior/objects.dmi'
@@ -27,23 +27,23 @@
 	var/deployed = FALSE
 	anchored = FALSE
 
-/obj/item/weapon/mine/ignite_act()
+/obj/item/mine/ignite_act()
 	explode()
 
-/obj/item/weapon/mine/proc/explode()
+/obj/item/mine/proc/explode()
 	var/turf/T = get_turf(src)
 	explosion(T,explosion_d_size,explosion_h_size,explosion_l_size,explosion_f_size)
 	fragment_explosion(T, spread_radius, fragment_type, num_fragments, null, damage_step)
 	if(src)
 		qdel(src)
 
-/obj/item/weapon/mine/on_update_icon()
+/obj/item/mine/on_update_icon()
 	cut_overlays()
 
 	if(armed)
 		add_overlays(image(icon,"mine_light"))
 
-/obj/item/weapon/mine/attack_self(mob/user)
+/obj/item/mine/attack_self(mob/user)
 	if(locate(/obj/structure/multiz/ladder) in get_turf(user))
 		to_chat(user, SPAN_NOTICE("You cannot place \the [src] here, there is a ladder."))
 		return
@@ -70,7 +70,7 @@
 
 	update_icon()
 
-/obj/item/weapon/mine/attack_hand(mob/user)
+/obj/item/mine/attack_hand(mob/user)
 	for(var/datum/antagonist/A in user.mind.antagonist)
 		if(A.id == ROLE_EXCELSIOR_REV && deployed)
 			user.visible_message(
@@ -95,7 +95,7 @@
 			return
 	. =..()
 
-/obj/item/weapon/mine/attackby(obj/item/I, mob/user)
+/obj/item/mine/attackby(obj/item/I, mob/user)
 	if(QUALITY_PULSING in I.tool_qualities)
 		
 		if (deployed)
@@ -122,7 +122,7 @@
 		return
 
 
-/obj/item/weapon/mine/Crossed(mob/AM)
+/obj/item/mine/Crossed(mob/AM)
 	if (armed)
 		if(locate(/obj/structure/multiz/ladder) in get_turf(loc))
 			visible_message(SPAN_DANGER("\The [src]'s triggering mechanism is disrupted by the ladder and does not go off."))
@@ -141,7 +141,7 @@
 	.=..()
 
 /*
-/obj/item/weapon/mine/attackby(obj/item/I, mob/user)
+/obj/item/mine/attackby(obj/item/I, mob/user)
 	src.add_fingerprint(user)
 	if(detonator && QUALITY_SCREW_DRIVING in I.tool_qualities)
 		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_COG))

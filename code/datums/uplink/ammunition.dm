@@ -207,25 +207,25 @@
 	name = ".60 Anti material \"Penetrator\""
 	desc = "A box full of .60 AMR shells. Have 5 shells inside."
 	item_cost = 2
-	path = /obj/item/weapon/storage/box/sniperammo
+	path = /obj/item/storage/box/sniperammo
 
 /datum/uplink_item/item/ammo/sniperammo/emp
 	name = ".60 Anti material \"Blackout\""
 	desc = "A box full of .60 AMR EMP shells. EMP shells release an electromagnetic pulse on impact. Have 5 shells inside."
 	item_cost = 3
-	path = /obj/item/weapon/storage/box/sniperammo/emp
+	path = /obj/item/storage/box/sniperammo/emp
 
 /datum/uplink_item/item/ammo/sniperammo/uranium
 	name = ".60 Anti material \"Meltdown\""
 	desc = "A box full of .60 AMR depleted uranium shells with high armor-piercing power. radiation sickness included. Have 5 shells inside."
 	item_cost = 3
-	path = /obj/item/weapon/storage/box/sniperammo/uranium
+	path = /obj/item/storage/box/sniperammo/uranium
 
 /datum/uplink_item/item/ammo/sniperammo/breach
 	name = ".60 Anti material \"Breacher\""
 	desc = "A box full of low velocity .60 AMR breaching shells, designed not to pierce, but to destroy structures from a distance. Close-ranged shots have less destructive power. Have 5 shells inside."
 	item_cost = 3
-	path = /obj/item/weapon/storage/box/sniperammo/breach
+	path = /obj/item/storage/box/sniperammo/breach
 
 /datum/uplink_item/item/ammo/sniperammo/large
 	name = ".60 Anti material \"Penetrator\" crate"
@@ -254,14 +254,14 @@
 /datum/uplink_item/item/ammo/cell/small
 	name = "Small Power Cell"
 	item_cost = 3
-	path = /obj/item/weapon/cell/small/hyper
+	path = /obj/item/cell/small/hyper
 
 /datum/uplink_item/item/ammo/cell/medium
 	name = "Medium Power Cell"
 	item_cost = 4
-	path = /obj/item/weapon/cell/medium/hyper
+	path = /obj/item/cell/medium/hyper
 
 /datum/uplink_item/item/ammo/cell/large
 	name = "Large Power Cell"
 	item_cost = 5
-	path = /obj/item/weapon/cell/large/hyper
+	path = /obj/item/cell/large/hyper

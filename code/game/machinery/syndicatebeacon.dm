@@ -128,8 +128,8 @@
 		return
 
 
-/obj/machinery/power/singularity_beacon/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/weapon/tool/screwdriver))
+/obj/machinery/power/singularity_beacon/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/tool/screwdriver))
 		if(active)
 			user << SPAN_DANGER("You need to deactivate the beacon first!")
 			return

@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/laser
+/obj/item/gun/energy/laser
 	name = "NT LG \"Lightfall\""
 	desc = "\"NeoTheology\" brand laser carbine. Deadly and radiant, like the ire of God it represents."
 	icon = 'icons/obj/guns/energy/laser.dmi'
@@ -22,7 +22,7 @@
 	)
 	twohanded = TRUE
 
-/obj/item/weapon/gun/energy/laser/mounted
+/obj/item/gun/energy/laser/mounted
 	self_recharge = TRUE
 	use_external_power = TRUE
 	safety = FALSE
@@ -33,7 +33,7 @@
 	charge_cost = 100
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/gun/energy/laser/mounted/blitz
+/obj/item/gun/energy/laser/mounted/blitz
 	name = "SDF LR \"Strahl\""
 	desc = "A miniaturized laser rifle, remounted for robotic use only."
 	icon_state = "laser_turret"
@@ -43,7 +43,7 @@
 	charge_cost = 100
 	spawn_tags = null
 
-/obj/item/weapon/gun/energy/laser/practice
+/obj/item/gun/energy/laser/practice
 	name = "NT LG \"Lightfall\" - P"
 	desc = "A modified version of \"NeoTheology\" brand laser carbine, this one fires less concentrated energy bolts, designed for target practice."
 	matter = list(MATERIAL_PLASTEEL = 20, MATERIAL_WOOD = 8, MATERIAL_SILVER = 2)
@@ -51,7 +51,7 @@
 	projectile_type = /obj/item/projectile/beam/practice
 	zoom_factor = 0
 
-/obj/item/weapon/gun/energy/retro
+/obj/item/gun/energy/retro
 	name = "OS LG \"Cog\""
 	icon = 'icons/obj/guns/energy/retro.dmi'
 	icon_state = "retro"
@@ -74,7 +74,7 @@
 	)
 	twohanded = TRUE
 
-/obj/item/weapon/gun/energy/captain
+/obj/item/gun/energy/captain
 	name = "NT LG \"Destiny\""
 	icon = 'icons/obj/guns/energy/capgun.dmi'
 	icon_state = "caplaser"
@@ -100,7 +100,7 @@
 	twohanded = FALSE
 	spawn_blacklisted = TRUE//antag_item_targets
 
-/obj/item/weapon/gun/energy/lasercannon
+/obj/item/gun/energy/lasercannon
 	name = "Prototype: laser cannon"
 	desc = "With the laser cannon, the lasing medium is enclosed in a tube lined with uranium-235 and subjected to high neutron flux in a nuclear reactor core. This incredible technology may help YOU achieve high excitation rates with small laser volumes!"
 	icon = 'icons/obj/guns/energy/lascannon.dmi'
@@ -123,7 +123,7 @@
 		)
 	twohanded = TRUE
 
-/obj/item/weapon/gun/energy/lasercannon/mounted
+/obj/item/gun/energy/lasercannon/mounted
 	name = "mounted laser cannon"
 	self_recharge = TRUE
 	use_external_power = TRUE
@@ -136,7 +136,7 @@
 	charge_cost = 300
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/gun/energy/psychic
+/obj/item/gun/energy/psychic
 	icon = 'icons/obj/guns/energy/psychiccannon.dmi'
 	icon_state = "psychic_lasercannon"
 	item_state = "psychic_lasercannon"
@@ -149,17 +149,17 @@
 	var/datum/antag_contract/derail/contract
 	pierce_multiplier = 2
 
-/obj/item/weapon/gun/energy/psychic/Initialize()
+/obj/item/gun/energy/psychic/Initialize()
 	..()
 	if(traitor)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/gun/energy/psychic/Destroy()
+/obj/item/gun/energy/psychic/Destroy()
 	if(traitor)
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/weapon/gun/energy/psychic/Process()
+/obj/item/gun/energy/psychic/Process()
 	if(owner && !contract)
 		find_contract()
 		if(contract)
@@ -167,7 +167,7 @@
 	else
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/weapon/gun/energy/psychic/proc/find_contract()
+/obj/item/gun/energy/psychic/proc/find_contract()
 	for(var/datum/antag_contract/derail/C in GLOB.various_antag_contracts)
 		if(C.completed)
 			continue
@@ -177,7 +177,7 @@
 			to_chat(owner.current, SPAN_NOTICE("[src] has found new contract."))
 		break
 
-/obj/item/weapon/gun/energy/psychic/proc/reg_break(mob/living/carbon/human/victim)
+/obj/item/gun/energy/psychic/proc/reg_break(mob/living/carbon/human/victim)
 	if(victim.get_species() != SPECIES_HUMAN)
 		return
 
@@ -204,7 +204,7 @@
 		contract = null
 		START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/gun/energy/psychic/lasercannon
+/obj/item/gun/energy/psychic/lasercannon
 	name = "Prototype: psychic laser cannon"
 	desc = "A laser cannon that attacks the minds of people, causing sanity loss and inducing mental breakdowns."
 	icon = 'icons/obj/guns/energy/psychiccannon.dmi'
@@ -231,7 +231,7 @@
 		)
 	twohanded = FALSE
 
-/obj/item/weapon/gun/energy/psychic/mindflayer
+/obj/item/gun/energy/psychic/mindflayer
 	name = "Prototype: mind flayer"
 	desc = "A cruel weapon designed to break the minds of those it targets, causing sanity loss and mental breakdowns."
 	icon = 'icons/obj/guns/energy/xray.dmi'
@@ -244,7 +244,7 @@
 	matter = list(MATERIAL_PLASTEEL = 15, MATERIAL_SILVER = 5, MATERIAL_PLASMA = 3)
 	twohanded = FALSE
 
-/obj/item/weapon/gun/energy/laser/makeshift
+/obj/item/gun/energy/laser/makeshift
 	name = "makeshift laser carbine"
 	desc = "A makeshift laser carbine, rather wastefull on its chage, but nonetheless reliable"
 	icon = 'icons/obj/guns/energy/makeshift_carbine.dmi'

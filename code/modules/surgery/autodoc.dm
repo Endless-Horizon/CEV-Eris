@@ -93,7 +93,7 @@
 				patchnote.surgery_operations |= AUTODOC_FRACTURE
 		if(AUTODOC_EMBED_OBJECT in possible_operations)
 			if(external.implants)
-				if(/obj/item/weapon/material/shard/shrapnel in external.implants)
+				if(/obj/item/material/shard/shrapnel in external.implants)
 					patchnote.surgery_operations |= AUTODOC_EMBED_OBJECT
 
 		if(external.wounds.len)
@@ -152,7 +152,7 @@
 
 	else if(patchnote.surgery_operations & AUTODOC_EMBED_OBJECT)
 		to_chat(patient, SPAN_NOTICE("Removing embedded objects from the patients [external]."))
-		for(var/obj/item/weapon/material/shard/shrapnel/shrapnel in external.implants)
+		for(var/obj/item/material/shard/shrapnel/shrapnel in external.implants)
 			external.implants -= shrapnel
 			shrapnel.loc = get_turf(patient)
 		patchnote.surgery_operations &= ~AUTODOC_EMBED_OBJECT
@@ -425,7 +425,7 @@
 	if(!patient)
 		patient_account = null
 		return
-	var/obj/item/weapon/card/id/id_card = patient.GetIdCard()
+	var/obj/item/card/id/id_card = patient.GetIdCard()
 	if(id_card)
 		patient_account = get_account(id_card.associated_account_number)
 		if(patient_account.security_level)

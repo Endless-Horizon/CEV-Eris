@@ -1,10 +1,10 @@
-/obj/item/weapon/implant/core_implant
+/obj/item/implant/core_implant
 	name = "core implant"
 	icon = 'icons/obj/device.dmi'
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL=2, TECH_BIO=7, TECH_DATA=5)
 	external = TRUE
-	var/implant_type = /obj/item/weapon/implant/core_implant
+	var/implant_type = /obj/item/implant/core_implant
 	var/active = FALSE
 	var/activated = FALSE			//true, if cruciform was activated once
 
@@ -21,18 +21,18 @@
 
 	var/list/access = list()	// Core implant can grant access levels to its user
 
-/obj/item/weapon/implant/core_implant/Destroy()
+/obj/item/implant/core_implant/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	deactivate()
 	. = ..()
 
-/obj/item/weapon/implant/core_implant/uninstall()
+/obj/item/implant/core_implant/uninstall()
 	if(active)
 		hard_eject()
 		deactivate()
 	..()
 
-/obj/item/weapon/implant/core_implant/activate()
+/obj/item/implant/core_implant/activate()
 	if(!wearer || active)
 		return
 	active = TRUE
@@ -42,7 +42,7 @@
 	START_PROCESSING(SSobj, src)
 	add_hearing()
 
-/obj/item/weapon/implant/core_implant/deactivate()
+/obj/item/implant/core_implant/deactivate()
 	if(!active)
 		return
 	remove_hearing()
@@ -50,14 +50,14 @@
 	remove_ritual_verbs()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/weapon/implant/core_implant/proc/update_rituals()
+/obj/item/implant/core_implant/proc/update_rituals()
 	known_rituals = list()
 	for(var/datum/core_module/rituals/M in modules)
 		if(istype(src,M.implant_type))
 			for(var/R in M.module_rituals)
 				known_rituals |= R
 
-/obj/item/weapon/implant/core_implant/proc/add_ritual_verbs()
+/obj/item/implant/core_implant/proc/add_ritual_verbs()
 	if(!wearer || !active)
 		return
 
@@ -66,7 +66,7 @@
 			var/datum/ritual/mind/m = r
 			wearer.verbs |= initial(m.activator_verb)
 
-/obj/item/weapon/implant/core_implant/proc/remove_ritual_verbs()
+/obj/item/implant/core_implant/proc/remove_ritual_verbs()
 	if(!wearer || !active)
 		return
 
@@ -75,13 +75,13 @@
 			var/datum/ritual/mind/m = r
 			wearer.verbs.Remove(initial(m.activator_verb))
 
-/obj/item/weapon/implant/core_implant/malfunction()
+/obj/item/implant/core_implant/malfunction()
 	hard_eject()
 
-/obj/item/weapon/implant/core_implant/proc/hard_eject()
+/obj/item/implant/core_implant/proc/hard_eject()
 	return
 
-/obj/item/weapon/implant/core_implant/proc/update_address()
+/obj/item/implant/core_implant/proc/update_address()
 	if(!loc)
 		address = null
 		return
@@ -97,7 +97,7 @@
 
 	address = null
 
-/obj/item/weapon/implant/core_implant/GetAccess()
+/obj/item/implant/core_implant/GetAccess()
 	if(!activated) // A brand new implant can't be used as an access card, but one pulled from a corpse can.
 		return list()
 
@@ -107,11 +107,11 @@
 		L |= M.GetAccess()
 	return L
 
-/obj/item/weapon/implant/core_implant/on_uninstall()
+/obj/item/implant/core_implant/on_uninstall()
 	for(var/datum/core_module/M in modules)
 		M.on_implant_uninstall()
 
-/obj/item/weapon/implant/core_implant/hear_talk(mob/living/carbon/human/H, message, verb, datum/language/speaking, speech_volume, message_pre_problems)
+/obj/item/implant/core_implant/hear_talk(mob/living/carbon/human/H, message, verb, datum/language/speaking, speech_volume, message_pre_problems)
 	var/group_ritual_leader = FALSE
 	for(var/datum/core_module/group_ritual/GR in src.modules)
 		GR.hear(H, message)
@@ -136,7 +136,7 @@
 				R.activate(H, src, R.get_targets(ture_message))
 				return
 
-/obj/item/weapon/implant/core_implant/proc/hear_other(mob/living/carbon/human/H, message)
+/obj/item/implant/core_implant/proc/hear_other(mob/living/carbon/human/H, message)
 	var/datum/core_module/group_ritual/GR = H.get_core_implant().get_module(/datum/core_module/group_ritual)
 	if(GR?.ritual.name in known_rituals)
 		if(message == GR.phrases[1])
@@ -146,16 +146,16 @@
 				wearer.say(message)
 
 
-/obj/item/weapon/implant/core_implant/proc/use_power(var/value)
+/obj/item/implant/core_implant/proc/use_power(var/value)
 	power = max(0, power - value)
 
-/obj/item/weapon/implant/core_implant/proc/restore_power(var/value)
+/obj/item/implant/core_implant/proc/restore_power(var/value)
 	power = min(max_power, power + value)
 
-/obj/item/weapon/implant/core_implant/proc/auto_restore_power()
+/obj/item/implant/core_implant/proc/auto_restore_power()
 	restore_power(power_regen)
 
-/obj/item/weapon/implant/core_implant/Process()
+/obj/item/implant/core_implant/Process()
 	if(!active)
 		return
 	if((!wearer || loc != wearer) && active)
@@ -165,7 +165,7 @@
 	else
 		auto_restore_power()
 
-/obj/item/weapon/implant/core_implant/proc/get_module(var/m_type)
+/obj/item/implant/core_implant/proc/get_module(var/m_type)
 	if(!ispath(m_type))
 		return
 	for(var/datum/core_module/CM in modules)
@@ -173,7 +173,7 @@
 			return CM
 	process_modules()
 
-/obj/item/weapon/implant/core_implant/proc/add_module(var/datum/core_module/CM)
+/obj/item/implant/core_implant/proc/add_module(var/datum/core_module/CM)
 	if(!istype(src,CM.implant_type))
 		return FALSE
 
@@ -193,28 +193,28 @@
 	CM.install()
 	return TRUE
 
-/obj/item/weapon/implant/core_implant/proc/remove_module(var/datum/core_module/CM)
+/obj/item/implant/core_implant/proc/remove_module(var/datum/core_module/CM)
 	if(istype(CM) && CM.implant == src)
 		CM.uninstall()
 		modules.Remove(CM)
 		CM.implant = null
 		qdel(CM)
 
-/obj/item/weapon/implant/core_implant/proc/remove_modules(var/m_type)
+/obj/item/implant/core_implant/proc/remove_modules(var/m_type)
 	if(!ispath(m_type))
 		return
 	for(var/datum/core_module/CM in modules)
 		if(istype(CM,m_type))
 			remove_module(CM)
 
-/obj/item/weapon/implant/core_implant/proc/install_default_modules_by_job(datum/job/J)
+/obj/item/implant/core_implant/proc/install_default_modules_by_job(datum/job/J)
 	for(var/module_type in J.core_upgrades)
 		add_module(new module_type)
 
-/obj/item/weapon/implant/core_implant/proc/process_modules()
+/obj/item/implant/core_implant/proc/process_modules()
 	for(var/datum/core_module/CM in modules)
 		if(CM.time > 0 && CM.install_time + CM.time <= world.time)
 			CM.uninstall()
 
-/obj/item/weapon/implant/core_implant/proc/get_rituals()
+/obj/item/implant/core_implant/proc/get_rituals()
 	return known_rituals

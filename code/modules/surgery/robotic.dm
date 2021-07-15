@@ -105,8 +105,8 @@
 		SPAN_WARNING("[user] scrapes something inside [organ.get_surgery_name()] with \the [tool]!"),
 		SPAN_WARNING("You scrape something inside [organ.get_surgery_name()] with \the [tool]!")
 	)
-	if(istype(target, /obj/item/weapon/implant) && prob(25))
-		var/obj/item/weapon/implant/imp = target
+	if(istype(target, /obj/item/implant) && prob(25))
+		var/obj/item/implant/imp = target
 		imp.malfunction(1)
 
 

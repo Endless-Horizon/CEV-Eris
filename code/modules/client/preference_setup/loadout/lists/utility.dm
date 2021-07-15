@@ -1,30 +1,30 @@
 // "Useful" items - I'm guessing things that might be used at work?
 /datum/gear/utility
 	display_name = "briefcase"
-	path = /obj/item/weapon/storage/briefcase
+	path = /obj/item/storage/briefcase
 	sort_category = "Utility"
 
 /datum/gear/utility/clipboard
 	display_name = "clipboard"
-	path = /obj/item/weapon/clipboard
+	path = /obj/item/clipboard
 
 /datum/gear/utility/folder_colorable
 	display_name = "folder, colorable"
 	flags = GEAR_HAS_COLOR_SELECTION
-	path = /obj/item/weapon/folder
+	path = /obj/item/folder
 
 /datum/gear/utility/folder_presets
 	display_name = "folder"
-	path = /obj/item/weapon/folder
+	path = /obj/item/folder
 
 /datum/gear/utility/folder_presets/New()
 	..()
 	var/folder = list(
-		"Grey"			=	/obj/item/weapon/folder,
-		"Cyan"			=	/obj/item/weapon/folder/cyan,
-		"Red"			=	/obj/item/weapon/folder/red,
-		"Yellow"		=	/obj/item/weapon/folder/yellow,
-		"Blue"			=	/obj/item/weapon/folder/blue,
+		"Grey"			=	/obj/item/folder,
+		"Cyan"			=	/obj/item/folder/cyan,
+		"Red"			=	/obj/item/folder/red,
+		"Yellow"		=	/obj/item/folder/yellow,
+		"Blue"			=	/obj/item/folder/blue,
 	)
 	gear_tweaks += new /datum/gear_tweak/path(folder)
 
@@ -63,5 +63,5 @@
 
 /datum/gear/utility/ducttape
 	display_name = "duct tape"
-	path = /obj/item/weapon/tool/tape_roll
+	path = /obj/item/tool/tape_roll
 	cost = 3

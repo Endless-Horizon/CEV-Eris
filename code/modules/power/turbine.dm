@@ -31,7 +31,7 @@
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "tech_key"
 	icon_screen = "turbinecomp"
-	circuit = /obj/item/weapon/electronics/circuitboard/turbine_control
+	circuit = /obj/item/electronics/circuitboard/turbine_control
 	anchored = TRUE
 	density = TRUE
 	var/obj/machinery/compressor/compressor

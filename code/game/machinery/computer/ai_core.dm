@@ -6,7 +6,7 @@
 	icon_state = "0"
 	var/state = 0
 	var/datum/ai_laws/laws = new /datum/ai_laws/eris
-	var/obj/item/weapon/electronics/circuitboard/circuit
+	var/obj/item/electronics/circuitboard/circuit
 	var/obj/item/device/mmi/brain
 
 
@@ -126,7 +126,7 @@
 
 	switch(state)
 		if(1)
-			if(istype(I, /obj/item/weapon/electronics/circuitboard/aicore) && !circuit)
+			if(istype(I, /obj/item/electronics/circuitboard/aicore) && !circuit)
 				playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				to_chat(user, SPAN_NOTICE("You place the circuit board inside the frame."))
 				icon_state = "1"
@@ -161,8 +161,8 @@
 						state = 4
 						icon_state = "4"
 
-			if(istype(I, /obj/item/weapon/electronics/ai_module))
-				var/obj/item/weapon/electronics/ai_module/AIM = I
+			if(istype(I, /obj/item/electronics/ai_module))
+				var/obj/item/electronics/ai_module/AIM = I
 				AIM.transmitInstructions(src, usr)
 				to_chat(usr, "Law module applied.")
 				return
@@ -220,7 +220,7 @@
 
 	qdel(src)
 
-/obj/structure/AIcore/deactivated/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/structure/AIcore/deactivated/attackby(var/obj/item/W, var/mob/user)
 
 	if(istype(W, /obj/item/device/aicard))
 		var/obj/item/device/aicard/card = W
@@ -230,7 +230,7 @@
 		else
 			to_chat(user, "<span class='danger'>ERROR:</span> Unable to locate artificial intelligence.")
 		return
-	else if(istype(W, /obj/item/weapon/tool/wrench))
+	else if(istype(W, /obj/item/tool/wrench))
 		if(anchored)
 			user.visible_message(SPAN_NOTICE("\The [user] starts to unbolt \the [src] from the plating..."))
 			if(!do_after(user,40,src))

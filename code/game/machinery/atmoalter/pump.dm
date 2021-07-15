@@ -23,7 +23,7 @@
 
 /obj/machinery/portable_atmospherics/powered/pump/New()
 	..()
-	cell = new/obj/item/weapon/cell/medium/high(src)
+	cell = new/obj/item/cell/medium/high(src)
 
 	var/list/air_mix = StandardAirMix()
 	src.air_contents.adjust_multi("oxygen", air_mix["oxygen"], "nitrogen", air_mix["nitrogen"])

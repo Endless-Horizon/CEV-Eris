@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(job)
 
 		var/datum/category_item/setup_option/core_implant/I = player.client.prefs.get_option("Core implant")
 		// cant be Neotheology without a cruciform
-		if(job.department == DEPARTMENT_CHURCH && istype(I.implant_type,/obj/item/weapon/implant/core_implant/cruciform))
+		if(job.department == DEPARTMENT_CHURCH && istype(I.implant_type,/obj/item/implant/core_implant/cruciform))
 			continue
 		if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 			Debug("GRJ Random job given, Player: [player], Job: [job]")
@@ -399,13 +399,13 @@ SUBSYSTEM_DEF(job)
 			var/obj/item/clothing/glasses/G = H.glasses
 			G.prescription = 1
 
-	var/obj/item/weapon/implant/core_implant/C = H.get_core_implant()
+	var/obj/item/implant/core_implant/C = H.get_core_implant()
 	if(C)
 		C.install_default_modules_by_job(job)
 		C.access.Add(job.cruciform_access)
 
-	var/obj/item/weapon/oddity/secdocs/D
-	if(D.inv_spawn_count > 0 && prob(5) && !(locate(/obj/item/weapon/oddity/secdocs) in H.get_contents()))
+	var/obj/item/oddity/secdocs/D
+	if(D.inv_spawn_count > 0 && prob(5) && !(locate(/obj/item/oddity/secdocs) in H.get_contents()))
 		D = new
 		if(H.equip_to_storage(D))
 			--D.inv_spawn_count

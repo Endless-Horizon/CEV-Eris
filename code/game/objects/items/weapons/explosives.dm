@@ -1,4 +1,4 @@
-/obj/item/weapon/plastique
+/obj/item/plastique
 	name = "plastic explosive"
 	desc = "Used to make holes in specific areas without too much extra hole."
 	gender = PLURAL
@@ -14,17 +14,17 @@
 	var/open_panel = 0
 	var/image_overlay
 
-/obj/item/weapon/plastique/New()
+/obj/item/plastique/New()
 	wires = new(src)
 	image_overlay = image('icons/obj/assemblies.dmi', "plastic-explosive2")
 	..()
 
-/obj/item/weapon/plastique/Destroy()
+/obj/item/plastique/Destroy()
 	qdel(wires)
 	wires = null
 	return ..()
 
-/obj/item/weapon/plastique/attackby(obj/item/I, mob/user)
+/obj/item/plastique/attackby(obj/item/I, mob/user)
 	if(QUALITY_SCREW_DRIVING in I.tool_qualities)
 		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_MEC))
 			open_panel = !open_panel
@@ -34,17 +34,17 @@
 	else
 		..()
 
-/obj/item/weapon/plastique/attack_self(mob/user as mob)
+/obj/item/plastique/attack_self(mob/user as mob)
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
 	if(user.get_active_hand() == src)
 		newtime = CLAMP(newtime, 10, 60000)
 		timer = newtime
 		to_chat(user, "Timer set for [timer] seconds.")
 
-/obj/item/weapon/plastique/afterattack(atom/movable/target, mob/user, flag)
+/obj/item/plastique/afterattack(atom/movable/target, mob/user, flag)
 	if (!flag)
 		return
-	if (ismob(target) || istype(target, /turf/unsimulated) || istype(target, /turf/simulated/shuttle) || istype(target, /obj/item/weapon/storage/) || istype(target, /obj/item/clothing/under))
+	if (ismob(target) || istype(target, /turf/unsimulated) || istype(target, /turf/simulated/shuttle) || istype(target, /obj/item/storage/) || istype(target, /obj/item/clothing/under))
 		return
 	to_chat(user, "Planting the explosive charge...")
 	user.do_attack_animation(target)
@@ -69,7 +69,7 @@
 		spawn(timer*10)
 			explode(get_turf(target))
 
-/obj/item/weapon/plastique/proc/explode(location)
+/obj/item/plastique/proc/explode(location)
 	if(!target)
 		target = get_atom_on_turf(src)
 	if(!target)
@@ -94,5 +94,5 @@
 		target.remove_overlays(image_overlay)
 	qdel(src)
 
-/obj/item/weapon/plastique/attack(mob/M, mob/user, def_zone)
+/obj/item/plastique/attack(mob/M, mob/user, def_zone)
 	return

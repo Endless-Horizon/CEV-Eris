@@ -2,7 +2,7 @@
 	name = "exosuit fabricator"
 	desc = "A machine used for construction of robots and exosuits."
 	icon_state = "mechfab"
-	circuit = /obj/item/weapon/electronics/circuitboard/mechfab
+	circuit = /obj/item/electronics/circuitboard/mechfab
 
 	build_type = MECHFAB
 	queue_max = 12

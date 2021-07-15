@@ -52,7 +52,7 @@
 	idle_power_usage = 10
 	active_power_usage = 200
 
-	circuit = /obj/item/weapon/electronics/circuitboard/sorter
+	circuit = /obj/item/electronics/circuitboard/sorter
 	// based on levels of manipulators
 	var/speed = 25
 	// based on levels of scanners
@@ -177,10 +177,10 @@
 /obj/machinery/sorter/RefreshParts()
 	..()
 	var/manipulator_rating = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		manipulator_rating += M.rating
 	var/num_settings = 0
-	for(var/obj/item/weapon/stock_parts/scanning_module/S in component_parts)
+	for(var/obj/item/stock_parts/scanning_module/S in component_parts)
 		num_settings += S.rating
 	number_of_settings = num_settings * initial(number_of_settings)
 	speed = manipulator_rating*10

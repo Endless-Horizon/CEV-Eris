@@ -1,6 +1,6 @@
 /decl/hierarchy/outfit/job/engineering
 	hierarchy_type = /decl/hierarchy/outfit/job/engineering
-	belt = /obj/item/weapon/storage/belt/utility/full
+	belt = /obj/item/storage/belt/utility/full
 	l_ear = /obj/item/device/radio/headset/headset_eng
 	shoes = /obj/item/clothing/shoes/workboots
 	gloves = /obj/item/clothing/gloves/thick
@@ -18,7 +18,7 @@
 	uniform = /obj/item/clothing/under/rank/exultant
 	suit = /obj/item/clothing/suit/storage/te_coat
 	l_ear = /obj/item/device/radio/headset/heads/ce
-	id_type = /obj/item/weapon/card/id/ce
+	id_type = /obj/item/card/id/ce
 	pda_type = /obj/item/modular_computer/pda/heads/ce
 
 /decl/hierarchy/outfit/job/engineering/engineer
@@ -26,7 +26,7 @@
 	head = /obj/item/clothing/head/armor/helmet/technomancer
 	uniform = /obj/item/clothing/under/rank/engineer
 	suit = /obj/item/clothing/suit/storage/vest/insulated
-	id_type = /obj/item/weapon/card/id/engie
+	id_type = /obj/item/card/id/engie
 	pda_type = /obj/item/modular_computer/pda/engineering
 
 /decl/hierarchy/outfit/job/engineering/engineer/void

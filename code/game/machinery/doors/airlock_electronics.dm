@@ -1,4 +1,4 @@
-/obj/item/weapon/electronics/airlock
+/obj/item/electronics/airlock
 	name = "airlock electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"
@@ -15,14 +15,14 @@
 	var/locked = TRUE
 	var/lockable = TRUE
 
-/obj/item/weapon/electronics/airlock/attack_self(mob/user)
+/obj/item/electronics/airlock/attack_self(mob/user)
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)
 
 	ui_interact(user)
 
 
-/obj/item/weapon/electronics/airlock/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.hands_state)
+/obj/item/electronics/airlock/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, datum/topic_state/state = GLOB.hands_state)
 	var/list/data = ui_data()
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -31,7 +31,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/item/weapon/electronics/airlock/ui_data()
+/obj/item/electronics/airlock/ui_data()
 	var/list/data = list()
 	var/list/regions = list()
 
@@ -55,16 +55,16 @@
 
 	return data
 
-/obj/item/weapon/electronics/airlock/OnTopic(mob/user, list/href_list, state)
+/obj/item/electronics/airlock/OnTopic(mob/user, list/href_list, state)
 	if(lockable)
 		if(href_list["unlock"])
 			if(!req_access || istype(user, /mob/living/silicon))
 				locked = FALSE
 				last_configurator = user.name
 			else
-				var/obj/item/weapon/card/id/I = user.get_active_hand()
+				var/obj/item/card/id/I = user.get_active_hand()
 				I = I ? I.GetIdCard() : null
-				if(!istype(I, /obj/item/weapon/card/id))
+				if(!istype(I, /obj/item/card/id))
 					to_chat(user, SPAN_WARNING("[\src] flashes a yellow LED near the ID scanner. Did you remember to scan your ID or PDA?"))
 					return TOPIC_HANDLED
 				if (check_access(I))
@@ -95,7 +95,7 @@
 		return TOPIC_REFRESH
 
 
-/obj/item/weapon/electronics/airlock/proc/toggle_access(var/acc)
+/obj/item/electronics/airlock/proc/toggle_access(var/acc)
 	if (acc == "all")
 		conf_access = null
 	else
@@ -114,7 +114,7 @@
 
 
 
-/obj/item/weapon/electronics/airlock/secure
+/obj/item/electronics/airlock/secure
 	name = "secure airlock electronics"
 	desc = "designed to be somewhat more resistant to hacking than standard electronics."
 	origin_tech = list(TECH_DATA = 2)

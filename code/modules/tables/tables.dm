@@ -290,7 +290,7 @@ var/list/custom_table_appearance = list(
 /obj/structure/table/proc/remove_material(obj/item/I, mob/user)
 	material = common_material_remove(user, material, 20, "plating", "bolts")
 
-// Returns a list of /obj/item/weapon/material/shard objects that were created as a result of this table's breakage.
+// Returns a list of /obj/item/material/shard objects that were created as a result of this table's breakage.
 // Used for !fun! things such as embedding shards in the faces of tableslammed people.
 
 // The repeated
@@ -300,7 +300,7 @@ var/list/custom_table_appearance = list(
 
 /obj/structure/table/proc/break_to_parts(full_return = 0)
 	var/list/shards = list()
-	var/obj/item/weapon/material/shard/S = null
+	var/obj/item/material/shard/S = null
 	if(reinforced)
 		if(reinforced.stack_type && (full_return || prob(20)))
 			reinforced.place_sheet(loc)

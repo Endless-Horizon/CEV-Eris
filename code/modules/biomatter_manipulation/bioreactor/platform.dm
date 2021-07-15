@@ -231,8 +231,8 @@
 
 
 /obj/structure/window/reinforced/bioreactor/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/weapon/mop) || istype(I, /obj/item/weapon/soap))
-		if(istype(I, /obj/item/weapon/mop))
+	if(istype(I, /obj/item/mop) || istype(I, /obj/item/soap))
+		if(istype(I, /obj/item/mop))
 			if(I.reagents && !I.reagents.total_volume)
 				to_chat(user, SPAN_WARNING("Your [I] is dry!"))
 				return

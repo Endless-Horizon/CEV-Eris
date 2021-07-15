@@ -113,8 +113,8 @@
 /area/template_noop)
 "bt" = (
 /obj/structure/table/onestar,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/template_noop)
 "bu" = (
@@ -140,8 +140,8 @@
 	dir = 8
 	},
 /obj/structure/table/onestar,
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/pen,
+/obj/item/stamp/denied,
+/obj/item/pen,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "bN" = (
@@ -156,7 +156,7 @@
 	},
 /obj/structure/table/onestar,
 /obj/item/remains/human,
-/obj/item/weapon/pen,
+/obj/item/pen,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "cK" = (
@@ -168,7 +168,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/weapon/folder/red,
+/obj/item/folder/red,
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/template_noop)
 "eD" = (
@@ -232,7 +232,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/item/weapon/pen,
+/obj/item/pen,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/template_noop)
 "lj" = (
@@ -244,7 +244,7 @@
 /turf/simulated/floor/tiled/cafe,
 /area/template_noop)
 "nC" = (
-/obj/item/weapon/pen,
+/obj/item/pen,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/template_noop)
 "nF" = (
@@ -283,7 +283,7 @@
 	dir = 4
 	},
 /obj/structure/table/onestar,
-/obj/item/weapon/stamp/chameleon,
+/obj/item/stamp/chameleon,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "pb" = (
@@ -382,7 +382,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/folder/red,
+/obj/item/folder/red,
 /turf/simulated/floor/tiled/dark/techfloor,
 /area/template_noop)
 "yJ" = (
@@ -451,7 +451,7 @@
 /area/template_noop)
 "Ej" = (
 /obj/structure/table/onestar,
-/obj/item/weapon/phone,
+/obj/item/phone,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "ES" = (
@@ -491,7 +491,7 @@
 	dir = 1
 	},
 /obj/structure/table/onestar,
-/obj/item/weapon/stamp/denied,
+/obj/item/stamp/denied,
 /obj/structure/barricade,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
@@ -500,7 +500,7 @@
 	dir = 4
 	},
 /obj/structure/table/onestar,
-/obj/item/weapon/stamp/denied,
+/obj/item/stamp/denied,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "Hc" = (
@@ -521,10 +521,10 @@
 	dir = 8
 	},
 /obj/structure/table/onestar,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/weapon/gun/projectile/handmade_pistol,
+/obj/item/gun/projectile/handmade_pistol,
 /obj/spawner/ammo,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
@@ -561,8 +561,8 @@
 	dir = 4
 	},
 /obj/structure/table/onestar,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "Lz" = (
@@ -607,7 +607,7 @@
 "Pc" = (
 /obj/structure/table/onestar,
 /obj/machinery/light/floor,
-/obj/item/weapon/storage/lunchbox/rainbow,
+/obj/item/storage/lunchbox/rainbow,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "Qe" = (
@@ -630,7 +630,7 @@
 	dir = 6
 	},
 /obj/structure/table/onestar,
-/obj/item/weapon/paper_bin,
+/obj/item/paper_bin,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "Rf" = (
@@ -673,7 +673,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/item/weapon/lipstick/black,
+/obj/item/lipstick/black,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/template_noop)
 "VK" = (
@@ -684,13 +684,13 @@
 	dir = 6
 	},
 /obj/structure/table/onestar,
-/obj/item/weapon/paper_bin,
+/obj/item/paper_bin,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "Xm" = (
 /obj/structure/table/onestar,
-/obj/item/weapon/pen/reagent/sleepy,
-/obj/item/weapon/newspaper,
+/obj/item/pen/reagent/sleepy,
+/obj/item/newspaper,
 /turf/simulated/floor/tiled/dark/brown_perforated,
 /area/template_noop)
 "XL" = (
@@ -704,7 +704,7 @@
 /area/template_noop)
 "Yy" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/spawner/medical,
 /obj/machinery/light_construct,
 /turf/simulated/floor/tiled/derelict/red_white_edges,

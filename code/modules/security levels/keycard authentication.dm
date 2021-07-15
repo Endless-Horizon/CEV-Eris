@@ -66,7 +66,7 @@
 		kcad_announcement.Announce("[usr] has initiated [event_names[event]] countdown.")
 		ongoing_countdowns[event] = addtimer(CALLBACK(src, .proc/countdown_finished, event), countdown, TIMER_UNIQUE | TIMER_STOPPABLE)
 		next_countdown = world.time + cooldown
-		var/obj/item/weapon/card/id/id = usr.GetIdCard()
+		var/obj/item/card/id/id = usr.GetIdCard()
 		initiator_card[event] = id
 	if(href_list["cancel"])
 		var/event = href_list["cancel"]
@@ -80,7 +80,7 @@
 		var/event = href_list["proceed"]
 		if(!ongoing_countdowns[event])
 			return
-		var/obj/item/weapon/card/id/id = usr.GetIdCard()
+		var/obj/item/card/id/id = usr.GetIdCard()
 		if(initiator_card[event] == id)
 			return
 		kcad_announcement.Announce("[usr] has proceeded [event_names[event]] countdown.")

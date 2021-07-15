@@ -1,4 +1,4 @@
-/obj/item/weapon/legcuffs
+/obj/item/legcuffs
 	name = "legcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL

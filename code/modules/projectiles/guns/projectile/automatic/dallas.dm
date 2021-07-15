@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/dallas //it's a good way to die
+/obj/item/gun/projectile/automatic/dallas //it's a good way to die
 	name = "PAR .25 CS \"Dallas\""
 	desc = "Dallas is a pulse-action air-cooled automatic assault rifle made by unknown manufacturer. This weapon is very rare, but deadly efficient. \
 			It's used by elite mercenaries, assassins or bald marines. Uses .25 Caseless rounds."
@@ -31,7 +31,7 @@
 		SEMI_AUTO_NODELAY,
 		)
 
-/obj/item/weapon/gun/projectile/automatic/dallas/on_update_icon()
+/obj/item/gun/projectile/automatic/dallas/on_update_icon()
 	..()
 	if(ammo_magazine)
 		icon_state = "[initial(icon_state)]-full"

@@ -22,7 +22,7 @@
 	var/list/possible_targets = list()
 	for(var/datum/mind/possible_target in SSticker.minds)
 		if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2) && \
- 		!possible_target.current.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform))
+ 		!possible_target.current.get_core_implant(/obj/item/implant/core_implant/cruciform))
 			possible_targets.Add(possible_target)
 	return possible_targets
 

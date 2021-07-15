@@ -1,10 +1,10 @@
-/obj/item/weapon/electronics/circuitboard/recycler
+/obj/item/electronics/circuitboard/recycler
 	name = T_BOARD("Recycler")
 	build_path = /obj/machinery/recycler
 	board_type = "machine"
 	origin_tech = list(TECH_ENGINEERING = 3)
 	req_components = list(
-		/obj/item/weapon/stock_parts/manipulator = 1
+		/obj/item/stock_parts/manipulator = 1
 	)
 
 /obj/machinery/recycler
@@ -26,13 +26,13 @@
 	// On us
 	. = ..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/electronics/circuitboard/recycler(null)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(null)
+	component_parts += new /obj/item/electronics/circuitboard/recycler(null)
+	component_parts += new /obj/item/stock_parts/manipulator(null)
 	RefreshParts()
 	update_icon()
 
 /obj/machinery/recycler/RefreshParts()
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		chance_to_recycle = 25 * M.rating //% of materials salvaged
 	chance_to_recycle = min(100, chance_to_recycle)
 
@@ -48,7 +48,7 @@
 
 
 /obj/machinery/recycler/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/weapon/card/emag))
+	if(istype(I, /obj/item/card/emag))
 		emag_act(user)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 
@@ -111,7 +111,7 @@
 	if(sound)
 		playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
 	var/chance_mod = 1
-	if(!istype(I, /obj/item/weapon/scrap_lump))
+	if(!istype(I, /obj/item/scrap_lump))
 		chance_mod = 5
 	if(prob(chance_to_recycle / chance_mod))
 		new /obj/item/stack/refined_scrap(loc)

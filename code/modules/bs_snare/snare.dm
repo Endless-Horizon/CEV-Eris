@@ -20,8 +20,8 @@
 		silk_id = input_id
 		return
 
-	/*if(istype(I, /obj/item/weapon/card/id))
-		var/obj/item/weapon/card/id/ID = I
+	/*if(istype(I, /obj/item/card/id))
+		var/obj/item/card/id/ID = I
 		if(locking_access in ID.GetAccess())
 			toggle_lock()
 			var/isLocked = removable ? "unlocked and can be removed." : "locked and can\'t be removed."

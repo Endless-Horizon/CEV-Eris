@@ -10,7 +10,7 @@
 	anchored = TRUE
 	use_power = NO_POWER_USE
 	idle_power_usage = 5			// 5 Watts for thermostat related circuitry
-	circuit = /obj/item/weapon/electronics/circuitboard/unary_atmos/cooler
+	circuit = /obj/item/electronics/circuitboard/unary_atmos/cooler
 	var/heatsink_temperature = T20C	// The constant temperature reservoir into which the freezer pumps heat. Probably the hull of the station or something.
 	var/internal_volume = 600		// L
 
@@ -147,12 +147,12 @@
 	var/manip_rating = 0
 	var/bin_rating = 0
 
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/capacitor))
 			cap_rating += P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/manipulator))
+		if(istype(P, /obj/item/stock_parts/manipulator))
 			manip_rating += P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/matter_bin))
+		if(istype(P, /obj/item/stock_parts/matter_bin))
 			bin_rating += P.rating
 
 	power_rating = initial(power_rating) * cap_rating / 2			//more powerful

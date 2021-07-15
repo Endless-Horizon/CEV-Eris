@@ -71,7 +71,7 @@
 /obj/structure/safe/floor{
 	contents = newlist(/obj/spawner/credits/c1000)
 	},
-/obj/item/weapon/tool/crowbar/onestar,
+/obj/item/tool/crowbar/onestar,
 /turf/simulated/floor/tiled/derelict,
 /area/crawler)
 "s" = (

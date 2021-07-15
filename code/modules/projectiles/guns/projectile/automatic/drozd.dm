@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/drozd
+/obj/item/gun/projectile/automatic/drozd
 	name = "Excelsior SMG .40 Magnum \"Drozd\""
 	desc = "An excellent fully automatic Heavy SMG. Rifled to take a larger caliber than a typical submachine gun, but unlike \
 			other heavy SMGs makes use of increased caliber to achieve excellent armor penetration capabilities. \
@@ -28,7 +28,7 @@
 		SEMI_AUTO_NODELAY
 		)
 
-/obj/item/weapon/gun/projectile/automatic/drozd/on_update_icon()
+/obj/item/gun/projectile/automatic/drozd/on_update_icon()
 	cut_overlays()
 	icon_state = "[initial(icon_state)][silenced ? "_s" : ""]"
 	if(ammo_magazine)
@@ -36,6 +36,6 @@
 	if (!ammo_magazine || !length(ammo_magazine.stored_ammo))
 		add_overlays("slide[silenced ? "_s" : ""]")
 
-/obj/item/weapon/gun/projectile/automatic/drozd/Initialize()
+/obj/item/gun/projectile/automatic/drozd/Initialize()
 	. = ..()
 	update_icon()

@@ -3,7 +3,7 @@
 
 var/global/list/cached_icons = list()
 
-/obj/item/weapon/reagent_containers/glass/paint
+/obj/item/reagent_containers/glass/paint
 	desc = "It's a paint bucket."
 	name = "paint bucket"
 	icon = 'icons/obj/items.dmi'
@@ -15,7 +15,7 @@ var/global/list/cached_icons = list()
 	possible_transfer_amounts = list(10,20,30,60)
 	volume = 60
 	unacidable = 0
-	bad_type = /obj/item/weapon/reagent_containers/glass/paint
+	bad_type = /obj/item/reagent_containers/glass/paint
 	var/paint_type = "red"
 
 	afterattack(turf/simulated/target, mob/user, proximity)

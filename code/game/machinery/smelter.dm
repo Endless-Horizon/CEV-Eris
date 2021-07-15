@@ -8,7 +8,7 @@
 	idle_power_usage = 10
 	active_power_usage = 2000
 
-	circuit = /obj/item/weapon/electronics/circuitboard/smelter
+	circuit = /obj/item/electronics/circuitboard/smelter
 
 	// base smelting speed - based on levels of manipulators
 	var/speed = 10
@@ -165,8 +165,8 @@
 
 
 /obj/machinery/smelter/proc/result_materials(obj/O)
-	if(istype(O, /obj/item/weapon/ore))
-		var/obj/item/weapon/ore/ore = O
+	if(istype(O, /obj/item/ore))
+		var/obj/item/ore/ore = O
 		var/ore/data = ore_data[ore.material]
 		if(data.smelts_to)
 			return list(data.smelts_to = 1)
@@ -179,10 +179,10 @@
 	if(istype(smelting, /obj/item/stack))
 		return 30
 
-	if(istype(smelting, /obj/item/weapon/ore))
+	if(istype(smelting, /obj/item/ore))
 		return 20
 
-	if(istype(smelting, /obj/item/weapon/material/shard))
+	if(istype(smelting, /obj/item/material/shard))
 		return 20
 
 	// Just one material - makes smelting easier
@@ -229,7 +229,7 @@
 
 	var/manipulator_rating = 0
 	var/manipulator_count = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		manipulator_rating += M.rating
 		++manipulator_count
 
@@ -237,7 +237,7 @@
 
 	var/ml_rating = 0
 	var/ml_count = 0
-	for(var/obj/item/weapon/stock_parts/micro_laser/ML in component_parts)
+	for(var/obj/item/stock_parts/micro_laser/ML in component_parts)
 		ml_rating += ML.rating
 		++ml_count
 
@@ -245,7 +245,7 @@
 
 	var/mb_rating = 0
 	var/mb_count = 0
-	for(var/obj/item/weapon/stock_parts/matter_bin/MB in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
 		mb_rating += MB.rating
 		++mb_count
 	storage_capacity = round(initial(storage_capacity)*(mb_rating/mb_count))

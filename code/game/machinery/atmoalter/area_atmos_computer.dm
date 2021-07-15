@@ -4,7 +4,7 @@
 	icon_keyboard = "atmos_key"
 	icon_screen = "area_atmos"
 	light_color = COLOR_LIGHTING_CYAN_MACHINERY
-	circuit = /obj/item/weapon/electronics/circuitboard/area_atmos
+	circuit = /obj/item/electronics/circuitboard/area_atmos
 
 	var/list/connectedscrubbers = new()
 	var/status = ""

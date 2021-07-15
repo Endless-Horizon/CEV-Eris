@@ -1,5 +1,5 @@
 /*
- *	Absorbs /obj/item/weapon/secstorage.
+ *	Absorbs /obj/item/secstorage.
  *	Reimplements it only slightly to use existing storage functionality.
  *
  *	Contains:
@@ -10,12 +10,12 @@
 // -----------------------------
 //         Generic Item
 // -----------------------------
-/obj/item/weapon/storage/secure
+/obj/item/storage/secure
 	name = "secstorage"
 	w_class = ITEM_SIZE_NORMAL
 	max_w_class = ITEM_SIZE_SMALL
 	max_storage_space = DEFAULT_NORMAL_STORAGE
-	bad_type = /obj/item/weapon/storage/secure
+	bad_type = /obj/item/storage/secure
 	var/icon_locking = "secureb"
 	var/icon_sparking = "securespark"
 	var/icon_opened = "secure0"
@@ -28,13 +28,13 @@
 	var/emagged = 0
 	var/open = 0
 
-/obj/item/weapon/storage/secure/examine(mob/user)
+/obj/item/storage/secure/examine(mob/user)
 	if(..(user, 1))
 		to_chat(user, text("The service panel is [src.open ? "open" : "closed"]."))
 
-/obj/item/weapon/storage/secure/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/storage/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(locked)
-		if (istype(W, /obj/item/weapon/melee/energy/blade) && emag_act(INFINITY, user, "You slice through the lock of \the [src]"))
+		if (istype(W, /obj/item/melee/energy/blade) && emag_act(INFINITY, user, "You slice through the lock of \the [src]"))
 			var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
 			spark_system.start()
@@ -42,12 +42,12 @@
 			playsound(src.loc, "sparks", 50, 1)
 			return
 
-		if (istype(W, /obj/item/weapon/tool/screwdriver))
+		if (istype(W, /obj/item/tool/screwdriver))
 			if (do_after(user, 20, src))
 				src.open =! src.open
 				user.show_message(SPAN_NOTICE("You [src.open ? "open" : "close"] the service panel."))
 			return
-		if ((istype(W, /obj/item/weapon/tool/multitool)) && (src.open == 1)&& (!src.l_hacking))
+		if ((istype(W, /obj/item/tool/multitool)) && (src.open == 1)&& (!src.l_hacking))
 			user.show_message(SPAN_NOTICE("Now attempting to reset internal memory, please hold."), 1)
 			src.l_hacking = 1
 			if (do_after(usr, 100, src))
@@ -71,14 +71,14 @@
 	..()
 
 
-/obj/item/weapon/storage/secure/MouseDrop(over_object, src_location, over_location)
+/obj/item/storage/secure/MouseDrop(over_object, src_location, over_location)
 	if (locked)
 		src.add_fingerprint(usr)
 		return
 	..()
 
 
-/obj/item/weapon/storage/secure/attack_self(mob/user as mob)
+/obj/item/storage/secure/attack_self(mob/user as mob)
 	user.set_machine(src)
 	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
 	var/message = "Code"
@@ -94,7 +94,7 @@
 	dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
 	user << browse(dat, "window=caselock;size=300x280")
 
-/obj/item/weapon/storage/secure/Topic(href, href_list)
+/obj/item/storage/secure/Topic(href, href_list)
 	..()
 	if ((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
 		return
@@ -127,7 +127,7 @@
 			return
 	return
 
-/obj/item/weapon/storage/secure/emag_act(var/remaining_charges, var/mob/user, var/feedback)
+/obj/item/storage/secure/emag_act(var/remaining_charges, var/mob/user, var/feedback)
 	if(!emagged)
 		emagged = 1
 		src.add_overlays(image('icons/obj/storage.dmi', icon_sparking))
@@ -141,7 +141,7 @@
 // -----------------------------
 //        Secure Briefcase
 // -----------------------------
-/obj/item/weapon/storage/secure/briefcase
+/obj/item/storage/secure/briefcase
 	name = "secure briefcase"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "secure"
@@ -152,7 +152,7 @@
 	throw_range = 4
 	w_class = ITEM_SIZE_BULKY
 
-/obj/item/weapon/storage/secure/briefcase/attack_hand(mob/user as mob)
+/obj/item/storage/secure/briefcase/attack_hand(mob/user as mob)
 	if ((src.loc == user) && (src.locked == 1))
 		to_chat(usr, SPAN_WARNING("[src] is locked and cannot be opened!"))
 	else if ((src.loc == user) && (!src.locked))
@@ -163,13 +163,13 @@
 	src.add_fingerprint(user)
 	return
 
-/obj/item/weapon/storage/secure/briefcase/AltClick(mob/user)
+/obj/item/storage/secure/briefcase/AltClick(mob/user)
 	return attack_hand(user)
 // -----------------------------
 //        Secure Safe
 // -----------------------------
 
-/obj/item/weapon/storage/secure/safe
+/obj/item/storage/secure/safe
 	name = "secure safe"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "safe"
@@ -182,11 +182,11 @@
 	max_storage_space = DEFAULT_GARGANTUAN_STORAGE
 	anchored = TRUE
 	density = FALSE
-	cant_hold = list(/obj/item/weapon/storage/secure/briefcase)
+	cant_hold = list(/obj/item/storage/secure/briefcase)
 
-/obj/item/weapon/storage/secure/safe/populate_contents()
-	new /obj/item/weapon/paper(src)
-	new /obj/item/weapon/pen(src)
+/obj/item/storage/secure/safe/populate_contents()
+	new /obj/item/paper(src)
+	new /obj/item/pen(src)
 
-/obj/item/weapon/storage/secure/safe/attack_hand(mob/user)
+/obj/item/storage/secure/safe/attack_hand(mob/user)
 	return attack_self(user)

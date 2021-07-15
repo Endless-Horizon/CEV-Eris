@@ -1,4 +1,4 @@
-/obj/item/weapon/book/ritual
+/obj/item/book/ritual
 	name = "Rituals book"
 	desc = "Contains rituals."
 	icon = 'icons/obj/library.dmi'
@@ -10,7 +10,7 @@
 	var/reference_mode = FALSE
 
 
-/obj/item/weapon/book/ritual/attack_self(mob/living/carbon/human/H)
+/obj/item/book/ritual/attack_self(mob/living/carbon/human/H)
 	playsound(src.loc, pick('sound/items/BOOK_Turn_Page_1.ogg',\
 		'sound/items/BOOK_Turn_Page_2.ogg',\
 		'sound/items/BOOK_Turn_Page_3.ogg',\
@@ -18,11 +18,11 @@
 		), rand(40,80), 1)
 	interact(H)
 
-/obj/item/weapon/book/ritual/ui_data(mob/user)
-	var/obj/item/weapon/implant/core_implant/cruciform/CI
+/obj/item/book/ritual/ui_data(mob/user)
+	var/obj/item/implant/core_implant/cruciform/CI
 	if(isliving(user))
 		var/mob/living/L = user
-		CI = L.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
+		CI = L.get_core_implant(/obj/item/implant/core_implant/cruciform)
 
 	var/list/data = list(
 		"refmode" = reference_mode,
@@ -81,7 +81,7 @@
 	return data
 
 
-/obj/item/weapon/book/ritual/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
+/obj/item/book/ritual/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = NANOUI_FOCUS)
 	var/list/data = ui_data(user, ui_key)
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -95,18 +95,18 @@
 		ui.open()
 
 
-/obj/item/weapon/book/ritual/interact(mob/living/carbon/human/H)
+/obj/item/book/ritual/interact(mob/living/carbon/human/H)
 	ui_interact(H)
 
 
-/obj/item/weapon/book/ritual/Topic(href, href_list)
+/obj/item/book/ritual/Topic(href, href_list)
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/H = usr
 	if(H.stat)
 		return
 
-	var/obj/item/weapon/implant/core_implant/cruciform/CI = H.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
+	var/obj/item/implant/core_implant/cruciform/CI = H.get_core_implant(/obj/item/implant/core_implant/cruciform)
 
 	if(href_list["set_category"])
 		current_category = href_list["set_category"]

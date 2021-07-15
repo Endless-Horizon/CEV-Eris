@@ -47,7 +47,7 @@
 	name = "combat helmet"
 	result = /obj/item/clothing/head/armor/helmet/handmade
 	steps = list(
-		list(/obj/item/weapon/reagent_containers/glass/bucket, 1, "time" = 30),
+		list(/obj/item/reagent_containers/glass/bucket, 1, "time" = 30),
 		list(CRAFT_MATERIAL, 4, MATERIAL_STEEL),
 		list(/obj/item/stack/cable_coil, 2)
 	)

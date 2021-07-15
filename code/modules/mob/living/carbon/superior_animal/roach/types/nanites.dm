@@ -3,7 +3,7 @@
 	desc = "A deformed mess of a roach that is covered in metallic outcrops and formations. It seems to have a production center on its thorax."
 	icon_state = "naniteroach"
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/roachmeat/kraftwerk
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/roachmeat/kraftwerk
 	meat_amount = 3
 	turns_per_move = 1
 	maxHealth = 35

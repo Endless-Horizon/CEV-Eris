@@ -4,7 +4,7 @@
 	name = "diesel generator"
 	icon = 'icons/obj/machines/excelsior/generator.dmi'
 	icon_state = "base"
-	circuit = /obj/item/weapon/electronics/circuitboard/diesel
+	circuit = /obj/item/electronics/circuitboard/diesel
 	max_fuel_volume = 300
 	power_gen = 16000 // produces 20% less watts output per power level setting.
 	time_per_fuel_unit = 12

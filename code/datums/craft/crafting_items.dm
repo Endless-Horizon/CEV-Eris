@@ -173,7 +173,7 @@
 	var/turf/T = get_turf(src)
 	O.forceMove(T)
 	user.put_in_hands(O)
-	if(istype(O, /obj/item/weapon/gun/projectile))
+	if(istype(O, /obj/item/gun/projectile))
 		var/list/aditional_objects = SSspawn_data.all_accompanying_obj_by_path[O.type]
 		var/atom/movable/aditional_obj
 		if(islist(aditional_objects) && aditional_objects.len)

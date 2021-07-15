@@ -69,7 +69,7 @@
 									// Icon check is to check if another roach has already finished eating this human
 									var/mob/living/carbon/human/H = M
 									// Process Cruciform
-									var/obj/item/weapon/implant/core_implant/cruciform/CI = H.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform, FALSE)
+									var/obj/item/implant/core_implant/cruciform/CI = H.get_core_implant(/obj/item/implant/core_implant/cruciform, FALSE)
 									if (CI)
 										var/mob/N = CI.wearer
 										CI.name = "[N]'s Cruciform"
@@ -106,7 +106,7 @@
 				if(LAYING_EGG)
 					if (world.timeofday >= busy_start_time + busy_time)				
 						if (istype(src, /mob/living/carbon/superior_animal/roach/kaiser))// kaiser roaches now lay roachcubes
-							var/roachcube = pick(subtypesof(/obj/item/weapon/reagent_containers/food/snacks/roachcube))
+							var/roachcube = pick(subtypesof(/obj/item/reagent_containers/food/snacks/roachcube))
 							new roachcube(get_turf(src))
 						else
 							new /obj/item/roach_egg(loc, src)

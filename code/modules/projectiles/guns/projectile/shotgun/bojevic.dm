@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/shotgun/bojevic
+/obj/item/gun/projectile/shotgun/bojevic
 	name = "SA SG \"Bojevic\""
 	desc = "Semi-auto, half polymer, all serbian. \
 			It's magazine-fed shotgun designed for close quarters combat, nicknamed 'Striker' by boarding parties. \
@@ -30,7 +30,7 @@
 		SEMI_AUTO_NODELAY
 		)
 
-/obj/item/weapon/gun/projectile/shotgun/bojevic/on_update_icon()
+/obj/item/gun/projectile/shotgun/bojevic/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -52,6 +52,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/shotgun/bojevic/Initialize()
+/obj/item/gun/projectile/shotgun/bojevic/Initialize()
 	. = ..()
 	update_icon()

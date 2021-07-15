@@ -10,7 +10,7 @@ particle whenever the target moves
 /datum/effect/effect/system/trail
 	var/obj/effect/effect/trail_effect = /obj/effect/trail_particle/gasjet
 	var/active = FALSE
-	var/obj/item/weapon/tank/jetpack/jetpack
+	var/obj/item/tank/jetpack/jetpack
 	var/fromback = TRUE //The trail is being emitted from something on their back
 	//When the user is facing north, it will draw ontop of them
 
@@ -18,7 +18,7 @@ particle whenever the target moves
 	jetpack = null
 	return ..()
 
-/datum/effect/effect/system/trail/set_up(var/atom/_holder, var/obj/item/weapon/tank/jetpack/J)
+/datum/effect/effect/system/trail/set_up(var/atom/_holder, var/obj/item/tank/jetpack/J)
 	attach(_holder)
 	if (J)
 		jetpack = J

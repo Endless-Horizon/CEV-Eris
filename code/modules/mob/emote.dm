@@ -6,7 +6,7 @@
 		to_chat(src, "You are unable to emote.")
 		return
 
-	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle) || istype(src.wear_mask, /obj/item/weapon/grenade)
+	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle) || istype(src.wear_mask, /obj/item/grenade)
 	if(m_type == 2 && muzzled) return
 
 	var/input

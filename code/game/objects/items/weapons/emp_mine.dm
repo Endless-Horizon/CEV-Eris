@@ -1,4 +1,4 @@
-/obj/item/weapon/emp_mine
+/obj/item/emp_mine
 	name = "OS Type - 183 \"Hei'an\""
 	desc = "Self-rechargeable EMP Chinese mine. It still works, despite all the age."
 	icon = 'icons/obj/weapons.dmi'
@@ -15,7 +15,7 @@
 	var/cooldown_timer = 0
 
 
-/obj/item/weapon/emp_mine/proc/arm()
+/obj/item/emp_mine/proc/arm()
 	if(armed)
 		return
 
@@ -25,7 +25,7 @@
 	update_icon()
 
 
-/obj/item/weapon/emp_mine/proc/disarm()
+/obj/item/emp_mine/proc/disarm()
 	if(!armed)
 		return
 
@@ -35,11 +35,11 @@
 	update_icon()
 
 
-/obj/item/weapon/emp_mine/on_update_icon()
+/obj/item/emp_mine/on_update_icon()
 	icon_state = "empmine[armed ? "1":"0"]"
 
 
-/obj/item/weapon/emp_mine/Process()
+/obj/item/emp_mine/Process()
 	if(world.time - cooldown_timer > cooldown)
 		var/turf/T = get_turf(src)
 		if(!T)
@@ -52,7 +52,7 @@
 				break
 
 
-/obj/item/weapon/emp_mine/attack_self(mob/user as mob)
+/obj/item/emp_mine/attack_self(mob/user as mob)
 	src.add_fingerprint(user)
 	if(armed)
 		disarm()
@@ -63,6 +63,6 @@
 		to_chat(user, SPAN_WARNING("You arm \the [src]! You have 10 seconds to run away."))
 
 //Pre-armed mine
-/obj/item/weapon/emp_mine/armed/New()
+/obj/item/emp_mine/armed/New()
 	..()
 	arm()

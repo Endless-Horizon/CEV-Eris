@@ -14,7 +14,7 @@
 	var/syndie = 0
 	var/list/channels = list()
 
-/obj/item/device/encryptionkey/attackby(obj/item/weapon/W, mob/user)
+/obj/item/device/encryptionkey/attackby(obj/item/W, mob/user)
 
 /obj/item/device/encryptionkey/syndicate
 	icon_state = "cypherkey"
@@ -132,7 +132,7 @@
 	name = "entertainment radio key"
 	channels = list("Entertainment" = 1)
 
-//addition to /obj/item/weapon/card/id/all_access
+//addition to /obj/item/card/id/all_access
 /obj/item/device/encryptionkey/heads/admin
 	name = "Admin encryption key"
 	desc = "Full powers encryption key"

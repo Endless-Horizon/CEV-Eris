@@ -48,8 +48,8 @@
 
 // Used by programs that manipulate files.
 /datum/computer_file/program/proc/get_file(var/filename)
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD = computer.hard_drive
-	var/obj/item/weapon/computer_hardware/hard_drive/portable/RHDD = computer.portable_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
+	var/obj/item/computer_hardware/hard_drive/portable/RHDD = computer.portable_drive
 	if(!HDD && !RHDD)
 		return
 	var/datum/computer_file/data/F = HDD.find_file_by_name(filename)
@@ -63,7 +63,7 @@
 /datum/computer_file/program/proc/create_file(var/newname, var/data = "", var/file_type = /datum/computer_file/data)
 	if(!newname)
 		return
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD = computer.hard_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
 	if(!HDD)
 		return
 	if(get_file(newname))
@@ -134,7 +134,7 @@
 	if(!istype(user))
 		return 0
 
-	var/obj/item/weapon/card/id/I = user.GetIdCard()
+	var/obj/item/card/id/I = user.GetIdCard()
 	if(!I)
 		if(loud)
 			to_chat(user, SPAN_WARNING("RFID Error - Unable to scan ID"))

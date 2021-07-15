@@ -4,23 +4,23 @@
 
 /datum/design/research/circuit/exosuit/engineering
 	name = "engineering system control"
-	build_path = /obj/item/weapon/electronics/circuitboard/exosystem/engineering
+	build_path = /obj/item/electronics/circuitboard/exosystem/engineering
 
 /datum/design/research/circuit/exosuit/utility
 	name = "utility system control"
-	build_path = /obj/item/weapon/electronics/circuitboard/exosystem/utility
+	build_path = /obj/item/electronics/circuitboard/exosystem/utility
 
 /datum/design/research/circuit/exosuit/medical
 	name = "medical system control"
-	build_path = /obj/item/weapon/electronics/circuitboard/exosystem/medical
+	build_path = /obj/item/electronics/circuitboard/exosystem/medical
 
 /datum/design/research/circuit/exosuit/ballistics
 	name = "ballistic weapon control"
-	build_path = /obj/item/weapon/electronics/circuitboard/exosystem/weapons
+	build_path = /obj/item/electronics/circuitboard/exosystem/weapons
 
 /datum/design/research/circuit/exosuit/advweapons
 	name = "advanced weapon control"
-	build_path = /obj/item/weapon/electronics/circuitboard/exosystem/advweapons
+	build_path = /obj/item/electronics/circuitboard/exosystem/advweapons
 
 //COMBAT
 /datum/design/research/item/exosuit/taser

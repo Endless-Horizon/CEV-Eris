@@ -5,7 +5,7 @@
 	icon_state = "sheater0"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the ship on fire."
-	var/obj/item/weapon/cell/large/cell
+	var/obj/item/cell/large/cell
 	var/on = FALSE
 	var/set_temperature = T0C + 50	//K
 	var/heating_power = 40000
@@ -13,7 +13,7 @@
 
 /obj/machinery/space_heater/Initialize()
 	. = ..()
-	cell = new /obj/item/weapon/cell/large/high(src)
+	cell = new /obj/item/cell/large/high(src)
 	update_icon()
 
 /obj/machinery/space_heater/get_cell()
@@ -55,14 +55,14 @@
 	..(severity)
 
 /obj/machinery/space_heater/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/cell/large))
+	if(istype(I, /obj/item/cell/large))
 		if(panel_open)
 			if(cell)
 				to_chat(user, "There is already a power cell inside.")
 				return
 			else
 				// insert cell
-				var/obj/item/weapon/cell/large/C = usr.get_active_hand()
+				var/obj/item/cell/large/C = usr.get_active_hand()
 				if(istype(C))
 					user.drop_item()
 					src.cell = C
@@ -74,7 +74,7 @@
 		else
 			to_chat(user, "The hatch must be open to insert a power cell.")
 			return
-	else if(istype(I, /obj/item/weapon/tool/screwdriver))
+	else if(istype(I, /obj/item/tool/screwdriver))
 		panel_open = !panel_open
 		user.visible_message("<span class='notice'>[user] [panel_open ? "opens" : "closes"] the hatch on the [src].</span>", "<span class='notice'>You [panel_open ? "open" : "close"] the hatch on the [src].</span>")
 		update_icon()
@@ -145,7 +145,7 @@
 
 			if("cellinstall")
 				if(panel_open && !cell)
-					var/obj/item/weapon/cell/large/C = usr.get_active_hand()
+					var/obj/item/cell/large/C = usr.get_active_hand()
 					if(istype(C))
 						usr.drop_item()
 						src.cell = C

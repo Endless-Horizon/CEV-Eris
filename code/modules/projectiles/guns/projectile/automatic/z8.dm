@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/z8
+/obj/item/gun/projectile/automatic/z8
 	name = "OR CAR .20 \"Z8 Bulldog\""
 	desc = "The Z8 Bulldog is an older bullpup carbine model, made by \"Oberth Republic\". It includes an underbarrel grenade launcher which is compatible with most modern grenade types. Uses .20 Rifle rounds."
 	icon = 'icons/obj/guns/projectile/carabine.dmi'
@@ -31,21 +31,21 @@
 		list(mode_name="fire grenades", mode_desc="Unlocks the underbarrel grenade launcher", burst=null, fire_delay=null, move_delay=null,  icon="grenade", use_launcher=1)
 		)
 
-	var/obj/item/weapon/gun/launcher/grenade/underslung/launcher
+	var/obj/item/gun/launcher/grenade/underslung/launcher
 
 	spawn_tags = SPAWN_TAG_FS_PROJECTILE
 
-/obj/item/weapon/gun/projectile/automatic/z8/Initialize()
+/obj/item/gun/projectile/automatic/z8/Initialize()
 	. = ..()
 	launcher = new(src)
 
-/obj/item/weapon/gun/projectile/automatic/z8/attackby(obj/item/I, mob/user)
-	if((istype(I, /obj/item/weapon/grenade)))
+/obj/item/gun/projectile/automatic/z8/attackby(obj/item/I, mob/user)
+	if((istype(I, /obj/item/grenade)))
 		launcher.load(I, user)
 	else
 		..()
 
-/obj/item/weapon/gun/projectile/automatic/z8/attack_hand(mob/user)
+/obj/item/gun/projectile/automatic/z8/attack_hand(mob/user)
 	var/datum/firemode/cur_mode = firemodes[sel_mode]
 
 	if(user.get_inactive_hand() == src && cur_mode.settings["use_launcher"])
@@ -53,7 +53,7 @@
 	else
 		..()
 
-/obj/item/weapon/gun/projectile/automatic/z8/Fire(atom/target, mob/living/user, params, pointblank=0, reflex=0)
+/obj/item/gun/projectile/automatic/z8/Fire(atom/target, mob/living/user, params, pointblank=0, reflex=0)
 	var/datum/firemode/cur_mode = firemodes[sel_mode]
 
 	if(cur_mode.settings["use_launcher"])
@@ -63,7 +63,7 @@
 	else
 		..()
 
-/obj/item/weapon/gun/projectile/automatic/z8/on_update_icon()
+/obj/item/gun/projectile/automatic/z8/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -76,11 +76,11 @@
 
 	icon_state = iconstring
 
-/obj/item/weapon/gun/projectile/automatic/z8/Initialize()
+/obj/item/gun/projectile/automatic/z8/Initialize()
 	. = ..()
 	update_icon()
 
-/obj/item/weapon/gun/projectile/automatic/z8/examine(mob/user)
+/obj/item/gun/projectile/automatic/z8/examine(mob/user)
 	..()
 	if(launcher.chambered)
 		to_chat(user, "\The [launcher] has \a [launcher.chambered] loaded.")

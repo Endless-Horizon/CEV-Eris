@@ -360,8 +360,8 @@
 /area/template_noop)
 "bj" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/blue,
-/obj/item/weapon/hand_labeler,
+/obj/item/folder/blue,
+/obj/item/hand_labeler,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /turf/simulated/floor/tiled/steel/gray_platform,

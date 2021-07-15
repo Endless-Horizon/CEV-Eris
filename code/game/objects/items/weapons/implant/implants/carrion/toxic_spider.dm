@@ -1,4 +1,4 @@
-/obj/item/weapon/implant/carrion_spider/toxicbomb
+/obj/item/implant/carrion_spider/toxicbomb
 	name = "toxic haze spider"
 	desc = "A spider bloated with noxious gasses, it looks ready to burst!"
 	icon_state = "spiderling_toxicbomb"
@@ -6,7 +6,7 @@
 	var/datum/reagents/gas_storage
 	var/det_time = 2 SECONDS
 
-/obj/item/weapon/implant/carrion_spider/toxicbomb/activate()
+/obj/item/implant/carrion_spider/toxicbomb/activate()
 	..()
 	if(wearer)
 		wearer.apply_damage(10, BRUTE, part)
@@ -20,7 +20,7 @@
 	spawn(det_time)
 		src?.prime()
 
-/obj/item/weapon/implant/carrion_spider/toxicbomb/proc/prime()
+/obj/item/implant/carrion_spider/toxicbomb/proc/prime()
 	var/location = get_turf(src)
 	gas_storage = new /datum/reagents(100, src)
 	gas_storage.add_reagent("lexorin", 100)

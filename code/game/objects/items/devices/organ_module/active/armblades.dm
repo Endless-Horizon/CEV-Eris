@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/armblade
+/obj/item/tool/armblade
 	icon_state = "armblade"
 	item_state = null
 	name = "armblade"
@@ -21,10 +21,10 @@
 	icon_state = "armblade"
 	matter = list(MATERIAL_STEEL = 16)
 	allowed_organs = list(BP_R_ARM, BP_L_ARM)
-	holding_type = /obj/item/weapon/tool/armblade
+	holding_type = /obj/item/tool/armblade
 
 
-/obj/item/weapon/tool/armblade/claws
+/obj/item/tool/armblade/claws
 	icon_state = "wolverine"
 	name = "claws"
 	desc = "A set of claws deployed from the tips of your fingers. Great for cutting people into ribbons."
@@ -35,7 +35,7 @@
 	verb_name = "Deploy embedded claws"
 	icon_state = "wolverine"
 	allowed_organs = list(BP_R_ARM, BP_L_ARM)
-	holding_type = /obj/item/weapon/tool/armblade/claws
+	holding_type = /obj/item/tool/armblade/claws
 
 /obj/item/organ_module/active/simple/armblade/energy_blade
 	name = "energy armblade"
@@ -43,7 +43,7 @@
 	verb_name = "Deploy energyblade"
 	icon_state = "energyblade"
 	origin_tech = list(TECH_MAGNET = 3, TECH_COVERT = 4)
-	holding_type = /obj/item/weapon/melee/energy/blade/organ_module
+	holding_type = /obj/item/melee/energy/blade/organ_module
 
 /obj/item/organ_module/active/simple/armblade/energy_blade/deploy(mob/living/carbon/human/H, obj/item/organ/external/E)
 	..()

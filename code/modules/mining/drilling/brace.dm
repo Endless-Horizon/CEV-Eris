@@ -2,7 +2,7 @@
 	name = "mining drill brace"
 	desc = "A machinery brace for an industrial drill. It looks easily half-meter thick."
 	icon_state = "mining_brace"
-	circuit = /obj/item/weapon/electronics/circuitboard/miningdrillbrace
+	circuit = /obj/item/electronics/circuitboard/miningdrillbrace
 	var/obj/machinery/mining/drill/connected
 
 /obj/machinery/mining/brace/Destroy()

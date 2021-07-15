@@ -68,7 +68,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/projectile/revolver/medium,
+/obj/item/gun/projectile/revolver/medium,
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/marooned)
 "n" = (
@@ -81,7 +81,7 @@
 	icon_state = "corner_white";
 	dir = 6
 	},
-/obj/item/weapon/paper/marooned/note09,
+/obj/item/paper/marooned/note09,
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/map_template/marooned)
 "o" = (
@@ -90,11 +90,11 @@
 /turf/template_noop,
 /area/template_noop)
 "p" = (
-/obj/item/weapon/paper/marooned/note02{
+/obj/item/paper/marooned/note02{
 	pixel_x = -3;
 	pixel_y = -5
 	},
-/obj/item/weapon/paper/marooned/note01{
+/obj/item/paper/marooned/note01{
 	pixel_x = 2;
 	pixel_y = -1
 	},
@@ -111,7 +111,7 @@
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/marooned)
 "r" = (
-/obj/item/weapon/paper/marooned/note03{
+/obj/item/paper/marooned/note03{
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -141,9 +141,9 @@
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/marooned)
 "v" = (
-/obj/item/weapon/paper/marooned/note06,
+/obj/item/paper/marooned/note06,
 /obj/spawner/junk,
-/obj/item/weapon/paper/marooned/note08,
+/obj/item/paper/marooned/note08,
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/marooned)
 "w" = (
@@ -158,8 +158,8 @@
 /area/map_template/marooned)
 "y" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/paper/marooned/note04,
-/obj/item/weapon/paper/marooned/note05{
+/obj/item/paper/marooned/note04,
+/obj/item/paper/marooned/note05{
 	pixel_x = -3;
 	pixel_y = 1
 	},
@@ -181,7 +181,7 @@
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/marooned)
 "B" = (
-/obj/item/weapon/paper/marooned/note07{
+/obj/item/paper/marooned/note07{
 	pixel_x = 6
 	},
 /obj/spawner/junk,
@@ -233,7 +233,7 @@
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/map_template/marooned)
 "I" = (
-/obj/item/weapon/tool/wirecutters,
+/obj/item/tool/wirecutters,
 /obj/item/stack/cable_coil,
 /obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable{
@@ -324,7 +324,7 @@
 /area/template_noop)
 "W" = (
 /obj/spawner/techpart,
-/obj/item/weapon/material/wirerod{
+/obj/item/material/wirerod{
 	desc = "Metal rod with wire attached to it.";
 	name = "Jurry-rigged antenna";
 	pixel_x = 5;
@@ -354,7 +354,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Y" = (
-/obj/item/weapon/material/wirerod{
+/obj/item/material/wirerod{
 	desc = "Metal rod with wire attached to it.";
 	name = "Jurry-rigged antenna";
 	pixel_x = 5;

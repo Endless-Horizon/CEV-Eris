@@ -7,8 +7,8 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
 	//resistance_flags = FIRE_PROOF | ACID_PROOF
-	circuit = /obj/item/weapon/electronics/circuitboard/chem_heater
-	var/obj/item/weapon/reagent_containers/beaker = null
+	circuit = /obj/item/electronics/circuitboard/chem_heater
+	var/obj/item/reagent_containers/beaker = null
 	var/target_temperature = 300
 	var/heater_coefficient = 0.2
 	var/on = FALSE
@@ -38,7 +38,7 @@
 
 	replace_beaker(user)
 
-/obj/machinery/chem_heater/proc/replace_beaker(mob/living/user, obj/item/weapon/reagent_containers/new_beaker)
+/obj/machinery/chem_heater/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
 	if(beaker)
 		beaker.forceMove(drop_location())
 		if(istype(user) && Adjacent(user))
@@ -52,7 +52,7 @@
 
 /obj/machinery/chem_heater/RefreshParts()
 	heater_coefficient = initial(heater_coefficient)
-	for(var/obj/item/weapon/stock_parts/micro_laser/M in component_parts)
+	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
 		heater_coefficient *= M.rating
 
 /obj/machinery/chem_heater/Process()
@@ -67,7 +67,7 @@
 /obj/machinery/chem_heater/MouseDrop_T(atom/movable/I, mob/user, src_location, over_location, src_control, over_control, params)
 	if(!Adjacent(user) || !I.Adjacent(user) || user.stat)
 		return ..()
-	if(istype(I, /obj/item/weapon/reagent_containers) && I.is_open_container())
+	if(istype(I, /obj/item/reagent_containers) && I.is_open_container())
 		I.add_fingerprint(user)
 		replace_beaker(user, I)
 		to_chat(user, SPAN_NOTICE("You add [I] to [src]."))
@@ -84,9 +84,9 @@
 		return
 
 
-	if(istype(I, /obj/item/weapon/reagent_containers) && I.is_open_container())
+	if(istype(I, /obj/item/reagent_containers) && I.is_open_container())
 		. = TRUE //no afterattack
-		var/obj/item/weapon/reagent_containers/B = I
+		var/obj/item/reagent_containers/B = I
 		if(!user.unEquip(B, src))
 			return
 		replace_beaker(user, B)

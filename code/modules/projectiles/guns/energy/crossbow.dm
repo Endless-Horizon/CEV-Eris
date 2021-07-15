@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/crossbow
+/obj/item/gun/energy/crossbow
 	name = "S EC \"Nemesis\""
 	desc = "Mini energy crossbow, produced by old Syndicate, discontinued now. A weapon favored by many mercenary stealth specialists."
 	icon = 'icons/obj/guns/energy/crossbow.dmi'
@@ -17,13 +17,13 @@
 	charge_cost = 200
 	price_tag = 2500
 
-/obj/item/weapon/gun/energy/crossbow/ninja
+/obj/item/gun/energy/crossbow/ninja
 	name = "energy dart thrower"
 	projectile_type = /obj/item/projectile/energy/dart
 	safety = FALSE
 	restrict_safety = TRUE
 
-/obj/item/weapon/gun/energy/crossbow/largecrossbow
+/obj/item/gun/energy/crossbow/largecrossbow
 	name = "NT EC \"Themis\""
 	desc = "Energy crossbow, produced by NeoTheology. A weapon favored by inquisitorial infiltration teams."
 	icon = 'icons/obj/guns/energy/constantine.dmi'

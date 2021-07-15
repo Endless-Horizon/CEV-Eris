@@ -83,27 +83,27 @@
 /obj/item/projectile/beam/emitter/singularity_pull()
 	return
 
-/obj/item/weapon/storage/backpack/holding/singularity_act(S, current_size)
+/obj/item/storage/backpack/holding/singularity_act(S, current_size)
 	var/dist = max((current_size - 2), 1)
 	explosion(src.loc,(dist),(dist*2),(dist*4))
 	return 1000
 
-/obj/item/weapon/storage/pouch/holding/singularity_act(S, current_size)
+/obj/item/storage/pouch/holding/singularity_act(S, current_size)
 	var/dist = max((current_size - 2), 1)
 	explosion(src.loc,(dist),(dist*2),(dist*4))
 	return 1000
 
-/obj/item/weapon/storage/belt/holding/singularity_act(S, current_size)
+/obj/item/storage/belt/holding/singularity_act(S, current_size)
 	var/dist = max((current_size - 2), 1)
 	explosion(src.loc,(dist),(dist*2),(dist*4))
 	return 1000
 
-/obj/item/weapon/storage/bag/trash/singularity_act(S, current_size)
+/obj/item/storage/bag/trash/singularity_act(S, current_size)
 	var/dist = max((current_size - 2), 1)
 	explosion(src.loc,(dist),(dist*2),(dist*4))
 	return 1000
 
-/obj/item/weapon/storage/bag/ore/holding/singularity_act(S, current_size)
+/obj/item/storage/bag/ore/holding/singularity_act(S, current_size)
 	var/dist = max((current_size - 2), 1)
 	explosion(src.loc,(dist),(dist*2),(dist*4))
 	return 1000

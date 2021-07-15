@@ -98,7 +98,7 @@
 	},
 /area/template_noop)
 "aq" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /obj/spawner/junk,
 /turf/unsimulated/floor{
 	icon_state = "lino"
@@ -112,7 +112,7 @@
 /area/template_noop)
 "as" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/drinkingglasses{
+/obj/item/storage/box/drinkingglasses{
 	pixel_x = 1;
 	pixel_y = 4
 	},
@@ -132,7 +132,7 @@
 	},
 /area/template_noop)
 "au" = (
-/obj/item/weapon/storage/deferred/crate/alcohol,
+/obj/item/storage/deferred/crate/alcohol,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},
@@ -143,7 +143,7 @@
 /area/template_noop)
 "aw" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/deferred/rations,
+/obj/item/storage/deferred/rations,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},
@@ -189,7 +189,7 @@
 	},
 /area/template_noop)
 "aG" = (
-/obj/item/weapon/paper/crumpled,
+/obj/item/paper/crumpled,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "freezerfloor"
@@ -212,7 +212,7 @@
 /area/template_noop)
 "aI" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -227,7 +227,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/item/weapon/paper/crumpled,
+/obj/item/paper/crumpled,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "freezerfloor"
@@ -262,7 +262,7 @@
 	},
 /area/template_noop)
 "aO" = (
-/obj/item/weapon/soap,
+/obj/item/soap,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "freezerfloor"
@@ -288,7 +288,7 @@
 	},
 /area/template_noop)
 "aS" = (
-/obj/item/weapon/storage/deferred/rations,
+/obj/item/storage/deferred/rations,
 /obj/structure/closet,
 /turf/unsimulated/floor{
 	icon_state = "lino"
@@ -302,7 +302,7 @@
 	},
 /area/template_noop)
 "aU" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/template_noop,
 /area/template_noop)
 "aV" = (
@@ -328,7 +328,7 @@
 /area/template_noop)
 "aY" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /obj/spawner/toy/plushie,
 /turf/unsimulated/floor{
 	icon_state = "lino"
@@ -352,7 +352,7 @@
 	},
 /area/template_noop)
 "bc" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -360,7 +360,7 @@
 "bd" = (
 /obj/structure/table/glass,
 /obj/structure/table/glass,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -417,15 +417,15 @@
 /area/template_noop)
 "bm" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /turf/simulated/floor/plating/under,
 /area/template_noop)
 "bn" = (
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/weapon/pen{
+/obj/item/pen{
 	pixel_y = 4
 	},
 /obj/structure/table/glass,
@@ -452,17 +452,17 @@
 	},
 /area/template_noop)
 "br" = (
-/obj/item/weapon/material/shard,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
+/obj/item/material/shard,
 /obj/spawner/junk,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
 /area/template_noop)
 "bs" = (
-/obj/item/weapon/material/shard,
-/obj/item/weapon/material/shard,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
+/obj/item/material/shard,
+/obj/item/material/shard,
 /obj/spawner/junk,
 /turf/unsimulated/floor{
 	icon_state = "lino"
@@ -470,7 +470,7 @@
 /area/template_noop)
 "bt" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/tray{
+/obj/item/tray{
 	pixel_y = 5
 	},
 /obj/spawner/junkfood/rotten/low_chance,
@@ -527,7 +527,7 @@
 /area/template_noop)
 "bA" = (
 /obj/structure/closet,
-/obj/item/weapon/storage/deferred/rations,
+/obj/item/storage/deferred/rations,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -589,7 +589,7 @@
 /area/template_noop)
 "bJ" = (
 /obj/structure/lattice,
-/obj/item/weapon/storage/pouch/medium_generic,
+/obj/item/storage/pouch/medium_generic,
 /turf/template_noop,
 /area/template_noop)
 "bK" = (
@@ -600,12 +600,12 @@
 	},
 /area/template_noop)
 "bL" = (
-/obj/item/weapon/storage/pouch/ammo,
+/obj/item/storage/pouch/ammo,
 /turf/simulated/floor/plating/under,
 /area/template_noop)
 "bN" = (
-/obj/item/weapon/material/shard,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
+/obj/item/material/shard,
 /turf/template_noop,
 /area/template_noop)
 "bO" = (
@@ -613,14 +613,14 @@
 /turf/simulated/floor/plating/under,
 /area/template_noop)
 "bP" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
 	},
 /area/template_noop)
 "bQ" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/plating/under,
 /area/template_noop)
 

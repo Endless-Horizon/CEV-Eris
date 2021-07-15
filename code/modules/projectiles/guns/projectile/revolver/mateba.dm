@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/revolver/mateba
+/obj/item/gun/projectile/revolver/mateba
 	name = "FS REV .40 Magnum \"Mateba\""
 	desc = "Very old, reliable hand-cannon with a robust design. This is a gun for a real officer, not just a self-proclaimed \"leader\". Revolver of choice when you want to put someone down. Permanently. Uses .40 Magnum ammo."
 	icon = 'icons/obj/guns/projectile/mateba.dmi'

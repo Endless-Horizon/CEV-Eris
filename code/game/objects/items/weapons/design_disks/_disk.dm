@@ -1,4 +1,4 @@
-/obj/item/weapon/computer_hardware/hard_drive/portable/design
+/obj/item/computer_hardware/hard_drive/portable/design
 	name = "design disk"
 	desc = "Data disk used to store autolathe designs."
 	icon_state = "yellow"
@@ -11,7 +11,7 @@
 	var/list/designs = list()
 
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/install_default_files()
+/obj/item/computer_hardware/hard_drive/portable/design/install_default_files()
 	..()
 	// Add design files to the disk
 	for(var/design_typepath in designs)

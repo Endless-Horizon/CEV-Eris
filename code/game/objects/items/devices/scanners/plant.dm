@@ -10,8 +10,8 @@
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 1)
 
 	var/global/list/valid_targets = list(
-		/obj/item/weapon/reagent_containers/food/snacks/grown,
-		/obj/item/weapon/grown,
+		/obj/item/reagent_containers/food/snacks/grown,
+		/obj/item/grown,
 		/obj/machinery/portable_atmospherics/hydroponics,
 		/obj/machinery/beehive,
 		/obj/item/seeds
@@ -47,15 +47,15 @@
 			dat += "The hive is smoked."
 		return jointext(dat, "<br>")
 	
-	else if(istype(target,/obj/item/weapon/reagent_containers/food/snacks/grown))
+	else if(istype(target,/obj/item/reagent_containers/food/snacks/grown))
 
-		var/obj/item/weapon/reagent_containers/food/snacks/grown/G = target
+		var/obj/item/reagent_containers/food/snacks/grown/G = target
 		grown_seed = plant_controller.seeds[G.plantname]
 		grown_reagents = G.reagents
 
-	else if(istype(target,/obj/item/weapon/grown))
+	else if(istype(target,/obj/item/grown))
 
-		var/obj/item/weapon/grown/G = target
+		var/obj/item/grown/G = target
 		grown_seed = plant_controller.seeds[G.plantname]
 		grown_reagents = G.reagents
 

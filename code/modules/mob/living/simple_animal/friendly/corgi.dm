@@ -9,7 +9,7 @@
 	emote_see = list("shakes its head", "shivers")
 	speak_chance = 1
 	turns_per_move = 10
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/corgi
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/corgi
 	meat_amount = 3
 	response_help  = "pets"
 	response_disarm = "bops"
@@ -20,7 +20,7 @@
 	stomach_size_mult = 30
 	seek_speed = 6
 	possession_candidate = 1
-	holder_type = /obj/item/weapon/holder/corgi
+	holder_type = /obj/item/holder/corgi
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 
@@ -54,13 +54,13 @@
 /mob/living/simple_animal/corgi/beg(atom/thing, atom/holder)
 	visible_emote("stares at the [thing] that [holder] has with sad puppy eyes.")
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/corgi
+/obj/item/reagent_containers/food/snacks/meat/corgi
 	name = "Corgi meat"
 	desc = "Tastes like... well you know..."
 	spawn_blacklisted = TRUE//antag_item_targets
 
 /mob/living/simple_animal/corgi/attackby(obj/item/O, mob/user)  //Marker -Agouri
-	if(istype(O, /obj/item/weapon/newspaper))
+	if(istype(O, /obj/item/newspaper))
 		if(!stat)
 			visible_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled up [O.name]."))
 			scan_interval = max_scan_interval//discipline your dog to make it stop stealing food for a while

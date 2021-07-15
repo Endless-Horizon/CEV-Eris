@@ -218,7 +218,7 @@
 	for(var/slot in list(slot_l_hand, slot_r_hand))
 		items += user.get_equipped_item(slot)
 
-	var/obj/item/weapon/storage/belt = user.get_equipped_item(slot_belt)
+	var/obj/item/storage/belt = user.get_equipped_item(slot_belt)
 	if(istype(belt))
 		items += belt.contents
 

@@ -1,4 +1,4 @@
-/obj/item/weapon/computer_hardware/tesla_link
+/obj/item/computer_hardware/tesla_link
 	name = "tesla link"
 	desc = "An advanced tesla link that wirelessly recharges connected device from nearby area power controller."
 	icon_state = "teslalink"

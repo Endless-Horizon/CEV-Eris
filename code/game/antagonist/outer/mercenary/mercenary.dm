@@ -12,7 +12,7 @@
 	access_external_airlocks,
 	access_maint_tunnels) //Mercs get maintenance access on eris, because being an antag without it is hell
 	//They got forged assistant IDs or somesuch
-	id_type = /obj/item/weapon/card/id/merc
+	id_type = /obj/item/card/id/merc
 
 
 	appearance_editor = FALSE
@@ -59,10 +59,10 @@
 	..()
 
 
-/obj/item/weapon/card/id/merc
+/obj/item/card/id/merc
 	icon_state = "syndicate"
 
-/obj/item/weapon/card/id/merc/Initialize(mapload)
+/obj/item/card/id/merc/Initialize(mapload)
 	. = ..()
 	access = list(access_mercenary,//This access governs their ship and base
 	access_external_airlocks,

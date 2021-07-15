@@ -9,7 +9,7 @@
 	move_to_delay = 7
 	mob_size = MOB_MEDIUM
 	density = TRUE
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/roachmeat/panzer
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/roachmeat/panzer
 	rarity_value = 22.5
 
 // Panzers won't slip over on water or soap.

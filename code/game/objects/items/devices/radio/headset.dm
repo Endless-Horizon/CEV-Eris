@@ -220,13 +220,13 @@
 	item_state = "headset"
 	ks2type = /obj/item/device/encryptionkey/headset_church
 
-/obj/item/device/radio/headset/attackby(obj/item/weapon/W, mob/user)
+/obj/item/device/radio/headset/attackby(obj/item/W, mob/user)
 //	..()
 	user.set_machine(src)
-	if (!( istype(W, /obj/item/weapon/tool/screwdriver) || (istype(W, /obj/item/device/encryptionkey/ ))))
+	if (!( istype(W, /obj/item/tool/screwdriver) || (istype(W, /obj/item/device/encryptionkey/ ))))
 		return
 
-	if(istype(W, /obj/item/weapon/tool/screwdriver))
+	if(istype(W, /obj/item/tool/screwdriver))
 		if(keyslot1 || keyslot2)
 
 

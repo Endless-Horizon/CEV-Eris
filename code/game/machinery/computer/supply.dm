@@ -8,7 +8,7 @@
 	icon_screen = "supply"
 	light_color = COLOR_LIGHTING_ORANGE_MACHINERY
 	req_access = list(access_cargo)
-	circuit = /obj/item/weapon/electronics/circuitboard/supplycomp
+	circuit = /obj/item/electronics/circuitboard/supplycomp
 	var/temp
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/last_viewed_group = "categories"
@@ -329,6 +329,6 @@
 /obj/machinery/computer/supplycomp/order
 	name = "supply ordering console"
 	icon_screen = "request"
-	circuit = /obj/item/weapon/electronics/circuitboard/ordercomp
+	circuit = /obj/item/electronics/circuitboard/ordercomp
 	requestonly = TRUE
 	req_access = list()

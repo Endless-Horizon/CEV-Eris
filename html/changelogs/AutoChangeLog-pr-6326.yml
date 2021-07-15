@@ -1,0 +1,4 @@
+author: Chickenish
+delete-after: true
+changes:
+  - refactor: refactored some body scanner code, this should also make it look cleaner.

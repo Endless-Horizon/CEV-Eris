@@ -4,7 +4,7 @@
 // It also supports RCON System which allows you to operate it remotely, if properly set.
 
 //MAGNETIC COILS - These things actually store and transmit power within the SMES. Different types have different properties
-/obj/item/weapon/stock_parts/smes_coil
+/obj/item/stock_parts/smes_coil
 	name = "SMES coil"
 	desc = "Standard superconductive magnetic coil with average capacity and I/O rating."
 	icon = 'icons/obj/stock_parts.dmi'
@@ -17,7 +17,7 @@
 	rating = 2
 
 // 20% Charge Capacity, 60% I/O Capacity. Used for substation/outpost SMESs.
-/obj/item/weapon/stock_parts/smes_coil/weak
+/obj/item/stock_parts/smes_coil/weak
 	name = "basic SMES coil"
 	desc = "Cheaper model of standard superconductive magnetic coil. It's capacity and I/O rating are considerably lower."
 	matter = list(MATERIAL_STEEL = 6, MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 2)
@@ -27,7 +27,7 @@
 	rating = 1
 
 // 1000% Charge Capacity, 20% I/O Capacity
-/obj/item/weapon/stock_parts/smes_coil/super_capacity
+/obj/item/stock_parts/smes_coil/super_capacity
 	name = "capacitance SMES coil"
 	desc = "Specialised version of standard superconductive magnetic coil. This one has significantly stronger containment field, allowing for significantly larger power storage. It's IO rating is much lower, however."
 	matter = list(MATERIAL_STEEL = 8, MATERIAL_PLASTIC = 4, MATERIAL_GLASS = 4, MATERIAL_URANIUM = 4)
@@ -37,7 +37,7 @@
 	rating = 3
 
 // 10% Charge Capacity, 400% I/O Capacity. Technically turns SMES into large super capacitor.Ideal for shields.
-/obj/item/weapon/stock_parts/smes_coil/super_io
+/obj/item/stock_parts/smes_coil/super_io
 	name = "transmission SMES coil"
 	desc = "Specialised version of standard superconductive magnetic coil. While this one won't store almost any power, it rapidly transfers power, making it useful in systems which require large throughput."
 	matter = list(MATERIAL_STEEL = 8, MATERIAL_PLASTIC = 4, MATERIAL_GLASS = 4, MATERIAL_GOLD = 4)
@@ -57,7 +57,7 @@
 	var/grounding = 1			// Cut to quickly discharge, at cost of "minor" electrical issues in output powernet.
 	var/RCon = 1				// Cut to disable AI and remote control.
 	var/RCon_tag = "NO_TAG"		// RCON tag, change to show it on SMES Remote control console.
-	circuit = /obj/item/weapon/electronics/circuitboard/smes
+	circuit = /obj/item/electronics/circuitboard/smes
 	charge = 0
 	should_be_mapped = 1
 
@@ -119,7 +119,7 @@
 	capacity = 0
 	input_level_max = 0
 	output_level_max = 0
-	for(var/obj/item/weapon/stock_parts/smes_coil/C in component_parts)
+	for(var/obj/item/stock_parts/smes_coil/C in component_parts)
 		cur_coils ++
 		capacity += C.ChargeCapacity
 		input_level_max += C.IOCapacity
@@ -280,7 +280,7 @@
 // Proc: attackby()
 // Parameters: 2 (W - object that was used on this machine, user - person which used the object)
 // Description: Handles tool interaction. Allows deconstruction/upgrading/fixing.
-/obj/machinery/power/smes/buildable/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/power/smes/buildable/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
 		to_chat(user, SPAN_WARNING("The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))
@@ -338,7 +338,7 @@
 				return
 
 		// Superconducting Magnetic Coil - Upgrade the SMES
-		else if(istype(W, /obj/item/weapon/stock_parts/smes_coil))
+		else if(istype(W, /obj/item/stock_parts/smes_coil))
 			if (cur_coils < max_coils)
 
 				if (failure_probability && prob(failure_probability))
@@ -378,5 +378,5 @@
 // They spawn with an extra coil to handle the load
 /obj/machinery/power/smes/buildable/engine/Initialize()
 	. = ..()
-	component_parts += new /obj/item/weapon/stock_parts/smes_coil(src)
+	component_parts += new /obj/item/stock_parts/smes_coil(src)
 	RefreshParts()

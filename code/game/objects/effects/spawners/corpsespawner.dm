@@ -68,7 +68,7 @@
 		var/datum/job/job_access = jobdatum
 		if(corpseidaccess)
 			job_access = SSjob.GetJob(corpseidaccess)
-		var/obj/item/weapon/card/id/W = new(M)
+		var/obj/item/card/id/W = new(M)
 		if(job_access)
 			W.access = job_access.get_access()
 		else
@@ -94,7 +94,7 @@
 	corpseradio = /obj/item/device/radio/headset
 	corpsemask = /obj/item/clothing/mask/gas
 	corpsehelmet = /obj/item/clothing/head/armor/helmet
-	corpseback = /obj/item/weapon/storage/backpack
+	corpseback = /obj/item/storage/backpack
 	corpseid = 1
 	corpseidjob = "Operative"
 	corpseidaccess = "Syndicate"
@@ -109,8 +109,8 @@
 	corpsegloves = /obj/item/clothing/gloves/security
 	corpseradio = /obj/item/device/radio/headset
 	corpsemask = /obj/item/clothing/mask/gas/syndicate
-	corpseback = /obj/item/weapon/tank/jetpack/oxygen
-	corpsepocket1 = /obj/item/weapon/tank/emergency_oxygen
+	corpseback = /obj/item/tank/jetpack/oxygen
+	corpsepocket1 = /obj/item/tank/emergency_oxygen
 	corpseid = 1
 	corpseidjob = "Operative"
 	corpseidaccess = "Syndicate"
@@ -135,7 +135,7 @@
 	corpseshoes = /obj/item/clothing/shoes/reinforced
 	corpseradio = /obj/item/device/radio/headset
 	corpsepocket1 = /obj/item/device/lighting/toggleable/flashlight/pen
-	corpsebelt = /obj/item/weapon/storage/belt/medical/
+	corpsebelt = /obj/item/storage/belt/medical/
 	corpseid = 1
 	corpseidjob = "Medical doctor"
 
@@ -154,8 +154,8 @@
 	corpseshoes = /obj/item/clothing/shoes/clown_shoes
 	corpseradio = /obj/item/device/radio/headset
 	corpsemask = /obj/item/clothing/mask/gas/clown_hat
-	corpsepocket1 = /obj/item/weapon/bikehorn
-	corpseback = /obj/item/weapon/storage/backpack/clown
+	corpsepocket1 = /obj/item/bikehorn
+	corpseback = /obj/item/storage/backpack/clown
 	corpseid = 1
 	corpseidjob = "Clown"
 	//corpseidaccess = "Clown" //not exist
@@ -202,7 +202,7 @@
 	corpsehelmet = /obj/item/clothing/head/centhat
 	corpsegloves = /obj/item/clothing/gloves/security
 	corpseshoes = /obj/item/clothing/shoes/jackboots
-	corpsepocket1 = /obj/item/weapon/flame/lighter/zippo
+	corpsepocket1 = /obj/item/flame/lighter/zippo
 	corpseid = 1
 	corpseidjob = "Commander"
 	// corpseidaccess = "Captain"  // No reason for them to have all access on Eris

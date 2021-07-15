@@ -1,4 +1,4 @@
-/obj/item/weapon/flamethrower
+/obj/item/flamethrower
 	name = "flamethrower"
 	desc = "You are a firestarter!"
 	icon = 'icons/obj/flamethrower.dmi'
@@ -17,20 +17,20 @@
 	var/lit = FALSE	//on or off
 	var/operating = 0//cooldown
 	var/turf/previousturf = null
-	var/obj/item/weapon/tank/plasma/ptank = null
+	var/obj/item/tank/plasma/ptank = null
 
 	var/flamerange = 2
 	var/gas_mult = 2.5
 
 
-/obj/item/weapon/flamethrower/Destroy()
+/obj/item/flamethrower/Destroy()
 	if(ptank)
 		qdel(ptank)
 
 	return ..()
 
 
-/obj/item/weapon/flamethrower/Process()
+/obj/item/flamethrower/Process()
 	if(ptank.air_contents.gas["plasma"] < 1)
 		lit = FALSE
 		STOP_PROCESSING(SSobj, src)
@@ -48,7 +48,7 @@
 	return
 
 
-/obj/item/weapon/flamethrower/on_update_icon()
+/obj/item/flamethrower/on_update_icon()
 	cut_overlays()
 	if(ptank)
 		add_overlays("+ptank")
@@ -56,7 +56,7 @@
 		add_overlays("+lit")
 	return
 
-/obj/item/weapon/flamethrower/afterattack(atom/target, mob/user, proximity)
+/obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)
 	if (!lit)
 		to_chat(user, SPAN_WARNING("You press the trigger but nothing happens."))
 	if (istype(target,/obj/item) && user == target.get_holding_mob())
@@ -68,10 +68,10 @@
 			var/turflist = getline(user, target_turf)
 			flame_turf(turflist)
 
-/obj/item/weapon/flamethrower/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/flamethrower/attackby(obj/item/W as obj, mob/user as mob)
 	if(user.stat || user.restrained() || user.lying)	return
 
-	if(istype(W,/obj/item/weapon/tank/plasma))
+	if(istype(W,/obj/item/tank/plasma))
 		if(ptank)
 			to_chat(user, SPAN_NOTICE("There appears to already be a plasma tank loaded in [src]!"))
 			return
@@ -84,7 +84,7 @@
 	return
 
 
-/obj/item/weapon/flamethrower/attack_self(mob/user as mob)
+/obj/item/flamethrower/attack_self(mob/user as mob)
 	if(user.stat || user.restrained() || user.lying)	return
 	user.set_machine(src)
 	var/dat = text("<TT><B>Flamethrower (<A HREF='?src=\ref[src];light=1'>[!lit ? "<font color='red'>Ignite</font>" : "Extinguish"]</a>)</B><BR>\n [ptank ? "Tank Pressure: [ptank.air_contents.return_pressure()]" : "No tank installed"]<BR>\nAmount to throw: <A HREF='?src=\ref[src];amount=-100'>-</A> <A HREF='?src=\ref[src];amount=-10'>-</A> <A HREF='?src=\ref[src];amount=-1'>-</A> [throw_amount] <A HREF='?src=\ref[src];amount=1'>+</A> <A HREF='?src=\ref[src];amount=10'>+</A> <A HREF='?src=\ref[src];amount=100'>+</A><BR>\n[ptank ? "<A HREF='?src=\ref[src];remove=1'>Remove plasmatank</A> - " : ""]<A HREF='?src=\ref[src];close=1'>Close</A></TT>")
@@ -93,7 +93,7 @@
 	return
 
 
-/obj/item/weapon/flamethrower/Topic(href,href_list[])
+/obj/item/flamethrower/Topic(href,href_list[])
 	if(href_list["close"])
 		usr.unset_machine()
 		usr << browse(null, "window=flamethrower")
@@ -132,7 +132,7 @@
 
 
 //Called from turf.dm turf/dblclick
-/obj/item/weapon/flamethrower/proc/flame_turf(var/list/turflist)
+/obj/item/flamethrower/proc/flame_turf(var/list/turflist)
 	if(!lit || operating)	return
 	operating = 1
 	for(var/turf/T in turflist)
@@ -153,7 +153,7 @@
 	return
 
 
-/obj/item/weapon/flamethrower/proc/ignite_turf(turf/target)
+/obj/item/flamethrower/proc/ignite_turf(turf/target)
 	//TODO: DEFERRED Consider checking to make sure tank pressure is high enough before doing this...
 	//Transfer 5% of current tank air contents to turf
 	var/datum/gas_mixture/air_transfer = ptank.air_contents.remove_ratio(0.02*(throw_amount/100))
@@ -164,8 +164,8 @@
 	target.hotspot_expose((ptank.air_contents.temperature*2) + 380,500) // -- More of my "how do I shot fire?" dickery. -- TLE
 	return
 
-/obj/item/weapon/flamethrower/full/New(var/loc)
+/obj/item/flamethrower/full/New(var/loc)
 	..()
-	ptank = new /obj/item/weapon/tank/plasma/(src)
+	ptank = new /obj/item/tank/plasma/(src)
 	update_icon()
 	return

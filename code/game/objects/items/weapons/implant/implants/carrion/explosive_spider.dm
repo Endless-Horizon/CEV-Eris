@@ -1,4 +1,4 @@
-/obj/item/weapon/implant/carrion_spider/explosive
+/obj/item/implant/carrion_spider/explosive
 	name = "explosive spider"
 	desc = "A large, glowing spider, about the size of your fist. It's undulating and emitting a soft ticking noise."
 	icon_state = "spiderling_explosive"
@@ -9,7 +9,7 @@
 	var/flash_range = 6
 	var/det_time = 2 SECONDS
 
-/obj/item/weapon/implant/carrion_spider/explosive/activate()
+/obj/item/implant/carrion_spider/explosive/activate()
 	..()
 	if(wearer)
 		wearer.apply_damage(10, BRUTE, part)
@@ -23,7 +23,7 @@
 	spawn(det_time)
 		src?.prime()
 
-/obj/item/weapon/implant/carrion_spider/explosive/proc/prime()
+/obj/item/implant/carrion_spider/explosive/proc/prime()
 	var/turf/O = get_turf(src)
 	if(!O) return
 
@@ -31,6 +31,6 @@
 
 	die()
 
-/obj/item/weapon/implant/carrion_spider/explosive/proc/on_explosion(O)
+/obj/item/implant/carrion_spider/explosive/proc/on_explosion(O)
 	visible_message(SPAN_DANGER("[src] explodes!"))
 	explosion(get_turf(src), devastation_range, heavy_range, weak_range, flash_range)

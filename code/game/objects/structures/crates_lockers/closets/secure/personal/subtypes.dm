@@ -1,8 +1,8 @@
 /obj/structure/closet/secure_closet/personal/populate_contents()
 	if(prob(50))
-		new /obj/item/weapon/storage/backpack(src)
+		new /obj/item/storage/backpack(src)
 	else
-		new /obj/item/weapon/storage/backpack/satchel(src)
+		new /obj/item/storage/backpack/satchel(src)
 	new /obj/item/device/radio/headset(src)
 
 
@@ -18,6 +18,6 @@
 	icon_lock = "cabinet"
 
 /obj/structure/closet/secure_closet/personal/cabinet/populate_contents()
-	new /obj/item/weapon/storage/backpack/satchel/leather/withwallet(src)
+	new /obj/item/storage/backpack/satchel/leather/withwallet(src)
 	new /obj/item/device/radio/headset(src)
 

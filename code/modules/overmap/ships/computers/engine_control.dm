@@ -5,7 +5,7 @@
 	icon_state = "computer"
 	icon_keyboard = "tech_key"
 	icon_screen = "engine"
-	circuit = /obj/item/weapon/electronics/circuitboard/engines
+	circuit = /obj/item/electronics/circuitboard/engines
 	var/state = "status"
 	var/obj/effect/overmap/ship/linked
 

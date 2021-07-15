@@ -1,5 +1,5 @@
 // Glass shards
-/obj/item/weapon/material/shard
+/obj/item/material/shard
 	name = "shard"
 	icon = 'icons/obj/shards.dmi'
 	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
@@ -18,7 +18,7 @@
 	rarity_value = 6
 	var/amount = 0
 
-/obj/item/weapon/material/shard/New(newloc, material_key, _amount)
+/obj/item/material/shard/New(newloc, material_key, _amount)
 	if(_amount)
 		amount = max(round(_amount, 0.01), 0.01) //We won't ever need to physically represent less than 1% of a material unit
 	.=..()
@@ -36,7 +36,7 @@
 	matter = list(material.name = amount)
 	update_icon()
 
-/obj/item/weapon/material/shard/set_material(var/new_material, var/update)
+/obj/item/material/shard/set_material(var/new_material, var/update)
 	..(new_material)
 	if(!istype(material))
 		return
@@ -57,7 +57,7 @@
 	else
 		qdel(src)
 
-/obj/item/weapon/material/shard/on_update_icon()
+/obj/item/material/shard/on_update_icon()
 	if(material)
 		color = material.icon_colour
 		// 1-(1-x)^2, so that glass shards with 0.3 opacity end up somewhat visible at 0.51 opacity
@@ -85,14 +85,14 @@
 
 	transform = M
 
-/obj/item/weapon/material/shard/attackby(obj/item/I, mob/user)
+/obj/item/material/shard/attackby(obj/item/I, mob/user)
 	if(QUALITY_WELDING in I.tool_qualities)
 		merge_shards(I, user)
 		return
 	return ..()
 
 //Allows you to weld together similar shards in a tile to create useful sheets
-/obj/item/weapon/material/shard/proc/merge_shards(obj/item/I, mob/user)
+/obj/item/material/shard/proc/merge_shards(obj/item/I, mob/user)
 	if (!istype(loc, /turf))
 		to_chat(user, SPAN_WARNING("You need to lay the shards down on a surface to do this!"))
 		return
@@ -101,7 +101,7 @@
 	var/total = amount
 
 	//Loop through all the other shards in the tile and cache them
-	for (var/obj/item/weapon/material/shard/S in loc)
+	for (var/obj/item/material/shard/S in loc)
 		if (S.material.name == material.name && S != src)
 			shards.Add(S)
 			total += S.amount
@@ -117,7 +117,7 @@
 	to_chat(user, SPAN_NOTICE("You start welding the [name]s into useful material sheets..."))
 
 	//Do a tool operation for each shard
-	for (var/obj/item/weapon/material/shard/S in shards)
+	for (var/obj/item/material/shard/S in shards)
 		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 			//We meld each shard with ourselves
 			amount += S.amount
@@ -138,7 +138,7 @@
 			break
 
 
-/obj/item/weapon/material/shard/Crossed(AM as mob|obj)
+/obj/item/material/shard/Crossed(AM as mob|obj)
 	..()
 	if(isliving(AM))
 		var/mob/M = AM
@@ -175,18 +175,18 @@
 			return
 
 // Preset types - left here for the code that uses them
-/obj/item/weapon/material/shard/shrapnel
+/obj/item/material/shard/shrapnel
 	name = "shrapnel" //Needed for crafting
 	rarity_value = 2.5
 
-/obj/item/weapon/material/shard/shrapnel/New(loc)
+/obj/item/material/shard/shrapnel/New(loc)
 
 	..(loc, MATERIAL_STEEL)
 
-/obj/item/weapon/material/shard/shrapnel/scrap
+/obj/item/material/shard/shrapnel/scrap
 	name = "scrap metal"
 	amount = 1
 	rarity_value = 5
 
-/obj/item/weapon/material/shard/plasma/New(loc)
+/obj/item/material/shard/plasma/New(loc)
 	..(loc, MATERIAL_PLASMAGLASS)

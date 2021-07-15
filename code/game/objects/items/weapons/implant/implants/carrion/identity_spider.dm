@@ -1,9 +1,9 @@
-/obj/item/weapon/implant/carrion_spider/identity
+/obj/item/implant/carrion_spider/identity
 	name = "identity spider"
 	icon_state = "spiderling_identity"
 	spider_price = 25
 
-/obj/item/weapon/implant/carrion_spider/identity/activate()
+/obj/item/implant/carrion_spider/identity/activate()
 	..()
 	if(!owner_mob)
 		return

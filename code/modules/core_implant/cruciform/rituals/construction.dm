@@ -1,4 +1,4 @@
-#define CRUCIFORM_TYPE obj/item/weapon/implant/core_implant/cruciform
+#define CRUCIFORM_TYPE obj/item/implant/core_implant/cruciform
 
 GLOBAL_LIST_INIT(nt_blueprints, init_nt_blueprints())
 
@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(nt_blueprints, init_nt_blueprints())
 	desc = "Building needs mainly faith but resources as well. Find out what it takes."
 	power = 5
 
-/datum/ritual/cruciform/priest/acolyte/blueprint_check/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C, list/targets)
+/datum/ritual/cruciform/priest/acolyte/blueprint_check/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C, list/targets)
 	var/construction_key = input("Select construction", "") as null|anything in GLOB.nt_blueprints
 	var/datum/nt_blueprint/blueprint = GLOB.nt_blueprints[construction_key]
 	var/list/listed_components = list()
@@ -36,7 +36,7 @@ GLOBAL_LIST_INIT(nt_blueprints, init_nt_blueprints())
 	desc = "Build and expand. Shape your faith in something more sensible."
 	power = 40
 
-/datum/ritual/cruciform/priest/acolyte/construction/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C, list/targets)
+/datum/ritual/cruciform/priest/acolyte/construction/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C, list/targets)
 	var/construction_key = input("Select construction", "") as null|anything in GLOB.nt_blueprints
 	var/datum/nt_blueprint/blueprint = GLOB.nt_blueprints[construction_key]
 	var/turf/target_turf = get_step(user,user.dir)
@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(nt_blueprints, init_nt_blueprints())
 		/obj/item/stack/material/steel = 10,
 		/obj/item/stack/material/glass = 2,
 		/obj/item/stack/material/silver = 6,
-		/obj/item/weapon/storage/toolbox = 1
+		/obj/item/storage/toolbox = 1
 	)
 	build_time = 5 SECONDS
 /datum/nt_blueprint/machinery/solidifier
@@ -201,7 +201,7 @@ GLOBAL_LIST_INIT(nt_blueprints, init_nt_blueprints())
 	build_path = /obj/machinery/multistructure/biogenerator_part/port
 	materials = list(
 		/obj/item/stack/material/steel = 10,
-		/obj/item/weapon/reagent_containers/glass/bucket = 1
+		/obj/item/reagent_containers/glass/bucket = 1
 	)
 	build_time = 5 SECONDS
 //bioreactor
@@ -231,7 +231,7 @@ GLOBAL_LIST_INIT(nt_blueprints, init_nt_blueprints())
 	build_path = /obj/machinery/multistructure/bioreactor_part/bioport
 	materials = list(
 		/obj/item/stack/material/silver = 5,
-		/obj/item/weapon/reagent_containers/glass/bucket = 1
+		/obj/item/reagent_containers/glass/bucket = 1
 	)
 	build_time = 6 SECONDS
 /datum/nt_blueprint/machinery/bioreactor_biotank

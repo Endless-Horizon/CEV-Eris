@@ -175,8 +175,8 @@
 	for(var/atom/movable/implant in implants)
 		//large items and non-item objs fall to the floor, everything else stays
 		var/obj/item/I = implant
-		if(istype(I, /obj/item/weapon/implant))
-			var/obj/item/weapon/implant/Imp = I
+		if(istype(I, /obj/item/implant))
+			var/obj/item/implant/Imp = I
 			Imp.uninstall()
 			continue
 		if(istype(I) && I.w_class < ITEM_SIZE_NORMAL)
@@ -405,7 +405,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	// remove embedded objects and drop them on the floor
 	for(var/obj/implanted_object in implants)
-		if(!istype(implanted_object,/obj/item/weapon/implant))	// We don't want to remove REAL implants. Just shrapnel etc.
+		if(!istype(implanted_object,/obj/item/implant))	// We don't want to remove REAL implants. Just shrapnel etc.
 			implanted_object.loc = get_turf(src)
 			implants -= implanted_object
 
@@ -884,7 +884,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
 	implants += W
 
-	if(!istype(W, /obj/item/weapon/material/shard/shrapnel))
+	if(!istype(W, /obj/item/material/shard/shrapnel))
 		embedded += W
 		owner.verbs += /mob/proc/yank_out_object
 

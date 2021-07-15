@@ -53,7 +53,7 @@
 		to_chat(mover, SPAN_WARNING("Maintenance protocols are in effect."))
 		next_move = world.time + 3 // Just to stop them from getting spammed with messages.
 		return MOVEMENT_STOP
-	var/obj/item/weapon/cell/C = exosuit.get_cell()
+	var/obj/item/cell/C = exosuit.get_cell()
 	if(!C || !C.check_charge(exosuit.legs.power_use * CELLRATE))
 		to_chat(mover, SPAN_WARNING("The power indicator flashes briefly."))
 		next_move = world.time + 3 //On fast exosuits this got annoying fast
@@ -72,7 +72,7 @@
 	if(failed)
 		moving_dir = pick(GLOB.cardinal - exosuit.dir)
 
-	var/obj/item/weapon/cell/C = exosuit.get_cell()
+	var/obj/item/cell/C = exosuit.get_cell()
 	C.use(exosuit.legs.power_use * CELLRATE)
 	if(exosuit.dir != moving_dir && !exosuit.strafing)
 		playsound(exosuit.loc, exosuit.mech_turn_sound, 40,1)

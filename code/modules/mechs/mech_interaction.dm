@@ -47,7 +47,7 @@
 		setClickCooldown(15)
 		return
 
-	var/obj/item/weapon/cell/cell = get_cell()
+	var/obj/item/cell/cell = get_cell()
 	if(!cell)
 		to_chat(user, SPAN_WARNING("Error: Power cell missing."))
 		setClickCooldown(3)
@@ -269,12 +269,12 @@
 	return ..()
 
 /mob/living/exosuit/proc/attack_tool(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/weapon/cell))
+	if(istype(I, /obj/item/cell))
 		if(!maintenance_protocols)
 			to_chat(user, SPAN_WARNING("The power cell bay is locked while maintenance protocols are disabled."))
 			return TRUE
 
-		var/obj/item/weapon/cell/cell = get_cell()
+		var/obj/item/cell/cell = get_cell()
 		if(cell)
 			to_chat(user, SPAN_WARNING("\The [src] already has [cell] installed!"))
 			return TRUE
@@ -285,7 +285,7 @@
 
 		return TRUE
 
-	else if(istype(I, /obj/item/weapon/electronics/circuitboard/exosystem))
+	else if(istype(I, /obj/item/electronics/circuitboard/exosystem))
 		if(!maintenance_protocols)
 			to_chat(user, SPAN_WARNING("The software upload bay is locked while maintenance protocols are disabled."))
 			return TRUE
@@ -388,7 +388,7 @@
 	// Clickdragging, either onto a mob or into inventory hand
 	if(istype(user) && user.Adjacent(src) && (over_object == user || istype(over_object, /obj/screen/inventory/hand)))
 		// Ejecting exosuit power cell
-		var/obj/item/weapon/cell/cell = get_cell()
+		var/obj/item/cell/cell = get_cell()
 		if(cell)
 			if(!maintenance_protocols)
 				to_chat(user, SPAN_WARNING("The power cell bay is locked while maintenance protocols are disabled."))

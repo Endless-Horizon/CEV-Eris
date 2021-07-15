@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	sanity_damage = 0.1
 	var/loot_generated = FALSE
 	var/icontype = "general"
-	var/obj/item/weapon/storage/internal/updating/loot	//the visible loot
+	var/obj/item/storage/internal/updating/loot	//the visible loot
 	var/loot_min = 6
 	var/loot_max = 12
 	var/list/loot_tags = list(
@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	switch(severity)
 		if(1)
 			for(var/i in 1 to 12)
-				var/projtype = pick(/obj/item/stack/rods, /obj/item/weapon/material/shard)
+				var/projtype = pick(/obj/item/stack/rods, /obj/item/material/shard)
 				var/obj/item/projectile = new projtype(loc)
 				projectile.throw_at(locate(loc.x + rand(40) - 20, loc.y + rand(40) - 20, loc.z), 81, pick(1,3,80,80))
 		if(2)
@@ -157,8 +157,8 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 	for(var/obj/item/loot in contents)
 		if(prob(prob_make_old))
 			loot.make_old()
-		if(istype(loot, /obj/item/weapon/reagent_containers/food/snacks))
-			var/obj/item/weapon/reagent_containers/food/snacks/S = loot
+		if(istype(loot, /obj/item/reagent_containers/food/snacks))
+			var/obj/item/reagent_containers/food/snacks/S = loot
 			S.junk_food = TRUE
 			if(prob(20))
 				S.reagents.add_reagent("toxin", rand(2, 15))
@@ -312,7 +312,7 @@ GLOBAL_LIST_EMPTY(scrap_base_cache)
 		dig_amount--
 		for (var/a in matter)
 			matter[a] *=RAND_DECIMAL(0.6, 0.8)//remove some amount of matter from the pile
-		//new /obj/item/weapon/scrap_lump(src) //Todo: uncomment this once purposes and machinery for scrap are implemented
+		//new /obj/item/scrap_lump(src) //Todo: uncomment this once purposes and machinery for scrap are implemented
 		return TRUE
 
 

@@ -1,6 +1,6 @@
 #define CHAMELEON_MIN_PIXELS 32
 
-GLOBAL_LIST_INIT(champroj_blacklist, list(/obj/item/weapon/disk/nuclear))
+GLOBAL_LIST_INIT(champroj_blacklist, list(/obj/item/disk/nuclear))
 GLOBAL_LIST_INIT(champroj_whitelist, list())
 
 /obj/item/device/chameleon
@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(champroj_whitelist, list())
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_COVERT = 4, TECH_MAGNET = 4)
-	suitable_cell = /obj/item/weapon/cell/small
+	suitable_cell = /obj/item/cell/small
 	spawn_blacklisted = TRUE
 	var/can_use = 1
 	var/obj/effect/dummy/chameleon/active_dummy
@@ -44,7 +44,7 @@ GLOBAL_LIST_INIT(champroj_whitelist, list())
 		toggle()
 
 /obj/item/device/chameleon/afterattack(atom/target, mob/user , proximity)
-	if (istype(target, /obj/item/weapon/storage)) return
+	if (istype(target, /obj/item/storage)) return
 	if(!proximity) return
 	if(!active_dummy)
 		if(scan_item(target))

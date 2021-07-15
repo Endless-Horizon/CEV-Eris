@@ -21,7 +21,7 @@
 /area/map_template/lodge)
 "f" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /mob/living/simple_animal/hostile/roomba/slayer,
 /turf/simulated/floor/carpet/turcarpet,
 /area/map_template/lodge)
@@ -31,7 +31,7 @@
 /area/map_template/lodge)
 "h" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/board,
+/obj/item/board,
 /turf/simulated/floor/wood,
 /area/map_template/lodge)
 "i" = (
@@ -46,10 +46,10 @@
 /area/map_template/lodge)
 "k" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/material/kitchen/utensil/fork/plastic,
-/obj/item/weapon/material/kitchen/utensil/fork/plastic,
-/obj/item/weapon/material/kitchen/utensil/fork/plastic,
-/obj/item/weapon/tool/knife,
+/obj/item/material/kitchen/utensil/fork/plastic,
+/obj/item/material/kitchen/utensil/fork/plastic,
+/obj/item/material/kitchen/utensil/fork/plastic,
+/obj/item/tool/knife,
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
@@ -57,8 +57,8 @@
 /area/map_template/lodge)
 "l" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/tool/knife,
-/obj/item/weapon/tool/knife,
+/obj/item/tool/knife,
+/obj/item/tool/knife,
 /obj/effect/floor_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 1
@@ -97,8 +97,8 @@
 /area/map_template/lodge)
 "q" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/deck/cards,
+/obj/item/paper_bin,
+/obj/item/deck/cards,
 /turf/simulated/floor/wood,
 /area/map_template/lodge)
 "r" = (
@@ -113,7 +113,7 @@
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/weapon/tool/knife/butch,
+/obj/item/tool/knife/butch,
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/map_template/lodge)
 "t" = (
@@ -203,7 +203,7 @@
 /area/map_template/lodge)
 "I" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn,
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
 /obj/spawner/ammo/shotgun,
 /turf/simulated/floor/wood,
 /area/map_template/lodge)

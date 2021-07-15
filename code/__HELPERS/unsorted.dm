@@ -291,8 +291,8 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		var/search_pda = 1
 
 		for(var/A in searching)
-			if( search_id && istype(A,/obj/item/weapon/card/id) )
-				var/obj/item/weapon/card/id/ID = A
+			if( search_id && istype(A,/obj/item/card/id) )
+				var/obj/item/card/id/ID = A
 				if(ID.registered_name == oldname)
 					ID.registered_name = newname
 					ID.name = "[newname]'s ID Card ([ID.assignment])"
@@ -1031,12 +1031,12 @@ proc/is_hot(obj/item/W)
 	if(QUALITY_WELDING in W.tool_qualities)
 		return 3800
 	switch(W.type)
-		if(/obj/item/weapon/flame/lighter)
+		if(/obj/item/flame/lighter)
 			if(W:lit)
 				return 1500
 			else
 				return 0
-		if(/obj/item/weapon/flame/match)
+		if(/obj/item/flame/match)
 			if(W:lit)
 				return 1000
 			else
@@ -1046,7 +1046,7 @@ proc/is_hot(obj/item/W)
 				return 1000
 			else
 				return 0
-		if(/obj/item/weapon/melee/energy)
+		if(/obj/item/melee/energy)
 			return 3500
 		else
 			return 0
@@ -1071,19 +1071,19 @@ proc/is_hot(obj/item/W)
 	return ( \
 		W.sharp														|| \
 		istool(W)													|| \
-		istype(W, /obj/item/weapon/pen)								|| \
-		istype(W, /obj/item/weapon/flame/lighter/zippo)				|| \
-		istype(W, /obj/item/weapon/flame/match)						|| \
+		istype(W, /obj/item/pen)								|| \
+		istype(W, /obj/item/flame/lighter/zippo)				|| \
+		istype(W, /obj/item/flame/match)						|| \
 		istype(W, /obj/item/clothing/mask/smokable/cigarette)		\
 	)
 
 /proc/is_surgery_tool(obj/item/W)
 	return (	\
-	istype(W, /obj/item/weapon/tool/scalpel)			||	\
-	istype(W, /obj/item/weapon/tool/hemostat)		||	\
-	istype(W, /obj/item/weapon/tool/retractor)		||	\
-	istype(W, /obj/item/weapon/tool/cautery)			||	\
-	istype(W, /obj/item/weapon/tool/bonesetter)
+	istype(W, /obj/item/tool/scalpel)			||	\
+	istype(W, /obj/item/tool/hemostat)		||	\
+	istype(W, /obj/item/tool/retractor)		||	\
+	istype(W, /obj/item/tool/cautery)			||	\
+	istype(W, /obj/item/tool/bonesetter)
 	)
 
 /proc/reverse_direction(var/dir)
@@ -1113,7 +1113,7 @@ var/list/WALLITEMS = list(
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
 	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard,
-	/obj/item/weapon/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
+	/obj/item/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
 	/obj/structure/mirror, /obj/structure/fireaxecabinet, /obj/item/modular_computer/telescreen,
 	/obj/machinery/light_construct, /obj/machinery/light, /obj/machinery/holomap
 	)

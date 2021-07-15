@@ -18,7 +18,7 @@
 	body.update_air(hatch_closed && use_air)
 
 	if((client || LAZYLEN(pilots)) && get_cell())
-		var/obj/item/weapon/cell/c = get_cell()
+		var/obj/item/cell/c = get_cell()
 		c.drain_power(0, 0, calc_power_draw())
 
 	updatehealth()

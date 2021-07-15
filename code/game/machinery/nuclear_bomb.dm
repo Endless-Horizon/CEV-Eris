@@ -15,7 +15,7 @@ var/bomb_set
 	var/code = ""
 	var/yes_code = 0
 	var/safety = 1
-	var/obj/item/weapon/disk/nuclear/auth = null
+	var/obj/item/disk/nuclear/auth = null
 	var/removal_stage = 0 // 0 is no removal, 1 is covers removed, 2 is covers open, 3 is sealant open, 4 is unwrenched, 5 is removed from bolts.
 	var/lastentered
 	use_power = NO_POWER_USE
@@ -131,7 +131,7 @@ var/bomb_set
 		return attack_hand(user)
 
 	if (src.extended)
-		if (istype(I, /obj/item/weapon/disk/nuclear))
+		if (istype(I, /obj/item/disk/nuclear))
 			usr.drop_item()
 			I.loc = src
 			src.auth = I
@@ -228,7 +228,7 @@ var/bomb_set
 			auth = null
 		else
 			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/weapon/disk/nuclear))
+			if (istype(I, /obj/item/disk/nuclear))
 				usr.drop_item()
 				I.loc = src
 				auth = I
@@ -382,7 +382,7 @@ if(!N.lighthack)
 		*/
 
 //====The nuclear authentication disc====
-/obj/item/weapon/disk/nuclear
+/obj/item/disk/nuclear
 	name = "nuclear authentication disk"
 	desc = "Better keep this safe."
 	icon = 'icons/obj/discs.dmi'
@@ -390,5 +390,5 @@ if(!N.lighthack)
 	item_state = "card-id"
 	w_class = ITEM_SIZE_TINY
 
-/obj/item/weapon/disk/nuclear/touch_map_edge()
+/obj/item/disk/nuclear/touch_map_edge()
 	qdel(src)

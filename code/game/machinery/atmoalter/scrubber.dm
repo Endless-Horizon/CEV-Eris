@@ -21,7 +21,7 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/New()
 	..()
-	cell = new/obj/item/weapon/cell/medium/high(src)
+	cell = new/obj/item/cell/medium/high(src)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
@@ -217,13 +217,13 @@
 		return
 
 	//doesn't use power cells
-	if(istype(I, /obj/item/weapon/cell/large))
+	if(istype(I, /obj/item/cell/large))
 		return
-	if (istype(I, /obj/item/weapon/tool/screwdriver))
+	if (istype(I, /obj/item/tool/screwdriver))
 		return
 
 	//doesn't hold tanks
-	if(istype(I, /obj/item/weapon/tank))
+	if(istype(I, /obj/item/tank))
 		return
 
 	return

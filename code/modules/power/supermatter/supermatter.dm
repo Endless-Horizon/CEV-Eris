@@ -267,7 +267,7 @@
 
 	for(var/mob/living/carbon/human/H in view(src, min(7, round(sqrt(power/6))))) // If they can see it without mesons on.  Bad on them.
 		if(!istype(H.glasses, /obj/item/clothing/glasses/powered/meson))
-			if (!(istype(H.wearing_rig, /obj/item/weapon/rig) && istype(H.wearing_rig.getCurrentGlasses(), /obj/item/clothing/glasses/powered/meson)))
+			if (!(istype(H.wearing_rig, /obj/item/rig) && istype(H.wearing_rig.getCurrentGlasses(), /obj/item/clothing/glasses/powered/meson)))
 				var/effect = max(0, min(200, power * config_hallucination_power * sqrt( 1 / max(1,get_dist(H, src)))) )
 				H.adjust_hallucination(effect, 0.25*effect)
 				H.add_side_effect("Headache", 11)
@@ -351,7 +351,7 @@
 			R.receive_pulse(transfer_energy * (min(3/(distance != 0 ? distance : 1), 1))**2)
 
 
-/obj/machinery/power/supermatter/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
+/obj/machinery/power/supermatter/attackby(obj/item/W as obj, mob/living/user as mob)
 
 	/*
 		Repairing the supermatter with duct tape, for meme value

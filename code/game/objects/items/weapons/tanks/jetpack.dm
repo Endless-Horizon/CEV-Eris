@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-/obj/item/weapon/tank/jetpack
+/obj/item/tank/jetpack
 	name = "jetpack (empty)"
 	desc = "A tank of compressed gas for use as propulsion in zero-gravity areas. Use with caution."
 	icon_state = "jetpack"
@@ -9,7 +9,7 @@
 	force = WEAPON_FORCE_PAINFUL
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	default_pressure = 6*ONE_ATMOSPHERE
-	bad_type = /obj/item/weapon/tank/jetpack
+	bad_type = /obj/item/tank/jetpack
 	spawn_tags = SPAWN_TAG_JETPACK
 	rarity_value = 50
 	var/datum/effect/effect/system/trail/jet/trail
@@ -25,7 +25,7 @@
 	//This is set false when a stabilisation check is queued, and set true when it resolves
 	//Used to prevent multiple scheduled checks in a row from resolving, and causing the effect+cost to happen many times
 
-	var/obj/item/weapon/tank/gastank = null //The tank we actually draw gas from. This is generally ourselves
+	var/obj/item/tank/gastank = null //The tank we actually draw gas from. This is generally ourselves
 	//but Rig backpacks draw from a seperate tank
 
 	//Used for normal jet thrust effects
@@ -34,19 +34,19 @@
 /*****************************
 	Jetpack Types
 *****************************/
-/obj/item/weapon/tank/jetpack/void
+/obj/item/tank/jetpack/void
 	name = "void jetpack (oxygen)"
 	desc = "It works well in a void."
 	icon_state = "jetpack-void"
 	default_gas = "oxygen"
 
-/obj/item/weapon/tank/jetpack/oxygen
+/obj/item/tank/jetpack/oxygen
 	name = "jetpack (oxygen)"
 	desc = "A tank of compressed oxygen for use as propulsion in zero-gravity areas. Use with caution."
 	icon_state = "jetpack"
 	default_gas = "oxygen"
 
-/obj/item/weapon/tank/jetpack/carbondioxide
+/obj/item/tank/jetpack/carbondioxide
 	name = "jetpack (carbon dioxide)"
 	desc = "A tank of compressed carbon dioxide for use as propulsion in zero-gravity areas. Painted black to indicate that it should not be used as a source for internals."
 	icon_state = "jetpack-black"
@@ -57,19 +57,19 @@
 /*****************************
 	Core Functionality
 *****************************/
-/obj/item/weapon/tank/jetpack/Initialize(mapload, ...)
+/obj/item/tank/jetpack/Initialize(mapload, ...)
 	. = ..()
 	gastank = src
 	trail = new /datum/effect/effect/system/trail/jet()
 	trail.set_up(src)
 
 
-/obj/item/weapon/tank/jetpack/Destroy()
+/obj/item/tank/jetpack/Destroy()
 	QDEL_NULL(trail)
 	gastank = null // this is usually src, better to not call qdel infinitely
 	return ..()
 
-/obj/item/weapon/tank/jetpack/examine(mob/user)
+/obj/item/tank/jetpack/examine(mob/user)
 	. = ..()
 	to_chat(user, "The pressure gauge reads: [SPAN_NOTICE(get_gas().return_pressure())] kPa")
 	if(air_contents.total_moles < 5)
@@ -81,7 +81,7 @@
 *****************************/
 //Toggling does as little as possible, to make jetpacks more modular.
 //All the work is done in the enable/disable procs
-/obj/item/weapon/tank/jetpack/verb/toggle_rockets()
+/obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"
 	set category = "Object"
 
@@ -91,7 +91,7 @@
 	else
 		enable_stabilizer()
 
-/obj/item/weapon/tank/jetpack/proc/enable_stabilizer()
+/obj/item/tank/jetpack/proc/enable_stabilizer()
 	if (stabilize(usr, usr.l_move_time, TRUE))
 		stabilization_on = TRUE
 		to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
@@ -103,7 +103,7 @@
 			to_chat(usr, SPAN_WARNING("The [src] doesnt have enough gas to enable the stabiliser."))
 		return FALSE
 
-/obj/item/weapon/tank/jetpack/proc/disable_stabilizer()
+/obj/item/tank/jetpack/proc/disable_stabilizer()
 	stabilization_on = FALSE
 	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
 
@@ -125,7 +125,7 @@
 
 //Toggling does as little as possible, to make jetpacks more modular.
 //All the work is done in the enable/disable procs
-/obj/item/weapon/tank/jetpack/verb/toggle()
+/obj/item/tank/jetpack/verb/toggle()
 	set name = "Toggle Jetpack"
 	set category = "Object"
 
@@ -134,7 +134,7 @@
 	else
 		enable_thruster()
 
-/obj/item/weapon/tank/jetpack/proc/enable_thruster()
+/obj/item/tank/jetpack/proc/enable_thruster()
 	on = TRUE
 	icon_state = "[icon_state]-on"
 	trail.start()
@@ -145,7 +145,7 @@
 		to_chat(usr, "You toggle the thrusters [on? "on":"off"].")
 	return TRUE
 
-/obj/item/weapon/tank/jetpack/proc/disable_thruster()
+/obj/item/tank/jetpack/proc/disable_thruster()
 	on = FALSE
 	icon_state = initial(icon_state)
 	trail.stop()
@@ -162,7 +162,7 @@
 *****************************/
 //Attempts to use up gas and returns true if it can
 //Stabilization check is a somewhat hacky mechanic to handle an extra burst of gas for stabilizing, read below
-/obj/item/weapon/tank/jetpack/proc/allow_thrust(num, mob/living/user, stabilization_check = FALSE)
+/obj/item/tank/jetpack/proc/allow_thrust(num, mob/living/user, stabilization_check = FALSE)
 
 	if(!(src.on))
 		return FALSE
@@ -212,7 +212,7 @@
 
 */
 
-/obj/item/weapon/tank/jetpack/proc/stabilize(mob/living/user, schedule_time, enable_stabilize = FALSE)
+/obj/item/tank/jetpack/proc/stabilize(mob/living/user, schedule_time, enable_stabilize = FALSE)
 	//First up, lets check we still have the user and they're still wearing this jetpack
 
 	if (!operational_safety(user))
@@ -256,13 +256,13 @@
 *****************************/
 /*
 	Although jetpacks are tanks, they can draw their air supply from another tank.
-	Sometimes, like in the case of mechas, that tank is not a /obj/item/weapon/tank
+	Sometimes, like in the case of mechas, that tank is not a /obj/item/tank
 
 	These functions provide a generic interface for different kinds of tanks
 */
-/obj/item/weapon/tank/jetpack/proc/get_gas()
+/obj/item/tank/jetpack/proc/get_gas()
 	RETURN_TYPE(/datum/gas_mixture)
-	if (istype(gastank, /obj/item/weapon/tank))
+	if (istype(gastank, /obj/item/tank))
 		return gastank.air_contents
 
 
@@ -277,7 +277,7 @@
 	Checks
 *****************************/
 //A check only version of the above, does not alter any values
-/obj/item/weapon/tank/jetpack/proc/check_thrust(num = thrust_cost, mob/living/user as mob)
+/obj/item/tank/jetpack/proc/check_thrust(num = thrust_cost, mob/living/user as mob)
 	if(!(src.on))
 		return FALSE
 	if((get_gas().total_moles < num))
@@ -286,26 +286,26 @@
 	return TRUE
 
 //Safety checks for thrust and stabilisation are seperated into a seperate proc, for overriding
-/obj/item/weapon/tank/jetpack/proc/operational_safety(mob/living/user)
+/obj/item/tank/jetpack/proc/operational_safety(mob/living/user)
 	if (!user || loc != user)
 		return FALSE
 	return TRUE
 
-/obj/item/weapon/tank/jetpack/ui_action_click()
+/obj/item/tank/jetpack/ui_action_click()
 	toggle()
 
 /*******************************
 	Rig jetpack
 ********************************/
-/obj/item/weapon/tank/jetpack/rig
+/obj/item/tank/jetpack/rig
 	name = "maneuvring jets"
-	var/obj/item/weapon/rig/holder
+	var/obj/item/rig/holder
 	spawn_tags = null
 
 //The rig jetpack uses the suit's gastank, this is set during the install proc for the rig module
 
 
-/obj/item/weapon/tank/jetpack/rig/operational_safety(mob/living/user)
+/obj/item/tank/jetpack/rig/operational_safety(mob/living/user)
 	if (!user || holder.loc != user)
 		return FALSE
 	return TRUE
@@ -314,7 +314,7 @@
 	SYNTHETIC JETPACK
 *****************************/
 //Refills by compressing air in the environment
-/obj/item/weapon/tank/jetpack/synthetic
+/obj/item/tank/jetpack/synthetic
 	name = "synthetic jetpack"
 	desc = "A tank of compressed air for use as propulsion in zero-gravity areas. Has a built in compressor to refill it in any gaseous environment."
 	default_pressure = 6*ONE_ATMOSPHERE	// kPa. Also the pressure the compressor would fill itself to
@@ -326,16 +326,16 @@
 	var/volume_rate = 0.25 //Used to adjust how quickly the jetpack refills
 	var/datum/robot_component/jetpack/component
 
-/obj/item/weapon/tank/jetpack/synthetic/toggle_rockets()
+/obj/item/tank/jetpack/synthetic/toggle_rockets()
 	set category = "Silicon Commands"
 	.=..()
 
-/obj/item/weapon/tank/jetpack/synthetic/toggle()
+/obj/item/tank/jetpack/synthetic/toggle()
 	set category = "Silicon Commands"
 	.=..()
 
 //Whenever we call a function that might use gas, we'll check if its time to start processing
-/obj/item/weapon/tank/jetpack/synthetic/allow_thrust(num, mob/living/user, stabilization_check = FALSE)
+/obj/item/tank/jetpack/synthetic/allow_thrust(num, mob/living/user, stabilization_check = FALSE)
 	.=..(num, user, stabilization_check)
 	if (!processing)
 		//We'll allow a 5% leeway before we go into sucking mode, to prevent constant turning on and off
@@ -343,7 +343,7 @@
 			processing = TRUE
 			START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/tank/jetpack/synthetic/stabilize(mob/living/user, schedule_time, enable_stabilize = FALSE)
+/obj/item/tank/jetpack/synthetic/stabilize(mob/living/user, schedule_time, enable_stabilize = FALSE)
 	.=..(user, schedule_time, enable_stabilize)
 	if (!processing)
 		if (get_gas().total_moles < (default_pressure*volume/(R_IDEAL_GAS_EQUATION*T20C)) * 0.95)
@@ -351,18 +351,18 @@
 			START_PROCESSING(SSobj, src)
 
 
-/obj/item/weapon/tank/jetpack/synthetic/Process()
+/obj/item/tank/jetpack/synthetic/Process()
 	if (!draw_air())
 		stop_drawing()
 
-/obj/item/weapon/tank/jetpack/synthetic/operational_safety(mob/living/user)
+/obj/item/tank/jetpack/synthetic/operational_safety(mob/living/user)
 	if (!component || !component.powered)
 		return FALSE
 	return TRUE
 
 //This process will constantly attempt to find a pressurised environment, and when it does, start sucking up air
 //Until our tank is full enough
-/obj/item/weapon/tank/jetpack/synthetic/proc/draw_air()
+/obj/item/tank/jetpack/synthetic/proc/draw_air()
 	var/turf/T = get_turf(src)
 	if (!T)
 		return
@@ -399,7 +399,7 @@
 	return TRUE
 
 //Called whenever compression fails for some reason, or when it finishes and the tank is full
-/obj/item/weapon/tank/jetpack/synthetic/proc/stop_drawing(complete = FALSE)
+/obj/item/tank/jetpack/synthetic/proc/stop_drawing(complete = FALSE)
 	if (compressing)
 		playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		var/mob/living/silicon/robot/R = get_holding_mob()
@@ -426,12 +426,12 @@
 
 	// Search the human for a jetpack. Either on back or on a RIG that's on
 	// on their back.
-	if (istype(back, /obj/item/weapon/tank/jetpack))
+	if (istype(back, /obj/item/tank/jetpack))
 		return back
-	else if (istype(s_store, /obj/item/weapon/tank/jetpack))
+	else if (istype(s_store, /obj/item/tank/jetpack))
 		return s_store
-	else if (istype(back, /obj/item/weapon/rig))
-		var/obj/item/weapon/rig/rig = back
+	else if (istype(back, /obj/item/rig))
+		var/obj/item/rig/rig = back
 		for (var/obj/item/rig_module/maneuvering_jets/module in rig.installed_modules)
 			return module.jets
 

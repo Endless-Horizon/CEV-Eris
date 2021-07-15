@@ -16,7 +16,7 @@
 	var/state = 2
 	var/reinf = 0
 	var/basestate
-	var/shardtype = /obj/item/weapon/material/shard
+	var/shardtype = /obj/item/material/shard
 	var/glasstype = null // Set this in subtypes. Null is assumed strange or otherwise impossible to dismantle, such as for shuttle glass.
 	var/silicate = 0 // number of units of silicate
 	var/no_color = FALSE //If true, don't apply a color to the base
@@ -127,7 +127,7 @@
 		if(reinf)
 			new /obj/item/stack/rods(loc)
 		while(index < rand(4,6))
-			var/obj/item/weapon/material/shard/S = new shardtype(loc)
+			var/obj/item/material/shard/S = new shardtype(loc)
 			if (explode && nearby.len > 0)
 				var/turf/target = pick(nearby)
 				spawn()
@@ -534,7 +534,7 @@
 	desc = "A borosilicate alloy window. It seems to be quite strong."
 
 	icon_state = "plasmawindow"
-	shardtype = /obj/item/weapon/material/shard/plasma
+	shardtype = /obj/item/material/shard/plasma
 	glasstype = /obj/item/stack/material/glass/plasmaglass
 	maximal_heat = T0C + 5227  // Safe use temperature at 5500 kelvin. Easy to remember.
 	damage_per_fire_tick = 1.5 // Lowest per-tick damage so overheated supermatter chambers have some time to respond to it. Will still shatter before a delam.
@@ -585,7 +585,7 @@
 	desc = "A borosilicate alloy window, with rods supporting it. It seems to be very strong."
 	basestate = "plasmarwindow"
 	icon_state = "plasmarwindow"
-	shardtype = /obj/item/weapon/material/shard/plasma
+	shardtype = /obj/item/material/shard/plasma
 	glasstype = /obj/item/stack/material/glass/plasmarglass
 	maximal_heat = T0C + 5453 // Safe use temperature at 6000 kelvin.
 	damage_per_fire_tick = 1.5

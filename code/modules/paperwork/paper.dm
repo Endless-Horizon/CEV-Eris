@@ -6,7 +6,7 @@
  * also scraps of paper
  */
 
-/obj/item/weapon/paper
+/obj/item/paper
 	name = "sheet of paper"
 	gender = NEUTER
 	icon = 'icons/obj/bureaucracy.dmi'
@@ -42,13 +42,13 @@
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
 
-/obj/item/weapon/paper/New(loc, text,title)
+/obj/item/paper/New(loc, text,title)
 	..(loc)
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	set_content(text ? text : info, title)
 
-/obj/item/weapon/paper/proc/set_content(text,title)
+/obj/item/paper/proc/set_content(text,title)
 	if(title)
 		name = title
 	info = html_encode(text)
@@ -57,7 +57,7 @@
 	update_space(info)
 	updateinfolinks()
 
-/obj/item/weapon/paper/on_update_icon()
+/obj/item/paper/on_update_icon()
 	if (icon_state == "paper_talisman")
 		return
 	else if (info)
@@ -65,11 +65,11 @@
 	else
 		icon_state = "paper"
 
-/obj/item/weapon/paper/proc/update_space(var/new_text)
+/obj/item/paper/proc/update_space(var/new_text)
 	if(!new_text)
 		free_space -= length(strip_html_properly(new_text))
 
-/obj/item/weapon/paper/examine(mob/user)
+/obj/item/paper/examine(mob/user)
 	. = ..()
 	if(name != "sheet of paper")
 		to_chat(user, "It's titled '[name]'.")
@@ -78,7 +78,7 @@
 	else
 		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
 
-/obj/item/weapon/paper/proc/show_content(mob/user, forceshow)
+/obj/item/paper/proc/show_content(mob/user, forceshow)
 	var/can_read = (istype(user, /mob/living/carbon/human) || isghost(user) || istype(user, /mob/living/silicon)) || forceshow
 	if(!forceshow && istype(user,/mob/living/silicon/ai))
 		var/mob/living/silicon/ai/AI = user
@@ -86,7 +86,7 @@
 	user << browse("<HTML><meta charset=\"utf-8\"><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[can_read ? info : stars(info)][stamps]</BODY></HTML>", "window=[name]")
 	onclose(user, "[name]")
 
-/obj/item/weapon/paper/verb/rename()
+/obj/item/paper/verb/rename()
 	set name = "Rename paper"
 	set category = "Object"
 	set src in usr
@@ -97,12 +97,12 @@
 		return
 	var/n_name = sanitizeSafe(input(usr, "What would you like to label the paper?", "Paper Labelling", null)  as text, MAX_NAME_LEN)
 
-	// We check loc one level up, so we can rename in clipboards and such. See also: /obj/item/weapon/photo/rename()
+	// We check loc one level up, so we can rename in clipboards and such. See also: /obj/item/photo/rename()
 	if((loc == usr || loc.loc && loc.loc == usr) && usr.stat == 0 && n_name)
 		name = n_name
 		add_fingerprint(usr)
 
-/obj/item/weapon/paper/attack_self(mob/living/user as mob)
+/obj/item/paper/attack_self(mob/living/user as mob)
 	if (user.a_intent == I_HURT)
 		if (crumpled)
 			user.show_message(SPAN_WARNING("\The [src] is already crumpled."))
@@ -122,10 +122,10 @@
 			spawn(20)
 				spam_flag = 0
 
-/obj/item/weapon/paper/attack_ai(var/mob/living/silicon/ai/user)
+/obj/item/paper/attack_ai(var/mob/living/silicon/ai/user)
 	show_content(user)
 
-/obj/item/weapon/paper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/paper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(user.targeted_organ == BP_EYES)
 		user.visible_message(SPAN_NOTICE("You show the paper to [M]. "), \
 			SPAN_NOTICE(" [user] holds up a paper and shows it to [M]. "))
@@ -147,7 +147,7 @@
 					H.lip_style = null
 					H.update_body()
 
-/obj/item/weapon/paper/proc/addtofield(var/id, var/text, var/links = 0)
+/obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
 	var/locid = 0
 	var/laststart = 1
 	var/textindex = 1
@@ -183,7 +183,7 @@
 		info = before + text + after
 		updateinfolinks()
 
-/obj/item/weapon/paper/proc/updateinfolinks()
+/obj/item/paper/proc/updateinfolinks()
 	info_links = info
 	var/i = 0
 	for(i = 1, i<=fields, i++)
@@ -191,7 +191,7 @@
 	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
 
 
-/obj/item/weapon/paper/proc/clearpaper()
+/obj/item/paper/proc/clearpaper()
 	info = null
 	stamps = null
 	free_space = MAX_PAPER_MESSAGE_LEN
@@ -200,12 +200,12 @@
 	updateinfolinks()
 	update_icon()
 
-/obj/item/weapon/paper/proc/get_signature(var/obj/item/weapon/pen/P, mob/user as mob)
-	if (P && istype(P, /obj/item/weapon/pen))
+/obj/item/paper/proc/get_signature(var/obj/item/pen/P, mob/user as mob)
+	if (P && istype(P, /obj/item/pen))
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
 
-/obj/item/weapon/paper/proc/parsepencode(t, obj/item/weapon/pen/P, mob/user, iscrayon)
+/obj/item/paper/proc/parsepencode(t, obj/item/pen/P, mob/user, iscrayon)
 	if (length(t) == 0)
 		return ""
 
@@ -245,11 +245,11 @@
 
 	return t
 
-/obj/item/weapon/paper/proc/burnpaper(obj/item/weapon/flame/P, mob/user)
+/obj/item/paper/proc/burnpaper(obj/item/flame/P, mob/user)
 	var/class = "warning"
 
 	if(P.lit && !user.restrained())
-		if(istype(P, /obj/item/weapon/flame/lighter/zippo))
+		if(istype(P, /obj/item/flame/lighter/zippo))
 			class = "rose"
 
 		user.visible_message("<span class='[class]'>[user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!</span>", \
@@ -270,7 +270,7 @@
 				to_chat(user, "\red You must hold \the [P] steady to burn \the [src].")
 
 
-/obj/item/weapon/paper/Topic(href, href_list)
+/obj/item/paper/Topic(href, href_list)
 	..()
 	if(!usr || (usr.stat || usr.restrained()))
 		return
@@ -294,15 +294,15 @@
 
 		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		var/iscrayon = 0
-		if(!istype(i, /obj/item/weapon/pen))
+		if(!istype(i, /obj/item/pen))
 			return
 
-		if(istype(i, /obj/item/weapon/pen/crayon))
+		if(istype(i, /obj/item/pen/crayon))
 			iscrayon = 1
 
 
 		// if paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
-		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/weapon/clipboard) || istype(src.loc, /obj/item/weapon/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
+		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
 			return
 
 		var/last_fields_value = fields
@@ -332,20 +332,20 @@
 
 
 
-/obj/item/weapon/paper/attackby(obj/item/weapon/P as obj, mob/user as mob)
+/obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
 	..()
 
 	if(P.has_quality(QUALITY_ADHESIVE))
 		return //The tool's afterattack will handle this
 
-	if(istype(P, /obj/item/weapon/paper) || istype(P, /obj/item/weapon/photo))
-		if (istype(P, /obj/item/weapon/paper/carbon))
-			var/obj/item/weapon/paper/carbon/C = P
+	if(istype(P, /obj/item/paper) || istype(P, /obj/item/photo))
+		if (istype(P, /obj/item/paper/carbon))
+			var/obj/item/paper/carbon/C = P
 			if (!C.iscopy && !C.copied)
 				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
 				add_fingerprint(user)
 				return
-		var/obj/item/weapon/paper_bundle/B = new(src.loc)
+		var/obj/item/paper_bundle/B = new(src.loc)
 		if (name != "paper")
 			B.name = name
 		else if (P.name != "paper" && P.name != "photo")
@@ -388,20 +388,20 @@
 		B.update_icon()
 		return B
 
-	else if(istype(P, /obj/item/weapon/pen))
+	else if(istype(P, /obj/item/pen))
 		if(crumpled)
 			to_chat(usr, SPAN_WARNING("\The [src] is too crumpled to write on."))
 			return
 
-		var/obj/item/weapon/pen/robopen/RP = P
+		var/obj/item/pen/robopen/RP = P
 		if ( istype(RP) && RP.mode == 2 )
 			RP.RenamePaper(user,src)
 		else
 			user << browse("<HTML><meta charset=\"utf-8\"><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[info_links][stamps]</BODY></HTML>", "window=[name]")
 		return
 
-	else if(istype(P, /obj/item/weapon/stamp))
-		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/weapon/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
+	else if(istype(P, /obj/item/stamp))
+		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
 			return
 		playsound(src,'sound/effects/Stamp.ogg',40,1)
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
@@ -409,7 +409,7 @@
 		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
 		var/x
 		var/y
-		if(istype(P, /obj/item/weapon/stamp/captain))
+		if(istype(P, /obj/item/stamp/captain))
 			x = rand(-2, 0)
 			y = rand(-1, 2)
 		else
@@ -432,19 +432,19 @@
 
 		to_chat(user, SPAN_NOTICE("You stamp the paper with your rubber stamp."))
 
-	else if(istype(P, /obj/item/weapon/flame))
+	else if(istype(P, /obj/item/flame))
 		burnpaper(P, user)
 
 	add_fingerprint(user)
 	return
 
 
-/obj/item/weapon/paper/crumpled
+/obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "paper_crumpled"
 	crumpled = TRUE
 
-/obj/item/weapon/paper/crumpled/on_update_icon()
+/obj/item/paper/crumpled/on_update_icon()
 	if (icon_state == "paper_crumpled_bloodied")
 		return
 	else if (info)
@@ -453,25 +453,25 @@
 		icon_state = "paper_crumpled"
 	return
 
-/obj/item/weapon/paper/crumpled/bloody
+/obj/item/paper/crumpled/bloody
 	icon_state = "paper_crumpled_bloodied"
 
-/obj/item/weapon/paper/neopaper
+/obj/item/paper/neopaper
 	name = "sheet of odd paper"
 	icon_state = "paper_neo"
 
-/obj/item/weapon/paper/neopaper/on_update_icon()
+/obj/item/paper/neopaper/on_update_icon()
 	if(info)
 		icon_state = "paper_neo_words"
 	else
 		icon_state = "paper_neo"
 	return
 
-/obj/item/weapon/paper/crumpled/neo
+/obj/item/paper/crumpled/neo
 	name = "odd paper scrap"
 	icon_state = "paper_neo_crumpled"
 
-/obj/item/weapon/paper/crumpled/neo/on_update_icon()
+/obj/item/paper/crumpled/neo/on_update_icon()
 	if (icon_state == "paper_neo_crumpled_bloodied")
 		return
 	else if (info)
@@ -480,7 +480,7 @@
 		icon_state = "paper_neo_crumpled"
 	return
 
-/obj/item/weapon/paper/crumpled/neo/bloody
+/obj/item/paper/crumpled/neo/bloody
 	icon_state = "paper_neo_crumpled_bloodied" //todo fix sprite
 	spawn_blacklisted = TRUE
 

@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/nt_svalinn
+/obj/item/gun/energy/nt_svalinn
 	name = "NT LP \"Svalinn\""
 	desc = "\"NeoTheology\" brand laser pistol. Small and easily concealable, it's still a reasonable punch for a laser weapon."
 	icon = 'icons/obj/guns/energy/nt_svalinn.dmi'
@@ -21,5 +21,5 @@
  		WEAPON_CHARGE
 	)
 	twohanded = FALSE
-	suitable_cell = /obj/item/weapon/cell/small
-	cell_type = /obj/item/weapon/cell/small
+	suitable_cell = /obj/item/cell/small
+	cell_type = /obj/item/cell/small

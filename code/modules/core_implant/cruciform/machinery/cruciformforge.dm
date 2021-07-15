@@ -20,7 +20,7 @@
 	var/storage_capacity = 50
 	var/list/stored_material = list()
 	var/list/needed_material = list(MATERIAL_BIOMATTER = 10, MATERIAL_PLASTEEL = 5, MATERIAL_GOLD = 2)
-	var/spawn_type = /obj/item/weapon/implant/core_implant/cruciform
+	var/spawn_type = /obj/item/implant/core_implant/cruciform
 
 	// A vis_contents hack for materials loading animation.
 	var/tmp/obj/effect/flicker_overlay/image_load

@@ -39,7 +39,7 @@ GLOBAL_DATUM(last_shelter, /obj/item/device/last_shelter)
 		to_chat(user, SPAN_NOTICE("The [src] scans deep space for a cruciforms, it's will take a while..."))
 		last_teleport = world.time
 		scan = TRUE
-		var/obj/item/weapon/implant/core_implant/cruciform/cruciform = get_cruciform()
+		var/obj/item/implant/core_implant/cruciform/cruciform = get_cruciform()
 		if(cruciform)
 			scan = FALSE
 			if(istype(src.loc, /mob/living/carbon/human))
@@ -79,7 +79,7 @@ GLOBAL_DATUM(last_shelter, /obj/item/device/last_shelter)
 	var/datum/perk/perk_random = pick(subtypesof(/datum/perk/oddity))
 	H.stats.addPerk(perk_random)
 	H.stats.addPerk(pick(/datum/perk/survivor, /datum/perk/selfmedicated, /datum/perk/vagabond, /datum/perk/merchant, /datum/perk/inspiration))
-	var/obj/item/weapon/implant/core_implant/cruciform/cruciform = new /obj/item/weapon/implant/core_implant/cruciform(src)
+	var/obj/item/implant/core_implant/cruciform/cruciform = new /obj/item/implant/core_implant/cruciform(src)
 	cruciform.add_module(new CRUCIFORM_CLONING)
 	cruciform.activated = TRUE
 	MN.name = H.real_name

@@ -32,7 +32,7 @@
 				to_chat(M, "The captive mind of [src] whispers, \"[message]\"")
 
 
-	var/obj/item/weapon/implant/carrion_spider/control/controler = src.loc
+	var/obj/item/implant/carrion_spider/control/controler = src.loc
 	if(istype(controler))
 		if (!message)
 			return

@@ -1,23 +1,23 @@
 //A portable analyzer, for research borgs.  This is better then giving them a gripper which can hold anything and letting them use the normal analyzer.
-/obj/item/weapon/portable_destructive_analyzer
+/obj/item/portable_destructive_analyzer
 	name = "Portable Destructive Analyzer"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "portable_analyzer"
 	desc = "Similar to the stationary version, this rather unwieldy device allows you to break down objects in the name of science."
-	bad_type = /obj/item/weapon/portable_destructive_analyzer
+	bad_type = /obj/item/portable_destructive_analyzer
 
 	var/min_reliability = 90 //Can't upgrade, call it laziness or a drawback
 
 	var/datum/research/files 	//The device uses the same datum structure as the R&D computer/server.
 										//This analyzer can only store tech levels, however.
 
-	var/obj/item/weapon/loaded_item	//What is currently inside the analyzer.
+	var/obj/item/loaded_item	//What is currently inside the analyzer.
 
-/obj/item/weapon/portable_destructive_analyzer/Initialize()
+/obj/item/portable_destructive_analyzer/Initialize()
 	. = ..()
 	files = new /datum/research(src) //Setup the research data holder.
 
-/obj/item/weapon/portable_destructive_analyzer/attack_self(user as mob)
+/obj/item/portable_destructive_analyzer/attack_self(user as mob)
 	var/response = alert(user, 	"Analyzing the item inside will *DESTROY* the item for good.\n\
 							Syncing to the research server will send the data that is stored inside to research.\n\
 							Ejecting will place the loaded item onto the floor.",
@@ -80,7 +80,7 @@
 			to_chat(user, "The [src] is already empty.")
 
 
-/obj/item/weapon/portable_destructive_analyzer/afterattack(atom/target, mob/living/user, proximity)
+/obj/item/portable_destructive_analyzer/afterattack(atom/target, mob/living/user, proximity)
 	if(!target)
 		return
 	if(!proximity)
@@ -101,22 +101,22 @@
 		icon_state = "portable_analyzer_full"
 
 //This is used to unlock other borg covers.
-/obj/item/weapon/card/robot //This is not a child of id cards, as to avoid dumb typechecks on computers.
+/obj/item/card/robot //This is not a child of id cards, as to avoid dumb typechecks on computers.
 	name = "access code transmission device"
 	icon_state = "id-robot"
 	desc = "A circuit grafted onto the bottom of an ID card.  It is used to transmit access codes into other robot chassis, \
 	allowing you to lock and unlock other robots' panels."
-	bad_type = /obj/item/weapon/card/robot
+	bad_type = /obj/item/card/robot
 
 //A harvest item for serviceborgs.
-/obj/item/weapon/robot_harvester
+/obj/item/robot_harvester
 	name = "auto harvester"
 	desc = "A hand-held harvest tool that resembles a sickle.  It uses energy to cut plant matter very efficently."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "autoharvester"
-	bad_type = /obj/item/weapon/robot_harvester
+	bad_type = /obj/item/robot_harvester
 
-/obj/item/weapon/robot_harvester/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/robot_harvester/afterattack(var/atom/target, var/mob/living/user, proximity)
 	if(!target)
 		return
 	if(!proximity)
@@ -134,12 +134,12 @@
 // Click on table to unload, click on item to load. Otherwise works identically to a tray.
 // Unlike the base item "tray", robotrays ONLY pick up food, drinks and condiments.
 
-/obj/item/weapon/tray/robotray
+/obj/item/tray/robotray
 	name = "RoboTray"
 	desc = "An autoloading tray specialized for carrying refreshments."
-	bad_type = /obj/item/weapon/tray/robotray
+	bad_type = /obj/item/tray/robotray
 
-/obj/item/weapon/tray/robotray/afterattack(atom/target, mob/user, proximity)
+/obj/item/tray/robotray/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
 	if ( !target )
@@ -153,7 +153,7 @@
 
 		var addedSomething = 0
 
-		for(var/obj/item/weapon/reagent_containers/food/I in pickup)
+		for(var/obj/item/reagent_containers/food/I in pickup)
 
 
 			if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/item/projectile) )
@@ -224,13 +224,13 @@
 // A special pen for service droids. Can be toggled to switch between normal writting mode, and paper rename mode
 // Allows service droids to rename paper items.
 
-/obj/item/weapon/pen/robopen
+/obj/item/pen/robopen
 	desc = "A black ink printing attachment with a paper naming mode."
 	name = "Printing Pen"
 	var/mode = 1
-	bad_type = /obj/item/weapon/pen/robopen
+	bad_type = /obj/item/pen/robopen
 
-/obj/item/weapon/pen/robopen/attack_self(mob/user)
+/obj/item/pen/robopen/attack_self(mob/user)
 
 	var/choice = input("Would you like to change colour or mode?") as null|anything in list("Colour","Mode")
 	if(!choice) return
@@ -255,7 +255,7 @@
 // Copied over from paper's rename verb
 // see code\modules\paperwork\paper.dm line 62
 
-/obj/item/weapon/pen/robopen/proc/RenamePaper(mob/user,obj/paper)
+/obj/item/pen/robopen/proc/RenamePaper(mob/user,obj/paper)
 	if ( !user || !paper )
 		return
 	var/n_name = sanitizeSafe(input(user, "What would you like to label the paper?", "Paper Labelling", null)  as text, 32)
@@ -269,18 +269,18 @@
 	return
 
 //TODO: Add prewritten forms to dispense when you work out a good way to store the strings.
-/obj/item/weapon/form_printer
+/obj/item/form_printer
 	//name = "paperwork printer"
 	name = "paper dispenser"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_bin1"
 	item_state = "sheet-metal"
-	bad_type = /obj/item/weapon/form_printer
+	bad_type = /obj/item/form_printer
 
-/obj/item/weapon/form_printer/attack(mob/living/carbon/M, mob/living/carbon/user)
+/obj/item/form_printer/attack(mob/living/carbon/M, mob/living/carbon/user)
 	return
 
-/obj/item/weapon/form_printer/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, flag, params)
+/obj/item/form_printer/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, flag, params)
 
 	if(!target || !flag)
 		return
@@ -288,12 +288,12 @@
 	if(istype(target,/obj/structure/table))
 		deploy_paper(get_turf(target))
 
-/obj/item/weapon/form_printer/attack_self(mob/user)
+/obj/item/form_printer/attack_self(mob/user)
 	deploy_paper(get_turf(src))
 
-/obj/item/weapon/form_printer/proc/deploy_paper(var/turf/T)
+/obj/item/form_printer/proc/deploy_paper(var/turf/T)
 	T.visible_message("\blue \The [src.loc] dispenses a sheet of crisp white paper.")
-	new /obj/item/weapon/paper(T)
+	new /obj/item/paper(T)
 
 
 //Personal shielding for the combat module.
@@ -319,7 +319,7 @@
 	icon = 'icons/obj/decals.dmi'
 	icon_state = "shock"
 
-/obj/item/weapon/inflatable_dispenser
+/obj/item/inflatable_dispenser
 	name = "inflatables dispenser"
 	desc = "Small device which allows rapid deployment and removal of inflatables."
 	icon = 'icons/obj/storage.dmi'
@@ -334,17 +334,17 @@
 	var/max_doors = 5
 	var/mode = 0 // 0 - Walls   1 - Doors
 
-/obj/item/weapon/inflatable_dispenser/examine(mob/user)
+/obj/item/inflatable_dispenser/examine(mob/user)
 	if(!..(user))
 		return
 	to_chat(user, "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored.")
 	to_chat(user, "It is set to deploy [mode ? "doors" : "walls"]")
 
-/obj/item/weapon/inflatable_dispenser/attack_self()
+/obj/item/inflatable_dispenser/attack_self()
 	mode = !mode
 	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 
-/obj/item/weapon/inflatable_dispenser/afterattack(atom/A, mob/user)
+/obj/item/inflatable_dispenser/afterattack(atom/A, mob/user)
 	..(A, user)
 	if(!user)
 		return
@@ -356,7 +356,7 @@
 	if(istype(A, /obj/item/inflatable) || istype(A, /obj/structure/inflatable))
 		pick_up(A, user)
 
-/obj/item/weapon/inflatable_dispenser/proc/try_deploy_inflatable(turf/T, mob/living/user)
+/obj/item/inflatable_dispenser/proc/try_deploy_inflatable(turf/T, mob/living/user)
 	if(mode) // Door deployment
 		if(!stored_doors)
 			to_chat(user, "\The [src] is out of doors!")
@@ -378,7 +378,7 @@
 	playsound(T, 'sound/items/zip.ogg', 75, 1)
 	to_chat(user, "You deploy the inflatable [mode ? "door" : "wall"]!")
 
-/obj/item/weapon/inflatable_dispenser/proc/pick_up(obj/A, mob/living/user)
+/obj/item/inflatable_dispenser/proc/pick_up(obj/A, mob/living/user)
 	if(istype(A, /obj/structure/inflatable))
 		if(istype(A, /obj/structure/inflatable/wall))
 			if(stored_walls >= max_walls)
@@ -414,36 +414,36 @@
 	to_chat(user, "You fail to pick up \the [A] with \the [src]")
 	return
 
-/obj/item/weapon/tool/crowbar/robotic
+/obj/item/tool/crowbar/robotic
 	icon = 'icons/obj/robot_items.dmi'
 	tool_qualities = list(QUALITY_PRYING = 40, QUALITY_DIGGING = 35)
 	spawn_tags = null
 
-/obj/item/weapon/tool/wrench/robotic
+/obj/item/tool/wrench/robotic
 	icon = 'icons/obj/robot_items.dmi'
 	tool_qualities = list(QUALITY_BOLT_TURNING = 40)
 	spawn_tags = null
 
-/obj/item/weapon/tool/screwdriver/robotic
+/obj/item/tool/screwdriver/robotic
 	icon = 'icons/obj/robot_items.dmi'
 	//random_icon = FALSE
 	spawn_tags = null
 
-/obj/item/weapon/tool/multitool/robotic
+/obj/item/tool/multitool/robotic
 	icon = 'icons/obj/robot_items.dmi'
 	spawn_tags = null
 
-/obj/item/weapon/tool/wirecutters/robotic
+/obj/item/tool/wirecutters/robotic
 	icon = 'icons/obj/robot_items.dmi'
 	tool_qualities = list(QUALITY_WIRE_CUTTING = 40, QUALITY_CUTTING = 30)
 	spawn_tags = null
 
-/obj/item/weapon/tool/weldingtool/robotic
+/obj/item/tool/weldingtool/robotic
 	icon = 'icons/obj/robot_items.dmi'
 	switched_on_qualities = list(QUALITY_WELDING = 40, QUALITY_CAUTERIZING = 15, QUALITY_WIRE_CUTTING = 15)
 	spawn_tags = null
 
-/obj/item/weapon/tool/shovel/robotic
+/obj/item/tool/shovel/robotic
 	icon = 'icons/obj/robot_items.dmi'
 	tool_qualities = list(QUALITY_SHOVELING = 40, QUALITY_DIGGING = 40, QUALITY_EXCAVATION = 20, QUALITY_HAMMERING = 20)
 	spawn_tags = null

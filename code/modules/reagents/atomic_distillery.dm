@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/atomic_distillery
+/obj/item/reagent_containers/atomic_distillery
 	name = "Atomic Distillery"
 	desc = "Produces most powerful beverage on ship!"
 	icon = 'icons/obj/faction_item.dmi'
@@ -16,27 +16,27 @@
 	origin_tech = list(TECH_BIO = 9, TECH_MATERIAL = 9, TECH_PLASMA = 3)
 	unacidable = TRUE
 
-/obj/item/weapon/reagent_containers/atomic_distillery/New()
+/obj/item/reagent_containers/atomic_distillery/New()
 	..()
 	GLOB.all_faction_items[src] = GLOB.department_command
 	START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/reagent_containers/atomic_distillery/Destroy()
+/obj/item/reagent_containers/atomic_distillery/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	for(var/mob/living/carbon/human/H in viewers(get_turf(src)))
 		SEND_SIGNAL(H, COMSIG_OBJ_FACTION_ITEM_DESTROY, src)
 	GLOB.all_faction_items -= src
 	. = ..()
 
-/obj/item/weapon/reagent_containers/atomic_distillery/Process()
+/obj/item/reagent_containers/atomic_distillery/Process()
 	reagents.add_reagent("atomvodka", 1)
 
-/obj/item/weapon/reagent_containers/atomic_distillery/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/atomic_distillery/attackby(obj/item/I, mob/user, params)
 	if(nt_sword_attack(I, user))
 		return FALSE
 	..()
 
-/obj/item/weapon/reagent_containers/atomic_distillery/pre_attack(atom/A, mob/user, params)
+/obj/item/reagent_containers/atomic_distillery/pre_attack(atom/A, mob/user, params)
 	if(user.a_intent == I_HURT)
 		if(standard_splash_mob(user, A))
 			return TRUE
@@ -51,7 +51,7 @@
 			return TRUE
 	return ..()
 
-/obj/item/weapon/reagent_containers/atomic_distillery/afterattack(var/obj/target, var/mob/user, var/flag)
+/obj/item/reagent_containers/atomic_distillery/afterattack(var/obj/target, var/mob/user, var/flag)
 	if(!flag)
 		return
 	if(standard_pour_into(user, target))

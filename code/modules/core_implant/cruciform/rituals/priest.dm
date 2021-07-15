@@ -19,8 +19,8 @@
 	phrase = "In nomine Patris et Filii et Spiritus sancti"
 	desc = "NeoTheology's principal sacrament is a ritual of baptism and merging with cruciform. A body, relieved of clothes should be placed on NeoTheology's special altar."
 
-/datum/ritual/cruciform/priest/acolyte/epiphany/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
-	var/obj/item/weapon/implant/core_implant/cruciform/CI = get_implant_from_victim(user, /obj/item/weapon/implant/core_implant/cruciform, FALSE)
+/datum/ritual/cruciform/priest/acolyte/epiphany/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
+	var/obj/item/implant/core_implant/cruciform/CI = get_implant_from_victim(user, /obj/item/implant/core_implant/cruciform, FALSE)
 
 	if(!CI)
 		fail("There is no cruciform on this one.", user, C)
@@ -61,8 +61,8 @@
 	phrase = "Et revertatur pulvis in terram suam unde erat et spiritus redeat ad Deum qui dedit illum"
 	desc = "This litany will command cruciform to detach from bearer, if the one bearing it is dead. You will be able to use it in scanner for Resurrection."
 
-/datum/ritual/cruciform/priest/acolyte/ejection/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
-	var/obj/item/weapon/implant/core_implant/cruciform/CI = get_implant_from_victim(user, /obj/item/weapon/implant/core_implant/cruciform, FALSE)
+/datum/ritual/cruciform/priest/acolyte/ejection/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
+	var/obj/item/implant/core_implant/cruciform/CI = get_implant_from_victim(user, /obj/item/implant/core_implant/cruciform, FALSE)
 
 	if(!CI)
 		fail("There is no cruciform on this one", user, C)
@@ -98,8 +98,8 @@
 	phrase = "A caelo usque ad centrum"
 	desc = "This litany will remove any upgrade from the target's Cruciform implant"
 
-/datum/ritual/cruciform/priest/acolyte/unupgrade/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
-	var/obj/item/weapon/implant/core_implant/cruciform/CI = get_implant_from_victim(user, /obj/item/weapon/implant/core_implant/cruciform)
+/datum/ritual/cruciform/priest/acolyte/unupgrade/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
+	var/obj/item/implant/core_implant/cruciform/CI = get_implant_from_victim(user, /obj/item/implant/core_implant/cruciform)
 
 	if(!CI)
 		fail("There is no cruciform on this one.", user, C)
@@ -113,7 +113,7 @@
 		fail("here is no upgrades on this one.", user, C)
 		return FALSE
 
-	for(var/obj/item/weapon/coreimplant_upgrade/CU in CI.upgrades)
+	for(var/obj/item/coreimplant_upgrade/CU in CI.upgrades)
 		CU.remove()
 		log_and_message_admins("removed upgrade from [C] cruciform with asacris litany")
 
@@ -139,7 +139,7 @@
 	..()
 	desc = "This litany boosts [get_stats_to_text()] stats of everyone who hears you, lasts about ten minutes."
 
-/datum/ritual/cruciform/priest/acolyte/short_boost/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/priest/acolyte/short_boost/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/list/people_around = list()
 	for(var/mob/living/carbon/human/H in view(user))
 		if(H != user && !isdeaf(H))
@@ -203,12 +203,12 @@
 	desc = "Imparts extreme pain on the target disciple, but does no actual harm. Use this to enforce Church doctrine on your flock."
 	power = 45
 
-/datum/ritual/targeted/cruciform/priest/atonement/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
+/datum/ritual/targeted/cruciform/priest/atonement/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
 	if(!targets.len)
 		fail("Target not found.",user,C,targets)
 		return FALSE
 
-	var/obj/item/weapon/implant/core_implant/CI = targets[1]
+	var/obj/item/implant/core_implant/CI = targets[1]
 
 	if(!CI.active || !CI.wearer)
 
@@ -228,7 +228,7 @@
 
 	return TRUE
 
-/datum/ritual/targeted/cruciform/priest/atonement/process_target(var/index, var/obj/item/weapon/implant/core_implant/target, var/text)
+/datum/ritual/targeted/cruciform/priest/atonement/process_target(var/index, var/obj/item/implant/core_implant/target, var/text)
 	target.update_address()
 	if(index == 1 && target.address == text)
 		if(target.wearer && (target.loc && (target.locs[1] in view())))
@@ -241,7 +241,7 @@
 	power = 30
 	success_message = "On the verge of audibility you hear pleasant music, a piece of paper slides out from a slit in the altar."
 
-/datum/ritual/cruciform/priest/acolyte/records/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/priest/acolyte/records/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/list/OBJS = get_front(user)
 
 	var/obj/machinery/optable/altar = locate(/obj/machinery/optable/altar) in OBJS
@@ -251,7 +251,7 @@
 		return FALSE
 
 	if(altar)
-		new /obj/item/weapon/paper/neopaper(altar.loc, disciples.Join("\n"), "Church Record")
+		new /obj/item/paper/neopaper(altar.loc, disciples.Join("\n"), "Church Record")
 	return TRUE
 
 /datum/ritual/cruciform/priest/offering
@@ -264,7 +264,7 @@
 	var/list/miracles = list(ARMAMENTS, ALERT, INSPIRATION, ODDITY, STAT_BUFF, MATERIAL_REWARD)
 	var/reward_power = 5
 
-/datum/ritual/cruciform/priest/offering/perform(mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C, targets)
+/datum/ritual/cruciform/priest/offering/perform(mob/living/carbon/human/H, obj/item/implant/core_implant/C, targets)
 	var/list/OBJS = get_front(H)
 
 	var/obj/machinery/power/eotp/EOTP = locate(/obj/machinery/power/eotp) in OBJS
@@ -349,7 +349,7 @@
 	name = "Holy guidance"
 	phrase = "Domine deus, lux via"
 	desc = "Present your prayers to the Eye of the Protector. You must offer an oddity and 40 fruits."
-	req_offerings = list(/obj/item/weapon/oddity = 1, /obj/item/weapon/reagent_containers/food/snacks/grown = 40)
+	req_offerings = list(/obj/item/oddity = 1, /obj/item/reagent_containers/food/snacks/grown = 40)
 	miracles = list(ALERT, INSPIRATION, ODDITY, STAT_BUFF, ENERGY_REWARD)
 
 /datum/ritual/cruciform/priest/divine_blessing
@@ -362,7 +362,7 @@
 	var/list/odditys = list()
 
 
-/datum/ritual/cruciform/priest/divine_blessing/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/priest/divine_blessing/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/obj/item/I = user.get_active_hand()
 	if(!I)
 		fail("You have nothing in your active hand.", user, C)

@@ -5,7 +5,7 @@
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/science
 	shoes = /obj/item/clothing/shoes/jackboots
 	pda_type = /obj/item/modular_computer/pda/moebius/science
-	id_type = /obj/item/weapon/card/id/sci
+	id_type = /obj/item/card/id/sci
 
 /decl/hierarchy/outfit/job/science/New()
 	..()
@@ -16,10 +16,10 @@
 	l_ear = /obj/item/device/radio/headset/heads/rd
 	shoes = /obj/item/clothing/shoes/reinforced
 	uniform = /obj/item/clothing/under/rank/expedition_overseer
-	l_hand = /obj/item/weapon/clipboard
-	id_type = /obj/item/weapon/card/id/rd
+	l_hand = /obj/item/clipboard
+	id_type = /obj/item/card/id/rd
 	pda_type = /obj/item/modular_computer/pda/heads/rd
-	backpack_contents = list(/obj/item/weapon/oddity/secdocs = 1)
+	backpack_contents = list(/obj/item/oddity/secdocs = 1)
 
 /decl/hierarchy/outfit/job/science/scientist
 	name = OUTFIT_JOB_NAME("Moebius Scientist")
@@ -31,11 +31,11 @@
 	name = OUTFIT_JOB_NAME("Moebius Roboticist")
 	uniform = /obj/item/clothing/under/rank/roboticist
 	suit = /obj/item/clothing/suit/storage/robotech_jacket
-	belt = /obj/item/weapon/storage/belt/utility/full
+	belt = /obj/item/storage/belt/utility/full
 	pda_slot = slot_r_store
-	id_type = /obj/item/weapon/card/id/dkgrey
+	id_type = /obj/item/card/id/dkgrey
 	pda_type = /obj/item/modular_computer/pda/moebius/roboticist
-	l_hand = /obj/item/weapon/storage/toolbox/mechanical
+	l_hand = /obj/item/storage/toolbox/mechanical
 
 /decl/hierarchy/outfit/job/science/roboticist/New()
 	..()

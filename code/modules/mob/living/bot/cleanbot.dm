@@ -179,7 +179,7 @@
 	playsound(loc, "robot_talk_light", 100, 2, 0)
 	var/turf/Tsec = get_turf(src)
 
-	new /obj/item/weapon/reagent_containers/glass/bucket(Tsec)
+	new /obj/item/reagent_containers/glass/bucket(Tsec)
 	new /obj/item/device/assembly/prox_sensor(Tsec)
 	if(prob(50))
 		new /obj/item/robot_parts/l_arm(Tsec)
@@ -294,7 +294,7 @@
 
 /* Assembly */
 
-/obj/item/weapon/bucket_sensor
+/obj/item/bucket_sensor
 	desc = "It's a bucket. With a sensor attached."
 	name = "proxy bucket"
 	icon = 'icons/obj/aibots.dmi'
@@ -306,7 +306,7 @@
 	w_class = ITEM_SIZE_NORMAL
 	var/created_name = "Cleanbot"
 
-/obj/item/weapon/bucket_sensor/attackby(var/obj/item/O, var/mob/user)
+/obj/item/bucket_sensor/attackby(var/obj/item/O, var/mob/user)
 	..()
 	if(istype(O, /obj/item/robot_parts/l_arm) || istype(O, /obj/item/robot_parts/r_arm))
 		user.drop_item()
@@ -319,7 +319,7 @@
 		user.drop_from_inventory(src)
 		qdel(src)
 
-	else if(istype(O, /obj/item/weapon/pen))
+	else if(istype(O, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
 		if(!t)
 			return

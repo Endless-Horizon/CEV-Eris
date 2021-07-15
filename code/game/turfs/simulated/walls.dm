@@ -361,8 +361,8 @@
 		material.place_sheet(src, amount=3)
 
 	for(var/obj/O in src.contents) //Eject contents!
-		if(istype(O,/obj/item/weapon/contraband/poster))
-			var/obj/item/weapon/contraband/poster/P = O
+		if(istype(O,/obj/item/contraband/poster))
+			var/obj/item/contraband/poster/P = O
 			P.roll_and_drop(src)
 		else
 			O.loc = src

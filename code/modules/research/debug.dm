@@ -1,4 +1,4 @@
-/obj/item/weapon/research
+/obj/item/research
 	name = "research debugging device"
 	desc = "Instant research tool. For testing purposes only."
 	icon = 'icons/obj/stock_parts.dmi'

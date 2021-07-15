@@ -19,7 +19,7 @@ var/list/mechtoys = list(
 	/obj/item/toy/prize/phazon
 )
 
-/obj/item/weapon/paper/manifest
+/obj/item/paper/manifest
 	name = "supply manifest"
 	var/is_copy = 1
 

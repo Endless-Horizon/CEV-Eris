@@ -47,7 +47,7 @@
 		data["battery_percent"] = round(movable.cell.percent())
 
 	var/list/all_entries[0]
-	for(var/obj/item/weapon/computer_hardware/H in hardware)
+	for(var/obj/item/computer_hardware/H in hardware)
 		all_entries.Add(list(list(
 		"name" = H.name,
 		"desc" = H.desc,

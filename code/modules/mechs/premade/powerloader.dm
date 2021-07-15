@@ -7,8 +7,8 @@
 	material = MATERIAL_STEEL
 	exosuit_color = "#ffbc37"
 	installed_software_boards = list(
-		/obj/item/weapon/electronics/circuitboard/exosystem/utility,
-		/obj/item/weapon/electronics/circuitboard/exosystem/engineering
+		/obj/item/electronics/circuitboard/exosystem/utility,
+		/obj/item/electronics/circuitboard/exosystem/engineering
 	)
 	installed_systems = list(
 		HARDPOINT_LEFT_HAND = /obj/item/mech_equipment/drill,

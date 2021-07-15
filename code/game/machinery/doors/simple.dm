@@ -110,7 +110,7 @@
 	src.add_fingerprint(user)
 
 	//Harm intent overrides other actions
-	if(src.density && user.a_intent == I_HURT && !istype(I, /obj/item/weapon/card))
+	if(src.density && user.a_intent == I_HURT && !istype(I, /obj/item/card))
 		hit(user, I)
 		return
 

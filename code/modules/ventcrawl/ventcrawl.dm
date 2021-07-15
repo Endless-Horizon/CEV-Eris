@@ -7,13 +7,13 @@ var/list/ventcrawl_machinery = list(
 // What are these for? Antags mostly,and allowing mice to steal small things
 /mob/living/var/list/can_enter_vent_with = list(
 	/obj/parallax,
-	/obj/item/weapon/implant,
+	/obj/item/implant,
 	/obj/item/device/radio/borg,
-	/obj/item/weapon/holder,
+	/obj/item/holder,
 	/obj/machinery/camera,
 	/mob/living/simple_animal/borer,
-	/obj/item/weapon/paper/,
-	/obj/item/weapon/pen
+	/obj/item/paper/,
+	/obj/item/pen
 	)
 
 /mob/living/var/list/icon/pipes_shown = list()

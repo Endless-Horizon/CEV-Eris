@@ -62,11 +62,11 @@
 	else
 		to_chat(user, SPAN_WARNING("There is not enough matter in the printer."))
 
-/obj/machinery/bioprinter/attackby(obj/item/weapon/W, mob/user)
+/obj/machinery/bioprinter/attackby(obj/item/W, mob/user)
 
 	// DNA sample from syringe.
-	if(!prints_prosthetics && istype(W,/obj/item/weapon/reagent_containers/syringe))
-		var/obj/item/weapon/reagent_containers/syringe/S = W
+	if(!prints_prosthetics && istype(W,/obj/item/reagent_containers/syringe))
+		var/obj/item/reagent_containers/syringe/S = W
 		var/datum/reagent/organic/blood/injected = locate() in S.reagents.reagent_list //Grab some blood
 		if(injected && injected.data)
 			loaded_dna = injected.data

@@ -122,7 +122,7 @@
 		to_chat(user, "There is no portable device connected to \the [src].")
 		return
 
-	var/obj/item/weapon/computer_hardware/hard_drive/portable/PD = portable_drive
+	var/obj/item/computer_hardware/hard_drive/portable/PD = portable_drive
 
 	uninstall_component(portable_drive, user)
 	user.put_in_hands(PD)
@@ -165,8 +165,8 @@
 		turn_on(user)
 
 /obj/item/modular_computer/attackby(obj/item/W, mob/user, sound_mute = FALSE)
-	if(istype(W, /obj/item/weapon/card/id)) // ID Card, try to insert it.
-		var/obj/item/weapon/card/id/I = W
+	if(istype(W, /obj/item/card/id)) // ID Card, try to insert it.
+		var/obj/item/card/id/I = W
 		if(!card_slot)
 			to_chat(user, "You try to insert [I] into [src], but it does not have an ID card slot installed.")
 			return
@@ -187,7 +187,7 @@
 		to_chat(user, "You insert [I] into [src].")
 
 		return
-	if(istype(W, /obj/item/weapon/pen) && stores_pen)
+	if(istype(W, /obj/item/pen) && stores_pen)
 		if(istype(stored_pen))
 			to_chat(user, "<span class='notice'>There is already a pen in [src].</span>")
 			return
@@ -200,7 +200,7 @@
 	if(scanner && scanner.do_on_attackby(user, W))
 		return
 
-	if(istype(W, /obj/item/weapon/paper) || istype(W, /obj/item/weapon/paper_bundle))
+	if(istype(W, /obj/item/paper) || istype(W, /obj/item/paper_bundle))
 		if(printer)
 			printer.attackby(W, user)
 	if(istype(W, /obj/item/device/aicard))
@@ -211,12 +211,12 @@
 	if(!modifiable)
 		return ..()
 
-	if(istype(W, suitable_cell) || istype(W, /obj/item/weapon/computer_hardware))
+	if(istype(W, suitable_cell) || istype(W, /obj/item/computer_hardware))
 		try_install_component(W, user)
 
 
 
-	var/obj/item/weapon/tool/tool = W
+	var/obj/item/tool/tool = W
 	if(tool)
 		var/list/usable_qualities = list(QUALITY_SCREW_DRIVING, QUALITY_WELDING, QUALITY_BOLT_TURNING)
 		var/tool_type = tool.get_tool_type(user, usable_qualities, src)
@@ -247,12 +247,12 @@
 					to_chat(user, "This device doesn't have any components installed.")
 					return
 				var/list/component_names = list()
-				for(var/obj/item/weapon/H in all_components)
+				for(var/obj/item/H in all_components)
 					component_names.Add(H.name)
 				var/list/options = list()
 				for(var/i in component_names)
 					for(var/X in all_components)
-						var/obj/item/weapon/TT = X
+						var/obj/item/TT = X
 						if(TT.name == i)
 							options[i] = image(icon = TT.icon, icon_state = TT.icon_state)
 				var/choice
@@ -262,7 +262,7 @@
 				if(!Adjacent(usr))
 					return
 				if(tool.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_VERY_EASY, required_stat = STAT_COG))
-					var/obj/item/weapon/computer_hardware/H = find_hardware_by_name(choice)
+					var/obj/item/computer_hardware/H = find_hardware_by_name(choice)
 					if(!H)
 						return
 					uninstall_component(H, user)

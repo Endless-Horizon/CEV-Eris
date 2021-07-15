@@ -33,9 +33,9 @@
 				can_fire = FALSE
 
 			//Energy weapons need to have enough charge to fire
-			if(istype(gun, /obj/item/weapon/gun/energy))
-				var/obj/item/weapon/gun/energy/E = gun
-				var/obj/item/weapon/cell/C = E.get_cell()
+			if(istype(gun, /obj/item/gun/energy))
+				var/obj/item/gun/energy/E = gun
+				var/obj/item/cell/C = E.get_cell()
 				if (!C || !C.check_charge(E.charge_cost))
 					can_fire = FALSE
 
@@ -77,7 +77,7 @@
 /datum/click_handler/charge
 	handler_name = "charge mode"
 	var/atom/target = null
-	var/obj/item/weapon/gun/energy/reciever
+	var/obj/item/gun/energy/reciever
 
 /datum/click_handler/charge/Click()
 	return TRUE //As we don't use the normal click, but the MouseDown/MouseUp, this function is not needed at all. This also bypasses the delete on use check
@@ -99,11 +99,11 @@
 	The actual code
 ******************/
 
-/obj/item/weapon/gun/energy/proc/begin_charge(var/mob/living/user)
+/obj/item/gun/energy/proc/begin_charge(var/mob/living/user)
 	to_chat(user, SPAN_NOTICE("You begin charging \the [src]."))
 	overcharge_timer = addtimer(CALLBACK(src, .proc/add_charge, user), 1 SECONDS, TIMER_STOPPABLE)
 
-/obj/item/weapon/gun/energy/proc/add_charge(var/mob/living/user)
+/obj/item/gun/energy/proc/add_charge(var/mob/living/user)
 	deltimer(overcharge_timer)
 	if(get_holding_mob() == user && get_cell() && cell.checked_use(1))
 		overcharge_level = min(overcharge_max, overcharge_level + get_overcharge_add(user))
@@ -117,10 +117,10 @@
 	visible_message(SPAN_WARNING("\The [src] sputters out."))
 	overcharge_level = 0
 
-/obj/item/weapon/gun/energy/proc/get_overcharge_add(var/mob/living/user)
+/obj/item/gun/energy/proc/get_overcharge_add(var/mob/living/user)
 	return overcharge_rate+user.stats.getStat(STAT_VIG)*VIG_OVERCHARGE_GEN
 
-/obj/item/weapon/gun/energy/proc/release_charge(var/atom/target, var/mob/living/user)
+/obj/item/gun/energy/proc/release_charge(var/atom/target, var/mob/living/user)
 	deltimer(overcharge_timer)
 	var/overcharge_add = overcharge_level_to_mult()
 	damage_multiplier += overcharge_add
@@ -134,10 +134,10 @@
 	penetration_multiplier -= overcharge_add
 	overcharge_level = 0
 
-/obj/item/weapon/gun/energy/proc/overcharge_level_to_mult()
+/obj/item/gun/energy/proc/overcharge_level_to_mult()
 	return overcharge_level/10
 
-/obj/item/weapon/gun/energy/dropped(mob/user)
+/obj/item/gun/energy/dropped(mob/user)
 	..()
 	if(overcharge_level)
 		overcharge_level = 0

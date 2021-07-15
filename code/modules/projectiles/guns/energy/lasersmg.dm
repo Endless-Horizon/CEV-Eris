@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/lasersmg
+/obj/item/gun/energy/lasersmg
 	name = "Disco Vazer \"Lasblender\""
 	desc = "This conversion of the \"Atreides\" enables it to shoot lasers. Unlike in other laser weapons, the process of creating a laser is based on a chain reaction of localized micro-explosions.\
 			While this method is charge-effective, it worsens accuracy, and the chain-reaction makes the gun always fire in bursts. \
@@ -8,7 +8,7 @@
 	item_state = "lasersmg"
 	w_class = ITEM_SIZE_NORMAL
 	fire_sound = 'sound/weapons/Laser.ogg'
-	suitable_cell = /obj/item/weapon/cell/medium
+	suitable_cell = /obj/item/cell/medium
 	can_dual = TRUE
 	projectile_type = /obj/item/projectile/beam
 	charge_meter = FALSE //TODO: Rework overlays, check assets storage for charge states.
@@ -21,7 +21,7 @@
 	one_hand_penalty = 4
 	projectile_type = /obj/item/projectile/beam
 	init_offset = 7 // bad accuracy even on the first shot
-	suitable_cell = /obj/item/weapon/cell/medium
+	suitable_cell = /obj/item/cell/medium
 	charge_cost = 25 // 4 bursts with a 800m cell
 
 	init_firemodes = list(
@@ -30,12 +30,12 @@
 		)
 
 
-/obj/item/weapon/gun/energy/lasersmg/process_projectile(var/obj/item/projectile/P, mob/living/user, atom/target, var/target_zone, var/params)
+/obj/item/gun/energy/lasersmg/process_projectile(var/obj/item/projectile/P, mob/living/user, atom/target, var/target_zone, var/params)
 	projectile_color = pick(list("#FF0000", "#0000FF", "#00FF00", "#FFFF00", "#FF00FF", "#00FFFF", "#FFFFFF", "#000000"))
 	..()
 	return ..()
 
-/obj/item/weapon/gun/energy/lasersmg/on_update_icon()
+/obj/item/gun/energy/lasersmg/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -45,18 +45,18 @@
 		iconstring += "_mag"
 		itemstring += "_mag"
 
-/obj/item/weapon/gun/energy/lasersmg/on_update_icon()//TODO: Rework overlays, check assets storage for charge states.
+/obj/item/gun/energy/lasersmg/on_update_icon()//TODO: Rework overlays, check assets storage for charge states.
 	cut_overlays()
 	..()
 
-	if(istype(cell, /obj/item/weapon/cell/medium/moebius/nuclear))
+	if(istype(cell, /obj/item/cell/medium/moebius/nuclear))
 		add_overlays(image(icon, "nuke_cell"))
 
-	else if(istype(cell, /obj/item/weapon/cell/medium/moebius))
+	else if(istype(cell, /obj/item/cell/medium/moebius))
 		add_overlays(image(icon, "moeb_cell"))
 
-	else if(istype(cell, /obj/item/weapon/cell/medium/excelsior))
+	else if(istype(cell, /obj/item/cell/medium/excelsior))
 		add_overlays(image(icon, "excel_cell"))
 
-	else if(istype(cell, /obj/item/weapon/cell/medium))
+	else if(istype(cell, /obj/item/cell/medium))
 		add_overlays(image(icon, "guild_cell"))

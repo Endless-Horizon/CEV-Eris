@@ -104,7 +104,7 @@
 		user.drop_item()
 		qdel(I)
 		return
-	var/obj/item/weapon/tool/tool = I
+	var/obj/item/tool/tool = I
 	if (!tool)
 		return ..()
 	if (!tool.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))

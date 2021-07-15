@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/matter/launcher/reclaimer
+/obj/item/gun/matter/launcher/reclaimer
 	name = "Excelsior \"Reclaimer\""
 	desc = "The weapon of choice for swiftly appropriating matter for communal use. Uses a cellulose based solution to dissolve matter into its original components, not 100% effective."
 	icon_state = "reclaimer"
@@ -11,17 +11,17 @@
 
 	stored_matter = 5
 	projectile_cost = 0.5
-	projectile_type = /obj/item/weapon/arrow/reclaiming
+	projectile_type = /obj/item/arrow/reclaiming
 	spawn_blacklisted = TRUE
 
 
-/obj/item/weapon/arrow/reclaiming
+/obj/item/arrow/reclaiming
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "evil_foam"
 	throwforce = 1
 	sharp = FALSE
 
-/obj/item/weapon/arrow/reclaiming/throw_impact()
+/obj/item/arrow/reclaiming/throw_impact()
 	..()
 
 	create_reagents(5)

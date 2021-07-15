@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/scalpel
+/obj/item/tool/scalpel
 	name = "scalpel"
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel_t3"
@@ -17,7 +17,7 @@
 	tool_qualities = list(QUALITY_CUTTING = 30, QUALITY_WIRE_CUTTING = 10)
 	spawn_tags = SPAWN_TAG_SURGERY_TOOL
 
-/obj/item/weapon/tool/scalpel/advanced
+/obj/item/tool/scalpel/advanced
 	name = "advanced scalpel"
 	desc = "Made of more expensive materials, sharper and generally more reliable."
 	icon_state = "scalpel_t4"
@@ -27,7 +27,7 @@
 	max_upgrades = 4
 	rarity_value = 20
 
-/obj/item/weapon/tool/scalpel/laser
+/obj/item/tool/scalpel/laser
 	name = "laser scalpel"
 	desc = "A scalpel which uses a directed laser to slice instead of a blade, for more precise surgery while also cauterizing as it cuts."
 	icon_state = "scalpel_t5"
@@ -38,18 +38,18 @@
 	tool_qualities = list(QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 20, QUALITY_LASER_CUTTING = 40, QUALITY_CAUTERIZING = 20)
 	degradation = 0.11
 	use_power_cost = 0.12
-	suitable_cell = /obj/item/weapon/cell/small
+	suitable_cell = /obj/item/cell/small
 	max_upgrades = 4
 	rarity_value = 30
 
 // Laser cutting overrides normal cutting
-/obj/item/weapon/tool/scalpel/laser/get_tool_type(mob/living/user, list/required_qualities, atom/use_on, datum/callback/CB)
+/obj/item/tool/scalpel/laser/get_tool_type(mob/living/user, list/required_qualities, atom/use_on, datum/callback/CB)
 	if(QUALITY_LASER_CUTTING in required_qualities)
 		required_qualities -= QUALITY_CUTTING
 	return ..(user, required_qualities, use_on, CB)
 
 //A makeshift knife, for doing all manner of cutting and stabbing tasks in a half-assed manner
-/obj/item/weapon/tool/shiv
+/obj/item/tool/shiv
 	name = "shiv"
 	desc = "A pointy piece of glass, abraded to an edge and wrapped in tape for a handle. Could become a decent tool or weapon with right tool mods."
 	icon_state = "impro_shiv"

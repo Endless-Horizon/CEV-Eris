@@ -1,24 +1,24 @@
 //A storage item intended to be used by other items to provide storage functionality.
 //Types that use this should consider overriding emp_act() and hear_talk(), unless they shield their contents somehow.
-/obj/item/weapon/storage/internal
+/obj/item/storage/internal
 	var/obj/item/master_item
 	spawn_tags = null
 
-/obj/item/weapon/storage/internal/New(obj/item/MI)
+/obj/item/storage/internal/New(obj/item/MI)
 	master_item = MI
 	loc = master_item
 	name = master_item.name
 	verbs -= /obj/item/verb/verb_pickup	//make sure this is never picked up.
 	..()
 
-/obj/item/weapon/storage/internal/Destroy()
+/obj/item/storage/internal/Destroy()
 	master_item = null
 	. = ..()
 
-/obj/item/weapon/storage/internal/attack_hand()
+/obj/item/storage/internal/attack_hand()
 	return		//make sure this is never picked up
 
-/obj/item/weapon/storage/internal/can_be_equipped()
+/obj/item/storage/internal/can_be_equipped()
 	return 0	//make sure this is never picked up
 
 //Helper procs to cleanly implement internal storages - storage items that provide inventory slots for other items.
@@ -29,7 +29,7 @@
 
 //items that use internal storage have the option of calling this to emulate default storage MouseDrop behaviour.
 //returns TRUE if the master item's parent's MouseDrop() shouldn't be called, FALSE otherwise.
-/obj/item/weapon/storage/internal/proc/handle_mousedrop(mob/living/carbon/human/user, obj/over_object)
+/obj/item/storage/internal/proc/handle_mousedrop(mob/living/carbon/human/user, obj/over_object)
 
 	if (istype(user))
 		if (user.incapacitated())
@@ -42,7 +42,7 @@
 //items that use internal storage have the option of calling this to emulate default storage attack_hand behaviour.
 //returns 1 if the master item's parent's attack_hand() should be called, 0 otherwise.
 //It's strange, but no other way of doing it without the ability to call another proc's parent, really.
-/obj/item/weapon/storage/internal/proc/handle_attack_hand(mob/user as mob)
+/obj/item/storage/internal/proc/handle_attack_hand(mob/user as mob)
 	if (openable_location(user))
 		src.open(user)
 		return 0
@@ -50,13 +50,13 @@
 	close_all()
 	return 1
 
-/obj/item/weapon/storage/internal/Adjacent(var/atom/neighbor)
+/obj/item/storage/internal/Adjacent(var/atom/neighbor)
 	return master_item.Adjacent(neighbor)
 
 //Returns true if the thing is in a suitable location
 //If its worn and not in a pocket, its suitable
 //If its on a turf next to the user, its also suitable
-/obj/item/weapon/storage/internal/proc/openable_location(var/mob/user)
+/obj/item/storage/internal/proc/openable_location(var/mob/user)
 	.=FALSE
 	if (master_item.loc == user)
 		if(ishuman(user))
@@ -69,7 +69,7 @@
 	else if (isturf(master_item.loc) && Adjacent(user))
 		return TRUE
 
-/obj/item/weapon/storage/internal/updating/on_update_icon()
+/obj/item/storage/internal/updating/on_update_icon()
 	if(master_item)
 		master_item.update_icon()
 

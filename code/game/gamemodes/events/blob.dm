@@ -491,7 +491,7 @@
 	else
 		return PROJECTILE_CONTINUE
 
-/obj/effect/blob/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/blob/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(W.force && !(W.flags & NOBLUDGEON))
 		user.do_attack_animation(src, TRUE)
@@ -499,7 +499,7 @@
 		switch(W.damtype)
 			if("fire")
 				damage = (W.force / fire_resist)
-				if(istype(W, /obj/item/weapon/tool/weldingtool))
+				if(istype(W, /obj/item/tool/weldingtool))
 					playsound(loc, 'sound/items/Welder.ogg', 100, 1)
 			if("brute")
 				damage = (W.force / brute_resist)

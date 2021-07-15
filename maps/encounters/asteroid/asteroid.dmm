@@ -26,7 +26,7 @@
 /turf/simulated/floor/asteroid,
 /area/mine/explored)
 "aj" = (
-/obj/item/weapon/tool/shovel,
+/obj/item/tool/shovel,
 /turf/simulated/floor/asteroid,
 /area/outpost/abandoned)
 "ak" = (
@@ -40,7 +40,7 @@
 /area/outpost/abandoned)
 "an" = (
 /obj/effect/floor_decal/rust,
-/obj/item/weapon/gun/projectile/colt,
+/obj/item/gun/projectile/colt,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "ao" = (
@@ -128,7 +128,7 @@
 /area/outpost/abandoned)
 "aE" = (
 /obj/effect/floor_decal/rust,
-/obj/item/weapon/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/shotgun/pump,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "aF" = (
@@ -303,19 +303,19 @@
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "bE" = (
-/obj/item/weapon/gun/projectile/colt,
+/obj/item/gun/projectile/colt,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "bF" = (
 /obj/structure/closet/oldstyle,
-/obj/item/weapon/hatton,
+/obj/item/hatton,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "bG" = (
 /obj/structure/closet/oldstyle,
-/obj/item/weapon/hatton_magazine,
-/obj/item/weapon/hatton_magazine,
-/obj/item/weapon/hatton_magazine,
+/obj/item/hatton_magazine,
+/obj/item/hatton_magazine,
+/obj/item/hatton_magazine,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "bH" = (
@@ -392,12 +392,12 @@
 /area/outpost/abandoned)
 "bU" = (
 /obj/structure/table/steel,
-/obj/item/weapon/flame/lighter/zippo,
+/obj/item/flame/lighter/zippo,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "bV" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/fancy/cigarettes,
+/obj/item/storage/fancy/cigarettes,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "bX" = (
@@ -435,12 +435,12 @@
 /area/outpost/abandoned)
 "cf" = (
 /obj/item/remains/human,
-/obj/item/weapon/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/shotgun/pump,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "cg" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/colt,
+/obj/item/gun/projectile/colt,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "ch" = (
@@ -455,7 +455,7 @@
 /area/outpost/abandoned)
 "cj" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/shotgun/pump,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)
 "ck" = (

@@ -146,7 +146,7 @@
 /area/template_noop)
 "aK" = (
 /obj/structure/lattice,
-/obj/item/weapon/storage/bag/ore,
+/obj/item/storage/bag/ore,
 /turf/template_noop,
 /area/template_noop)
 "aL" = (
@@ -246,7 +246,7 @@
 /turf/simulated/floor/tiled/derelict/white_red_edges,
 /area/template_noop)
 "bb" = (
-/obj/item/weapon/gun/projectile/handmade_pistol,
+/obj/item/gun/projectile/handmade_pistol,
 /obj/item/ammo_casing/pistol/scrap,
 /turf/simulated/floor/tiled/derelict/white_small_edges,
 /area/template_noop)
@@ -284,12 +284,12 @@
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/template_noop)
 "bi" = (
-/obj/item/weapon/storage/bag/ore,
+/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/derelict/red_white_edges,
 /area/template_noop)
 "bj" = (
 /obj/structure/catwalk,
-/obj/item/weapon/storage/bag/ore,
+/obj/item/storage/bag/ore,
 /turf/template_noop,
 /area/template_noop)
 "bk" = (
@@ -299,7 +299,7 @@
 /area/template_noop)
 "bl" = (
 /obj/structure/lattice,
-/obj/item/weapon/tool/pickaxe/onestar,
+/obj/item/tool/pickaxe/onestar,
 /obj/item/remains,
 /turf/template_noop,
 /area/template_noop)

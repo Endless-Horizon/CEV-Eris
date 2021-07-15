@@ -28,7 +28,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/ghostvision = 1 //is the ghost able to see things humans can't?
 	var/seedarkness = 1
 
-	var/obj/item/weapon/tool/multitool/ghost_multitool
+	var/obj/item/tool/multitool/ghost_multitool
 	incorporeal_move = 1
 
 /mob/observer/ghost/New(mob/body)

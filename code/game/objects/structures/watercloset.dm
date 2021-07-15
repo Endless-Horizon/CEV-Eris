@@ -73,8 +73,8 @@
 	if(!open)
 		return
 	var/H = user.get_active_hand()
-	if(istype(H,/obj/item/weapon/reagent_containers/glass) || istype(H,/obj/item/weapon/reagent_containers/food/drinks))
-		var/obj/item/weapon/reagent_containers/O = user.get_active_hand()
+	if(istype(H,/obj/item/reagent_containers/glass) || istype(H,/obj/item/reagent_containers/food/drinks))
+		var/obj/item/reagent_containers/O = user.get_active_hand()
 		if(O.reagents && O.reagents.total_volume)
 			O.reagents.clear_reagents()
 			to_chat(user, SPAN_NOTICE("You empty the [O] into the [src]."))
@@ -351,7 +351,7 @@
 		else if(temperature <= H.species.cold_level_1)
 			to_chat(H, SPAN_WARNING("The water is freezing cold!"))
 
-/obj/item/weapon/bikehorn/rubberducky
+/obj/item/bikehorn/rubberducky
 	name = "rubber ducky"
 	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~"	//thanks doohl
 	icon = 'icons/obj/watercloset.dmi'
@@ -424,15 +424,15 @@
 		to_chat(user, SPAN_WARNING("Someone's already washing here."))
 		return
 
-	var/obj/item/weapon/reagent_containers/RG = O
+	var/obj/item/reagent_containers/RG = O
 	if (istype(RG) && RG.is_refillable())
 		RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
 		playsound(loc, 'sound/effects/watersplash.ogg', 100, 1)
 		return 1
 
-	else if (istype(O, /obj/item/weapon/melee/baton))
-		var/obj/item/weapon/melee/baton/B = O
+	else if (istype(O, /obj/item/melee/baton))
+		var/obj/item/melee/baton/B = O
 		if(B.cell)
 			if(B.cell.charge > 0 && B.status == 1)
 				FLICK("baton_active", src)
@@ -449,7 +449,7 @@
 					"<span class='userdanger'>[user] was stunned by \his wet [O]!</span>"
 				)
 				return 1
-	else if(istype(O, /obj/item/weapon/mop))
+	else if(istype(O, /obj/item/mop))
 		return
 
 	var/turf/location = user.loc
@@ -475,8 +475,8 @@
 
 /obj/structure/sink/AltClick(var/mob/living/user)
 	var/H = user.get_active_hand()
-	if(istype(H,/obj/item/weapon/reagent_containers/glass) || istype(H,/obj/item/weapon/reagent_containers/food/drinks))
-		var/obj/item/weapon/reagent_containers/O = user.get_active_hand()
+	if(istype(H,/obj/item/reagent_containers/glass) || istype(H,/obj/item/reagent_containers/food/drinks))
+		var/obj/item/reagent_containers/O = user.get_active_hand()
 		if(O.reagents && O.reagents.total_volume)
 			O.reagents.clear_reagents()
 			to_chat(user, SPAN_NOTICE("You empty the [O] into the [src]."))

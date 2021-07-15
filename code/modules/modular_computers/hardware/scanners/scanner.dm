@@ -1,6 +1,6 @@
 //This is the generic parent class, which doesn't actually do anything.
 
-/obj/item/weapon/computer_hardware/scanner
+/obj/item/computer_hardware/scanner
 	name = "scanner module"
 	desc = "A generic scanner module. This one doesn't seem to do anything."
 	power_usage = 5
@@ -15,11 +15,11 @@
 	var/can_view_scan = 1	//Whether the scan output can be viewed in the program.
 	var/can_save_scan = 1	//Whether the scan output can be saved to disk.
 
-/obj/item/weapon/computer_hardware/scanner/Destroy()
+/obj/item/computer_hardware/scanner/Destroy()
 	do_before_uninstall()
 	. = ..()
 
-/obj/item/weapon/computer_hardware/scanner/proc/do_after_install(user, obj/item/modular_computer/device)
+/obj/item/computer_hardware/scanner/proc/do_after_install(user, obj/item/modular_computer/device)
 	if(!driver_type || !device)
 		return 0
 	if(!device.hard_drive)
@@ -39,22 +39,22 @@
 	driver_file.connect_scanner()
 	return 1
 
-/obj/item/weapon/computer_hardware/scanner/proc/do_before_uninstall()
+/obj/item/computer_hardware/scanner/proc/do_before_uninstall()
 	if(driver)
 		driver.disconnect_scanner()
 	if(driver)	//In case the driver doesn't find it.
 		driver = null
 
-/obj/item/weapon/computer_hardware/scanner/proc/run_scan(mob/user, datum/computer_file/program/scanner/program) //For scans done from the software.
+/obj/item/computer_hardware/scanner/proc/run_scan(mob/user, datum/computer_file/program/scanner/program) //For scans done from the software.
 	if (!scan_power_use())
 		return FALSE
 
-/obj/item/weapon/computer_hardware/scanner/proc/do_on_afterattack(mob/user, atom/target, proximity)
+/obj/item/computer_hardware/scanner/proc/do_on_afterattack(mob/user, atom/target, proximity)
 
-/obj/item/weapon/computer_hardware/scanner/proc/do_on_attackby(mob/user, atom/target)
+/obj/item/computer_hardware/scanner/proc/do_on_attackby(mob/user, atom/target)
 	return FALSE
 
-/obj/item/weapon/computer_hardware/scanner/proc/can_use_scanner(mob/user, atom/target, proximity = TRUE)
+/obj/item/computer_hardware/scanner/proc/can_use_scanner(mob/user, atom/target, proximity = TRUE)
 	if(!check_functionality())
 		return 0
 	if(user.incapacitated())
@@ -65,7 +65,7 @@
 		return 0
 	return 1
 
-/obj/item/weapon/computer_hardware/scanner/proc/scan_power_use()
+/obj/item/computer_hardware/scanner/proc/scan_power_use()
 	if (!holder2)
 		return FALSE
 	if(holder2.apc_power(active_power_usage))

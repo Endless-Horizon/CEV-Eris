@@ -129,7 +129,7 @@ Basic field subtypes.
 	if(input_value < 0)
 		to_chat(user,SPAN_WARNING("Value has to be positive."))
 		return
-	var/obj/item/weapon/card/id/held_card = user.GetIdCard()
+	var/obj/item/card/id/held_card = user.GetIdCard()
 	if(!held_card)
 		to_chat(user, SPAN_WARNING("Your ID is missing."))
 		return

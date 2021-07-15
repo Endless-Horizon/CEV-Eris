@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/slaught_o_matic
+/obj/item/gun/projectile/automatic/slaught_o_matic
 	name = "FS HG .35 Auto \"Slaught-o-Matic\""
 	desc = "This disposable plastic handgun is mass-produced by Frozen Star for civilian use. It often is used by street urchin, thugs, or terrorists on a budget. For what it's worth, it's not an awful handgun - but you only get one magazine before the gun locks up and becomes useless."
 	icon = 'icons/obj/guns/projectile/slaught_o_matic.dmi'
@@ -35,7 +35,7 @@
 		FULL_AUTO_800
 		)
 
-/obj/item/weapon/gun/projectile/automatic/slaught_o_matic/Initialize()
+/obj/item/gun/projectile/automatic/slaught_o_matic/Initialize()
 	. = ..()
 	ammo_magazine = new magazine_type(src)
 
@@ -44,7 +44,7 @@
 	choosen_color = pick(possible_colors)
 	update_icon()
 
-/obj/item/weapon/gun/projectile/automatic/slaught_o_matic/on_update_icon()
+/obj/item/gun/projectile/automatic/slaught_o_matic/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -53,8 +53,8 @@
 	icon_state = iconstring + itemstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/automatic/slaught_o_matic/load_ammo(obj/item/A, mob/user)
+/obj/item/gun/projectile/automatic/slaught_o_matic/load_ammo(obj/item/A, mob/user)
 	to_chat(user, SPAN_WARNING("You try to reload the handgun, but the magazine that's already loaded won't come out!"))
 
-/obj/item/weapon/gun/projectile/automatic/slaught_o_matic/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/automatic/slaught_o_matic/unload_ammo(mob/user, var/allow_dump=1)
 	to_chat(user, SPAN_WARNING("You try to take out the handgun's magazine, but it won't budge!"))

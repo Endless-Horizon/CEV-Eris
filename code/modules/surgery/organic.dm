@@ -352,8 +352,8 @@
 		SPAN_WARNING("[user] scrapes something inside [organ.get_surgery_name()] with \the [tool]!"),
 		SPAN_WARNING("You scrape something inside [organ.get_surgery_name()] with \the [tool]!")
 	)
-	if(istype(target, /obj/item/weapon/implant) && prob(25))
-		var/obj/item/weapon/implant/imp = target
+	if(istype(target, /obj/item/implant) && prob(25))
+		var/obj/item/implant/imp = target
 		imp.malfunction(1)
 
 
@@ -398,7 +398,7 @@
 	blood_level = 1
 
 /datum/surgery_step/remove_shrapnel/can_use(mob/living/user, obj/item/organ/external/organ, obj/item/tool)
-	return organ.owner && !organ.open && (locate(/obj/item/weapon/material/shard/shrapnel) in organ.implants)
+	return organ.owner && !organ.open && (locate(/obj/item/material/shard/shrapnel) in organ.implants)
 
 /datum/surgery_step/remove_shrapnel/begin_step(mob/living/user, obj/item/organ/external/organ, obj/item/tool)
 	user.visible_message(
@@ -412,7 +412,7 @@
 		SPAN_NOTICE("[user] removes shrapnel from [organ.get_surgery_name()] with \the [tool]."),
 		SPAN_NOTICE("You remove shrapnel from [organ.get_surgery_name()] with \the [tool].")
 	)
-	var/obj/item/shrapnel = locate(/obj/item/weapon/material/shard/shrapnel) in organ.implants
+	var/obj/item/shrapnel = locate(/obj/item/material/shard/shrapnel) in organ.implants
 	organ.remove_item(shrapnel, user, FALSE)
 	organ.take_damage(max(tool.force/5, tool.force/(user.stats.getStat(STAT_BIO)/STAT_LEVEL_BASIC)), 0, sharp=TRUE, edge=TRUE) //So it's a bad idea to remove shrapnel with a chainsaw
 

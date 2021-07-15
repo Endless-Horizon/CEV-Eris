@@ -6,7 +6,7 @@
 	icon_screen = "robot"
 	light_color = COLOR_LIGHTING_PURPLE_MACHINERY
 	req_access = list(access_robotics)
-	circuit = /obj/item/weapon/electronics/circuitboard/robotics
+	circuit = /obj/item/electronics/circuitboard/robotics
 
 	var/safety = 1
 

@@ -16,7 +16,7 @@
 	var/current_amount = 0
 
 	//Check rig suits for data, in future this needs to check disks and computer files too
-	for (var/obj/item/weapon/rig/S in contents)
+	for (var/obj/item/rig/S in contents)
 		var/obj/item/rig_module/datajack/stolen_data = locate() in S.installed_modules
 		if(!istype(stolen_data))
 			continue

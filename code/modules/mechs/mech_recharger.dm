@@ -9,7 +9,7 @@
 
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
-	circuit = /obj/item/weapon/electronics/circuitboard/mech_recharger
+	circuit = /obj/item/electronics/circuitboard/mech_recharger
 
 	var/mob/living/exosuit/charging = null
 
@@ -34,12 +34,12 @@
 	..()
 	var/cap_rating = 1
 	repair = -5
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/capacitor))
 			cap_rating += P.rating - 1
-		if(istype(P, /obj/item/weapon/stock_parts/scanning_module))
+		if(istype(P, /obj/item/stock_parts/scanning_module))
 			repair += P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/manipulator))
+		if(istype(P, /obj/item/stock_parts/manipulator))
 			repair += P.rating * 2
 
 	max_power_usage = initial(max_power_usage) * cap_rating
@@ -54,7 +54,7 @@
 		return
 	var/done = TRUE
 
-	var/obj/item/weapon/cell/cell = charging.get_cell()
+	var/obj/item/cell/cell = charging.get_cell()
 	if(cell && !cell.fully_charged())
 		active_power_usage = min(max_power_usage, (cell.maxcharge*cell.max_chargerate)/CELLRATE)
 

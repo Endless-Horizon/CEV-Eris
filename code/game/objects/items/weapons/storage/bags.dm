@@ -15,7 +15,7 @@
  */
 
 //  Generic non-item
-/obj/item/weapon/storage/bag
+/obj/item/storage/bag
 	icon = 'icons/obj/storage.dmi'
 	allow_quick_gather = TRUE
 	allow_quick_empty = TRUE
@@ -26,7 +26,7 @@
 // -----------------------------
 //          Trash bag
 // -----------------------------
-/obj/item/weapon/storage/bag/trash
+/obj/item/storage/bag/trash
 	name = "trash bag"
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
 	icon = 'icons/obj/janitor.dmi'
@@ -36,10 +36,10 @@
 	w_class = ITEM_SIZE_NORMAL
 	max_w_class = ITEM_SIZE_SMALL
 	can_hold = list() // any
-	cant_hold = list(/obj/item/weapon/disk/nuclear)
+	cant_hold = list(/obj/item/disk/nuclear)
 	max_storage_space = DEFAULT_NORMAL_STORAGE
 
-/obj/item/weapon/storage/bag/trash/on_update_icon()
+/obj/item/storage/bag/trash/on_update_icon()
 	if(contents.len == 0)
 		icon_state = "trashbag0"
 	else if(contents.len < 12)
@@ -51,11 +51,11 @@
 
 
 //The custodial robot gets a larger bag since it only has one and no cart
-/obj/item/weapon/storage/bag/trash/robot
+/obj/item/storage/bag/trash/robot
 	max_storage_space = DEFAULT_BULKY_STORAGE * 2
 	spawn_tags = null
 
-/obj/item/weapon/storage/bag/trash/robot/on_update_icon()
+/obj/item/storage/bag/trash/robot/on_update_icon()
 	if(contents.len == 0)
 		icon_state = "trashbag0"
 	else if(contents.len < 24)
@@ -65,7 +65,7 @@
 	else
 		icon_state = "trashbag3"
 
-/obj/item/weapon/storage/bag/trash/holding
+/obj/item/storage/bag/trash/holding
 	name = "trash bag of holding"
 	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
 	icon_state = "bluetrashbag"
@@ -74,18 +74,18 @@
 	matter = list(MATERIAL_STEEL = 6, MATERIAL_GOLD = 6, MATERIAL_DIAMOND = 2, MATERIAL_URANIUM = 2)
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/storage/bag/trash/holding/New()
+/obj/item/storage/bag/trash/holding/New()
 	..()
 	bluespace_entropy(4, get_turf(src))
 
-/obj/item/weapon/storage/bag/trash/holding/on_update_icon()
+/obj/item/storage/bag/trash/holding/on_update_icon()
 	return
 
 // -----------------------------
 //        Plastic Bag
 // -----------------------------
 
-/obj/item/weapon/storage/bag/plastic
+/obj/item/storage/bag/plastic
 	name = "plastic bag"
 	desc = "It's a very flimsy, very noisy alternative to a bag."
 	icon = 'icons/obj/trash.dmi'
@@ -101,7 +101,7 @@
 //        Mining Satchel
 // -----------------------------
 
-/obj/item/weapon/storage/bag/ore
+/obj/item/storage/bag/ore
 	name = "mining satchel"
 	desc = "This little bugger can be used to store and transport ores."
 	icon = 'icons/obj/mining.dmi'
@@ -110,9 +110,9 @@
 	w_class = ITEM_SIZE_NORMAL
 	max_storage_space = 200
 	max_w_class = ITEM_SIZE_NORMAL
-	can_hold = list(/obj/item/weapon/ore)
+	can_hold = list(/obj/item/ore)
 
-/obj/item/weapon/storage/bag/ore/holding
+/obj/item/storage/bag/ore/holding
 	name = "satchel of holding"
 	desc = "A revolution in convenience, this satchel allows for infinite ore or produce storage. It's been outfitted with anti-malfunction safety measures."
 	icon_state = "satchel_bspace"
@@ -120,14 +120,14 @@
 	max_w_class = ITEM_SIZE_BULKY
 	matter = list(MATERIAL_STEEL = 4, MATERIAL_GOLD = 4, MATERIAL_DIAMOND = 2, MATERIAL_URANIUM = 2)
 	origin_tech = list(TECH_BLUESPACE = 4)
-	can_hold = list(/obj/item/weapon/ore,
-	                /obj/item/weapon/reagent_containers/food/snacks/grown,
+	can_hold = list(/obj/item/ore,
+	                /obj/item/reagent_containers/food/snacks/grown,
 	                /obj/item/seeds,
-	                /obj/item/weapon/grown,
-	                /obj/item/weapon/reagent_containers/food/snacks/egg,
-	                /obj/item/weapon/reagent_containers/food/snacks/meat)
+	                /obj/item/grown,
+	                /obj/item/reagent_containers/food/snacks/egg,
+	                /obj/item/reagent_containers/food/snacks/meat)
 
-/obj/item/weapon/storage/bag/ore/holding/New()
+/obj/item/storage/bag/ore/holding/New()
 	..()
 	bluespace_entropy(10, get_turf(src))
 
@@ -135,18 +135,18 @@
 //          Produce bag
 // -----------------------------
 
-/obj/item/weapon/storage/bag/produce
+/obj/item/storage/bag/produce
 	name = "produce bag"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbag"
 	max_storage_space = 100
 	max_w_class = ITEM_SIZE_NORMAL
 	w_class = ITEM_SIZE_NORMAL
-	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/grown,
+	can_hold = list(/obj/item/reagent_containers/food/snacks/grown,
 		/obj/item/seeds,
-		/obj/item/weapon/grown,
-		/obj/item/weapon/reagent_containers/food/snacks/egg,
-		/obj/item/weapon/reagent_containers/food/snacks/meat)
+		/obj/item/grown,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/meat)
 
 
 // -----------------------------
@@ -155,7 +155,7 @@
 // Because it stacks stacks, this doesn't operate normally.
 // However, making it a storage/bag allows us to reuse existing code in some places. -Sayu
 
-/obj/item/weapon/storage/bag/sheetsnatcher
+/obj/item/storage/bag/sheetsnatcher
 	name = "sheet snatcher"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "sheetsnatcher"
@@ -166,7 +166,7 @@
 	storage_slots = 7
 	allow_quick_empty = TRUE // this function is superceded
 
-/obj/item/weapon/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W as obj, stop_messages = 0)
+/obj/item/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W as obj, stop_messages = 0)
 	if(!istype(W,/obj/item/stack/material))
 		if(!stop_messages)
 			to_chat(usr, "The snatcher does not accept [W].")
@@ -182,7 +182,7 @@
 
 
 // Modified handle_item_insertion.  Would prefer not to, but...
-/obj/item/weapon/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
+/obj/item/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
 	var/obj/item/stack/material/S = W
 	if(!istype(S)) return 0
 
@@ -219,7 +219,7 @@
 	return 1
 
 // Modified quick_empty verb drops appropriate sized stacks
-/obj/item/weapon/storage/bag/sheetsnatcher/quick_empty()
+/obj/item/storage/bag/sheetsnatcher/quick_empty()
 	var/location = get_turf(src)
 	for(var/obj/item/stack/material/S in contents)
 		while(S.amount)
@@ -234,7 +234,7 @@
 	update_icon()
 
 // Instead of removing
-/obj/item/weapon/storage/bag/sheetsnatcher/remove_from_storage(obj/item/W as obj, atom/new_location)
+/obj/item/storage/bag/sheetsnatcher/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/stack/material/S = W
 	if(!istype(S)) return 0
 
@@ -254,7 +254,7 @@
 //    Sheet Snatcher (Cyborg)
 // -----------------------------
 
-/obj/item/weapon/storage/bag/sheetsnatcher/borg
+/obj/item/storage/bag/sheetsnatcher/borg
 	name = "sheet snatcher 9000"
 	capacity = 500//Borgs get more because >specialization
 	spawn_frequency = 0
@@ -263,7 +263,7 @@
 //           Cash Bag
 // -----------------------------
 
-/obj/item/weapon/storage/bag/money
+/obj/item/storage/bag/money
 	name = "money bag"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "moneybag"
@@ -272,10 +272,10 @@
 	max_storage_space = 100
 	max_w_class = ITEM_SIZE_NORMAL
 	w_class = ITEM_SIZE_HUGE
-	can_hold = list(/obj/item/weapon/coin,
-		/obj/item/weapon/spacecash)
+	can_hold = list(/obj/item/coin,
+		/obj/item/spacecash)
 
-/obj/item/weapon/storage/bag/money/Initialize()
+/obj/item/storage/bag/money/Initialize()
 	. = ..()
 	if(prob(20))
 		icon_state = "moneybagalt"

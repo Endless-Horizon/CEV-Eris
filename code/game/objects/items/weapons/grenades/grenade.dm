@@ -1,4 +1,4 @@
-/obj/item/weapon/grenade
+/obj/item/grenade
 	name = "grenade"
 	desc = "A hand held grenade, with an adjustable timer."
 	w_class = ITEM_SIZE_SMALL
@@ -14,7 +14,7 @@
 	var/loadable = TRUE
 	var/variance = 0 //How much the fuse time varies up or down. Punishes cooking with makeshift nades, proper ones should have 0
 
-/obj/item/weapon/grenade/proc/clown_check(var/mob/living/user)
+/obj/item/grenade/proc/clown_check(var/mob/living/user)
 	if((CLUMSY in user.mutations) && prob(50))
 		to_chat(user, SPAN_WARNING("Huh? How does this thing work?"))
 
@@ -25,7 +25,7 @@
 		return 0
 	return 1
 
-/obj/item/weapon/grenade/examine(mob/user)
+/obj/item/grenade/examine(mob/user)
 	if(..(user, 0))
 		if(det_time > 1)
 			to_chat(user, "The timer is set to [det_time/10] seconds.")
@@ -35,7 +35,7 @@
 		to_chat(user, "\The [src] is set for instant detonation.")
 
 
-/obj/item/weapon/grenade/attack_self(mob/user as mob)
+/obj/item/grenade/attack_self(mob/user as mob)
 	if(!active)
 		if(clown_check(user))
 			to_chat(user, SPAN_WARNING("You prime \the [name]! [det_time/10] seconds!"))
@@ -48,7 +48,7 @@
 	return
 
 
-/obj/item/weapon/grenade/proc/activate(mob/user as mob)
+/obj/item/grenade/proc/activate(mob/user as mob)
 	if(active)
 		return
 
@@ -69,14 +69,14 @@
 		return
 
 
-/obj/item/weapon/grenade/proc/prime(mob/user as mob)
+/obj/item/grenade/proc/prime(mob/user as mob)
 	var/turf/T = get_turf(src)
 	if(T)
 		T.hotspot_expose(700,125)
 		user.hud_used.updatePlaneMasters(user)
 
 
-/obj/item/weapon/grenade/attackby(obj/item/I, mob/user as mob)
+/obj/item/grenade/attackby(obj/item/I, mob/user as mob)
 	if(QUALITY_SCREW_DRIVING in I.tool_qualities)
 		if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_COG))
 			switch(det_time)
@@ -93,7 +93,7 @@
 	..()
 	return
 
-/obj/item/weapon/grenade/attack_hand()
+/obj/item/grenade/attack_hand()
 	walk(src, null, null)
 	..()
 	return

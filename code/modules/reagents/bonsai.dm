@@ -5,7 +5,7 @@
 		Ratio, 10 alcohol: 1 produce.
 **/
 
-/obj/item/weapon/reagent_containers/bonsai
+/obj/item/reagent_containers/bonsai
 	name = "Laurelin bonsai"
 	desc = "A small tree, gifted to the club by a previous patron. It subsists off of numerous alcohols, and produces fruits and vegetables in return."
 
@@ -21,19 +21,19 @@
 	matter = list(MATERIAL_BIOMATTER = 50)
 	var/ticks
 
-/obj/item/weapon/reagent_containers/bonsai/New()
+/obj/item/reagent_containers/bonsai/New()
 	..()
 	GLOB.all_faction_items[src] = GLOB.department_civilian
 	START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/reagent_containers/bonsai/Destroy()
+/obj/item/reagent_containers/bonsai/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	for(var/mob/living/carbon/human/H in viewers(get_turf(src)))
 		SEND_SIGNAL(H, COMSIG_OBJ_FACTION_ITEM_DESTROY, src)
 	GLOB.all_faction_items -= src
 	..()
 
-/obj/item/weapon/reagent_containers/bonsai/Process()
+/obj/item/reagent_containers/bonsai/Process()
 	if(++ticks % 10 == 0 && reagents.total_volume)
 		var/reagent_count = 0
 		for(var/datum/reagent/R in reagents.reagent_list)

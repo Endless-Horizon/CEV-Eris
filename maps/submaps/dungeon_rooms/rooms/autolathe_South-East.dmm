@@ -82,7 +82,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crawler)
 "w" = (
-/obj/item/weapon/bedsheet/brown,
+/obj/item/bedsheet/brown,
 /obj/structure/bed,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crawler)

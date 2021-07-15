@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/revolver/consul
+/obj/item/gun/projectile/revolver/consul
 	name = "FS REV .40 Magnum \"Consul\""
 	desc = "When you badly need this case to be closed. Uses .40 Magnum rounds."
 	icon = 'icons/obj/guns/projectile/inspector.dmi'

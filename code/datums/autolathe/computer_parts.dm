@@ -13,20 +13,20 @@
 
 /datum/design/autolathe/computer_part/gps
 	name = "GPS sensor"
-	build_path = /obj/item/weapon/computer_hardware/gps_sensor
+	build_path = /obj/item/computer_hardware/gps_sensor
 
 /datum/design/autolathe/computer_part/scanner/paper
 	name = "paper scanner module"
-	build_path = /obj/item/weapon/computer_hardware/scanner/paper
+	build_path = /obj/item/computer_hardware/scanner/paper
 
 /datum/design/autolathe/computer_part/scanner/atmos
 	name = "atmospheric scanner module"
-	build_path = /obj/item/weapon/computer_hardware/scanner/atmos
+	build_path = /obj/item/computer_hardware/scanner/atmos
 
 /datum/design/autolathe/computer_part/scanner/reagent
 	name = "reagent scanner module"
-	build_path = /obj/item/weapon/computer_hardware/scanner/reagent
+	build_path = /obj/item/computer_hardware/scanner/reagent
 
 /datum/design/autolathe/computer_part/scanner/medical
 	name = "medical scanner module"
-	build_path = /obj/item/weapon/computer_hardware/scanner/medical
+	build_path = /obj/item/computer_hardware/scanner/medical

@@ -5,7 +5,7 @@
 	icon_screen = "explosive"
 	light_color = COLOR_LIGHTING_SCI_BRIGHT
 	req_access = list(access_armory)
-	circuit = /obj/item/weapon/electronics/circuitboard/prisoner
+	circuit = /obj/item/electronics/circuitboard/prisoner
 	var/locked = TRUE
 
 
@@ -20,7 +20,7 @@
 	else
 		dat += "<HR>Chemical Implants<BR>"
 		var/turf/Tr = null
-		for(var/obj/item/weapon/implant/chem/C in world)
+		for(var/obj/item/implant/chem/C in world)
 			Tr = get_turf(C)
 			if((Tr) && isNotStationLevel(Tr.z)) continue //Out of range
 			if(!C.implanted) continue
@@ -30,7 +30,7 @@
 			dat += "<A href='?src=\ref[src];inject=\ref[C];amount=10'>(<font color=red>(10)</font>)</A><BR>"
 			dat += "********************************<BR>"
 		dat += "<HR>Tracking Implants<BR>"
-		for(var/obj/item/weapon/implant/tracking/T in world)
+		for(var/obj/item/implant/tracking/T in world)
 			Tr = get_turf(T)
 			if((Tr) && isNotStationLevel(Tr.z)) continue //Out of range
 			if(!T.implanted) continue
@@ -63,7 +63,7 @@
 	usr.set_machine(src)
 
 	if(href_list["inject"])
-		var/obj/item/weapon/implant/I = locate(href_list["inject"])
+		var/obj/item/implant/I = locate(href_list["inject"])
 		var/amount = text2num(href_list["amount"])
 		if(I && amount)
 			I.activate(amount)
@@ -77,7 +77,7 @@
 	else if(href_list["warn"])
 		var/warning = sanitize(input(usr,"Message:","Enter your message here!",""))
 		if(!warning) return
-		var/obj/item/weapon/implant/I = locate(href_list["warn"])
+		var/obj/item/implant/I = locate(href_list["warn"])
 		if(I && I.wearer)
 			var/mob/living/carbon/R = I.wearer
 			to_chat(R, SPAN_NOTICE("You hear a voice in your head saying: '[warning]'"))

@@ -124,10 +124,10 @@
 	if (authorized.len >= req_authorizations)
 		return 0 //don't need any more
 
-	if (!istype(ident, /obj/item/weapon/card/id) && !istype(ident, /obj/item/modular_computer/pda))
+	if (!istype(ident, /obj/item/card/id) && !istype(ident, /obj/item/modular_computer/pda))
 		return
 
-	var/obj/item/weapon/card/id/ID
+	var/obj/item/card/id/ID
 
 	if (istype(ident, /obj/item/modular_computer/pda))
 		ID = ident.GetIdCard()
@@ -173,7 +173,7 @@
 		emagged = 1
 		return 1
 
-/obj/machinery/computer/shuttle_control/emergency/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/computer/shuttle_control/emergency/attackby(obj/item/W as obj, mob/user as mob)
 	read_authorization(W)
 	..()
 

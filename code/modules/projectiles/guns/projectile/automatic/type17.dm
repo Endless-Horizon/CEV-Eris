@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/type_17
+/obj/item/gun/projectile/automatic/type_17
     name = "OS AR .20 \"Type XVII\""
     desc = "An old Onestar assault rifle. A reliable, if unintuitive, design. Uses .20 Rifle magazines."
     icon = 'icons/obj/guns/projectile/os/type_17.dmi'
@@ -30,7 +30,7 @@
 		)
     spawn_blacklisted = TRUE //until loot rework
 
-/obj/item/weapon/gun/projectile/automatic/type_17/on_update_icon()
+/obj/item/gun/projectile/automatic/type_17/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -43,6 +43,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/automatic/type_17/Initialize()
+/obj/item/gun/projectile/automatic/type_17/Initialize()
 	. = ..()
 	update_icon()

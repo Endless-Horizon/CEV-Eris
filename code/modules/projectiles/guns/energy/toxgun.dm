@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/toxgun
+/obj/item/gun/energy/toxgun
 	name = "Prototype: plasma pistol"
 	desc = "A specialized firearm designed to fire lethal bolts of plasma."
 	icon = 'icons/obj/guns/energy/toxgun.dmi'

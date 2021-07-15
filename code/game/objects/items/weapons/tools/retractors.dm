@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/retractor
+/obj/item/tool/retractor
 	name = "retractor"
 	desc = "Retracts stuff."
 	icon_state = "retractor"

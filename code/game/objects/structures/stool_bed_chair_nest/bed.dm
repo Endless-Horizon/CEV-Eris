@@ -109,7 +109,7 @@
 				)
 		return TRUE
 
-/obj/structure/bed/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.has_quality(QUALITY_BOLT_TURNING))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		dismantle()
@@ -147,13 +147,13 @@
 		to_chat(user, "You remove the padding from \the [src].")
 		playsound(src, 'sound/items/Wirecutter.ogg', 100, 1)
 		remove_padding()
-	else if(istype(W, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = W
+	else if(istype(W, /obj/item/grab))
+		var/obj/item/grab/G = W
 		var/mob/living/affecting = G.affecting
 		if(user_buckle_mob(affecting, user))
 			qdel(W)
 
-	else if(!istype(W, /obj/item/weapon/bedsheet))
+	else if(!istype(W, /obj/item/bedsheet))
 		..()
 
 /obj/structure/bed/attack_robot(var/mob/user)
@@ -162,7 +162,7 @@
 
 //If there's blankets on the bed, got to roll them down before you can unbuckle the mob
 /obj/structure/bed/attack_hand(var/mob/user)
-	var/obj/item/weapon/bedsheet/blankets = (locate(/obj/item/weapon/bedsheet) in loc)
+	var/obj/item/bedsheet/blankets = (locate(/obj/item/bedsheet) in loc)
 	if (buckled_mob && blankets && !blankets.rolled && !blankets.folded)
 		if (!blankets.toggle_roll(user))
 			return

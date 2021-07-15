@@ -7,7 +7,7 @@
 	icon_state = "frame"
 	flags = CONDUCT
 
-/obj/item/frame/apc/attackby(obj/item/weapon/tool/tool, mob/user)
+/obj/item/frame/apc/attackby(obj/item/tool/tool, mob/user)
 	..()
 	if (!tool.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 		return

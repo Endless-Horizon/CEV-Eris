@@ -37,7 +37,7 @@
 					return
 
 			var/list/objects_to_stand_on = list(
-				/obj/item/weapon/stool,
+				/obj/item/stool,
 				/obj/structure/bed,
 				/obj/structure/table,
 				/obj/structure/closet/crate

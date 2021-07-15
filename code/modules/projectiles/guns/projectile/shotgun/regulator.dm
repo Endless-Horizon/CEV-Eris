@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/shotgun/pump/regulator
+/obj/item/gun/projectile/shotgun/pump/regulator
 	name = "NT SG \"Regulator 1000\""
 	desc = "Designed for close quarters combat, the Regulator is widely regarded as a weapon of choice for repelling boarders. \
 			Some may say that it's too old, but it actually proved itself useful. Can hold up to 7 shells in tube magazine."

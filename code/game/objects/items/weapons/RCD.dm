@@ -1,5 +1,5 @@
 //Contains the rapid construction device.
-/obj/item/weapon/rcd
+/obj/item/rcd
 	name = "rapid construction device"
 	desc = "A device used to rapidly build walls and floors."
 	icon = 'icons/obj/tools.dmi'
@@ -25,32 +25,32 @@
 	var/canRwall = 1
 	var/disabled = 0
 
-/obj/item/weapon/rcd/attack()
+/obj/item/rcd/attack()
 	return 0
 
-/obj/item/weapon/rcd/proc/can_use(var/mob/user,var/turf/T)
+/obj/item/rcd/proc/can_use(var/mob/user,var/turf/T)
 	return (user.Adjacent(T) && user.get_active_hand() == src && !user.stat && !user.restrained())
 
-/obj/item/weapon/rcd/examine()
+/obj/item/rcd/examine()
 	..()
-	if(src.type == /obj/item/weapon/rcd && loc == usr)
+	if(src.type == /obj/item/rcd && loc == usr)
 		to_chat(usr, "It currently holds [stored_matter]/30 matter-units.")
 
-/obj/item/weapon/rcd/New()
+/obj/item/rcd/New()
 	..()
 	src.spark_system = new /datum/effect/effect/system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 	update_icon()	//Initializes the fancy ammo counter
 
-/obj/item/weapon/rcd/Destroy()
+/obj/item/rcd/Destroy()
 	qdel(spark_system)
 	spark_system = null
 	return ..()
 
-/obj/item/weapon/rcd/attackby(obj/item/weapon/W, mob/user)
+/obj/item/rcd/attackby(obj/item/W, mob/user)
 
-	if(istype(W, /obj/item/weapon/rcd_ammo))
+	if(istype(W, /obj/item/rcd_ammo))
 		if((stored_matter + 10) > 30)
 			to_chat(user, SPAN_NOTICE("The RCD can't hold any more matter-units."))
 			return
@@ -63,14 +63,14 @@
 		return
 	..()
 
-/obj/item/weapon/rcd/attack_self(mob/user)
+/obj/item/rcd/attack_self(mob/user)
 	//Change the mode
 	if(++mode > modes.len) mode = 1
 	to_chat(user, SPAN_NOTICE("Changed mode to '[modes[mode]]'"))
 	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
 	if(prob(20)) src.spark_system.start()
 
-/obj/item/weapon/rcd/afterattack(atom/A, mob/user, proximity)
+/obj/item/rcd/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
 	if(disabled && !isrobot(user))
 		return 0
@@ -78,7 +78,7 @@
 		return 0
 	return alter_turf(A,user)
 
-/obj/item/weapon/rcd/proc/useResource(var/amount, var/mob/user, var/checkOnly)
+/obj/item/rcd/proc/useResource(var/amount, var/mob/user, var/checkOnly)
 	if(stored_matter < amount)
 		return 0
 	if (!checkOnly)
@@ -86,7 +86,7 @@
 		update_icon()	//Updates the ammo counter if ammo is succesfully used
 	return 1
 
-/obj/item/weapon/rcd/proc/alter_turf(var/T,var/mob/user)
+/obj/item/rcd/proc/alter_turf(var/T,var/mob/user)
 
 	var/build_cost = 0
 	var/build_type
@@ -197,7 +197,7 @@
 	playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 	return 1
 
-/obj/item/weapon/rcd/on_update_icon()	//For the fancy "ammo" counter
+/obj/item/rcd/on_update_icon()	//For the fancy "ammo" counter
 	cut_overlays()
 
 	var/ratio = 0
@@ -206,7 +206,7 @@
 
 	add_overlays("[icon_state]-[ratio]")
 
-/obj/item/weapon/rcd_ammo
+/obj/item/rcd_ammo
 	name = "compressed matter cartridge"
 	desc = "Highly compressed matter for the RCD."
 	icon = 'icons/obj/ammo.dmi'
@@ -217,11 +217,11 @@
 	matter = list(MATERIAL_STEEL = 30, MATERIAL_PLASTIC = 10, MATERIAL_SILVER = 2)
 	price_tag = 300
 
-/obj/item/weapon/rcd/borg
+/obj/item/rcd/borg
 	canRwall = 1
 	spawn_tags = null
 
-/obj/item/weapon/rcd/borg/useResource(var/amount, mob/user, var/checkOnly)
+/obj/item/rcd/borg/useResource(var/amount, mob/user, var/checkOnly)
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user
 		if(R.cell)
@@ -232,16 +232,16 @@
 				return 1
 	return 0
 
-/obj/item/weapon/rcd/borg/attackby()
+/obj/item/rcd/borg/attackby()
 	return
 
-/obj/item/weapon/rcd/borg/can_use(var/mob/user,var/turf/T)
+/obj/item/rcd/borg/can_use(var/mob/user,var/turf/T)
 	return (user.Adjacent(T) && !user.stat)
 
-/obj/item/weapon/rcd/mounted
+/obj/item/rcd/mounted
 	spawn_tags = null//mech item
 
-/obj/item/weapon/rcd/mounted/useResource(var/amount, mob/user, var/checkOnly)
+/obj/item/rcd/mounted/useResource(var/amount, mob/user, var/checkOnly)
 	var/cost = amount*130 //so that a rig with default powercell can build ~2.5x the stuff a fully-loaded RCD can.
 	if(istype(loc,/obj/item/rig_module))
 		var/obj/item/rig_module/module = loc
@@ -252,8 +252,8 @@
 				return 1
 	return 0
 
-/obj/item/weapon/rcd/mounted/attackby()
+/obj/item/rcd/mounted/attackby()
 	return
 
-/obj/item/weapon/rcd/mounted/can_use(var/mob/user,var/turf/T)
+/obj/item/rcd/mounted/can_use(var/mob/user,var/turf/T)
 	return (user.Adjacent(T) && !user.stat && !user.restrained())

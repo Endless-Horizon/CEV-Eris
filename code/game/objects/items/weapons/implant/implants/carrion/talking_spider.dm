@@ -1,10 +1,10 @@
-/obj/item/weapon/implant/carrion_spider/talking
+/obj/item/implant/carrion_spider/talking
 	name = "talking spider"
 	icon_state = "spiderling_talking"
 	spider_price = 30
 	var/on_cooldown = FALSE
 
-/obj/item/weapon/implant/carrion_spider/talking/activate()
+/obj/item/implant/carrion_spider/talking/activate()
 	..()
 	if(wearer)
 		if(!on_cooldown)

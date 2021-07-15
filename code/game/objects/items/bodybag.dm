@@ -30,7 +30,7 @@
 	layer = LOW_OBJ_LAYER+0.01
 
 /obj/structure/closet/body_bag/attackby(W as obj, mob/user)
-	if (istype(W, /obj/item/weapon/pen))
+	if (istype(W, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
 		if (user.get_active_hand() != W)
 			return
@@ -45,7 +45,7 @@
 			src.name = "body bag"
 	//..() //Doesn't need to run the parent. Since when can fucking bodybags be welded shut? -Agouri
 		return
-	else if(istype(W, /obj/item/weapon/tool/wirecutters))
+	else if(istype(W, /obj/item/tool/wirecutters))
 		to_chat(user, "You cut the tag off the bodybag.")
 		src.name = "body bag"
 		src.cut_overlays()
@@ -106,10 +106,10 @@
 	store_items = 0
 	rarity_value = 20
 	var/used = 0
-	var/obj/item/weapon/tank/tank
+	var/obj/item/tank/tank
 
 /obj/structure/closet/body_bag/cryobag/New()
-	tank = new /obj/item/weapon/tank/emergency_oxygen(null) //It's in nullspace to prevent ejection when the bag is opened.
+	tank = new /obj/item/tank/emergency_oxygen(null) //It's in nullspace to prevent ejection when the bag is opened.
 	..()
 
 /obj/structure/closet/body_bag/cryobag/Destroy()

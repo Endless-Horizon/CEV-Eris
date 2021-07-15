@@ -1,6 +1,6 @@
 //Serb
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/sa_zoric
+/obj/item/computer_hardware/hard_drive/portable/design/guns/sa_zoric
 	disk_name = "Serbian Arms - .40 Zoric SMG"
 	icon_state = "serbian"
 	spawn_tags = SPAWN_TAG_DESIGN_ADVANCED
@@ -12,7 +12,7 @@
 		/datum/design/autolathe/ammo/msmg/rubber,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/sa_boltgun
+/obj/item/computer_hardware/hard_drive/portable/design/guns/sa_boltgun
 	disk_name = "Serbian Arms - .30  Novakovic Rifle"
 	icon_state = "serbian"
 	rarity_value = 5.5
@@ -23,7 +23,7 @@
 		/datum/design/autolathe/ammo/lrifle_ammobox_small,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/sa_pk
+/obj/item/computer_hardware/hard_drive/portable/design/guns/sa_pk
 	disk_name = "Serbian Arms - .30 Pulemyot Kalashnikova MG"
 	icon_state = "serbian"
 	spawn_tags = SPAWN_TAG_DESIGN_ADVANCED
@@ -34,7 +34,7 @@
 		/datum/design/autolathe/ammo/lrifle_pk,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/sa_ak
+/obj/item/computer_hardware/hard_drive/portable/design/guns/sa_ak
 	disk_name = "Serbian Arms - .30 Krinkov Car"
 	icon_state = "serbian"
 	spawn_tags = SPAWN_TAG_DESIGN_ADVANCED
@@ -45,7 +45,7 @@
 		/datum/design/autolathe/ammo/lrifle,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/sa_br
+/obj/item/computer_hardware/hard_drive/portable/design/guns/sa_br
 	disk_name = "Serbian Arms - .20 Kovacs"
 	icon_state = "serbian"
 	spawn_tags = SPAWN_TAG_DESIGN_ADVANCED
@@ -57,7 +57,7 @@
 	)
 
 //The Dallas
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/dallas
+/obj/item/computer_hardware/hard_drive/portable/design/guns/dallas
 	disk_name = "PAR - .25 Dallas"
 	icon_state = "black"
 	spawn_tags = SPAWN_TAG_DESIGN_ADVANCED
@@ -69,7 +69,7 @@
 	)
 
 //The Cog
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns/retro
+/obj/item/computer_hardware/hard_drive/portable/design/guns/retro
 	disk_name = "OS LG \"Cog\""
 	icon_state = "onestar"
 	rarity_value = 5.5
@@ -80,8 +80,8 @@
 	)
 
 // ARMOR
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/armor
-	bad_type = /obj/item/weapon/computer_hardware/hard_drive/portable/design/armor
+/obj/item/computer_hardware/hard_drive/portable/design/armor
+	bad_type = /obj/item/computer_hardware/hard_drive/portable/design/armor
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/guns
-	bad_type = /obj/item/weapon/computer_hardware/hard_drive/portable/design/guns
+/obj/item/computer_hardware/hard_drive/portable/design/guns
+	bad_type = /obj/item/computer_hardware/hard_drive/portable/design/guns

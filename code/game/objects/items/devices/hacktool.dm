@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/multitool/hacktool
+/obj/item/tool/multitool/hacktool
 	spawn_blacklisted = TRUE//traitor item
 	var/is_hacking = 0
 	var/max_known_targets
@@ -8,14 +8,14 @@
 	var/list/supported_types
 	var/datum/topic_state/default/must_hack/hack_state
 
-/obj/item/weapon/tool/multitool/hacktool/New()
+/obj/item/tool/multitool/hacktool/New()
 	..()
 	known_targets = list()
 	max_known_targets = 5 + rand(1,3)
 	supported_types = list(/obj/machinery/door/airlock)
 	hack_state = new(src)
 
-/obj/item/weapon/tool/multitool/hacktool/Destroy()
+/obj/item/tool/multitool/hacktool/Destroy()
 	for(var/T in known_targets)
 		var/atom/target = T
 		GLOB.destroyed_event.unregister(target, src)
@@ -24,7 +24,7 @@
 	hack_state = null
 	return ..()
 
-/obj/item/weapon/tool/multitool/hacktool/attackby(obj/item/I, mob/user)
+/obj/item/tool/multitool/hacktool/attackby(obj/item/I, mob/user)
 	if(QUALITY_SCREW_DRIVING in I.tool_qualities)
 		if(I.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_EASY, required_stat = STAT_COG))
 			in_hack_mode = !in_hack_mode
@@ -32,7 +32,7 @@
 	else
 		..()
 
-/obj/item/weapon/tool/multitool/hacktool/resolve_attackby(atom/A, mob/user)
+/obj/item/tool/multitool/hacktool/resolve_attackby(atom/A, mob/user)
 	sanity_check()
 
 	if(!in_hack_mode)
@@ -44,7 +44,7 @@
 	A.ui_interact(user, state = hack_state)
 	return 1
 
-/obj/item/weapon/tool/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
+/obj/item/tool/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
 	if(is_hacking)
 		to_chat(user, SPAN_WARNING("You are already hacking!"))
 		return 0
@@ -70,10 +70,10 @@
 		return 0
 
 	known_targets.Insert(1, target)	// Insert the newly hacked target first,
-	GLOB.destroyed_event.register(target, src, /obj/item/weapon/tool/multitool/hacktool/proc/on_target_destroy)
+	GLOB.destroyed_event.register(target, src, /obj/item/tool/multitool/hacktool/proc/on_target_destroy)
 	return 1
 
-/obj/item/weapon/tool/multitool/hacktool/proc/sanity_check()
+/obj/item/tool/multitool/hacktool/proc/sanity_check()
 	if(max_known_targets < 1) max_known_targets = 1
 	// Cut away the oldest items if the capacity has been reached
 	if(known_targets.len > max_known_targets)
@@ -82,11 +82,11 @@
 			GLOB.destroyed_event.unregister(A, src)
 		known_targets.Cut(max_known_targets + 1)
 
-/obj/item/weapon/tool/multitool/hacktool/proc/on_target_destroy(var/target)
+/obj/item/tool/multitool/hacktool/proc/on_target_destroy(var/target)
 	known_targets -= target
 
 /datum/topic_state/default/must_hack
-	var/obj/item/weapon/tool/multitool/hacktool/hacktool
+	var/obj/item/tool/multitool/hacktool/hacktool
 
 /datum/topic_state/default/must_hack/New(var/hacktool)
 	src.hacktool = hacktool

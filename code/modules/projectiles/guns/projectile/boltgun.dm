@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/boltgun
+/obj/item/gun/projectile/boltgun
 	name = "Excelsior BR .30 \"Kardashev-Mosin\""
 	desc = "Weapon for hunting, or endless trench warfare. \
 			If you’re on a budget, it’s a darn good rifle for just about everything."
@@ -31,7 +31,7 @@
 	var/bolt_open = 0
 	var/item_suffix = ""
 
-/obj/item/weapon/gun/projectile/boltgun/on_update_icon()
+/obj/item/gun/projectile/boltgun/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -48,17 +48,17 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/boltgun/Initialize()
+/obj/item/gun/projectile/boltgun/Initialize()
 	. = ..()
 	update_icon()
 
-/obj/item/weapon/gun/projectile/boltgun/attack_self(mob/user) //Someone overrode attackself for this class, soooo.
+/obj/item/gun/projectile/boltgun/attack_self(mob/user) //Someone overrode attackself for this class, soooo.
 	if(zoom)
 		toggle_scope(user)
 		return
 	bolt_act(user)
 
-/obj/item/weapon/gun/projectile/boltgun/proc/bolt_act(mob/living/user)
+/obj/item/gun/projectile/boltgun/proc/bolt_act(mob/living/user)
 	playsound(src.loc, 'sound/weapons/guns/interact/rifle_boltback.ogg', 75, 1)
 	bolt_open = !bolt_open
 	if(bolt_open)
@@ -76,23 +76,23 @@
 	add_fingerprint(user)
 	update_icon()
 
-/obj/item/weapon/gun/projectile/boltgun/special_check(mob/user)
+/obj/item/gun/projectile/boltgun/special_check(mob/user)
 	if(bolt_open)
 		to_chat(user, SPAN_WARNING("You can't fire [src] while the bolt is open!"))
 		return 0
 	return ..()
 
-/obj/item/weapon/gun/projectile/boltgun/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/boltgun/load_ammo(var/obj/item/A, mob/user)
 	if(!bolt_open)
 		return
 	..()
 
-/obj/item/weapon/gun/projectile/boltgun/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/boltgun/unload_ammo(mob/user, var/allow_dump=1)
 	if(!bolt_open)
 		return
 	..()
 
-/obj/item/weapon/gun/projectile/boltgun/serbian
+/obj/item/gun/projectile/boltgun/serbian
 	name = "SA BR .30 \"Novakovic\""
 	desc = "Weapon for hunting, or endless trench warfare. \
 			If you’re on a budget, it’s a darn good rifle for just about everything. \
@@ -106,7 +106,7 @@
 	spawn_blacklisted = FALSE
 	gun_parts = list(/obj/item/stack/material/steel = 16)
 
-/obj/item/weapon/gun/projectile/boltgun/handmade
+/obj/item/gun/projectile/boltgun/handmade
 	name = "handmade bolt action rifle"
 	desc = "A handmade bolt action rifle, made from junk and some spare parts."
 	icon_state = "boltgun_hand"

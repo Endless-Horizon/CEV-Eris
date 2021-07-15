@@ -6,7 +6,7 @@
 /mob/living/silicon/robot/allow_spacemove()
 
 	//Do we have a working jetpack?
-	var/obj/item/weapon/tank/jetpack/thrust = get_jetpack()
+	var/obj/item/tank/jetpack/thrust = get_jetpack()
 
 	if(thrust)
 		if(thrust.allow_thrust(JETPACK_MOVE_COST, src))

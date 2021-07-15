@@ -74,7 +74,7 @@
 	name = "Handcuffs"
 	id = slot_handcuffed
 	req_organ = list(BP_L_ARM, BP_R_ARM)
-	req_type = /obj/item/weapon/handcuffs
+	req_type = /obj/item/handcuffs
 	update_proc = /mob/proc/update_inv_handcuffed
 
 /datum/inventory_slot/handcuffs/can_equip(obj/item/I, mob/living/carbon/human/owner, disable_warning)
@@ -89,7 +89,7 @@
 	name = "Legcuffs"
 	id = slot_legcuffed
 	req_organ = list(BP_L_LEG, BP_R_LEG)
-	req_type = /obj/item/weapon/legcuffs
+	req_type = /obj/item/legcuffs
 	update_proc = /mob/proc/update_inv_legcuffed
 
 
@@ -204,7 +204,7 @@
 		if(!disable_warning)
 			to_chat(owner, SPAN_WARNING("[I] can't be holded by your [name]."))
 		return FALSE
-	if(istype(I, /obj/item/weapon/storage/pouch)) // Pouches are basically equipped over the suit, they just take up pockets.
+	if(istype(I, /obj/item/storage/pouch)) // Pouches are basically equipped over the suit, they just take up pockets.
 		return TRUE
 	else
 		return ..()
@@ -234,7 +234,7 @@
 		if(!disable_warning)
 			to_chat(owner, SPAN_WARNING("You can't attach anything to that [wear_suit]."))
 		return FALSE
-	if( !is_type_in_list(I, wear_suit.allowed + list(/obj/item/modular_computer/pda, /obj/item/weapon/pen)) )
+	if( !is_type_in_list(I, wear_suit.allowed + list(/obj/item/modular_computer/pda, /obj/item/pen)) )
 		if(!disable_warning)
 			to_chat(owner, SPAN_WARNING("You can't attach [I] to that [wear_suit]."))
 		return FALSE
@@ -247,7 +247,7 @@
 	id = slot_in_backpack
 
 /datum/inventory_slot/in_backpack/can_equip(obj/item/I, mob/living/carbon/human/owner, disable_warning)
-	var/obj/item/weapon/storage/back = owner.get_equipped_item(slot_back)
+	var/obj/item/storage/back = owner.get_equipped_item(slot_back)
 	return istype(back) && back.can_be_inserted(src,1)
 
 

@@ -108,12 +108,12 @@
 				if(!ispath(obj_path))
 					continue
 				all_accompanying_obj_by_path[path] += list(obj_path)
-		if(ispath(path, /obj/item/weapon/gun/energy))
-			var/obj/item/weapon/gun/energy/E = A
+		if(ispath(path, /obj/item/gun/energy))
+			var/obj/item/gun/energy/E = A
 			if(!initial(E.use_external_power) && !initial(E.self_recharge))
 				all_accompanying_obj_by_path[path] += list(initial(E.suitable_cell))
-		else if(ispath(path, /obj/item/weapon/gun/projectile))
-			var/obj/item/weapon/gun/projectile/P = A
+		else if(ispath(path, /obj/item/gun/projectile))
+			var/obj/item/gun/projectile/P = A
 			if(initial(P.magazine_type) && ((initial(P.load_method) & MAGAZINE) || (initial(P.load_method) & SPEEDLOADER)))
 				all_accompanying_obj_by_path[path] += list(initial(P.magazine_type))
 			else if(initial(P.ammo_type) && (initial(P.max_shells)) && (initial(P.load_method) & SINGLE_CASING))
@@ -128,7 +128,7 @@
 
 		//tags//
 		/*
-		if(generate_files && ispath(path, /obj/item/weapon/gun))
+		if(generate_files && ispath(path, /obj/item/gun))
 			var/tag_data_i
 			if(price > GUN_CHEAP_PRICE)
 				tag_data_i = file("[file_dir_tags]gun_expensive.txt")
@@ -156,7 +156,7 @@ the data returned by the get_special_rarity_value() proc
 */
 /datum/controller/subsystem/spawn_data/proc/get_spawn_value(npath)
 	var/atom/movable/A = npath
-	if(ispath(npath, /obj/item/weapon/gun))
+	if(ispath(npath, /obj/item/gun))
 		return 10 * initial(A.spawn_frequency)/(get_special_rarity_value(npath)+(get_spawn_price(A)/GUN_PRICE_DIVISOR))
 	else if(ispath(npath, /obj/item/clothing))
 		return 10 * initial(A.spawn_frequency)/(get_special_rarity_value(npath) + (get_spawn_price(A)/CLOTH_PRICE_DIVISOR))
@@ -171,23 +171,23 @@ the value of stock parts increases with the rating.
 /datum/controller/subsystem/spawn_data/proc/get_special_rarity_value(npath)
 	var/atom/movable/A = npath
 	. = initial(A.rarity_value)
-	if(ispath(npath, /obj/item/weapon/cell))
-		var/obj/item/weapon/cell/C = npath
+	if(ispath(npath, /obj/item/cell))
+		var/obj/item/cell/C = npath
 		var/bonus = 0
 		var/autorecharging_factor = 3.7
-		if(ispath(npath, /obj/item/weapon/cell/large))
+		if(ispath(npath, /obj/item/cell/large))
 			bonus += (initial(C.maxcharge)/CELL_LARGE_BASE_CHARGE)**1.2
-		else if(ispath(npath, /obj/item/weapon/cell/medium))
+		else if(ispath(npath, /obj/item/cell/medium))
 			bonus += (initial(C.maxcharge)/CELL_MEDIUM_BASE_CHARGE)**3.6
 			autorecharging_factor += 3
-		else if(ispath(npath, /obj/item/weapon/cell/small))
+		else if(ispath(npath, /obj/item/cell/small))
 			bonus += (initial(C.maxcharge)/CELL_SMALL_BASE_CHARGE)**1.9
 			autorecharging_factor += 2
 		if(initial(C.autorecharging))
 			bonus *= autorecharging_factor * (initial(C.autorecharge_rate)/BASE_AUTORECHARGE_RATE) * (initial(C.recharge_time)/BASE_RECHARGE_TIME)
 		. += bonus
-	else if(ispath(npath, /obj/item/weapon/stock_parts))
-		var/obj/item/weapon/stock_parts/SP = npath
+	else if(ispath(npath, /obj/item/stock_parts))
+		var/obj/item/stock_parts/SP = npath
 		. *= initial(SP.rating)**1.5
 
 /datum/controller/subsystem/spawn_data/proc/get_spawn_price(path, with_accompaying_obj = TRUE)
@@ -197,8 +197,8 @@ the value of stock parts increases with the rating.
 		for(var/a_obj in all_accompanying_obj_by_path[path])
 			. += get_spawn_price(a_obj, FALSE)
 	if(ispath(path, /obj/item))
-		if(ispath(path, /obj/item/weapon/stock_parts))//see /obj/item/weapon/stock_parts/get_item_cost(export)
-			var/obj/item/weapon/stock_parts/S = path
+		if(ispath(path, /obj/item/stock_parts))//see /obj/item/stock_parts/get_item_cost(export)
+			var/obj/item/stock_parts/S = path
 			. *= initial(S.rating)
 		else if(ispath(path, /obj/item/stack))///obj/item/stack/get_item_cost(export)
 			var/obj/item/stack/S = path
@@ -209,8 +209,8 @@ the value of stock parts increases with the rating.
 		else if(ispath(path, /obj/item/ammo_casing))///obj/item/ammo_casing/get_item_cost(export)
 			var/obj/item/ammo_casing/AC = path
 			. *= initial(AC.amount)
-		else if(ispath(path, /obj/item/weapon/handcuffs))///obj/item/weapon/handcuffs/get_item_cost(export)
-			var/obj/item/weapon/handcuffs/H = path
+		else if(ispath(path, /obj/item/handcuffs))///obj/item/handcuffs/get_item_cost(export)
+			var/obj/item/handcuffs/H = path
 			. += initial(H.breakouttime) / 20
 		else if(ispath(path, /obj/structure/reagent_dispensers))///obj/machinery/get_item_cost(export)
 			var/obj/structure/reagent_dispensers/R = path
@@ -221,25 +221,25 @@ the value of stock parts increases with the rating.
 			if(isnull(amount))
 				amount = initial(M.max_ammo)
 			. += amount * get_spawn_price(initial(M.ammo_type))
-		else if(ispath(path, /obj/item/weapon/tool))
-			var/obj/item/weapon/tool/T = path
+		else if(ispath(path, /obj/item/tool))
+			var/obj/item/tool/T = path
 			if(initial(T.suitable_cell))
 				. += get_spawn_price(initial(T.suitable_cell))
-		else if(ispath(path, /obj/item/weapon/storage))
-			if(ispath(path, /obj/item/weapon/storage/box))
-				var/obj/item/weapon/storage/box/B = path
+		else if(ispath(path, /obj/item/storage))
+			if(ispath(path, /obj/item/storage/box))
+				var/obj/item/storage/box/B = path
 				if(initial(B.initial_amount) > 0 && initial(B.spawn_type))
 					. += initial(B.initial_amount) * get_spawn_price(initial(B.spawn_type))
-			else if(ispath(path, /obj/item/weapon/storage/fancy))
-				var/obj/item/weapon/storage/fancy/F = path
+			else if(ispath(path, /obj/item/storage/fancy))
+				var/obj/item/storage/fancy/F = path
 				if(initial(F.item_obj) && initial(F.storage_slots))
 					. += initial(F.storage_slots) * get_spawn_price(initial(F.item_obj))
-			else if(ispath(path, /obj/item/weapon/storage/pill_bottle))
-				var/obj/item/weapon/storage/pill_bottle/PB = path
+			else if(ispath(path, /obj/item/storage/pill_bottle))
+				var/obj/item/storage/pill_bottle/PB = path
 				if(initial(PB.initial_amt) && initial(PB.pill_type))
 					. += initial(PB.initial_amt) * get_spawn_price(initial(PB.pill_type))
-			else if(ispath(path, /obj/item/weapon/storage/firstaid))
-				var/obj/item/weapon/storage/firstaid/F = path
+			else if(ispath(path, /obj/item/storage/firstaid))
+				var/obj/item/storage/firstaid/F = path
 				if(!initial(F.empty))
 					. += initial(F.initial_amount) * get_spawn_price(initial(F.spawn_type))
 		else if(ispath(path, /obj/item/clothing))
@@ -260,11 +260,11 @@ the value of stock parts increases with the rating.
 			var/obj/item/device/D = path
 			if(initial(D.starting_cell) && initial(D.suitable_cell))
 				. += get_spawn_price(initial(D.suitable_cell))
-		else if(ispath(path, /obj/item/weapon/reagent_containers/glass))
-			var/obj/item/weapon/reagent_containers/glass/G = path
+		else if(ispath(path, /obj/item/reagent_containers/glass))
+			var/obj/item/reagent_containers/glass/G = path
 			. += initial(G.volume)/100
-		else if(ispath(path, /obj/item/weapon/computer_hardware/hard_drive/portable/design))
-			var/obj/item/weapon/computer_hardware/hard_drive/portable/design/D = path
+		else if(ispath(path, /obj/item/computer_hardware/hard_drive/portable/design))
+			var/obj/item/computer_hardware/hard_drive/portable/design/D = path
 			if(initial(D.license) > 0)
 				. += initial(D.license) * 2
 

@@ -1,4 +1,4 @@
-/obj/item/weapon/implanter
+/obj/item/implanter
 	name = "implanter"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implanter0"
@@ -7,18 +7,18 @@
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_STEEL = 1)
-	var/obj/item/weapon/implant/implant
+	var/obj/item/implant/implant
 	spawn_tags = SPAWN_TAG_JUNK
 	rarity_value = 6
 
-/obj/item/weapon/implanter/New()
+/obj/item/implanter/New()
 	..()
 	if(ispath(implant))
 		implant = new implant(src)
 		update_icon()
 
 
-/obj/item/weapon/implanter/attack_self(mob/user)
+/obj/item/implanter/attack_self(mob/user)
 	if(!implant)
 		return ..()
 	user.put_in_hands(implant)
@@ -28,14 +28,14 @@
 	update_icon()
 	return
 
-/obj/item/weapon/implanter/on_update_icon()
+/obj/item/implanter/on_update_icon()
 	if(implant)
 		icon_state = "implanter1"
 	else
 		icon_state = "implanter0"
 	return
 
-/obj/item/weapon/implanter/attack(mob/living/M, mob/living/user)
+/obj/item/implanter/attack(mob/living/M, mob/living/user)
 	if(!istype(M) || !implant)
 		return
 	if(!implant.is_external())
@@ -68,7 +68,7 @@
 			"used an implanter, [src.name] ([implant.name]), on"
 			)
 
-			if(istype(implant, /obj/item/weapon/implant/excelsior) && ishuman(M))
+			if(istype(implant, /obj/item/implant/excelsior) && ishuman(M))
 				var/datum/faction/F = get_faction_by_id(FACTION_EXCELSIOR)
 				var/datum/objective/timed/excelsior/E = (locate(/datum/objective/timed/excelsior) in F.objectives)
 				if(E)

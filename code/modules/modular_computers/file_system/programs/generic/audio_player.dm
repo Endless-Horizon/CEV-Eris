@@ -140,8 +140,8 @@
 		PRG = program
 	else
 		return
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD
-	var/obj/item/weapon/computer_hardware/hard_drive/portable/RHDD
+	var/obj/item/computer_hardware/hard_drive/HDD
+	var/obj/item/computer_hardware/hard_drive/portable/RHDD
 
 	if(PRG.error)
 		data["error"] = PRG.error

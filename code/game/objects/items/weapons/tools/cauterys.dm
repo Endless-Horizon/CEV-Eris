@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/cautery
+/obj/item/tool/cautery
 	name = "cautery"
 	desc = "This stops bleeding."
 	icon_state = "cautery"

@@ -87,14 +87,14 @@
 	icon_state = "o2crate"
 
 /obj/structure/closet/crate/internals/populate_contents()
-	new /obj/item/weapon/tank/emergency_oxygen(src)
-	new /obj/item/weapon/tank/emergency_oxygen(src)
-	new /obj/item/weapon/tank/emergency_oxygen(src)
-	new /obj/item/weapon/tank/emergency_oxygen(src)
-	new /obj/item/weapon/tank/emergency_oxygen(src)
-	new /obj/item/weapon/tank/emergency_oxygen(src)
-	new /obj/item/weapon/tank/emergency_oxygen(src)
-	new /obj/item/weapon/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/clothing/mask/breath(src)
@@ -138,10 +138,10 @@
 	icon_state = "crate"
 
 /obj/structure/closet/crate/rcd/populate_contents()
-	new /obj/item/weapon/rcd_ammo(src)
-	new /obj/item/weapon/rcd_ammo(src)
-	new /obj/item/weapon/rcd_ammo(src)
-	new /obj/item/weapon/rcd(src)
+	new /obj/item/rcd_ammo(src)
+	new /obj/item/rcd_ammo(src)
+	new /obj/item/rcd_ammo(src)
+	new /obj/item/rcd(src)
 
 /obj/structure/closet/crate/solar
 	name = "solar pack crate"
@@ -168,9 +168,9 @@
 	new /obj/item/solar_assembly(src)
 	new /obj/item/solar_assembly(src)
 	new /obj/item/solar_assembly(src)
-	new /obj/item/weapon/electronics/circuitboard/solar_control(src)
-	new /obj/item/weapon/electronics/tracker(src)
-	new /obj/item/weapon/paper/solar(src)
+	new /obj/item/electronics/circuitboard/solar_control(src)
+	new /obj/item/electronics/tracker(src)
+	new /obj/item/paper/solar(src)
 
 /obj/structure/closet/crate/freezer
 	name = "freezer"
@@ -183,10 +183,10 @@
 
 
 /obj/structure/closet/crate/freezer/rations/populate_contents()
-	new /obj/item/weapon/reagent_containers/food/snacks/liquidfood(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/liquidfood(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/liquidfood(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/liquidfood(src)
+	new /obj/item/reagent_containers/food/snacks/liquidfood(src)
+	new /obj/item/reagent_containers/food/snacks/liquidfood(src)
+	new /obj/item/reagent_containers/food/snacks/liquidfood(src)
+	new /obj/item/reagent_containers/food/snacks/liquidfood(src)
 
 /obj/structure/closet/crate/bin
 	name = "large bin"

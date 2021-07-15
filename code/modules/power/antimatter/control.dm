@@ -11,7 +11,7 @@
 
 	var/list/obj/machinery/am_shielding/linked_shielding
 	var/list/obj/machinery/am_shielding/linked_cores
-	var/obj/item/weapon/am_containment/fueljar
+	var/obj/item/am_containment/fueljar
 	var/update_shield_icons = 0
 	var/stability = 100
 	var/exploding = 0
@@ -152,7 +152,7 @@
 				disconnect_from_network()
 			return
 
-	if(istype(I, /obj/item/weapon/am_containment))
+	if(istype(I, /obj/item/am_containment))
 		if(fueljar)
 			to_chat(user, "\red There is already a [fueljar] inside!")
 			return

@@ -32,7 +32,7 @@ meteor_act
 	if(P.can_embed() && (check_absorb < 2))
 		var/armor = getarmor_organ(organ, ARMOR_BULLET)
 		if(prob(20 + max(P.damage_types[BRUTE] - armor, -10)))
-			var/obj/item/weapon/material/shard/shrapnel/SP = new()
+			var/obj/item/material/shard/shrapnel/SP = new()
 			SP.name = (P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel"
 			SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
 			SP.loc = organ
@@ -168,7 +168,7 @@ meteor_act
 				if(C.armor.vars[type] > protection)
 					protection = C.armor.vars[type]
 
-	var/obj/item/weapon/shield/shield = has_shield()
+	var/obj/item/shield/shield = has_shield()
 
 	if(shield)
 		protection += shield.armor[type]
@@ -202,7 +202,7 @@ meteor_act
 	return 0
 
 /mob/living/carbon/human/proc/has_shield()
-	for(var/obj/item/weapon/shield/shield in list(l_hand, r_hand))
+	for(var/obj/item/shield/shield in list(l_hand, r_hand))
 		if(!shield) continue
 		return shield
 	return FALSE
@@ -443,8 +443,8 @@ meteor_act
 	if(damtype != BURN && damtype != BRUTE) return
 
 	// The rig might soak this hit, if we're wearing one.
-	if(back && istype(back,/obj/item/weapon/rig))
-		var/obj/item/weapon/rig/rig = back
+	if(back && istype(back,/obj/item/rig))
+		var/obj/item/rig/rig = back
 		rig.take_hit(damage)
 
 	// We may also be taking a suit breach.

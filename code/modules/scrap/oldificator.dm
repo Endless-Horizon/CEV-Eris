@@ -83,12 +83,12 @@
 			origin_tech = list()
 		siemens_coefficient += 0.3
 
-/obj/item/weapon/tool/make_old(low_quality_oldification)
+/obj/item/tool/make_old(low_quality_oldification)
 	.=..()
 	if(.)
 		adjustToolHealth(-(rand(40, 150) * degradation))
 
-/obj/item/weapon/storage/make_old(low_quality_oldification)
+/obj/item/storage/make_old(low_quality_oldification)
 	.=..()
 	if(.)
 		var/del_count = rand(0, contents.len)
@@ -103,17 +103,17 @@
 			max_storage_space = max_storage_space / 2
 
 //Old pill bottles get a name that disguises their contents
-/obj/item/weapon/storage/pill_bottle/make_old(low_quality_oldification)
+/obj/item/storage/pill_bottle/make_old(low_quality_oldification)
 	GET_COMPONENT(oldified, /datum/component/oldficator)
 	if(!oldified && prob(85) && (!low_quality_oldification))
 		name = "bottle of [pick("generic ", "unknown ", "")]pills"
 		desc = "Contains pills of some kind. The label has long since worn away"
-		for(var/obj/item/weapon/reagent_containers/pill/P in contents)
+		for(var/obj/item/reagent_containers/pill/P in contents)
 			P.make_old(low_quality_oldification)
 	.=..()
 
 //Make sure old pills always hide their contents too
-/obj/item/weapon/reagent_containers/pill/make_old(low_quality_oldification)
+/obj/item/reagent_containers/pill/make_old(low_quality_oldification)
 	GET_COMPONENT(oldified, /datum/component/oldficator)
 	if(!oldified && (!low_quality_oldification))
 		name = "pill"
@@ -126,7 +126,7 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			reagents.remove_reagent(R.id,rand(0, R.volume),TRUE)
 
-/obj/item/weapon/reagent_containers/make_old(low_quality_oldification)
+/obj/item/reagent_containers/make_old(low_quality_oldification)
 	.=..()
 	if(. && (!low_quality_oldification))
 		var/actual_volume = reagents.total_volume
@@ -134,13 +134,13 @@
 			reagents.remove_reagent(R.id,rand(0, R.volume),TRUE)
 		reagents.add_reagent("toxin", rand(0, actual_volume - reagents.total_volume))
 
-/obj/item/weapon/reagent_containers/food/snacks/make_old(low_quality_oldification)
+/obj/item/reagent_containers/food/snacks/make_old(low_quality_oldification)
 	.=..()
 	if(.)
 		junk_food = TRUE
 
 //Sealed survival food, always edible
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood/make_old(low_quality_oldification)
+/obj/item/reagent_containers/food/snacks/liquidfood/make_old(low_quality_oldification)
 	return
 
 /obj/item/ammo_magazine/make_old(low_quality_oldification)
@@ -154,7 +154,7 @@
 		QDEL_NULL(removed_item)
 	..()
 
-/obj/item/weapon/cell/make_old(low_quality_oldification)
+/obj/item/cell/make_old(low_quality_oldification)
 	.=..()
 	if(.)
 		// It's silly to have old self-charging cells spawn partially discharged
@@ -166,7 +166,7 @@
 		if(prob(10))
 			rigged = TRUE
 
-/obj/item/weapon/stock_parts/make_old(low_quality_oldification)
+/obj/item/stock_parts/make_old(low_quality_oldification)
 	.=..()
 	if(.)
 		var/degrade = pick(0,1,1,1,2)
@@ -179,30 +179,30 @@
 /obj/item/stack/rods/make_old(low_quality_oldification)
 	return
 
-/obj/item/weapon/ore/make_old(low_quality_oldification)
+/obj/item/ore/make_old(low_quality_oldification)
 	return
 
-/obj/item/weapon/grenade/make_old(low_quality_oldification)
+/obj/item/grenade/make_old(low_quality_oldification)
 	. =..()
 	if(.)
 		det_time = RAND_DECIMAL(0, det_time)
 
-/obj/item/weapon/tank/make_old(low_quality_oldification)
+/obj/item/tank/make_old(low_quality_oldification)
 	.=..()
 	if(.)
 		air_contents.remove(pick(0.2, 0.4 ,0.6, 0.8))
 
-/obj/item/weapon/electronics/circuitboard/make_old(low_quality_oldification)
+/obj/item/electronics/circuitboard/make_old(low_quality_oldification)
 	.=..()
 	if(. && prob(75) && (!low_quality_oldification))
 		name = T_BOARD("unknown")
 		build_path = pick(/obj/machinery/washing_machine, /obj/machinery/broken, /obj/machinery/shower, /obj/machinery/holoposter, /obj/machinery/holosign)
 
 
-/obj/item/weapon/electronics/ai_module/make_old(low_quality_oldification)
+/obj/item/electronics/ai_module/make_old(low_quality_oldification)
 	GET_COMPONENT(oldified, /datum/component/oldficator)
-	if(!oldified && prob(75) && !istype(src, /obj/item/weapon/electronics/ai_module/broken))
-		var/obj/item/weapon/electronics/ai_module/brokenmodule = new /obj/item/weapon/electronics/ai_module/broken(loc)
+	if(!oldified && prob(75) && !istype(src, /obj/item/electronics/ai_module/broken))
+		var/obj/item/electronics/ai_module/brokenmodule = new /obj/item/electronics/ai_module/broken(loc)
 		brokenmodule.name = src.name
 		brokenmodule.desc = src.desc
 		brokenmodule.make_old(low_quality_oldification)
@@ -240,7 +240,7 @@
 			equip_delay += rand(0, 6 SECONDS)
 		style += STYLE_NEG_LOW
 
-/obj/item/weapon/electronics/ai_module/broken
+/obj/item/electronics/ai_module/broken
 	name = "\improper broken core AI module"
 	desc = "broken Core AI Module: 'Reconfigures the AI's core laws.'"
 
@@ -256,14 +256,14 @@
 /obj/machinery/broken/make_old(low_quality_oldification)
 	return
 
-/obj/item/weapon/electronics/ai_module/broken/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
+/obj/item/electronics/ai_module/broken/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
 	..()
 	IonStorm(0)
 	explosion(sender.loc, 1, 1, 1, 3)
 	sender.drop_from_inventory(src)
 	QDEL_NULL(src)
 
-/obj/item/weapon/dnainjector/make_old(low_quality_oldification)
+/obj/item/dnainjector/make_old(low_quality_oldification)
 	.=..()
 	if(.)
 		if(prob(75))
@@ -366,7 +366,7 @@
 	updatehealth()
 	*/
 
-/obj/item/weapon/gun/make_old(low_quality_oldification)
+/obj/item/gun/make_old(low_quality_oldification)
 	.=..()
 	if(. && prob(90))
 		var/list/trash_mods = TRASH_GUNMODS

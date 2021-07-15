@@ -47,7 +47,7 @@
 	var/auto_return = 1	// true if auto return to home beacon after unload
 	var/auto_pickup = 1 // true if auto-pickup at beacon
 
-	var/obj/item/weapon/cell/large/cell
+	var/obj/item/cell/large/cell
 						// the installed power cell
 
 	// constants for internal wiring bitflags
@@ -60,7 +60,7 @@
 	wires = new(src)
 	botcard = new(src)
 	botcard.access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_merchant, access_mining, access_mining_station)
-	cell = new /obj/item/weapon/cell/large/high(src)
+	cell = new /obj/item/cell/large/high(src)
 
 	spawn(5)	// must wait for map loading to finish
 		SSradio.add_object(src, control_freq, filter = RADIO_MULEBOT)
@@ -96,13 +96,13 @@
 // cell: insert it
 // other: chance to knock rider off bot
 /obj/machinery/bot/mulebot/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I,/obj/item/weapon/cell/large) && open && !cell)
-		var/obj/item/weapon/cell/large/C = I
+	if(istype(I,/obj/item/cell/large) && open && !cell)
+		var/obj/item/cell/large/C = I
 		user.drop_item()
 		C.loc = src
 		src.cell = C
 		updateDialog()
-	else if(istype(I,/obj/item/weapon/tool/screwdriver))
+	else if(istype(I,/obj/item/tool/screwdriver))
 		if(locked)
 			to_chat(user, SPAN_NOTICE("The maintenance hatch cannot be opened or closed while the controls are locked."))
 			return
@@ -117,7 +117,7 @@
 			icon_state = "mulebot0"
 
 		updateDialog()
-	else if (istype(I, /obj/item/weapon/tool/wrench))
+	else if (istype(I, /obj/item/tool/wrench))
 		if (src.health < maxhealth)
 			src.health = min(maxhealth, src.health+25)
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -288,7 +288,7 @@
 
 			if("cellinsert")
 				if(open && !cell)
-					var/obj/item/weapon/cell/large/C = usr.get_active_hand()
+					var/obj/item/cell/large/C = usr.get_active_hand()
 					if(istype(C))
 						usr.drop_item()
 						src.cell = C

@@ -2,7 +2,7 @@
 	light_overlay = "helmet_light_dual_green"
 	spawn_tags = null
 
-/obj/item/weapon/rig/combat
+/obj/item/rig/combat
 	name = "combat hardsuit control module"
 	desc = "A sleek and dangerous hardsuit for active combat."
 	icon_state = "security_rig"
@@ -22,7 +22,7 @@
 	rarity_value = 20
 	helm_type = /obj/item/clothing/head/space/rig/combat
 
-/obj/item/weapon/rig/combat/equipped
+/obj/item/rig/combat/equipped
 	rarity_value = 40
 	initial_modules = list(
 		/obj/item/rig_module/mounted,
@@ -38,7 +38,7 @@
 /obj/item/clothing/head/space/rig/combat/ironhammer
 	light_overlay = "sec_light"
 
-/obj/item/weapon/rig/combat/ironhammer
+/obj/item/rig/combat/ironhammer
 	name = "ironhammer hardsuit control module"
 	desc = "Standard operative suit issued to Ironhammer mercenaries. Provides balanced overall protection against various threats and widely used on planets surface, space stations or in open space."
 	icon_state = "ihs_rig"
@@ -46,7 +46,7 @@
 	suit_type = "ironhammer hardsuit"
 	spawn_blacklisted = TRUE//antag_item_targets
 
-/obj/item/weapon/rig/combat/ironhammer/equipped
+/obj/item/rig/combat/ironhammer/equipped
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
@@ -59,7 +59,7 @@
 	camera_networks = list(NETWORK_SECURITY)
 	rarity_value = 20
 
-/obj/item/weapon/rig/hazard
+/obj/item/rig/hazard
 	name = "hazard hardsuit control module"
 	suit_type = "hazard hardsuit"
 	desc = "A Security hardsuit designed for prolonged EVA in dangerous environments."
@@ -82,7 +82,7 @@
 	req_access = list()
 	req_one_access = list()
 
-/obj/item/weapon/rig/hazard/equipped
+/obj/item/rig/hazard/equipped
 	rarity_value = 40
 	initial_modules = list(
 		/obj/item/rig_module/vision/sechud,

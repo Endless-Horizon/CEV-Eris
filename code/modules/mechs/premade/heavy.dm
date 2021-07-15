@@ -7,8 +7,8 @@
 	exosuit_color = COLOR_TITANIUM
 	installed_armor = /obj/item/robot_parts/robot_component/armour/exosuit/combat
 	installed_software_boards = list(
-		/obj/item/weapon/electronics/circuitboard/exosystem/weapons,
-		/obj/item/weapon/electronics/circuitboard/exosystem/advweapons
+		/obj/item/electronics/circuitboard/exosystem/weapons,
+		/obj/item/electronics/circuitboard/exosystem/advweapons
 	)
 	installed_systems = list(
 		HARDPOINT_LEFT_HAND = /obj/item/mech_equipment/mounted_system/taser,

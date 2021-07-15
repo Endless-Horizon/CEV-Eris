@@ -7,7 +7,7 @@
 	var/list/access_occupy = list()
 
 /obj/structure/closet/secure_closet/personal/CanToggleLock(var/mob/user)
-	var/obj/item/weapon/card/id/id_card = user.GetIdCard()
+	var/obj/item/card/id/id_card = user.GetIdCard()
 
 	if(id_card && id_card.registered_name == registered_name)
 		return TRUE
@@ -18,7 +18,7 @@
 /obj/structure/closet/secure_closet/personal/attackby(obj/item/W, mob/living/user)
 	if (src.opened)
 		user.unEquip(W, src.loc)
-	else if(istype(W, /obj/item/weapon/melee/energy/blade))
+	else if(istype(W, /obj/item/melee/energy/blade))
 		if(emag_act(INFINITY, user, "The locker has been sliced open by [user] with \an [W]!", "You hear metal being sliced and sparks flying."))
 			var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
@@ -27,7 +27,7 @@
 			playsound(src.loc, "sparks", 50, 1)
 		return
 
-	var/obj/item/weapon/card/id/I = W.GetIdCard()
+	var/obj/item/card/id/I = W.GetIdCard()
 	if(istype(I))
 		if(!src.registered_name && has_access(access_occupy, list(), I.GetAccess()))
 			src.registered_name = I.registered_name

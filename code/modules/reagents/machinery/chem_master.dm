@@ -4,12 +4,12 @@
 	density = TRUE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
-	circuit = /obj/item/weapon/electronics/circuitboard/chemmaster
+	circuit = /obj/item/electronics/circuitboard/chemmaster
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
-	var/obj/item/weapon/reagent_containers/glass/beaker = null
+	var/obj/item/reagent_containers/glass/beaker = null
 	var/mode = 0
 	var/condi = 0
 	var/useramount = 30 // Last used amount
@@ -25,12 +25,12 @@
 	if(!reagents)
 		create_reagents(10)
 	reagents.maximum_volume = 0
-	for(var/obj/item/weapon/reagent_containers/glass/G in component_parts)
+	for(var/obj/item/reagent_containers/glass/G in component_parts)
 		reagents.maximum_volume += G.volume
 		G.reagents.trans_to_holder(reagents, G.volume)
 
 /obj/machinery/chem_master/on_deconstruction()
-	for(var/obj/item/weapon/reagent_containers/glass/G in component_parts)
+	for(var/obj/item/reagent_containers/glass/G in component_parts)
 		var/amount = G.reagents.get_free_space()
 		reagents.trans_to_holder(G, amount)
 	..()
@@ -46,7 +46,7 @@
 /obj/machinery/chem_master/MouseDrop_T(atom/movable/I, mob/user, src_location, over_location, src_control, over_control, params)
 	if(!Adjacent(user) || !I.Adjacent(user) || user.stat)
 		return ..()
-	if(istype(I, /obj/item/weapon/reagent_containers) && I.is_open_container() && !beaker)
+	if(istype(I, /obj/item/reagent_containers) && I.is_open_container() && !beaker)
 		I.forceMove(src)
 		I.add_fingerprint(user)
 		src.beaker = I
@@ -56,14 +56,14 @@
 		return
 	. = ..()
 
-/obj/machinery/chem_master/attackby(var/obj/item/weapon/B as obj, var/mob/user as mob)
+/obj/machinery/chem_master/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	if(default_deconstruction(B, user))
 		return
 
 	if(default_part_replacement(B, user))
 		return
 
-	if(istype(B, /obj/item/weapon/reagent_containers/glass))
+	if(istype(B, /obj/item/reagent_containers/glass))
 
 		if(src.beaker)
 			to_chat(user, "A beaker is already loaded into the machine.")
@@ -192,12 +192,12 @@
 			if (amount_per_pill > max_pill_vol) amount_per_pill = max_pill_vol
 
 			var/name = sanitizeSafe(input(usr,"Name:","Name your pill!","[reagents.get_master_reagent_name()] ([amount_per_pill] units)"), MAX_NAME_LEN)
-			var/obj/item/weapon/storage/pill_bottle/PB
+			var/obj/item/storage/pill_bottle/PB
 			if(create_pill_bottle)
 				PB = new(get_turf(src))
 				PB.name = "[PB.name] ([name])"
 			while (reagents.total_volume)
-				var/obj/item/weapon/reagent_containers/pill/P = new/obj/item/weapon/reagent_containers/pill(src.loc)
+				var/obj/item/reagent_containers/pill/P = new/obj/item/reagent_containers/pill(src.loc)
 				if(!name) name = reagents.get_master_reagent_name()
 				P.name = "[name] pill"
 				P.pixel_x = rand(-7, 7) //random position
@@ -211,7 +211,7 @@
 		else if (href_list["createbottle"])
 			if(!condi)
 				var/name = sanitizeSafe(input(usr,"Name:","Name your bottle!",reagents.get_master_reagent_name()), MAX_NAME_LEN)
-				var/obj/item/weapon/reagent_containers/glass/bottle/P = new/obj/item/weapon/reagent_containers/glass/bottle(src.loc)
+				var/obj/item/reagent_containers/glass/bottle/P = new/obj/item/reagent_containers/glass/bottle(src.loc)
 				if(!name) name = reagents.get_master_reagent_name()
 				P.name = "[name] bottle"
 				P.pixel_x = rand(-7, 7) //random position
@@ -220,7 +220,7 @@
 				reagents.trans_to_obj(P,60)
 				P.toggle_lid()
 			else
-				var/obj/item/weapon/reagent_containers/food/condiment/P = new/obj/item/weapon/reagent_containers/food/condiment(src.loc)
+				var/obj/item/reagent_containers/food/condiment/P = new/obj/item/reagent_containers/food/condiment(src.loc)
 				reagents.trans_to_obj(P,50)
 		else if(href_list["change_pill"])
 			#define MAX_PILL_SPRITE 20 //max icon state of the pill sprites

@@ -1,17 +1,17 @@
-/obj/item/weapon/reagent_containers
+/obj/item/reagent_containers
 	name = "Container"
 	desc = "..."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = null
 	w_class = ITEM_SIZE_SMALL
-	bad_type = /obj/item/weapon/reagent_containers
+	bad_type = /obj/item/reagent_containers
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = list(5,10,15,25,30)
 	var/volume = 30
 	var/filling_states				// List of percentages full that have icons
 
 
-/obj/item/weapon/reagent_containers/verb/set_APTFT() //set amount_per_transfer_from_this
+/obj/item/reagent_containers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
 	set category = "Object"
 	set src in range(0)
@@ -19,23 +19,23 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
-/obj/item/weapon/reagent_containers/Initialize()
+/obj/item/reagent_containers/Initialize()
 	create_reagents(volume)
 	. = ..() // This creates initial reagents
 	if(!possible_transfer_amounts)
-		src.verbs -= /obj/item/weapon/reagent_containers/verb/set_APTFT
+		src.verbs -= /obj/item/reagent_containers/verb/set_APTFT
 
 
-/obj/item/weapon/reagent_containers/attack_self(mob/user as mob)
+/obj/item/reagent_containers/attack_self(mob/user as mob)
 	return
 
-/obj/item/weapon/reagent_containers/afterattack(obj/target, mob/user, flag)
+/obj/item/reagent_containers/afterattack(obj/target, mob/user, flag)
 	return
 
-/obj/item/weapon/reagent_containers/on_reagent_change()
+/obj/item/reagent_containers/on_reagent_change()
 	update_icon()
 
-/obj/item/weapon/reagent_containers/proc/get_filling_state()
+/obj/item/reagent_containers/proc/get_filling_state()
 	var/percent = round((reagents.total_volume / volume) * 100)
 	var/list/increments = cached_number_list_decode(filling_states)
 	if(!length(increments))
@@ -50,7 +50,7 @@
 
 	return last_increment
 
-/obj/item/weapon/reagent_containers/proc/standard_dispenser_refill(mob/user, atom/target) // This goes into afterattack
+/obj/item/reagent_containers/proc/standard_dispenser_refill(mob/user, atom/target) // This goes into afterattack
 	if(!target.is_drainable())
 		return FALSE
 
@@ -67,8 +67,8 @@
 		return TRUE
 
 	var/transfer_amount = amount_per_transfer_from_this
-	if(istype(target, /obj/item/weapon/reagent_containers))
-		var/obj/item/weapon/reagent_containers/C = target
+	if(istype(target, /obj/item/reagent_containers))
+		var/obj/item/reagent_containers/C = target
 		transfer_amount = C.amount_per_transfer_from_this
 
 	var/trans = target.reagents.trans_to_obj(src, transfer_amount)
@@ -76,7 +76,7 @@
 	playsound(loc, 'sound/effects/watersplash.ogg', 100, 1)
 	return TRUE
 
-/obj/item/weapon/reagent_containers/proc/standard_splash_mob(mob/user, mob/target) // This goes into afterattack
+/obj/item/reagent_containers/proc/standard_splash_mob(mob/user, mob/target) // This goes into afterattack
 	if(!istype(target))
 		return FALSE
 
@@ -104,26 +104,26 @@
 	reagents.splash(target, reagents.total_volume)
 	return TRUE
 
-/obj/item/weapon/reagent_containers/proc/self_feed_message(mob/user)
+/obj/item/reagent_containers/proc/self_feed_message(mob/user)
 	to_chat(user, SPAN_NOTICE("You eat \the [src]"))
 
-/obj/item/weapon/reagent_containers/proc/is_closed_message(mob/user)
+/obj/item/reagent_containers/proc/is_closed_message(mob/user)
 	return
 
-/obj/item/weapon/reagent_containers/proc/other_feed_message_start(mob/user, mob/target)
+/obj/item/reagent_containers/proc/other_feed_message_start(mob/user, mob/target)
 	user.visible_message(SPAN_WARNING("[user] is trying to feed [target] \the [src]!"))
 
-/obj/item/weapon/reagent_containers/proc/other_feed_message_finish(mob/user, mob/target)
+/obj/item/reagent_containers/proc/other_feed_message_finish(mob/user, mob/target)
 	user.visible_message(SPAN_WARNING("[user] has fed [target] \the [src]!"))
 
-/obj/item/weapon/reagent_containers/proc/feed_sound(mob/user)
+/obj/item/reagent_containers/proc/feed_sound(mob/user)
 	return
 
-/obj/item/weapon/reagent_containers/proc/standard_feed_mob(mob/user, mob/target) // This goes into attack
+/obj/item/reagent_containers/proc/standard_feed_mob(mob/user, mob/target) // This goes into attack
 	if(!istype(target) || !target?.can_be_fed)
 		return FALSE
 
-	if(!is_drainable() && !istype(src, /obj/item/weapon/reagent_containers/pill)) // Pills are swallowed whole
+	if(!is_drainable() && !istype(src, /obj/item/reagent_containers/pill)) // Pills are swallowed whole
 		is_closed_message(user)
 		return TRUE
 
@@ -166,15 +166,15 @@
 	reagents.trans_to_mob(target, issmall(user) ? CEILING(amount_per_transfer_from_this * 0.5, 1) : amount_per_transfer_from_this, CHEM_INGEST)
 
 	feed_sound(user)
-	if(istype(src, /obj/item/weapon/reagent_containers/pill))
+	if(istype(src, /obj/item/reagent_containers/pill))
 		qdel(src) //pills are swallowed whole, so delete it here
 	return TRUE
 
-/obj/item/weapon/reagent_containers/proc/standard_pour_into(mob/user, atom/target) // This goes into afterattack and yes, it's atom-level
+/obj/item/reagent_containers/proc/standard_pour_into(mob/user, atom/target) // This goes into afterattack and yes, it's atom-level
 	// Ensure we don't splash beakers and similar containers.
 	if(!target.is_refillable())
-		if(istype(target, /obj/item/weapon/reagent_containers))
-			var/obj/item/weapon/reagent_containers/container = target
+		if(istype(target, /obj/item/reagent_containers))
+			var/obj/item/reagent_containers/container = target
 			container.is_closed_message(user)
 			return FALSE
 		// Otherwise don't care about splashing.
@@ -200,7 +200,7 @@
 	return TRUE
 
 // if amount_per_reagent is null or zero it will transfer all
-/obj/item/weapon/reagent_containers/proc/separate_solution(var/list/obj/item/weapon/reagent_containers/accepting_containers, var/amount_per_reagent, var/list/ignore_reagents_ids)
+/obj/item/reagent_containers/proc/separate_solution(var/list/obj/item/reagent_containers/accepting_containers, var/amount_per_reagent, var/list/ignore_reagents_ids)
 	if(!is_drainable())
 		return FALSE
 	if(!reagents.total_volume)
@@ -209,8 +209,8 @@
 	// nothing to separate
 	if(reagents.reagent_list.len <= 1)
 		return FALSE
-	var/list/obj/item/weapon/reagent_containers/containers = accepting_containers.Copy()
-	for(var/obj/item/weapon/reagent_containers/C in containers)
+	var/list/obj/item/reagent_containers/containers = accepting_containers.Copy()
+	for(var/obj/item/reagent_containers/C in containers)
 		if(!C.is_refillable())
 			containers.Remove(C)
 	if(!containers.len)
@@ -219,7 +219,7 @@
 		if(R.id in ignore_reagents_ids)
 			continue
 		var/amount_to_transfer = amount_per_reagent ? amount_per_reagent : R.volume
-		for(var/obj/item/weapon/reagent_containers/C in containers)
+		for(var/obj/item/reagent_containers/C in containers)
 			if(!amount_to_transfer)
 				break
 			if(!C.reagents.get_free_space())

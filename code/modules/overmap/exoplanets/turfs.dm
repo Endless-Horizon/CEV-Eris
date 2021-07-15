@@ -28,7 +28,7 @@
 	..()
 
 /turf/simulated/floor/exoplanet/attackby(obj/item/C, mob/user)
-	/*if(diggable && istype(C,/obj/item/weapon/shovel))
+	/*if(diggable && istype(C,/obj/item/shovel))
 		visible_message("<span class='notice'>\The [user] starts digging \the [src]</span>")
 		if(do_after(user, 50))
 			to_chat(user,"<span class='notice'>You dig a deep pit.</span>")
@@ -64,7 +64,7 @@
 	var/reagent_type = /datum/reagent/water
 
 /turf/simulated/floor/exoplanet/water/shallow/attackby(obj/item/O, var/mob/living/user)
-	var/obj/item/weapon/reagent_containers/RG = O
+	var/obj/item/reagent_containers/RG = O
 	if (reagent_type && istype(RG) && RG.is_open_container() && RG.reagents)
 		RG.reagents.add_reagent(reagent_type, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		user.visible_message("<span class='notice'>[user] fills \the [RG] from \the [src].</span>","<span class='notice'>You fill \the [RG] from \the [src].</span>")

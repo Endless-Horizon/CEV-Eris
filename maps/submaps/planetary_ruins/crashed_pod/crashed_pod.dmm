@@ -120,10 +120,10 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/item/weapon/mirror{
+/obj/item/mirror{
 	pixel_x = 27
 	},
-/obj/item/weapon/electronics/circuitboard/solar_control,
+/obj/item/electronics/circuitboard/solar_control,
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/crashed_pod)
 "aq" = (
@@ -267,9 +267,9 @@
 /obj/structure/closet/crate,
 /obj/effect/floor_decal/industrial/danger,
 /obj/item/device/scanner/gas,
-/obj/item/weapon/electronics/circuitboard/unary_atmos/cooler,
-/obj/item/weapon/electronics/circuitboard/unary_atmos/heater,
-/obj/item/weapon/tank/oxygen/red,
+/obj/item/electronics/circuitboard/unary_atmos/cooler,
+/obj/item/electronics/circuitboard/unary_atmos/heater,
+/obj/item/tank/oxygen/red,
 /obj/structure/cable,
 /obj/item/stack/material/uranium{
 	amount = 10
@@ -303,13 +303,13 @@
 /obj/spawner/cloth/under/low_chance,
 /obj/spawner/junkfood,
 /obj/item/trash/liquidfood,
-/obj/item/weapon/stock_parts/matter_bin/super,
-/obj/item/weapon/electronics/circuitboard/biogenerator,
-/obj/item/weapon/bedsheet/orange,
-/obj/item/weapon/bedsheet/orange,
-/obj/item/weapon/stock_parts/matter_bin/adv,
-/obj/item/weapon/stock_parts/micro_laser/ultra,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
+/obj/item/stock_parts/matter_bin/super,
+/obj/item/electronics/circuitboard/biogenerator,
+/obj/item/bedsheet/orange,
+/obj/item/bedsheet/orange,
+/obj/item/stock_parts/matter_bin/adv,
+/obj/item/stock_parts/micro_laser/ultra,
+/obj/item/reagent_containers/food/snacks/liquidfood,
 /obj/item/stack/material/sandstone{
 	amount = 50
 	},
@@ -350,7 +350,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/item/weapon/mop,
+/obj/item/mop,
 /obj/effect/decal/cleanable/dirt,
 /obj/spawner/junkfood,
 /obj/item/trash/liquidfood,
@@ -597,8 +597,8 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/crowbar,
+/obj/item/tool/crowbar,
+/obj/item/tool/crowbar,
 /turf/simulated/floor/tiled/dark,
 /area/map_template/crashed_pod)
 "br" = (
@@ -618,12 +618,12 @@
 /area/map_template/crashed_pod)
 "bu" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/reagent_containers/food/condiment/saltshaker,
-/obj/item/weapon/reagent_containers/food/condiment/peppermill,
+/obj/item/reagent_containers/food/condiment/saltshaker,
+/obj/item/reagent_containers/food/condiment/peppermill,
 /obj/effect/decal/cleanable/flour,
 /obj/spawner/junkfood,
 /obj/machinery/reagentgrinder,
-/obj/item/weapon/reagent_containers/food/condiment/sugar,
+/obj/item/reagent_containers/food/condiment/sugar,
 /turf/simulated/floor/tiled/dark,
 /area/map_template/crashed_pod)
 "bv" = (
@@ -734,11 +734,11 @@
 /area/map_template/crashed_pod)
 "bI" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/storage/briefcase/inflatable,
-/obj/item/weapon/storage/briefcase/inflatable,
-/obj/item/weapon/storage/briefcase/inflatable,
-/obj/item/weapon/storage/briefcase/inflatable,
-/obj/item/weapon/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -860,15 +860,15 @@
 /obj/item/clothing/head/space/emergency,
 /obj/item/clothing/head/space/emergency,
 /obj/item/clothing/suit/space/emergency,
-/obj/item/weapon/tank/emergency_oxygen/double,
-/obj/item/weapon/tank/emergency_oxygen/double,
+/obj/item/tank/emergency_oxygen/double,
+/obj/item/tank/emergency_oxygen/double,
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/crashed_pod)
 "bT" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/light/small,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/crowbar,
+/obj/item/tool/crowbar,
+/obj/item/tool/crowbar,
 /turf/simulated/floor/tiled/dark,
 /area/map_template/crashed_pod)
 "bU" = (
@@ -904,8 +904,8 @@
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/space/emergency,
 /obj/item/clothing/head/space/emergency,
-/obj/item/weapon/tank/emergency_oxygen/double,
-/obj/item/weapon/tank/emergency_oxygen/double,
+/obj/item/tank/emergency_oxygen/double,
+/obj/item/tank/emergency_oxygen/double,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -918,15 +918,15 @@
 /obj/spawner/firstaid,
 /obj/spawner/firstaid,
 /obj/spawner/firstaid,
-/obj/item/weapon/storage/firstaid/adv,
-/obj/item/weapon/storage/firstaid/adv,
-/obj/item/weapon/storage/pill_bottle/bicaridine,
-/obj/item/weapon/storage/pill_bottle/dylovene,
-/obj/item/weapon/storage/pill_bottle/tramadol,
-/obj/item/weapon/storage/pill_bottle/tramadol,
-/obj/item/weapon/reagent_containers/syringe,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/storage/pill_bottle/antitox,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/pill_bottle/bicaridine,
+/obj/item/storage/pill_bottle/dylovene,
+/obj/item/storage/pill_bottle/tramadol,
+/obj/item/storage/pill_bottle/tramadol,
+/obj/item/reagent_containers/syringe,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/storage/pill_bottle/antitox,
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/crashed_pod)
 "bX" = (
@@ -934,9 +934,9 @@
 /obj/spawner/gun/cheap,
 /obj/spawner/gun/cheap,
 /obj/spawner/gun/cheap,
-/obj/item/weapon/tool/pickaxe,
-/obj/item/weapon/tool/pickaxe,
-/obj/item/weapon/tool/pickaxe,
+/obj/item/tool/pickaxe,
+/obj/item/tool/pickaxe,
+/obj/item/tool/pickaxe,
 /obj/item/stack/material/glass{
 	amount = 50
 	},
@@ -948,9 +948,9 @@
 	},
 /obj/item/device/lighting/toggleable/lantern,
 /obj/item/device/lighting/toggleable/lantern,
-/obj/item/weapon/storage/deferred/lights,
-/obj/item/weapon/storage/deferred/lights,
-/obj/item/weapon/storage/deferred/lights,
+/obj/item/storage/deferred/lights,
+/obj/item/storage/deferred/lights,
+/obj/item/storage/deferred/lights,
 /obj/item/stack/material/steel{
 	amount = 50
 	},
@@ -968,30 +968,30 @@
 /area/map_template/crashed_pod)
 "bY" = (
 /obj/structure/closet/crate/freezer/rations,
-/obj/item/weapon/storage/bag/trash,
-/obj/item/weapon/storage/bag/trash,
-/obj/item/weapon/storage/box/donkpockets,
-/obj/item/weapon/storage/box/donkpockets,
-/obj/item/weapon/storage/fancy/egg_box,
-/obj/item/weapon/storage/fancy/egg_box,
-/obj/item/weapon/storage/fancy/egg_box,
-/obj/item/weapon/reagent_containers/food/condiment/enzyme,
-/obj/item/weapon/reagent_containers/food/drinks/milk,
-/obj/item/weapon/reagent_containers/food/drinks/milk,
+/obj/item/storage/bag/trash,
+/obj/item/storage/bag/trash,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/reagent_containers/food/condiment/enzyme,
+/obj/item/reagent_containers/food/drinks/milk,
+/obj/item/reagent_containers/food/drinks/milk,
 /obj/item/trash/liquidfood,
 /obj/item/trash/liquidfood,
 /obj/item/trash/liquidfood,
 /obj/item/trash/liquidfood,
-/obj/item/weapon/beartrap,
-/obj/item/weapon/tool/knife/butch,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
+/obj/item/beartrap,
+/obj/item/tool/knife/butch,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
+/obj/item/reagent_containers/food/snacks/liquidfood,
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/crashed_pod)
 "bZ" = (
@@ -1004,11 +1004,11 @@
 /area/map_template/crashed_pod)
 "ca" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/backpack/industrial,
-/obj/item/weapon/paper_bin,
+/obj/item/storage/backpack/industrial,
+/obj/item/paper_bin,
 /obj/spawner/booze,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/pen,
+/obj/item/pen,
 /turf/simulated/floor/tiled/dark,
 /area/map_template/crashed_pod)
 "cb" = (
@@ -1028,23 +1028,23 @@
 /area/map_template/crashed_pod)
 "cc" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tool/multitool,
-/obj/item/weapon/tool/screwdriver,
-/obj/item/weapon/cell/small/high,
-/obj/item/weapon/cell/medium/high,
-/obj/item/weapon/cell/small,
-/obj/item/weapon/storage/box/lights,
+/obj/item/tool/multitool,
+/obj/item/tool/screwdriver,
+/obj/item/cell/small/high,
+/obj/item/cell/medium/high,
+/obj/item/cell/small,
+/obj/item/storage/box/lights,
 /obj/item/device/scanner/gas,
 /obj/spawner/booze,
 /obj/spawner/booze,
 /obj/spawner/booze/low_chance,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/storage/box/monkeycubes,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
 /obj/spawner/booze,
-/obj/item/weapon/tracker_electronics,
-/obj/item/weapon/pen/blue,
-/obj/item/weapon/pen,
-/obj/item/weapon/pen/red,
+/obj/item/tracker_electronics,
+/obj/item/pen/blue,
+/obj/item/pen,
+/obj/item/pen/red,
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/crashed_pod)
 "cd" = (
@@ -1057,17 +1057,17 @@
 /obj/item/seeds/orangeseed,
 /obj/item/seeds/cornseed,
 /obj/item/seeds/cornseed,
-/obj/item/weapon/tool/hatchet,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/item/weapon/tool/minihoe,
-/obj/item/weapon/plantspray/pests,
-/obj/item/weapon/plantspray/pests,
-/obj/item/weapon/plantspray/weeds,
+/obj/item/tool/hatchet,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/tool/minihoe,
+/obj/item/plantspray/pests,
+/obj/item/plantspray/pests,
+/obj/item/plantspray/weeds,
 /obj/item/seeds/poppyseed,
 /obj/item/seeds/towermycelium,
 /obj/item/seeds/glowshroom,
 /obj/item/seeds/whitebeetseed,
-/obj/item/weapon/storage/bag/produce,
+/obj/item/storage/bag/produce,
 /obj/item/seeds/bananaseed,
 /turf/simulated/floor/tiled/steel/techfloor_grid,
 /area/map_template/crashed_pod)

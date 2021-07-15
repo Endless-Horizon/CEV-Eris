@@ -10,14 +10,14 @@
 	//Types of items sold by the station
 	assortiment = list(
 		"Cells"  = list(
-			/obj/item/weapon/cell/large = custom_good_name("Large Not a Cell"),
-			/obj/item/weapon/cell/medium = custom_good_amount_range(list(0,3)),
-			/obj/item/weapon/cell/small = good_data("Small Not a Cell", list(6, 20)),
+			/obj/item/cell/large = custom_good_name("Large Not a Cell"),
+			/obj/item/cell/medium = custom_good_amount_range(list(0,3)),
+			/obj/item/cell/small = good_data("Small Not a Cell", list(6, 20)),
 		)
 	)
 
 	//Types of items the station may ask for
 	offer_types = list(
-		/obj/item/weapon/computer_hardware/hard_drive/cluster,
-		/obj/item/weapon/computer_hardware/processor_unit/super,
+		/obj/item/computer_hardware/hard_drive/cluster,
+		/obj/item/computer_hardware/processor_unit/super,
 	)

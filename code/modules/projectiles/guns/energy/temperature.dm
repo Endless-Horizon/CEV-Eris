@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/temperature
+/obj/item/gun/energy/temperature
 	name = "temperature gun"
 	icon = 'icons/obj/guns/energy/freezegun.dmi'
 	icon_state = "freezegun"
@@ -17,17 +17,17 @@
 	zoom_factor = 2
 
 
-/obj/item/weapon/gun/energy/temperature/Initialize()
+/obj/item/gun/energy/temperature/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
 
-/obj/item/weapon/gun/energy/temperature/Destroy()
+/obj/item/gun/energy/temperature/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 
-/obj/item/weapon/gun/energy/temperature/attack_self(mob/living/user as mob)
+/obj/item/gun/energy/temperature/attack_self(mob/living/user as mob)
 	user.set_machine(src)
 	var/temp_text = ""
 	if(temperature > (T0C - 50))
@@ -44,7 +44,7 @@
 	onclose(user, "window=freezegun", src)
 
 
-/obj/item/weapon/gun/energy/temperature/Topic(href, href_list)
+/obj/item/gun/energy/temperature/Topic(href, href_list)
 	if (..())
 		return 1
 	usr.set_machine(src)
@@ -64,7 +64,7 @@
 	return
 
 
-/obj/item/weapon/gun/energy/temperature/Process()
+/obj/item/gun/energy/temperature/Process()
 	switch(temperature)
 		if(0 to 100) charge_cost = 1000
 		if(100 to 250) charge_cost = 500

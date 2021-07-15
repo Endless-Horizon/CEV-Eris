@@ -1,5 +1,5 @@
-/obj/item/weapon/gun/projectile/automatic/maxim
-	bad_type = /obj/item/weapon/gun/projectile/automatic/maxim
+/obj/item/gun/projectile/automatic/maxim
+	bad_type = /obj/item/gun/projectile/automatic/maxim
 	name = "Excelsior HMG .30 \"Maxim\""
 	desc = "A bulky yet versatile gun, the Maxim has been used in ships, turrets, and by hand."
 	icon = 'icons/obj/guns/projectile/maxim.dmi'
@@ -34,7 +34,7 @@
 	spawn_blacklisted = TRUE
 	slowdown_hold = 5
 
-/obj/item/weapon/gun/projectile/automatic/maxim/on_update_icon()
+/obj/item/gun/projectile/automatic/maxim/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)

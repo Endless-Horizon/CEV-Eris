@@ -6,7 +6,7 @@
 /*
  * Hand-tele
  */
-/obj/item/weapon/hand_tele
+/obj/item/hand_tele
 	name = "NT BSD \"Jumper\""
 	desc = "Also known as a hand teleporter. This is an old and unreliable way to create stable blue-space portals. It was originally popular due its portable size and low energy consumption."
 	icon = 'icons/obj/device.dmi'
@@ -18,29 +18,29 @@
 	throw_range = 5
 	origin_tech = list(TECH_MAGNET = 1, TECH_BLUESPACE = 3)
 	matter = list(MATERIAL_PLASTIC = 3, MATERIAL_GLASS = 1, MATERIAL_SILVER = 1, MATERIAL_URANIUM = 1)
-	spawn_blacklisted = TRUE///obj/item/weapon/hand_tele
-	var/obj/item/weapon/cell/cell
-	var/suitable_cell = /obj/item/weapon/cell/small
+	spawn_blacklisted = TRUE///obj/item/hand_tele
+	var/obj/item/cell/cell
+	var/suitable_cell = /obj/item/cell/small
 	var/portal_type = /obj/effect/portal
 	var/portal_fail_chance
 	var/cell_charge_per_attempt = 33
 	var/entropy_value = 1  //for bluespace entropy
 
-/obj/item/weapon/hand_tele/Initialize()
+/obj/item/hand_tele/Initialize()
 	. = ..()
 	if(!cell && suitable_cell)
 		cell = new suitable_cell(src)
 
-/obj/item/weapon/hand_tele/get_cell()
+/obj/item/hand_tele/get_cell()
 	return cell
 
-/obj/item/weapon/hand_tele/handle_atom_del(atom/A)
+/obj/item/hand_tele/handle_atom_del(atom/A)
 	..()
 	if(A == cell)
 		cell = null
 		update_icon()
 
-/obj/item/weapon/hand_tele/attack_self(mob/user)
+/obj/item/hand_tele/attack_self(mob/user)
 	if(!cell || !cell.checked_use( cell_charge_per_attempt ))
 		to_chat(user, SPAN_WARNING("[src] battery is dead or missing."))
 		return
@@ -78,11 +78,11 @@
 		P.failchance = portal_fail_chance
 	src.add_fingerprint(user)
 
-/obj/item/weapon/hand_tele/MouseDrop(over_object)
+/obj/item/hand_tele/MouseDrop(over_object)
 	if((src.loc == usr) && istype(over_object, /obj/screen/inventory/hand) && eject_item(cell, usr))
 		cell = null
 
-/obj/item/weapon/hand_tele/attackby(obj/item/C, mob/living/user)
+/obj/item/hand_tele/attackby(obj/item/C, mob/living/user)
 	if(istype(C, suitable_cell) && !cell && insert_item(C, user))
 		src.cell = C
 
@@ -91,7 +91,7 @@
 ////////////HANDMADE TELE-STUFF////////
 ///////////////////////////////////////
 
-/obj/item/weapon/hand_tele/handmade
+/obj/item/hand_tele/handmade
 	name = "Handmade hand-teleporter"
 	desc = "Handmade version of hand-tele. Woah, that's was they call an experimental science!"
 	icon_state = "hm_hand-tele"
@@ -102,9 +102,9 @@
 	spawn_blacklisted = FALSE
 	var/calibration_required = TRUE
 
-/obj/item/weapon/hand_tele/handmade/attackby(obj/item/C, mob/living/user)
+/obj/item/hand_tele/handmade/attackby(obj/item/C, mob/living/user)
 	..()
-	if(istype(C, /obj/item/weapon/tool/screwdriver))
+	if(istype(C, /obj/item/tool/screwdriver))
 		if(user.a_intent == I_HURT)
 			if(prob(5))
 				var/turf/teleport_location = pick( getcircle(user.loc, 3) )
@@ -134,7 +134,7 @@
 				else
 					to_chat(user, SPAN_WARNING("[src] is calibrated already. You can decalibrate it to sabotage the device."))
 
-/obj/item/weapon/tele_spear
+/obj/item/tele_spear
 	name = "Telespear"
 	desc = "A crude-looking metal stick with some dodgy device tied to the end."
 	icon = 'icons/obj/weapons.dmi'
@@ -143,7 +143,7 @@
 	slot_flags = SLOT_BACK
 	var/entropy_value = 1 //for bluespace entropy
 
-/obj/item/weapon/tele_spear/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+/obj/item/tele_spear/attack(mob/living/carbon/human/M, mob/living/carbon/user)
 	playsound(src.loc, 'sound/effects/EMPulse.ogg', 65, 1)
 	var/turf/teleport_location = pick( getcircle(user.loc, 8) )
 	if(prob(5))

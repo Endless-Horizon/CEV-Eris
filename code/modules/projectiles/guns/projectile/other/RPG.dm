@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/rpg
+/obj/item/gun/projectile/rpg
 	name = "RPG-17"
 	desc = "A modified ancient rocket-propelled grenade launcher, this design is centuries old, but well preserved. \
 			Modification altered gun mechanism to take much more compact, but sligtly less devastating in close quaters rockets and remove backfire. \
@@ -26,7 +26,7 @@
 	twohanded = TRUE
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/gun/projectile/rpg/on_update_icon()
+/obj/item/gun/projectile/rpg/on_update_icon()
 	. = ..()
 	cut_overlays()
 
@@ -39,6 +39,6 @@
 
 	update_wear_icon()
 
-/obj/item/weapon/gun/projectile/rpg/Initialize()
+/obj/item/gun/projectile/rpg/Initialize()
 	. = ..()
 	update_icon()

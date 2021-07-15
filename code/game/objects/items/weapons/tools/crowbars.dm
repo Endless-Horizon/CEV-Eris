@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/crowbar
+/obj/item/tool/crowbar
 	name = "crowbar"
 	desc = "Used to remove floors and to pry open doors."
 	icon_state = "crowbar"
@@ -13,7 +13,7 @@
 	tool_qualities = list(QUALITY_PRYING = 25, QUALITY_DIGGING = 10, QUALITY_HAMMERING = 10)
 	rarity_value = 4
 
-/obj/item/weapon/tool/crowbar/improvised
+/obj/item/tool/crowbar/improvised
 	name = "rebar"
 	desc = "A pair of metal rods laboriously twisted into a useful shape. Has more space for tool mods because it's hand-made."
 	icon_state = "impro_crowbar"
@@ -24,7 +24,7 @@
 	rarity_value = 2
 	spawn_tags = SPAWN_TAG_JUNKTOOL
 
-/obj/item/weapon/tool/crowbar/onestar
+/obj/item/tool/crowbar/onestar
 	name = "One Star crowbar"
 	desc = "Looks like a classic one, but more durable. Has more space for mods too."
 	icon_state = "one_star_crowbar"
@@ -38,7 +38,7 @@
 	rarity_value = 10
 	spawn_tags = SPAWN_TAG_OS_TOOL
 
-/obj/item/weapon/tool/crowbar/pneumatic
+/obj/item/tool/crowbar/pneumatic
 	name = "pneumatic crowbar"
 	desc = "When you really need to crack open something."
 	icon_state = "pneumo_crowbar"
@@ -48,11 +48,11 @@
 	degradation = 0.7
 	use_power_cost = 0.8
 	max_upgrades = 4
-	suitable_cell = /obj/item/weapon/cell/medium
+	suitable_cell = /obj/item/cell/medium
 	rarity_value = 24
 	spawn_tags = SPAWN_TAG_TOOL_ADVANCED
 
-/obj/item/weapon/tool/crowbar/pneumatic/hivemind
+/obj/item/tool/crowbar/pneumatic/hivemind
 	name = "modified pneumatic crowbar"
 	desc = "A pneumatic crowbar with numerous growths on it. Doubt you will be able to use it for anything other than prying."
 	icon_state = "hivemind_pneumo_crowbar"

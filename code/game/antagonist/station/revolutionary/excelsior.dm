@@ -24,10 +24,10 @@
 
 	// Makes sures to exclude the leader implant when used with implanter
 	for(var/obj/O in owner.current)
-		if(istype(O, /obj/item/weapon/implant/excelsior))
+		if(istype(O, /obj/item/implant/excelsior))
 			return
 
-	var/obj/item/weapon/implant/excelsior/leader/implant = new(owner.current)
+	var/obj/item/implant/excelsior/leader/implant = new(owner.current)
 	implant.install(owner.current, BP_HEAD)
 
 	var/mob/living/L = owner.current

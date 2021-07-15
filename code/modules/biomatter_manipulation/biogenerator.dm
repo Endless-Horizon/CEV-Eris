@@ -265,7 +265,7 @@
 				panel_open = !panel_open
 				to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] the panel."))
 
-	if(panel_open && (istype(I, /obj/item/weapon/soap) || istype(I, /obj/item/weapon/reagent_containers/glass/rag)))
+	if(panel_open && (istype(I, /obj/item/soap) || istype(I, /obj/item/reagent_containers/glass/rag)))
 		if(pipes_dirtiness)
 			pipes_dirtiness--
 			if(pipes_dirtiness < 0)

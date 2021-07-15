@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/attackby(obj/item/I, mob/user)
+/obj/item/rig/attackby(obj/item/I, mob/user)
 
 	if(!isliving(user))
 		return
@@ -161,7 +161,7 @@
 
 	if(open)
 		// Air tank.
-		if(istype(I,/obj/item/weapon/tank)) //Todo, some kind of check for suits without integrated air supplies.
+		if(istype(I,/obj/item/tank)) //Todo, some kind of check for suits without integrated air supplies.
 			if(air_supply)
 				to_chat(user, "\The [src] already has a tank installed.")
 				return
@@ -178,7 +178,7 @@
 			if (can_install(I, user, TRUE))
 				install(I, user)
 			return TRUE
-		else if(!cell && istype(I,/obj/item/weapon/cell/large))
+		else if(!cell && istype(I,/obj/item/cell/large))
 			if(!user.unEquip(I))
 				return
 			to_chat(user, "You jack \the [I] into \the [src]'s battery mount.")
@@ -196,7 +196,7 @@
 	..()
 
 
-/obj/item/weapon/rig/attack_hand(var/mob/user)
+/obj/item/rig/attack_hand(var/mob/user)
 	if(electrified != 0)
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
@@ -210,7 +210,7 @@
 
 
 //For those pesky items which incur effects on the rigsuit, an altclick will force them to go in if possible
-/obj/item/weapon/rig/AltClick(var/mob/user)
+/obj/item/rig/AltClick(var/mob/user)
 	if (storage && user.get_active_hand())
 		if (user == loc || Adjacent(user)) //Rig must be on or near you
 			storage.accepts_item(user.get_active_hand())
@@ -218,12 +218,12 @@
 	.=..()
 
 //When not wearing a rig, you can drag it onto yourself to access the internal storage
-/obj/item/weapon/rig/MouseDrop(obj/over_object)
+/obj/item/rig/MouseDrop(obj/over_object)
 	if (storage && storage.handle_mousedrop(usr, over_object))
 		return TRUE
 	return ..()
 
-/obj/item/weapon/rig/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/rig/emag_act(var/remaining_charges, var/mob/user)
 	if(!subverted)
 		req_access.Cut()
 		req_one_access.Cut()

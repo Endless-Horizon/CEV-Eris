@@ -53,7 +53,7 @@ default behaviour is:
 			var/mob/living/tmob = AM
 
 			for(var/mob/living/M in range(tmob, 1))
-				if(tmob.pinned.len ||  ((M.pulling == tmob && ( tmob.restrained() && !( M.restrained() ) && M.stat == 0)) || locate(/obj/item/weapon/grab, tmob.grabbed_by.len)) )
+				if(tmob.pinned.len ||  ((M.pulling == tmob && ( tmob.restrained() && !( M.restrained() ) && M.stat == 0)) || locate(/obj/item/grab, tmob.grabbed_by.len)) )
 					if ( !(world.time % 5) )
 						to_chat(src, "<span class='warning'>[tmob] is restrained, you cannot push past</span>")
 					now_pushing = FALSE
@@ -87,11 +87,11 @@ default behaviour is:
 			if(a_intent == I_HELP || src.restrained())
 				now_pushing = FALSE
 				return
-			if(tmob.r_hand && istype(tmob.r_hand, /obj/item/weapon/shield/riot))
+			if(tmob.r_hand && istype(tmob.r_hand, /obj/item/shield/riot))
 				if(prob(99))
 					now_pushing = FALSE
 					return
-			if(tmob.l_hand && istype(tmob.l_hand, /obj/item/weapon/shield/riot))
+			if(tmob.l_hand && istype(tmob.l_hand, /obj/item/shield/riot))
 				if(prob(99))
 					now_pushing = FALSE
 					return
@@ -117,7 +117,7 @@ default behaviour is:
 							return
 					step_glide(AM, t, glide_size)
 					if(ishuman(AM) && AM:grabbed_by)
-						for(var/obj/item/weapon/grab/G in AM:grabbed_by)
+						for(var/obj/item/grab/G in AM:grabbed_by)
 							step_glide(G:assailant, get_dir(G:assailant, AM), glide_size)
 							G.adjust_position()
 				now_pushing = FALSE
@@ -320,41 +320,41 @@ default behaviour is:
 
 
 //Recursive function to find everything a mob is holding.
-/mob/living/get_contents(var/obj/item/weapon/storage/Storage)
+/mob/living/get_contents(var/obj/item/storage/Storage)
 	var/list/L = list()
 
 	if(Storage) //If it called itself
 		L += Storage.return_inv()
 
 		//Leave this commented out, it will cause storage items to exponentially add duplicate to the list
-		//for(var/obj/item/weapon/storage/S in Storage.return_inv()) //Check for storage items
+		//for(var/obj/item/storage/S in Storage.return_inv()) //Check for storage items
 		//	L += get_contents(S)
 
-		for(var/obj/item/weapon/gift/G in Storage.return_inv()) //Check for gift-wrapped items
+		for(var/obj/item/gift/G in Storage.return_inv()) //Check for gift-wrapped items
 			L += G.gift
-			if(istype(G.gift, /obj/item/weapon/storage))
+			if(istype(G.gift, /obj/item/storage))
 				L += get_contents(G.gift)
 
 		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
 			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/weapon/storage)) //this should never happen
+			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
 				L += get_contents(D.wrapped)
 		return L
 
 	else
 
 		L += src.contents
-		for(var/obj/item/weapon/storage/S in src.contents)	//Check for storage items
+		for(var/obj/item/storage/S in src.contents)	//Check for storage items
 			L += get_contents(S)
 
-		for(var/obj/item/weapon/gift/G in src.contents) //Check for gift-wrapped items
+		for(var/obj/item/gift/G in src.contents) //Check for gift-wrapped items
 			L += G.gift
-			if(istype(G.gift, /obj/item/weapon/storage))
+			if(istype(G.gift, /obj/item/storage))
 				L += get_contents(G.gift)
 
 		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
 			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/weapon/storage)) //this should never happen
+			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
 				L += get_contents(D.wrapped)
 		return L
 
@@ -542,17 +542,17 @@ default behaviour is:
 				if (isliving(pulling))
 					var/mob/living/M = pulling
 					var/ok = 1
-					if (locate(/obj/item/weapon/grab, M.grabbed_by))
+					if (locate(/obj/item/grab, M.grabbed_by))
 						if (prob(75))
-							var/obj/item/weapon/grab/G = pick(M.grabbed_by)
-							if (istype(G, /obj/item/weapon/grab))
+							var/obj/item/grab/G = pick(M.grabbed_by)
+							if (istype(G, /obj/item/grab))
 								for(var/mob/O in viewers(M, null))
 									O.show_message(text("\red [] has been pulled from []'s grip by []", G.affecting, G.assailant, src), 1)
 								//G = null
 								qdel(G)
 						else
 							ok = 0
-						if (locate(/obj/item/weapon/grab, M.grabbed_by.len))
+						if (locate(/obj/item/grab, M.grabbed_by.len))
 							ok = 0
 					if (ok)
 						var/atom/movable/t = M.pulling
@@ -624,7 +624,7 @@ default behaviour is:
 
 	else if (!resting)
 		if(ishuman(src))
-			var/obj/item/weapon/bedsheet/BS = locate(/obj/item/weapon/bedsheet) in get_turf(src)
+			var/obj/item/bedsheet/BS = locate(/obj/item/bedsheet) in get_turf(src)
 			// If there is unrolled bedsheet roll and unroll it to get in bed like a proper adult does
 			if(BS && !BS.rolled && !BS.folded)
 				resting = TRUE
@@ -652,7 +652,7 @@ default behaviour is:
 
 //used to push away bedsheets in order to stand up, only humans will roll them (see overriden human proc)
 /mob/living/proc/unblanket()
-	var/obj/item/weapon/bedsheet/blankets = (locate(/obj/item/weapon/bedsheet) in loc)
+	var/obj/item/bedsheet/blankets = (locate(/obj/item/bedsheet) in loc)
 	if (blankets && !blankets.rolled && !blankets.folded)
 		return blankets.toggle_roll(src)
 	return TRUE

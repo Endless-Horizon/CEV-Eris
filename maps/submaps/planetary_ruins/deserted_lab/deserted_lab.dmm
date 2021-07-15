@@ -109,7 +109,7 @@
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-/obj/item/weapon/virusdish/random,
+/obj/item/virusdish/random,
 /turf/simulated/floor/tiled/white,
 /area/template_noop)
 "az" = (
@@ -151,7 +151,7 @@
 /obj/machinery/door/airlock/vault{
 	name = "Door"
 	},
-/obj/item/weapon/beartrap{
+/obj/item/beartrap{
 	deployed = 1;
 	icon_state = "beartrap1"
 	},
@@ -178,7 +178,7 @@
 /area/template_noop)
 "aM" = (
 /obj/effect/decal/cleanable/vomit,
-/obj/item/weapon/tool_upgrade/productivity/red_paint,
+/obj/item/tool_upgrade/productivity/red_paint,
 /obj/spawner/medical,
 /turf/simulated/floor/carpet/blucarpet,
 /area/template_noop)
@@ -227,13 +227,13 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/template_noop)
 "aV" = (
-/obj/item/weapon/material/harpoon,
+/obj/item/material/harpoon,
 /obj/landmark/corpse/scientist,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/tiled/white,
 /area/template_noop)
 "aW" = (
-/obj/item/weapon/beartrap,
+/obj/item/beartrap,
 /obj/structure/sign/department/anomaly{
 	pixel_x = 32
 	},
@@ -245,7 +245,7 @@
 /area/template_noop)
 "aY" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/purple,
+/obj/item/bedsheet/purple,
 /turf/simulated/floor/carpet/blucarpet,
 /area/template_noop)
 "aZ" = (
@@ -266,7 +266,7 @@
 /area/template_noop)
 "bc" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/mime,
+/obj/item/bedsheet/mime,
 /turf/simulated/floor/carpet/blucarpet,
 /area/template_noop)
 "bd" = (

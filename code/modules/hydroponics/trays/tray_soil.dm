@@ -8,7 +8,7 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/I, var/mob/user)
 	//You cant move soil with wrench
-	if((QUALITY_BOLT_TURNING in I.tool_qualities) && ((istype(I, /obj/item/weapon/tank) && !( src.destroyed ))))
+	if((QUALITY_BOLT_TURNING in I.tool_qualities) && ((istype(I, /obj/item/tank) && !( src.destroyed ))))
 		..()
 		return
 	else

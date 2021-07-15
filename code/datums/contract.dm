@@ -1,46 +1,46 @@
 GLOBAL_LIST_EMPTY(various_antag_contracts)	//Contracts from "Various" emloyers, currently used by Traitors, Carrions and Blitzshells
 GLOBAL_LIST_EMPTY(excel_antag_contracts)	//Excelsior contracts
 GLOBAL_LIST_INIT(antag_item_targets,list(
-		"the captain's antique laser gun" = /obj/item/weapon/gun/energy/captain,
-		"a hand teleporter" = /obj/item/weapon/hand_tele,
-		"an RCD" = /obj/item/weapon/rcd,
-		"a jetpack" = /obj/item/weapon/tank/jetpack,
+		"the captain's antique laser gun" = /obj/item/gun/energy/captain,
+		"a hand teleporter" = /obj/item/hand_tele,
+		"an RCD" = /obj/item/rcd,
+		"a jetpack" = /obj/item/tank/jetpack,
 		"a captain's jumpsuit" = /obj/item/clothing/under/rank/captain,
 		"a functional AI" = /obj/item/device/aicard,
-		"the Technomancer Exultant's advanced voidsuit control module" = /obj/item/weapon/rig/ce,
+		"the Technomancer Exultant's advanced voidsuit control module" = /obj/item/rig/ce,
 		"the ship blueprints" = /obj/item/blueprints,
 		"a sample of slime extract" = /obj/item/slime_extract,
-		"a piece of corgi meat" = /obj/item/weapon/reagent_containers/food/snacks/meat/corgi,
+		"a piece of corgi meat" = /obj/item/reagent_containers/food/snacks/meat/corgi,
 		"a Moebius expedition overseer's jumpsuit" = /obj/item/clothing/under/rank/expedition_overseer,
 		"a exultant's jumpsuit" = /obj/item/clothing/under/rank/exultant,
 		"a Moebius biolab officer's jumpsuit" = /obj/item/clothing/under/rank/moebius_biolab_officer,
 		"a Ironhammer commander's jumpsuit" = /obj/item/clothing/under/rank/ih_commander,
 		"a First Officer's jumpsuit" = /obj/item/clothing/under/rank/first_officer,
-		"the hypospray" = /obj/item/weapon/reagent_containers/hypospray,
-		"the captain's pinpointer" = /obj/item/weapon/pinpointer,
+		"the hypospray" = /obj/item/reagent_containers/hypospray,
+		"the captain's pinpointer" = /obj/item/pinpointer,
 		"an ablative armor vest" = /obj/item/clothing/suit/armor/laserproof/full,
-		"an Ironhammer hardsuit control module" = /obj/item/weapon/rig/combat/ironhammer
+		"an Ironhammer hardsuit control module" = /obj/item/rig/combat/ironhammer
 	))
 GLOBAL_LIST_INIT(excel_item_targets,list(
-		"a Miller revolver" = /obj/item/weapon/gun/projectile/revolver,
-		"a Consul revolver" = /obj/item/weapon/gun/projectile/revolver/consul,
-		"a Gladstone shotgun" = /obj/item/weapon/gun/projectile/shotgun/pump/gladstone,
-		"a Kammerer shotgun" = /obj/item/weapon/gun/projectile/shotgun/pump,
-		"a Cassad plasma rifle" = /obj/item/weapon/gun/energy/plasma/cassad,
-		"a Spider Rose energy gun" = /obj/item/weapon/gun/energy/gun,
-		"a Molly machine pistol" = /obj/item/weapon/gun/projectile/automatic/molly,
-		"an Atreides sub machine gun" = /obj/item/weapon/gun/projectile/automatic/atreides,
-		"a Straylight sub machine gun" = /obj/item/weapon/gun/projectile/automatic/straylight,
-		"a Sol carbine" = /obj/item/weapon/gun/projectile/automatic/sol,
-		"a Colt handgun" = /obj/item/weapon/gun/projectile/colt,
-		"a Lenar grenade launcher" = /obj/item/weapon/gun/launcher/grenade/lenar,
-		"an RCD" = /obj/item/weapon/rcd,
-		"a cruciform" = /obj/item/weapon/implant/core_implant/cruciform,
+		"a Miller revolver" = /obj/item/gun/projectile/revolver,
+		"a Consul revolver" = /obj/item/gun/projectile/revolver/consul,
+		"a Gladstone shotgun" = /obj/item/gun/projectile/shotgun/pump/gladstone,
+		"a Kammerer shotgun" = /obj/item/gun/projectile/shotgun/pump,
+		"a Cassad plasma rifle" = /obj/item/gun/energy/plasma/cassad,
+		"a Spider Rose energy gun" = /obj/item/gun/energy/gun,
+		"a Molly machine pistol" = /obj/item/gun/projectile/automatic/molly,
+		"an Atreides sub machine gun" = /obj/item/gun/projectile/automatic/atreides,
+		"a Straylight sub machine gun" = /obj/item/gun/projectile/automatic/straylight,
+		"a Sol carbine" = /obj/item/gun/projectile/automatic/sol,
+		"a Colt handgun" = /obj/item/gun/projectile/colt,
+		"a Lenar grenade launcher" = /obj/item/gun/launcher/grenade/lenar,
+		"an RCD" = /obj/item/rcd,
+		"a cruciform" = /obj/item/implant/core_implant/cruciform,
 		"the ship blueprints" = /obj/item/blueprints,
-		"a hand teleporter" = /obj/item/weapon/hand_tele,
-		"a bluespace Harpoon" = /obj/item/weapon/bluespace_harpoon,
-		"a rocket-powered charge hammer" = /obj/item/weapon/tool/hammer/charge,
-		"the captain's antique laser gun" = /obj/item/weapon/gun/energy/captain,
+		"a hand teleporter" = /obj/item/hand_tele,
+		"a bluespace Harpoon" = /obj/item/bluespace_harpoon,
+		"a rocket-powered charge hammer" = /obj/item/tool/hammer/charge,
+		"the captain's antique laser gun" = /obj/item/gun/energy/captain,
 
 	))
 /datum/antag_contract
@@ -91,11 +91,11 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 // A contract to steal a specific item - allows you to check all contents (recursively) for the target item
 /datum/antag_contract/item
 
-/datum/antag_contract/item/proc/on_container(obj/item/weapon/storage/bsdm/container)
+/datum/antag_contract/item/proc/on_container(obj/item/storage/bsdm/container)
 	if(check(container))
 		complete(container.owner)
 
-/datum/antag_contract/item/proc/check(obj/item/weapon/storage/container)
+/datum/antag_contract/item/proc/check(obj/item/storage/container)
 	return check_contents(container.GetAllContents(includeSelf = FALSE))
 
 /datum/antag_contract/item/proc/check_contents(list/contents)
@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 
 /datum/antag_contract/item/file/check_contents(list/contents)
 	var/list/all_files = list()
-	for(var/obj/item/weapon/computer_hardware/hard_drive/H in contents)
+	for(var/obj/item/computer_hardware/hard_drive/H in contents)
 		all_files += H.stored_files
 
 	return check_files(all_files)
@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 /datum/antag_contract/implant/can_place()
 	return ..() && target_mind
 
-/datum/antag_contract/implant/proc/check(obj/item/weapon/implant/spying/implant)
+/datum/antag_contract/implant/proc/check(obj/item/implant/spying/implant)
 	if(completed)
 		return
 	if(implant.wearer && implant.wearer.mind == target_mind)
@@ -230,7 +230,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 		if(!istype(H) || H.stat == DEAD || !isOnStationLevel(H))
 			candidates -= target_mind
 			continue
-		target = H.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
+		target = H.get_core_implant(/obj/item/implant/core_implant/cruciform)
 		if(!target)
 			target = H.organs_by_name[BP_HEAD]
 		desc = "Assasinate [target_mind.current.real_name] and send [gender_datums[target_mind.current.gender].his] [target.name] via BSDM as a proof."
@@ -276,7 +276,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 /datum/antag_contract/item/steal/docs
 	unique = TRUE
 	reward = 12
-	target_type = /obj/item/weapon/oddity/secdocs
+	target_type = /obj/item/oddity/secdocs
 	desc = "Steal a folder of secret documents and send them via BSDM."
 
 
@@ -293,7 +293,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 
 /datum/antag_contract/item/dump/check_contents(list/contents)
 	var/received = 0
-	for(var/obj/item/weapon/spacecash/cash in contents)
+	for(var/obj/item/spacecash/cash in contents)
 		received += cash.worth
 	return received >= sum
 
@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 
 /datum/antag_contract/item/blood/check_contents(list/contents)
 	var/list/samples = list()
-	for(var/obj/item/weapon/reagent_containers/C in contents)
+	for(var/obj/item/reagent_containers/C in contents)
 		var/list/data = C.reagents?.get_data("blood")
 		if(!data || data["species"] != SPECIES_HUMAN || (data["blood_DNA"] in samples))
 			continue
@@ -436,7 +436,7 @@ GLOBAL_LIST_INIT(excel_item_targets,list(
 				continue
 
 		if (cruciform_check)
-			var/cruciform = H.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
+			var/cruciform = H.get_core_implant(/obj/item/implant/core_implant/cruciform)
 			if(cruciform)
 				continue
 

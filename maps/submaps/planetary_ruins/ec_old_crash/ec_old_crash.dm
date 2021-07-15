@@ -47,7 +47,7 @@
 /turf/simulated/floor/tiled/white/lowpressure
 	initial_gas = list(GAS_CO2 = MOLES_O2STANDARD)
 
-/obj/item/weapon/disk/astrodata
+/obj/item/disk/astrodata
 	name = "astronomical data disk"
 	desc = "A disk with a wealth of astronomical data recorded. Astrophysicists at the EC Observatory would love to see this."
 	icon = 'icons/obj/cloning.dmi'
@@ -56,21 +56,21 @@
 	w_class = ITEM_SIZE_SMALL
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/ecletters
+/obj/item/ecletters
 	name = "bundle of letters"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_words"
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/ecletters/Initialize()
+/obj/item/ecletters/Initialize()
 	. = ..()
 	desc = "A bunch of letters from crewmembers to their family and loved ones, dated [game_year - 142]. They're not hopeful."
 
-/obj/item/weapon/paper/ecrashlog
+/obj/item/paper/ecrashlog
 	name = "handwritten note"
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/paper/ecrashlog/Initialize()
+/obj/item/paper/ecrashlog/Initialize()
 	. = ..()
 	var/shipname = "CEV [pick("Magellan", "Gagarin", "Drake", "Horizon", "Aurora")]"
 	var/datum/species/S = all_species[SPECIES_HUMAN]

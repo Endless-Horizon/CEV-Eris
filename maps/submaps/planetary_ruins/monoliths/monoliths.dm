@@ -100,10 +100,10 @@
 	if(prob(10))
 		ChangeTurf(get_base_turf_by_area(src))
 
-/turf/simulated/wall/alium/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/turf/simulated/wall/alium/attackby(obj/item/W as obj, mob/user as mob)
 	return
 	// ALIUM DOES NOT GIVE A FUCK
 
-/turf/simulated/floor/alium/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/turf/simulated/floor/alium/attackby(obj/item/W as obj, mob/user as mob)
 	return
 	// ALIUM DOES NOT GIVE A FUCK

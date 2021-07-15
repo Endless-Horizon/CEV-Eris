@@ -21,7 +21,7 @@
 		to_chat(user, SPAN_NOTICE("It has [max_installed_software - length(installed_software)] empty slot\s remaining out of [max_installed_software]."))
 
 /obj/item/robot_parts/robot_component/exosuit_control/attackby(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/weapon/electronics/circuitboard/exosystem))
+	if(istype(I, /obj/item/electronics/circuitboard/exosystem))
 		install_software(I, user)
 		return
 
@@ -32,7 +32,7 @@
 	else
 		return ..()
 
-/obj/item/robot_parts/robot_component/exosuit_control/proc/install_software(obj/item/weapon/electronics/circuitboard/exosystem/software, mob/living/user)
+/obj/item/robot_parts/robot_component/exosuit_control/proc/install_software(obj/item/electronics/circuitboard/exosystem/software, mob/living/user)
 	if(installed_software.len >= max_installed_software)
 		if(user)
 			to_chat(user, SPAN_WARNING("\The [src] can only hold [max_installed_software] software modules."))
@@ -48,44 +48,44 @@
 
 /obj/item/robot_parts/robot_component/exosuit_control/proc/update_software()
 	installed_software = list()
-	for(var/obj/item/weapon/electronics/circuitboard/exosystem/program in contents)
+	for(var/obj/item/electronics/circuitboard/exosystem/program in contents)
 		installed_software |= program.contains_software
 
 
 
 #define T_BOARD_MECH(name)	"exosuit software (" + (name) + ")"
 
-/obj/item/weapon/electronics/circuitboard/exosystem
+/obj/item/electronics/circuitboard/exosystem
 	name = T_BOARD_MECH("template")
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_mod"
 	item_state = "electronic"
 	var/list/contains_software = list()
 
-/obj/item/weapon/electronics/circuitboard/exosystem/engineering
+/obj/item/electronics/circuitboard/exosystem/engineering
 	name = T_BOARD_MECH("engineering systems")
 	contains_software = list(MECH_SOFTWARE_ENGINEERING)
 	origin_tech = list(TECH_DATA = 1)
 
-/obj/item/weapon/electronics/circuitboard/exosystem/utility
+/obj/item/electronics/circuitboard/exosystem/utility
 	name = T_BOARD_MECH("utility systems")
 	contains_software = list(MECH_SOFTWARE_UTILITY)
 	icon_state = "mcontroller"
 	origin_tech = list(TECH_DATA = 1)
 
-/obj/item/weapon/electronics/circuitboard/exosystem/medical
+/obj/item/electronics/circuitboard/exosystem/medical
 	name = T_BOARD_MECH("medical systems")
 	contains_software = list(MECH_SOFTWARE_MEDICAL)
 	icon_state = "mcontroller"
 	origin_tech = list(TECH_DATA = 3,TECH_BIO = 2)
 
-/obj/item/weapon/electronics/circuitboard/exosystem/weapons
+/obj/item/electronics/circuitboard/exosystem/weapons
 	name = T_BOARD_MECH("basic weapon systems")
 	contains_software = list(MECH_SOFTWARE_WEAPONS)
 	icon_state = "mainboard"
 	origin_tech = list(TECH_DATA = 4, TECH_COMBAT = 3)
 
-/obj/item/weapon/electronics/circuitboard/exosystem/advweapons
+/obj/item/electronics/circuitboard/exosystem/advweapons
 	name = T_BOARD_MECH("advanced weapon systems")
 	contains_software = list(MECH_SOFTWARE_ADVWEAPONS)
 	icon_state = "mainboard"

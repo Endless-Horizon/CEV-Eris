@@ -40,11 +40,11 @@
 
 /datum/design/autolathe/device/implanter
 	name = "implanter"
-	build_path = /obj/item/weapon/implanter
+	build_path = /obj/item/implanter
 
 /datum/design/autolathe/device/hand_labeler
 	name = "hand labeler"
-	build_path = /obj/item/weapon/hand_labeler
+	build_path = /obj/item/hand_labeler
 
 /datum/design/autolathe/device/propaganda_chip
 	name = "propaganda chip"
@@ -52,11 +52,11 @@
 
 /datum/design/autolathe/device/flamethrower
 	name = "flamethrower"
-	build_path = /obj/item/weapon/flamethrower
+	build_path = /obj/item/flamethrower
 
 /datum/design/autolathe/device/excelbaton
 	name = "Expropriator"
-	build_path = /obj/item/weapon/melee/baton/excelbaton
+	build_path = /obj/item/melee/baton/excelbaton
 
 /datum/design/autolathe/device/headset_church
 	name = "NeoTheology Radio Encryption Key"
@@ -64,16 +64,16 @@
 
 /datum/design/autolathe/device/excelsiormine
 	name = "excelsior mine"
-	build_path = /obj/item/weapon/mine
+	build_path = /obj/item/mine
 
 /datum/design/autolathe/device/grenade/nt_cleaner
 	name = "NT \"Cleanse Capsule\""
-	build_path = /obj/item/weapon/grenade/chem_grenade/cleaner/nt_cleaner
+	build_path = /obj/item/grenade/chem_grenade/cleaner/nt_cleaner
 	factions = list(FACTION_NEOTHEOLOGY)
 
 /datum/design/autolathe/device/grenade/nt_weedkiller
 	name = "NT \"Kudzu Killer\""
-	build_path = /obj/item/weapon/grenade/chem_grenade/antiweed/nt_antiweed
+	build_path = /obj/item/grenade/chem_grenade/antiweed/nt_antiweed
 	factions = list(FACTION_NEOTHEOLOGY)
 
 /datum/design/autolathe/device/floorpainter

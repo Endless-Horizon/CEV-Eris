@@ -53,7 +53,7 @@
 
 
 /obj/structure/dispenser/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/tank/oxygen) || istype(I, /obj/item/weapon/tank/air) || istype(I, /obj/item/weapon/tank/anesthetic))
+	if(istype(I, /obj/item/tank/oxygen) || istype(I, /obj/item/tank/air) || istype(I, /obj/item/tank/anesthetic))
 		if(oxygentanks < 10)
 			user.drop_item()
 			I.forceMove(src)
@@ -66,7 +66,7 @@
 			to_chat(user, SPAN_NOTICE("[src] is full."))
 		updateUsrDialog()
 		return
-	if(istype(I, /obj/item/weapon/tank/plasma))
+	if(istype(I, /obj/item/tank/plasma))
 		if(plasmatanks < 10)
 			user.drop_item()
 			I.forceMove(src)
@@ -95,20 +95,20 @@
 
 	usr.set_machine(src)
 
-	var/obj/item/weapon/tank/tank
+	var/obj/item/tank/tank
 	if(href_list["oxygen"] && oxygentanks > 0)
 		if(oxytanks.len)
 			tank = oxytanks[oxytanks.len]	// Last stored tank is always the first one to be dispensed
 			oxytanks.Remove(tank)
 		else
-			tank = new /obj/item/weapon/tank/oxygen(loc)
+			tank = new /obj/item/tank/oxygen(loc)
 		oxygentanks--
 	if(href_list["plasma"] && plasmatanks > 0)
 		if(platanks.len)
 			tank = platanks[platanks.len]
 			platanks.Remove(tank)
 		else
-			tank = new /obj/item/weapon/tank/plasma(loc)
+			tank = new /obj/item/tank/plasma(loc)
 		plasmatanks--
 
 	if(tank)

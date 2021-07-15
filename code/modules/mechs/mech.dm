@@ -27,7 +27,7 @@
 	var/mech_step_sound = 'sound/mechs/mechstep.ogg'
 
 	// Access updating/container.
-	var/obj/item/weapon/card/id/access_card
+	var/obj/item/card/id/access_card
 	var/list/saved_access = list()
 	var/sync_access = 1
 

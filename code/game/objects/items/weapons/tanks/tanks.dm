@@ -4,7 +4,7 @@
 
 var/list/global/tank_gauge_cache = list()
 
-/obj/item/weapon/tank
+/obj/item/tank
 	name = "tank"
 	icon = 'icons/obj/tank.dmi'
 	contained_sprite = TRUE
@@ -26,7 +26,7 @@ var/list/global/tank_gauge_cache = list()
 	rarity_value = 10
 	spawn_frequency = 10
 	spawn_blacklisted = FALSE
-	bad_type = /obj/item/weapon/tank
+	bad_type = /obj/item/tank
 	spawn_tags = SPAWN_TAG_TANK_GAS
 
 	var/datum/gas_mixture/air_contents
@@ -38,7 +38,7 @@ var/list/global/tank_gauge_cache = list()
 	var/manipulated_by		//Used by _onclick/hud/screen_objects.dm internals to determine if someone has messed with our tank or not.
 						//If they have and we haven't scanned it with the PDA or gas analyzer then we might just breath whatever they put in it.
 
-/obj/item/weapon/tank/Initialize(mapload, ...)
+/obj/item/tank/Initialize(mapload, ...)
 	. = ..()
 
 	if (!item_state)
@@ -50,7 +50,7 @@ var/list/global/tank_gauge_cache = list()
 	START_PROCESSING(SSobj, src)
 	update_gauge()
 
-/obj/item/weapon/tank/Destroy()
+/obj/item/tank/Destroy()
 	if(air_contents)
 		QDEL_NULL(air_contents)
 
@@ -63,11 +63,11 @@ var/list/global/tank_gauge_cache = list()
 	. = ..()
 
 // Override in subtypes
-/obj/item/weapon/tank/proc/spawn_gas()
+/obj/item/tank/proc/spawn_gas()
 	if(default_gas)
 		air_contents.adjust_gas(default_gas, default_pressure*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/weapon/tank/examine(mob/user)
+/obj/item/tank/examine(mob/user)
 	. = ..(user, 0)
 	if(.)
 		var/celsius_temperature = air_contents.temperature - T0C
@@ -87,7 +87,7 @@ var/list/global/tank_gauge_cache = list()
 				descriptive = "cold"
 		to_chat(user, SPAN_NOTICE("\The [src] feels [descriptive]."))
 
-/obj/item/weapon/tank/attackby(obj/item/weapon/W, mob/living/user)
+/obj/item/tank/attackby(obj/item/W, mob/living/user)
 	..()
 	if (istype(src.loc, /obj/item/assembly))
 		icon = src.loc
@@ -99,16 +99,16 @@ var/list/global/tank_gauge_cache = list()
 	if(istype(W, /obj/item/device/assembly_holder))
 		bomb_assemble(W,user)
 
-/obj/item/weapon/tank/attack_self(mob/living/user)
+/obj/item/tank/attack_self(mob/living/user)
 	if (!(src.air_contents))
 		return
 
 	ui_interact(user)
 
-/obj/item/weapon/tank/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/item/tank/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/mob/living/carbon/location = null
 
-	if(istype(loc, /obj/item/weapon/rig))		// check for tanks in rigs
+	if(istype(loc, /obj/item/rig))		// check for tanks in rigs
 		if(iscarbon(loc.loc))
 			location = loc.loc
 	else if(iscarbon(loc))
@@ -137,7 +137,7 @@ var/list/global/tank_gauge_cache = list()
 		else if(src in location)		// or if tank is in the mobs possession
 			if(!location.internal)		// and they do not have any active internals
 				mask_check = 1
-		else if(istype(src.loc, /obj/item/weapon/rig) && (src.loc in location))	// or the rig is in the mobs possession
+		else if(istype(src.loc, /obj/item/rig) && (src.loc in location))	// or the rig is in the mobs possession
 			if(!location.internal)		// and they do not have any active internals
 				mask_check = 1
 
@@ -162,7 +162,7 @@ var/list/global/tank_gauge_cache = list()
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
 
-/obj/item/weapon/tank/Topic(href, href_list)
+/obj/item/tank/Topic(href, href_list)
 	..()
 	if (usr.stat|| usr.restrained())
 		return 0
@@ -182,7 +182,7 @@ var/list/global/tank_gauge_cache = list()
 		toggle_valve(loc)
 	return 1
 
-/obj/item/weapon/tank/proc/toggle_valve(var/mob/user)
+/obj/item/tank/proc/toggle_valve(var/mob/user)
 	if(iscarbon(loc))
 		var/mob/living/carbon/location = loc
 		if(location.internal == src)
@@ -207,19 +207,19 @@ var/list/global/tank_gauge_cache = list()
 				HUDelm.update_icon()
 		src.add_fingerprint(usr)
 
-/obj/item/weapon/tank/remove_air(amount)
+/obj/item/tank/remove_air(amount)
 	return air_contents.remove(amount)
 
-/obj/item/weapon/tank/return_air()
+/obj/item/tank/return_air()
 	return air_contents
 
-/obj/item/weapon/tank/assume_air(datum/gas_mixture/giver)
+/obj/item/tank/assume_air(datum/gas_mixture/giver)
 	air_contents.merge(giver)
 
 	check_status()
 	return 1
 
-/obj/item/weapon/tank/proc/remove_air_volume(volume_to_return)
+/obj/item/tank/proc/remove_air_volume(volume_to_return)
 	if(!air_contents)
 		return null
 
@@ -231,19 +231,19 @@ var/list/global/tank_gauge_cache = list()
 
 	return remove_air(moles_needed)
 
-/obj/item/weapon/tank/proc/get_total_moles()
+/obj/item/tank/proc/get_total_moles()
 	if (air_contents)
 		return air_contents.total_moles
 	return 0
 
-/obj/item/weapon/tank/Process()
+/obj/item/tank/Process()
 	//Allow for reactions
 	air_contents.react() //cooking up air tanks - add plasma and oxygen, then heat above PLASMA_MINIMUM_BURN_TEMPERATURE
 	if(gauge_icon)
 		update_gauge()
 	check_status()
 
-/obj/item/weapon/tank/proc/update_gauge()
+/obj/item/tank/proc/update_gauge()
 	var/gauge_pressure = 0
 	if(air_contents)
 		gauge_pressure = air_contents.return_pressure()
@@ -264,7 +264,7 @@ var/list/global/tank_gauge_cache = list()
 		tank_gauge_cache[indicator] = image(icon, indicator)
 	add_overlays(tank_gauge_cache[indicator])
 
-/obj/item/weapon/tank/proc/check_status()
+/obj/item/tank/proc/check_status()
 	//Handle exploding, leaking, and rupturing of the tank
 
 	if(!air_contents)

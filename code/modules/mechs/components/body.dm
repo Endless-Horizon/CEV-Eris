@@ -6,7 +6,7 @@
 	matter = list(MATERIAL_STEEL = 20)
 
 	var/mech_health = 300
-	var/obj/item/weapon/cell/cell
+	var/obj/item/cell/cell
 	var/obj/item/robot_parts/robot_component/armour/exosuit/armor_plate
 	var/obj/item/robot_parts/robot_component/exosuit_control/computer
 	var/obj/machinery/portable_atmospherics/canister/air_supply
@@ -101,7 +101,7 @@
 /obj/item/mech_component/chassis/prebuild()
 	computer = new /obj/item/robot_parts/robot_component/exosuit_control(src)
 	armor = new /obj/item/robot_parts/robot_component/armour/exosuit(src)
-	cell = new /obj/item/weapon/cell/large/high(src)
+	cell = new /obj/item/cell/large/high(src)
 
 /obj/item/mech_component/chassis/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/robot_parts/robot_component/exosuit_control))
@@ -110,7 +110,7 @@
 			return
 		if(insert_item(I, user))
 			computer = I
-	else if(istype(I, /obj/item/weapon/cell/large))
+	else if(istype(I, /obj/item/cell/large))
 		if(cell)
 			to_chat(user, SPAN_WARNING("\The [src] already has a cell installed."))
 			return

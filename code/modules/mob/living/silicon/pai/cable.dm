@@ -1,4 +1,4 @@
-/obj/item/weapon/pai_cable
+/obj/item/pai_cable
 	desc = "A flexible coated cable with a universal jack on one end."
 	name = "data cable"
 	icon = 'icons/obj/power.dmi'

@@ -3,7 +3,7 @@
 	camera_networks = list(NETWORK_MERCENARY)
 	light_color = COLOR_LIGHTING_GREEN_BRIGHT
 
-/obj/item/weapon/rig/merc
+/obj/item/rig/merc
 	name = "crimson hardsuit control module"
 	desc = "A blood-red hardsuit featuring some fairly illegal technology."
 	icon_state = "merc_rig"
@@ -36,7 +36,7 @@
 		)
 
 //Has most of the modules removed
-/obj/item/weapon/rig/merc/empty
+/obj/item/rig/merc/empty
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/electrowarfare_suite, //might as well

@@ -4,12 +4,12 @@
     icon_state = "multitool_improvised"
     verb_name = "Deploy \"tool\""
     items = list(
-        /obj/item/weapon/tool/shiv,
-        /obj/item/weapon/tool/screwdriver/improvised,
-        /obj/item/weapon/tool/wirecutters/improvised,
-        /obj/item/weapon/tool/crowbar/improvised,
-        /obj/item/weapon/tool/wrench/improvised,
-        /obj/item/weapon/tool/shovel/improvised,
-        /obj/item/weapon/tool/saw/improvised,
-        /obj/item/weapon/tool/weldingtool/improvised
+        /obj/item/tool/shiv,
+        /obj/item/tool/screwdriver/improvised,
+        /obj/item/tool/wirecutters/improvised,
+        /obj/item/tool/crowbar/improvised,
+        /obj/item/tool/wrench/improvised,
+        /obj/item/tool/shovel/improvised,
+        /obj/item/tool/saw/improvised,
+        /obj/item/tool/weldingtool/improvised
     )

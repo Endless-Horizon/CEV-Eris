@@ -25,7 +25,7 @@
 /***************************************
 	Industrial Suit: For Mining
 ****************************************/
-/obj/item/weapon/rig/industrial
+/obj/item/rig/industrial
 	name = "industrial suit control module"
 	suit_type = "industrial hardsuit"
 	desc = "A heavy, powerful rig used by construction crews and mining corporations."
@@ -48,15 +48,15 @@
 
 	extra_allowed = list(
 		/obj/item/device/t_scanner,
-		/obj/item/weapon/storage/bag/ore,
-		/obj/item/weapon/tool/pickaxe,
-		/obj/item/weapon/rcd
+		/obj/item/storage/bag/ore,
+		/obj/item/tool/pickaxe,
+		/obj/item/rcd
 	)
 
 	req_access = list()
 	req_one_access = list()
 
-/obj/item/weapon/rig/industrial/equipped
+/obj/item/rig/industrial/equipped
 	rarity_value = 20
 	initial_modules = list(
 		/obj/item/rig_module/device/drill,
@@ -69,7 +69,7 @@
 /***************************************
 	EVA Suit
 ****************************************/
-/obj/item/weapon/rig/eva
+/obj/item/rig/eva
 	name = "EVA suit control module"
 	suit_type = "EVA hardsuit"
 	desc = "A light rig for repairs and maintenance to the outside of habitats and vessels."
@@ -89,16 +89,16 @@
 	helm_type = /obj/item/clothing/head/space/rig/eva
 
 	extra_allowed = list(
-		/obj/item/weapon/storage/toolbox,
-		/obj/item/weapon/storage/briefcase/inflatable,
+		/obj/item/storage/toolbox,
+		/obj/item/storage/briefcase/inflatable,
 		/obj/item/device/t_scanner,
-		/obj/item/weapon/rcd
+		/obj/item/rcd
 	)
 
 	req_access = list()
 	req_one_access = list()
 
-/obj/item/weapon/rig/eva/equipped
+/obj/item/rig/eva/equipped
 	rarity_value = 20
 	initial_modules = list(
 		/obj/item/rig_module/maneuvering_jets,
@@ -110,7 +110,7 @@
 /***************************************
 Advanced Voidsuit: Technomancer Exultant
 ****************************************/
-/obj/item/weapon/rig/ce
+/obj/item/rig/ce
 	name = "advanced voidsuit control module"
 	suit_type = "advanced voidsuit"
 	desc = "An advanced voidsuit that protects against hazardous, low pressure environments. Shines with a high polish."
@@ -136,17 +136,17 @@ Advanced Voidsuit: Technomancer Exultant
 	boot_type = /obj/item/clothing/shoes/magboots/rig/ce
 
 	extra_allowed = list(
-		/obj/item/weapon/storage/toolbox,
-		/obj/item/weapon/storage/briefcase/inflatable,
+		/obj/item/storage/toolbox,
+		/obj/item/storage/briefcase/inflatable,
 		/obj/item/device/t_scanner,
-		/obj/item/weapon/rcd
+		/obj/item/rcd
 	)
 
 	req_access = list(access_ce)
 	req_one_access = list()
 	spawn_blacklisted = TRUE//antag_item_targets
 
-/obj/item/weapon/rig/ce/equipped
+/obj/item/rig/ce/equipped
 	rarity_value = 40
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
@@ -169,7 +169,7 @@ Advanced Voidsuit: Technomancer Exultant
 /***************************************
 Technomancer RIG
 ***************************************/
-/obj/item/weapon/rig/techno
+/obj/item/rig/techno
 	name = "technomancer suit control module"
 	suit_type = "technomancer RIG suit"
 	desc = "An advanced RIG suit that protects against hazardous, low pressure and high temperature environments."
@@ -195,15 +195,15 @@ Technomancer RIG
 	boot_type = /obj/item/clothing/shoes/magboots/rig/techno
 
 	extra_allowed = list(
-		/obj/item/weapon/storage/toolbox,
-		/obj/item/weapon/storage/briefcase/inflatable,
+		/obj/item/storage/toolbox,
+		/obj/item/storage/briefcase/inflatable,
 		/obj/item/device/t_scanner,
-		/obj/item/weapon/rcd
+		/obj/item/rcd
 	)
 
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/rig/techno/equipped
+/obj/item/rig/techno/equipped
 	initial_modules = list(
 		/obj/item/rig_module/storage,
 		/obj/item/rig_module/maneuvering_jets,
@@ -224,7 +224,7 @@ Technomancer RIG
 /***************************************
 	Hazmat: Moebius Overseer
 ****************************************/
-/obj/item/weapon/rig/hazmat
+/obj/item/rig/hazmat
 	name = "AMI control module"
 	suit_type = "hazmat hardsuit"
 	desc = "An Anomalous Material Interaction hardsuit that protects against the strangest energies the universe can throw at it."
@@ -247,7 +247,7 @@ Technomancer RIG
 
 	extra_allowed = list(
 		/obj/item/stack/flag,
-		/obj/item/weapon/tool,
+		/obj/item/tool,
 		/obj/item/device/scanner/health,
 		/obj/item/device/measuring_tape,
 		/obj/item/device/ano_scanner,
@@ -256,13 +256,13 @@ Technomancer RIG
 		/obj/item/device/gps,
 		/obj/item/device/beacon_locator,
 		/obj/item/device/radio/beacon,
-		/obj/item/weapon/storage/bag/fossils
+		/obj/item/storage/bag/fossils
 	)
 
 	req_access = list()
 	req_one_access = list()
 
-/obj/item/weapon/rig/hazmat/equipped
+/obj/item/rig/hazmat/equipped
 	req_access = list(access_rd)
 	rarity_value = 40
 
@@ -277,7 +277,7 @@ Technomancer RIG
 /***************************************
 	Medical
 ****************************************/
-/obj/item/weapon/rig/medical
+/obj/item/rig/medical
 	name = "rescue suit control module"
 	suit_type = "rescue hardsuit"
 	desc = "A relatively lightweight and durable RIG suit designed for medical rescue in hazardous locations."
@@ -296,13 +296,13 @@ Technomancer RIG
 	helm_type = /obj/item/clothing/head/space/rig/medical
 
 	extra_allowed = list(
-		/obj/item/weapon/storage/firstaid,
+		/obj/item/storage/firstaid,
 		/obj/item/device/scanner/health,
 		/obj/item/stack/medical,
 		/obj/item/roller
 	)
 
-/obj/item/weapon/rig/medical/equipped
+/obj/item/rig/medical/equipped
 	req_access = list()
 	req_one_access = list()
 	rarity_value = 20

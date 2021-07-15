@@ -69,9 +69,9 @@
 
 #define isorgan(A) istype(A, /obj/item/organ/external)
 
-#define isgun(A) istype(A, /obj/item/weapon/gun)
+#define isgun(A) istype(A, /obj/item/gun)
 
-#define istool(A) istype(A, /obj/item/weapon/tool)
+#define istool(A) istype(A, /obj/item/tool)
 
 #define isCoil(A) istype(A, /obj/item/stack/cable_coil)
 

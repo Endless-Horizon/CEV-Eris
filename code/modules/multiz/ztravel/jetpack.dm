@@ -3,7 +3,7 @@
 	sound and visual fx
 */
 /datum/vertical_travel_method/jetpack
-	var/obj/item/weapon/tank/jetpack/thrust
+	var/obj/item/tank/jetpack/thrust
 	var/burst_interval = 3
 	var/next_burst = 0
 	start_verb_visible = "%m starts a controlled %d3t with the %s"

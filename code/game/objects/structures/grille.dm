@@ -92,7 +92,7 @@
 	src.health -= damage*0.2
 	spawn(0) healthcheck() //spawn to make sure we return properly if the grille is deleted
 
-/obj/structure/grille/attackby(obj/item/weapon/I, mob/user)
+/obj/structure/grille/attackby(obj/item/I, mob/user)
 
 	var/list/usable_qualities = list(QUALITY_WIRE_CUTTING)
 	if(anchored)

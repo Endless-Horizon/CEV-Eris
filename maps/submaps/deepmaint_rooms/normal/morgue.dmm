@@ -10,7 +10,7 @@
 "j" = (/obj/structure/morgue{icon_state = "morgue1"; dir = 8},/turf/simulated/floor/tiled/dark/panels,/area/deepmaint)
 "k" = (/turf/simulated/floor/tiled/dark/panels,/area/deepmaint)
 "l" = (/obj/machinery/light/small{dir = 8},/turf/simulated/floor/tiled/dark,/area/deepmaint)
-"m" = (/obj/structure/table/standard,/obj/item/weapon/autopsy_scanner{pixel_x = 1; pixel_y = 1},/obj/item/weapon/tool/scalpel,/obj/item/weapon/tool/cautery{pixel_y = 4},/turf/simulated/floor/tiled/dark/panels,/area/deepmaint)
+"m" = (/obj/structure/table/standard,/obj/item/autopsy_scanner{pixel_x = 1; pixel_y = 1},/obj/item/tool/scalpel,/obj/item/tool/cautery{pixel_y = 4},/turf/simulated/floor/tiled/dark/panels,/area/deepmaint)
 "n" = (/obj/machinery/optable,/turf/simulated/floor/tiled/dark/panels,/area/deepmaint)
 "o" = (/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/dark,/area/deepmaint)
 "p" = (/obj/machinery/door/airlock/maintenance_common{name = "Service Maintenance"; req_access = list(12)},/turf/simulated/floor/tiled/dark/cargo,/area/deepmaint)

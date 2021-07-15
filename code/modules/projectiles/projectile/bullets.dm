@@ -20,7 +20,7 @@
 	if(damage_types[BRUTE] > 20 && prob(damage_types[BRUTE]*penetrating))
 		mob_passthrough_check = 1
 	else
-		var/obj/item/weapon/grab/G = locate() in target_mob
+		var/obj/item/grab/G = locate() in target_mob
 		if(G && G.state >= GRAB_NECK)
 			mob_passthrough_check = rand()
 		else

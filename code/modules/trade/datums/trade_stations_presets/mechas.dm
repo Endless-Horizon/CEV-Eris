@@ -23,10 +23,10 @@
 			/obj/item/mech_component/propulsion,
 		),
 		"Soft" = list(
-			/obj/item/weapon/electronics/circuitboard/exosystem/engineering,
-			/obj/item/weapon/electronics/circuitboard/exosystem/utility,
-			/obj/item/weapon/electronics/circuitboard/exosystem/medical,
-			/obj/item/weapon/electronics/circuitboard/exosystem/weapons,
+			/obj/item/electronics/circuitboard/exosystem/engineering,
+			/obj/item/electronics/circuitboard/exosystem/utility,
+			/obj/item/electronics/circuitboard/exosystem/medical,
+			/obj/item/electronics/circuitboard/exosystem/weapons,
 		),
 		"Equipment" = list(
 			/obj/item/mech_equipment/mounted_system/taser,

@@ -36,11 +36,11 @@ Now, just in case this rocket juice blacks me out again, its here, you dumbass. 
 
 /datum/stash/booze/teenage_girls
 	story_type = STORY_CRIME
-	contents_list_extra = list(/obj/item/weapon/haircomb = 1, /obj/item/weapon/lipstick/random = 2)
-	contents_list_random = list(/obj/item/weapon/reagent_containers/syringe/drugs = 50,
-	/obj/item/weapon/reagent_containers/syringe/drugs = 50,
-	/obj/item/weapon/reagent_containers/syringe/drugs_recreational = 50,
-	/obj/item/weapon/reagent_containers/syringe/drugs_recreational = 50)
+	contents_list_extra = list(/obj/item/haircomb = 1, /obj/item/lipstick/random = 2)
+	contents_list_random = list(/obj/item/reagent_containers/syringe/drugs = 50,
+	/obj/item/reagent_containers/syringe/drugs = 50,
+	/obj/item/reagent_containers/syringe/drugs_recreational = 50,
+	/obj/item/reagent_containers/syringe/drugs_recreational = 50)
 	lore = "Ugh my mom is being such a pain, i'm grounded in our quarters for a few days.<br>\
  But fuck her, once I get out, we're gonna have a party. I've been stealing some stuff from my dad's bar and stashing it away at %D.<br>\
 I'll try to sneak out through maintenance tomorrow night, meet me there. And Jenna, bring some boys!"

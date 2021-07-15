@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/lamia
+/obj/item/gun/projectile/lamia
 	name = "FS HG .40 Magnum \"Lamia\""
 	desc = "FS HG .40 Magnum \"Lamia\", a heavy pistol of Ironhammer enforcers. Uses 40 Magnum rounds."
 	icon = 'icons/obj/guns/projectile/lamia.dmi'
@@ -25,7 +25,7 @@
 
 	spawn_tags = SPAWN_TAG_FS_PROJECTILE
 
-/obj/item/weapon/gun/projectile/lamia/on_update_icon()
+/obj/item/gun/projectile/lamia/on_update_icon()
 	..()
 	if(ammo_magazine)
 		icon_state = "lamia-[round(ammo_magazine.stored_ammo.len,2)]"

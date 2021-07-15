@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/shotgun/slidebarrel
+/obj/item/gun/projectile/shotgun/slidebarrel
 	name = "slide barrel shotgun"
 	desc = "Made out of trash, but rather special on its design"
 	icon = 'icons/obj/guns/projectile/slideshotgun.dmi'
@@ -20,7 +20,7 @@
 	price_tag = 250 //cheap as they get
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/gun/projectile/shotgun/slidebarrel/load_ammo(obj/item/A, mob/user)
+/obj/item/gun/projectile/shotgun/slidebarrel/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
 		if((load_method & SINGLE_CASING) && caliber == C.caliber && loaded.len)

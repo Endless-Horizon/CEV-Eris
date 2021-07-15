@@ -1,9 +1,9 @@
-/obj/item/weapon/implant/health
+/obj/item/implant/health
 	name = "health implant"
 	var/healthstring = ""
 	origin_tech = list(TECH_MATERIAL=3, TECH_BIO=4)
 
-/obj/item/weapon/implant/health/proc/sensehealth()
+/obj/item/implant/health/proc/sensehealth()
 	if(!implanted)
 		return "ERROR"
 	else
@@ -15,7 +15,7 @@
 		return healthstring
 
 
-/obj/item/weapon/implantcase/health
+/obj/item/implantcase/health
 	name = "glass case - 'health'"
 	desc = "A case containing a health tracking implant."
-	implant = /obj/item/weapon/implant/health
+	implant = /obj/item/implant/health

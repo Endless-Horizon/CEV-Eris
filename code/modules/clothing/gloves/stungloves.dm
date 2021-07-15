@@ -9,12 +9,12 @@
 	var/agonyforce = 30
 	var/status = FALSE		//whether the thing is on or not
 	var/hitcost = 100
-	var/obj/item/weapon/cell/cell
-	var/suitable_cell = /obj/item/weapon/cell/medium
+	var/obj/item/cell/cell
+	var/suitable_cell = /obj/item/cell/medium
 
 /obj/item/clothing/gloves/stungloves/Initialize()
 	. = ..()
-	cell = new /obj/item/weapon/cell/medium/high(src)
+	cell = new /obj/item/cell/medium/high(src)
 	update_icon()
 
 /obj/item/clothing/gloves/stungloves/get_cell()

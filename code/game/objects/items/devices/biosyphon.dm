@@ -32,7 +32,7 @@
 
 /obj/item/biosyphon/Process()
 	if(world.time >= (last_produce + cooldown))
-		var/obj/item/weapon/storage/box/donut/D = new /obj/item/weapon/storage/box/donut(get_turf(src))
+		var/obj/item/storage/box/donut/D = new /obj/item/storage/box/donut(get_turf(src))
 		visible_message(SPAN_NOTICE("[name] drop [D]."))
 		last_produce = world.time
 

@@ -231,7 +231,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 			autopulse = !autopulse
 
 	if(href_list["remove"])
-		if(istype(held_item, /obj/item/weapon/tool/screwdriver))
+		if(istype(held_item, /obj/item/tool/screwdriver))
 			if(!removable)
 				to_chat(usr, SPAN_WARNING("\The [src] seems to be permanently attached to the case."))
 				return

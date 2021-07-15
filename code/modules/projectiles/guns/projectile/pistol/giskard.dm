@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/giskard
+/obj/item/gun/projectile/giskard
 	name = "FS HG .35 Auto \"Giskard\""
 	desc = "A popular \"Frozen Star\" brand pocket pistol chambered for the ubiquitous .35 auto round. Uses standard capacity magazines."
 	icon = 'icons/obj/guns/projectile/giskard.dmi'
@@ -21,7 +21,7 @@
 	recoil_buildup = 2
 	spawn_tags = SPAWN_TAG_FS_PROJECTILE
 
-/obj/item/weapon/gun/projectile/giskard/on_update_icon()
+/obj/item/gun/projectile/giskard/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -40,6 +40,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/giskard/Initialize()
+/obj/item/gun/projectile/giskard/Initialize()
 	. = ..()
 	update_icon()

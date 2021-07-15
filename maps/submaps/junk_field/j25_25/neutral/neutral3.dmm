@@ -156,10 +156,10 @@
 /area/template_noop)
 "br" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/tank/emergency_oxygen{
+/obj/item/tank/emergency_oxygen{
 	pixel_x = -8
 	},
-/obj/item/weapon/tank/emergency_oxygen{
+/obj/item/tank/emergency_oxygen{
 	pixel_x = -8
 	},
 /obj/item/clothing/mask/breath{
@@ -191,7 +191,7 @@
 /area/template_noop)
 "by" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/tank/emergency_oxygen/double,
+/obj/item/tank/emergency_oxygen/double,
 /obj/machinery/light/small,
 /turf/simulated/floor/plating/under,
 /area/template_noop)

@@ -4,11 +4,11 @@
 
 /datum/design/autolathe/sec/handcuffs
 	name = "handcuffs"
-	build_path = /obj/item/weapon/handcuffs
+	build_path = /obj/item/handcuffs
 
 /datum/design/autolathe/sec/zipties
 	name = "zip ties"
-	build_path = /obj/item/weapon/handcuffs/zipties
+	build_path = /obj/item/handcuffs/zipties
 
 /datum/design/autolathe/sec/electropack
 	name = "electropack"
@@ -20,15 +20,15 @@
 
 /datum/design/autolathe/sec/shield_riot
 	name = "riot shield"
-	build_path = /obj/item/weapon/shield/riot
+	build_path = /obj/item/shield/riot
 
 /datum/design/autolathe/sec/beartrap
 	name = "beartrap"
-	build_path = /obj/item/weapon/beartrap
+	build_path = /obj/item/beartrap
 
 /datum/design/autolathe/sec/silencer
 	name = "silencer"
-	build_path = /obj/item/weapon/gun_upgrade/muzzle/silencer
+	build_path = /obj/item/gun_upgrade/muzzle/silencer
 
 /datum/design/autolathe/sec/hailer
 	name = "hailer"
@@ -36,4 +36,4 @@
 
 /datum/design/autolathe/sec/watchman
 	name = "Frozen Star \"Watchman\" scope"
-	build_path = /obj/item/weapon/gun_upgrade/scope/watchman
+	build_path = /obj/item/gun_upgrade/scope/watchman

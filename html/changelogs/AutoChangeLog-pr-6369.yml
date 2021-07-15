@@ -1,0 +1,4 @@
+author: Wouju
+delete-after: true
+changes:
+  - bugfix: fixed some new jumpsuits not showing up properly

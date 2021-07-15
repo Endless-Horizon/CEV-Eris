@@ -23,7 +23,7 @@
 /area/crawler)
 "g" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/brown,
+/obj/item/bedsheet/brown,
 /turf/simulated/floor/wood,
 /area/crawler)
 "h" = (

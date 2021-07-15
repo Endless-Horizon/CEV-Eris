@@ -14,7 +14,7 @@ var/global/excelsior_last_draft = 0
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
 	active_power_usage = 15000
-	circuit = /obj/item/weapon/electronics/circuitboard/excelsior_teleporter
+	circuit = /obj/item/electronics/circuitboard/excelsior_teleporter
 
 	var/max_energy = 100
 	var/energy_gain = 1
@@ -40,25 +40,25 @@ var/global/excelsior_last_draft = 0
 		)
 
 	var/list/parts_list = list(
-		/obj/item/weapon/stock_parts/console_screen = 50,
-		/obj/item/weapon/stock_parts/capacitor = 100,
-		/obj/item/weapon/stock_parts/scanning_module = 100,
-		/obj/item/weapon/stock_parts/manipulator = 100,
-		/obj/item/weapon/stock_parts/micro_laser = 100,
-		/obj/item/weapon/stock_parts/matter_bin = 100,
-		/obj/item/weapon/stock_parts/capacitor/excelsior = 350,
-		/obj/item/weapon/stock_parts/scanning_module/excelsior = 350,
-		/obj/item/weapon/stock_parts/manipulator/excelsior = 350,
-		/obj/item/weapon/stock_parts/micro_laser/excelsior = 350,
-		/obj/item/weapon/stock_parts/matter_bin/excelsior = 350,
+		/obj/item/stock_parts/console_screen = 50,
+		/obj/item/stock_parts/capacitor = 100,
+		/obj/item/stock_parts/scanning_module = 100,
+		/obj/item/stock_parts/manipulator = 100,
+		/obj/item/stock_parts/micro_laser = 100,
+		/obj/item/stock_parts/matter_bin = 100,
+		/obj/item/stock_parts/capacitor/excelsior = 350,
+		/obj/item/stock_parts/scanning_module/excelsior = 350,
+		/obj/item/stock_parts/manipulator/excelsior = 350,
+		/obj/item/stock_parts/micro_laser/excelsior = 350,
+		/obj/item/stock_parts/matter_bin/excelsior = 350,
 		/obj/item/clothing/under/excelsior = 50,
-		/obj/item/weapon/electronics/circuitboard/excelsior_teleporter = 500,
-		/obj/item/weapon/electronics/circuitboard/excelsiorautolathe = 150,
-		/obj/item/weapon/electronics/circuitboard/excelsiorreconstructor = 150,
-		/obj/item/weapon/electronics/circuitboard/excelsior_turret = 150,
-		/obj/item/weapon/electronics/circuitboard/excelsiorshieldwallgen = 150,
-		/obj/item/weapon/electronics/circuitboard/excelsior_boombox = 150,
-		/obj/item/weapon/electronics/circuitboard/diesel = 150
+		/obj/item/electronics/circuitboard/excelsior_teleporter = 500,
+		/obj/item/electronics/circuitboard/excelsiorautolathe = 150,
+		/obj/item/electronics/circuitboard/excelsiorreconstructor = 150,
+		/obj/item/electronics/circuitboard/excelsior_turret = 150,
+		/obj/item/electronics/circuitboard/excelsiorshieldwallgen = 150,
+		/obj/item/electronics/circuitboard/excelsior_boombox = 150,
+		/obj/item/electronics/circuitboard/diesel = 150
 		)
 	var/entropy_value = 8
 
@@ -74,7 +74,7 @@ var/global/excelsior_last_draft = 0
 /obj/machinery/complant_teleporter/RefreshParts()
 	var/man_rating = 0
 	var/man_amount = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		man_rating += M.rating
 		entropy_value = initial(entropy_value)/M.rating
 		man_amount++
@@ -85,7 +85,7 @@ var/global/excelsior_last_draft = 0
 	energy_gain = initial(energy_gain) * coef
 	active_power_usage = initial(active_power_usage) * coef
 
-	var/obj/item/weapon/cell/C = locate() in component_parts
+	var/obj/item/cell/C = locate() in component_parts
 	if(C)
 		max_energy = C.maxcharge //Big buff for max energy
 		excelsior_max_energy = 0
@@ -372,8 +372,8 @@ var/global/excelsior_last_draft = 0
 	conscript.equip_to_appropriate_slot(new /obj/item/clothing/under/excelsior())
 	conscript.equip_to_appropriate_slot(new /obj/item/clothing/shoes/workboots())
 	conscript.equip_to_appropriate_slot(new /obj/item/device/radio/headset())
-	conscript.equip_to_appropriate_slot(new /obj/item/weapon/storage/backpack/satchel())
-	var/obj/item/weapon/card/id/card = new(conscript)
+	conscript.equip_to_appropriate_slot(new /obj/item/storage/backpack/satchel())
+	var/obj/item/card/id/card = new(conscript)
 	conscript.set_id_info(card)
 	card.assignment = "Excelsior Conscript"
 	card.access = list(access_maint_tunnels)

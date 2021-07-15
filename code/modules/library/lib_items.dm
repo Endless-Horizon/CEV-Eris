@@ -23,32 +23,32 @@
 /obj/structure/bookcase/Initialize()
 	. = ..()
 	for(var/obj/item/I in loc)
-		if(istype(I, /obj/item/weapon/book))
+		if(istype(I, /obj/item/book))
 			I.loc = src
 	update_icon()
 
 /obj/structure/bookcase/attackby(obj/O as obj, mob/user as mob)
-	if(istype(O, /obj/item/weapon/book))
+	if(istype(O, /obj/item/book))
 		user.drop_item()
 		O.loc = src
 		update_icon()
-	else if(istype(O, /obj/item/weapon/pen))
+	else if(istype(O, /obj/item/pen))
 		var/newname = sanitizeSafe(input("What would you like to title this bookshelf?"), MAX_NAME_LEN)
 		if(!newname)
 			return
 		else
 			name = ("bookcase ([newname])")
-	else if(istype(O,/obj/item/weapon/tool/wrench))
+	else if(istype(O,/obj/item/tool/wrench))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 		to_chat(user, (anchored ? SPAN_NOTICE("You unfasten \the [src] from the floor.") : SPAN_NOTICE("You secure \the [src] to the floor.")))
 		anchored = !anchored
-	else if(istype(O,/obj/item/weapon/tool/screwdriver))
+	else if(istype(O,/obj/item/tool/screwdriver))
 		playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
 		to_chat(user, SPAN_NOTICE("You begin dismantling \the [src]."))
 		if(do_after(user,25,src))
 			to_chat(user, SPAN_NOTICE("You dismantle \the [src]."))
 			drop_materials(drop_location())
-			for(var/obj/item/weapon/book/b in contents)
+			for(var/obj/item/book/b in contents)
 				b.loc = (get_turf(src))
 			qdel(src)
 
@@ -57,7 +57,7 @@
 
 /obj/structure/bookcase/attack_hand(var/mob/user as mob)
 	if(contents.len)
-		var/obj/item/weapon/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
+		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
 			if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 				return
@@ -71,19 +71,19 @@
 /obj/structure/bookcase/ex_act(severity)
 	switch(severity)
 		if(1)
-			for(var/obj/item/weapon/book/b in contents)
+			for(var/obj/item/book/b in contents)
 				qdel(b)
 			qdel(src)
 			return
 		if(2)
-			for(var/obj/item/weapon/book/b in contents)
+			for(var/obj/item/book/b in contents)
 				if (prob(50)) b.loc = (get_turf(src))
 				else qdel(b)
 			qdel(src)
 			return
 		if(3)
 			if (prob(50))
-				for(var/obj/item/weapon/book/b in contents)
+				for(var/obj/item/book/b in contents)
 					b.loc = (get_turf(src))
 				qdel(src)
 			return
@@ -103,9 +103,9 @@
 
 /obj/structure/bookcase/manuals/medical/New()
 	..()
-	new /obj/item/weapon/book/manual/wiki/medical_guide(src)
-	new /obj/item/weapon/book/manual/wiki/medical_guide(src)
-	new /obj/item/weapon/book/manual/wiki/medical_guide(src)
+	new /obj/item/book/manual/wiki/medical_guide(src)
+	new /obj/item/book/manual/wiki/medical_guide(src)
+	new /obj/item/book/manual/wiki/medical_guide(src)
 	update_icon()
 
 
@@ -114,11 +114,11 @@
 
 /obj/structure/bookcase/manuals/engineering/New()
 	..()
-	new /obj/item/weapon/book/manual/wiki/engineering_construction(src)
-	new /obj/item/weapon/book/manual/wiki/engineering_hacking(src)
-	new /obj/item/weapon/book/manual/wiki/engineering_guide(src)
-	new /obj/item/weapon/book/manual/wiki/engineering_atmos(src)
-	new /obj/item/weapon/book/manual/wiki/engineering_singularity(src)
+	new /obj/item/book/manual/wiki/engineering_construction(src)
+	new /obj/item/book/manual/wiki/engineering_hacking(src)
+	new /obj/item/book/manual/wiki/engineering_guide(src)
+	new /obj/item/book/manual/wiki/engineering_atmos(src)
+	new /obj/item/book/manual/wiki/engineering_singularity(src)
 	update_icon()
 
 /obj/structure/bookcase/manuals/research_and_development
@@ -126,16 +126,16 @@
 
 /obj/structure/bookcase/manuals/research_and_development/New()
 	..()
-	new /obj/item/weapon/book/manual/wiki/science_research(src)
-	new /obj/item/weapon/book/manual/wiki/science_research(src)
-	new /obj/item/weapon/book/manual/wiki/science_robotics(src)
+	new /obj/item/book/manual/wiki/science_research(src)
+	new /obj/item/book/manual/wiki/science_research(src)
+	new /obj/item/book/manual/wiki/science_robotics(src)
 	update_icon()
 
 
 /*
  * Book
  */
-/obj/item/weapon/book
+/obj/item/book
 	name = "book"
 	icon = 'icons/obj/library.dmi'
 	icon_state ="book"
@@ -152,7 +152,7 @@
 	var/obj/item/store	//What's in the book?
 	var/window_size = null // Specific window size for the book, i.e: "1920x1080", Size x Width
 
-/obj/item/weapon/book/attack_self(var/mob/user as mob)
+/obj/item/book/attack_self(var/mob/user as mob)
 	playsound(src.loc, pick('sound/items/BOOK_Turn_Page_1.ogg',\
 		'sound/items/BOOK_Turn_Page_2.ogg',\
 		'sound/items/BOOK_Turn_Page_3.ogg',\
@@ -174,7 +174,7 @@
 	else
 		to_chat(user, "This book is completely blank!")
 
-/obj/item/weapon/book/attackby(obj/item/I, mob/user)
+/obj/item/book/attackby(obj/item/I, mob/user)
 	if(carved)
 		if(!store)
 			if(I.w_class < ITEM_SIZE_NORMAL)
@@ -189,7 +189,7 @@
 		else
 			to_chat(user, SPAN_NOTICE("There's already something in [title]!"))
 			return
-	if(istype(I, /obj/item/weapon/pen))
+	if(istype(I, /obj/item/pen))
 		if(unique)
 			to_chat(user, "These pages don't seem to take the ink well. Looks like you can't modify it.")
 			return
@@ -219,8 +219,8 @@
 					src.author = newauthor
 			else
 				return
-	else if(istype(I, /obj/item/weapon/barcodescanner))
-		var/obj/item/weapon/barcodescanner/scanner = I
+	else if(istype(I, /obj/item/barcodescanner))
+		var/obj/item/barcodescanner/scanner = I
 		if(!scanner.computer)
 			to_chat(user, "[I]'s screen flashes: 'No associated computer found!'")
 		else
@@ -242,7 +242,7 @@
 					to_chat(user, "[I]'s screen flashes: 'Book stored in buffer. No active check-out record found for current title.'")
 				if(3)
 					scanner.book = src
-					for(var/obj/item/weapon/book in scanner.computer.inventory)
+					for(var/obj/item/book in scanner.computer.inventory)
 						if(book == src)
 							to_chat(user, "[I]'s screen flashes: 'Book stored in buffer. Title already present in inventory, aborting to avoid duplicate entry.'")
 							return
@@ -258,7 +258,7 @@
 	else
 		..()
 
-/obj/item/weapon/book/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/book/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(user.targeted_organ == BP_EYES)
 		user.visible_message(SPAN_NOTICE("You open up the book and show it to [M]. "), \
 			SPAN_NOTICE(" [user] opens up a book and shows it to [M]. "))
@@ -269,7 +269,7 @@
 /*
  * Barcode Scanner
  */
-/obj/item/weapon/barcodescanner
+/obj/item/barcodescanner
 	name = "barcode scanner"
 	icon = 'icons/obj/library.dmi'
 	icon_state ="scanner"
@@ -277,7 +277,7 @@
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	var/obj/machinery/librarycomp/computer // Associated computer - Modes 1 to 3 use this
-	var/obj/item/weapon/book/book	 //  Currently scanned book
+	var/obj/item/book/book	 //  Currently scanned book
 	var/mode = 0 					// 0 - Scan only, 1 - Scan and Set Buffer, 2 - Scan and Attempt to Check In, 3 - Scan and Attempt to Add to Inventory
 
 	attack_self(mob/user as mob)

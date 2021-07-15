@@ -149,8 +149,8 @@
 						icon_state = "[base_state]_1"
 
 		if(STATE_WIRES)
-			if(istype(I, /obj/item/weapon/electronics/circuitboard))
-				var/obj/item/weapon/electronics/circuitboard/B = I
+			if(istype(I, /obj/item/electronics/circuitboard))
+				var/obj/item/electronics/circuitboard/B = I
 				if(B.board_type == "machine" && frame_type == B.frame_type)
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					to_chat(user, SPAN_NOTICE("You add the circuit board to the frame."))
@@ -163,9 +163,9 @@
 					req_components = circuit.req_components.Copy()
 
 					var/static/list/special_component_names = list(
-						/obj/item/weapon/cell/large = "L-class power cell",
-						/obj/item/weapon/cell/medium = "M-class power cell",
-						/obj/item/weapon/cell/small = "S-class power cell",
+						/obj/item/cell/large = "L-class power cell",
+						/obj/item/cell/medium = "M-class power cell",
+						/obj/item/cell/small = "S-class power cell",
 						)
 
 					req_component_names = list()

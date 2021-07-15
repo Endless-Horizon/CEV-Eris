@@ -1,12 +1,12 @@
 // Excelsior
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior
-	bad_type = /obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior
+/obj/item/computer_hardware/hard_drive/portable/design/excelsior
+	bad_type = /obj/item/computer_hardware/hard_drive/portable/design/excelsior
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 1)
 	spawn_tags = SPAWN_TAG_DESIGN_EXCELSIOR
 	icon_state = "excelsior"
 	spawn_frequency = 8
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/core
+/obj/item/computer_hardware/hard_drive/portable/design/excelsior/core
 	disk_name = "Excelsior Means of Production"// TODO: Make this only usable by excelsior autolathes, and give excelsior autolathes a check for a complant to use.
 	desc = {"The back has a machine etching: \"This struggle must be organised, according to \"all the rules of the art\", \
 	by people who are professionally engaged in revolutionary activity.\""}
@@ -40,7 +40,7 @@
 		/datum/design/autolathe/device/propaganda_chip
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/weapons
+/obj/item/computer_hardware/hard_drive/portable/design/excelsior/weapons
 	disk_name = "Excelsior Means of Revolution"
 	desc = "The back has a machine etching: \"We stand for organized terror - this should be frankly admitted. Terror is an absolute necessity during times of revolution.\""
 	spawn_blacklisted = TRUE
@@ -79,7 +79,7 @@
 		/datum/design/autolathe/sec/beartrap
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/drozd
+/obj/item/computer_hardware/hard_drive/portable/design/excelsior/drozd
 	disk_name = "Excelsior - .40 Drozd SMG"
 	desc = {"The back has a machine etching:\n \
 	\"Nobody is to be blamed for being born a slave; \
@@ -94,7 +94,7 @@
 		/datum/design/autolathe/ammo/msmg/rubber
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/ak47
+/obj/item/computer_hardware/hard_drive/portable/design/excelsior/ak47
 	disk_name = "Excelsior - .30 AK47 Rifle"
 	desc = {"The back has a machine etching:\n \
 	\"Fear not the tyrant of the old world; \
@@ -110,7 +110,7 @@
 		/datum/design/autolathe/ammo/lrifle/rubber
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/vintorez
+/obj/item/computer_hardware/hard_drive/portable/design/excelsior/vintorez
 	disk_name = "Excelsior - .20 Vintorez Rifle"
 	desc = {"The back has a machine etching:\n \
 	\"Remember the failures of those before; \
@@ -126,7 +126,7 @@
 		/datum/design/autolathe/ammo/srifle/rubber
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/boltgun
+/obj/item/computer_hardware/hard_drive/portable/design/excelsior/boltgun
 	disk_name = "Excelsior - .30 Kardashev-Mosin Rifle"
 	desc = {"The back has a machine etching:\n \
 	\"Remember the Haven; \
@@ -143,7 +143,7 @@
 		/datum/design/autolathe/ammo/lrifle_ammobox_small/rubber
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/makarov
+/obj/item/computer_hardware/hard_drive/portable/design/excelsior/makarov
 	disk_name = "Excelsior - .35 Makarov HG"
 	desc = {"The back has a machine etching:\n \
 	\"Suffer not the slouch, the layabout, nor the shirk; \
@@ -159,7 +159,7 @@
 		/datum/design/autolathe/ammo/magazine_pistol/rubber
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/maxim
+/obj/item/computer_hardware/hard_drive/portable/design/excelsior/maxim
 	disk_name = "Excelsior - .30 Maxim HMG"
 	desc = {"The back has a machine etching:\n \
 	\"Whatever happens, we have got the Maxim gun, and they have not.\""}

@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/straylight
+/obj/item/gun/projectile/automatic/straylight
 	name = "FS SMG .35 Auto \"Straylight\""
 	desc = "A compact, lightweight and cheap rapid-firing submachine gun. In past was primarily used for testing ammunition and weapon modifications, \
 			novadays mass produced for IH security forces. Suffers from poor recoil control and underperforming ballistic impact, \
@@ -30,7 +30,7 @@
 
 	spawn_tags = SPAWN_TAG_FS_PROJECTILE
 
-/obj/item/weapon/gun/projectile/automatic/straylight/on_update_icon()
+/obj/item/gun/projectile/automatic/straylight/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -50,6 +50,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/automatic/straylight/Initialize()
+/obj/item/gun/projectile/automatic/straylight/Initialize()
 	. = ..()
 	update_icon()

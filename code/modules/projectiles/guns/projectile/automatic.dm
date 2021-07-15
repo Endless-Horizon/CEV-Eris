@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic
+/obj/item/gun/projectile/automatic
 	name = "automatic projectile gun"
 	desc = "A debug firearm, which should be reported if present in-game. Uses 9mm rounds."
 	icon = 'icons/obj/guns/projectile/generic_smg.dmi'
@@ -16,7 +16,7 @@
 	reload_sound = 'sound/weapons/guns/interact/smg_magin.ogg'
 	cocked_sound = 'sound/weapons/guns/interact/smg_cock.ogg'
 	zoom_factor = 0 //Default zoom factor you want on all automatic weapons.
-	bad_type = /obj/item/weapon/gun/projectile/automatic
+	bad_type = /obj/item/gun/projectile/automatic
 	gun_parts = list(/obj/item/part/gun = 3 ,/obj/item/stack/material/steel = 15)
 	init_firemodes = list(
 		FULL_AUTO_400,
@@ -57,8 +57,8 @@
 				can_fire = FALSE
 
 			//Projectile weapons need to have enough ammo to fire
-			if(istype(gun, /obj/item/weapon/gun/projectile))
-				var/obj/item/weapon/gun/projectile/P = gun
+			if(istype(gun, /obj/item/gun/projectile))
+				var/obj/item/gun/projectile/P = gun
 				if (!P.get_ammo())
 					can_fire = FALSE
 

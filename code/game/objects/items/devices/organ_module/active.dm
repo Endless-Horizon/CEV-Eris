@@ -23,7 +23,7 @@
 		to_chat(H, SPAN_WARNING("You can't do that now!"))
 		return
 /*
-	for(var/obj/item/weapon/implant/prosthesis_inhibition/I in H)
+	for(var/obj/item/implant/prosthesis_inhibition/I in H)
 		if(I.malfunction)
 			continue
 		to_chat(H, SPAN_WARNING("[I] in your [I.part] prevent [src] activation!"))

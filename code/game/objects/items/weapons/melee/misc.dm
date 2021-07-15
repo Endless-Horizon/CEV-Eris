@@ -1,6 +1,7 @@
-/obj/item/weapon/melee/toolbox_maul
+/obj/item/melee/toolbox_maul
 	name = "toolmop the maul"
 	desc = "Toolbox tied to mop. A weapon of choice."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hm_hammer"
 	item_state = "hm_hammer"
 	force = WEAPON_FORCE_PAINFUL
@@ -10,7 +11,7 @@
 	attack_verb = list("robusted", "slammed")
 	structure_damage_factor = STRUCTURE_DAMAGE_HEAVY
 	var/reinforced = FALSE
-	var/obj/item/weapon/storage/toolbox/toolbox
+	var/obj/item/storage/toolbox/toolbox
 	New()
 		..()
 		if(!toolbox)
@@ -23,15 +24,15 @@
 			origin_tech = list(TECH_COMBAT = 1)
 
 
-/obj/item/weapon/melee/toolbox_maul/on_update_icon()
+/obj/item/melee/toolbox_maul/on_update_icon()
 	..()
 	cut_overlays()
 	if(reinforced)
 		add_overlays("[icon_state]-duct_tape")
 
-/obj/item/weapon/melee/toolbox_maul/proc/break_apart(var/mob/living/user)
+/obj/item/melee/toolbox_maul/proc/break_apart(var/mob/living/user)
 	qdel(src)
-	var/obj/item/weapon/mop/mop = new(user.loc)
+	var/obj/item/mop/mop = new(user.loc)
 	if(!user.get_active_hand())
 		user.put_in_active_hand(mop)
 	else
@@ -39,9 +40,9 @@
 	toolbox.loc = user.loc
 
 
-/obj/item/weapon/melee/toolbox_maul/attackby(obj/item/C, mob/living/user)
+/obj/item/melee/toolbox_maul/attackby(obj/item/C, mob/living/user)
 	if(toolbox)
-		if(istype(C, /obj/item/weapon/tool/wirecutters))
+		if(istype(C, /obj/item/tool/wirecutters))
 			if(reinforced)
 				to_chat(user, SPAN_NOTICE("You cutted up the tapes from [src]."))
 				reinforced = FALSE
@@ -49,7 +50,7 @@
 				to_chat(user, SPAN_NOTICE("You carefully cut cables from [src]."))
 				break_apart(user)
 
-		if(istype(C, /obj/item/weapon/tool/tape_roll))
+		if(istype(C, /obj/item/tool/tape_roll))
 			to_chat(user, SPAN_NOTICE("You begins to tie [src] with [C]..."))
 			if(do_after(user, 50))
 				if(!reinforced)
@@ -58,7 +59,7 @@
 				else
 					to_chat(user, SPAN_WARNING("[src] is already reinforced."))
 	else
-		if(istype(C, /obj/item/weapon/storage/toolbox))
+		if(istype(C, /obj/item/storage/toolbox))
 			src.name = initial(src.name)
 			src.desc = initial(src.desc)
 			src.force = initial(src.force)
@@ -68,16 +69,16 @@
 			item_state = initial(item_state)
 			toolbox = C
 			user.drop_from_inventory(C, src)
-			if(istype(C, /obj/item/weapon/storage/toolbox/electrical))
+			if(istype(C, /obj/item/storage/toolbox/electrical))
 				icon_state = "hm_hammer_yellow"
 				item_state = "hm_hammer_yellow"
-			if(istype(C, /obj/item/weapon/storage/toolbox/mechanical))
+			if(istype(C, /obj/item/storage/toolbox/mechanical))
 				icon_state = "hm_hammer_blue"
 				item_state = "hm_hammer_blue"
 			to_chat(user, SPAN_NOTICE("You tied [C] to [src] and finally finish it!"))
 	update_icon()
 
-/obj/item/weapon/melee/toolbox_maul/attack(mob/living/carbon/human/M as mob, mob/living/carbon/user as mob)
+/obj/item/melee/toolbox_maul/attack(mob/living/carbon/human/M as mob, mob/living/carbon/user as mob)
 	..()
 	if(!reinforced && prob(5))
 		break_apart(user)

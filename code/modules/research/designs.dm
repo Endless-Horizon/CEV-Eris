@@ -89,13 +89,13 @@ other types of metals and chemistry for reagents).
 /datum/design/research/item/beaker/noreact
 	name = "cryostasis"
 	desc = "A cryostasis beaker that allows for chemical storage without reactions. Can hold up to 50 units."
-	build_path = /obj/item/weapon/reagent_containers/glass/beaker/noreact
+	build_path = /obj/item/reagent_containers/glass/beaker/noreact
 	sort_string = "MADAA"
 
 /datum/design/research/item/beaker/bluespace
 	name = "bluespace"
 	desc = "A bluespace beaker, powered by experimental bluespace technology and Element Cuban combined with the Compound Pete. Can hold up to 300 units."
-	build_path = /obj/item/weapon/reagent_containers/glass/beaker/bluespace
+	build_path = /obj/item/reagent_containers/glass/beaker/bluespace
 	sort_string = "MADAB"
 
 /datum/design/research/item/medical/nanopaste
@@ -106,7 +106,7 @@ other types of metals and chemistry for reagents).
 
 /datum/design/research/item/scalpel_laser
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field."
-	build_path = /obj/item/weapon/tool/scalpel/laser
+	build_path = /obj/item/tool/scalpel/laser
 	category = "Medical"
 	sort_string = "MBBAA"
 
@@ -164,35 +164,35 @@ other types of metals and chemistry for reagents).
 /datum/design/research/item/bag_holding
 	name = "'Bag of Holding', an infinite capacity bag prototype"
 	desc = "Using localized pockets of bluespace this bag prototype offers incredible storage capacity with the contents weighing nothing. It's a shame the bag itself is pretty heavy."
-	build_path = /obj/item/weapon/storage/backpack/holding
+	build_path = /obj/item/storage/backpack/holding
 	category = "Telecoms | Bluespace"
 	sort_string = "VAEAA"
 
 /datum/design/research/item/belt_holding
 	name = "'Belt of Holding', an infinite capacity belt prototype"
 	desc = "Using localized pockets of bluespace this belt prototype offers incredible storage capacity with the contents weighing nothing."
-	build_path = /obj/item/weapon/storage/belt/holding
+	build_path = /obj/item/storage/belt/holding
 	category = "Telecoms | Bluespace"
 	sort_string = "VAEAB"
 
 /datum/design/research/item/pouch_holding
 	name = "'Pouch of Holding', an infinite capacity pouch prototype"
 	desc = "Using localized pockets of bluespace this pouch prototype offers incredible storage capacity with the contents weighing nothing."
-	build_path = /obj/item/weapon/storage/pouch/holding
+	build_path = /obj/item/storage/pouch/holding
 	category = "Telecoms | Bluespace"
 	sort_string = "VAEAC"
 
 /datum/design/research/item/trashbag_holding
 	name = "'Trashbag of Holding', an infinite capacity trashbag prototype"
 	desc = "Using localized pockets of bluespace this trashbag prototype offers incredible storage capacity with the contents weighing nothing."
-	build_path = /obj/item/weapon/storage/bag/trash/holding
+	build_path = /obj/item/storage/bag/trash/holding
 	category = "Telecoms | Bluespace"
 	sort_string = "VAEAD"
 
 /datum/design/research/item/oresatchel_holding
 	name = "'Ore satchel of Holding', an infinite capacity ore satchel prototype"
 	desc = "Using localized pockets of bluespace this ore satchel prototype offers incredible storage capacity with the contents weighing nothing."
-	build_path = /obj/item/weapon/storage/bag/ore/holding
+	build_path = /obj/item/storage/bag/ore/holding
 	category = "Telecoms | Bluespace"
 	sort_string = "VAEAE"
 
@@ -223,6 +223,6 @@ other types of metals and chemistry for reagents).
 	name = "Holographic equipment kit"
 	desc = "A kit of dangerous, high-tech equipment with changeable looks."
 	req_tech = list(TECH_COVERT = 2)
-	build_path = /obj/item/weapon/storage/box/syndie_kit/chameleon
+	build_path = /obj/item/storage/box/syndie_kit/chameleon
 	sort_string = "VASBA"
 */

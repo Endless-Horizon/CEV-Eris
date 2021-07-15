@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn
 	name = "sawn-off shotgun"
 	desc = "Omar's coming!"
 	icon = 'icons/obj/guns/projectile/sawnshotgun.dmi'

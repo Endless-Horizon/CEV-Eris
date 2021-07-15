@@ -145,8 +145,8 @@
 	if(default_deconstruction(S, user))
 		return
 
-	if (istype(S, /obj/item/weapon/spacecash))
-		var/obj/item/weapon/spacecash/cash = S
+	if (istype(S, /obj/item/spacecash))
+		var/obj/item/spacecash/cash = S
 		if ((cash.worth > 0) && (bet + cash.worth <= 1000))
 			to_chat(user, SPAN_NOTICE("You insert [cash.worth] Credits into [src]."))
 			bet += cash.worth
@@ -155,7 +155,7 @@
 		else
 			to_chat(user, SPAN_WARNING("You must bet 1-[1000 - bet] Credits! Can't insert [cash.worth], that's too much."))
 
-	else if (istype(S, /obj/item/weapon/coin))
+	else if (istype(S, /obj/item/coin))
 		to_chat(user, SPAN_NOTICE("You add the [S.name] into the [src]. It will slightly increase chance to win."))
 		user.drop_from_inventory(S)
 		bet = 100

@@ -32,7 +32,7 @@
 
 	var/passenger_allowed = 1
 
-	var/obj/item/weapon/cell/large/cell
+	var/obj/item/cell/large/cell
 	var/charge_use = 5	//set this to adjust the amount of power the vehicle uses per move
 
 	var/atom/movable/load		//all vehicles can take a load, since they should all be a least drivable
@@ -124,9 +124,9 @@
 		if(ABORT_CHECK)
 			return
 
-	if(istype(I, /obj/item/weapon/hand_labeler))
+	if(istype(I, /obj/item/hand_labeler))
 		return
-	else if(istype(I, /obj/item/weapon/cell/large) && !cell && open)
+	else if(istype(I, /obj/item/cell/large) && !cell && open)
 		insert_cell(I, user)
 	else if(hasvar(I,"force") && hasvar(I,"damtype"))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -255,7 +255,7 @@
 		turn_on()
 		return
 
-/obj/vehicle/proc/insert_cell(var/obj/item/weapon/cell/large/C, var/mob/living/carbon/human/H)
+/obj/vehicle/proc/insert_cell(var/obj/item/cell/large/C, var/mob/living/carbon/human/H)
 	if(cell)
 		return
 	if(!istype(C))

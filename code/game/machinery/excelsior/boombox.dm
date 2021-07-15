@@ -8,7 +8,7 @@
 	idle_power_usage = 10
 	active_power_usage = 60
 	use_power = TRUE
-	circuit = /obj/item/weapon/electronics/circuitboard/excelsior_boombox
+	circuit = /obj/item/electronics/circuitboard/excelsior_boombox
 	var/active = FALSE
 	var/update_time = 0 // Made so callbacks can't be spamed
 

@@ -32,7 +32,7 @@
 	..()
 	update_icons()
 
-	botcard = new /obj/item/weapon/card/id(src)
+	botcard = new /obj/item/card/id(src)
 	botcard.access = botcard_access.Copy()
 
 	access_scanner = new /obj(src)
@@ -59,7 +59,7 @@
 	..()
 	update_icons()
 
-	botcard = new /obj/item/weapon/card/id(src)
+	botcard = new /obj/item/card/id(src)
 	botcard.access = botcard_access.Copy()
 
 	access_scanner = new /obj(src)

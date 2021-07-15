@@ -1,4 +1,4 @@
-/obj/item/weapon/tank/onestar_regenerator
+/obj/item/tank/onestar_regenerator
 	name = "OS Type - 13 \"Tiantipenquan\""
 	desc = "This oxygen regenerator can provide seemingly endless supply for one human to breathe."
 	icon_state = "onestar_regenerator"
@@ -13,15 +13,15 @@
 	spawn_blacklisted = TRUE
 	spawn_tags = SPAWN_TAG_ITEM_TECH_OS
 
-/obj/item/weapon/tank/onestar_regenerator/Initialize(mapload, ...)
+/obj/item/tank/onestar_regenerator/Initialize(mapload, ...)
 	. = ..()
 	ensure_breath()
 
-/obj/item/weapon/tank/onestar_regenerator/examine(mob/user)
+/obj/item/tank/onestar_regenerator/examine(mob/user)
 	. = ..(user, 0)
 
 
-/obj/item/weapon/tank/onestar_regenerator/remove_air(amount)
+/obj/item/tank/onestar_regenerator/remove_air(amount)
 	var/datum/gas_mixture/M = air_contents.remove(amount)
 	if(istype(loc, /mob/living/carbon))
 		var/mob/living/carbon/C = loc
@@ -31,10 +31,10 @@
 
 	return M
 
-/obj/item/weapon/tank/onestar_regenerator/update_gauge()
+/obj/item/tank/onestar_regenerator/update_gauge()
 	return
 
-/obj/item/weapon/tank/onestar_regenerator/proc/ensure_breath()
+/obj/item/tank/onestar_regenerator/proc/ensure_breath()
 	if(!("oxygen" in air_contents.gas) || air_contents.total_moles < BREATH_MOLES*2)
 		air_contents.adjust_gas("oxygen", BREATH_MOLES*2-air_contents.total_moles)
 

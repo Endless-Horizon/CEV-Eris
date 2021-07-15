@@ -1,10 +1,10 @@
 /datum/ritual/group/cruciform
-	implant_type = /obj/item/weapon/implant/core_implant/cruciform
+	implant_type = /obj/item/implant/core_implant/cruciform
 	success_message = "On the verge of audibility you hear pleasant music, your mind clears up and the spirit grows stronger. Your prayer was heard."
 	fail_message = "The Cruciform feels cold against your chest."
 	var/high_ritual = TRUE
 
-/datum/ritual/group/cruciform/pre_check(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C, targets)
+/datum/ritual/group/cruciform/pre_check(mob/living/carbon/human/user, obj/item/implant/core_implant/C, targets)
 	if(!..())
 		return FALSE
 	if(high_ritual && !C.get_module(CRUCIFORM_PRIEST) && !is_inquisidor(user))
@@ -194,7 +194,7 @@
 /datum/group_ritual_effect/cruciform/crusade/success(var/mob/living/M, var/cnt)
 	if(cnt < 6)
 		return
-	var/obj/item/weapon/implant/core_implant/CI = M.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
+	var/obj/item/implant/core_implant/CI = M.get_core_implant(/obj/item/implant/core_implant/cruciform)
 	if(CI)
 		var/datum/ritual/cruciform/crusader/C = /datum/ritual/cruciform/crusader/brotherhood
 		CI.known_rituals |= initial(C.name)

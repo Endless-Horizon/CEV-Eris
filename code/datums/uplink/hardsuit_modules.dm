@@ -17,7 +17,7 @@
 /datum/uplink_item/item/hardsuit_modules/ewar_voice
 	name = "Electrowarfare Suite and Voice Synthesiser"
 	item_cost = 4
-	path = /obj/item/weapon/storage/box/syndie_kit/ewar_voice
+	path = /obj/item/storage/box/syndie_kit/ewar_voice
 
 /datum/uplink_item/item/hardsuit_modules/internal_storage
 	name = "Internal storage compartment"
@@ -57,4 +57,4 @@
 /datum/uplink_item/item/hardsuit_modules/ric_merc
 	name = "Crimson Hardsuit Control Module"
 	item_cost = 25
-	path = /obj/item/weapon/rig/merc/empty
+	path = /obj/item/rig/merc/empty

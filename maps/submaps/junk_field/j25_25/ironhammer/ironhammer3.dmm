@@ -222,7 +222,7 @@
 /turf/simulated/wall/r_wall,
 /area/template_noop)
 "ba" = (
-/obj/item/weapon/paper,
+/obj/item/paper,
 /turf/simulated/floor/tiled/steel/bluecorner,
 /area/template_noop)
 "bb" = (
@@ -231,19 +231,19 @@
 /area/template_noop)
 "bc" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/pen,
+/obj/item/pen,
 /turf/simulated/floor/tiled/steel/bluecorner,
 /area/template_noop)
 "bd" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper,
+/obj/item/paper,
 /turf/simulated/floor/tiled/steel/bluecorner,
 /area/template_noop)
 "be" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
-/obj/item/weapon/paper,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/paper,
 /turf/simulated/floor/plating/under,
 /area/template_noop)
 "bf" = (
@@ -259,7 +259,7 @@
 /area/template_noop)
 "bh" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/pen,
+/obj/item/pen,
 /turf/simulated/floor/plating/under,
 /area/template_noop)
 "bi" = (
@@ -322,7 +322,7 @@
 /turf/simulated/floor/tiled/steel/bluecorner,
 /area/template_noop)
 "bs" = (
-/obj/item/weapon/gun/projectile/paco,
+/obj/item/gun/projectile/paco,
 /obj/item/ammo_casing/pistol,
 /turf/simulated/floor/tiled/steel/bluecorner,
 /area/template_noop)

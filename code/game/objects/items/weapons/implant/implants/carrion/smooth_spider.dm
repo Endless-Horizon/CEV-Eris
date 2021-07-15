@@ -1,11 +1,11 @@
-/obj/item/weapon/implant/carrion_spider/smooth
+/obj/item/implant/carrion_spider/smooth
 	name = "smooth spider"
 	desc = "Small spider filled with some sort of strange fluid. This one has a menacing aura."
 	icon_state = "spiderling_smooth"
 	spider_price = 10
 	var/not_playing = TRUE
 
-/obj/item/weapon/implant/carrion_spider/smooth/activate()
+/obj/item/implant/carrion_spider/smooth/activate()
 	..()
 	if(not_playing)
 		playsound(src.loc, 'sound/items/bikehorn.ogg', 50, 1)
@@ -13,7 +13,7 @@
 		spawn(5)
 			not_playing = TRUE
 
-/obj/item/weapon/implant/carrion_spider/smooth/Crossed(AM as mob|obj)
+/obj/item/implant/carrion_spider/smooth/Crossed(AM as mob|obj)
 	if (isliving(AM))
 		var/mob/living/M = AM
 		if((locate(/obj/structure/multiz/stairs) in get_turf(loc)) || (locate(/obj/structure/multiz/ladder) in get_turf(loc)))

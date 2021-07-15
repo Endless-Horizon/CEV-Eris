@@ -53,7 +53,7 @@
 
 /obj/item/rig_module/ai_container/Process()
 	if(integrated_ai)
-		var/obj/item/weapon/rig/rig = get_rig()
+		var/obj/item/rig/rig = get_rig()
 		if(rig && rig.ai_override_enabled)
 			integrated_ai.get_rig_stats = 1
 		else
@@ -62,7 +62,7 @@
 /mob/living/Stat()
 	. = ..()
 	if(. && get_rig_stats)
-		var/obj/item/weapon/rig/rig = get_rig()
+		var/obj/item/rig/rig = get_rig()
 		if(rig)
 			SetupStat(rig)
 
@@ -262,9 +262,9 @@
 
 /obj/item/rig_module/datajack/accepts_item(obj/item/input_device, mob/living/user)
 
-	if(istype(input_device, /obj/item/weapon/computer_hardware/hard_drive))
+	if(istype(input_device, /obj/item/computer_hardware/hard_drive))
 		to_chat(user, "You connect the disk to [src].")
-		var/obj/item/weapon/computer_hardware/hard_drive/disk = input_device
+		var/obj/item/computer_hardware/hard_drive/disk = input_device
 		if(disk.used_capacity)
 			if(load_data(disk))
 				to_chat(user, SPAN_NOTICE("Download successful."))

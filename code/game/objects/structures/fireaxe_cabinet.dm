@@ -9,7 +9,7 @@
 	var/open
 	var/unlocked
 	var/shattered
-	var/obj/item/weapon/tool/fireaxe/fireaxe
+	var/obj/item/tool/fireaxe/fireaxe
 
 /obj/structure/fireaxecabinet/attack_generic(var/mob/user, var/damage, var/attack_verb, var/wallbreaker)
 	attack_animation(user)
@@ -78,11 +78,11 @@
 
 /obj/structure/fireaxecabinet/attackby(var/obj/item/O, var/mob/user)
 
-	if(istype(O, /obj/item/weapon/tool/multitool))
+	if(istype(O, /obj/item/tool/multitool))
 		toggle_lock(user)
 		return
 
-	if(istype(O, /obj/item/weapon/tool/fireaxe))
+	if(istype(O, /obj/item/tool/fireaxe))
 		if(open)
 			if(fireaxe)
 				to_chat(user, SPAN_WARNING("There is already \a [fireaxe] inside \the [src]."))

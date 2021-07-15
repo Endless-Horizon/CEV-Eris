@@ -5,10 +5,10 @@
 ///Called by client/Move()
 ///Checks to see if you are grabbing anything and if moving will affect your grab.
 /client/proc/Process_Grab()
-	for(var/obj/item/weapon/grab/G in list(mob.l_hand, mob.r_hand))
+	for(var/obj/item/grab/G in list(mob.l_hand, mob.r_hand))
 		G.reset_kill_state() //no wandering across the station/asteroid while choking someone
 
-/obj/item/weapon/grab
+/obj/item/grab
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
@@ -34,7 +34,7 @@
 /obj/proc/affect_grab(var/mob/user, var/mob/target, var/state)
 	return FALSE
 
-/obj/item/weapon/grab/resolve_attackby(obj/O, mob/user, var/click_params)
+/obj/item/grab/resolve_attackby(obj/O, mob/user, var/click_params)
 	if(ismob(O))
 		return ..()
 	if(!istype(O) || get_dist(O, affecting) > 1)
@@ -43,7 +43,7 @@
 		qdel(src)
 	return TRUE
 
-/obj/item/weapon/grab/New(mob/user, mob/victim)
+/obj/item/grab/New(mob/user, mob/victim)
 	..()
 	loc = user
 	assailant = user
@@ -62,7 +62,7 @@
 
 	//check if assailant is grabbed by victim as well
 	if(assailant.grabbed_by)
-		for (var/obj/item/weapon/grab/G in assailant.grabbed_by)
+		for (var/obj/item/grab/G in assailant.grabbed_by)
 			if(G.assailant == affecting && G.affecting == assailant)
 				G.dancing = 1
 				G.adjust_position()
@@ -72,7 +72,7 @@
 
 //Used by throw code to hand over the mob, instead of throwing the grab.
 // The grab is then deleted by the throw code.
-/obj/item/weapon/grab/proc/throw_held()
+/obj/item/grab/proc/throw_held()
 	if(confirm())
 		if(affecting.buckled)
 			return null
@@ -83,7 +83,7 @@
 
 
 //This makes sure that the grab screen object is displayed in the correct hand.
-/obj/item/weapon/grab/proc/synch()
+/obj/item/grab/proc/synch()
 	if(affecting)
 		hud.screen_loc = src.screen_loc
 //		if(assailant.r_hand == src)
@@ -91,7 +91,7 @@
 //		else
 //			hud.screen_loc = src.screen_loc
 
-/obj/item/weapon/grab/Process()
+/obj/item/grab/Process()
 	if(gc_destroyed) // GC is trying to delete us, we'll kill our processing so we can cleanly GC
 		return PROCESS_KILL
 
@@ -108,17 +108,17 @@
 	if(state <= GRAB_AGGRESSIVE)
 		allow_upgrade = 1
 		//disallow upgrading if we're grabbing more than one person
-		if((assailant.l_hand && assailant.l_hand != src && istype(assailant.l_hand, /obj/item/weapon/grab)))
-			var/obj/item/weapon/grab/G = assailant.l_hand
+		if((assailant.l_hand && assailant.l_hand != src && istype(assailant.l_hand, /obj/item/grab)))
+			var/obj/item/grab/G = assailant.l_hand
 			if(G.affecting != affecting)
 				allow_upgrade = 0
-		if((assailant.r_hand && assailant.r_hand != src && istype(assailant.r_hand, /obj/item/weapon/grab)))
-			var/obj/item/weapon/grab/G = assailant.r_hand
+		if((assailant.r_hand && assailant.r_hand != src && istype(assailant.r_hand, /obj/item/grab)))
+			var/obj/item/grab/G = assailant.r_hand
 			if(G.affecting != affecting)
 				allow_upgrade = 0
 
 		//disallow upgrading past aggressive if we're being grabbed aggressively
-		for(var/obj/item/weapon/grab/G in affecting.grabbed_by)
+		for(var/obj/item/grab/G in affecting.grabbed_by)
 			if(G == src) continue
 			if(G.state >= GRAB_AGGRESSIVE)
 				allow_upgrade = 0
@@ -160,7 +160,7 @@
 	update_slowdown()
 	adjust_position()
 
-/obj/item/weapon/grab/proc/handle_eye_mouth_covering(mob/living/carbon/target, mob/user, var/target_zone)
+/obj/item/grab/proc/handle_eye_mouth_covering(mob/living/carbon/target, mob/user, var/target_zone)
 	//only display messages when switching between different target zones
 	var/announce = (target_zone != last_hit_zone)
 	last_hit_zone = target_zone
@@ -177,13 +177,13 @@
 			if(affecting.eye_blind < 3)
 				affecting.eye_blind = 3
 
-/obj/item/weapon/grab/attack_self()
+/obj/item/grab/attack_self()
 	return s_click(hud)
 
 
 //Updating pixelshift, position and direction
 //Gets called on process, when the grab gets upgraded or the assailant moves
-/obj/item/weapon/grab/proc/adjust_position()
+/obj/item/grab/proc/adjust_position()
 	if(!affecting)
 		return
 	if(affecting.buckled)
@@ -229,7 +229,7 @@
 		if(EAST)
 			animate(affecting, pixel_x =-shift, pixel_y = 0, 5, 1, LINEAR_EASING)
 
-/obj/item/weapon/grab/proc/s_click(obj/screen/S)
+/obj/item/grab/proc/s_click(obj/screen/S)
 	if(!confirm())
 		return
 	if(state == GRAB_UPGRADING)
@@ -309,7 +309,7 @@
 	adjust_position()
 
 //This is used to make sure the victim hasn't managed to yackety sax away before using the grab.
-/obj/item/weapon/grab/proc/confirm()
+/obj/item/grab/proc/confirm()
 	if(!assailant || !affecting)
 		qdel(src)
 		return 0
@@ -323,7 +323,7 @@
 
 // Function to compute the current slowdown and is more adjustable and uses number as starting value
 // The code will adjust or lower the slowdown depending on STAT_ROB skill, gravity, etc.
-/obj/item/weapon/grab/proc/update_slowdown()
+/obj/item/grab/proc/update_slowdown()
 	// The movment speed of assailant will be determined by the victim whatever their size or things he wears minus how strong the assailant ( ROB )
 	// New function should take the victim variables in account : size of mob, under gravity or not
 	// ROB check will start in process for the victim so the assailant can have a jump on the victim in first movement tick or some shit unless he's already grabbed
@@ -353,7 +353,7 @@
 	else if (assailant.mob_size < affecting.mob_size)
 		slowdown *= 1.5
 
-/obj/item/weapon/grab/attack(mob/M, mob/living/user)
+/obj/item/grab/attack(mob/M, mob/living/user)
 	if(!affecting)
 		return
 	if(world.time < (last_action + 20))
@@ -396,12 +396,12 @@
 	if(M == assailant && state >= GRAB_AGGRESSIVE)
 		devour(affecting, assailant)
 
-/obj/item/weapon/grab/dropped()
+/obj/item/grab/dropped()
 	loc = null
 	if(!destroying)
 		qdel(src)
 
-/obj/item/weapon/grab/proc/reset_kill_state()
+/obj/item/grab/proc/reset_kill_state()
 	if(state == GRAB_KILL)
 		assailant.visible_message(SPAN_WARNING("[assailant] lost \his tight grip on [affecting]'s neck!"))
 		affecting.attack_log += "\[[time_stamp()]\] <font color='orange'>No longer gripped by [assailant.name] ([assailant.ckey] neck.)</font>"
@@ -410,10 +410,10 @@
 		hud.icon_state = "kill"
 		state = GRAB_NECK
 
-/obj/item/weapon/grab
+/obj/item/grab
 	var/destroying = 0
 
-/obj/item/weapon/grab/Destroy()
+/obj/item/grab/Destroy()
 	if(affecting)
 		if(affecting.buckled)
 			var/obj/O = affecting.buckled
@@ -439,5 +439,5 @@
 
 
 //A stub for bay grab system. This is supposed to check a var on the associated grab datum
-/obj/item/weapon/grab/proc/force_stand()
+/obj/item/grab/proc/force_stand()
 	return FALSE

@@ -54,7 +54,7 @@
 	return
 
 /obj/item/toy/balloon/attackby(obj/O, mob/user)
-	if(istype(O, /obj/item/weapon/reagent_containers/glass))
+	if(istype(O, /obj/item/reagent_containers/glass))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
 				to_chat(user, "The [O] is empty.")
@@ -332,7 +332,7 @@
 
 /obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user)
 
-	if (istype(A, /obj/item/weapon/storage/backpack ))
+	if (istype(A, /obj/item/storage/backpack ))
 		return
 
 	else if (locate (/obj/structure/table, src.loc))
@@ -662,7 +662,7 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "poked")
 	spawn_tags = SPAWN_TAG_TOY_WEAPON
 
-/obj/item/weapon/inflatable_duck
+/obj/item/inflatable_duck
 	name = "inflatable duck"
 	desc = "No bother to sink or swim when you can just float!"
 	icon_state = "inflatable"

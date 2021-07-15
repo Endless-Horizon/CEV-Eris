@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/c20r
+/obj/item/gun/projectile/automatic/c20r
 	name = "C-20r"
 	desc = "The C-20r is a lightweight and robust bullpup SMG of ancient design, for when you REALLY need someone dead. \
 			Famous as most used SMG by criminal organizations of various sorts. Was recently reverse-engineered by Moebius \
@@ -35,7 +35,7 @@
 		SEMI_AUTO_NODELAY,
 		)
 
-/obj/item/weapon/gun/projectile/automatic/c20r/on_update_icon()
+/obj/item/gun/projectile/automatic/c20r/on_update_icon()
 	cut_overlays()
 	icon_state = "[initial(icon_state)][silenced ? "_s" : ""]"
 	if(ammo_magazine)
@@ -43,11 +43,11 @@
 	if (!ammo_magazine || !length(ammo_magazine.stored_ammo))
 		add_overlays("slide[silenced ? "_s" : ""]")
 
-/obj/item/weapon/gun/projectile/automatic/c20r/Initialize()
+/obj/item/gun/projectile/automatic/c20r/Initialize()
 	. = ..()
 	update_icon()
 
-/obj/item/weapon/gun/projectile/automatic/c20r/moebius
+/obj/item/gun/projectile/automatic/c20r/moebius
 	name = "C-20M"
 	desc = "The C-20M is a Moebius copy of the famous C-20r, a lightweight and robust bullpup SMG of ancient design. \
 			Famous as most used SMG by criminal organizations of various sorts. Uses .35 Auto rounds."

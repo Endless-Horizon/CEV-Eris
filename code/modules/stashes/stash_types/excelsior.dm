@@ -7,14 +7,14 @@
 	base_type = /datum/stash/excelsior
 	loot_type = "Excelsior"
 	nonmaint_reroll = 100
-	contents_list_base = list(/obj/item/weapon/electronics/circuitboard/excelsiorautolathe = 1,
-	 /obj/item/weapon/implanter/excelsior/broken = 2)
+	contents_list_base = list(/obj/item/electronics/circuitboard/excelsiorautolathe = 1,
+	 /obj/item/implanter/excelsior/broken = 2)
 
-	contents_list_random = list(/obj/item/weapon/implantcase/excelsior/broken = 70,
-	/obj/item/weapon/implantcase/excelsior/broken = 40,
+	contents_list_random = list(/obj/item/implantcase/excelsior/broken = 70,
+	/obj/item/implantcase/excelsior/broken = 40,
 	/obj/item/clothing/suit/space/void/excelsior = 70,
-	/obj/item/weapon/gun/projectile/automatic/ak47 = 30,
-	/obj/item/weapon/gun/projectile/automatic/ak47 = 30,
+	/obj/item/gun/projectile/automatic/ak47 = 30,
+	/obj/item/gun/projectile/automatic/ak47 = 30,
 	/obj/item/ammo_magazine/lrifle = 50,
 	/obj/item/ammo_magazine/lrifle = 50
 	)

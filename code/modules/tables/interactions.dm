@@ -106,7 +106,7 @@
 				playsound(loc, 'sound/weapons/tablehit1.ogg', 50, 1)
 			var/list/L = take_damage(rand(1,5))
 			// Shards. Extra damage, plus potentially the fact YOU LITERALLY HAVE A PIECE OF GLASS/METAL/WHATEVER IN YOUR FACE
-			for(var/obj/item/weapon/material/shard/S in L)
+			for(var/obj/item/material/shard/S in L)
 				if(prob(50))
 					target.visible_message(
 						SPAN_DANGER("\The [S] slices [target]'s face messily!"),
@@ -134,7 +134,7 @@
 		return
 
 
-	if(istype(W, /obj/item/weapon/melee/energy/blade))
+	if(istype(W, /obj/item/melee/energy/blade))
 		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 		spark_system.set_up(5, 0, src.loc)
 		spark_system.start()

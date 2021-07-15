@@ -290,8 +290,8 @@ BLIND     // can't see anything
 /obj/item/clothing/gloves/proc/Touch(atom/A, proximity)
 	return 0 // return 1 to cancel attack_hand()
 
-/obj/item/clothing/gloves/attackby(obj/item/weapon/W, mob/user)
-	if(istype(W, /obj/item/weapon/tool/wirecutters) || istype(W, /obj/item/weapon/tool/scalpel))
+/obj/item/clothing/gloves/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/tool/wirecutters) || istype(W, /obj/item/tool/scalpel))
 		if (clipped)
 			to_chat(user, SPAN_NOTICE("The [src] have already been clipped!"))
 			update_icon()
@@ -493,12 +493,12 @@ BLIND     // can't see anything
 
 	if(!knifes)
 		knifes = list(
-			/obj/item/weapon/tool/knife,
-			/obj/item/weapon/material/shard,
-			/obj/item/weapon/tool/knife/butterfly,
-			/obj/item/weapon/material/kitchen/utensil,
-			/obj/item/weapon/tool/knife/tacknife,
-			/obj/item/weapon/tool/shiv,
+			/obj/item/tool/knife,
+			/obj/item/material/shard,
+			/obj/item/tool/knife/butterfly,
+			/obj/item/material/kitchen/utensil,
+			/obj/item/tool/knife/tacknife,
+			/obj/item/tool/shiv,
 		)
 	if(can_hold_knife && is_type_in_list(I, knifes))
 		if(holding)
@@ -542,23 +542,23 @@ BLIND     // can't see anything
 	name = "suit"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	allowed = list(
-		/obj/item/weapon/clipboard,
-		/obj/item/weapon/storage/pouch/,
-		/obj/item/weapon/gun,
-		/obj/item/weapon/melee,
-		/obj/item/weapon/tool,
-		/obj/item/weapon/material,
+		/obj/item/clipboard,
+		/obj/item/storage/pouch/,
+		/obj/item/gun,
+		/obj/item/melee,
+		/obj/item/tool,
+		/obj/item/material,
 		/obj/item/ammo_magazine,
 		/obj/item/ammo_casing,
-		/obj/item/weapon/handcuffs,
-		/obj/item/weapon/tank,
+		/obj/item/handcuffs,
+		/obj/item/tank,
 		/obj/item/device/suit_cooling_unit,
-		/obj/item/weapon/cell,
-		/obj/item/weapon/storage/fancy,
-		/obj/item/weapon/flamethrower,
+		/obj/item/cell,
+		/obj/item/storage/fancy,
+		/obj/item/flamethrower,
 		/obj/item/device/lighting,
 		/obj/item/device/scanner,
-		/obj/item/weapon/reagent_containers/spray,
+		/obj/item/reagent_containers/spray,
 		/obj/item/device/radio,
 		/obj/item/clothing/mask)
 	slot_flags = SLOT_OCLOTHING

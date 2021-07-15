@@ -12,15 +12,15 @@
 	var/last_update = 0
 	var/list/stored_ore = list()
 
-/obj/structure/ore_box/attackby(obj/item/weapon/W, mob/user)
-	if (istype(W, /obj/item/weapon/ore))
+/obj/structure/ore_box/attackby(obj/item/W, mob/user)
+	if (istype(W, /obj/item/ore))
 		user.remove_from_mob(W)
 		src.contents += W
-	if (istype(W, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = W
+	if (istype(W, /obj/item/storage))
+		var/obj/item/storage/S = W
 		S.hide_from(usr)
-		if (locate(/obj/item/weapon/ore) in S.contents)
-			for(var/obj/item/weapon/ore/O in S.contents)
+		if (locate(/obj/item/ore) in S.contents)
+			for(var/obj/item/ore/O in S.contents)
 				S.remove_from_storage(O, src) //This will move the item to this item's contents
 			playsound(loc, S.use_sound, 50, 1, -5)
 			user.visible_message(SPAN_NOTICE("[user.name] empties the [S] into the box"), SPAN_NOTICE("You empty the [S] into the box."), SPAN_NOTICE("You hear a rustling sound"))
@@ -34,7 +34,7 @@
 
 	stored_ore = list()
 
-	for(var/obj/item/weapon/ore/O in contents)
+	for(var/obj/item/ore/O in contents)
 
 		if(stored_ore[O.name])
 			stored_ore[O.name]++
@@ -90,7 +90,7 @@
 		to_chat(usr, "\red The ore box is empty")
 		return
 
-	for (var/obj/item/weapon/ore/O in contents)
+	for (var/obj/item/ore/O in contents)
 		contents -= O
 		O.loc = src.loc
 	to_chat(usr, "\blue You empty the ore box")
@@ -99,7 +99,7 @@
 
 /obj/structure/ore_box/ex_act(severity)
 	if(severity == 1 || (severity < 3 && prob(50)))
-		for (var/obj/item/weapon/ore/O in contents)
+		for (var/obj/item/ore/O in contents)
 			O.loc = src.loc
 			O.ex_act(severity++)
 		qdel(src)

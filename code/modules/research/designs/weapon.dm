@@ -10,60 +10,60 @@
 		..()
 
 /datum/design/research/item/weapon/stunrevolver
-	build_path = /obj/item/weapon/gun/energy/stunrevolver/moebius
+	build_path = /obj/item/gun/energy/stunrevolver/moebius
 	sort_string = "TAAAA"
 
 /datum/design/research/item/weapon/mindflayer
-	build_path = /obj/item/weapon/gun/energy/psychic/mindflayer
+	build_path = /obj/item/gun/energy/psychic/mindflayer
 	sort_string = "TAAAB"
 
 /datum/design/research/item/weapon/lasercannon
 	desc = "The lasing medium of this prototype is enclosed in a tube lined with uranium-235 and subjected to high neutron flux in a nuclear reactor core."
-	build_path = /obj/item/weapon/gun/energy/lasercannon
+	build_path = /obj/item/gun/energy/lasercannon
 	sort_string = "TAAAC"
 
 /datum/design/research/item/weapon/c20r
 	name = "C20M-prototype"
 	desc = "The C-20M is a lightweight and rapid-firing SMG. Uses .35 auto rounds."
-	build_path = /obj/item/weapon/gun/projectile/automatic/c20r/moebius
+	build_path = /obj/item/gun/projectile/automatic/c20r/moebius
 	sort_string = "TAAAF"
 
 /datum/design/research/item/weapon/plasmapistol
-	build_path = /obj/item/weapon/gun/energy/plasma/brigador
+	build_path = /obj/item/gun/energy/plasma/brigador
 	sort_string = "TAAAD"
 
 /datum/design/research/item/weapon/decloner
-	build_path = /obj/item/weapon/gun/energy/decloner
+	build_path = /obj/item/gun/energy/decloner
 	sort_string = "TAAAE"
 
 /datum/design/research/item/weapon/nuclear
-	build_path = /obj/item/weapon/gun/energy/nuclear
+	build_path = /obj/item/gun/energy/nuclear
 	sort_string = "TAAAG"
 
 /datum/design/research/item/weapon/chemsprayer
 	desc = "An advanced chem spraying device."
-	build_path = /obj/item/weapon/reagent_containers/spray/chemsprayer
+	build_path = /obj/item/reagent_containers/spray/chemsprayer
 	sort_string = "TABAA"
 
 /datum/design/research/item/weapon/rapidsyringe
-	build_path = /obj/item/weapon/gun/launcher/syringe/rapid
+	build_path = /obj/item/gun/launcher/syringe/rapid
 	sort_string = "TABAB"
 
 /datum/design/research/item/weapon/temp_gun
 	desc = "A gun that shoots high-powered glass-encased energy temperature bullets."
-	build_path = /obj/item/weapon/gun/energy/temperature
+	build_path = /obj/item/gun/energy/temperature
 	sort_string = "TABAC"
 
 /datum/design/research/item/weapon/large_grenade
-	build_path = /obj/item/weapon/grenade/chem_grenade/large/moebius
+	build_path = /obj/item/grenade/chem_grenade/large/moebius
 	sort_string = "TACAA"
 
 /datum/design/research/item/weapon/flora_gun
-	build_path = /obj/item/weapon/gun/energy/floragun
+	build_path = /obj/item/gun/energy/floragun
 	sort_string = "TBAAA"
 
 /datum/design/research/item/weapon/bluespace_harpoon
-	build_path = /obj/item/weapon/bluespace_harpoon
+	build_path = /obj/item/bluespace_harpoon
 	sort_string = "TBAAB"
 
 /datum/design/research/item/weapon/hatton
@@ -71,17 +71,17 @@
 	desc = "This breaching tool was reverse engineered from the \"Hatton\" design.\
 			Despite the Excelsior \"Hatton\" being traded on the free market through Technomancer League channels,\
 			this device suffers from a wide number of reliability issues stemming from it being lathe printed."
-	build_path = /obj/item/weapon/hatton/moebius
+	build_path = /obj/item/hatton/moebius
 	sort_string = "TBAAD"
 
 /datum/design/research/item/weapon/katana
 	name = "Moebius \"Muramasa\" Katana"
-	build_path = /obj/item/weapon/tool/sword/katana/nano
+	build_path = /obj/item/tool/sword/katana/nano
 
 
 /datum/design/research/item/weapon/bluespace_dagger
 	name = "Moebius \"Displacement Dagger\""
-	build_path = /obj/item/weapon/tool/knife/dagger/bluespace
+	build_path = /obj/item/tool/knife/dagger/bluespace
 
 // Ammo
 /datum/design/research/item/ammo
@@ -90,7 +90,7 @@
 
 /datum/design/research/item/ammo/hatton
 	name = "Moebius BT \"Q-del\" gas tube"
-	build_path = /obj/item/weapon/hatton_magazine/moebius
+	build_path = /obj/item/hatton_magazine/moebius
 	sort_string = "TAACC"
 
 /datum/design/research/item/ammo/c20r_ammo

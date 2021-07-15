@@ -1,4 +1,4 @@
-/obj/item/weapon/implantpad
+/obj/item/implantpad
 	name = "implant pad"
 	desc = "Used to modify implants."
 	icon = 'icons/obj/items.dmi'
@@ -7,13 +7,13 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
-	var/obj/item/weapon/implantcase/case = null
+	var/obj/item/implantcase/case = null
 
 
-/obj/item/weapon/implantpad/on_update_icon()
+/obj/item/implantpad/on_update_icon()
 	icon_state = case ? "implantpad-1" : "implantpad-0"
 
-/obj/item/weapon/implantpad/attack_hand(mob/living/user)
+/obj/item/implantpad/attack_hand(mob/living/user)
 	if ((src.case && (user.l_hand == src || user.r_hand == src)))
 		user.put_in_active_hand(case)
 		case = null
@@ -25,9 +25,9 @@
 	return
 
 
-/obj/item/weapon/implantpad/attackby(obj/item/weapon/implantcase/C, mob/living/user)
+/obj/item/implantpad/attackby(obj/item/implantcase/C, mob/living/user)
 	..()
-	if(istype(C, /obj/item/weapon/implantcase))
+	if(istype(C, /obj/item/implantcase))
 		if(!case)
 			user.drop_item()
 			C.forceMove(src)
@@ -36,7 +36,7 @@
 	return
 
 
-/obj/item/weapon/implantpad/attack_self(mob/living/user)
+/obj/item/implantpad/attack_self(mob/living/user)
 	user.set_machine(src)
 	var/dat = "<B>Implant Mini-Computer:</B><HR>"
 	if(case)
@@ -51,7 +51,7 @@
 	return
 
 
-/obj/item/weapon/implantpad/Topic(href, href_list)
+/obj/item/implantpad/Topic(href, href_list)
 	..()
 	if (usr.stat)
 		return

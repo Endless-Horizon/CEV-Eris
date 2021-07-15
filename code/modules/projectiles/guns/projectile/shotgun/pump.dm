@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/shotgun/pump
+/obj/item/gun/projectile/shotgun/pump
 	name = "FS SG \"Kammerer\""
 	desc = "When an old Remington design meets modern materials, this is the result. A favourite weapon of militia forces throughout many worlds."
 	icon = 'icons/obj/guns/projectile/shotgun.dmi'
@@ -22,17 +22,17 @@
 	one_hand_penalty = 15 //full sized shotgun level
 	spawn_tags = SPANW_TAG_FS_SHOTGUN
 
-/obj/item/weapon/gun/projectile/shotgun/pump/consume_next_projectile()
+/obj/item/gun/projectile/shotgun/pump/consume_next_projectile()
 	if(chambered)
 		return chambered.BB
 	return null
 
-/obj/item/weapon/gun/projectile/shotgun/pump/attack_self(mob/living/user)
+/obj/item/gun/projectile/shotgun/pump/attack_self(mob/living/user)
 	if(world.time >= recentpumpmsg + 10)
 		pump(user)
 		recentpumpmsg = world.time
 
-/obj/item/weapon/gun/projectile/shotgun/pump/proc/pump(mob/M)
+/obj/item/gun/projectile/shotgun/pump/proc/pump(mob/M)
 	var/turf/newloc = get_turf(src)
 	playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)
 

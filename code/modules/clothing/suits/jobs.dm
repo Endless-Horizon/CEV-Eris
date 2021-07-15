@@ -82,7 +82,7 @@
 	spawn_blacklisted = TRUE
 	extra_allowed = list(
 		/obj/item/seeds,
-		/obj/item/weapon/reagent_containers/glass/fertilizer,
+		/obj/item/reagent_containers/glass/fertilizer,
 		/obj/item/weedkiller
 	)
 
@@ -234,7 +234,7 @@
 	icon_state = "hazard"
 	item_state = "hazard"
 	blood_overlay_type = "armor"
-	extra_allowed = list(/obj/item/weapon/tool)
+	extra_allowed = list(/obj/item/tool)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	price_tag = 50
 
@@ -292,13 +292,13 @@
 	blood_overlay_type = "armor"
 	spawn_blacklisted = TRUE
 	extra_allowed = list(
-		/obj/item/weapon/tool/bonesetter,
-		/obj/item/weapon/tool/cautery,
-		/obj/item/weapon/tool/saw/circular,
-		/obj/item/weapon/tool/hemostat,
-		/obj/item/weapon/tool/retractor,
-		/obj/item/weapon/tool/scalpel,
-		/obj/item/weapon/tool/surgicaldrill,
+		/obj/item/tool/bonesetter,
+		/obj/item/tool/cautery,
+		/obj/item/tool/saw/circular,
+		/obj/item/tool/hemostat,
+		/obj/item/tool/retractor,
+		/obj/item/tool/scalpel,
+		/obj/item/tool/surgicaldrill,
 		/obj/item/stack/medical/advanced/bruise_pack
 	)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO

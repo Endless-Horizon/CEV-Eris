@@ -7,7 +7,7 @@
 	nature = MODIFICATION_SILICON
 	vital = TRUE
 	var/open
-	var/obj/item/weapon/cell/medium/cell = /obj/item/weapon/cell/medium
+	var/obj/item/cell/medium/cell = /obj/item/cell/medium
 	//at 0.8 completely depleted after 60ish minutes of constant walking or 130 minutes of standing still
 	var/servo_cost = 0.8 // this will probably require tweaking
 
@@ -62,7 +62,7 @@
 	if(cell)
 		cell.emp_act(severity)
 
-/obj/item/organ/internal/cell/attackby(obj/item/weapon/W, mob/user)
+/obj/item/organ/internal/cell/attackby(obj/item/W, mob/user)
 	if(QUALITY_SCREW_DRIVING in W.tool_qualities)
 		if(open)
 			open = FALSE
@@ -78,7 +78,7 @@
 				to_chat(user, SPAN_NOTICE("You remove \the [cell] from \the [src]."))
 				cell = null
 
-	if (istype(W, /obj/item/weapon/cell))
+	if (istype(W, /obj/item/cell))
 		if(open)
 			if(cell)
 				to_chat(user, SPAN_WARNING("There is a power cell already installed."))

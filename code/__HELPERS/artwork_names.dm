@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(art_types, file2list("strings/artist_strings/descriptors/art_ty
 	var/list/emotions = list("fear", "joy", "laughter", "sadness", "respect", "terror", "vigor", "encourages")
 	desc += " A [pick(GLOB.art_styles)] [pick(GLOB.art_types)] [get_sculpting_method()]. [pick("Inspires", "Infuses")] [pick(emotions)] to those who look at it."
 
-/obj/item/weapon/gun/projectile/make_art_review()
+/obj/item/gun/projectile/make_art_review()
 	desc += " [get_art_gun_desc(src)]"
 	desc += " Uses [caliber] rounds."
 

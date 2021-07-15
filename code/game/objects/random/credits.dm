@@ -6,10 +6,10 @@
 	top_price = 1000
 
 /obj/spawner/credits/item_to_spawn()
-	return /obj/item/weapon/spacecash/bundle
+	return /obj/item/spacecash/bundle
 
 /obj/spawner/credits/post_spawn(list/spawns)
-	for(var/obj/item/weapon/spacecash/bundle/C in spawns)
+	for(var/obj/item/spacecash/bundle/C in spawns)
 		C.worth = rand(low_price, top_price) //Rand conveniently produces integers
 		C.update_icon()
 

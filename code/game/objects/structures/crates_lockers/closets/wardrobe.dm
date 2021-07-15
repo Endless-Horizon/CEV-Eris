@@ -95,7 +95,7 @@
 	new /obj/item/clothing/shoes/color/white(src)
 	new /obj/item/clothing/shoes/color/white(src)
 	new /obj/item/clothing/shoes/color/white(src)
-	new /obj/item/weapon/storage/backpack/sport/white(src)
+	new /obj/item/storage/backpack/sport/white(src)
 
 /obj/structure/closet/wardrobe/color/grey
 	name = "grey wardrobe"
@@ -111,7 +111,7 @@
 	new /obj/item/clothing/head/soft/grey(src)
 	new /obj/item/clothing/head/soft/grey(src)
 	new /obj/item/clothing/head/soft/grey(src)
-	new /obj/item/weapon/storage/backpack/sport(src)
+	new /obj/item/storage/backpack/sport(src)
 
 /obj/structure/closet/wardrobe/color/mixed
 	name = "mixed wardrobe"
@@ -137,10 +137,10 @@
 	new /obj/item/clothing/mask/bandana/gold(src)
 	new /obj/item/clothing/mask/bandana/purple(src)
 	new /obj/item/clothing/mask/bandana/camo(src)
-	new /obj/item/weapon/storage/backpack/sport/purple(src)
-	new /obj/item/weapon/storage/backpack/sport/green(src)
-	new /obj/item/weapon/storage/backpack/sport/blue(src)
-	new /obj/item/weapon/storage/backpack/sport/orange(src)
+	new /obj/item/storage/backpack/sport/purple(src)
+	new /obj/item/storage/backpack/sport/green(src)
+	new /obj/item/storage/backpack/sport/blue(src)
+	new /obj/item/storage/backpack/sport/orange(src)
 
 /obj/structure/closet/wardrobe/pjs
 	name = "pajama wardrobe"
@@ -166,7 +166,7 @@
 	new /obj/item/clothing/suit/armor/heavy(src)
 	new /obj/item/clothing/mask/balaclava/tactical(src)
 	new /obj/item/clothing/glasses/sunglasses/sechud/tactical(src)
-	new /obj/item/weapon/storage/belt/tactical(src)
+	new /obj/item/storage/belt/tactical(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 	new /obj/item/clothing/gloves/thick(src)
 
@@ -274,10 +274,10 @@
 	new /obj/item/clothing/suit/storage/neotheology_jacket(src)
 	new /obj/item/clothing/head/chaplain_hood(src)
 	new /obj/item/clothing/under/bride_white(src)
-	new /obj/item/weapon/storage/fancy/candle_box(src)
-	new /obj/item/weapon/storage/fancy/candle_box(src)
-	new /obj/item/weapon/deck/tarot(src)
-	new /obj/item/weapon/talkingcrystal(src)
+	new /obj/item/storage/fancy/candle_box(src)
+	new /obj/item/storage/fancy/candle_box(src)
+	new /obj/item/deck/tarot(src)
+	new /obj/item/talkingcrystal(src)
 
 /obj/structure/closet/wardrobe/engineering_yellow
 	name = "engineering wardrobe"

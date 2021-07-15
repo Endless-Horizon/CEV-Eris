@@ -2,7 +2,7 @@
 /// HYPOSPRAY
 ////////////////////////////////////////////////////////////////////////////////
 
-/obj/item/weapon/reagent_containers/hypospray
+/obj/item/reagent_containers/hypospray
 	name = "hypospray"
 	desc = "The Moebius Medical department hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
 	icon = 'icons/obj/syringe.dmi'
@@ -17,7 +17,7 @@
 	preloaded_reagents = list("bicaridine" = 40)
 	//spawn_blacklisted = TRUE//antag_item_targets?
 
-/obj/item/weapon/reagent_containers/hypospray/attack(mob/living/M as mob, mob/user as mob)
+/obj/item/reagent_containers/hypospray/attack(mob/living/M as mob, mob/user as mob)
 	if(!reagents.total_volume)
 		to_chat(user, SPAN_WARNING("[src] is empty."))
 		return
@@ -28,7 +28,7 @@
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		var/obj/item/clothing/suit/space/SS = H.get_equipped_item(slot_wear_suit)
-		var/obj/item/weapon/rig/RIG = H.get_equipped_item(slot_back)
+		var/obj/item/rig/RIG = H.get_equipped_item(slot_back)
 		if((istype(RIG) && RIG.suit_is_deployed()) || istype(SS))
 			injtime = 30
 			var/obj/item/organ/external/affected = H.get_organ(BP_CHEST)
@@ -73,7 +73,7 @@
 	to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in \the [src]."))
 	return
 
-/obj/item/weapon/reagent_containers/hypospray/verb/empty()
+/obj/item/reagent_containers/hypospray/verb/empty()
 	set name = "Empty Hypospray"
 	set category = "Object"
 	set src in usr
@@ -84,7 +84,7 @@
 		to_chat(usr, SPAN_NOTICE("You empty \the [src] onto the floor."))
 		reagents.splash(usr.loc, reagents.total_volume)
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector
+/obj/item/reagent_containers/hypospray/autoinjector
 	name = "autoinjector (inaprovaline)"
 	desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel."
 	w_class = ITEM_SIZE_TINY
@@ -98,12 +98,12 @@
 	preloaded_reagents = list("inaprovaline" = 5)
 	spawn_blacklisted = FALSE
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/on_reagent_change()
+/obj/item/reagent_containers/hypospray/autoinjector/on_reagent_change()
 	..()
 	if(reagents.total_volume <= 0) //Prevents autoinjectors from being refilled.
 		reagent_flags &= ~REFILLABLE
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/on_update_icon()
+/obj/item/reagent_containers/hypospray/autoinjector/on_update_icon()
 	cut_overlays()
 	if(reagents && reagents.total_volume > 0)
 		icon_state = initial(icon_state)
@@ -114,22 +114,22 @@
 		icon_state = "[initial(icon_state)]0"
 
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/antitoxin
+/obj/item/reagent_containers/hypospray/autoinjector/antitoxin
 	name = "autoinjector (anti-toxin)"
 	preloaded_reagents = list("anti_toxin" = 5)
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/tricordrazine
+/obj/item/reagent_containers/hypospray/autoinjector/tricordrazine
 	name = "autoinjector (tricordrazine)"
 	preloaded_reagents = list("tricordrazine" = 5)
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/spaceacillin
+/obj/item/reagent_containers/hypospray/autoinjector/spaceacillin
 	name = "autoinjector (spaceacillin)"
 	preloaded_reagents = list("spaceacillin" = 5)
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/hyperzine
+/obj/item/reagent_containers/hypospray/autoinjector/hyperzine
 	name = "autoinjector (hyperzine)"
 	preloaded_reagents = list("hyperzine" = 5)
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/drugs
+/obj/item/reagent_containers/hypospray/autoinjector/drugs
 	name = "autoinjector (drugs)"
 	preloaded_reagents = list("space_drugs" = 5)

@@ -1,11 +1,11 @@
-/obj/item/weapon/implant/chem
+/obj/item/implant/chem
 	name = "chemical implant"
 	desc = "Injects things."
 	allow_reagents = 1
 	origin_tech = list(TECH_MATERIAL=3, TECH_BIO=4)
 	spawn_tags = null
 
-/obj/item/weapon/implant/chem/get_data()
+/obj/item/implant/chem/get_data()
 	var/data = {"
 		<b>Implant Specifications:</b><BR>
 		<b>Name:</b> Robust Corp MJ-420 Prisoner Management Implant<BR>
@@ -24,15 +24,15 @@
 	return data
 
 
-/obj/item/weapon/implant/chem/New()
+/obj/item/implant/chem/New()
 	..()
 	create_reagents(50)
 
-/obj/item/weapon/implant/chem/trigger(emote, mob/living/source)
+/obj/item/implant/chem/trigger(emote, mob/living/source)
 	if(emote == "deathgasp")
 		activate()
 
-/obj/item/weapon/implant/chem/activate()
+/obj/item/implant/chem/activate()
 	if(!wearer)
 		return
 	reagents.trans_to_mob(wearer, reagents.total_volume, CHEM_BLOOD)
@@ -42,7 +42,7 @@
 		spawn(0)
 			qdel(src)
 
-/obj/item/weapon/implant/chem/emp_act(severity)
+/obj/item/implant/chem/emp_act(severity)
 	if (malfunction)
 		return
 	malfunction = MALFUNCTION_TEMPORARY
@@ -59,7 +59,7 @@
 		malfunction = MALFUNCTION_NONE
 
 
-/obj/item/weapon/implantcase/chem
+/obj/item/implantcase/chem
 	name = "glass case - 'chemical'"
 	desc = "A case containing a chemical implant."
-	implant = /obj/item/weapon/implant/chem
+	implant = /obj/item/implant/chem

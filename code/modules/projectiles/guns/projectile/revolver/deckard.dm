@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/revolver/deckard
+/obj/item/gun/projectile/revolver/deckard
 	name = "FS REV .40 Magnum \"Deckard\""
 	desc = "A rare, custom-built revolver. Use when there is no time for Voight-Kampff test. Uses .40 Magnum rounds."
 	icon = 'icons/obj/guns/projectile/deckard.dmi'

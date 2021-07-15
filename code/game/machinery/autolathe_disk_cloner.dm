@@ -3,7 +3,7 @@
 	desc = "Machine used for copying recipes from unprotected autolathe disks."
 	icon = 'icons/obj/machines/disk_cloner.dmi'
 	icon_state = "disk_cloner"
-	circuit = /obj/item/weapon/electronics/circuitboard/autolathe_disk_cloner
+	circuit = /obj/item/electronics/circuitboard/autolathe_disk_cloner
 	density = TRUE
 	anchored = TRUE
 	use_power = IDLE_POWER_USE
@@ -14,8 +14,8 @@
 	var/copying_delay = 0
 	var/hack_fail_chance = 0
 
-	var/obj/item/weapon/computer_hardware/hard_drive/portable/original = null
-	var/obj/item/weapon/computer_hardware/hard_drive/portable/copy = null
+	var/obj/item/computer_hardware/hard_drive/portable/original = null
+	var/obj/item/computer_hardware/hard_drive/portable/copy = null
 
 	var/copying = FALSE
 
@@ -28,9 +28,9 @@
 	..()
 	var/laser_rating = 0
 	var/scanner_rating = 0
-	for(var/obj/item/weapon/stock_parts/scanning_module/SM in component_parts)
+	for(var/obj/item/stock_parts/scanning_module/SM in component_parts)
 		scanner_rating += SM.rating
-	for(var/obj/item/weapon/stock_parts/micro_laser/ML in component_parts)
+	for(var/obj/item/stock_parts/micro_laser/ML in component_parts)
 		laser_rating += ML.rating
 
 	if(scanner_rating+laser_rating >= 9)
@@ -55,7 +55,7 @@
 	if(panel_open)
 		return
 
-	if(istype(I, /obj/item/weapon/computer_hardware/hard_drive/portable))
+	if(istype(I, /obj/item/computer_hardware/hard_drive/portable))
 		if(!original)
 			original = put_disk(I, user)
 			to_chat(user, SPAN_NOTICE("You put \the [I] into the first slot of [src]."))
@@ -82,7 +82,7 @@
 /obj/machinery/autolathe_disk_cloner/Process()
 	update_icon()
 
-/obj/machinery/autolathe_disk_cloner/proc/put_disk(obj/item/weapon/computer_hardware/hard_drive/portable/AD, var/mob/user)
+/obj/machinery/autolathe_disk_cloner/proc/put_disk(obj/item/computer_hardware/hard_drive/portable/AD, var/mob/user)
 	ASSERT(istype(AD))
 
 	user.unEquip(AD,src)
@@ -143,7 +143,7 @@
 
 	if(href_list["eject"])
 		var/mob/living/H = null
-		var/obj/item/weapon/computer_hardware/hard_drive/portable/D = null
+		var/obj/item/computer_hardware/hard_drive/portable/D = null
 		if(ishuman(usr))
 			H = usr
 			D = H.get_active_hand()

@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/launcher/spikethrower
+/obj/item/gun/launcher/spikethrower
 
 	name = "spike thrower"
 	desc = "A vicious alien projectile weapon. Parts of it quiver gelatinously, as though the thing is insectile and alive."
@@ -16,38 +16,38 @@
 	var/max_spikes = 3
 	var/spikes = 3
 
-/obj/item/weapon/gun/launcher/spikethrower/New()
+/obj/item/gun/launcher/spikethrower/New()
 	..()
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 
-/obj/item/weapon/gun/launcher/spikethrower/Destroy()
+/obj/item/gun/launcher/spikethrower/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/weapon/gun/launcher/spikethrower/Process()
+/obj/item/gun/launcher/spikethrower/Process()
 	if(spikes < max_spikes && world.time > last_regen + spike_gen_time)
 		spikes++
 		last_regen = world.time
 		update_icon()
 
-/obj/item/weapon/gun/launcher/spikethrower/examine(mob/user)
+/obj/item/gun/launcher/spikethrower/examine(mob/user)
 	..(user)
 	to_chat(user, "It has [spikes] spike\s remaining.")
 
-/obj/item/weapon/gun/launcher/spikethrower/on_update_icon()
+/obj/item/gun/launcher/spikethrower/on_update_icon()
 	icon_state = "spikethrower[spikes]"
 
-/obj/item/weapon/gun/launcher/spikethrower/special_check(user)
+/obj/item/gun/launcher/spikethrower/special_check(user)
 	if(ishuman(user))
 		to_chat(user, SPAN_WARNING("\The [src] does not respond to you!"))
 		return 0
 	return ..()
 
-/obj/item/weapon/gun/launcher/spikethrower/update_release_force()
+/obj/item/gun/launcher/spikethrower/update_release_force()
 	return
 
-/obj/item/weapon/gun/launcher/spikethrower/consume_next_projectile()
+/obj/item/gun/launcher/spikethrower/consume_next_projectile()
 	if(spikes < 1) return null
 	spikes--
-	return new /obj/item/weapon/spike(src)
+	return new /obj/item/spike(src)

@@ -28,7 +28,7 @@
 	hunger_enabled = FALSE
 	pass_flags = PASSTABLE
 	universal_understand = 1
-	//holder_type = /obj/item/weapon/holder/borer //Theres no inhand sprites for holding borers, it turns you into a pink square
+	//holder_type = /obj/item/holder/borer //Theres no inhand sprites for holding borers, it turns you into a pink square
 	var/borer_level = 0                           // Level of borer.
 	var/borer_exp = 0                             // Borer experience.
 	var/last_request

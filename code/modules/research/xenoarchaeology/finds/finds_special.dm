@@ -2,17 +2,17 @@
 
 
 //endless reagents!
-/obj/item/weapon/reagent_containers/glass/replenishing
+/obj/item/reagent_containers/glass/replenishing
 	spawn_tags = SPAWN_TAG_XENOARCH_ITEM
 	spawn_blacklisted = TRUE
 	var/spawning_id
 
-/obj/item/weapon/reagent_containers/glass/replenishing/New()
+/obj/item/reagent_containers/glass/replenishing/New()
 	..()
 	START_PROCESSING(SSobj, src)
 	spawning_id = pick("blood","lube","stoxin","ethanol","ice","glycerol","fuel","cleaner")
 
-/obj/item/weapon/reagent_containers/glass/replenishing/Process()
+/obj/item/reagent_containers/glass/replenishing/Process()
 	reagents.add_reagent(spawning_id, 0.3)
 
 
@@ -51,7 +51,7 @@
 
 //a vampiric statuette
 //todo: cult integration
-/obj/item/weapon/vampiric
+/obj/item/vampiric
 	name = "statuette"
 	icon_state = "statuette"
 	icon = 'icons/obj/xenoarchaeology.dmi'
@@ -65,16 +65,16 @@
 	var/wight_check_index = 1
 	var/list/shadow_wights = list()
 
-/obj/item/weapon/vampiric/New()
+/obj/item/vampiric/New()
 	..()
 	START_PROCESSING(SSobj, src)
 	add_hearing()
 
-/obj/item/weapon/vampiric/Destroy()
+/obj/item/vampiric/Destroy()
 	remove_hearing()
 	. = ..()
 
-/obj/item/weapon/vampiric/Process()
+/obj/item/vampiric/Process()
 	//see if we've identified anyone nearby
 	if(world.time - last_bloodcall > bloodcall_interval && nearby_mobs.len)
 		var/mob/living/carbon/human/M = pop(nearby_mobs)
@@ -132,12 +132,12 @@
 		else if(get_dist(W, src) > 10)
 			shadow_wights.Remove(wight_check_index)
 
-/obj/item/weapon/vampiric/hear_talk(mob/M as mob, text, verb, datum/language/speaking, speech_volume)
+/obj/item/vampiric/hear_talk(mob/M as mob, text, verb, datum/language/speaking, speech_volume)
 	..()
 	if(world.time - last_bloodcall >= bloodcall_interval && (M in view(7, src)))
 		bloodcall(M)
 
-/obj/item/weapon/vampiric/proc/bloodcall(var/mob/living/carbon/human/M)
+/obj/item/vampiric/proc/bloodcall(var/mob/living/carbon/human/M)
 	last_bloodcall = world.time
 	if(istype(M))
 		playsound(src.loc, pick('sound/hallucinations/wail.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/far_noise.ogg'), 50, 1, -3)

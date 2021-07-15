@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/vintorez
+/obj/item/gun/projectile/automatic/vintorez
 	name = "Excelsior .20 \"Vintorez\""
 	desc = "This gun is a copy of a design from a country that no longer exists. It is still highly prized for its armor piercing capabilities."
 	icon = 'icons/obj/guns/projectile/vintorez.dmi'
@@ -27,7 +27,7 @@
 		)
 
 
-/obj/item/weapon/gun/projectile/automatic/vintorez/on_update_icon()
+/obj/item/gun/projectile/automatic/vintorez/on_update_icon()
 	var/iconstring = initial(icon_state)
 	var/itemstring = initial(item_state)
 

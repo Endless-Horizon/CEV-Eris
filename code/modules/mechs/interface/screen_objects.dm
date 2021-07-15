@@ -61,7 +61,7 @@
 
 	var/list/new_overlays = list()
 
-	var/obj/item/weapon/cell/C = owner.get_cell()
+	var/obj/item/cell/C = owner.get_cell()
 	if(!C || (C.is_empty()))
 		cut_overlays()
 		return
@@ -155,7 +155,7 @@
 /obj/screen/movable/exosuit/power/on_handle_hud(var/mob/living/exosuit/E)
 	. = ..()
 	if(owner)
-		var/obj/item/weapon/cell/C = owner.get_cell()
+		var/obj/item/cell/C = owner.get_cell()
 		if(C && istype(C)) maptext = "[round(C.charge)]/[round(C.maxcharge)]"
 		else maptext = "CHECK POWER"
 
@@ -229,7 +229,7 @@
 /obj/screen/movable/exosuit/health/on_handle_hud(var/mob/living/exosuit/E)
 	. = ..()
 	cut_overlays()
-	var/obj/item/weapon/cell/C = owner.get_cell()
+	var/obj/item/cell/C = owner.get_cell()
 	if(!owner.body || !C || C.is_empty())
 		return
 

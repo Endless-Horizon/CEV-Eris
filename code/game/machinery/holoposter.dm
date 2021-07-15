@@ -48,7 +48,7 @@
 	src.add_fingerprint(user)
 	if(stat & (NOPOWER))
 		return
-	if (istype(W, /obj/item/weapon/tool/multitool))
+	if (istype(W, /obj/item/tool/multitool))
 		playsound(user.loc, 'sound/items/multitool_pulse.ogg', 60, 1)
 		icon_state = input("Available Posters", "Holographic Poster") as null|anything in  postertypes + "random"
 		if(icon_state == "random")

@@ -34,36 +34,36 @@
 	/obj/item/device/flash,\
 	/obj/item/device/lighting/toggleable/flashlight,\
 	/obj/item/device/scanner/health,\
-	/obj/item/weapon/tool/multitool,\
+	/obj/item/tool/multitool,\
 	/obj/item/device/paicard,\
 	/obj/item/device/radio,\
 	/obj/item/device/radio/headset,\
 	/obj/item/device/radio/beacon,\
-	/obj/item/weapon/autopsy_scanner,\
-	/obj/item/weapon/bikehorn,\
-	/obj/item/weapon/tool/bonesetter,\
-	/obj/item/weapon/tool/knife/butch,\
-	/obj/item/weapon/caution,\
-	/obj/item/weapon/caution/cone,\
-	/obj/item/weapon/tool/crowbar,\
-	/obj/item/weapon/clipboard,\
-	/obj/item/weapon/cell/large,\
-	/obj/item/weapon/tool/saw/circular,\
-	/obj/item/weapon/tool/hatchet,\
-	/obj/item/weapon/handcuffs,\
-	/obj/item/weapon/tool/hemostat,\
-	/obj/item/weapon/tool/knife,\
-	/obj/item/weapon/flame/lighter,\
-	/obj/item/weapon/light/bulb,\
-	/obj/item/weapon/light/tube,\
-	/obj/item/weapon/tool/pickaxe,\
-	/obj/item/weapon/tool/shovel,\
-	/obj/item/weapon/tool/weldingtool,\
-	/obj/item/weapon/tool/wirecutters,\
-	/obj/item/weapon/tool/wrench,\
-	/obj/item/weapon/tool/screwdriver,\
-	/obj/item/weapon/grenade/chem_grenade/cleaner,\
-	/obj/item/weapon/grenade/chem_grenade/metalfoam\
+	/obj/item/autopsy_scanner,\
+	/obj/item/bikehorn,\
+	/obj/item/tool/bonesetter,\
+	/obj/item/tool/knife/butch,\
+	/obj/item/caution,\
+	/obj/item/caution/cone,\
+	/obj/item/tool/crowbar,\
+	/obj/item/clipboard,\
+	/obj/item/cell/large,\
+	/obj/item/tool/saw/circular,\
+	/obj/item/tool/hatchet,\
+	/obj/item/handcuffs,\
+	/obj/item/tool/hemostat,\
+	/obj/item/tool/knife,\
+	/obj/item/flame/lighter,\
+	/obj/item/light/bulb,\
+	/obj/item/light/tube,\
+	/obj/item/tool/pickaxe,\
+	/obj/item/tool/shovel,\
+	/obj/item/tool/weldingtool,\
+	/obj/item/tool/wirecutters,\
+	/obj/item/tool/wrench,\
+	/obj/item/tool/screwdriver,\
+	/obj/item/grenade/chem_grenade/cleaner,\
+	/obj/item/grenade/chem_grenade/metalfoam\
 	)
 
 	var/quantity = rand(5,15)
@@ -125,7 +125,7 @@
 
 	user << browse(dat, "window=alien_replicator")
 
-/obj/machinery/replicator/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
+/obj/machinery/replicator/attackby(obj/item/W as obj, mob/living/user as mob)
 	user.drop_item()
 	W.loc = src
 	stored_materials.Add(W)

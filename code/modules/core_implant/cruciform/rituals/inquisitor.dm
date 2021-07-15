@@ -12,13 +12,13 @@
 */
 /datum/ritual/cruciform/inquisitor
 	name = "inquisitor"
-	implant_type = /obj/item/weapon/implant/core_implant/cruciform
+	implant_type = /obj/item/implant/core_implant/cruciform
 	category = "Inquisitor"
 	power = 30
 
 /datum/ritual/targeted/cruciform/inquisitor
 	name = "inquisitor targeted"
-	implant_type = /obj/item/weapon/implant/core_implant/cruciform
+	implant_type = /obj/item/implant/core_implant/cruciform
 	category = "Inquisitor"
 	power = 30
 
@@ -35,12 +35,12 @@
 	desc = "Imparts extreme pain on the target disciple. Does no actual harm."
 	power = 35
 
-/datum/ritual/targeted/cruciform/inquisitor/penance/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
+/datum/ritual/targeted/cruciform/inquisitor/penance/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
 	if(!targets.len)
 		fail("Target not found.",user,C,targets)
 		return FALSE
 
-	var/obj/item/weapon/implant/core_implant/CI = targets[1]
+	var/obj/item/implant/core_implant/CI = targets[1]
 
 	if(!CI.active || !CI.wearer)
 
@@ -61,7 +61,7 @@
 
 	return TRUE
 
-/datum/ritual/targeted/cruciform/inquisitor/penance/process_target(var/index, var/obj/item/weapon/implant/core_implant/target, var/text)
+/datum/ritual/targeted/cruciform/inquisitor/penance/process_target(var/index, var/obj/item/implant/core_implant/target, var/text)
 	target.update_address()
 	if(index == 1 && target.address == text)
 		if(target.wearer && (target.loc && (target.locs[1] in view())))
@@ -79,8 +79,8 @@
 	phrase = "Sicut dilexit me Pater et ego dilexi, vos manete in dilectione mea"
 	desc = "Bound believer to your will."
 
-/datum/ritual/cruciform/inquisitor/obey/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
-	var/obj/item/weapon/implant/core_implant/CI = get_implant_from_victim(user, /obj/item/weapon/implant/core_implant/cruciform)
+/datum/ritual/cruciform/inquisitor/obey/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
+	var/obj/item/implant/core_implant/CI = get_implant_from_victim(user, /obj/item/implant/core_implant/cruciform)
 
 	if(!CI || !CI.wearer || !ishuman(CI.wearer) || !CI.active)
 
@@ -117,7 +117,7 @@
 	cooldown_time = 100
 	power = 25 //Healing yourself is slightly easier than healing someone else
 
-/datum/ritual/cruciform/inquisitor/selfheal/perform(mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C,list/targets)
+/datum/ritual/cruciform/inquisitor/selfheal/perform(mob/living/carbon/human/H, obj/item/implant/core_implant/C,list/targets)
 	to_chat(H, "<span class='info'>A sensation of relief bathes you, washing away your pain</span>")
 	log_and_message_admins("healed himself with convalescence litany")
 	H.add_chemical_effect(CE_PAINKILLER, 20)
@@ -143,8 +143,8 @@
 	cooldown_time = 100
 	power = 35
 
-/datum/ritual/cruciform/inquisitor/heal_other/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
-	var/obj/item/weapon/implant/core_implant/cruciform/CI = get_implant_from_victim(user, /obj/item/weapon/implant/core_implant/cruciform)
+/datum/ritual/cruciform/inquisitor/heal_other/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
+	var/obj/item/implant/core_implant/cruciform/CI = get_implant_from_victim(user, /obj/item/implant/core_implant/cruciform)
 
 	if(!CI || !CI.active || !CI.wearer)
 		fail("Cruciform not found.", user, C)
@@ -192,7 +192,7 @@
 	desc = "Look on the world from the eyes of another believer. Strenuous and can only be maintained for half a minute. The target will sense they are being watched, but not by whom."
 	power = 100
 
-/datum/ritual/cruciform/inquisitor/scrying/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
+/datum/ritual/cruciform/inquisitor/scrying/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
 
 	if(!user.client)
 		return FALSE
@@ -220,7 +220,7 @@
 	return TRUE
 
 
-/datum/ritual/targeted/cruciform/inquisitor/god_eye/process_target(var/index, var/obj/item/weapon/implant/core_implant/target, var/text)
+/datum/ritual/targeted/cruciform/inquisitor/god_eye/process_target(var/index, var/obj/item/implant/core_implant/target, var/text)
 	if(index == 1 && target.address == text && target.active)
 		if(target.wearer && target.wearer.stat != DEAD)
 			return target
@@ -236,7 +236,7 @@
 	desc = "Send a message anonymously through the void, straight into the mind of another disciple"
 	power = 30
 
-/datum/ritual/cruciform/inquisitor/message/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
+/datum/ritual/cruciform/inquisitor/message/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
 	var/mob/living/carbon/human/H = pick_disciple_global(user, TRUE)
 	if (!H)
 		return
@@ -262,8 +262,8 @@
 	desc = "The second stage of granting a field promotion to a disciple, upgrading them to Preacher. The Preacher ascension kit is the first step."
 	power = 100
 
-/datum/ritual/cruciform/inquisitor/initiation/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
-	var/obj/item/weapon/implant/core_implant/CI = get_implant_from_victim(user, /obj/item/weapon/implant/core_implant/cruciform)
+/datum/ritual/cruciform/inquisitor/initiation/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
+	var/obj/item/implant/core_implant/CI = get_implant_from_victim(user, /obj/item/implant/core_implant/cruciform)
 
 	if(!CI || !CI.wearer || !ishuman(CI.wearer) || !CI.active)
 		fail("Cruciform not found",user,C)
@@ -293,7 +293,7 @@
 	desc = "Find out the limits of your power, how many telecrystals you have now."
 	power = 5
 
-/datum/ritual/cruciform/inquisitor/check_telecrystals/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
+/datum/ritual/cruciform/inquisitor/check_telecrystals/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
 	var/datum/core_module/cruciform/uplink/I = C.get_module(CRUCIFORM_UPLINK)
 
 	if(I && I.uplink)
@@ -317,7 +317,7 @@
 	desc = "Request supplies and items from headquarters. Find a private place to do this. Establishing the connection takes a lot of power."
 	power = 20
 
-/datum/ritual/targeted/cruciform/inquisitor/spawn_item/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
+/datum/ritual/targeted/cruciform/inquisitor/spawn_item/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
 	var/datum/core_module/cruciform/uplink/I = C.get_module(CRUCIFORM_UPLINK)
 
 	if(I && I.uplink)

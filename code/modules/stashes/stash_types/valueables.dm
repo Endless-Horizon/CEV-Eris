@@ -10,7 +10,7 @@
 	/obj/item/stack/material/platinum/random = 10,
 	/obj/item/stack/material/gold/random = 15,
 	/obj/item/stack/material/silver/random = 25,
-	/obj/item/weapon/moneybag/vault = 15,
+	/obj/item/moneybag/vault = 15,
 	/obj/spawner/credits/c5000 = 30,
 	/obj/spawner/credits/c1000 = 60,
 	/obj/spawner/credits/c500 = 90)
@@ -35,9 +35,9 @@
 	contents_list_external = list(/obj/item/remains/human = 1)
 
 /datum/stash/valueable/relics
-	contents_list_extra = list(/obj/item/weapon/tool/knife/neotritual = 2,
-	/obj/item/weapon/implant/core_implant/cruciform = 4,
-	/obj/item/weapon/book/ritual/cruciform = 4,
+	contents_list_extra = list(/obj/item/tool/knife/neotritual = 2,
+	/obj/item/implant/core_implant/cruciform = 4,
+	/obj/item/book/ritual/cruciform = 4,
 	/obj/item/clothing/suit/storage/neotheology_jacket = 2)
 	lore = "Acolyte, pirates have taken the ship.<br>\
  When you awaken, avoid arousing any suspicion.<br>\
@@ -51,7 +51,7 @@ I have taken the Church relics and secreted them here <br>\
 
 /datum/stash/valueable/pirate
 	base_type = /datum/stash/valueable/pirate
-	contents_list_extra = list(/obj/item/weapon/melee/energy/sword/pirate = 1, /obj/item/clothing/glasses/eyepatch)
+	contents_list_extra = list(/obj/item/melee/energy/sword/pirate = 1, /obj/item/clothing/glasses/eyepatch)
 /*
 /datum/stash/valueable/pirate/treasure
 	directions = DIRECTION_IMAGE

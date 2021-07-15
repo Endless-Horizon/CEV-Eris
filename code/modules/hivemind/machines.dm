@@ -28,7 +28,7 @@
 	var/cooldown = 0						//cooldown in world.time value
 	var/time_until_regen = 0
 	var/obj/assimilated_machinery
-	var/obj/item/weapon/electronics/circuitboard/saved_circuit
+	var/obj/item/electronics/circuitboard/saved_circuit
 
 /obj/machinery/hivemind_machine/Initialize()
 	. = ..()
@@ -324,11 +324,11 @@
 	//internals
 	var/list/my_wireweeds = list()
 	var/list/reward_item = list(
-		/obj/item/weapon/tool/weldingtool/hivemind,
-		/obj/item/weapon/tool/crowbar/pneumatic/hivemind,
-		/obj/item/weapon/reagent_containers/glass/beaker/hivemind,
-		/obj/item/weapon/oddity/hivemind/old_radio,
-		/obj/item/weapon/oddity/hivemind/old_pda
+		/obj/item/tool/weldingtool/hivemind,
+		/obj/item/tool/crowbar/pneumatic/hivemind,
+		/obj/item/reagent_containers/glass/beaker/hivemind,
+		/obj/item/oddity/hivemind/old_radio,
+		/obj/item/oddity/hivemind/old_pda
 		)
 
 
@@ -370,7 +370,7 @@
 
 /obj/machinery/hivemind_machine/node/proc/core()
 	state("leaves behind a weird looking datapad!")
-	var/core = /obj/item/weapon/oddity/hivemind/hive_core
+	var/core = /obj/item/oddity/hivemind/hive_core
 	new core(get_turf(loc))
 
 /obj/machinery/hivemind_machine/node/Destroy()

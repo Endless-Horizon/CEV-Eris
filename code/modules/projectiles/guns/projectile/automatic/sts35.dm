@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/sts35
+/obj/item/gun/projectile/automatic/sts35
 	name = "OR SDF \"STS-35\""
 	desc = "The rugged STS-35 is a durable automatic weapon, made by Oberth Republic Self Defence Force. \
 			Extremely efficient rifle design that was put in service right before collapse of the Republic, this weapon can be found almost anywhere in the galaxy by now. \
@@ -32,7 +32,7 @@
 		)
 
 
-/obj/item/weapon/gun/projectile/automatic/sts35/on_update_icon()
+/obj/item/gun/projectile/automatic/sts35/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -47,6 +47,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/automatic/sts35/Initialize()
+/obj/item/gun/projectile/automatic/sts35/Initialize()
 	. = ..()
 	update_icon()

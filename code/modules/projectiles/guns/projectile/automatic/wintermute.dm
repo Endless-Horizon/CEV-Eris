@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/wintermute
+/obj/item/gun/projectile/automatic/wintermute
 	name = "FS AR .20 \"Wintermute\""
 	desc = "A high end military grade assault rifle, designed as a modern ballistic infantry weapon. Primarily used by and produced for IH troops. Uses IH .20 Rifle magazines."
 	icon = 'icons/obj/guns/projectile/wintermute.dmi'
@@ -33,7 +33,7 @@
 
 	spawn_tags = SPAWN_TAG_FS_PROJECTILE
 
-/obj/item/weapon/gun/projectile/automatic/wintermute/on_update_icon()
+/obj/item/gun/projectile/automatic/wintermute/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -49,6 +49,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/automatic/wintermute/Initialize()
+/obj/item/gun/projectile/automatic/wintermute/Initialize()
 	. = ..()
 	update_icon()

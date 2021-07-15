@@ -5,8 +5,8 @@
 	icon_screen = "security"
 	light_color = COLOR_LIGHTING_SCI_BRIGHT
 	req_one_access = list(access_security)
-	circuit = /obj/item/weapon/electronics/circuitboard/secure_data
-	var/obj/item/weapon/card/id/scan
+	circuit = /obj/item/electronics/circuitboard/secure_data
+	var/obj/item/card/id/scan
 	var/authenticated
 	var/rank
 	var/screen
@@ -40,7 +40,7 @@
 	return
 
 /obj/machinery/computer/secure_data/attackby(obj/item/O as obj, user as mob)
-	if(istype(O, /obj/item/weapon/card/id) && !scan)
+	if(istype(O, /obj/item/card/id) && !scan)
 		usr.drop_item()
 		O.loc = src
 		scan = O
@@ -256,7 +256,7 @@ What a mess.*/
 					scan = null
 				else
 					var/obj/item/I = usr.get_active_hand()
-					if (istype(I, /obj/item/weapon/card/id) && usr.unEquip(I))
+					if (istype(I, /obj/item/card/id) && usr.unEquip(I))
 						I.loc = src
 						scan = I
 
@@ -280,7 +280,7 @@ What a mess.*/
 					var/mob/living/silicon/robot/R = usr
 					src.rank = "[R.modtype] [R.braintype]"
 					src.screen = 1
-				else if (istype(scan, /obj/item/weapon/card/id))
+				else if (istype(scan, /obj/item/card/id))
 					active1 = null
 					active2 = null
 					if(check_access(scan))
@@ -358,7 +358,7 @@ What a mess.*/
 					if ((istype(active2, /datum/data/record) && data_core.security.Find(active2)))
 						record2 = active2
 					sleep(50)
-					var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( loc )
+					var/obj/item/paper/P = new /obj/item/paper( loc )
 					P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
 					if (record1)
 						P.info += {"
@@ -409,7 +409,7 @@ What a mess.*/
 						spawn(30)
 							playsound(loc, 'sound/items/poster_being_created.ogg', 100, 1)
 							if((istype(active1, /datum/data/record) && data_core.general.Find(active1)))//make sure the record still exists.
-								new /obj/item/weapon/contraband/poster/wanted(src.loc, active1.fields["photo_front"], wanted_name, default_description)
+								new /obj/item/contraband/poster/wanted(src.loc, active1.fields["photo_front"], wanted_name, default_description)
 							printing = 0
 //RECORD DELETE
 			if ("Delete All Records")
@@ -614,12 +614,12 @@ What a mess.*/
 	return !src.authenticated || user.stat || user.restrained() || (!in_range(src, user) && (!issilicon(user)))
 
 /obj/machinery/computer/secure_data/proc/get_photo(var/mob/user)
-	if(istype(user.get_active_hand(), /obj/item/weapon/photo))
-		var/obj/item/weapon/photo/photo = user.get_active_hand()
+	if(istype(user.get_active_hand(), /obj/item/photo))
+		var/obj/item/photo/photo = user.get_active_hand()
 		return photo.img
 	if(issilicon(user))
 		var/mob/living/silicon/tempAI = usr
-		var/obj/item/weapon/photo/selection = tempAI.GetPicture()
+		var/obj/item/photo/selection = tempAI.GetPicture()
 		if (selection)
 			return selection.img
 

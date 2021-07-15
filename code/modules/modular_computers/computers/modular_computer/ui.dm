@@ -46,19 +46,19 @@
 		kill_program()
 		return 1
 	if(href_list["PC_enable_component"])
-		var/obj/item/weapon/computer_hardware/H = find_hardware_by_name(href_list["component"])
+		var/obj/item/computer_hardware/H = find_hardware_by_name(href_list["component"])
 		if(istype(H) && !H.enabled)
 			H.enabled = TRUE
 			H.enabled()
 		. = 1
 	if(href_list["PC_disable_component"])
-		var/obj/item/weapon/computer_hardware/H = find_hardware_by_name(href_list["component"])
+		var/obj/item/computer_hardware/H = find_hardware_by_name(href_list["component"])
 		if(istype(H) && H.enabled)
 			H.enabled = FALSE
 			H.disabled()
 		. = 1
 	if(href_list["PC_toggle_component"])
-		var/obj/item/weapon/computer_hardware/H = find_hardware_by_name(href_list["component"])
+		var/obj/item/computer_hardware/H = find_hardware_by_name(href_list["component"])
 		if(istype(H))
 			H.enabled = !H.enabled
 			if(H.enabled)
@@ -75,7 +75,7 @@
 
 	if(href_list["PC_killprogram"])
 		var/prog_name = href_list["PC_killprogram"]
-		var/obj/item/weapon/computer_hardware/hard_drive/prog_disk = locate(href_list["disk"]) in src
+		var/obj/item/computer_hardware/hard_drive/prog_disk = locate(href_list["disk"]) in src
 		if(!prog_disk)
 			return 1
 
@@ -90,7 +90,7 @@
 				. = 1
 
 	if(href_list["PC_runprogram"])
-		var/obj/item/weapon/computer_hardware/hard_drive/prog_disk = locate(href_list["disk"]) in src
+		var/obj/item/computer_hardware/hard_drive/prog_disk = locate(href_list["disk"]) in src
 		return run_program(href_list["PC_runprogram"], prog_disk)
 
 	if(href_list["PC_setautorun"])
@@ -106,7 +106,7 @@
 
 
 // Function used by NanoUI to obtain a list of programs for a given disk
-/obj/item/modular_computer/proc/get_program_data(obj/item/weapon/computer_hardware/hard_drive/disk)
+/obj/item/modular_computer/proc/get_program_data(obj/item/computer_hardware/hard_drive/disk)
 	var/datum/computer_file/data/autorun = disk.find_file_by_name("autorun")
 
 	var/list/disk_data = list(

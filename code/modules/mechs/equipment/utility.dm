@@ -165,7 +165,7 @@
 						log_and_message_admins("used [src] to throw [locked] at [target].", user, owner.loc)
 						locked = null
 
-						var/obj/item/weapon/cell/C = owner.get_cell()
+						var/obj/item/cell/C = owner.get_cell()
 						if(istype(C))
 							C.use(active_power_use * CELLRATE)
 
@@ -186,7 +186,7 @@
 
 
 				log_and_message_admins("used [src]'s area throw on [target].", user, owner.loc)
-				var/obj/item/weapon/cell/C = owner.get_cell()
+				var/obj/item/cell/C = owner.get_cell()
 				if(istype(C))
 					C.use(active_power_use * CELLRATE * 2) //bit more expensive to throw all
 
@@ -196,21 +196,21 @@
 #undef CATAPULT_AREA
 
 
-/obj/item/weapon/material/drill_head
+/obj/item/material/drill_head
 	var/durability = 0
 	name = "drill head"
 	desc = "A replaceable drill head usually used in exosuit drills."
 	icon_state = "exodrillhead"
 	default_material = MATERIAL_STEEL
 
-/obj/item/weapon/material/drill_head/Initialize()
+/obj/item/material/drill_head/Initialize()
 	. = ..()
 	durability = 2 * (material ? material.integrity : 1)
 
-/obj/item/weapon/material/drill_head/plasteel/New(var/newloc)
+/obj/item/material/drill_head/plasteel/New(var/newloc)
 	..(newloc,MATERIAL_PLASTEEL)
 
-/obj/item/weapon/material/drill_head/diamond/New(var/newloc)
+/obj/item/material/drill_head/diamond/New(var/newloc)
 	..(newloc,MATERIAL_DIAMOND)
 
 /obj/item/mech_equipment/drill
@@ -222,14 +222,14 @@
 	equipment_delay = 10
 
 	//Drill can have a head
-	var/obj/item/weapon/material/drill_head/drill_head
+	var/obj/item/material/drill_head/drill_head
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
 
 
 /obj/item/mech_equipment/drill/Initialize()
 	. = ..()
-	drill_head = new /obj/item/weapon/material/drill_head(src, MATERIAL_STEEL)//You start with a basic steel head
+	drill_head = new /obj/item/material/drill_head(src, MATERIAL_STEEL)//You start with a basic steel head
 
 /obj/item/mech_equipment/drill/attack_self(var/mob/user)
 	. = ..()
@@ -247,8 +247,8 @@
 			var/obj/target_obj = target
 			if(target_obj.unacidable)
 				return
-		if(istype(target,/obj/item/weapon/material/drill_head))
-			var/obj/item/weapon/material/drill_head/DH = target
+		if(istype(target,/obj/item/material/drill_head))
+			var/obj/item/material/drill_head/DH = target
 			if(drill_head)
 				owner.visible_message(SPAN_NOTICE("\The [owner] detaches the [drill_head] mounted on the [src]."))
 				drill_head.forceMove(owner.loc)
@@ -261,7 +261,7 @@
 			to_chat(user, SPAN_WARNING("Your drill doesn't have a head!"))
 			return
 
-		var/obj/item/weapon/cell/C = owner.get_cell()
+		var/obj/item/cell/C = owner.get_cell()
 		if(istype(C))
 			C.use(active_power_use * CELLRATE)
 		owner.visible_message("<span class='danger'>\The [owner] starts to drill \the [target]</span>", "<span class='warning'>You hear a large drill.</span>")
@@ -309,7 +309,7 @@
 							continue
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in I //clamps work, but anythin that contains an ore crate internally is valid
 						if(ore_box)
-							for(var/obj/item/weapon/ore/ore in range(T,1))
+							for(var/obj/item/ore/ore in range(T,1))
 								if(get_dir(owner,ore)&owner.dir)
 									ore.Move(ore_box)
 
@@ -323,18 +323,18 @@
 
 /obj/item/mech_equipment/mounted_system/extinguisher
 	icon_state = "mech_exting"
-	holding_type = /obj/item/weapon/extinguisher/mech
+	holding_type = /obj/item/extinguisher/mech
 	restricted_hardpoints = list(HARDPOINT_LEFT_HAND, HARDPOINT_RIGHT_HAND)
 	restricted_software = list(MECH_SOFTWARE_UTILITY)
 
-/obj/item/weapon/extinguisher/mech
+/obj/item/extinguisher/mech
 	max_water = 4000 //Good is gooder
 	icon_state = "mech_exting"
 	overlaylist = list()
 	spawn_frequency = 0
 
-/obj/item/weapon/extinguisher/mech/get_hardpoint_maptext()
+/obj/item/extinguisher/mech/get_hardpoint_maptext()
 	return "[reagents.total_volume]/[max_water]"
 
-/obj/item/weapon/extinguisher/mech/get_hardpoint_status_value()
+/obj/item/extinguisher/mech/get_hardpoint_status_value()
 	return reagents.total_volume/max_water

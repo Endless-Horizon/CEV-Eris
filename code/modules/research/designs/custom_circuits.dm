@@ -38,7 +38,7 @@
 /datum/design/research/item/custom_circuit_assembly/implant
 	name = "Implant custom assembly"
 	desc = "An customizable assembly for very small devices, implanted into living entities."
-	build_path = /obj/item/weapon/implant/integrated_circuit
+	build_path = /obj/item/implant/integrated_circuit
 	sort_string = "VCAAE"
 
 /datum/design/research/item/custom_circuit_assembly/printer
@@ -50,5 +50,5 @@
 /datum/design/research/item/custom_circuit_assembly/advanced_designs
 	name = "Integrated circuit printer upgrade disk - advanced designs"
 	desc = "Install this into your integrated circuit printer to enhance it.  This one adds new, advanced designs to the printer."
-	build_path = /obj/item/weapon/disk/integrated_circuit/upgrade/advanced
+	build_path = /obj/item/disk/integrated_circuit/upgrade/advanced
 	sort_string = "VCAAG"

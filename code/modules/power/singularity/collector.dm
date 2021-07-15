@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 	density = TRUE
 	req_access = list(access_engine_equip)
 
-	var/obj/item/weapon/tank/plasma/P = null
+	var/obj/item/tank/plasma/P = null
 	var/last_power = 0
 	var/last_power_new = 0
 	var/active = FALSE
@@ -88,7 +88,7 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 		if(ABORT_CHECK)
 			return
 
-	if(istype(I, /obj/item/weapon/tank/plasma))
+	if(istype(I, /obj/item/tank/plasma))
 		if(!anchored)
 			to_chat(user, SPAN_WARNING("[src] needs to be secured to the floor first."))
 			return
@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 		update_icons()
 		return
 
-	else if(istype(I, /obj/item/weapon/card/id)||istype(I, /obj/item/modular_computer))
+	else if(istype(I, /obj/item/card/id)||istype(I, /obj/item/modular_computer))
 		if(allowed(user))
 			if(active)
 				locked = !locked

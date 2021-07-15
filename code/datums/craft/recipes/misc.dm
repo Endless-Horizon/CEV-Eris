@@ -40,7 +40,7 @@
 
 /datum/craft_recipe/box
 	name = "box"
-	result = /obj/item/weapon/storage/box
+	result = /obj/item/storage/box
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_CARDBOARD)
 	)
@@ -58,7 +58,7 @@
 
 /datum/craft_recipe/plastic_bag
 	name = "plastic bag"
-	result = /obj/item/weapon/storage/bag/plastic
+	result = /obj/item/storage/bag/plastic
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_PLASTIC)
 	)
@@ -66,7 +66,7 @@
 
 /datum/craft_recipe/blood_pack
 	name = "blood pack"
-	result = /obj/item/weapon/reagent_containers/blood/empty
+	result = /obj/item/reagent_containers/blood/empty
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_PLASTIC)
 	)
@@ -74,7 +74,7 @@
 
 /datum/craft_recipe/ashtray
 	name = "ashtray"
-	result = /obj/item/weapon/material/ashtray
+	result = /obj/item/material/ashtray
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL)
 	)
@@ -107,7 +107,7 @@
 
 /datum/craft_recipe/cannon_frame
 	name = "cannon frame"
-	result = /obj/item/weapon/cannonframe
+	result = /obj/item/cannonframe
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
 	steps = list(
 		list(CRAFT_MATERIAL, 10, MATERIAL_STEEL)
@@ -116,7 +116,7 @@
 
 /datum/craft_recipe/folder
 	name = "grey folder"
-	result = /obj/item/weapon/folder
+	result = /obj/item/folder
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_CARDBOARD)
 	)
@@ -124,22 +124,22 @@
 
 /datum/craft_recipe/folder/blue
 	name = "blue folder"
-	result = /obj/item/weapon/folder/blue
+	result = /obj/item/folder/blue
 
 
 /datum/craft_recipe/folder/red
 	name = "red folder"
-	result = /obj/item/weapon/folder/red
+	result = /obj/item/folder/red
 
 
 /datum/craft_recipe/folder/cyan
 	name = "cyan folder"
-	result = /obj/item/weapon/folder/cyan
+	result = /obj/item/folder/cyan
 
 
 /datum/craft_recipe/folder/yellow
 	name = "yellow folder"
-	result = /obj/item/weapon/folder/yellow
+	result = /obj/item/folder/yellow
 
 
 /datum/craft_recipe/bandage
@@ -152,21 +152,21 @@
 
 /datum/craft_recipe/handmade_handtele
 	name = "cheap hand-tele"
-	result = /obj/item/weapon/hand_tele/handmade
+	result = /obj/item/hand_tele/handmade
 	steps = list(
 		list(CRAFT_MATERIAL, 6, MATERIAL_PLASTIC, "time" = 30),
 		list(CRAFT_MATERIAL, 2, MATERIAL_GLASS, "time" = 10),
-		list(/obj/item/weapon/electronics/circuitboard, 1, "time" = 20),
-		list(/obj/item/weapon/stock_parts/subspace/crystal, 1),
-		list(/obj/item/weapon/stock_parts/capacitor, 1),
-		list(/obj/item/weapon/cell/small, 1),
+		list(/obj/item/electronics/circuitboard, 1, "time" = 20),
+		list(/obj/item/stock_parts/subspace/crystal, 1),
+		list(/obj/item/stock_parts/capacitor, 1),
+		list(/obj/item/cell/small, 1),
 		list(/obj/item/stack/cable_coil, 5, "time" = 20)
 	)
 	related_stats = list(STAT_COG)
 
 /datum/craft_recipe/tray
 	name = "dinner tray"
-	result = /obj/item/weapon/tray
+	result = /obj/item/tray
 	steps = list(
 		list(CRAFT_MATERIAL, 1, MATERIAL_STEEL, "time" = 40),
 		list(QUALITY_WIRE_CUTTING, 10, 120)
@@ -207,7 +207,7 @@
 //You get some article of clothing and shred it with a blade to make a mophead. Add in some metal rods for a handle
 /datum/craft_recipe/mop
 	name = "mop"
-	result = /obj/item/weapon/mop
+	result = /obj/item/mop
 	steps = list(
 		list(/obj/item/clothing, 1, time = 30),
 		list(QUALITY_CUTTING, 10, 120),
@@ -220,7 +220,7 @@
 
 /datum/craft_recipe/drill_head
 	name = "steel drill head"
-	result = /obj/item/weapon/material/drill_head
+	result = /obj/item/material/drill_head
 	time = WORKTIME_NORMAL
 	steps = list(
 		list(CRAFT_MATERIAL, 6, MATERIAL_STEEL, "time" = 30),
@@ -230,7 +230,7 @@
 
 /datum/craft_recipe/drill_head/plasteel
 	name = "plasteel drill head"
-	result = /obj/item/weapon/material/drill_head/plasteel
+	result = /obj/item/material/drill_head/plasteel
 	steps = list(
 		list(CRAFT_MATERIAL, 6, MATERIAL_PLASTEEL, "time" = 30),
 		list(QUALITY_WELDING, 10, 60)
@@ -239,7 +239,7 @@
 
 /datum/craft_recipe/drill_head/diamond
 	name = "diamond drill head"
-	result = /obj/item/weapon/material/drill_head/diamond
+	result = /obj/item/material/drill_head/diamond
 	steps = list(
 		list(CRAFT_MATERIAL, 6, MATERIAL_DIAMOND, "time" = 30),
 		list(QUALITY_WELDING, 10, 60)
@@ -263,9 +263,9 @@
 		list(QUALITY_WELDING, 10, 10),
 		list(/obj/item/stack/cable_coil, 5, "time" = 0),
 		list(QUALITY_WIRE_CUTTING, 10, 10),
-		list(/obj/item/weapon/stock_parts/manipulator, 1),
+		list(/obj/item/stock_parts/manipulator, 1),
 		list(QUALITY_PULSING, 10, 10),
-		list(/obj/item/weapon/reagent_containers/glass/bucket, 1)
+		list(/obj/item/reagent_containers/glass/bucket, 1)
 	)
 	related_stats = list(STAT_MEC)
 
@@ -282,9 +282,9 @@
 		list(QUALITY_WELDING, 10, 10),
 		list(/obj/item/stack/cable_coil, 5, "time" = 0),
 		list(QUALITY_WIRE_CUTTING, 10, 10),
-		list(/obj/item/weapon/stock_parts/manipulator, 1),
+		list(/obj/item/stock_parts/manipulator, 1),
 		list(QUALITY_PULSING, 10, 10),
-		list(/obj/item/weapon/tool/knife/hook, 1)
+		list(/obj/item/tool/knife/hook, 1)
 	)
 	related_stats = list(STAT_MEC)
 

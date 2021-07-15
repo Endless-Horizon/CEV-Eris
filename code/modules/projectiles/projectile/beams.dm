@@ -41,7 +41,7 @@
 /obj/item/projectile/beam/psychic
 	name = "psychic laser"
 	icon_state = "psychic_heavylaser"
-	var/obj/item/weapon/gun/energy/psychic/holder
+	var/obj/item/gun/energy/psychic/holder
 	var/traitor = FALSE //Check if it's a traitor psychic beam
 	damage_types = list(PSY = 30)
 	armor_penetration = 100
@@ -50,7 +50,7 @@
 	tracer_type = /obj/effect/projectile/psychic_laser_heavy/tracer
 	impact_type = /obj/effect/projectile/psychic_laser_heavy/impact
 
-/obj/item/projectile/beam/psychic/launch_from_gun(atom/target, mob/user, obj/item/weapon/gun/launcher, target_zone, x_offset=0, y_offset=0, angle_offset)
+/obj/item/projectile/beam/psychic/launch_from_gun(atom/target, mob/user, obj/item/gun/launcher, target_zone, x_offset=0, y_offset=0, angle_offset)
 	holder = launcher
 	if(holder && holder.traitor)
 		traitor = holder.traitor

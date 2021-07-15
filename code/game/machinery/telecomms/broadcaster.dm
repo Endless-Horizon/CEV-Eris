@@ -18,7 +18,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	machinetype = 5
 	produces_heat = 0
 	delay = 7
-	circuit = /obj/item/weapon/electronics/circuitboard/telecomms/broadcaster
+	circuit = /obj/item/electronics/circuitboard/telecomms/broadcaster
 
 /obj/machinery/telecomms/broadcaster/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)
 	// Don't broadcast rejected signals

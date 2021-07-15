@@ -76,7 +76,7 @@
 *****************************/
 /datum/click_handler/fullauto
 	var/atom/target = null
-	var/obj/item/weapon/gun/reciever //The thing we send firing signals to.
+	var/obj/item/gun/reciever //The thing we send firing signals to.
 	//Todo: Make this work with callbacks
 
 /datum/click_handler/fullauto/Click()

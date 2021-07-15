@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/pickaxe
+/obj/item/tool/pickaxe
 	name = "pickaxe"
 	desc = "The most basic of mining tools, for short excavations and small mineral extractions."
 	flags = CONDUCT
@@ -23,28 +23,28 @@
 	mode = EXCAVATE //Mode should be whatever is the starting tool and off quality.
 	rarity_value = 24
 
-/obj/item/weapon/tool/pickaxe/equipped(mob/user)
+/obj/item/tool/pickaxe/equipped(mob/user)
 	..()
 	update_icon()
 
-/obj/item/weapon/tool/pickaxe/dropped(mob/user)
+/obj/item/tool/pickaxe/dropped(mob/user)
 	..()
 	update_icon()
 
-/obj/item/weapon/tool/pickaxe/turn_on(mob/user)
+/obj/item/tool/pickaxe/turn_on(mob/user)
 	.=..()
 	if(.)
 		mode = DIG
 		to_chat(user, SPAN_NOTICE("You tighten your grip on [src], and ready yourself to strike earth."))
 
-/obj/item/weapon/tool/pickaxe/turn_off(mob/user)
+/obj/item/tool/pickaxe/turn_off(mob/user)
 
 	mode = EXCAVATE
 	to_chat(user, SPAN_NOTICE("You loosen your grip on [src], and prepare to remove debris."))
 	..()
 
 
-/obj/item/weapon/tool/pickaxe/onestar //TODO: Add sound to /turn_on proc
+/obj/item/tool/pickaxe/onestar //TODO: Add sound to /turn_on proc
 	name = "One Star pickaxe"
 	desc = "A standard One Star basic tool. There used energy technologies what makes it enough powerful and cheap at the same time."
 	icon_state = "one_star_pickaxe"
@@ -64,7 +64,7 @@
 	spawn_tags = SPAWN_TAG_OS_TOOL
 
 
-/obj/item/weapon/tool/pickaxe/jackhammer
+/obj/item/tool/pickaxe/jackhammer
 	name = "jackhammer"
 	desc = "Cracks rocks with blasts, perfect for killing cave lizards."
 	icon_state = "jackhammer"
@@ -76,10 +76,10 @@
 	origin_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_ENGINEERING = 2)
 	degradation = 0.7
 	use_power_cost = 0.4
-	suitable_cell = /obj/item/weapon/cell/medium
+	suitable_cell = /obj/item/cell/medium
 	rarity_value = 48
 
-/obj/item/weapon/tool/pickaxe/jackhammer/onestar
+/obj/item/tool/pickaxe/jackhammer/onestar
 	name = "One Star jackhammer"
 	desc = "A heavy One Star tool that cracks rocks with blasts, perfect for killing capitalist pigs."
 	icon_state = "one_star_jackhammer"
@@ -97,7 +97,7 @@
 	rarity_value = 10
 	spawn_tags = SPAWN_TAG_OS_TOOL
 
-/obj/item/weapon/tool/pickaxe/drill
+/obj/item/tool/pickaxe/drill
 	name = "mining drill" // Can dig sand as well!
 	desc = "Yours is the drill that will pierce through the rock walls."
 	icon_state = "handdrill"
@@ -112,7 +112,7 @@
 	max_fuel = 100
 	rarity_value = 48
 
-/obj/item/weapon/tool/pickaxe/drill/onestar
+/obj/item/tool/pickaxe/drill/onestar
 	name = "One Star mining drill"
 	desc = "Yours is the drill that will pierce through the worker, metaphorically."
 	icon_state = "one_star_drill"
@@ -130,7 +130,7 @@
 	rarity_value = 10
 	spawn_tags = SPAWN_TAG_OS_TOOL
 
-/obj/item/weapon/tool/pickaxe/diamonddrill
+/obj/item/tool/pickaxe/diamonddrill
 	name = "diamond-point mining drill"
 	desc = "Yours is the drill that will pierce the heavens!"
 	icon_state = "diamonddrill"
@@ -148,12 +148,12 @@
 	rarity_value = 96
 	spawn_tags = SPAWN_TAG_TOOL_ADVANCED
 
-/obj/item/weapon/tool/pickaxe/diamonddrill/rig
+/obj/item/tool/pickaxe/diamonddrill/rig
 	use_fuel_cost = 0
 	passive_fuel_cost = 0
 	spawn_tags = null
 
-/obj/item/weapon/tool/pickaxe/excavation
+/obj/item/tool/pickaxe/excavation
 	name = "hand pickaxe"
 	desc = "A smaller, more precise version of the pickaxe, used for archeology excavation."
 	icon_state = "pick_hand"

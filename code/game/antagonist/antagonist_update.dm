@@ -20,5 +20,5 @@
 /datum/antagonist/proc/update_access()
 	if(!owner || !owner.current)
 		return
-	for(var/obj/item/weapon/card/id/id in owner.current.contents)
+	for(var/obj/item/card/id/id in owner.current.contents)
 		owner.current.set_id_info(id)

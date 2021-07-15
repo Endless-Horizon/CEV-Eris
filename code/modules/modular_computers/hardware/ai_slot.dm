@@ -1,5 +1,5 @@
 // A wrapper that allows the computer to contain an inteliCard.
-/obj/item/weapon/computer_hardware/ai_slot
+/obj/item/computer_hardware/ai_slot
 	name = "inteliCard slot"
 	desc = "An IIS interlink with connection uplinks that allow the device to interface with most common inteliCard models. Too large to fit into tablets. Uses a lot of power when active."
 	icon_state = "aislot"
@@ -11,13 +11,13 @@
 	var/power_usage_idle = 100
 	var/power_usage_occupied = 2 KILOWATTS
 
-/obj/item/weapon/computer_hardware/ai_slot/proc/update_power_usage()
+/obj/item/computer_hardware/ai_slot/proc/update_power_usage()
 	if(!stored_card || !stored_card.carded_ai)
 		power_usage = power_usage_idle
 		return
 	power_usage = power_usage_occupied
 
-/obj/item/weapon/computer_hardware/ai_slot/attackby(obj/item/weapon/W, mob/user)
+/obj/item/computer_hardware/ai_slot/attackby(obj/item/W, mob/user)
 	if(..())
 		return 1
 	if(istype(W, /obj/item/device/aicard))
@@ -35,7 +35,7 @@
 			stored_card = null
 			update_power_usage()
 
-/obj/item/weapon/computer_hardware/ai_slot/Destroy()
+/obj/item/computer_hardware/ai_slot/Destroy()
 	if(stored_card)
 		stored_card.forceMove(drop_location())
 	return ..()

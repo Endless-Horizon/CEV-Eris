@@ -71,8 +71,8 @@
 		change_plant()
 		update_icon()
 
-/obj/structure/cyberplant/attackby(obj/item/weapon/I, mob/user )
-	if(istype(I, /obj/item/weapon/card/id))
+/obj/structure/cyberplant/attackby(obj/item/I, mob/user )
+	if(istype(I, /obj/item/card/id))
 		if(!emagged)
 			if(prob(10))
 				to_chat(user, "You hear soft whisper, <i>Welcome back, honey...</i>")

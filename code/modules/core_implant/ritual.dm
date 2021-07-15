@@ -9,7 +9,7 @@
 	var/chance = 100
 	var/success_message = "Ritual successful."
 	var/fail_message = "Ritual failed."
-	var/implant_type = /obj/item/weapon/implant/core_implant
+	var/implant_type = /obj/item/implant/core_implant
 	var/category = "???"
 
 	var/cooldown = FALSE
@@ -20,21 +20,21 @@
 	var/ignore_stuttering = FALSE
 
 //code of ritual, returns true on success, can be interrupted with fail(H, C, targets) and return FALSE
-/datum/ritual/proc/perform(mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C, targets)
+/datum/ritual/proc/perform(mob/living/carbon/human/H, obj/item/implant/core_implant/C, targets)
 	return TRUE
 
 //ritual will be proceed only if this returns true
-/datum/ritual/proc/pre_check(mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C, targets)
+/datum/ritual/proc/pre_check(mob/living/carbon/human/H, obj/item/implant/core_implant/C, targets)
 	if(cooldown && is_on_cooldown(H))
 		fail("Litanies of this type can't be spoken too often.", H, C)
 		return FALSE
 	return TRUE
 
 //code of ritual fail, called by fail(H,C,targets)		'on_chance' will be true, if ritual failed on chance check
-/datum/ritual/proc/failed(mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C, targets, on_chance = FALSE)
+/datum/ritual/proc/failed(mob/living/carbon/human/H, obj/item/implant/core_implant/C, targets, on_chance = FALSE)
 	return
 
-/datum/ritual/proc/activate(mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C, var/list/targets, var/force = FALSE)
+/datum/ritual/proc/activate(mob/living/carbon/human/H, obj/item/implant/core_implant/C, var/list/targets, var/force = FALSE)
 	if(!pre_check(H,C,targets))
 		return
 	if(!force && !check_success(C))
@@ -45,16 +45,16 @@
 			C.use_power(src.power)
 			to_chat(H, SPAN_NOTICE("[success_message]"))
 
-/datum/ritual/proc/fail(var/message, mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C, targets)
+/datum/ritual/proc/fail(var/message, mob/living/carbon/human/H, obj/item/implant/core_implant/C, targets)
 	if(!message)
 		message = fail_message
 	to_chat(H, SPAN_DANGER("[message]"))
 	failed(H, C, targets)
 
-/datum/ritual/proc/check_success(obj/item/weapon/implant/core_implant/C)
+/datum/ritual/proc/check_success(obj/item/implant/core_implant/C)
 	return prob(chance * C.success_modifier)
 
-/datum/ritual/proc/is_allowed(obj/item/weapon/implant/core_implant/C)
+/datum/ritual/proc/is_allowed(obj/item/implant/core_implant/C)
 	return TRUE
 
 //returns phrase to say, may require to specify target
@@ -103,7 +103,7 @@
 
 //Getting mobs
 /proc/get_grabbed_mob(var/mob/living/carbon/human/user)
-	var/obj/item/weapon/grab/G = locate(/obj/item/weapon/grab) in user
+	var/obj/item/grab/G = locate(/obj/item/grab) in user
 
 	if (G && G.affecting && istype(G.affecting, /mob/living))
 		return G.affecting
@@ -130,8 +130,8 @@
 
 //Getting implants
 /mob/living/proc/get_core_implant(ctype = null, req_activated = TRUE)
-	RETURN_TYPE(/obj/item/weapon/implant/core_implant)
-	for(var/obj/item/weapon/implant/core_implant/I in src)
+	RETURN_TYPE(/obj/item/implant/core_implant)
+	for(var/obj/item/implant/core_implant/I in src)
 		if(ctype && !istype(I, ctype))
 			continue
 

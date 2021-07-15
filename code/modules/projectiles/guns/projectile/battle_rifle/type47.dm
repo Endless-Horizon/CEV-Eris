@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/type_47
+/obj/item/gun/projectile/type_47
 	name = "OS CAR .25 CS \"Type XLVII\""
 	desc = "A standard-issue weapon used by Onestar peacekeeping forces. Compact and reliable. Uses .25 Caseless rounds."
 	icon = 'icons/obj/guns/projectile/os/type_47.dmi'
@@ -26,7 +26,7 @@
 		)
 	spawn_blacklisted = TRUE //until loot rework
 
-/obj/item/weapon/gun/projectile/type_47/on_update_icon()
+/obj/item/gun/projectile/type_47/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -43,6 +43,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/type_47/Initialize()
+/obj/item/gun/projectile/type_47/Initialize()
 	. = ..()
 	update_icon()

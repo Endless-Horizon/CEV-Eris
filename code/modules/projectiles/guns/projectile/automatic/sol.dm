@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/sol
+/obj/item/gun/projectile/automatic/sol
 	name = "FS CAR .25 CS \"Sol\""
 	desc = "A standard-issue weapon used by Ironhammer operatives. Compact and reliable. Uses .25 Caseless rounds."
 	icon = 'icons/obj/guns/projectile/sol.dmi'
@@ -28,7 +28,7 @@
 
 	spawn_tags = SPAWN_TAG_FS_PROJECTILE
 
-/obj/item/weapon/gun/projectile/automatic/sol/proc/update_charge()
+/obj/item/gun/projectile/automatic/sol/proc/update_charge()
 	if(!ammo_magazine)
 		return
 	var/ratio = ammo_magazine.stored_ammo.len / ammo_magazine.max_ammo
@@ -37,7 +37,7 @@
 	ratio = round(ratio, 0.25) * 100
 	add_overlays("sol_[ratio]")
 
-/obj/item/weapon/gun/projectile/automatic/sol/on_update_icon()
+/obj/item/gun/projectile/automatic/sol/on_update_icon()
 	..()
 
 	icon_state = initial(icon_state) + (ammo_magazine ? "-full" : "")
@@ -45,6 +45,6 @@
 	cut_overlays()
 	update_charge()
 
-/obj/item/weapon/gun/projectile/automatic/sol/generate_guntags()
+/obj/item/gun/projectile/automatic/sol/generate_guntags()
 	..()
 	gun_tags |= GUN_SOL

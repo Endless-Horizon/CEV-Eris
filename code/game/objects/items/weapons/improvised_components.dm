@@ -1,5 +1,5 @@
 
-/obj/item/weapon/material/butterflyblade
+/obj/item/material/butterflyblade
 	name = "knife blade"
 	desc = "A knife blade. Unusable as a weapon without a grip."
 	icon = 'icons/obj/buildingobject.dmi'
@@ -9,7 +9,7 @@
 	rarity_value = 16.66
 	spawn_tags = SPAWN_ITEM_CONTRABAND
 
-/obj/item/weapon/material/butterflyhandle
+/obj/item/material/butterflyhandle
 	name = "concealed knife grip"
 	desc = "A plasteel grip with screw fittings for a blade."
 	icon = 'icons/obj/buildingobject.dmi'
@@ -19,7 +19,7 @@
 	rarity_value = 16.66
 	spawn_tags = SPAWN_ITEM_CONTRABAND
 
-/obj/item/weapon/material/wirerod
+/obj/item/material/wirerod
 	name = "wired rod"
 	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."
 	icon_state = "wiredrod"
@@ -34,11 +34,11 @@
 	rarity_value = 16.66
 	spawn_tags = SPAWN_ITEM_CONTRABAND
 
-/obj/item/weapon/material/wirerod/attackby(var/obj/item/I, mob/user)
+/obj/item/material/wirerod/attackby(var/obj/item/I, mob/user)
 	..()
 	var/obj/item/finished
 	if((QUALITY_CUTTING in I.tool_qualities) || (QUALITY_WIRE_CUTTING in I.tool_qualities))
-		finished = new /obj/item/weapon/melee/baton/cattleprod(get_turf(user))
+		finished = new /obj/item/melee/baton/cattleprod(get_turf(user))
 		to_chat(user, SPAN_NOTICE("You fasten the wirecutters to the top of the rod with the cable, prongs outward."))
 	if(finished)
 		user.drop_from_inventory(src)

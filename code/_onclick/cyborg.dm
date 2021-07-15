@@ -71,8 +71,8 @@
 		return
 
 	//Handling using grippers
-	if (istype(W, /obj/item/weapon/gripper))
-		var/obj/item/weapon/gripper/G = W
+	if (istype(W, /obj/item/gripper))
+		var/obj/item/gripper/G = W
 		//If the gripper contains something, then we will use its contents to attack
 		if (G.wrapped && (G.wrapped.loc == G))
 			GripperClickOn(A, params, G)
@@ -116,7 +116,7 @@
 	Gripper Handling
 	This is used when a gripper is used on anything. It does all the handling for it
 */
-/mob/living/silicon/robot/proc/GripperClickOn(var/atom/A, var/params, var/obj/item/weapon/gripper/G)
+/mob/living/silicon/robot/proc/GripperClickOn(var/atom/A, var/params, var/obj/item/gripper/G)
 
 	var/obj/item/W = G.wrapped
 	if (!grippersafety(G))return

@@ -30,7 +30,7 @@
 		if(BOX)
 			var/turf/output = get_step(src, output_dir)
 			var/i = 0
-			for(var/obj/item/weapon/ore/O in BOX.contents)
+			for(var/obj/item/ore/O in BOX.contents)
 				O.forceMove(output)
 				if(++i>=10)
 					return

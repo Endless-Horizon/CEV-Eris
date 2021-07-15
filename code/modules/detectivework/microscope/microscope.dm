@@ -7,16 +7,16 @@
 	anchored = TRUE
 	density = TRUE
 
-	var/obj/item/weapon/sample = null
+	var/obj/item/sample = null
 	var/report_num = 0
 
-/obj/machinery/microscope/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/microscope/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(sample)
 		to_chat(user, SPAN_WARNING("There is already a slide in the microscope."))
 		return
 
-	if(istype(W, /obj/item/weapon/forensics/swab)|| istype(W, /obj/item/weapon/sample/fibers) || istype(W, /obj/item/weapon/sample/print))
+	if(istype(W, /obj/item/forensics/swab)|| istype(W, /obj/item/sample/fibers) || istype(W, /obj/item/sample/print))
 		to_chat(user, SPAN_NOTICE("You insert \the [W] into the microscope."))
 		user.unEquip(W)
 		W.forceMove(src)
@@ -37,13 +37,13 @@
 		return
 
 	to_chat(user, SPAN_NOTICE("Printing findings now..."))
-	var/obj/item/weapon/paper/report = new(get_turf(src))
-	report.stamped = list(/obj/item/weapon/stamp)
+	var/obj/item/paper/report = new(get_turf(src))
+	report.stamped = list(/obj/item/stamp)
 	report.set_overlays(list("paper_stamped"))
 	report_num++
 
-	if(istype(sample, /obj/item/weapon/forensics/swab))
-		var/obj/item/weapon/forensics/swab/swab = sample
+	if(istype(sample, /obj/item/forensics/swab))
+		var/obj/item/forensics/swab/swab = sample
 
 		report.name = "GSR report #[++report_num]: [swab.name]"
 		report.info = "<b>Scanned item:</b><br>[swab.name]<br><br>"
@@ -53,8 +53,8 @@
 		else
 			report.info += "No gunpowder residue found."
 
-	else if(istype(sample, /obj/item/weapon/sample/fibers))
-		var/obj/item/weapon/sample/fibers/fibers = sample
+	else if(istype(sample, /obj/item/sample/fibers))
+		var/obj/item/sample/fibers/fibers = sample
 		report.name = "Fiber report #[++report_num]: [fibers.name]"
 		report.info = "<b>Scanned item:</b><br>[fibers.name]<br><br>"
 		if(fibers.evidence)
@@ -63,10 +63,10 @@
 				report.info += "<span class='notice'>Most likely match for fibers: [fiber]</span><br><br>"
 		else
 			report.info += "No fibers found."
-	else if(istype(sample, /obj/item/weapon/sample/print))
+	else if(istype(sample, /obj/item/sample/print))
 		report.name = "Fingerprint report #[report_num]: [sample.name]"
 		report.info = "<b>Fingerprint analysis report #[report_num]</b>: [sample.name]<br>"
-		var/obj/item/weapon/sample/print/card = sample
+		var/obj/item/sample/print/card = sample
 		if(card.evidence && card.evidence.len)
 			report.info += "Surface analysis has determined unique fingerprint strings:<br><br>"
 			for(var/prints in card.evidence)

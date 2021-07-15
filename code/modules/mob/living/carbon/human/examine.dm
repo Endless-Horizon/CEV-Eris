@@ -109,7 +109,7 @@
 
 	//handcuffed?
 	if(handcuffed)
-		if(istype(handcuffed, /obj/item/weapon/handcuffs/cable))
+		if(istype(handcuffed, /obj/item/handcuffs/cable))
 			msg += "<span class='warning'>[T.He] [T.is] \icon[handcuffed] restrained with cable!</span>\n"
 		else
 			msg += "<span class='warning'>[T.He] [T.is] \icon[handcuffed] handcuffed!</span>\n"
@@ -137,7 +137,7 @@
 	//mask
 	if(wear_mask && !skipmask)
 		var/descriptor = "on [T.his] face"
-		if(istype(wear_mask, /obj/item/weapon/grenade))
+		if(istype(wear_mask, /obj/item/grenade))
 			descriptor = "in [T.his] mouth"
 		if(wear_mask.blood_DNA)
 			msg += "<span class='warning'>[T.He] [T.has] \icon[wear_mask] [wear_mask.gender==PLURAL?"some":"a"] [(wear_mask.blood_color != "#030303") ? "blood" : "oil"]-stained [wear_mask.name] [descriptor]!</span>\n"
@@ -179,7 +179,7 @@
 			msg += "<span class='warning'>[T.He] [T.has] a splint on [T.his] [o.name]!</span>\n"
 
 	if(!wear_suit && !w_uniform && !(T == src))
-		if(locate(/obj/item/weapon/implant/carrion_spider) in src)
+		if(locate(/obj/item/implant/carrion_spider) in src)
 			msg += SPAN_DANGER("[T.He] [T.has] a strange growth on [T.his] chest!") + "\n"
 
 	if(mSmallsize in mutations)
@@ -347,7 +347,7 @@
 		var/medical = "None"
 
 		if(wear_id)
-			var/obj/item/weapon/card/id/id_card = wear_id.GetIdCard()
+			var/obj/item/card/id/id_card = wear_id.GetIdCard()
 			if(id_card)
 				perpname = id_card.registered_name
 		else

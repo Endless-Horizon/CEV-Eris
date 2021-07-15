@@ -80,11 +80,11 @@
 			mob_playsound(loc, species.death_sound, 80, 1, 1)
 	handle_hud_list()
 
-	var/obj/item/weapon/implant/core_implant/cruciform/C = get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
+	var/obj/item/implant/core_implant/cruciform/C = get_core_implant(/obj/item/implant/core_implant/cruciform)
 	if(C && C.active)
-		var/obj/item/weapon/cruciform_upgrade/upgrade = C.upgrade
+		var/obj/item/cruciform_upgrade/upgrade = C.upgrade
 		if(upgrade && upgrade.active && istype(upgrade, CUPGRADE_MARTYR_GIFT))
-			var/obj/item/weapon/cruciform_upgrade/martyr_gift/martyr = upgrade
+			var/obj/item/cruciform_upgrade/martyr_gift/martyr = upgrade
 			visible_message(SPAN_DANGER("The [C] emit a massive light!"))
 			var/burn_damage_done
 			for(var/mob/living/L in oviewers(6, src))

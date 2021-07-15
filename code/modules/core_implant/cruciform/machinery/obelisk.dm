@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(all_obelisk)
 	icon = 'icons/obj/neotheology_machinery.dmi'
 	icon_state = "nt_obelisk"
 	//TODO:
-	//circuit = /obj/item/weapon/electronics/circuitboard/nt_obelisk
+	//circuit = /obj/item/electronics/circuitboard/nt_obelisk
 
 	density = TRUE
 	anchored = TRUE
@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(all_obelisk)
 		H.stats.removePerk(/datum/perk/active_sanityboost)
 	currently_affected -= no_longer_affected
 	for(var/mob/living/carbon/human/mob in affected)
-		var/obj/item/weapon/implant/core_implant/I = mob.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
+		var/obj/item/implant/core_implant/I = mob.get_core_implant(/obj/item/implant/core_implant/cruciform)
 		if(!(mob in eotp.scanned))
 			eotp.scanned |= mob
 			if(I && I.active && I.wearer)

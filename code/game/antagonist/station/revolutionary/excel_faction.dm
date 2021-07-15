@@ -83,13 +83,13 @@
 
 	var/mob/living/carbon/human/H = usr
 
-	var/obj/item/weapon/storage/deferred/stash/sack/stash = new
+	var/obj/item/storage/deferred/stash/sack/stash = new
 
-	new /obj/item/weapon/computer_hardware/hard_drive/portable/design(stash)
-	new /obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/core(stash)
-	new /obj/item/weapon/computer_hardware/hard_drive/portable/design/excelsior/weapons(stash)
-	new /obj/item/weapon/electronics/circuitboard/excelsiorautolathe(stash)
-	new /obj/item/weapon/electronics/circuitboard/excelsior_teleporter(stash)
+	new /obj/item/computer_hardware/hard_drive/portable/design(stash)
+	new /obj/item/computer_hardware/hard_drive/portable/design/excelsior/core(stash)
+	new /obj/item/computer_hardware/hard_drive/portable/design/excelsior/weapons(stash)
+	new /obj/item/electronics/circuitboard/excelsiorautolathe(stash)
+	new /obj/item/electronics/circuitboard/excelsior_teleporter(stash)
 
 	H.put_in_hands(stash)
 	F.stash_holder = H.real_name

@@ -175,7 +175,7 @@
 	data["disk_size"] = my_computer.hard_drive.max_capacity
 	data["disk_used"] = my_computer.hard_drive.used_capacity
 
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD = program.computer.hard_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = program.computer.hard_drive
 	if(!HDD)
 		return 1
 	var/list/datum/computer_file/program/installed_programs = list()

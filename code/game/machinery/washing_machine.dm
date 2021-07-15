@@ -40,12 +40,12 @@
 	var/tick = 0
 
 	var/list/allowed_types = list(/obj/item/clothing,
-	/obj/item/weapon/storage/pouch,
+	/obj/item/storage/pouch,
 	/obj/item/stack/material/hairlesshide,
-	/obj/item/weapon/bedsheet,
-	/obj/item/weapon/storage/belt,
-	/obj/item/weapon/storage/backpack,
-	/obj/item/weapon/rig)
+	/obj/item/bedsheet,
+	/obj/item/storage/belt,
+	/obj/item/storage/backpack,
+	/obj/item/rig)
 
 /obj/machinery/washing_machine/Destroy()
 	qdel(crayon)
@@ -72,9 +72,9 @@
 				if(istype(A, /obj/item))
 					var/obj/item/I = A
 
-					if(istype(crayon,/obj/item/weapon/pen/crayon) && (istype(I, /obj/item/clothing/gloves/color) || istype(I, /obj/item/clothing/head/soft) || istype(I, /obj/item/clothing/shoes/color) || istype(I, /obj/item/clothing/under/color)))
+					if(istype(crayon,/obj/item/pen/crayon) && (istype(I, /obj/item/clothing/gloves/color) || istype(I, /obj/item/clothing/head/soft) || istype(I, /obj/item/clothing/shoes/color) || istype(I, /obj/item/clothing/under/color)))
 						var/obj/item/clothing/C = I
-						var/obj/item/weapon/pen/crayon/CR = crayon
+						var/obj/item/pen/crayon/CR = crayon
 						C.color = CR.colour
 						C.name = "[CR.colourName] dyed [C.initial_name]"
 
@@ -141,11 +141,11 @@
 			state = WASHSTATE_FULLOPENDOOR
 			return TRUE
 
-/obj/machinery/washing_machine/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	/*if(istype(W,/obj/item/weapon/tool/screwdriver))
+/obj/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
+	/*if(istype(W,/obj/item/tool/screwdriver))
 		panel = !panel
 		to_chat(user, "<span class='notice'>You [panel ? "open" : "close"] the [src]'s maintenance panel</span>")*/
-	if(istype(W,/obj/item/weapon/pen/crayon))
+	if(istype(W,/obj/item/pen/crayon))
 		if( state in list(WASHSTATE_EMPTYOPENDOOR,WASHSTATE_FULLOPENDOOR,WASHSTATE_BLOODOPENDOOR) )
 			if(!crayon)
 				user.drop_item()

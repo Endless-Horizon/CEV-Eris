@@ -22,7 +22,7 @@
 	// Allows us to create "north bump" "south bump" etc. named objects, for more comfortable mapping.
 	name = initial(name)
 
-/obj/item/modular_computer/telescreen/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/item/modular_computer/telescreen/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(QUALITY_PRYING in W.tool_qualities)
 		var/choice
 		if(!anchored)

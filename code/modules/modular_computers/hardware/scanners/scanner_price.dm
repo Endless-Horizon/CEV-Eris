@@ -1,15 +1,15 @@
-/obj/item/weapon/computer_hardware/scanner/price
+/obj/item/computer_hardware/scanner/price
 	name = "export scanner module"
 	desc = "A module used to check objects against Commercial database. Uses NTNet to connect to database."
 	var/obj/machinery/computer/supplycomp/cargo_console = null
 
-/obj/item/weapon/computer_hardware/scanner/price/can_use_scanner(user, target, proximity)
+/obj/item/computer_hardware/scanner/price/can_use_scanner(user, target, proximity)
 	if(!istype(cargo_console))
 		to_chat(user, SPAN_WARNING("You must link [src] to a cargo console first!"))
 		return
 	return ..()
 
-/obj/item/weapon/computer_hardware/scanner/price/do_on_afterattack(mob/user, atom/target, proximity)
+/obj/item/computer_hardware/scanner/price/do_on_afterattack(mob/user, atom/target, proximity)
 	if(istype(target, /obj/machinery/computer/supplycomp) && proximity)
 		var/obj/machinery/computer/supplycomp/C = target
 		if(!C.requestonly)

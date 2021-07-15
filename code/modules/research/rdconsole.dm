@@ -42,9 +42,9 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	icon_keyboard = "rd_key"
 	icon_screen = "rdcomp"
 	light_color = COLOR_LIGHTING_PURPLE_MACHINERY
-	circuit = /obj/item/weapon/electronics/circuitboard/rdconsole
+	circuit = /obj/item/electronics/circuitboard/rdconsole
 	var/datum/research/files								//Stores all the collected research data.
-	var/obj/item/weapon/computer_hardware/hard_drive/portable/disk = null	//Stores the data disk.
+	var/obj/item/computer_hardware/hard_drive/portable/disk = null	//Stores the data disk.
 
 	var/obj/machinery/r_n_d/destructive_analyzer/linked_destroy = null	//Linked Destructive Analyzer
 	var/obj/machinery/autolathe/rnd/protolathe/linked_lathe = null		//Linked Protolathe
@@ -111,9 +111,9 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		linked_destroy = null
 	return ..()
 
-/obj/machinery/computer/rdconsole/attackby(var/obj/item/weapon/D as obj, var/mob/user as mob)
+/obj/machinery/computer/rdconsole/attackby(var/obj/item/D as obj, var/mob/user as mob)
 	//Loading a disk into it.
-	if(istype(D, /obj/item/weapon/computer_hardware/hard_drive/portable))
+	if(istype(D, /obj/item/computer_hardware/hard_drive/portable))
 		if(disk)
 			to_chat(user, SPAN_NOTICE("A disk is already loaded into the machine."))
 			return

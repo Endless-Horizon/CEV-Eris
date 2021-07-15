@@ -1,10 +1,10 @@
-/obj/item/weapon/electronics/circuitboard/pile_ripper
+/obj/item/electronics/circuitboard/pile_ripper
 	name = T_BOARD("Pile Ripper")
 	build_path = /obj/machinery/pile_ripper
 	board_type = "machine"
 	origin_tech = list(TECH_ENGINEERING = 3)
 	req_components = list(
-		/obj/item/weapon/stock_parts/manipulator = 1
+		/obj/item/stock_parts/manipulator = 1
 	)
 
 /obj/machinery/pile_ripper
@@ -84,7 +84,7 @@
 	update_icon()
 
 /obj/machinery/pile_ripper/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/weapon/card/emag))
+	if(istype(I, /obj/item/card/emag))
 		emag_act(user)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 
@@ -145,7 +145,7 @@
 	// Start shredding meat
 
 	var/slab_name = L.name
-	var/slab_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	var/slab_type = /obj/item/reagent_containers/food/snacks/meat
 
 	L.adjustBruteLoss(45)
 	if(istype(L, /mob/living/carbon/human))
@@ -154,12 +154,12 @@
 		if(H.nutrition <= 0)
 			H.gib()
 		if(H.isMonkey())
-			slab_type = /obj/item/weapon/reagent_containers/food/snacks/meat/monkey
+			slab_type = /obj/item/reagent_containers/food/snacks/meat/monkey
 		else
 			slab_name = H.real_name
-			slab_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human
+			slab_type = /obj/item/reagent_containers/food/snacks/meat/human
 
-	var/obj/item/weapon/reagent_containers/food/snacks/meat/new_meat = new slab_type(get_turf(get_step(src, 4)))
+	var/obj/item/reagent_containers/food/snacks/meat/new_meat = new slab_type(get_turf(get_step(src, 4)))
 	new_meat.name = "[slab_name] [new_meat.name]"
 
 	new_meat.reagents.add_reagent("nutriment", 10)

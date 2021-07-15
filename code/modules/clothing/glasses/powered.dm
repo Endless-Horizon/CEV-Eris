@@ -8,13 +8,13 @@
 	active = FALSE
 	bad_type = /obj/item/clothing/glasses/powered
 	var/tick_cost = 1
-	var/obj/item/weapon/cell/cell
-	var/suitable_cell = /obj/item/weapon/cell/small
+	var/obj/item/cell/cell
+	var/suitable_cell = /obj/item/cell/small
 
 /obj/item/clothing/glasses/powered/Initialize()
 	. = ..()
 	if(!cell && suitable_cell)
-		cell = new /obj/item/weapon/cell/small(src)
+		cell = new /obj/item/cell/small(src)
 
 /obj/item/clothing/glasses/powered/Process()
 	if(active)

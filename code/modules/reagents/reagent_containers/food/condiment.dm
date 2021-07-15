@@ -5,7 +5,7 @@
 //	to mixed-drinks code. If you want an object that starts pre-loaded, you need to make it in addition to the other code.
 
 //Food items that aren't eaten normally and leave an empty container behind.
-/obj/item/weapon/reagent_containers/food/condiment
+/obj/item/reagent_containers/food/condiment
 	name = "Condiment Container"
 	desc = "Just your average condiment container."
 	icon = 'icons/obj/food.dmi'
@@ -15,7 +15,7 @@
 	center_of_mass = list("x"=16, "y"=6)
 	volume = 50
 
-	attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+	attackby(var/obj/item/W as obj, var/mob/user as mob)
 		return
 
 	attack_self(var/mob/user as mob)
@@ -33,7 +33,7 @@
 		if(standard_dispenser_refill(user, target))
 			return
 
-		if(istype(target, /obj/item/weapon/reagent_containers/food/snacks)) // These are not opencontainers but we can transfer to them
+		if(istype(target, /obj/item/reagent_containers/food/snacks)) // These are not opencontainers but we can transfer to them
 			if(!reagents || !reagents.total_volume)
 				to_chat(user, SPAN_NOTICE("There is no condiment left in \the [src]."))
 				return
@@ -117,17 +117,17 @@
 			center_of_mass = list("x"=16, "y"=6)
 			return
 
-/obj/item/weapon/reagent_containers/food/condiment/enzyme
+/obj/item/reagent_containers/food/condiment/enzyme
 	name = "Universal Enzyme"
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
 	preloaded_reagents = list("enzyme" = 50)
 
-/obj/item/weapon/reagent_containers/food/condiment/sugar
+/obj/item/reagent_containers/food/condiment/sugar
 	preloaded_reagents = list("sugar" = 50)
 
 //Seperate from above since it's a small shaker rather then a large one.
-/obj/item/weapon/reagent_containers/food/condiment/saltshaker
+/obj/item/reagent_containers/food/condiment/saltshaker
 	name = "salt shaker"
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
@@ -136,7 +136,7 @@
 	volume = 20
 	preloaded_reagents = list("sodiumchloride" = 20)
 
-/obj/item/weapon/reagent_containers/food/condiment/peppermill
+/obj/item/reagent_containers/food/condiment/peppermill
 	name = "pepper mill"
 	desc = "Often used to flavor food or make people sneeze."
 	icon_state = "peppermillsmall"
@@ -145,7 +145,7 @@
 	volume = 20
 	preloaded_reagents = list("blackpepper" = 20)
 
-/obj/item/weapon/reagent_containers/food/condiment/flour
+/obj/item/reagent_containers/food/condiment/flour
 	name = "flour sack"
 	desc = "A big bag of flour. Good for baking!"
 	icon = 'icons/obj/food.dmi'

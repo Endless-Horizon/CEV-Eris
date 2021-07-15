@@ -1,9 +1,9 @@
-/obj/item/weapon/implant/carrion_spider/blight
+/obj/item/implant/carrion_spider/blight
 	name = "blight spider"
 	icon_state = "spiderling_blight"
 	spider_price = 30
 
-/obj/item/weapon/implant/carrion_spider/blight/activate()
+/obj/item/implant/carrion_spider/blight/activate()
 	..()
 	if(wearer)
 		wearer.reagents.add_reagent("cryptobiolin", 5)

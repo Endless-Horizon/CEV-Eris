@@ -23,7 +23,7 @@
 	var/spawn_tags
 	var/rarity_value = 1 //min:1
 	var/spawn_frequency = 0 //min:0
-	var/accompanying_object	//path or text "obj/item/weapon,/obj/item/device"
+	var/accompanying_object	//path or text "obj/item,/obj/item/device"
 	var/prob_aditional_object = 100
 	var/spawn_blacklisted = FALSE
 	var/bad_type //path

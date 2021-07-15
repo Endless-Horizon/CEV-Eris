@@ -1,10 +1,10 @@
-/obj/item/weapon/implant/carrion_spider/signal
+/obj/item/implant/carrion_spider/signal
 	name = "electrocurrent spider"
 	icon_state = "spiderling_identity"
 	spider_price = 5
 	var/datum/wires/connected
 
-/obj/item/weapon/implant/carrion_spider/signal/activate()
+/obj/item/implant/carrion_spider/signal/activate()
 	..()
 	if(src.connected)
 		connected.Pulse(src)

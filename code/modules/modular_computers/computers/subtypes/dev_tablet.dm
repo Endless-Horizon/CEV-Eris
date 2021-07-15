@@ -12,7 +12,7 @@
 	screen_light_strength = 2.1
 	screen_light_range = 2.1
 	price_tag = 100
-	suitable_cell = /obj/item/weapon/cell/small //We take small battery
+	suitable_cell = /obj/item/cell/small //We take small battery
 
 /obj/item/modular_computer/tablet/lease
 	desc = "A small, portable microcomputer. This one has a gold and blue stripe, and a serial number stamped into the case."

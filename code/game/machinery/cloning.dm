@@ -11,7 +11,7 @@
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "pod_0"
 	req_access = list(access_genetics) //For premature unlocking.
-	circuit = /obj/item/weapon/electronics/circuitboard/clonepod
+	circuit = /obj/item/electronics/circuitboard/clonepod
 	var/mob/living/occupant
 	var/heal_level = 20 //The clone is released once its health reaches this level.
 	var/heal_rate = 1
@@ -226,8 +226,8 @@
 /obj/machinery/clonepod/RefreshParts()
 	..()
 	var/rating = 0
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/scanning_module) || istype(P, /obj/item/weapon/stock_parts/manipulator))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/scanning_module) || istype(P, /obj/item/stock_parts/manipulator))
 			rating += P.rating
 
 	heal_level = rating * 10 - 20

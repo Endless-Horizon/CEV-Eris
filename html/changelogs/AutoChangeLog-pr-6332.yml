@@ -1,0 +1,5 @@
+author: Sparrowbird611
+delete-after: true
+changes:
+  - rscadd: Adds the mindflayer to the moebius research printer, in place of the nuclear
+      laser. It can still rarely be found in maintenance.

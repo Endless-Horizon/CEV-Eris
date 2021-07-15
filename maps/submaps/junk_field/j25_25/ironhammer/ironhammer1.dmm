@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aq" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/blue,
+/obj/item/folder/blue,
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/template_noop)
 "as" = (
@@ -105,7 +105,7 @@
 /area/template_noop)
 "gJ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/donut,
+/obj/item/storage/box/donut,
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/template_noop)
 "ia" = (
@@ -116,7 +116,7 @@
 /area/template_noop)
 "ip" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/blue,
+/obj/item/folder/blue,
 /turf/simulated/floor/tiled/dark,
 /area/template_noop)
 "iw" = (
@@ -132,8 +132,8 @@
 /area/template_noop)
 "js" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/box/handcuffs,
-/obj/item/weapon/storage/box/flashbangs,
+/obj/item/storage/box/handcuffs,
+/obj/item/storage/box/flashbangs,
 /turf/simulated/floor/tiled/dark/cargo,
 /area/template_noop)
 "jv" = (
@@ -161,8 +161,8 @@
 /area/template_noop)
 "lU" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/hos,
+/obj/item/folder/blue,
+/obj/item/stamp/hos,
 /turf/simulated/floor/wood,
 /area/template_noop)
 "mZ" = (
@@ -194,17 +194,17 @@
 /area/template_noop)
 "pI" = (
 /obj/structure/table/rack,
-/obj/item/weapon/cell/medium/high,
-/obj/item/weapon/cell/medium/high,
-/obj/item/weapon/cell/medium/high,
-/obj/item/weapon/cell/medium/high,
-/obj/item/weapon/cell/medium/high,
-/obj/item/weapon/cell/medium/high,
+/obj/item/cell/medium/high,
+/obj/item/cell/medium/high,
+/obj/item/cell/medium/high,
+/obj/item/cell/medium/high,
+/obj/item/cell/medium/high,
+/obj/item/cell/medium/high,
 /turf/simulated/floor/tiled/dark/cargo,
 /area/template_noop)
 "qA" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/blue,
+/obj/item/bedsheet/blue,
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/dark/gray_platform,
 /area/template_noop)
@@ -217,14 +217,14 @@
 /area/template_noop)
 "rd" = (
 /obj/structure/table/rack,
-/obj/item/weapon/cell/small/high,
-/obj/item/weapon/cell/small/high,
-/obj/item/weapon/cell/small/high,
-/obj/item/weapon/cell/small/high,
-/obj/item/weapon/cell/small/high,
-/obj/item/weapon/cell/small/high,
-/obj/item/weapon/cell/small/high,
-/obj/item/weapon/cell/small/high,
+/obj/item/cell/small/high,
+/obj/item/cell/small/high,
+/obj/item/cell/small/high,
+/obj/item/cell/small/high,
+/obj/item/cell/small/high,
+/obj/item/cell/small/high,
+/obj/item/cell/small/high,
+/obj/item/cell/small/high,
 /turf/simulated/floor/tiled/dark/cargo,
 /area/template_noop)
 "rp" = (
@@ -240,7 +240,7 @@
 /turf/simulated/floor/tiled/dark/gray_platform,
 /area/template_noop)
 "sg" = (
-/obj/item/weapon/soap/deluxe,
+/obj/item/soap/deluxe,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -253,8 +253,8 @@
 /area/template_noop)
 "sF" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/handcuffs,
-/obj/item/weapon/handcuffs,
+/obj/item/handcuffs,
+/obj/item/handcuffs,
 /obj/item/device/flash,
 /turf/simulated/floor/wood,
 /area/template_noop)
@@ -293,7 +293,7 @@
 /turf/simulated/floor/tiled/dark/cargo,
 /area/template_noop)
 "wX" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/spawner/soda/low_chance,
 /obj/machinery/light{
 	dir = 8
@@ -302,9 +302,9 @@
 /area/template_noop)
 "xb" = (
 /obj/structure/table/standard,
-/obj/item/weapon/dice,
-/obj/item/weapon/dice,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
+/obj/item/dice,
+/obj/item/dice,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_x = -6;
 	pixel_y = 5
 	},
@@ -312,7 +312,7 @@
 /area/template_noop)
 "yJ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/donut,
+/obj/item/storage/box/donut,
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/template_noop)
 "zg" = (
@@ -327,11 +327,11 @@
 /area/template_noop)
 "zJ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/deck/cards,
+/obj/item/deck/cards,
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/template_noop)
 "zM" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/spawner/junkfood/rotten/low_chance,
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/template_noop)
@@ -376,8 +376,8 @@
 /area/template_noop)
 "Eg" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/folder/red,
+/obj/item/paper_bin,
+/obj/item/folder/red,
 /turf/simulated/floor/wood,
 /area/template_noop)
 "Eo" = (
@@ -398,7 +398,7 @@
 /area/template_noop)
 "FS" = (
 /obj/structure/table/standard,
-/obj/item/weapon/book/manual/wiki/security_ironparagraphs,
+/obj/item/book/manual/wiki/security_ironparagraphs,
 /turf/simulated/floor/tiled/steel/gray_perforated,
 /area/template_noop)
 "Hn" = (
@@ -411,7 +411,7 @@
 /area/template_noop)
 "Jl" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/tool/tape_roll,
+/obj/item/tool/tape_roll,
 /turf/simulated/floor/wood,
 /area/template_noop)
 "Jp" = (
@@ -459,7 +459,7 @@
 /area/template_noop)
 "Ou" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/blue,
+/obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/dark/gray_platform,
 /area/template_noop)
 "OP" = (
@@ -470,15 +470,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/template_noop)
 "Pa" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/spawner/soda/low_chance,
 /turf/simulated/floor/tiled/dark/gray_perforated,
 /area/template_noop)
 "PN" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/belt/tactical/ironhammer,
-/obj/item/weapon/storage/belt/tactical/ironhammer,
-/obj/item/weapon/storage/belt/tactical/ironhammer,
+/obj/item/storage/belt/tactical/ironhammer,
+/obj/item/storage/belt/tactical/ironhammer,
+/obj/item/storage/belt/tactical/ironhammer,
 /turf/simulated/floor/tiled/dark/cargo,
 /area/template_noop)
 "RC" = (
@@ -523,7 +523,7 @@
 /area/template_noop)
 "VJ" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/reagent_containers/food/drinks/flask/barflask,
+/obj/item/reagent_containers/food/drinks/flask/barflask,
 /turf/simulated/floor/wood,
 /area/template_noop)
 "WH" = (
@@ -544,9 +544,9 @@
 /area/template_noop)
 "Yp" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/gun/martin,
-/obj/item/weapon/gun/energy/gun/martin,
-/obj/item/weapon/gun/energy/gun/martin,
+/obj/item/gun/energy/gun/martin,
+/obj/item/gun/energy/gun/martin,
+/obj/item/gun/energy/gun/martin,
 /obj/machinery/light{
 	dir = 8
 	},

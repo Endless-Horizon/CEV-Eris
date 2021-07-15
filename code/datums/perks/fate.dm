@@ -78,10 +78,10 @@
 			var/datum/reagent/drug = new drugtype
 			holder.metabolism_effects.addiction_list.Add(drug)
 			for(var/j= 1 to 2)
-				var/obj/item/weapon/storage/pill_bottle/PB = new /obj/item/weapon/storage/pill_bottle(T)
+				var/obj/item/storage/pill_bottle/PB = new /obj/item/storage/pill_bottle(T)
 				PB.name = "bottle of happiness"
 				for(var/i=1 to 7)
-					var/obj/item/weapon/reagent_containers/pill/pill = new /obj/item/weapon/reagent_containers/pill(T)
+					var/obj/item/reagent_containers/pill/pill = new /obj/item/reagent_containers/pill(T)
 					pill.reagents.add_reagent(drug.id, pill.volume)
 					pill.name = "happy pill"
 					PB.handle_item_insertion(pill)
@@ -134,11 +134,11 @@
 		return
 	var/turf/T = get_turf(holder)
 	var/obj/item/W = pickweight(list(
-				/obj/item/weapon/tool/knife/ritual = 0.5,
-				/obj/item/weapon/tool/sword = 0.2,
-				/obj/item/weapon/tool/sword/katana = 0.2,
-				/obj/item/weapon/tool/knife/dagger/ceremonial = 0.8,
-				/obj/item/weapon/gun/projectile/revolver = 0.4))
+				/obj/item/tool/knife/ritual = 0.5,
+				/obj/item/tool/sword = 0.2,
+				/obj/item/tool/sword/katana = 0.2,
+				/obj/item/tool/knife/dagger/ceremonial = 0.8,
+				/obj/item/gun/projectile/revolver = 0.4))
 	holder.sanity.valid_inspirations += W
 	W = new W(T)
 	W.desc += " It has been inscribed with the \"[holder.last_name]\" family name."

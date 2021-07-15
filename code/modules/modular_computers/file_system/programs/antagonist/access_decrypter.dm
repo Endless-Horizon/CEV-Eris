@@ -31,8 +31,8 @@
 	. = ..()
 	if(!running)
 		return
-	var/obj/item/weapon/computer_hardware/processor_unit/CPU = computer.processor_unit
-	var/obj/item/weapon/computer_hardware/card_slot/RFID = computer.card_slot
+	var/obj/item/computer_hardware/processor_unit/CPU = computer.processor_unit
+	var/obj/item/computer_hardware/card_slot/RFID = computer.card_slot
 	if(!istype(CPU) || !CPU.check_functionality() || !istype(RFID) || !RFID.check_functionality())
 		message = "A fatal hardware error has been detected."
 		return
@@ -65,8 +65,8 @@
 	if(href_list["PRG_execute"])
 		if(running)
 			return 1
-		var/obj/item/weapon/computer_hardware/processor_unit/CPU = computer.processor_unit
-		var/obj/item/weapon/computer_hardware/card_slot/RFID = computer.card_slot
+		var/obj/item/computer_hardware/processor_unit/CPU = computer.processor_unit
+		var/obj/item/computer_hardware/card_slot/RFID = computer.card_slot
 		if(!istype(CPU) || !CPU.check_functionality() || !istype(RFID) || !RFID.check_functionality())
 			message = "A fatal hardware error has been detected."
 			return
@@ -75,7 +75,7 @@
 			return
 
 		var/access = text2num(href_list["PRG_execute"])
-		var/obj/item/weapon/card/id/id_card = RFID.stored_card
+		var/obj/item/card/id/id_card = RFID.stored_card
 		if(access in id_card.access)
 			return 1
 		if(access in restricted_access_codes)
@@ -121,7 +121,7 @@
 		data["completion_fraction"] = PRG.progress / PRG.target_progress
 
 	else if(program.computer.card_slot && program.computer.card_slot.stored_card)
-		var/obj/item/weapon/card/id/id_card = program.computer.card_slot.stored_card
+		var/obj/item/card/id/id_card = program.computer.card_slot.stored_card
 		var/list/regions = list()
 		for(var/region in ACCESS_REGION_MIN to ACCESS_REGION_MAX)
 			var/list/accesses = list()

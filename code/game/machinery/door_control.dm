@@ -22,7 +22,7 @@
 	else
 		to_chat(user, "Error, no route to host.")
 
-/obj/machinery/button/remote/attackby(obj/item/weapon/W, mob/user as mob)
+/obj/machinery/button/remote/attackby(obj/item/W, mob/user as mob)
 	return attack_hand(user)
 
 /obj/machinery/button/remote/emag_act(var/remaining_charges, var/mob/user)
@@ -147,9 +147,9 @@
 	desc = "It controls blast doors, remotely. But need id_card with access to it."
 	icon_state = "doorid0"
 
-/obj/machinery/button/remote/blast_door/id_card/attackby(obj/item/weapon/W, mob/user as mob)
-	if(istype(W, /obj/item/weapon/card/id))
-		var/obj/item/weapon/card/id/id_card = W
+/obj/machinery/button/remote/blast_door/id_card/attackby(obj/item/W, mob/user as mob)
+	if(istype(W, /obj/item/card/id))
+		var/obj/item/card/id/id_card = W
 		if(has_access(req_access, list(), id_card.access))
 			use_power(5)
 			icon_state = "doorid1"

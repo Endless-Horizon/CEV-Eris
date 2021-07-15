@@ -114,7 +114,7 @@ Class Procs:
 	var/panel_open = 0
 	var/global/gl_uid = 1
 	var/interact_offline = 0 // Can the machine be interacted with while de-powered.
-	var/obj/item/weapon/electronics/circuitboard/circuit
+	var/obj/item/electronics/circuitboard/circuit
 	var/frame_type = FRAME_DEFAULT
 
 	var/current_power_usage = 0 // How much power are we currently using, dont change by hand, change power_usage vars and then use set_power_use
@@ -248,15 +248,15 @@ Class Procs:
 	if(!type)
 		error("max_part_rating() wrong usage")
 		return
-	var/list/obj/item/weapon/stock_parts/parts = list()
-	for(var/list/obj/item/weapon/stock_parts/P in component_parts)
+	var/list/obj/item/stock_parts/parts = list()
+	for(var/list/obj/item/stock_parts/P in component_parts)
 		if(istype(P, type))
 			parts.Add(P)
 	if(!parts.len)
 		error("max_part_rating() havent found any parts")
 		return
 	var/rating = 1
-	for(var/obj/item/weapon/stock_parts/P in parts)
+	for(var/obj/item/stock_parts/P in parts)
 		if(P.rating < rating)
 			return rating
 		else
@@ -326,19 +326,19 @@ Class Procs:
 
 	return FALSE //If got no qualities - continue base attackby proc
 
-/obj/machinery/proc/default_part_replacement(obj/item/weapon/storage/part_replacer/R, mob/user)
+/obj/machinery/proc/default_part_replacement(obj/item/storage/part_replacer/R, mob/user)
 	if(!istype(R))
 		return 0
 	if(!component_parts)
 		return 0
 	if(panel_open)
 		var/P
-		for(var/obj/item/weapon/stock_parts/A in component_parts)
+		for(var/obj/item/stock_parts/A in component_parts)
 			for(var/D in circuit.req_components)
 				if(istype(A, D))
 					P = D
 					break
-			for(var/obj/item/weapon/stock_parts/B in R.contents)
+			for(var/obj/item/stock_parts/B in R.contents)
 				if(istype(B, P) && istype(A, P))
 					if(B.rating > A.rating)
 						R.remove_from_storage(B, src)

@@ -151,7 +151,7 @@
 /area/template_noop)
 "aK" = (
 /obj/structure/closet/onestar/tier1/medical,
-/obj/item/weapon/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/template_noop)
 "aL" = (
@@ -177,7 +177,7 @@
 /obj/spawner/surgery_tool,
 /obj/spawner/surgery_tool,
 /obj/spawner/surgery_tool/low_chance,
-/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/template_noop)
 "aP" = (
@@ -231,7 +231,7 @@
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/template_noop)
 "bb" = (
-/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /obj/spawner/medical/low_chance,
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/template_noop)
@@ -244,7 +244,7 @@
 /turf/simulated/floor/plating/under,
 /area/template_noop)
 "be" = (
-/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /obj/spawner/medical/low_chance,
 /obj/spawner/junk,
 /turf/simulated/floor/tiled/derelict/white_big_edges,
@@ -256,14 +256,14 @@
 /obj/spawner/surgery_tool,
 /obj/spawner/surgery_tool,
 /obj/spawner/surgery_tool/low_chance,
-/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /obj/spawner/medical,
 /turf/simulated/floor/tiled/derelict/white_big_edges,
 /area/template_noop)
 "bg" = (
 /obj/structure/table/onestar,
-/obj/item/weapon/tool/screwdriver/combi_driver/onestar,
-/obj/item/weapon/tool/crowbar/onestar,
+/obj/item/tool/screwdriver/combi_driver/onestar,
+/obj/item/tool/crowbar/onestar,
 /obj/spawner/prothesis_one_star,
 /obj/spawner/prothesis_one_star,
 /obj/spawner/medical,
@@ -278,17 +278,17 @@
 /area/template_noop)
 "bi" = (
 /obj/item/bodybag,
-/obj/item/weapon/reagent_containers/glass/bottle/antitoxin{
+/obj/item/reagent_containers/glass/bottle/antitoxin{
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline{
+/obj/item/reagent_containers/glass/bottle/inaprovaline{
 	pixel_x = 4;
 	pixel_y = 7
 	},
-/obj/item/weapon/reagent_containers/syringe,
-/obj/item/weapon/reagent_containers/syringe/spaceacillin,
-/obj/item/weapon/reagent_containers/syringe/spaceacillin,
+/obj/item/reagent_containers/syringe,
+/obj/item/reagent_containers/syringe/spaceacillin,
+/obj/item/reagent_containers/syringe/spaceacillin,
 /obj/structure/table/onestar,
 /obj/spawner/medical,
 /turf/simulated/floor/tiled/derelict/white_small_edges,
@@ -297,9 +297,9 @@
 /obj/item/roller{
 	pixel_y = 8
 	},
-/obj/item/weapon/reagent_containers/blood/OMinus,
-/obj/item/weapon/reagent_containers/blood/OMinus,
-/obj/item/weapon/reagent_containers/syringe/spaceacillin,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/syringe/spaceacillin,
 /obj/structure/table/onestar,
 /obj/spawner/medical,
 /turf/simulated/floor/tiled/derelict/white_small_edges,

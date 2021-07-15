@@ -1,4 +1,4 @@
-/obj/item/weapon/implant/carrion_spider/observer
+/obj/item/implant/carrion_spider/observer
 	name = "observer spider"
 	desc = "A small spider with a giant blue eye. \red It's looking right at you."
 	icon_state = "spiderling_observer"
@@ -8,11 +8,11 @@
 
 	var/observing = FALSE
 	var/datum/mind/owner_mind
-	var/list/obj/item/weapon/implant/carrion_spider/observer/group
+	var/list/obj/item/implant/carrion_spider/observer/group
 	var/timer
 
 
-/obj/item/weapon/implant/carrion_spider/observer/activate()
+/obj/item/implant/carrion_spider/observer/activate()
 	..()
 	if(active && owner_mob)
 		owner_mob.reset_view(null)
@@ -28,31 +28,31 @@
 	owner_mob.reset_view(src)
 	active = TRUE
 
-/obj/item/weapon/implant/carrion_spider/observer/Process()
+/obj/item/implant/carrion_spider/observer/Process()
 	..()
 	if(active)
 		if(owner_mob && !(owner_mob.loc == owner_loc))
 			owner_mob.reset_view(null)
 			active = FALSE
 
-/obj/item/weapon/implant/carrion_spider/observer/Destroy()
+/obj/item/implant/carrion_spider/observer/Destroy()
 	if(owner_mob)
 		owner_mob.reset_view(null)
 	group = null
 	. = ..()
 
 // Code for spy sensor contract completion
-/obj/item/weapon/implant/carrion_spider/observer/Move()
+/obj/item/implant/carrion_spider/observer/Move()
 	. = ..()
 	if(.)
 		reset()
 
-/obj/item/weapon/implant/carrion_spider/observer/forceMove()
+/obj/item/implant/carrion_spider/observer/forceMove()
 	. = ..()
 	if(.)
 		reset()
 
-/obj/item/weapon/implant/carrion_spider/observer/verb/observe()
+/obj/item/implant/carrion_spider/observer/verb/observe()
 	set name = "Begin observations"
 	set category = "Object"
 	set src in oview(1)
@@ -61,7 +61,7 @@
 
 	if(usr.incapacitated() || !Adjacent(usr) || !isturf(loc))
 		return
-	if(locate(/obj/item/weapon/implant/carrion_spider/observer) in orange(src,1))
+	if(locate(/obj/item/implant/carrion_spider/observer) in orange(src,1))
 		to_chat(usr, SPAN_WARNING("Another spider in proximity prevents anchoring."))
 		return
 	observing = TRUE
@@ -79,23 +79,23 @@
 					to_chat(usr, SPAN_NOTICE("Recon contract locked in."))
 					return
 
-/obj/item/weapon/implant/carrion_spider/observer/proc/get_local_spiders()
+/obj/item/implant/carrion_spider/observer/proc/get_local_spiders()
 	var/list/local_spiders = list()
-	for(var/obj/item/weapon/implant/carrion_spider/observer/S in get_area(src))
+	for(var/obj/item/implant/carrion_spider/observer/S in get_area(src))
 		if(S.owner_mind != owner_mind || !S.observing)
 			continue
 		local_spiders += S
 	return local_spiders
 
-/obj/item/weapon/implant/carrion_spider/observer/proc/start()
+/obj/item/implant/carrion_spider/observer/proc/start()
 	var/list/local_spiders = get_local_spiders()
 	if(local_spiders.len >= 3)
 		timer = addtimer(CALLBACK(src, .proc/finish), 10 MINUTES, TIMER_STOPPABLE)
-		for(var/obj/item/weapon/implant/carrion_spider/observer/S in local_spiders)
+		for(var/obj/item/implant/carrion_spider/observer/S in local_spiders)
 			S.timer = timer
 			S.group = local_spiders
 
-/obj/item/weapon/implant/carrion_spider/observer/proc/reset()
+/obj/item/implant/carrion_spider/observer/proc/reset()
 	if(!timer || !group)
 		return
 
@@ -104,17 +104,17 @@
 		return
 
 	deltimer(timer)
-	for(var/obj/item/weapon/implant/carrion_spider/observer/S in group)
+	for(var/obj/item/implant/carrion_spider/observer/S in group)
 		S.timer = null
 		S.group = null
 	start()
 
-/obj/item/weapon/implant/carrion_spider/observer/proc/finish()
+/obj/item/implant/carrion_spider/observer/proc/finish()
 	for(var/datum/antag_contract/recon/C in GLOB.various_antag_contracts)
 		if(C.completed)
 			continue
 		if(get_area(src) in C.targets)
 			C.complete(owner_mind)
 
-	for(var/obj/item/weapon/implant/carrion_spider/observer/S in group)
+	for(var/obj/item/implant/carrion_spider/observer/S in group)
 		S.die()

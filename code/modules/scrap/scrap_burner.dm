@@ -1,4 +1,4 @@
-/obj/item/weapon/electronics/circuitboard/pacman/scrap
+/obj/item/electronics/circuitboard/pacman/scrap
 	name = T_BOARD("PACMAN-type generator")
 	build_path = /obj/machinery/power/port_gen/pacman/scrap
 	board_type = "machine"
@@ -6,7 +6,7 @@
 
 /datum/design/research/circuit/pacman/scrap
 	name = "PACMAN-type generator"
-	build_path = /obj/item/weapon/electronics/circuitboard/pacman/scrap
+	build_path = /obj/item/electronics/circuitboard/pacman/scrap
 	sort_string = "JBAAD"
 	starts_unlocked = TRUE // i don't even know what this scrap pacman thing is supposed to be
 

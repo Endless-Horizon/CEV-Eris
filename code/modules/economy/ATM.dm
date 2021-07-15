@@ -27,7 +27,7 @@ log transactions
 	var/ticks_left_locked_down = 0
 	var/ticks_left_timeout = 0
 	var/machine_id = ""
-	var/obj/item/weapon/card/id/held_card
+	var/obj/item/card/id/held_card
 	var/editing_security_level = 0
 	var/view_screen = NO_SCREEN
 	var/datum/effect/effect/system/spark_spread/spark_system
@@ -54,7 +54,7 @@ log transactions
 		if(ticks_left_locked_down <= 0)
 			number_incorrect_tries = 0
 
-	for(var/obj/item/weapon/spacecash/S in src)
+	for(var/obj/item/spacecash/S in src)
 		S.forceMove(get_turf(src))
 		playsound(loc, pick('sound/items/polaroid1.ogg','sound/items/polaroid2.ogg'), 50, 1)
 		break
@@ -94,18 +94,18 @@ log transactions
 	return 1
 
 /obj/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/weapon/card))
+	if(istype(I, /obj/item/card))
 		if(stat & NOPOWER)
 			return
 		if(emagged)
 			//prevent inserting id into an emagged ATM
 			to_chat(user, "\red \icon[src] CARD READER ERROR. This system has been compromised!")
 			return
-		else if(istype(I,/obj/item/weapon/card/emag))
+		else if(istype(I,/obj/item/card/emag))
 			I.resolve_attackby(src, user)
 			return
 
-		var/obj/item/weapon/card/id/idcard = I
+		var/obj/item/card/id/idcard = I
 		if(!held_card)
 			usr.unEquip(I)
 			I.forceMove(src)
@@ -117,8 +117,8 @@ log transactions
 	else if(authenticated_account)
 		if(stat & NOPOWER)
 			return
-		if(istype(I,/obj/item/weapon/spacecash))
-			var/obj/item/weapon/spacecash/cash = I
+		if(istype(I,/obj/item/spacecash))
+			var/obj/item/spacecash/cash = I
 			//consume the money
 			playsound(loc, pick('sound/items/polaroid1.ogg','sound/items/polaroid2.ogg'), 50, 1)
 
@@ -346,7 +346,7 @@ log transactions
 						to_chat(usr, SPAN_WARNING("You don't have enough funds to do that!"))
 			if("balance_statement")
 				if(authenticated_account)
-					var/obj/item/weapon/paper/R = new(src.loc)
+					var/obj/item/paper/R = new(src.loc)
 					R.name = "Account balance: [authenticated_account.owner_name]"
 					R.info = "<b>Automated Teller Account Statement</b><br><br>"
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
@@ -360,14 +360,14 @@ log transactions
 					stampoverlay.icon_state = "paper_stamp-cent"
 					if(!R.stamped)
 						R.stamped = new
-					R.stamped += /obj/item/weapon/stamp
+					R.stamped += /obj/item/stamp
 					R.add_overlays(stampoverlay)
 					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
 
 				playsound(loc, pick('sound/items/polaroid1.ogg','sound/items/polaroid2.ogg'), 50, 1)
 			if ("print_transaction")
 				if(authenticated_account)
-					var/obj/item/weapon/paper/R = new(src.loc)
+					var/obj/item/paper/R = new(src.loc)
 					R.name = "Transaction logs: [authenticated_account.owner_name]"
 					R.info = "<b>Transaction logs</b><br>"
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
@@ -399,7 +399,7 @@ log transactions
 					stampoverlay.icon_state = "paper_stamp-cent"
 					if(!R.stamped)
 						R.stamped = new
-					R.stamped += /obj/item/weapon/stamp
+					R.stamped += /obj/item/stamp
 					R.add_overlays(stampoverlay)
 					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
 
@@ -412,7 +412,7 @@ log transactions
 						to_chat(usr, "\red \icon[src] The ATM card reader rejected your ID because this machine has been sabotaged!")
 					else
 						var/obj/item/I = usr.get_active_hand()
-						if (istype(I, /obj/item/weapon/card/id))
+						if (istype(I, /obj/item/card/id))
 							usr.drop_item()
 							I.loc = src
 							held_card = I
@@ -438,7 +438,7 @@ log transactions
 	update_icon()
 
 /obj/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
-	var/obj/item/weapon/spacecash/ewallet/E = new /obj/item/weapon/spacecash/ewallet(loc)
+	var/obj/item/spacecash/ewallet/E = new /obj/item/spacecash/ewallet(loc)
 	if(ishuman(human_user) && !human_user.get_active_hand())
 		human_user.put_in_hands(E)
 	E.worth = sum

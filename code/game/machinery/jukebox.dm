@@ -19,7 +19,7 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 100
-	circuit = /obj/item/weapon/electronics/circuitboard/jukebox
+	circuit = /obj/item/electronics/circuitboard/jukebox
 
 	// Vars for hacking
 	var/datum/wires/jukebox/wires

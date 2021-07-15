@@ -123,7 +123,7 @@
 	icon_state = "tube1"
 	},
 /obj/structure/table/glass,
-/obj/item/weapon/disk/astrodata,
+/obj/item/disk/astrodata,
 /turf/simulated/floor/tiled/white/lowpressure,
 /area/map_template/ecship/science)
 "av" = (
@@ -175,7 +175,7 @@
 	layer = 2.4;
 	level = 2
 	},
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/airless,
 /area/map_template/ecship/crew)
 "aD" = (
@@ -188,7 +188,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/weapon/reagent_containers/food/drinks/coffee{
+/obj/item/reagent_containers/food/drinks/coffee{
 	desc = "Old cup of coffee. Very cold.  ";
 	name = "Old Robust Coffee"
 	},
@@ -216,7 +216,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/airless,
 /area/map_template/ecship/crew)
 "aH" = (
@@ -225,8 +225,8 @@
 /area/map_template/ecship/cryo)
 "aJ" = (
 /obj/structure/table/glass,
-/obj/item/weapon/ecletters,
-/obj/item/weapon/paper/ecrashlog,
+/obj/item/ecletters,
+/obj/item/paper/ecrashlog,
 /turf/simulated/floor/tiled/white/lowpressure,
 /area/map_template/ecship/science)
 "aK" = (
@@ -262,7 +262,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/weapon/deck/cards,
+/obj/item/deck/cards,
 /turf/simulated/floor/tiled/airless,
 /area/map_template/ecship/crew)
 "aP" = (
@@ -276,7 +276,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /obj/machinery/alarm/low{
 	dir = 4;
 	icon_state = "alarm0";
@@ -348,7 +348,7 @@
 /area/map_template/ecship/science)
 "aY" = (
 /obj/structure/table/glass,
-/obj/item/weapon/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
 /turf/simulated/floor/tiled/white/lowpressure,
 /area/map_template/ecship/science)
 "aZ" = (
@@ -380,7 +380,7 @@
 /turf/simulated/floor,
 /area/map_template/ecship/science)
 "bc" = (
-/obj/item/weapon/soap,
+/obj/item/soap,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -456,7 +456,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/airless,
 /area/map_template/ecship/crew)
 "bk" = (
@@ -549,7 +549,7 @@
 /area/map_template/ecship/science)
 "bt" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/tiled/white/lowpressure,
 /area/map_template/ecship/science)
 "bu" = (
@@ -590,7 +590,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/item/weapon/board,
+/obj/item/board,
 /turf/simulated/floor/tiled/airless,
 /area/map_template/ecship/crew)
 "bz" = (
@@ -639,7 +639,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/airless,
 /area/map_template/ecship/crew)
 "bC" = (
@@ -855,7 +855,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/item/weapon/tool/scalpel{
+/obj/item/tool/scalpel{
 	pixel_y = 12
 	},
 /turf/simulated/floor/tiled/white/lowpressure,
@@ -1100,7 +1100,7 @@
 /turf/simulated/floor/tiled/white/lowpressure,
 /area/map_template/ecship/science)
 "cz" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/white/lowpressure,
 /area/map_template/ecship/science)
 "cA" = (
@@ -1230,7 +1230,7 @@
 /turf/simulated/floor,
 /area/map_template/ecship/engineering)
 "cS" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor,
 /area/map_template/ecship/engineering)
 "cT" = (
@@ -1888,7 +1888,7 @@
 /area/template_noop)
 "Vy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/item/weapon/tool/saw/circular,
+/obj/item/tool/saw/circular,
 /turf/simulated/floor/tiled/white/lowpressure,
 /area/map_template/ecship/science)
 "YW" = (

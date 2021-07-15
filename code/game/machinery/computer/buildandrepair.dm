@@ -6,7 +6,7 @@
 	anchored = FALSE
 	matter = list(MATERIAL_STEEL = 5)
 	var/state = 0
-	var/obj/item/weapon/electronics/circuitboard/circuit
+	var/obj/item/electronics/circuitboard/circuit
 	spawn_tags = SPAWN_TAG_MACHINE_FRAME
 
 //	weight = 1.0E8
@@ -134,8 +134,8 @@
 
 	switch(state)
 		if(1)
-			if(istype(I, /obj/item/weapon/electronics/circuitboard) && !circuit)
-				var/obj/item/weapon/electronics/circuitboard/B = I
+			if(istype(I, /obj/item/electronics/circuitboard) && !circuit)
+				var/obj/item/electronics/circuitboard/B = I
 				if(B.board_type == "computer")
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					to_chat(user, SPAN_NOTICE("You place the circuit board inside the frame."))

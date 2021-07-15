@@ -83,9 +83,9 @@
 	// One cane fully mitigates a broken leg.
 	// Two canes are needed for a lost leg. If you are missing both legs, canes aren't gonna help you.
 	if(stance_damage > 0 && stance_damage < 8)
-		if (l_hand && istype(l_hand, /obj/item/weapon/cane))
+		if (l_hand && istype(l_hand, /obj/item/cane))
 			stance_damage -= 3
-		if (r_hand && istype(r_hand, /obj/item/weapon/cane))
+		if (r_hand && istype(r_hand, /obj/item/cane))
 			stance_damage -= 3
 		stance_damage = max(stance_damage, 0)
 

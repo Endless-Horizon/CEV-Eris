@@ -110,7 +110,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/abandoned_fortress)
 "az" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /turf/simulated/floor/plating,
 /area/outpost/abandoned_fortress)
 "aA" = (
@@ -256,7 +256,7 @@
 /area/outpost/abandoned_fortress)
 "bs" = (
 /obj/item/remains,
-/obj/item/weapon/stool,
+/obj/item/stool,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned_fortress)
 "bt" = (
@@ -335,7 +335,7 @@
 /area/outpost/abandoned_fortress)
 "bH" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned_fortress)
 "bI" = (
@@ -365,7 +365,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned_fortress)
 "bN" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned_fortress)
 "bO" = (
@@ -402,7 +402,7 @@
 /area/outpost/abandoned_fortress)
 "bU" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/item/remains,
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned_fortress)

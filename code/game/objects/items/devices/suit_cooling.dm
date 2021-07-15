@@ -14,7 +14,7 @@
 	throw_range = 4
 
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
-	suitable_cell = /obj/item/weapon/cell/large
+	suitable_cell = /obj/item/cell/large
 	var/on = FALSE				//is it turned on?
 	var/cover_open = 0		//is the cover open?
 	var/max_cooling = 12				//in degrees per second - probably don't need to mess with heat capacity here
@@ -127,8 +127,8 @@
 		if(on)
 			to_chat(user, "You switch on the [src].")
 
-/obj/item/device/suit_cooling_unit/attackby(obj/item/weapon/W, mob/user)
-	if(istype(W, /obj/item/weapon/tool/screwdriver))
+/obj/item/device/suit_cooling_unit/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/tool/screwdriver))
 		if(cover_open)
 			cover_open = FALSE
 			to_chat(user, "You screw the panel into place.")

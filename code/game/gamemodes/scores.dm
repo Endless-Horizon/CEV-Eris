@@ -151,7 +151,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 						GLOB.guild_shared_gears++
 						break
 
-	var/obj/item/weapon/cell/large/high/HC = /obj/item/weapon/cell/large/high
+	var/obj/item/cell/large/high/HC = /obj/item/cell/large/high
 	var/min_charge = initial(HC.maxcharge) * 0.6
 
 	//Check station's power levels
@@ -161,7 +161,7 @@ GLOBAL_VAR_INIT(score_technomancer_faction_item_loss, 0)
 		if(!A.apc)
 			GLOB.area_powerloss++
 			continue
-		for(var/obj/item/weapon/cell/C in A.apc.contents)
+		for(var/obj/item/cell/C in A.apc.contents)
 			if(C.charge < min_charge)
 				GLOB.area_powerloss++
 

@@ -1,4 +1,4 @@
-/obj/item/weapon/material/butterfly
+/obj/item/material/butterfly
 	name = "butterfly knife"
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
 	icon_state = "butterflyknife"
@@ -11,7 +11,7 @@
 	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
 	structure_damage_factor = STRUCTURE_DAMAGE_BLADE
 
-/obj/item/weapon/material/butterfly/update_force()
+/obj/item/material/butterfly/update_force()
 	if(active)
 		edge = TRUE
 		sharp = TRUE
@@ -32,13 +32,13 @@
 		tool_qualities = list()
 		attack_verb = initial(attack_verb)
 
-/obj/item/weapon/material/butterfly/switchblade
+/obj/item/material/butterfly/switchblade
 	name = "switchblade"
 	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
 	icon_state = "switchblade"
 	unbreakable = 1
 
-/obj/item/weapon/material/butterfly/attack_self(mob/user)
+/obj/item/material/butterfly/attack_self(mob/user)
 	active = !active
 	if(active)
 		to_chat(user, SPAN_NOTICE("You flip out \the [src]."))

@@ -119,8 +119,8 @@
 			return
 
 
-	if(istype(I, /obj/item/weapon/storage/bag))
-		var/obj/item/weapon/storage/bag/T = I
+	if(istype(I, /obj/item/storage/bag))
+		var/obj/item/storage/bag/T = I
 		to_chat(user, "\blue You empty the bag.")
 		for(var/obj/item/O in T.contents)
 			T.remove_from_storage(O,src)
@@ -204,8 +204,8 @@
 		var/obj/item/I = A
 		if(!Adjacent(user) || !I.Adjacent(user) || user.stat)
 			return ..()
-		if(istype(I, /obj/item/weapon/storage/bag/trash))
-			var/obj/item/weapon/storage/bag/trash/T = I
+		if(istype(I, /obj/item/storage/bag/trash))
+			var/obj/item/storage/bag/trash/T = I
 			to_chat(user, SPAN_NOTICE("You empty the bag."))
 			for(var/obj/item/O in T.contents)
 				T.remove_from_storage(O,src)

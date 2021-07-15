@@ -17,7 +17,7 @@
 	gas_transfer_coefficient = 0.9
 	permeability_coefficient = 0.5
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	extra_allowed = list(/obj/item/weapon/extinguisher)
+	extra_allowed = list(/obj/item/extinguisher)
 	armor = list(
 		melee = 10,
 		bullet = 0,

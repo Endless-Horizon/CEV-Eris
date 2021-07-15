@@ -20,8 +20,8 @@
 		var/mob/Wearer = Item.loc
 		if(!Wearer.unEquip(Item))
 			return FALSE
-	else if(istype(Item.loc, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = Item.loc
+	else if(istype(Item.loc, /obj/item/storage))
+		var/obj/item/storage/S = Item.loc
 		S.remove_from_storage(Item, null)
 
 	equip_to_slot(Item, slot, redraw_mob) //This proc should not ever fail.
@@ -41,7 +41,7 @@
 		if(old_item)
 			unEquip(old_item)
 			if(put_in_storage)	//trying to store item, if failed we delete it
-				var/obj/item/weapon/storage/S = equip_to_storage(old_item)
+				var/obj/item/storage/S = equip_to_storage(old_item)
 				if(S)
 					to_chat(src, SPAN_NOTICE("Storing your \the [old_item] into \the [S]!"))
 				else if (equip_to_slot_if_possible(old_item, slot_l_hand, disable_warning = TRUE))
@@ -111,7 +111,7 @@ var/list/slot_equipment_priority = list(
 
 /mob/proc/equip_to_storage(obj/item/Item)
 	// Try to place it in any item that can store stuff, on the mob.
-	for(var/obj/item/weapon/storage/S in get_equipped_items())
+	for(var/obj/item/storage/S in get_equipped_items())
 		if(S.can_be_inserted(Item, TRUE))
 			Item.forceMove(S)
 			return S
@@ -119,28 +119,28 @@ var/list/slot_equipment_priority = list(
 
 /mob/living/carbon/human/equip_to_storage(obj/item/Item)
 	// Try put it in their backpack
-	if(istype(src.back,/obj/item/weapon/storage))
-		var/obj/item/weapon/storage/backpack = src.back
+	if(istype(src.back,/obj/item/storage))
+		var/obj/item/storage/backpack = src.back
 		if(backpack.can_be_inserted(Item, TRUE))
 			Item.forceMove(src.back)
 			return backpack
 	return ..()
 /mob/living/carbon/human/proc/quick_equip_storage(obj/item/Item)
 	var/potential = src.get_inactive_hand()
-	if(istype(src.back,/obj/item/weapon/storage))
-		var/obj/item/weapon/storage/backpack = src.back
+	if(istype(src.back,/obj/item/storage))
+		var/obj/item/storage/backpack = src.back
 		if(backpack.attackby(Item,src))
 			return TRUE
-	if(istype(potential, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/pack = potential
+	if(istype(potential, /obj/item/storage))
+		var/obj/item/storage/pack = potential
 		if(pack.attackby(Item,src))
 			return TRUE
 	if(quick_equip_belt(Item)) 
 		return TRUE
 	return FALSE
 /mob/living/carbon/human/proc/quick_equip_belt(obj/item/Item)
-	if(istype(src.belt,/obj/item/weapon/storage/))
-		var/obj/item/weapon/storage/B= src.belt
+	if(istype(src.belt,/obj/item/storage/))
+		var/obj/item/storage/B= src.belt
 		if(B.attackby(Item,src))
 			return TRUE
 	return FALSE
@@ -153,7 +153,7 @@ var/list/slot_equipment_priority = list(
 		if(equip_to_slot_if_possible(Item, slot_s_store))
 			return TRUE
 
-/mob/living/carbon/human/proc/equip_to_from_bag(var/obj/item/Item, obj/item/weapon/storage/store)
+/mob/living/carbon/human/proc/equip_to_from_bag(var/obj/item/Item, obj/item/storage/store)
 	if(Item)
 		store.attackby(Item,src)
 		return TRUE

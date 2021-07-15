@@ -61,116 +61,116 @@
 		switch(dev_cpu)
 			if(1)
 				if(fabricate)
-					fabricated_device.processor_unit = new/obj/item/weapon/computer_hardware/processor_unit/small(fabricated_device)
+					fabricated_device.processor_unit = new/obj/item/computer_hardware/processor_unit/small(fabricated_device)
 			if(2)
 				if(fabricate)
-					fabricated_device.processor_unit = new/obj/item/weapon/computer_hardware/processor_unit(fabricated_device)
+					fabricated_device.processor_unit = new/obj/item/computer_hardware/processor_unit(fabricated_device)
 				total_price += 299
 		switch(dev_battery)
 			if(1) // Basic(750C)
 				if(fabricate)
-					fabricated_device.cell = new /obj/item/weapon/cell/medium(fabricated_device)
+					fabricated_device.cell = new /obj/item/cell/medium(fabricated_device)
 			if(2) // Upgraded(1100C)
 				if(fabricate)
-					fabricated_device.cell = new /obj/item/weapon/cell/medium/high(fabricated_device)
+					fabricated_device.cell = new /obj/item/cell/medium/high(fabricated_device)
 				total_price += 199
 			if(3) // Advanced(1500C)
 				if(fabricate)
-					fabricated_device.cell = new /obj/item/weapon/cell/medium/super(fabricated_device)
+					fabricated_device.cell = new /obj/item/cell/medium/super(fabricated_device)
 				total_price += 499
 		switch(dev_disk)
 			if(1) // Basic(128GQ)
 				if(fabricate)
-					fabricated_device.hard_drive = new/obj/item/weapon/computer_hardware/hard_drive(fabricated_device)
+					fabricated_device.hard_drive = new/obj/item/computer_hardware/hard_drive(fabricated_device)
 			if(2) // Upgraded(256GQ)
 				if(fabricate)
-					fabricated_device.hard_drive = new/obj/item/weapon/computer_hardware/hard_drive/advanced(fabricated_device)
+					fabricated_device.hard_drive = new/obj/item/computer_hardware/hard_drive/advanced(fabricated_device)
 				total_price += 99
 			if(3) // Advanced(512GQ)
 				if(fabricate)
-					fabricated_device.hard_drive = new/obj/item/weapon/computer_hardware/hard_drive/super(fabricated_device)
+					fabricated_device.hard_drive = new/obj/item/computer_hardware/hard_drive/super(fabricated_device)
 				total_price += 299
 		switch(dev_netcard)
 			if(1) // Basic(Short-Range)
 				if(fabricate)
-					fabricated_device.network_card = new/obj/item/weapon/computer_hardware/network_card(fabricated_device)
+					fabricated_device.network_card = new/obj/item/computer_hardware/network_card(fabricated_device)
 				total_price += 99
 			if(2) // Advanced (Long Range)
 				if(fabricate)
-					fabricated_device.network_card = new/obj/item/weapon/computer_hardware/network_card/advanced(fabricated_device)
+					fabricated_device.network_card = new/obj/item/computer_hardware/network_card/advanced(fabricated_device)
 				total_price += 299
 		if(dev_tesla)
 			total_price += 399
 			if(fabricate)
-				fabricated_device.tesla_link = new/obj/item/weapon/computer_hardware/tesla_link(fabricated_device)
+				fabricated_device.tesla_link = new/obj/item/computer_hardware/tesla_link(fabricated_device)
 		if(dev_nanoprint)
 			total_price += 99
 			if(fabricate)
-				fabricated_device.printer = new/obj/item/weapon/computer_hardware/printer(fabricated_device)
+				fabricated_device.printer = new/obj/item/computer_hardware/printer(fabricated_device)
 		if(dev_card)
 			total_price += 199
 			if(fabricate)
-				fabricated_device.card_slot = new/obj/item/weapon/computer_hardware/card_slot(fabricated_device)
+				fabricated_device.card_slot = new/obj/item/computer_hardware/card_slot(fabricated_device)
 		if(dev_aislot)
 			total_price += 499
 			if(fabricate)
-				fabricated_device.ai_slot = new/obj/item/weapon/computer_hardware/ai_slot(fabricated_device)
+				fabricated_device.ai_slot = new/obj/item/computer_hardware/ai_slot(fabricated_device)
 
 		return total_price
 	else if(devtype == 2) 	// Tablet, more expensive, not everyone could probably afford this.
 		if(fabricate)
 			fabricated_device = new /obj/item/modular_computer/tablet(src)
-			fabricated_device.processor_unit = new/obj/item/weapon/computer_hardware/processor_unit/small(fabricated_device)
+			fabricated_device.processor_unit = new/obj/item/computer_hardware/processor_unit/small(fabricated_device)
 		total_price = 199
 		switch(dev_battery)
 			if(1) // Basic(300C)
 				if(fabricate)
-					fabricated_device.cell = new /obj/item/weapon/cell/small(fabricated_device)
+					fabricated_device.cell = new /obj/item/cell/small(fabricated_device)
 			if(2) // Upgraded(500C)
 				if(fabricate)
-					fabricated_device.cell = new /obj/item/weapon/cell/small/high(fabricated_device)
+					fabricated_device.cell = new /obj/item/cell/small/high(fabricated_device)
 				total_price += 199
 			if(3) // Advanced(750C)
 				if(fabricate)
-					fabricated_device.cell = new /obj/item/weapon/cell/small/super(fabricated_device)
+					fabricated_device.cell = new /obj/item/cell/small/super(fabricated_device)
 				total_price += 499
 		switch(dev_disk)
 			if(1) // Basic(32GQ)
 				if(fabricate)
-					fabricated_device.hard_drive = new/obj/item/weapon/computer_hardware/hard_drive/micro(fabricated_device)
+					fabricated_device.hard_drive = new/obj/item/computer_hardware/hard_drive/micro(fabricated_device)
 			if(2) // Upgraded(64GQ)
 				if(fabricate)
-					fabricated_device.hard_drive = new/obj/item/weapon/computer_hardware/hard_drive/small(fabricated_device)
+					fabricated_device.hard_drive = new/obj/item/computer_hardware/hard_drive/small(fabricated_device)
 				total_price += 99
 			if(3) // Advanced(128GQ)
 				if(fabricate)
-					fabricated_device.hard_drive = new/obj/item/weapon/computer_hardware/hard_drive(fabricated_device)
+					fabricated_device.hard_drive = new/obj/item/computer_hardware/hard_drive(fabricated_device)
 				total_price += 299
 		switch(dev_netcard)
 			if(1) // Basic(Short-Range)
 				if(fabricate)
-					fabricated_device.network_card = new/obj/item/weapon/computer_hardware/network_card(fabricated_device)
+					fabricated_device.network_card = new/obj/item/computer_hardware/network_card(fabricated_device)
 				total_price += 99
 			if(2) // Advanced (Long Range)
 				if(fabricate)
-					fabricated_device.network_card = new/obj/item/weapon/computer_hardware/network_card/advanced(fabricated_device)
+					fabricated_device.network_card = new/obj/item/computer_hardware/network_card/advanced(fabricated_device)
 				total_price += 299
 		if(dev_nanoprint)
 			total_price += 99
 			if(fabricate)
-				fabricated_device.printer = new/obj/item/weapon/computer_hardware/printer(fabricated_device)
+				fabricated_device.printer = new/obj/item/computer_hardware/printer(fabricated_device)
 		if(dev_card)
 			total_price += 199
 			if(fabricate)
-				fabricated_device.card_slot = new/obj/item/weapon/computer_hardware/card_slot(fabricated_device)
+				fabricated_device.card_slot = new/obj/item/computer_hardware/card_slot(fabricated_device)
 		if(dev_tesla)
 			total_price += 399
 			if(fabricate)
-				fabricated_device.tesla_link = new/obj/item/weapon/computer_hardware/tesla_link(fabricated_device)
+				fabricated_device.tesla_link = new/obj/item/computer_hardware/tesla_link(fabricated_device)
 		if(dev_aislot)
 			total_price += 499
 			if(fabricate)
-				fabricated_device.ai_slot = new/obj/item/weapon/computer_hardware/ai_slot(fabricated_device)
+				fabricated_device.ai_slot = new/obj/item/computer_hardware/ai_slot(fabricated_device)
 		return total_price
 	return FALSE
 
@@ -264,11 +264,11 @@
 		ui.set_auto_update(1)
 
 
-obj/machinery/lapvend/attackby(obj/item/weapon/W as obj, mob/user as mob)
+obj/machinery/lapvend/attackby(obj/item/W as obj, mob/user as mob)
 	if(inoperable())
 		to_chat(user, SPAN_WARNING("[src] is not responding."))
 		return
-	var/obj/item/weapon/card/id/I = W.GetIdCard()
+	var/obj/item/card/id/I = W.GetIdCard()
 	// Awaiting payment state
 	if(state == 2)
 		if(process_payment(I,W))
@@ -291,7 +291,7 @@ obj/machinery/lapvend/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 
 // Simplified payment processing, returns 1 on success.
-/obj/machinery/lapvend/proc/process_payment(var/obj/item/weapon/card/id/I, var/obj/item/ID_container)
+/obj/machinery/lapvend/proc/process_payment(var/obj/item/card/id/I, var/obj/item/ID_container)
 	if(I==ID_container || ID_container == null)
 		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	else

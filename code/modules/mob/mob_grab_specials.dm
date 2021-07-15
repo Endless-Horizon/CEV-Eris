@@ -1,5 +1,5 @@
 
-/obj/item/weapon/grab/proc/inspect_organ(mob/living/carbon/human/H, mob/user, var/target_zone)
+/obj/item/grab/proc/inspect_organ(mob/living/carbon/human/H, mob/user, var/target_zone)
 
 	var/obj/item/organ/external/E = H.get_organ(target_zone)
 
@@ -14,7 +14,7 @@
 		to_chat(user, SPAN_WARNING("You find [E.get_wounds_desc()]"))
 	else
 		to_chat(user, SPAN_NOTICE("You find no visible wounds."))
-	if(locate(/obj/item/weapon/material/shard/shrapnel) in E.implants)
+	if(locate(/obj/item/material/shard/shrapnel) in E.implants)
 		to_chat(user, SPAN_WARNING("There is what appears to be shrapnel embedded within [affecting]'s [E.name]."))
 
 	to_chat(user, SPAN_NOTICE("Checking bones now..."))
@@ -43,7 +43,7 @@
 		if(!bad)
 			to_chat(user, SPAN_NOTICE("[H]'s skin is normal."))
 
-/obj/item/weapon/grab/proc/jointlock(mob/living/carbon/human/target, mob/attacker, var/target_zone)
+/obj/item/grab/proc/jointlock(mob/living/carbon/human/target, mob/attacker, var/target_zone)
 	if(state < GRAB_AGGRESSIVE)
 		to_chat(attacker, SPAN_WARNING("You require a better grab to do this."))
 		return
@@ -61,7 +61,7 @@
 		affecting.adjustHalLoss(CLAMP(0, 60-affecting.halloss, 30)) //up to 60 halloss
 
 
-/obj/item/weapon/grab/proc/attack_eye(mob/living/carbon/human/target, mob/living/carbon/human/attacker)
+/obj/item/grab/proc/attack_eye(mob/living/carbon/human/target, mob/living/carbon/human/attacker)
 	if(!istype(attacker))
 		return
 
@@ -86,7 +86,7 @@
 
 	attack.handle_eye_attack(attacker, target)
 
-/obj/item/weapon/grab/proc/headbutt(mob/living/carbon/human/target, mob/living/carbon/human/attacker)
+/obj/item/grab/proc/headbutt(mob/living/carbon/human/target, mob/living/carbon/human/attacker)
 	if(!istype(attacker))
 		return
 	if(target.lying)
@@ -116,7 +116,7 @@
 	qdel(src)
 	return
 
-/obj/item/weapon/grab/proc/dislocate(mob/living/carbon/human/target, mob/living/attacker, var/target_zone)
+/obj/item/grab/proc/dislocate(mob/living/carbon/human/target, mob/living/attacker, var/target_zone)
 	if(state < GRAB_NECK)
 		to_chat(attacker, SPAN_WARNING("You require a better grab to do this."))
 		return
@@ -124,7 +124,7 @@
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 		return
 
-/obj/item/weapon/grab/proc/pin_down(mob/target, mob/attacker)
+/obj/item/grab/proc/pin_down(mob/target, mob/attacker)
 	if(state < GRAB_AGGRESSIVE)
 		to_chat(attacker, SPAN_WARNING("You require a better grab to do this."))
 		return
@@ -137,7 +137,7 @@
 		attacker.visible_message(SPAN_DANGER("[attacker] forces [target] to the ground!"))
 		apply_pinning(target, attacker)
 
-/obj/item/weapon/grab/proc/apply_pinning(mob/target, mob/attacker)
+/obj/item/grab/proc/apply_pinning(mob/target, mob/attacker)
 	force_down = 1
 	target.Weaken(3)
 	target.lying = 1
@@ -145,7 +145,7 @@
 	attacker.set_dir(EAST) //face the victim
 	target.set_dir(SOUTH) //face up
 
-/obj/item/weapon/grab/proc/devour(mob/target, mob/user)
+/obj/item/grab/proc/devour(mob/target, mob/user)
 	var/can_eat
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && H.species.gluttonous && (iscarbon(target) || isanimal(target)))

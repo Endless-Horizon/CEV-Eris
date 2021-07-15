@@ -1,4 +1,4 @@
-/obj/item/weapon/implant/integrated_circuit
+/obj/item/implant/integrated_circuit
 	name = "electronic implant"
 	desc = "It's a case, for building electronics with."
 	icon = 'icons/obj/electronic_assemblies.dmi'
@@ -6,19 +6,19 @@
 	var/obj/item/device/electronic_assembly/implant/IC = null
 	is_legal = TRUE
 
-/obj/item/weapon/implant/integrated_circuit/New()
+/obj/item/implant/integrated_circuit/New()
 	..()
 	IC = new(src)
 	IC.implant = src
 	add_hearing()
 
-/obj/item/weapon/implant/integrated_circuit/Destroy()
+/obj/item/implant/integrated_circuit/Destroy()
 	IC.implant = null
 	qdel(IC)
 	remove_hearing()
 	. = ..()
 
-/obj/item/weapon/implant/integrated_circuit/get_data()
+/obj/item/implant/integrated_circuit/get_data()
 	var/dat = {"
 	<b>Implant Specifications:</b><BR>
 	<b>Name:</b> Modular Implant<BR>
@@ -32,21 +32,21 @@
 	<b>Integrity:</b> Implant is not shielded from electromagnetic interferance, otherwise it is independant of subject's status."}
 	return dat
 
-/obj/item/weapon/implant/integrated_circuit/emp_act(severity)
+/obj/item/implant/integrated_circuit/emp_act(severity)
 	IC.emp_act(severity)
 
-/obj/item/weapon/implant/integrated_circuit/examine(mob/user)
+/obj/item/implant/integrated_circuit/examine(mob/user)
 	IC.examine(user)
 
-/obj/item/weapon/implant/integrated_circuit/attackby(obj/item/O, mob/user)
-	if(istype(O, /obj/item/weapon/tool/crowbar) || istype(O, /obj/item/device/electronics/integrated) || istype(O, /obj/item/integrated_circuit) || istype(O, /obj/item/weapon/tool/screwdriver) || istype(O, /obj/item/weapon/cell/small) )
+/obj/item/implant/integrated_circuit/attackby(obj/item/O, mob/user)
+	if(istype(O, /obj/item/tool/crowbar) || istype(O, /obj/item/device/electronics/integrated) || istype(O, /obj/item/integrated_circuit) || istype(O, /obj/item/tool/screwdriver) || istype(O, /obj/item/cell/small) )
 		IC.attackby(O, user)
 	else
 		..()
 
-/obj/item/weapon/implant/integrated_circuit/attack_self(mob/user)
+/obj/item/implant/integrated_circuit/attack_self(mob/user)
 	IC.attack_self(user)
 
 
-/obj/item/weapon/implant/integrated_circuit/hear_talk(mob/M, var/msg, verb, datum/language/speaking, speech_volume)
+/obj/item/implant/integrated_circuit/hear_talk(mob/M, var/msg, verb, datum/language/speaking, speech_volume)
 	IC.hear_talk(M, msg, speaking, speech_volume = speech_volume)

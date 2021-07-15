@@ -5,7 +5,7 @@
 		if(ishuman(L))
 			H = L
 		if(H)
-			var/obj/item/weapon/reagent_containers/food/snacks/grown/howdoitameahorseinminecraft = H.get_active_hand()
+			var/obj/item/reagent_containers/food/snacks/grown/howdoitameahorseinminecraft = H.get_active_hand()
 			if(istype(howdoitameahorseinminecraft))
 				if(try_tame(H, howdoitameahorseinminecraft))
 					return FALSE //If they manage to tame the roach, stop the attack

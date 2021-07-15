@@ -4,12 +4,12 @@
 	icon_state = "securityrobot"
 	modtype = "Security"
 	lawchannel = "State"
-	idcard_type = /obj/item/weapon/card/id/syndicate
+	idcard_type = /obj/item/card/id/syndicate
 
 /mob/living/silicon/robot/syndicate/New()
 	if(!cell)
 		// Starts with a fancy high capacity cell
-		cell = new /obj/item/weapon/cell/large/hyper(src)
+		cell = new /obj/item/cell/large/hyper(src)
 
 	..()
 
@@ -19,7 +19,7 @@
 	laws = new /datum/ai_laws/syndicate_override
 	cut_overlays()
 	init_id()
-	new /obj/item/weapon/robot_module/syndicate(src)
+	new /obj/item/robot_module/syndicate(src)
 
 	radio.keyslot = new /obj/item/device/encryptionkey/syndicate(radio)
 	radio.recalculateChannels()

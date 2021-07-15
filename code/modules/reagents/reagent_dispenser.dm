@@ -28,7 +28,7 @@
 	var/turf/T = get_turf(src)
 	T?.levelupdate()
 
-/obj/structure/reagent_dispensers/attackby(obj/item/weapon/W, mob/user)
+/obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user)
 	if(W.is_refillable())
 		return FALSE //so we can refill them via their afterattack.
 	else if(QUALITY_BOLT_TURNING in W.tool_qualities)
@@ -187,7 +187,7 @@
 			test.Shift(EAST,6)
 			add_overlays(test)
 
-	var/obj/item/weapon/tool/T = I
+	var/obj/item/tool/T = I
 	if(istype(T) && T.use_fuel_cost)
 		return 0
 

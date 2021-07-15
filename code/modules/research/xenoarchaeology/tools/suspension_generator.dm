@@ -5,7 +5,7 @@
 	icon_state = "suspension2"
 	density = TRUE
 	req_access = list(access_moebius)
-	var/obj/item/weapon/cell/large/cell
+	var/obj/item/cell/large/cell
 	var/locked = TRUE
 	var/field_type = ""
 	var/power_use = 25
@@ -25,7 +25,7 @@
 
 /obj/machinery/suspension_gen/Initialize()
 	. = ..()
-	cell = new /obj/item/weapon/cell/large/high(src)
+	cell = new /obj/item/cell/large/high(src)
 
 /obj/machinery/suspension_gen/get_cell()
 	return cell
@@ -180,7 +180,7 @@
 		if(ABORT_CHECK)
 			return
 
-	if (istype(I, /obj/item/weapon/cell/large))
+	if (istype(I, /obj/item/cell/large))
 		if(panel_open)
 			if(cell)
 				to_chat(user, SPAN_WARNING("There is a power cell already installed."))
@@ -191,15 +191,15 @@
 				to_chat(user, SPAN_NOTICE("You insert the power cell."))
 				icon_state = "suspension1"
 
-	if(istype(I, /obj/item/weapon/card) || length(I.GetAccess()))
+	if(istype(I, /obj/item/card) || length(I.GetAccess()))
 		if(attempt_unlock(I, user))
 			to_chat(user, SPAN_NOTICE("You swipe [I], the console flashes \'<i>Access granted.</i>\'"))
 		else
 			to_chat(user, SPAN_WARNING("You swipe [I], console flashes \'<i>Access denied.</i>\'"))
 
-/obj/machinery/suspension_gen/proc/attempt_unlock(var/obj/item/weapon/card/C, var/mob/user)
+/obj/machinery/suspension_gen/proc/attempt_unlock(var/obj/item/card/C, var/mob/user)
 	if(!panel_open)
-		if(istype(C, /obj/item/weapon/card/emag))
+		if(istype(C, /obj/item/card/emag))
 			C.resolve_attackby(src, user)
 		else if(check_access(C))
 			locked = FALSE

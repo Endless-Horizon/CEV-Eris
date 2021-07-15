@@ -1,4 +1,4 @@
-/obj/item/weapon/weldpack
+/obj/item/weldpack
 	name = "welding kit"
 	desc = "A heavy-duty, portable welding fluid carrier."
 	slot_flags = SLOT_BACK
@@ -8,7 +8,7 @@
 	var/max_fuel = 350
 
 
-/obj/item/weapon/weldpack/canister
+/obj/item/weldpack/canister
 	name = "canister"
 	desc = "You may need it for draging around additional fuel."
 	slot_flags = null
@@ -18,12 +18,12 @@
 	rarity_value = 25
 	spawn_tags = SPAWN_TAG_ITEM_UTILITY
 
-/obj/item/weapon/weldpack/Initialize(mapload)
+/obj/item/weldpack/Initialize(mapload)
 	create_reagents(max_fuel)
 	reagents.add_reagent("fuel", max_fuel)
 	. = ..()
 
-/obj/item/weapon/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
@@ -35,12 +35,12 @@
 		to_chat(user, SPAN_WARNING("The pack is already full!"))
 		return
 
-/obj/item/weapon/weldpack/examine(mob/user)
+/obj/item/weldpack/examine(mob/user)
 	..(user)
 	to_chat(user, text("\icon[] [] units of fuel left!", src, src.reagents.total_volume))
 	return
 
-/obj/item/weapon/weldpack/proc/explode()
+/obj/item/weldpack/proc/explode()
 	if (reagents.total_volume > 150)
 		explosion(src.loc,1,2,4)
 	else if (reagents.total_volume > 50)

@@ -9,7 +9,7 @@
 	density = TRUE
 	lethal = TRUE
 	raised = TRUE
-	circuit = /obj/item/weapon/electronics/circuitboard/excelsior_turret
+	circuit = /obj/item/electronics/circuitboard/excelsior_turret
 	installation = null
 	var/obj/item/ammo_magazine/ammo_box = /obj/item/ammo_magazine/ammobox/lrifle
 	var/ammo = 0 // number of bullets left.

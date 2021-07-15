@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/hemostat
+/obj/item/tool/hemostat
 	name = "hemostat"
 	desc = "You think you have seen this before."
 	icon_state = "hemostat"

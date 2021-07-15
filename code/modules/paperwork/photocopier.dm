@@ -45,14 +45,14 @@
 			if(toner <= 0)
 				break
 
-			if (istype(copyitem, /obj/item/weapon/paper))
+			if (istype(copyitem, /obj/item/paper))
 				copy(copyitem)
 				sleep(15)
-			else if (istype(copyitem, /obj/item/weapon/photo))
+			else if (istype(copyitem, /obj/item/photo))
 				photocopy(copyitem)
 				sleep(15)
-			else if (istype(copyitem, /obj/item/weapon/paper_bundle))
-				var/obj/item/weapon/paper_bundle/B = bundlecopy(copyitem)
+			else if (istype(copyitem, /obj/item/paper_bundle))
+				var/obj/item/paper_bundle/B = bundlecopy(copyitem)
 				sleep(15*B.pages.len)
 			else
 				to_chat(usr, SPAN_WARNING("\The [copyitem] can't be copied by \the [src]."))
@@ -87,11 +87,11 @@
 
 			if(!camera)
 				return
-			var/obj/item/weapon/photo/selection = camera.selectpicture()
+			var/obj/item/photo/selection = camera.selectpicture()
 			if (!selection)
 				return
 
-			var/obj/item/weapon/photo/p = photocopy(selection)
+			var/obj/item/photo/p = photocopy(selection)
 			if (p.desc == "")
 				p.desc += "Copied by [tempAI.name]"
 			else
@@ -101,7 +101,7 @@
 		updateUsrDialog()
 
 /obj/machinery/photocopier/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/paper) || istype(I, /obj/item/weapon/photo) || istype(I, /obj/item/weapon/paper_bundle))
+	if(istype(I, /obj/item/paper) || istype(I, /obj/item/photo) || istype(I, /obj/item/paper_bundle))
 		if(!copyitem)
 			user.drop_item()
 			copyitem = I
@@ -145,8 +145,8 @@
 					toner = 0
 	return
 
-/obj/machinery/photocopier/proc/copy(var/obj/item/weapon/paper/copy)
-	var/obj/item/weapon/paper/c = new /obj/item/weapon/paper (loc)
+/obj/machinery/photocopier/proc/copy(var/obj/item/paper/copy)
+	var/obj/item/paper/c = new /obj/item/paper (loc)
 	if(toner > 10)	//lots of toner, make it dark
 		c.info = "<font color = #101010>"
 	else			//no toner? shitty copies for you!
@@ -182,8 +182,8 @@
 	return c
 
 
-/obj/machinery/photocopier/proc/photocopy(var/obj/item/weapon/photo/photocopy)
-	var/obj/item/weapon/photo/p = photocopy.copy()
+/obj/machinery/photocopier/proc/photocopy(var/obj/item/photo/photocopy)
+	var/obj/item/photo/p = photocopy.copy()
 	p.loc = src.loc
 
 	var/icon/I = icon(photocopy.icon, photocopy.icon_state)
@@ -204,17 +204,17 @@
 	return p
 
 //If need_toner is 0, the copies will still be lightened when low on toner, however it will not be prevented from printing. TODO: Implement print queues for fax machines and get rid of need_toner
-/obj/machinery/photocopier/proc/bundlecopy(var/obj/item/weapon/paper_bundle/bundle, var/need_toner=1)
-	var/obj/item/weapon/paper_bundle/p = new /obj/item/weapon/paper_bundle (src)
-	for(var/obj/item/weapon/W in bundle.pages)
+/obj/machinery/photocopier/proc/bundlecopy(var/obj/item/paper_bundle/bundle, var/need_toner=1)
+	var/obj/item/paper_bundle/p = new /obj/item/paper_bundle (src)
+	for(var/obj/item/W in bundle.pages)
 		if(toner <= 0 && need_toner)
 			toner = 0
 			visible_message(SPAN_NOTICE("A red light on \the [src] flashes, indicating that it is out of toner."))
 			break
 
-		if(istype(W, /obj/item/weapon/paper))
+		if(istype(W, /obj/item/paper))
 			W = copy(W)
-		else if(istype(W, /obj/item/weapon/photo))
+		else if(istype(W, /obj/item/photo))
 			W = photocopy(W)
 		W.loc = p
 		p.pages += W

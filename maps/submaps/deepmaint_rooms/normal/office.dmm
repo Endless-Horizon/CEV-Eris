@@ -2,7 +2,7 @@
 "b" = (/obj/spawner/traps,/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
 "c" = (/turf/simulated/wall,/area/deepmaint)
 "d" = (/obj/machinery/door/firedoor,/obj/effect/window_lwall_spawn/smartspawn,/turf/simulated/floor/plating,/area/deepmaint)
-"e" = (/obj/structure/table/standard,/obj/item/weapon/paper_bin,/turf/simulated/floor/tiled/steel/gray_perforated,/area/deepmaint)
+"e" = (/obj/structure/table/standard,/obj/item/paper_bin,/turf/simulated/floor/tiled/steel/gray_perforated,/area/deepmaint)
 "f" = (/obj/structure/table/standard,/obj/item/device/lighting/toggleable/lamp,/turf/simulated/floor/tiled/steel/gray_perforated,/area/deepmaint)
 "g" = (/obj/structure/reagent_dispensers/water_cooler,/turf/simulated/floor/tiled/steel/gray_perforated,/area/deepmaint)
 "h" = (/obj/structure/table/standard,/obj/spawner/pack/rare/low_chance,/obj/spawner/lowkeyrandom,/obj/spawner/lowkeyrandom,/turf/simulated/floor/tiled/steel/gray_perforated,/area/deepmaint)

@@ -14,24 +14,24 @@
 
 /decl/backpack_outfit/backpack
 	name = "Backpack"
-	path = /obj/item/weapon/storage/backpack
+	path = /obj/item/storage/backpack
 
 /decl/backpack_outfit/backsport
 	name = "Sport Backpack"
-	path = /obj/item/weapon/storage/backpack/sport
+	path = /obj/item/storage/backpack/sport
 
 /decl/backpack_outfit/satchel
 	name = "Satchel"
-	path = /obj/item/weapon/storage/backpack/satchel
+	path = /obj/item/storage/backpack/satchel
 	is_default = TRUE
 
 /decl/backpack_outfit/duffelbag
 	name = "Duffelbag"
-	path = /obj/item/weapon/storage/backpack/duffelbag
+	path = /obj/item/storage/backpack/duffelbag
 
 /decl/backpack_outfit/lootbag
 	name = "Lootbag"
-	path = /obj/item/weapon/storage/backpack/duffelbag/loot
+	path = /obj/item/storage/backpack/duffelbag/loot
 
 /* Code */
 /decl/backpack_outfit
@@ -85,7 +85,7 @@
 /datum/backpack_tweak/proc/get_backpack_type(var/given_backpack_type)
 	return given_backpack_type
 
-/datum/backpack_tweak/proc/tweak_backpack(var/obj/item/weapon/storage/backpack/backpack, var/metadata)
+/datum/backpack_tweak/proc/tweak_backpack(var/obj/item/storage/backpack/backpack, var/metadata)
 	return
 
 
@@ -112,7 +112,7 @@
 		if(!istext(selection_key))
 			CRASH("Expected a valid selection key, was [log_info_line(selection_key)]")
 		var/selection_type = selections[selection_key]
-		if(!ispath(selection_type, /obj/item/weapon/storage/backpack))
+		if(!ispath(selection_type, /obj/item/storage/backpack))
 			CRASH("Expected a valid selection value, was [log_info_line(selection_type)]")
 
 	src.selections = selections

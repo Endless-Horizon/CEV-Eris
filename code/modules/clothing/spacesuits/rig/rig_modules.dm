@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/proc/can_install(var/obj/item/rig_module/mod, var/mob/user, var/feedback = FALSE)
+/obj/item/rig/proc/can_install(var/obj/item/rig_module/mod, var/mob/user, var/feedback = FALSE)
 	if(is_worn())
 		if (user && feedback)
 			to_chat(user, SPAN_DANGER("You can't install a hardsuit module while the suit is being worn."))
@@ -16,13 +16,13 @@
 
 	return TRUE
 
-/obj/item/weapon/rig/proc/can_uninstall(var/obj/item/rig_module/mod, var/mob/user, var/feedback = FALSE)
+/obj/item/rig/proc/can_uninstall(var/obj/item/rig_module/mod, var/mob/user, var/feedback = FALSE)
 	if (!mod.can_uninstall(src, user, feedback))
 		return FALSE
 
 	return TRUE
 
-/obj/item/weapon/rig/proc/install(var/obj/item/rig_module/mod, var/mob/user)
+/obj/item/rig/proc/install(var/obj/item/rig_module/mod, var/mob/user)
 
 	if (user)
 		to_chat(user, "You begin installing \the [mod] into \the [src].")
@@ -42,7 +42,7 @@
 
 
 //Cleanly uninstalls the rig module to prevent runtime/GC errors
-/obj/item/weapon/rig/proc/uninstall(var/obj/item/rig_module/mod, var/mob/living/user, var/delete = FALSE)
+/obj/item/rig/proc/uninstall(var/obj/item/rig_module/mod, var/mob/living/user, var/delete = FALSE)
 	mod.deactivate()
 
 	//Remove ourselves from the host's installed modules

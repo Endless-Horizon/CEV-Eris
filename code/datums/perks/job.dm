@@ -83,11 +83,11 @@
 /datum/perk/merchant/assign(mob/living/carbon/human/H)
 	..()
 	if(holder)
-		holder.sanity.valid_inspirations += /obj/item/weapon/spacecash/bundle
+		holder.sanity.valid_inspirations += /obj/item/spacecash/bundle
 
 /datum/perk/merchant/remove()
 	if(holder)
-		holder.sanity.valid_inspirations -= /obj/item/weapon/spacecash/bundle
+		holder.sanity.valid_inspirations -= /obj/item/spacecash/bundle
 	..()
 
 #define CHOICE_LANG "language" // Random language chosen from a pool
@@ -135,12 +135,12 @@
 		if(CHOICE_STASHPAPER)
 			desc += " You have a special note in your storage."
 			stash.spawn_stash()
-			var/obj/item/weapon/paper/stash_note = stash.spawn_note()
+			var/obj/item/paper/stash_note = stash.spawn_note()
 			holder.equip_to_storage_or_drop(stash_note)
 		if(CHOICE_RAREOBJ)
 			desc += " You managed to smuggle a rare item aboard."
 			var/obj/O = pickweight(RANDOM_RARE_ITEM - /obj/item/stash_spawner)
-			var/obj/item/weapon/storage/box/B = new
+			var/obj/item/storage/box/B = new
 			new O(B) // Spawn the random spawner in the box, so that the resulting random item will be within the box
 			holder.equip_to_storage_or_drop(B)
 

@@ -69,7 +69,7 @@
 		return 1
 
 /obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	var/obj/item/weapon/card/id/id_card = O.GetIdCard()
+	var/obj/item/card/id/id_card = O.GetIdCard()
 	if(!id_card)
 		return
 
@@ -80,7 +80,7 @@
 		to_chat(user, "[src] rejects your insufficient access rights.")
 	return
 
-/obj/item/weapon/storage/box/holobadge
+/obj/item/storage/box/holobadge
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
 	New()

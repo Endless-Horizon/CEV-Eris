@@ -122,8 +122,8 @@
 			C.forceMove(target.loc)
 			var/direction = pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 			C.Move(get_step(C, direction))
-			if(istype(C, /obj/item/weapon/grenade))
-				var/obj/item/weapon/grenade/G = C
+			if(istype(C, /obj/item/grenade))
+				var/obj/item/grenade/G = C
 				if(!G.active)
 					G.activate(user)
 			return TRUE

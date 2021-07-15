@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/type_69
+/obj/item/gun/projectile/type_69
     name = "OS MP .40 \"Type LXIX\""
     desc = "An Onestar machine pistol. While unwieldy, its users can't deny that it is brutally effective. Uses .40 pistol magazines."
     icon = 'icons/obj/guns/projectile/os/type_69.dmi'
@@ -25,7 +25,7 @@
 
     spawn_blacklisted = TRUE //until loot rework
 
-/obj/item/weapon/gun/projectile/type_69/on_update_icon()
+/obj/item/gun/projectile/type_69/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -38,6 +38,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/type_69/Initialize()
+/obj/item/gun/projectile/type_69/Initialize()
 	. = ..()
 	update_icon()

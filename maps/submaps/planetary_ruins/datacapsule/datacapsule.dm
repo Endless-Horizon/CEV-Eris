@@ -36,11 +36,11 @@
 	color = "#800000"
 	amount_to_zombify = 3
 
-/obj/item/weapon/reagent_containers/glass/beaker/vial/random_podchem
+/obj/item/reagent_containers/glass/beaker/vial/random_podchem
 	name = "unmarked vial"
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/reagent_containers/glass/beaker/vial/random_podchem/Initialize()
+/obj/item/reagent_containers/glass/beaker/vial/random_podchem/Initialize()
 	. = ..()
 	desc += "Label is smudged, and there's crusted blood fingerprints on it."
 	var/reagent_type = pick(/datum/reagent/random, /datum/reagent/toxin/zombie/science, /datum/reagent/rezadone, /datum/reagent/three_eye)
@@ -57,7 +57,7 @@
 	if(isCrowbar(W))
 		to_chat(user, SPAN_NOTICE("You pry out the data drive from \the [src]."))
 		playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
-		var/obj/item/weapon/stock_parts/computer/hard_drive/cluster/drive = new(get_turf(src))
+		var/obj/item/stock_parts/computer/hard_drive/cluster/drive = new(get_turf(src))
 		drive.origin_tech = list(TECH_DATA = rand(4,5), TECH_ENGINEERING = rand(4,5), TECH_PHORON = rand(4,5), TECH_COMBAT = rand(2,5), TECH_ESOTERIC = rand(0,6))
 		
 /obj/effect/landmark/map_load_mark/ejected_datapod

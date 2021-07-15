@@ -10,7 +10,7 @@
 	desc = "An enormous drill."
 	icon_state = "mining_drill"
 
-	circuit = /obj/item/weapon/electronics/circuitboard/miningdrill
+	circuit = /obj/item/electronics/circuitboard/miningdrill
 
 	var/braces_needed = 2
 	var/list/supports = list()
@@ -19,16 +19,16 @@
 	var/list/resource_field = list()
 
 	var/ore_types = list(
-		MATERIAL_IRON = /obj/item/weapon/ore/iron,
-		MATERIAL_URANIUM = /obj/item/weapon/ore/uranium,
-		MATERIAL_GOLD = /obj/item/weapon/ore/gold,
-		MATERIAL_SILVER = /obj/item/weapon/ore/silver,
-		MATERIAL_DIAMOND = /obj/item/weapon/ore/diamond,
-		MATERIAL_PLASMA = /obj/item/weapon/ore/plasma,
-		MATERIAL_OSMIUM = /obj/item/weapon/ore/osmium,
-		MATERIAL_TRITIUM = /obj/item/weapon/ore/hydrogen,
-		MATERIAL_GLASS = /obj/item/weapon/ore/glass,
-		MATERIAL_PLASTIC = /obj/item/weapon/ore/coal
+		MATERIAL_IRON = /obj/item/ore/iron,
+		MATERIAL_URANIUM = /obj/item/ore/uranium,
+		MATERIAL_GOLD = /obj/item/ore/gold,
+		MATERIAL_SILVER = /obj/item/ore/silver,
+		MATERIAL_DIAMOND = /obj/item/ore/diamond,
+		MATERIAL_PLASMA = /obj/item/ore/plasma,
+		MATERIAL_OSMIUM = /obj/item/ore/osmium,
+		MATERIAL_TRITIUM = /obj/item/ore/hydrogen,
+		MATERIAL_GLASS = /obj/item/ore/glass,
+		MATERIAL_PLASTIC = /obj/item/ore/coal
 		)
 
 	//Upgrades
@@ -36,7 +36,7 @@
 	var/capacity
 	var/charge_use
 	var/radius
-	var/obj/item/weapon/cell/large/cell
+	var/obj/item/cell/large/cell
 
 	//Flags
 	var/need_update_field = FALSE
@@ -50,7 +50,7 @@
 
 /obj/machinery/mining/drill/Initialize()
 	. = ..()
-	var/obj/item/weapon/cell/large/high/C = new(src)
+	var/obj/item/cell/large/high/C = new(src)
 	component_parts += C
 	cell = C
 	update_icon()
@@ -148,7 +148,7 @@
 	if(!panel_open || active)
 		return ..()
 
-	if(istype(I, /obj/item/weapon/cell/large))
+	if(istype(I, /obj/item/cell/large))
 		if(cell)
 			to_chat(user, "The drill already has a cell installed.")
 		else
@@ -210,17 +210,17 @@
 	charge_use = 37
 	radius = 0
 
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/micro_laser))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/micro_laser))
 			harvest_speed = P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/matter_bin))
+		if(istype(P, /obj/item/stock_parts/matter_bin))
 			capacity = 200 * P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
+		if(istype(P, /obj/item/stock_parts/capacitor))
 			charge_use -= 8 * (P.rating - harvest_speed)
 			charge_use = max(charge_use, 0)
-		if(istype(P, /obj/item/weapon/stock_parts/scanning_module))
+		if(istype(P, /obj/item/stock_parts/scanning_module))
 			radius = 1 + P.rating
-	cell = locate(/obj/item/weapon/cell/large) in component_parts
+	cell = locate(/obj/item/cell/large) in component_parts
 
 
 /obj/machinery/mining/drill/proc/check_supports()
@@ -271,7 +271,7 @@
 
 	var/obj/structure/ore_box/B = locate() in orange(1)
 	if(B)
-		for(var/obj/item/weapon/ore/O in contents)
+		for(var/obj/item/ore/O in contents)
 			O.loc = B
 		to_chat(usr, SPAN_NOTICE("You unload the drill's storage cache into the ore box."))
 	else

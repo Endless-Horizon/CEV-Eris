@@ -2,10 +2,10 @@
 /datum/export/stack/cash
 	cost = 1 // Multiplied both by value of each bill and by amount of bills in stack.
 	unit_name = "credit chip"
-	export_types = list(/obj/item/weapon/spacecash)
+	export_types = list(/obj/item/spacecash)
 
 /datum/export/stack/cash/get_amount(obj/O)
-	var/obj/item/weapon/spacecash/C = O
+	var/obj/item/spacecash/C = O
 	return ..() * C.worth
 
 
@@ -15,7 +15,7 @@
 	cost = 1 // Multiplied by coin's value
 	unit_name = "credit coin"
 	message = "worth of rare coins"
-	export_types = list(/obj/item/weapon/coin)
+	export_types = list(/obj/item/coin)
 
 /datum/export/coin/get_cost(obj/O, contr = 0, emag = 0)
 	var/price = 0

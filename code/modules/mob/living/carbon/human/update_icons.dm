@@ -400,7 +400,7 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_implants(var/update_icons = 1)
 	var/image/standing = image('icons/mob/mob.dmi', "blank")
 	var/have_icon = FALSE
-	for(var/obj/item/weapon/implant/I in src)
+	for(var/obj/item/implant/I in src)
 		if(I.is_external() && I.wearer == src)
 			var/image/mob_icon = I.get_mob_overlay(gender)
 			if(mob_icon)
@@ -821,8 +821,8 @@ var/global/list/damage_icon_parts = list()
 
 		var/beltlayer = BELT_LAYER
 		var/otherlayer = BELT_LAYER_ALT
-		if(istype(belt, /obj/item/weapon/storage/belt))
-			var/obj/item/weapon/storage/belt/ubelt = belt
+		if(istype(belt, /obj/item/storage/belt))
+			var/obj/item/storage/belt/ubelt = belt
 			if(ubelt.show_above_suit)
 				beltlayer = BELT_LAYER_ALT
 				otherlayer = BELT_LAYER
@@ -946,8 +946,8 @@ var/global/list/damage_icon_parts = list()
 				overlay_icon = test.icon
 		else if(test.icon_override)
 			overlay_icon = test.icon_override
-		else if(istype(test, /obj/item/weapon/rig))
-			var/obj/item/weapon/rig/rig = test
+		else if(istype(test, /obj/item/rig))
+			var/obj/item/rig/rig = test
 			overlay_icon = rig.get_species_icon()
 
 		else if(test.item_icons && (slot_back_str in test.item_icons))
@@ -985,8 +985,8 @@ var/global/list/damage_icon_parts = list()
 		standing.color = back.color
 
 		//Rig module overlays on mob.
-		if(istype(back, /obj/item/weapon/rig))
-			var/obj/item/weapon/rig/rig = back//Maybe add if(rig.installed_modules.len) below this since the code for accessories does that far as I know.
+		if(istype(back, /obj/item/rig))
+			var/obj/item/rig/rig = back//Maybe add if(rig.installed_modules.len) below this since the code for accessories does that far as I know.
 			for(var/obj/item/rig_module/module in rig.installed_modules)
 				if(module.suit_overlay)
 					standing.overlays.Add(image("icon" = 'icons/mob/rig_modules.dmi', "icon_state" = module.suit_overlay))

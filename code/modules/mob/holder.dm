@@ -1,7 +1,7 @@
 var/list/holder_mob_icon_cache = list()
 
 //Helper object for picking dionaea (and other creatures) up.
-/obj/item/weapon/holder
+/obj/item/holder
 	name = "holder"
 	desc = null
 	icon = 'icons/mob/held_mobs.dmi'
@@ -27,17 +27,17 @@ var/list/holder_mob_icon_cache = list()
 	var/last_holder
 
 //A list of things a mob can't be safely released inside.
-/obj/item/weapon/holder/proc/setup_unsafe_list()
+/obj/item/holder/proc/setup_unsafe_list()
 	unsafe_containers = typecacheof(list(
-		/obj/item/weapon/storage,
-		/obj/item/weapon/reagent_containers,
+		/obj/item/storage,
+		/obj/item/reagent_containers,
 		/obj/structure/closet/crate,
 		///obj/machinery/appliance,
 		/obj/machinery/microwave,
 		/obj/machinery/vending
 	))
 
-/obj/item/weapon/holder/Initialize()
+/obj/item/holder/Initialize()
 	. = ..()
 	if (!unsafe_containers)
 		setup_unsafe_list()
@@ -49,31 +49,31 @@ var/list/holder_mob_icon_cache = list()
 
 	START_PROCESSING(SSprocessing, src)
 
-/obj/item/weapon/holder/Destroy()
+/obj/item/holder/Destroy()
 	reagents = null
 	STOP_PROCESSING(SSprocessing, src)
 	if (contained)
 		release_mob(FALSE)
 	return ..()
 
-/obj/item/weapon/holder/examine(mob/user)
+/obj/item/holder/examine(mob/user)
 	if (contained)
 		contained.examine(user)
 
-/obj/item/weapon/holder/attack_self()
+/obj/item/holder/attack_self()
 	for(var/mob/M in contents)
 		M.show_inv(usr)
 
 //Mob specific holders.
-/obj/item/weapon/holder/diona
+/obj/item/holder/diona
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 5)
 	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER
 
 
-/obj/item/weapon/holder/borer
+/obj/item/holder/borer
 	origin_tech = list(TECH_BIO = 8)
 
-/obj/item/weapon/holder/Process()
+/obj/item/holder/Process()
 	if (!contained)
 		qdel(src)
 
@@ -90,14 +90,14 @@ var/list/holder_mob_icon_cache = list()
 
 //This function checks if the current location is safe to release inside
 //it returns 1 if the creature will bug out when released
-/obj/item/weapon/holder/proc/is_unsafe_container(atom/place)
+/obj/item/holder/proc/is_unsafe_container(atom/place)
 	return is_type_in_typecache(place, unsafe_containers)
 
 //Releases all mobs inside the holder, then deletes it.
 //is_unsafe_container should be checked before calling this
 //This function releases mobs into wherever the holder currently is. Its not safe to call from a lot of places
 //Use release_to_floor for a simple, safe release
-/obj/item/weapon/holder/proc/release_mob(var/des_self = TRUE)
+/obj/item/holder/proc/release_mob(var/des_self = TRUE)
 	for(var/mob/living/M in contents)
 		var/atom/movable/mob_container
 		mob_container = M
@@ -111,7 +111,7 @@ var/list/holder_mob_icon_cache = list()
 
 //Similar to above function, but will not deposit things in any container, only directly on a turf.
 //Can be called safely anywhere. Notably on holders held or worn on a mob
-/obj/item/weapon/holder/proc/release_to_floor()
+/obj/item/holder/proc/release_to_floor()
 	var/turf/T = get_turf(src)
 
 	for(var/mob/living/M in contents)
@@ -123,11 +123,11 @@ var/list/holder_mob_icon_cache = list()
 
 	qdel(src)
 
-/obj/item/weapon/holder/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/holder/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
 
-/obj/item/weapon/holder/dropped(mob/user)
+/obj/item/holder/dropped(mob/user)
 
 	///When an object is put into a container, drop fires twice.
 	//once with it on the floor, and then once in the container
@@ -142,25 +142,25 @@ var/list/holder_mob_icon_cache = list()
 			post_drop()
 		return
 
-	if (istype(loc, /obj/item/weapon/storage))	//The second drop reads the container its placed into as the location
+	if (istype(loc, /obj/item/storage))	//The second drop reads the container its placed into as the location
 		update_location()
 
-/obj/item/weapon/holder/proc/post_drop()
+/obj/item/holder/proc/post_drop()
 	if (isturf(loc))
 		release_mob()
 
-/obj/item/weapon/holder/equipped(var/mob/user, var/slot)
+/obj/item/holder/equipped(var/mob/user, var/slot)
 	..()
 	update_location(slot)
 
-/obj/item/weapon/holder/proc/update_location(var/slotnumber)
+/obj/item/holder/proc/update_location(var/slotnumber)
 	if(!slotnumber)
 		if(ismob(loc))
 			slotnumber = get_equip_slot()
 
 	report_onmob_location(1, slotnumber, contained)
 
-/obj/item/weapon/holder/attack_self(mob/M)
+/obj/item/holder/attack_self(mob/M)
 
 	if (contained && !(contained.stat & DEAD))
 		if (istype(M,/mob/living/carbon/human))
@@ -176,7 +176,7 @@ var/list/holder_mob_icon_cache = list()
 		to_chat(M, "[contained] is dead.")
 
 
-/obj/item/weapon/holder/show_message(var/message, var/m_type)
+/obj/item/holder/show_message(var/message, var/m_type)
 	for(var/mob/living/M in contents)
 		M.show_message(message,m_type)
 
@@ -184,7 +184,7 @@ var/list/holder_mob_icon_cache = list()
 /mob/living/var/holder_type
 
 
-/obj/item/weapon/holder/proc/held_death(var/show_deathmessage = 0)
+/obj/item/holder/proc/held_death(var/show_deathmessage = 0)
 	//This function is called when the mob in the holder dies somehow.
 	isalive = 0
 
@@ -222,7 +222,7 @@ var/list/holder_mob_icon_cache = list()
 
 
 	spawn(2)
-		var/obj/item/weapon/holder/H = new holder_type(loc)
+		var/obj/item/holder/H = new holder_type(loc)
 
 		var/old_loc = src.loc
 
@@ -270,18 +270,18 @@ var/list/holder_mob_icon_cache = list()
 		to_chat(src, "Nobody is holding you!")
 		return
 
-	if (istype(usr.loc, /obj/item/weapon/holder))
-		var/obj/item/weapon/holder/H = usr.loc
+	if (istype(usr.loc, /obj/item/holder))
+		var/obj/item/holder/H = usr.loc
 		H.report_onmob_location(0, H.get_equip_slot(), src)
 
-/obj/item/weapon/holder/human
+/obj/item/holder/human
 	icon = null
 	var/holder_icon = 'icons/mob/holder_complex.dmi'
 	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, slot_back_str)
 	slot_flags = SLOT_BACK
 
 
-/obj/item/weapon/holder/proc/sync(var/mob/living/M)
+/obj/item/holder/proc/sync(var/mob/living/M)
 	dir = 2
 	cut_overlays()
 	icon = M.icon
@@ -423,8 +423,8 @@ var/list/holder_mob_icon_cache = list()
 		else
 			action = "installed"
 			preposition = "in"
-	else if (istype(loc,/obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = loc
+	else if (istype(loc,/obj/item/storage))
+		var/obj/item/storage/S = loc
 		newlocation = S.name
 		if (justmoved)
 			preposition = "into"
@@ -467,7 +467,7 @@ var/list/holder_mob_icon_cache = list()
 
 
 
-/obj/item/weapon/holder/drone
+/obj/item/holder/drone
 	name = "maintenance drone"
 	desc = "It's a small maintenance robot."
 	icon_state = "drone"
@@ -477,7 +477,7 @@ var/list/holder_mob_icon_cache = list()
 	w_class = ITEM_SIZE_BULKY
 	//contained_sprite = 1 //Part of contained sprite overhaul, not yet ported
 
-/obj/item/weapon/holder/drone/heavy
+/obj/item/holder/drone/heavy
 	name = "construction drone"
 	desc = "It's a really big maintenance robot."
 	icon_state = "constructiondrone"
@@ -485,7 +485,7 @@ var/list/holder_mob_icon_cache = list()
 	w_class = ITEM_SIZE_GARGANTUAN//You're not fitting this thing in a backpack
 
 
-/obj/item/weapon/holder/cat
+/obj/item/holder/cat
 	name = "cat"
 	desc = "It's a cat. Meow."
 	desc_dead = "It's a dead cat."
@@ -497,13 +497,13 @@ var/list/holder_mob_icon_cache = list()
 	slot_flags = SLOT_HEAD
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/weapon/holder/cat/black
+/obj/item/holder/cat/black
 	icon_state = "cat_black"
 	icon_state_dead = "cat_black_dead"
 	slot_flags = SLOT_HEAD
 	item_state = "cat"
 
-/obj/item/weapon/holder/cat/kitten
+/obj/item/holder/cat/kitten
 	name = "kitten"
 	icon_state = "cat_kitten"
 	icon_state_dead = "cat_kitten_dead"
@@ -511,7 +511,7 @@ var/list/holder_mob_icon_cache = list()
 	w_class = ITEM_SIZE_TINY
 	item_state = "cat"
 
-/obj/item/weapon/holder/cat/penny
+/obj/item/holder/cat/penny
 	name = "Penny"
 	desc = "An important cat, straight from Central Command."
 	icon_state = "penny"
@@ -522,21 +522,21 @@ var/list/holder_mob_icon_cache = list()
 	//contained_sprite = 1 //Part of contained sprite overhaul, not yet ported
 
 
-/obj/item/weapon/holder/corgi
+/obj/item/holder/corgi
 	name = "corgi"
 	icon_state = "corgi"
 	item_state = "corgi"
 	//contained_sprite = 1 //Part of contained sprite overhaul, not yet ported
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/weapon/holder/borer
+/obj/item/holder/borer
 	name = "cortical borer"
 	desc = "It's a slimy brain slug. Gross."
 	icon_state = "brainslug"
 	origin_tech = list(TECH_BIO = 6)
 	w_class = ITEM_SIZE_TINY
 
-/obj/item/weapon/holder/monkey
+/obj/item/holder/monkey
 	name = "monkey"
 	desc = "It's a monkey. Ook."
 	icon_state = "monkey"
@@ -547,7 +547,7 @@ var/list/holder_mob_icon_cache = list()
 
 
 //Holders for mice
-/obj/item/weapon/holder/mouse
+/obj/item/holder/mouse
 	name = "mouse"
 	desc = "It's a fuzzy little critter."
 	desc_dead = "It's filthy vermin, throw it in the trash."
@@ -560,23 +560,23 @@ var/list/holder_mob_icon_cache = list()
 	origin_tech = list(TECH_BIO = 2)
 	w_class = ITEM_SIZE_TINY
 
-/obj/item/weapon/holder/mouse/white
+/obj/item/holder/mouse/white
 	icon_state = "mouse_white_sleep"
 	item_state = "mouse_white"
 	icon_state_dead = "mouse_white_dead"
 
-/obj/item/weapon/holder/mouse/gray
+/obj/item/holder/mouse/gray
 	icon_state = "mouse_gray_sleep"
 	item_state = "mouse_gray"
 	icon_state_dead = "mouse_gray_dead"
 
-/obj/item/weapon/holder/mouse/brown
+/obj/item/holder/mouse/brown
 	icon_state = "mouse_brown_sleep"
 	item_state = "mouse_brown"
 	icon_state_dead = "mouse_brown_dead"
 
 
-/obj/item/weapon/holder/GetIdCard()
+/obj/item/holder/GetIdCard()
 	for(var/mob/M in contents)
 		var/obj/item/I = M.GetIdCard()
 		if(I)
@@ -586,7 +586,7 @@ var/list/holder_mob_icon_cache = list()
 /*
 //Lizards
 
-/obj/item/weapon/holder/lizard
+/obj/item/holder/lizard
 	name = "lizard"
 	desc = "It's a hissy little lizard. Is it related to Unathi?"
 	desc_dead = "It doesn't hiss anymore."
@@ -597,7 +597,7 @@ var/list/holder_mob_icon_cache = list()
 	w_class = ITEM_SIZE_TINY
 
 //Chicks and chickens
-/obj/item/weapon/holder/chick
+/obj/item/holder/chick
 	name = "chick"
 	desc = "It's a fluffy little chick, until it grows up."
 	desc_dead = "How could you do this? You monster!"
@@ -607,7 +607,7 @@ var/list/holder_mob_icon_cache = list()
 	w_class = ITEM_SIZE_TINY
 
 
-/obj/item/weapon/holder/chicken
+/obj/item/holder/chicken
 	name = "chicken"
 	desc = "It's a feathery, tasty-looking chicken."
 	desc_dead = "Now it's ready for plucking and cooking!"
@@ -616,22 +616,22 @@ var/list/holder_mob_icon_cache = list()
 	slot_flags = 0
 	w_class = ITEM_SIZE_SMALL
 
-/obj/item/weapon/holder/chicken/brown
+/obj/item/holder/chicken/brown
 	icon_state = "chicken_brown"
 	icon_state_dead = "chicken_brown_dead"
 
-/obj/item/weapon/holder/chicken/black
+/obj/item/holder/chicken/black
 	icon_state = "chicken_black"
 	icon_state_dead = "chicken_black_dead"
 
-/obj/item/weapon/holder/chicken/white
+/obj/item/holder/chicken/white
 	icon_state = "chicken_white"
 	icon_state_dead = "chicken_white_dead"
 
 
 
 //Mushroom
-/obj/item/weapon/holder/mushroom
+/obj/item/holder/mushroom
 	name = "walking mushroom"
 	name_dead = "mushroom"
 	desc = "It's a massive mushroom... with legs?"
@@ -644,29 +644,29 @@ var/list/holder_mob_icon_cache = list()
 
 
 //pAI
-/obj/item/weapon/holder/pai
+/obj/item/holder/pai
 	icon = 'icons/mob/pai.dmi'
 	dir = EAST
 	contained_sprite = 1
 	slot_flags = SLOT_HEAD
 
-/obj/item/weapon/holder/pai/drone
+/obj/item/holder/pai/drone
 	icon_state = "repairbot_rest"
 	item_state = "repairbot"
 
-/obj/item/weapon/holder/pai/cat
+/obj/item/holder/pai/cat
 	icon_state = "cat_rest"
 	item_state = "cat"
 
-/obj/item/weapon/holder/pai/mouse
+/obj/item/holder/pai/mouse
 	icon_state = "mouse_rest"
 	item_state = "mouse"
 
-/obj/item/weapon/holder/pai/monkey
+/obj/item/holder/pai/monkey
 	icon_state = "monkey"
 	item_state = "monkey"
 
-/obj/item/weapon/holder/pai/rabbit
+/obj/item/holder/pai/rabbit
 	icon_state = "rabbit_rest"
 	item_state = "rabbit"
 
@@ -676,7 +676,7 @@ var/list/holder_mob_icon_cache = list()
 
 
 
-/obj/item/weapon/holder/monkey/farwa
+/obj/item/holder/monkey/farwa
 	name = "farwa"
 	desc = "It's a farwa."
 	icon_state = "farwa"
@@ -684,7 +684,7 @@ var/list/holder_mob_icon_cache = list()
 	slot_flags = SLOT_HEAD
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/weapon/holder/monkey/stok
+/obj/item/holder/monkey/stok
 	name = "stok"
 	desc = "It's a stok. stok."
 	icon_state = "stok"
@@ -692,7 +692,7 @@ var/list/holder_mob_icon_cache = list()
 	slot_flags = SLOT_HEAD
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/weapon/holder/monkey/neaera
+/obj/item/holder/monkey/neaera
 	name = "neaera"
 	desc = "It's a neaera."
 	icon_state = "neaera"
@@ -701,7 +701,7 @@ var/list/holder_mob_icon_cache = list()
 	w_class = ITEM_SIZE_NORMAL
 
 
-/obj/item/weapon/holder/diona
+/obj/item/holder/diona
 	name = "diona nymph"
 	desc = "It's a little plant critter."
 	desc_dead = "It used to be a little plant critter."
@@ -715,7 +715,7 @@ var/list/holder_mob_icon_cache = list()
 
 //The block below is for resomi, not currently relevant
 /*
-/obj/item/weapon/holder/human/sync(var/mob/living/M)
+/obj/item/holder/human/sync(var/mob/living/M)
 	cut_overlays()
 	// Generate appropriate on-mob icons.
 	var/mob/living/carbon/human/owner = M

@@ -7,7 +7,7 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 0
 	active_power_usage = 10000
-	circuit = /obj/item/weapon/electronics/circuitboard/antigrav
+	circuit = /obj/item/electronics/circuitboard/antigrav
 
 	var/power_usage_per_tile = 200
 	var/on = FALSE

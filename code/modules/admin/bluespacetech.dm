@@ -40,26 +40,26 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 	//Items
 	bst.equip_to_slot_or_del(new /obj/item/clothing/under/assistantformal/bst(bst), slot_w_uniform)
 	bst.equip_to_slot_or_del(new /obj/item/device/radio/headset/ert/bst(bst), slot_l_ear)
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/holding/bst(bst), slot_back)
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(bst.back), slot_in_backpack)
+	bst.equip_to_slot_or_del(new /obj/item/storage/backpack/holding/bst(bst), slot_back)
+	bst.equip_to_slot_or_del(new /obj/item/storage/box/survival(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/shoes/color/black/bst(bst), slot_shoes)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/head/beret(bst), slot_head)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/bst(bst), slot_glasses)
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/belt/utility/full/bst(bst), slot_belt)
+	bst.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full/bst(bst), slot_belt)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/gloves/color/white/bst(bst), slot_gloves)
 
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/box/ids(bst.back), slot_in_backpack)
+	bst.equip_to_slot_or_del(new /obj/item/storage/box/ids(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/device/t_scanner(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/modular_computer/pda/captain(bst.back), slot_in_backpack)
 
-	var/obj/item/weapon/storage/box/pills = new /obj/item/weapon/storage/box(null, TRUE)
+	var/obj/item/storage/box/pills = new /obj/item/storage/box(null, TRUE)
 	pills.name = "adminordrazine"
 	for(var/i = 1, i < 12, i++)
-		new /obj/item/weapon/reagent_containers/pill/adminordrazine(pills)
+		new /obj/item/reagent_containers/pill/adminordrazine(pills)
 	bst.equip_to_slot_or_del(pills, slot_in_backpack)
 
 	//Sort out ID
-	var/obj/item/weapon/card/id/bst/id = new/obj/item/weapon/card/id/bst(bst)
+	var/obj/item/card/id/bst/id = new/obj/item/card/id/bst(bst)
 	id.registered_name = bst.real_name
 	id.assignment = "Bluespace Technician"
 	id.name = "[id.assignment]"
@@ -193,7 +193,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 /////////////////////////////////I T E M S/////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-/obj/item/weapon/storage/backpack/holding/bst
+/obj/item/storage/backpack/holding/bst
 	worn_access = TRUE
 	spawn_frequency = 0
 
@@ -308,16 +308,16 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 
 	return TRUE //Because Bluespace
 
-/obj/item/weapon/card/id/bst
+/obj/item/card/id/bst
 	icon_state = "centcom"
 	desc = "An ID straight from Hansa. This one looks as though its very existence is a trade secret."
 	spawn_frequency = 0
 
-/obj/item/weapon/card/id/bst/Initialize(mapload)
+/obj/item/card/id/bst/Initialize(mapload)
 	. = ..()
 	access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 
-/obj/item/weapon/card/id/bst/attack_hand()
+/obj/item/card/id/bst/attack_hand()
 	if(!usr)
 		return
 	if(!isbst(usr))
@@ -326,13 +326,13 @@ ADMIN_VERB_ADD(/client/proc/cmd_dev_bst, R_ADMIN|R_DEBUG, TRUE)
 	else
 		..()
 
-/obj/item/weapon/storage/belt/utility/full/bst
+/obj/item/storage/belt/utility/full/bst
 	storage_slots = 14
 	spawn_frequency = 0
 
-/obj/item/weapon/storage/belt/utility/full/bst/populate_contents()
+/obj/item/storage/belt/utility/full/bst/populate_contents()
 	..()
-	new /obj/item/weapon/tool/multitool(src)
+	new /obj/item/tool/multitool(src)
 	new /obj/item/device/t_scanner(src)
 
 /mob/living/carbon/human/bst/restrained()

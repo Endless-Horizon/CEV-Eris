@@ -15,7 +15,7 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 1, TECH_ENGINEERING = 2)
 	matter = list(MATERIAL_PLASTIC = 2, MATERIAL_GLASS = 1)
 	rarity_value = 50
-	suitable_cell = /obj/item/weapon/cell/small
+	suitable_cell = /obj/item/cell/small
 
 /obj/item/device/robotanalyzer/attack(mob/living/M, mob/living/user)
 	if(!cell_use_check(5, user))

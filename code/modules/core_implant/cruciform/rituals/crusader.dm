@@ -11,7 +11,7 @@
 	desc = "Reveals other disciples to speaker."
 
 
-/datum/ritual/cruciform/crusader/brotherhood/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/crusader/brotherhood/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/datum/core_module/cruciform/neotheologyhud/hud_module = C.get_module(/datum/core_module/cruciform/neotheologyhud)
 	if(hud_module)
 		C.remove_module(hud_module)
@@ -29,10 +29,10 @@
 	cooldown_category = "battle call"
 	effect_time = 10 MINUTES
 
-/datum/ritual/cruciform/crusader/battle_call/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/crusader/battle_call/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/count = 0
 	for(var/mob/living/carbon/human/brother in view(user))
-		if(brother.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform))
+		if(brother.get_core_implant(/obj/item/implant/core_implant/cruciform))
 			count += 2
 
 	user.stats.changeStat(STAT_TGH, count)
@@ -57,7 +57,7 @@
 	cooldown_time = 2 MINUTES
 	cooldown_category = "flash"
 
-/datum/ritual/cruciform/crusader/flash/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/crusader/flash/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	if(prob(100 - user.stats.getStat(STAT_VIG)))
 		user.Weaken(10)
 		to_chat(user, SPAN_WARNING("The flux of psy-energy knocks over you!"))
@@ -66,7 +66,7 @@
 	playsound(user.loc, 'sound/effects/cascade.ogg', 65, 1)
 	log_and_message_admins("performed a searing revelation litany")
 	for(var/mob/living/carbon/human/victim in view(user))
-		if(!victim.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform))
+		if(!victim.get_core_implant(/obj/item/implant/core_implant/cruciform))
 			if(prob(100 - victim.stats.getStat(STAT_VIG)))
 				to_chat(victim, SPAN_WARNING("You feel that your knees bends!"))
 				victim.Weaken(5)

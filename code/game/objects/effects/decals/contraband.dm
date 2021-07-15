@@ -1,14 +1,14 @@
 
 // CONTRABAND
 
-/obj/item/weapon/contraband
+/obj/item/contraband
 	name = "contraband item"
 	desc = "You probably shouldn't be holding this."
 	icon = 'icons/obj/contraband.dmi'
 	force = 0
 
 
-/obj/item/weapon/contraband/poster
+/obj/item/contraband/poster
 	name = "rolled-up poster"
 	desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
 	icon_state = "rolled_poster"
@@ -16,17 +16,17 @@
 	var/ruined = 0
 	var/datum/poster/design
 	rarity_value = 10
-	bad_type = /obj/item/weapon/contraband/poster
+	bad_type = /obj/item/contraband/poster
 	spawn_tags = SPAWN_ITEM_CONTRABAND
 
-/obj/item/weapon/contraband/poster/New(turf/loc, var/datum/poster/new_design = null)
+/obj/item/contraband/poster/New(turf/loc, var/datum/poster/new_design = null)
 	if(!new_design)
 		design = pick(GLOB.poster_designs)
 	else
 		design = new_design
 	..(loc)
 
-/obj/item/weapon/contraband/poster/placed
+/obj/item/contraband/poster/placed
 	icon_state = "random"
 	anchored = TRUE
 	spawn_tags = null
@@ -45,7 +45,7 @@
 						if(EAST)  pixel_x = 32
 						if(WEST)  pixel_x = -32
 
-/obj/item/weapon/contraband/poster/attack_hand(mob/user)
+/obj/item/contraband/poster/attack_hand(mob/user)
 	if(!anchored)
 		return ..()
 
@@ -67,8 +67,8 @@
 		if("No")
 			return
 
-/obj/item/weapon/contraband/poster/attackby(obj/item/weapon/W, mob/user)
-	if(istype(W, /obj/item/weapon/tool/wirecutters))
+/obj/item/contraband/poster/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/tool/wirecutters))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		if(ruined)
 			to_chat(user, SPAN_NOTICE("You remove the remnants of the poster."))
@@ -78,7 +78,7 @@
 			to_chat(user, SPAN_NOTICE("You carefully remove the poster from the wall."))
 		return
 
-/obj/item/weapon/contraband/poster/proc/roll_and_drop()
+/obj/item/contraband/poster/proc/roll_and_drop()
 	anchored = FALSE
 	pixel_x = 0
 	pixel_y = 0
@@ -88,7 +88,7 @@
 
 
 //Places the poster on a wall
-/obj/item/weapon/contraband/poster/afterattack(var/turf/simulated/wall/W, var/mob/user, var/adjacent, var/clickparams)
+/obj/item/contraband/poster/afterattack(var/turf/simulated/wall/W, var/mob/user, var/adjacent, var/clickparams)
 	if (!adjacent)
 		return
 
@@ -148,7 +148,7 @@
 	var/icon_state=""
 	var/icon = 'icons/obj/contraband.dmi'
 
-/datum/poster/proc/set_design(var/obj/item/weapon/contraband/poster/P)
+/datum/poster/proc/set_design(var/obj/item/contraband/poster/P)
 	P.name = "poster - [name]"
 	P.desc = desc
 	P.icon_state = icon_state

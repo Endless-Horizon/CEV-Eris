@@ -22,7 +22,7 @@
 	var/scan_range = 1
 
 	//TODO: Make devices have cell support as an inherent behaviour
-	suitable_cell = /obj/item/weapon/cell/small //Ready, Make devices have cell support as an inherent behaviour
+	suitable_cell = /obj/item/cell/small //Ready, Make devices have cell support as an inherent behaviour
 	var/active_power_usage = 25 //Watts
 
 	var/turn_on_sound = 'sound/effects/Custom_flashlight.ogg'
@@ -132,8 +132,8 @@ are technically visible but obscured, for example by catwalks or trash sitting o
 				continue
 			if(!O.invisibility && !O.hides_under_flooring())
 				continue //if it's already visible don't need an overlay for it
-			if(istype(O, /obj/item/weapon/storage))
-				var/obj/item/weapon/storage/S = O
+			if(istype(O, /obj/item/storage))
+				var/obj/item/storage/S = O
 				if(S.is_tray_hidden)
 					continue
 			. += O

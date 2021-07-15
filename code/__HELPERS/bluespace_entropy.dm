@@ -115,7 +115,7 @@ GLOBAL_VAR_INIT(bluespace_distotion_cooldown, 10 MINUTES)
 	if(!T)
 		return
 	if(GLOB.bluespace_gift <= 0 && !minor_distortion)
-		new /obj/item/weapon/oddity/broken_necklace(T)
+		new /obj/item/oddity/broken_necklace(T)
 		do_sparks(3, 0, T)
 		log_and_message_admins("Bluespace gif spawned: [jumplink(T)]") //unique item
 	else

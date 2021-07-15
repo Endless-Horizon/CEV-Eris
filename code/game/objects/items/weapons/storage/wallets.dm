@@ -1,52 +1,52 @@
-/obj/item/weapon/storage/wallet
+/obj/item/storage/wallet
 	name = "wallet"
 	desc = "It can hold a few small and personal things."
 	storage_slots = 7
 	icon_state = "wallet"
 	w_class = ITEM_SIZE_SMALL
 	can_hold = list(
-		/obj/item/weapon/spacecash,
-		/obj/item/weapon/card,
+		/obj/item/spacecash,
+		/obj/item/card,
 		/obj/item/clothing/mask/smokable/cigarette/,
 		/obj/item/device/lighting/toggleable/flashlight/pen,
 		/obj/item/seeds,
-		/obj/item/weapon/reagent_containers/pill,
-		/obj/item/weapon/coin,
-		/obj/item/weapon/dice,
-		/obj/item/weapon/disk,
-		/obj/item/weapon/implanter,
-		/obj/item/weapon/flame/lighter,
-		/obj/item/weapon/flame/match,
-		/obj/item/weapon/paper,
-		/obj/item/weapon/pen,
-		/obj/item/weapon/photo,
-		/obj/item/weapon/reagent_containers/dropper,
-		/obj/item/weapon/tool/screwdriver,
-		/obj/item/weapon/computer_hardware/hard_drive/portable,
-		/obj/item/weapon/reagent_containers/syringe,
-		/obj/item/weapon/stamp)
+		/obj/item/reagent_containers/pill,
+		/obj/item/coin,
+		/obj/item/dice,
+		/obj/item/disk,
+		/obj/item/implanter,
+		/obj/item/flame/lighter,
+		/obj/item/flame/match,
+		/obj/item/paper,
+		/obj/item/pen,
+		/obj/item/photo,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/tool/screwdriver,
+		/obj/item/computer_hardware/hard_drive/portable,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/stamp)
 	slot_flags = SLOT_ID
 
 	matter = list(MATERIAL_BIOMATTER = 4)
-	var/obj/item/weapon/card/id/front_id
+	var/obj/item/card/id/front_id
 
 
-/obj/item/weapon/storage/wallet/remove_from_storage(obj/item/W, atom/new_location)
+/obj/item/storage/wallet/remove_from_storage(obj/item/W, atom/new_location)
 	. = ..(W, new_location)
 	if(W == front_id)
 		front_id = null
 		name = initial(name)
 		update_icon()
 
-/obj/item/weapon/storage/wallet/handle_item_insertion(obj/item/W, prevent_warning = 0)
+/obj/item/storage/wallet/handle_item_insertion(obj/item/W, prevent_warning = 0)
 	. = ..(W, prevent_warning)
 	if(.)
-		if(!front_id && istype(W, /obj/item/weapon/card/id))
+		if(!front_id && istype(W, /obj/item/card/id))
 			front_id = W
 			name = "[name] ([front_id])"
 			update_icon()
 
-/obj/item/weapon/storage/wallet/on_update_icon()
+/obj/item/storage/wallet/on_update_icon()
 
 	if(front_id)
 		switch(front_id.icon_state)
@@ -65,22 +65,22 @@
 	icon_state = "wallet"
 
 
-/obj/item/weapon/storage/wallet/GetIdCard()
+/obj/item/storage/wallet/GetIdCard()
 	return front_id
 
-/obj/item/weapon/storage/wallet/GetAccess()
+/obj/item/storage/wallet/GetAccess()
 	var/obj/item/I = GetIdCard()
 	if(I)
 		return I.GetAccess()
 	else
 		return ..()
 
-/obj/item/weapon/storage/wallet/random/populate_contents()
-	var/item1_type = pick(/obj/item/weapon/spacecash/bundle/c10,/obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c1000,/obj/item/weapon/spacecash/bundle/c20,/obj/item/weapon/spacecash/bundle/c200,/obj/item/weapon/spacecash/bundle/c50,/obj/item/weapon/spacecash/bundle/c500)
+/obj/item/storage/wallet/random/populate_contents()
+	var/item1_type = pick(/obj/item/spacecash/bundle/c10,/obj/item/spacecash/bundle/c100,/obj/item/spacecash/bundle/c1000,/obj/item/spacecash/bundle/c20,/obj/item/spacecash/bundle/c200,/obj/item/spacecash/bundle/c50,/obj/item/spacecash/bundle/c500)
 	var/item2_type
 	if(prob(50))
-		item2_type = pick(/obj/item/weapon/spacecash/bundle/c10,/obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c1000,/obj/item/weapon/spacecash/bundle/c20,/obj/item/weapon/spacecash/bundle/c200,/obj/item/weapon/spacecash/bundle/c50,/obj/item/weapon/spacecash/bundle/c500)
-	var/item3_type = pick(/obj/item/weapon/coin/silver, /obj/item/weapon/coin/silver, /obj/item/weapon/coin/gold, /obj/item/weapon/coin/iron, /obj/item/weapon/coin/iron, /obj/item/weapon/coin/iron)
+		item2_type = pick(/obj/item/spacecash/bundle/c10,/obj/item/spacecash/bundle/c100,/obj/item/spacecash/bundle/c1000,/obj/item/spacecash/bundle/c20,/obj/item/spacecash/bundle/c200,/obj/item/spacecash/bundle/c50,/obj/item/spacecash/bundle/c500)
+	var/item3_type = pick(/obj/item/coin/silver, /obj/item/coin/silver, /obj/item/coin/gold, /obj/item/coin/iron, /obj/item/coin/iron, /obj/item/coin/iron)
 
 	if(item1_type)
 		new item1_type(src)

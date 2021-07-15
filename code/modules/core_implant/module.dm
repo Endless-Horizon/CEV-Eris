@@ -1,6 +1,6 @@
 /datum/core_module
-	var/obj/item/weapon/implant/core_implant/implant
-	var/implant_type = /obj/item/weapon/implant/core_implant
+	var/obj/item/implant/core_implant/implant
+	var/implant_type = /obj/item/implant/core_implant
 	var/install_time = 0
 	var/time = 0
 	var/list/access = list()
@@ -8,7 +8,7 @@
 
 	var/unique = TRUE
 
-/datum/core_module/proc/can_install(var/obj/item/weapon/implant/core_implant/I)
+/datum/core_module/proc/can_install(var/obj/item/implant/core_implant/I)
 	return TRUE
 
 /datum/core_module/proc/install()
@@ -53,7 +53,7 @@
 /datum/core_module/rituals
 	unique = TRUE
 	var/list/module_rituals = list()
-	implant_type = /obj/item/weapon/implant/core_implant
+	implant_type = /obj/item/implant/core_implant
 
 /datum/core_module/rituals/install()
 	implant.update_rituals()

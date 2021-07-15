@@ -40,10 +40,10 @@
 	..()
 	var/manip_level = 1
 	var/scan_level = 1
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/scanning_module))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/scanning_module))
 			scan_level += P.rating-1
-		if(istype(P, /obj/item/weapon/stock_parts/manipulator))
+		if(istype(P, /obj/item/stock_parts/manipulator))
 			manip_level += P.rating-1
 
 	repair_rate = initial(repair_rate)+(manip_level*max(1, scan_level/2))
@@ -107,7 +107,7 @@
 	repairing = null
 	update_use_power(IDLE_POWER_USE)
 
-/obj/machinery/repair_station/attackby(var/obj/item/weapon/O, var/mob/user)
+/obj/machinery/repair_station/attackby(var/obj/item/O, var/mob/user)
 	.=..()
 	if(istype(O,/obj/item/stack/material) && O.get_material_name() == MATERIAL_STEEL)
 		var/obj/item/stack/material/S = O

@@ -148,7 +148,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 		if(1)
 			// Inventory
 			dat += "<H3>Inventory</H3><BR>"
-			for(var/obj/item/weapon/book/b in inventory)
+			for(var/obj/item/book/b in inventory)
 				dat += "[b.name] <A href='?src=\ref[src];delbook=\ref[b]'>(Delete)</A><BR>"
 			dat += "<A href='?src=\ref[src];switchscreen=0'>(Return to main menu)</A><BR>"
 		if(2)
@@ -235,9 +235,9 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 		src.emagged = 1
 		return 1
 
-/obj/machinery/librarycomp/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/barcodescanner))
-		var/obj/item/weapon/barcodescanner/scanner = W
+/obj/machinery/librarycomp/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/barcodescanner))
+		var/obj/item/barcodescanner/scanner = W
 		scanner.computer = src
 		to_chat(user, "[scanner]'s associated machine has been set to [src].")
 		for (var/mob/V in hearers(src))
@@ -268,7 +268,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			if("6")
 				if(!bibledelay)
 
-					var/obj/item/weapon/book/ritual/cruciform/B = new /obj/item/weapon/book/ritual/cruciform()
+					var/obj/item/book/ritual/cruciform/B = new /obj/item/book/ritual/cruciform()
 					B.loc=src.loc
 					bibledelay = 1
 					spawn(60)
@@ -301,7 +301,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 		var/datum/borrowbook/b = locate(href_list["checkin"])
 		checkouts.Remove(b)
 	if(href_list["delbook"])
-		var/obj/item/weapon/book/b = locate(href_list["delbook"])
+		var/obj/item/book/b = locate(href_list["delbook"])
 		inventory.Remove(b)
 	if(href_list["setauthor"])
 		var/newauthor = sanitize(input("Enter the author's name: ") as text|null)
@@ -367,7 +367,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				var/author = query.item[2]
 				var/title = query.item[3]
 				var/content = query.item[4]
-				var/obj/item/weapon/book/B = new(src.loc)
+				var/obj/item/book/B = new(src.loc)
 				B.name = "Book: [title]"
 				B.title = title
 				B.author = author
@@ -395,10 +395,10 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	icon_state = "bigscanner"
 	anchored = TRUE
 	density = TRUE
-	var/obj/item/weapon/book/cache		// Last scanned book
+	var/obj/item/book/cache		// Last scanned book
 
 /obj/machinery/libraryscanner/attackby(var/obj/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/weapon/book))
+	if(istype(O, /obj/item/book))
 		user.drop_item()
 		O.loc = src
 
@@ -424,13 +424,13 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 		return
 
 	if(href_list["scan"])
-		for(var/obj/item/weapon/book/B in contents)
+		for(var/obj/item/book/B in contents)
 			cache = B
 			break
 	if(href_list["clear"])
 		cache = null
 	if(href_list["eject"])
-		for(var/obj/item/weapon/book/B in contents)
+		for(var/obj/item/book/B in contents)
 			B.loc = src.loc
 	src.updateUsrDialog()
 	return
@@ -447,14 +447,14 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	density = TRUE
 
 /obj/machinery/bookbinder/attackby(var/obj/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/weapon/paper))
+	if(istype(O, /obj/item/paper))
 		user.drop_item()
 		O.loc = src
 		user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
 		src.visible_message("[src] begins to hum as it warms up its printing drums.")
 		sleep(rand(200,400))
 		src.visible_message("[src] whirs as it prints and binds a new book.")
-		var/obj/item/weapon/book/b = new(src.loc)
+		var/obj/item/book/b = new(src.loc)
 		b.dat = O:info
 		b.name = "Print Job #" + "[rand(100, 999)]"
 		b.icon_state = "book[rand(1,7)]"

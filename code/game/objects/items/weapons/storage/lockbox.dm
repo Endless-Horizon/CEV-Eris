@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-/obj/item/weapon/storage/lockbox
+/obj/item/storage/lockbox
 	name = "lockbox"
 	desc = "A locked box."
 	icon_state = "lockbox+l"
@@ -16,8 +16,8 @@
 	var/icon_broken = "lockbox+b"
 
 
-	attackby(obj/item/weapon/W as obj, mob/user as mob)
-		if (istype(W, /obj/item/weapon/card/id))
+	attackby(obj/item/W as obj, mob/user as mob)
+		if (istype(W, /obj/item/card/id))
 			if(src.broken)
 				to_chat(user, SPAN_WARNING("It appears to be broken."))
 				return
@@ -33,7 +33,7 @@
 					return
 			else
 				to_chat(user, SPAN_WARNING("Access Denied"))
-		else if(istype(W, /obj/item/weapon/melee/energy/blade))
+		else if(istype(W, /obj/item/melee/energy/blade))
 			if(emag_act(INFINITY, user, W, "The locker has been sliced open by [user] with an energy blade!", "You hear metal being sliced and sparks flying."))
 				var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 				spark_system.set_up(5, 0, src.loc)
@@ -54,7 +54,7 @@
 			..()
 		return
 
-/obj/item/weapon/storage/lockbox/emag_act(var/remaining_charges, var/mob/user, var/emag_source, var/visual_feedback = "", var/audible_feedback = "")
+/obj/item/storage/lockbox/emag_act(var/remaining_charges, var/mob/user, var/emag_source, var/visual_feedback = "", var/audible_feedback = "")
 	if(!broken)
 		if(visual_feedback)
 			visual_feedback = SPAN_WARNING("[visual_feedback]")

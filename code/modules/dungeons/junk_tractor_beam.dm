@@ -661,7 +661,7 @@
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
 	light_color = COLOR_LIGHTING_CYAN_MACHINERY
-	circuit = /obj/item/weapon/electronics/circuitboard/jtb
+	circuit = /obj/item/electronics/circuitboard/jtb
 	var/obj/jtb_generator/jtb_gen  // jtb generator
 	var/has_been_init = FALSE
 

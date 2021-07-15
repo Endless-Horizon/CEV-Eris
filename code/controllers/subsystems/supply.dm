@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/proc/forbidden_atoms_check(atom/A)
 	if(isliving(A))
 		return TRUE
-	if(istype(A, /obj/item/weapon/disk/nuclear))
+	if(istype(A, /obj/item/disk/nuclear))
 		return TRUE
 	if(istype(A, /obj/machinery/nuclearbomb))
 		return TRUE
@@ -118,9 +118,9 @@ SUBSYSTEM_DEF(supply)
 
 		//supply manifest generation begin
 
-		var/obj/item/weapon/paper/manifest/slip
+		var/obj/item/paper/manifest/slip
 		if(!SP.contraband)
-			slip = new /obj/item/weapon/paper/manifest(A)
+			slip = new /obj/item/paper/manifest(A)
 			slip.is_copy = 0
 			slip.info = "<h3>Shipping Manifest</h3><hr><br>"
 			slip.info +="Order #[SO.id]<br>"

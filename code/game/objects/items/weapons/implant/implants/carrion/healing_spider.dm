@@ -1,9 +1,9 @@
-/obj/item/weapon/implant/carrion_spider/healing
+/obj/item/implant/carrion_spider/healing
 	name = "healing spider"
 	icon_state = "spiderling_healing"
 	spider_price = 25 //Not too strong but can be stacked, if we make a no fun limit to spiders this should be lowered
 
-/obj/item/weapon/implant/carrion_spider/healing/activate()
+/obj/item/implant/carrion_spider/healing/activate()
 	..()
 	if(wearer)
 		wearer.reagents.add_reagent("bicaridine", 10)

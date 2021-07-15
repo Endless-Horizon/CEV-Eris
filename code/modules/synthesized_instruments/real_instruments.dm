@@ -224,7 +224,7 @@
 	instruments = null
 	. = ..()
 
-/obj/structure/synthesized_instrument/attackby(var/obj/item/weapon/tool/tool, mob/user)
+/obj/structure/synthesized_instrument/attackby(var/obj/item/tool/tool, mob/user)
 	if (tool.use_tool(user, src, WORKTIME_NORMAL, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
 		anchored = !anchored
 		user.visible_message( \

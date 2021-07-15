@@ -18,7 +18,7 @@
 	activators = list(
 		"\<PULSE IN\> fire"
 	)
-	var/obj/item/weapon/gun/installed_gun = null
+	var/obj/item/gun/installed_gun = null
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_COMBAT = 4)
 	power_draw_per_use = 50 // The targeting mechanism uses this.  The actual gun uses its own cell for firing if it's an energy weapon.
@@ -29,7 +29,7 @@
 
 /obj/item/integrated_circuit/manipulation/weapon_firing/attackby(var/obj/O, var/mob/user)
 	if(isgun(O))
-		var/obj/item/weapon/gun/gun = O
+		var/obj/item/gun/gun = O
 		if(installed_gun)
 			to_chat(user, SPAN_WARNING("There's already a weapon installed."))
 			return

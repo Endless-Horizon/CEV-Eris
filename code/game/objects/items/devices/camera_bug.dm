@@ -7,7 +7,7 @@
 	throw_speed = 4
 	throw_range = 20
 
-/obj/item/weapon/camera_bug/attack_self(mob/user)
+/obj/item/camera_bug/attack_self(mob/user)
 	var/list/cameras = new/list()
 	for (var/obj/machinery/camera/C in cameranet.cameras)
 		if (C.bugged && C.status)

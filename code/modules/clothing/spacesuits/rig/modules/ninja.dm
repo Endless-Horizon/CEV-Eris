@@ -132,7 +132,7 @@
 	go_to_bluespace(get_turf(H), 3, TRUE, H, T)
 	phase_in(H,get_turf(H))
 
-	for(var/obj/item/weapon/grab/G in H.contents)
+	for(var/obj/item/grab/G in H.contents)
 		if(G.affecting)
 			phase_out(G.affecting,get_turf(G.affecting))
 			go_to_bluespace(get_turf(H), 3, TRUE, G.affecting, locate(T.x+rand(-1,1),T.y+rand(-1,1),T.z))
@@ -150,7 +150,7 @@
 
 	engage_string = "Fabricate Net"
 
-	fabrication_type = /obj/item/weapon/energy_net
+	fabrication_type = /obj/item/energy_net
 	use_power_cost = 70
 	rarity_value = 50
 

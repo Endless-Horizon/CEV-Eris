@@ -1,5 +1,5 @@
 // One Star
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/onestar
+/obj/item/computer_hardware/hard_drive/portable/design/onestar
 	disk_name = "One Star Tool Pack"
 	icon_state = "onestar"
 	rarity_value = 70

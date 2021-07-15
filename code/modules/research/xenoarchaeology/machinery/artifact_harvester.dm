@@ -9,7 +9,7 @@
 	active_power_usage = 750
 	use_power = IDLE_POWER_USE
 	var/harvesting = 0
-	var/obj/item/weapon/anobattery/inserted_battery
+	var/obj/item/anobattery/inserted_battery
 	var/obj/machinery/artifact/cur_artifact
 	var/obj/machinery/artifact_scanpad/owned_scanner = null
 	var/last_process = 0
@@ -22,7 +22,7 @@
 		owned_scanner = locate(/obj/machinery/artifact_scanpad) in orange(1, src)
 
 /obj/machinery/artifact_harvester/attackby(var/obj/I as obj, var/mob/user as mob)
-	if(istype(I,/obj/item/weapon/anobattery))
+	if(istype(I,/obj/item/anobattery))
 		if(!inserted_battery)
 			to_chat(user, "\blue You insert [I] into [src].")
 			user.drop_item()

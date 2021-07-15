@@ -19,10 +19,10 @@
 	icon_state = "centrifuge"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
-	circuit = /obj/item/weapon/electronics/circuitboard/centrifuge
+	circuit = /obj/item/electronics/circuitboard/centrifuge
 	layer = BELOW_OBJ_LAYER
-	var/obj/item/weapon/reagent_containers/mainBeaker
-	var/list/obj/item/weapon/reagent_containers/separationBeakers = list()
+	var/obj/item/reagent_containers/mainBeaker
+	var/list/obj/item/reagent_containers/separationBeakers = list()
 	var/workTime = 10 SECONDS
 	var/lastActivation = 0
 	var/on = FALSE
@@ -49,10 +49,10 @@
 
 /obj/machinery/centrifuge/RefreshParts()
 	unitsPerSec = initial(unitsPerSec)
-	unitsPerSec = max(unitsPerSec * max_part_rating(/obj/item/weapon/stock_parts/manipulator))
+	unitsPerSec = max(unitsPerSec * max_part_rating(/obj/item/stock_parts/manipulator))
 	beakerSlots = initial(beakerSlots)
-	if(max_part_rating(/obj/item/weapon/stock_parts/manipulator) > 1)
-		beakerSlots += (max_part_rating(/obj/item/weapon/stock_parts/manipulator) - 1)
+	if(max_part_rating(/obj/item/stock_parts/manipulator) > 1)
+		beakerSlots += (max_part_rating(/obj/item/stock_parts/manipulator) - 1)
 
 
 /obj/machinery/centrifuge/Process()
@@ -76,10 +76,10 @@
 	if(default_part_replacement(I, user))
 		return
 
-	if(!on && istype(I, /obj/item/weapon/reagent_containers) && I.is_open_container())
+	if(!on && istype(I, /obj/item/reagent_containers) && I.is_open_container())
 		if (!mainBeaker || separationBeakers.len < beakerSlots)
 			. = TRUE //no afterattack
-			var/obj/item/weapon/reagent_containers/B = I
+			var/obj/item/reagent_containers/B = I
 			if(!user.unEquip(B, src))
 				return
 			if(!mainBeaker)
@@ -95,7 +95,7 @@
 /obj/machinery/centrifuge/MouseDrop_T(atom/movable/C, mob/user, src_location, over_location, src_control, over_control, params)
 	if(!Adjacent(user) || !C.Adjacent(user) || user.stat)
 		return ..()
-	if(!on && istype(C, /obj/item/weapon/reagent_containers) && C.is_open_container())
+	if(!on && istype(C, /obj/item/reagent_containers) && C.is_open_container())
 		if (!mainBeaker || separationBeakers.len < beakerSlots)
 			C.forceMove(src)
 			C.add_fingerprint(user)
@@ -157,7 +157,7 @@
 	for(var/i = 1, i <= beakerSlots, i++)
 		var/list/beakerInfo = list()
 		if(i <= separationBeakers.len)
-			var/obj/item/weapon/reagent_containers/B = separationBeakers[i]
+			var/obj/item/reagent_containers/B = separationBeakers[i]
 			if(B && B.reagents)
 				beakerInfo = B.reagents.ui_data()
 		beakerInfo["slot"] = i
@@ -185,7 +185,7 @@
 		if (data)
 			var/list/datum/disease2/disease/virus = data["virus2"]
 			for (var/ID in virus)
-				var/obj/item/weapon/virusdish/dish = new (loc)
+				var/obj/item/virusdish/dish = new (loc)
 				dish.virus2 = virus[ID].getcopy()
 	stop()
 	playsound(src.loc, 'sound/machines/ping.ogg', 50, 1, -3)
@@ -229,8 +229,8 @@
 	icon_state = "centrifuge_makeshift"
 	matter = list(MATERIAL_STEEL = 4)
 	rarity_value = 50
-	var/obj/item/weapon/reagent_containers/mainBeaker
-	var/list/obj/item/weapon/reagent_containers/separationBeakers = list()
+	var/obj/item/reagent_containers/mainBeaker
+	var/list/obj/item/reagent_containers/separationBeakers = list()
 	var/beakerSlots = 2
 	var/on = FALSE
 	var/mode = MODE_SEPARATING
@@ -260,7 +260,7 @@
 /obj/item/device/makeshift_centrifuge/MouseDrop_T(atom/movable/C, mob/user, src_location, over_location, src_control, over_control, params)
 	if(!Adjacent(user) || !C.Adjacent(user) || user.stat)
 		return ..()
-	if(!on && istype(C, /obj/item/weapon/reagent_containers) && C.is_open_container())
+	if(!on && istype(C, /obj/item/reagent_containers) && C.is_open_container())
 		if (!mainBeaker || separationBeakers.len < beakerSlots)
 			C.forceMove(src)
 			C.add_fingerprint(user)
@@ -275,7 +275,7 @@
 		return ..()
 
 /obj/item/device/makeshift_centrifuge/attackby(obj/item/C, mob/living/user)
-	if(!on && istype(C, /obj/item/weapon/reagent_containers) && C.is_open_container())
+	if(!on && istype(C, /obj/item/reagent_containers) && C.is_open_container())
 		if (!mainBeaker || separationBeakers.len < beakerSlots)
 			if(insert_item(C, user))
 				if(!mainBeaker)
@@ -321,7 +321,7 @@
 	for(var/i = 1, i <= beakerSlots, i++)
 		var/list/beakerInfo = list()
 		if(i <= separationBeakers.len)
-			var/obj/item/weapon/reagent_containers/B = separationBeakers[i]
+			var/obj/item/reagent_containers/B = separationBeakers[i]
 			if(B && B.reagents)
 				beakerInfo = B.reagents.ui_data()
 		beakerInfo["slot"] = i

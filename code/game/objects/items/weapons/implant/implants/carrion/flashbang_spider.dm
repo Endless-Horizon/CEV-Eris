@@ -1,11 +1,11 @@
-/obj/item/weapon/implant/carrion_spider/flashbang
+/obj/item/implant/carrion_spider/flashbang
 	name = "flashbang spider"
 	desc = "A spider filled with some sort of glossy liquid, it emits a constant unpleasant noise."
 	icon_state = "spiderling_flashbang"
 	spider_price = 15
 	var/det_time = 2 SECONDS
 
-/obj/item/weapon/implant/carrion_spider/flashbang/activate()
+/obj/item/implant/carrion_spider/flashbang/activate()
 	..()
 	if(wearer)
 		wearer.apply_damage(15, BURN, part)
@@ -19,7 +19,7 @@
 	spawn(det_time)
 		src?.prime()
 
-/obj/item/weapon/implant/carrion_spider/flashbang/proc/prime()
+/obj/item/implant/carrion_spider/flashbang/proc/prime()
 	for(var/obj/structure/closet/L in view(7, get_turf(src)))
 		if(locate(/mob/living/carbon/, L))
 			for(var/mob/living/carbon/M in L)

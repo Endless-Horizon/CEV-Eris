@@ -1,0 +1,4 @@
+author: Hyperio
+delete-after: true
+changes:
+  - rscadd: Add style vendor to Eris map

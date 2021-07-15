@@ -1,5 +1,5 @@
 //Contains the rapid piping device. Copied over largely from pipe_dispenser and RCD files.
-/obj/item/weapon/rpd
+/obj/item/rpd
 	name = "rapid piping device"
 	desc = "A device used to rapidly build pipes."
 	icon = 'icons/obj/tools.dmi'
@@ -17,42 +17,42 @@
 	matter = list(MATERIAL_STEEL = 10, MATERIAL_PLASMA = 2, MATERIAL_PLASTIC = 5) //Redundant values that yer free ta' change later.
 	price_tag = 500 //Redundant values that yer free ta' change later.
 	var/use_power_cost = 1.5
-	var/obj/item/weapon/cell/cell
-	var/suitable_cell = /obj/item/weapon/cell/medium
+	var/obj/item/cell/cell
+	var/suitable_cell = /obj/item/cell/medium
 	var/wait = 0
 	var/pipe_type = 0
 	var/p_dir = 1
 
-/obj/item/weapon/rpd/attack()
+/obj/item/rpd/attack()
 	return 0
 
-/obj/item/weapon/rpd/proc/can_use(var/mob/user,var/turf/T)
+/obj/item/rpd/proc/can_use(var/mob/user,var/turf/T)
 	return (user.Adjacent(T) && user.get_active_hand() == src && !user.stat && !user.restrained())
 
-/obj/item/weapon/rpd/MouseDrop(over_object)
+/obj/item/rpd/MouseDrop(over_object)
 	if((src.loc == usr) && istype(over_object, /obj/screen/inventory/hand) && eject_item(cell, usr))
 		cell = null
 	else
 		return ..()
 
-/obj/item/weapon/rpd/attackby(obj/item/C, mob/living/user, obj/item/I)
+/obj/item/rpd/attackby(obj/item/C, mob/living/user, obj/item/I)
 	if(istype(C, suitable_cell) && !cell && insert_item(C, user))
 		src.cell = C
 	return
 
-/obj/item/weapon/rpd/proc/useCharge()
+/obj/item/rpd/proc/useCharge()
 	//Use charge from the cell.
 	if(!cell||!cell.checked_use(use_power_cost))
 		return 0
 	return 1
 
-/obj/item/weapon/rpd/proc/deletePipe(var/turf/T)
+/obj/item/rpd/proc/deletePipe(var/turf/T)
 	if(istype(T, /obj/item/pipe) || istype(T, /obj/item/pipe_meter))
 		qdel(T)
 		return 1
 	return 0
 
-/obj/item/weapon/rpd/attack_self(mob/user)
+/obj/item/rpd/attack_self(mob/user)
 	//Open pipe dispenser window.
 	.=..()
 	if(.) return
@@ -117,7 +117,7 @@
 	onclose(user, "pipedispenser")
 	return
 
-/obj/item/weapon/rpd/Topic(href, href_list)
+/obj/item/rpd/Topic(href, href_list)
 
 	if(..())
 		return
@@ -127,7 +127,7 @@
 	if(href_list["makemeter"])
 		p_dir = text2num(href_list["dir"]) //If direction is 0, the pipe is pipe_meter.
 
-/obj/item/weapon/rpd/afterattack(atom/A, mob/user, proximity)
+/obj/item/rpd/afterattack(atom/A, mob/user, proximity)
 	if(wait)
 		return 0
 	if(!proximity)
@@ -157,18 +157,18 @@
 			wait = 0
 	return
 
-/obj/item/weapon/rpd/borg
+/obj/item/rpd/borg
 	spawn_tags = null
 
 
-/obj/item/weapon/rpd/borg/useCharge(mob/user)
+/obj/item/rpd/borg/useCharge(mob/user)
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user
 		return R.cell && R.cell.checked_use(use_power_cost*30) //Redundant power use multiplier.
 	return ..()
 
-/obj/item/weapon/rpd/borg/attackby()
+/obj/item/rpd/borg/attackby()
 	return
 
-/obj/item/weapon/rpd/borg/can_use(var/mob/user,var/turf/T)
+/obj/item/rpd/borg/can_use(var/mob/user,var/turf/T)
 	return (user.Adjacent(T) && !user.stat)

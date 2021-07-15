@@ -6,7 +6,7 @@
 	icon = 'icons/obj/machines/excelsior/field.dmi'
 	stun_chance = 3
 	shield_type = /obj/machinery/shieldwall/excelsior
-	circuit = /obj/item/weapon/electronics/circuitboard/excelsiorshieldwallgen
+	circuit = /obj/item/electronics/circuitboard/excelsiorshieldwallgen
 	req_access = list()
 
 /obj/machinery/shieldwallgen/excelsior/can_stun(var/mob/M)

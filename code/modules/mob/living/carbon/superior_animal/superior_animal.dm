@@ -53,7 +53,7 @@
 	var/attack_sound_chance = 33
 	var/attack_sound_volume = 20
 
-	var/meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/roachmeat
+	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/roachmeat
 	var/meat_amount = 3
 
 	var/melee_damage_lower = 0

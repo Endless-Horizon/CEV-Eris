@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/launcher/grenade
+/obj/item/gun/launcher/grenade
 	name = "NT GL \"Protector\""
 	desc = "A bulky pump-action grenade launcher. Holds up to 6 grenades in a revolving magazine."
 	icon = 'icons/obj/guns/launcher/riotgun.dmi'
@@ -16,15 +16,15 @@
 
 	zoom_factor = 2
 	twohanded = TRUE
-	var/obj/item/weapon/grenade/chambered
+	var/obj/item/grenade/chambered
 	var/list/grenades = new/list()
 	var/max_grenades = 5 //holds this + one in the chamber
 
 //revolves the magazine, allowing players to choose between multiple grenade types
-/obj/item/weapon/gun/launcher/grenade/proc/pump(mob/user)
+/obj/item/gun/launcher/grenade/proc/pump(mob/user)
 	playsound(user, 'sound/weapons/shotgunpump.ogg', 60, 1)
 
-	var/obj/item/weapon/grenade/next
+	var/obj/item/grenade/next
 	if(grenades.len)
 		next = grenades[1] //get this first, so that the chambered grenade can still be removed if the grenades list is empty
 	if(chambered)
@@ -38,14 +38,14 @@
 		to_chat(user, SPAN_WARNING("Mechanism pumps [src], but the magazine is empty."))
 	update_icon()
 
-/obj/item/weapon/gun/launcher/grenade/examine(mob/user)
+/obj/item/gun/launcher/grenade/examine(mob/user)
 	if(..(user, 2))
 		var/grenade_count = grenades.len + (chambered? 1 : 0)
 		to_chat(user, "Has [grenade_count] grenade\s remaining.")
 		if(chambered)
 			to_chat(user, "\A [chambered] is chambered.")
 
-/obj/item/weapon/gun/launcher/grenade/proc/load(obj/item/weapon/grenade/G, mob/user)
+/obj/item/gun/launcher/grenade/proc/load(obj/item/grenade/G, mob/user)
 	if(!G.loadable)
 		to_chat(user, SPAN_WARNING("\The [G] doesn't seem to fit in \the [src]!"))
 		return
@@ -58,15 +58,15 @@
 	pump(user)
 	update_icon()
 
-/obj/item/weapon/gun/launcher/grenade/proc/chek_grenades(mob/user)
+/obj/item/gun/launcher/grenade/proc/chek_grenades(mob/user)
 	. = TRUE
 	if(grenades.len >= max_grenades)
 		to_chat(user, SPAN_WARNING("\The [src] is full."))
 		return FALSE
 
-/obj/item/weapon/gun/launcher/grenade/proc/unload(mob/user)
+/obj/item/gun/launcher/grenade/proc/unload(mob/user)
 	if(grenades.len)
-		var/obj/item/weapon/grenade/G = grenades[grenades.len]
+		var/obj/item/grenade/G = grenades[grenades.len]
 		grenades.len--
 		user.put_in_hands(G)
 		user.visible_message("\The [user] removes \a [G] from [src].", SPAN_NOTICE("You remove \a [G] from \the [src]."))
@@ -74,35 +74,35 @@
 		to_chat(user, SPAN_WARNING("\The [src] is empty."))
 	update_icon()
 
-/obj/item/weapon/gun/launcher/grenade/attack_self(mob/user)
+/obj/item/gun/launcher/grenade/attack_self(mob/user)
 	pump(user)
 
-/obj/item/weapon/gun/launcher/grenade/attackby(obj/item/I, mob/user)
-	if((istype(I, /obj/item/weapon/grenade)))
+/obj/item/gun/launcher/grenade/attackby(obj/item/I, mob/user)
+	if((istype(I, /obj/item/grenade)))
 		load(I, user)
 	else
 		..()
 
-/obj/item/weapon/gun/launcher/grenade/attack_hand(mob/user)
+/obj/item/gun/launcher/grenade/attack_hand(mob/user)
 	if(user.get_inactive_hand() == src)
 		unload(user)
 	else
 		..()
 
-/obj/item/weapon/gun/launcher/grenade/consume_next_projectile()
+/obj/item/gun/launcher/grenade/consume_next_projectile()
 	if(chambered)
 		chambered.det_time = 10
 		chambered.activate(null)
 	return chambered
 
-/obj/item/weapon/gun/launcher/grenade/handle_post_fire(mob/user)
+/obj/item/gun/launcher/grenade/handle_post_fire(mob/user)
 	log_and_message_admins("fired a grenade ([chambered.name]) from a grenade launcher ([src.name]).")
 	user.attack_log += "\[[time_stamp()]\] <font color='red'> fired a grenade ([chambered.name]) from a grenade launcher ([src.name])</font>"
 	chambered = null
 	pump(user)
 
 //Underslung grenade launcher to be used with the Z8
-/obj/item/weapon/gun/launcher/grenade/underslung
+/obj/item/gun/launcher/grenade/underslung
 	name = "underslung grenade launcher"
 	desc = "Not much more than a tube and a firing mechanism, this grenade launcher is designed to be fitted to a rifle."
 	w_class = ITEM_SIZE_NORMAL
@@ -112,11 +112,11 @@
 	safety = FALSE
 	twohanded = FALSE
 
-/obj/item/weapon/gun/launcher/grenade/underslung/attack_self()
+/obj/item/gun/launcher/grenade/underslung/attack_self()
 	return
 
 //load and unload directly into chambered
-/obj/item/weapon/gun/launcher/grenade/underslung/load(obj/item/weapon/grenade/G, mob/user)
+/obj/item/gun/launcher/grenade/underslung/load(obj/item/grenade/G, mob/user)
 	if(!G.loadable)
 		to_chat(user, SPAN_WARNING("[G] doesn't seem to fit in the [src]!"))
 		return
@@ -129,7 +129,7 @@
 	chambered = G
 	user.visible_message("\The [user] load \a [G] into \the [src].", SPAN_NOTICE("You load \a [G] into \the [src]."))
 
-/obj/item/weapon/gun/launcher/grenade/underslung/unload(mob/user)
+/obj/item/gun/launcher/grenade/underslung/unload(mob/user)
 	if(chambered)
 		user.put_in_hands(chambered)
 		user.visible_message("\The [user] removes \a [chambered] from \the[src].", SPAN_NOTICE("You remove \a [chambered] from \the [src]."))
@@ -139,7 +139,7 @@
 
 /* Ironhammer stuff */
 
-/obj/item/weapon/gun/launcher/grenade/lenar
+/obj/item/gun/launcher/grenade/lenar
 	name = "FS GL \"Lenar\""
 	desc = "A more than bulky pump-action grenade launcher. Holds up to 6 grenades in a revolving magazine."
 	icon = 'icons/obj/guns/launcher/grenadelauncher.dmi'
@@ -153,18 +153,18 @@
 	throw_distance = 10
 	release_force = 5
 
-/obj/item/weapon/gun/launcher/grenade/lenar/proc/update_charge()
+/obj/item/gun/launcher/grenade/lenar/proc/update_charge()
 	var/ratio = (grenades.len + (chambered? 1 : 0)) / (max_grenades + 1)
 	if(ratio < 0.33 && ratio != 0)
 		ratio = 0.33
 	ratio = round(ratio, 0.33) * 100
 	add_overlays("grenademag_[ratio]")
 
-/obj/item/weapon/gun/launcher/grenade/lenar/on_update_icon()
+/obj/item/gun/launcher/grenade/lenar/on_update_icon()
 	cut_overlays()
 	update_charge()
 
-/obj/item/weapon/gun/launcher/grenade/makeshift
+/obj/item/gun/launcher/grenade/makeshift
 	name = "makeshift grenade launcher"
 	desc = "Your own, homemade, China Lake."
 	icon = 'icons/obj/guns/launcher/makeshift.dmi'
@@ -177,7 +177,7 @@
 	price_tag = 500
 	max_grenades = 0
 
-/obj/item/weapon/gun/launcher/grenade/makeshift/chek_grenades(mob/user)
+/obj/item/gun/launcher/grenade/makeshift/chek_grenades(mob/user)
 	. = TRUE
 	if(grenades.len > max_grenades)
 		to_chat(user, SPAN_WARNING("\The [src] is full."))

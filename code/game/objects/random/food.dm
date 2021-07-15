@@ -31,7 +31,7 @@
 	spawn_nothing_percentage = 60
 
 /obj/spawner/junkfood/rotten/post_spawn(list/spawns)
-	for(var/obj/item/weapon/reagent_containers/food in spawns)
+	for(var/obj/item/reagent_containers/food in spawns)
 		if(!food.reagents)
 			return
 		var/list/random_reagent_list = list(

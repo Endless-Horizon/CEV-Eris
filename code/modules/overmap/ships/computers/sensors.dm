@@ -4,7 +4,7 @@
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
 	light_color = COLOR_LIGHTING_CYAN_MACHINERY
-	//circuit = /obj/item/weapon/electronics/circuitboard/sensors
+	//circuit = /obj/item/electronics/circuitboard/sensors
 	var/obj/effect/overmap/ship/linked
 	var/obj/machinery/shipsensors/sensors
 	var/viewing = 0
@@ -129,7 +129,7 @@
 	var/range = 1
 	idle_power_usage = 5000
 
-/obj/machinery/shipsensors/attackby(obj/item/weapon/W, mob/user)
+/obj/machinery/shipsensors/attackby(obj/item/W, mob/user)
 	var/damage = max_health - health
 	if(damage && (QUALITY_WELDING in W.tool_qualities))
 		to_chat(user, "<span class='notice'>You start repairing the damage to [src].</span>")

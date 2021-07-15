@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(circuit_fabricator_recipe_list)
 		/obj/item/device/electronic_assembly/medium,
 		/obj/item/device/electronic_assembly/large,
 		/obj/item/device/electronic_assembly/drone,
-		/obj/item/weapon/implant/integrated_circuit
+		/obj/item/implant/integrated_circuit
 		)
 
 	GLOB.circuit_fabricator_recipe_list["Tools"] = list(
@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(circuit_fabricator_recipe_list)
 		interact(user)
 		return TRUE
 
-	if(istype(O,/obj/item/weapon/disk/integrated_circuit/upgrade/advanced))
+	if(istype(O,/obj/item/disk/integrated_circuit/upgrade/advanced))
 		if(upgraded)
 			to_chat(user, span("warning", "\The [src] already has this upgrade."))
 			return TRUE
@@ -185,7 +185,7 @@ GLOBAL_LIST_EMPTY(circuit_fabricator_recipe_list)
 
 
 // FUKKEN UPGRADE DISKS
-/obj/item/weapon/disk/integrated_circuit/upgrade
+/obj/item/disk/integrated_circuit/upgrade
 	name = "integrated circuit printer upgrade disk"
 	desc = "Install this into your integrated circuit printer to enhance it."
 	icon = 'icons/obj/electronic_assemblies.dmi'
@@ -194,7 +194,7 @@ GLOBAL_LIST_EMPTY(circuit_fabricator_recipe_list)
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 4)
 
-/obj/item/weapon/disk/integrated_circuit/upgrade/advanced
+/obj/item/disk/integrated_circuit/upgrade/advanced
 	name = "integrated circuit printer upgrade disk - advanced designs"
 	desc = "Install this into your integrated circuit printer to enhance it.  This one adds new, advanced designs to the printer."
 

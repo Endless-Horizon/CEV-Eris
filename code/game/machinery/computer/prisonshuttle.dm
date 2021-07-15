@@ -17,7 +17,7 @@ var/prison_shuttle_timeleft = 0
 	icon_screen = "syndishuttle"
 	light_color = COLOR_LIGHTING_SCI_BRIGHT
 	req_access = list(access_security)
-	circuit = /obj/item/weapon/electronics/circuitboard/prison_shuttle
+	circuit = /obj/item/electronics/circuitboard/prison_shuttle
 	var/temp
 	var/hacked = 0
 	var/allowedtocall = 0
@@ -27,11 +27,11 @@ var/prison_shuttle_timeleft = 0
 		return src.attack_hand(user)
 
 	attackby(I as obj, user as mob)
-		if(istype(I, /obj/item/weapon/tool/screwdriver))
+		if(istype(I, /obj/item/tool/screwdriver))
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 			if(do_after(user, 20, src))
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
-				var/obj/item/weapon/electronics/circuitboard/prison_shuttle/M = new /obj/item/weapon/electronics/circuitboard/prison_shuttle( A )
+				var/obj/item/electronics/circuitboard/prison_shuttle/M = new /obj/item/electronics/circuitboard/prison_shuttle( A )
 				for (var/obj/C in src)
 					C.loc = src.loc
 				A.circuit = M
@@ -39,7 +39,7 @@ var/prison_shuttle_timeleft = 0
 
 				if (src.stat & BROKEN)
 					to_chat(user, SPAN_NOTICE("The broken glass falls out."))
-					new /obj/item/weapon/material/shard( src.loc )
+					new /obj/item/material/shard( src.loc )
 					A.state = 3
 					A.icon_state = "3"
 				else

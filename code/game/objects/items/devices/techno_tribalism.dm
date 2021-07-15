@@ -107,31 +107,31 @@
 				return
 
 
-		else if(istype(W, /obj/item/weapon/tool_upgrade))
+		else if(istype(W, /obj/item/tool_upgrade))
 
-			var/obj/item/weapon/tool_upgrade/T = W
+			var/obj/item/tool_upgrade/T = W
 
-			if(istype(T, /obj/item/weapon/tool_upgrade/reinforcement))
+			if(istype(T, /obj/item/tool_upgrade/reinforcement))
 				oddity_stats[STAT_TGH] += 3
 
-			else if(istype(T, /obj/item/weapon/tool_upgrade/productivity))
+			else if(istype(T, /obj/item/tool_upgrade/productivity))
 				oddity_stats[STAT_COG] += 3
 
-			else if(istype(T, /obj/item/weapon/tool_upgrade/refinement))
+			else if(istype(T, /obj/item/tool_upgrade/refinement))
 				oddity_stats[STAT_VIG] += 3
 
-			else if(istype(T, /obj/item/weapon/tool_upgrade/augment))
+			else if(istype(T, /obj/item/tool_upgrade/augment))
 				oddity_stats[STAT_BIO] += 3
 
 
-		else if(istype(W, /obj/item/weapon/cell))
-			if(istype(W, /obj/item/weapon/cell/small/moebius/nuclear))
+		else if(istype(W, /obj/item/cell))
+			if(istype(W, /obj/item/cell/small/moebius/nuclear))
 				oddity_stats[STAT_ROB] += 2
 
-			else if(istype(W, /obj/item/weapon/cell/medium/moebius/nuclear))
+			else if(istype(W, /obj/item/cell/medium/moebius/nuclear))
 				oddity_stats[STAT_ROB] += 3
 
-			else if(istype(W, /obj/item/weapon/cell/large/moebius/nuclear))
+			else if(istype(W, /obj/item/cell/large/moebius/nuclear))
 				oddity_stats[STAT_ROB] += 4
 
 			else
@@ -159,7 +159,7 @@
 		if(items_count >= max_count)
 			if(ishuman(src.loc))
 				var/mob/living/carbon/human/user = src.loc
-				var/obj/item/weapon/oddity/techno/T = new /obj/item/weapon/oddity/techno(src)
+				var/obj/item/oddity/techno/T = new /obj/item/oddity/techno(src)
 				T.oddity_stats = src.oddity_stats
 				T.AddComponent(/datum/component/inspiration, T.oddity_stats, T.perk)
 				items_count = 0

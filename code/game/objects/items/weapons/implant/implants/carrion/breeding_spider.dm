@@ -1,15 +1,15 @@
-/obj/item/weapon/implant/carrion_spider/breeding
+/obj/item/implant/carrion_spider/breeding
 	name = "breeding spider"
 	icon_state = "spiderling_breeding"
 	spider_price = 30
 	var/number_of_spiders
 	var/active = FALSE
 
-/obj/item/weapon/implant/carrion_spider/breeding/Initialize()
+/obj/item/implant/carrion_spider/breeding/Initialize()
 	..()
 	number_of_spiders = rand(9, 12)
 
-/obj/item/weapon/implant/carrion_spider/breeding/activate()
+/obj/item/implant/carrion_spider/breeding/activate()
 	..()
 	if(!wearer)
 		to_chat(owner_mob, SPAN_WARNING("[src] doesn't have a host"))
@@ -26,7 +26,7 @@
 		to_chat(owner_mob, SPAN_WARNING("[src] is already active!"))
 		return
 	
-	for(var/obj/item/weapon/implant/carrion_spider/breeding/BS in wearer)
+	for(var/obj/item/implant/carrion_spider/breeding/BS in wearer)
 		if(BS.active)
 			to_chat(owner_mob, SPAN_WARNING("Another breeding spider is already active in [wearer]!"))
 			return

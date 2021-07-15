@@ -5,14 +5,14 @@
 	icon_keyboard = null
 	icon_screen = "invaders"
 	var/list/prizes = list(
-		/obj/item/weapon/storage/box/snappops			= 2,
+		/obj/item/storage/box/snappops			= 2,
 		/obj/item/toy/blink								= 2,
 		/obj/item/clothing/under/syndicate				= 2,
 		/obj/item/toy/sword								= 2,
-		/obj/item/weapon/gun/projectile/revolver/capgun	= 2,
+		/obj/item/gun/projectile/revolver/capgun	= 2,
 		/obj/item/toy/crossbow							= 2,
 		/obj/item/clothing/suit/syndicatefake			= 2,
-		/obj/item/weapon/storage/fancy/crayons			= 2,
+		/obj/item/storage/fancy/crayons			= 2,
 		/obj/item/toy/spinningtoy						= 2,
 		/obj/item/toy/prize/ripley						= 1,
 		/obj/item/toy/prize/fireripley					= 1,
@@ -34,7 +34,7 @@
 /obj/machinery/computer/arcade/Initialize()
 	. = ..()
 	if(!circuit)
-		circuit = pick(subtypesof(/obj/item/weapon/electronics/circuitboard/arcade))
+		circuit = pick(subtypesof(/obj/item/electronics/circuitboard/arcade))
 		var/build_path = initial(circuit.build_path)
 		new build_path (loc, circuit)
 		return INITIALIZE_HINT_QDEL
@@ -76,7 +76,7 @@
 	name = "arcade machine"
 	desc = "Does not support Pinball."
 	icon_state = "arcade"
-	circuit = /obj/item/weapon/electronics/circuitboard/arcade/battle
+	circuit = /obj/item/electronics/circuitboard/arcade/battle
 	var/enemy_name = "Space Villian"
 	var/temp = "Winners don't use space drugs" //Temporary message, for attack messages, etc
 	var/player_hp = 30 //Player health/attack points

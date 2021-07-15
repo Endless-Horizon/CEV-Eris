@@ -77,7 +77,7 @@
 		A.switch_from_dead_to_living_mob_list()
 		A.add_ai_verbs()
 		A.update_icon()
-		var/obj/item/weapon/aicard/AC = A.loc
+		var/obj/item/aicard/AC = A.loc
 		if(AC)
 			AC.update_icon()
 	// Finished restoring

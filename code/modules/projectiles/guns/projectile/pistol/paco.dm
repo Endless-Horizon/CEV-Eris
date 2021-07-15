@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/paco
+/obj/item/gun/projectile/paco
 	name = "FS HG .35 Auto \"Paco\""
 	desc = "A modern and reliable sidearm for the soldier in the field. Commonly issued as a sidearm to Ironhammer Operatives. Uses standard .35 and high capacity magazines."
 	icon = 'icons/obj/guns/projectile/paco.dmi'
@@ -25,7 +25,7 @@
 
 	spawn_tags = SPAWN_TAG_FS_PROJECTILE
 
-/obj/item/weapon/gun/projectile/paco/on_update_icon()
+/obj/item/gun/projectile/paco/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -44,6 +44,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/paco/Initialize()
+/obj/item/gun/projectile/paco/Initialize()
 	. = ..()
 	update_icon()

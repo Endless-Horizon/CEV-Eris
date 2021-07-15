@@ -167,7 +167,7 @@
 
 	io.holder.interact(user) // This is to update the UI.
 
-/obj/item/weapon/storage/bag/circuits
+/obj/item/storage/bag/circuits
 	name = "circuit kit"
 	desc = "This kit's essential for any circuitry projects."
 	icon = 'icons/obj/electronic_assemblies.dmi'
@@ -176,49 +176,49 @@
 	display_contents_with_number = 0
 	can_hold = list(
 		/obj/item/integrated_circuit,
-		/obj/item/weapon/storage/bag/circuits/mini,
+		/obj/item/storage/bag/circuits/mini,
 		/obj/item/device/electronic_assembly,
 		/obj/item/device/electronics/integrated,
-		/obj/item/weapon/tool/crowbar,
-		/obj/item/weapon/tool/screwdriver
+		/obj/item/tool/crowbar,
+		/obj/item/tool/screwdriver
 		)
 
-/obj/item/weapon/storage/bag/circuits/basic/populate_contents()
+/obj/item/storage/bag/circuits/basic/populate_contents()
 	spawn(2 SECONDS) // So the list has time to initialize.
-		new /obj/item/weapon/storage/bag/circuits/mini/arithmetic(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/trig(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/input(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/output(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/memory(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/logic(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/time(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/reagents(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/transfer(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/converter(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/power(src)
+		new /obj/item/storage/bag/circuits/mini/arithmetic(src)
+		new /obj/item/storage/bag/circuits/mini/trig(src)
+		new /obj/item/storage/bag/circuits/mini/input(src)
+		new /obj/item/storage/bag/circuits/mini/output(src)
+		new /obj/item/storage/bag/circuits/mini/memory(src)
+		new /obj/item/storage/bag/circuits/mini/logic(src)
+		new /obj/item/storage/bag/circuits/mini/time(src)
+		new /obj/item/storage/bag/circuits/mini/reagents(src)
+		new /obj/item/storage/bag/circuits/mini/transfer(src)
+		new /obj/item/storage/bag/circuits/mini/converter(src)
+		new /obj/item/storage/bag/circuits/mini/power(src)
 
 		new /obj/item/device/electronic_assembly(src)
 		new /obj/item/device/electronics/integrated/wirer(src)
 		new /obj/item/device/electronics/integrated/debugger(src)
-		new /obj/item/weapon/tool/crowbar(src)
-		new /obj/item/weapon/tool/screwdriver(src)
+		new /obj/item/tool/crowbar(src)
+		new /obj/item/tool/screwdriver(src)
 		make_exact_fit()
 
-/obj/item/weapon/storage/bag/circuits/all/populate_contents()
+/obj/item/storage/bag/circuits/all/populate_contents()
 	spawn(2 SECONDS) // So the list has time to initialize.
-		new /obj/item/weapon/storage/bag/circuits/mini/arithmetic/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/trig/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/input/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/output/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/memory/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/logic/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/smart/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/manipulation/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/time/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/reagents/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/transfer/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/converter/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/power/all(src)
+		new /obj/item/storage/bag/circuits/mini/arithmetic/all(src)
+		new /obj/item/storage/bag/circuits/mini/trig/all(src)
+		new /obj/item/storage/bag/circuits/mini/input/all(src)
+		new /obj/item/storage/bag/circuits/mini/output/all(src)
+		new /obj/item/storage/bag/circuits/mini/memory/all(src)
+		new /obj/item/storage/bag/circuits/mini/logic/all(src)
+		new /obj/item/storage/bag/circuits/mini/smart/all(src)
+		new /obj/item/storage/bag/circuits/mini/manipulation/all(src)
+		new /obj/item/storage/bag/circuits/mini/time/all(src)
+		new /obj/item/storage/bag/circuits/mini/reagents/all(src)
+		new /obj/item/storage/bag/circuits/mini/transfer/all(src)
+		new /obj/item/storage/bag/circuits/mini/converter/all(src)
+		new /obj/item/storage/bag/circuits/mini/power/all(src)
 
 		new /obj/item/device/electronic_assembly(src)
 		new /obj/item/device/electronic_assembly/medium(src)
@@ -226,11 +226,11 @@
 		new /obj/item/device/electronic_assembly/drone(src)
 		new /obj/item/device/electronics/integrated/wirer(src)
 		new /obj/item/device/electronics/integrated/debugger(src)
-		new /obj/item/weapon/tool/crowbar(src)
-		new /obj/item/weapon/tool/screwdriver(src)
+		new /obj/item/tool/crowbar(src)
+		new /obj/item/tool/screwdriver(src)
 		make_exact_fit()
 
-/obj/item/weapon/storage/bag/circuits/mini/
+/obj/item/storage/bag/circuits/mini/
 	name = "circuit box"
 	desc = "Used to partition categories of circuits, for a neater workspace."
 	w_class = ITEM_SIZE_SMALL
@@ -238,15 +238,15 @@
 	can_hold = list(/obj/item/integrated_circuit)
 	var/spawn_flags_to_use = IC_SPAWN_DEFAULT
 
-/obj/item/weapon/storage/bag/circuits/mini/arithmetic
+/obj/item/storage/bag/circuits/mini/arithmetic
 	name = "arithmetic circuit box"
 	desc = "Warning: Contains math."
 	icon_state = "box_arithmetic"
 
-/obj/item/weapon/storage/bag/circuits/mini/arithmetic/all // Don't believe this will ever be needed.
+/obj/item/storage/bag/circuits/mini/arithmetic/all // Don't believe this will ever be needed.
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/arithmetic/populate_contents()
+/obj/item/storage/bag/circuits/mini/arithmetic/populate_contents()
 	for(var/obj/item/integrated_circuit/arithmetic/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -254,15 +254,15 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/trig
+/obj/item/storage/bag/circuits/mini/trig
 	name = "trig circuit box"
 	desc = "Danger: Contains more math."
 	icon_state = "box_trig"
 
-/obj/item/weapon/storage/bag/circuits/mini/trig/all // Ditto
+/obj/item/storage/bag/circuits/mini/trig/all // Ditto
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/trig/populate_contents()
+/obj/item/storage/bag/circuits/mini/trig/populate_contents()
 	for(var/obj/item/integrated_circuit/trig/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -270,15 +270,15 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/input
+/obj/item/storage/bag/circuits/mini/input
 	name = "input circuit box"
 	desc = "Tell these circuits everything you know."
 	icon_state = "box_input"
 
-/obj/item/weapon/storage/bag/circuits/mini/input/all
+/obj/item/storage/bag/circuits/mini/input/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/input/populate_contents()
+/obj/item/storage/bag/circuits/mini/input/populate_contents()
 	for(var/obj/item/integrated_circuit/input/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -286,15 +286,15 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/output
+/obj/item/storage/bag/circuits/mini/output
 	name = "output circuit box"
 	desc = "Circuits to interface with the world beyond itself."
 	icon_state = "box_output"
 
-/obj/item/weapon/storage/bag/circuits/mini/output/all
+/obj/item/storage/bag/circuits/mini/output/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/output/populate_contents()
+/obj/item/storage/bag/circuits/mini/output/populate_contents()
 	for(var/obj/item/integrated_circuit/output/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -302,15 +302,15 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/memory
+/obj/item/storage/bag/circuits/mini/memory
 	name = "memory circuit box"
 	desc = "Machines can be quite forgetful without these."
 	icon_state = "box_memory"
 
-/obj/item/weapon/storage/bag/circuits/mini/memory/all
+/obj/item/storage/bag/circuits/mini/memory/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/memory/populate_contents()
+/obj/item/storage/bag/circuits/mini/memory/populate_contents()
 	for(var/obj/item/integrated_circuit/memory/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -318,15 +318,15 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/logic
+/obj/item/storage/bag/circuits/mini/logic
 	name = "logic circuit box"
 	desc = "May or may not be Turing complete."
 	icon_state = "box_logic"
 
-/obj/item/weapon/storage/bag/circuits/mini/logic/all
+/obj/item/storage/bag/circuits/mini/logic/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/logic/populate_contents()
+/obj/item/storage/bag/circuits/mini/logic/populate_contents()
 	for(var/obj/item/integrated_circuit/logic/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -334,15 +334,15 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/time
+/obj/item/storage/bag/circuits/mini/time
 	name = "time circuit box"
 	desc = "No time machine parts, sadly."
 	icon_state = "box_time"
 
-/obj/item/weapon/storage/bag/circuits/mini/time/all
+/obj/item/storage/bag/circuits/mini/time/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/time/populate_contents()
+/obj/item/storage/bag/circuits/mini/time/populate_contents()
 	for(var/obj/item/integrated_circuit/time/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -350,15 +350,15 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/reagents
+/obj/item/storage/bag/circuits/mini/reagents
 	name = "reagent circuit box"
 	desc = "Unlike most electronics, these circuits are supposed to come in contact with liquids."
 	icon_state = "box_reagents"
 
-/obj/item/weapon/storage/bag/circuits/mini/reagents/all
+/obj/item/storage/bag/circuits/mini/reagents/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/reagents/populate_contents()
+/obj/item/storage/bag/circuits/mini/reagents/populate_contents()
 	for(var/obj/item/integrated_circuit/reagent/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -366,15 +366,15 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/transfer
+/obj/item/storage/bag/circuits/mini/transfer
 	name = "transfer circuit box"
 	desc = "Useful for moving data representing something arbitrary to another arbitrary virtual place."
 	icon_state = "box_transfer"
 
-/obj/item/weapon/storage/bag/circuits/mini/transfer/all
+/obj/item/storage/bag/circuits/mini/transfer/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/transfer/populate_contents()
+/obj/item/storage/bag/circuits/mini/transfer/populate_contents()
 	for(var/obj/item/integrated_circuit/transfer/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -382,45 +382,45 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/converter
+/obj/item/storage/bag/circuits/mini/converter
 	name = "converter circuit box"
 	desc = "Transform one piece of data to another type of data with these."
 	icon_state = "box_converter"
 
-/obj/item/weapon/storage/bag/circuits/mini/converter/all
+/obj/item/storage/bag/circuits/mini/converter/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/converter/populate_contents()
+/obj/item/storage/bag/circuits/mini/converter/populate_contents()
 	for(var/obj/item/integrated_circuit/converter/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
 				new IC.type(src)
 	make_exact_fit()
 
-/obj/item/weapon/storage/bag/circuits/mini/smart
+/obj/item/storage/bag/circuits/mini/smart
 	name = "smart box"
 	desc = "Sentience not included."
 	icon_state = "box_ai"
 
-/obj/item/weapon/storage/bag/circuits/mini/smart/all
+/obj/item/storage/bag/circuits/mini/smart/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/smart/populate_contents()
+/obj/item/storage/bag/circuits/mini/smart/populate_contents()
 	for(var/obj/item/integrated_circuit/smart/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
 				new IC.type(src)
 	make_exact_fit()
 
-/obj/item/weapon/storage/bag/circuits/mini/manipulation
+/obj/item/storage/bag/circuits/mini/manipulation
 	name = "manipulation box"
 	desc = "Make your machines actually useful with these."
 	icon_state = "box_manipulation"
 
-/obj/item/weapon/storage/bag/circuits/mini/manipulation/all
+/obj/item/storage/bag/circuits/mini/manipulation/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/manipulation/populate_contents()
+/obj/item/storage/bag/circuits/mini/manipulation/populate_contents()
 	for(var/obj/item/integrated_circuit/manipulation/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)
@@ -428,15 +428,15 @@
 	make_exact_fit()
 
 
-/obj/item/weapon/storage/bag/circuits/mini/power
+/obj/item/storage/bag/circuits/mini/power
 	name = "power circuit box"
 	desc = "Electronics generally require electricity."
 	icon_state = "box_power"
 
-/obj/item/weapon/storage/bag/circuits/mini/power/all
+/obj/item/storage/bag/circuits/mini/power/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/power/populate_contents()
+/obj/item/storage/bag/circuits/mini/power/populate_contents()
 	for(var/obj/item/integrated_circuit/passive/power/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 3)

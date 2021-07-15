@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/shotgun/bull
+/obj/item/gun/projectile/shotgun/bull
 	name = "FS SG \"Bull\""
 	desc = "A \"Frozen Star\" double-barreled pump-action shotgun. Marvel of engineering, this gun is often used by Ironhammer tactical units. \
 			Due to shorter than usual barrels, damage are somewhat lower and recoil kicks slightly harder, but possibility to fire two barrels at once overshadows all bad design flaws."
@@ -34,7 +34,7 @@
 	spawn_tags = SPANW_TAG_FS_SHOTGUN
 	price_tag = 2000 //gives tactical advantage with beanbags, but consumes more ammo and hits less harder with lethal ammo, so Gladstone or Regulator would be better for lethal takedowns in general
 
-/obj/item/weapon/gun/projectile/shotgun/bull/proc/pump(mob/M as mob)
+/obj/item/gun/projectile/shotgun/bull/proc/pump(mob/M as mob)
 	var/turf/newloc = get_turf(src)
 	playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)
 	if(chambered)
@@ -50,12 +50,12 @@
 				reload = 0
 	update_icon()
 
-/obj/item/weapon/gun/projectile/shotgun/bull/consume_next_projectile()
+/obj/item/gun/projectile/shotgun/bull/consume_next_projectile()
 	if (chambered)
 		return chambered.BB
 	return null
 
-/obj/item/weapon/gun/projectile/shotgun/bull/handle_post_fire()
+/obj/item/gun/projectile/shotgun/bull/handle_post_fire()
 	..()
 	var/turf/newloc = get_turf(src)
 	if(chambered)
@@ -68,7 +68,7 @@
 				chambered = AC
 	reload = 1
 
-/obj/item/weapon/gun/projectile/shotgun/bull/unload_ammo(user, allow_dump)
+/obj/item/gun/projectile/shotgun/bull/unload_ammo(user, allow_dump)
 	var/turf/newloc = get_turf(src)
 	if(chambered)
 		chambered.forceMove(newloc) //Eject casing
@@ -76,7 +76,7 @@
 		reload = 1
 	..(user, allow_dump=1)
 
-/obj/item/weapon/gun/projectile/shotgun/bull/attack_self(mob/user as mob)
+/obj/item/gun/projectile/shotgun/bull/attack_self(mob/user as mob)
 	if(reload)
 		pump(user)
 	else
@@ -85,12 +85,12 @@
 		else
 			unload_ammo(user)
 
-/obj/item/weapon/gun/projectile/shotgun/bull/proc/update_charge()
+/obj/item/gun/projectile/shotgun/bull/proc/update_charge()
 	var/ratio = get_ammo() / (max_shells + 1)//1 in the chamber
 	ratio = round(ratio, 0.25) * 100
 	add_overlays("[ratio]_PW")
 
-/obj/item/weapon/gun/projectile/shotgun/bull/on_update_icon()
+/obj/item/gun/projectile/shotgun/bull/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)

@@ -24,7 +24,7 @@
 		var/list/CL = list()
 		var/address = null
 		if(G[i] != TARGET_TEXT)
-			for(var/obj/item/weapon/implant/core_implant/C in world)
+			for(var/obj/item/implant/core_implant/C in world)
 				C.update_address()
 				if(istype(C, implant_type) && C.address && (get_turf(C) in view()))
 					CL.Add(C.address)
@@ -73,7 +73,7 @@
 	var/list/targets = list()
 	var/i = 1
 	for(var/AD in G)
-		for(var/obj/item/weapon/implant/core_implant/C in world)
+		for(var/obj/item/implant/core_implant/C in world)
 			if(istype(C, implant_type) && C.loc)
 				var/target = process_target(i,C,AD)
 				if(target)
@@ -83,6 +83,6 @@
 	return targets
 
 //returns object that will be placed in targets list, of null
-/datum/ritual/targeted/proc/process_target(var/index, var/obj/item/weapon/implant/core_implant/target, var/text)
+/datum/ritual/targeted/proc/process_target(var/index, var/obj/item/implant/core_implant/target, var/text)
 	return TRUE
 

@@ -5,8 +5,8 @@
 	item_state = "boxing"
 	armor = list(melee = 25, bullet = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
-/obj/item/clothing/gloves/boxing/attackby(obj/item/weapon/W, mob/user)
-	if(istype(W, /obj/item/weapon/tool/wirecutters) || istype(W, /obj/item/weapon/tool/scalpel))
+/obj/item/clothing/gloves/boxing/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/tool/wirecutters) || istype(W, /obj/item/tool/scalpel))
 		to_chat(user, SPAN_NOTICE("That won't work."))	//Nope
 		return
 	..()

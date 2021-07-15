@@ -51,14 +51,14 @@ This saves us from having to call add_fingerprint() any time something is put in
 	if(!I && !src.back)
 		to_chat(src, SPAN_NOTICE("You have no storage on your back or item in hand."))
 		return
-	if(istype(src.back,/obj/item/weapon/storage))
-		var/obj/item/weapon/storage/backpack = src.back
+	if(istype(src.back,/obj/item/storage))
+		var/obj/item/storage/backpack = src.back
 		if(I)
 			equip_to_from_bag(I, backpack)
 		else
 			equip_to_from_bag(null, backpack)
-	else if(istype(potential, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/pack = potential
+	else if(istype(potential, /obj/item/storage))
+		var/obj/item/storage/pack = potential
 		if(I)
 			equip_to_from_bag(I, pack)
 		else

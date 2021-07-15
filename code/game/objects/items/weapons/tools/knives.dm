@@ -1,6 +1,6 @@
 
 //Knifes
-/obj/item/weapon/tool/knife
+/obj/item/tool/knife
 	name = "kitchen knife"
 	desc = "A general purpose Chef's Knife made by Asters Merchant Guild. Guaranteed to stay sharp for years to come."
 	icon = 'icons/obj/kitchen.dmi'
@@ -24,7 +24,7 @@
 	rarity_value = 10
 	spawn_tags = SPAWN_TAG_KNIFE
 
-/obj/item/weapon/tool/knife/boot
+/obj/item/tool/knife/boot
 	name = "boot knife"
 	desc = "A small fixed-blade knife for putting inside a boot."
 	icon = 'icons/obj/weapons.dmi'
@@ -35,7 +35,7 @@
 	tool_qualities = list(QUALITY_CUTTING = 20,  QUALITY_WIRE_CUTTING = 10, QUALITY_SCREW_DRIVING = 15)
 	rarity_value = 20
 
-/obj/item/weapon/tool/knife/hook
+/obj/item/tool/knife/hook
 	name = "meat hook"
 	desc = "A sharp, metal hook what sticks into things."
 	icon_state = "hook_knife"
@@ -46,7 +46,7 @@
 	embed_mult = 1.5 //This is designed for embedding
 	rarity_value = 5
 
-/obj/item/weapon/tool/knife/ritual
+/obj/item/tool/knife/ritual
 	name = "ritual knife"
 	desc = "The unearthly energies that once powered this blade are now dormant."
 	icon = 'icons/obj/wizard.dmi'
@@ -54,7 +54,7 @@
 	force = WEAPON_FORCE_PAINFUL
 	rarity_value = 20
 
-/obj/item/weapon/tool/knife/butch
+/obj/item/tool/knife/butch
 	name = "butcher's cleaver"
 	icon_state = "butch"
 	desc = "A huge thing used for chopping and chopping up meat. This includes roaches and roach-by-products."
@@ -66,7 +66,7 @@
 	tool_qualities = list(QUALITY_CUTTING = 20,  QUALITY_WIRE_CUTTING = 15)
 	rarity_value = 5
 
-/obj/item/weapon/tool/knife/neotritual
+/obj/item/tool/knife/neotritual
 	name = "NeoTheology ritual knife"
 	desc = "The sweet embrace of mercy, for relieving the soul from a tortured vessel."
 	icon = 'icons/obj/weapons.dmi'
@@ -77,7 +77,7 @@
 	max_upgrades = 3
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/tool/knife/tacknife
+/obj/item/tool/knife/tacknife
 	name = "tactical knife"
 	desc = "You'd be killing loads of people if this was Medal of Valor: Heroes of Space. Could be attached to a gun."
 	icon = 'icons/obj/weapons.dmi'
@@ -89,7 +89,7 @@
 	embed_mult = 0.3
 	max_upgrades = 3
 
-/obj/item/weapon/tool/knife/tacknife/New()
+/obj/item/tool/knife/tacknife/New()
 	..()
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.weapon_upgrades = list(
@@ -101,7 +101,7 @@
 	I.gun_loc_tag = GUN_UNDERBARREL
 	I.req_gun_tags = list(SLOT_BAYONET)
 
-/obj/item/weapon/tool/knife/dagger
+/obj/item/tool/knife/dagger
 	name = "dagger"
 	desc = "A sharp implement; difference between this and a knife is it is sharp on both sides. Good for finding holes in armor and exploiting them."
 	icon = 'icons/obj/weapons.dmi'
@@ -112,7 +112,7 @@
 	armor_penetration = ARMOR_PEN_HALF
 	rarity_value = 15
 
-/obj/item/weapon/tool/knife/dagger/ceremonial
+/obj/item/tool/knife/dagger/ceremonial
 	name = "ceremonial dagger"
 	desc = "Given to high ranking officers during their time in the stellar navy. A practical showing of accomplishment."
 	icon_state = "fancydagger"
@@ -123,7 +123,7 @@
 	max_upgrades = 4
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/tool/knife/dagger/bluespace
+/obj/item/tool/knife/dagger/bluespace
 	name = "Moebius \"Displacement Dagger\""
 	desc = "A teleportation matrix attached to a dagger, for sending things you stab it into very far away."
 	icon_state = "bluespace_dagger"
@@ -131,7 +131,7 @@
 	matter = list(MATERIAL_PLASTEEL = 3, MATERIAL_PLASTIC = 2, MATERIAL_SILVER = 10, MATERIAL_GOLD = 5, MATERIAL_PLASMA = 20)
 	force = WEAPON_FORCE_NORMAL+1
 	embed_mult = 25 //You WANT it to embed
-	suitable_cell = /obj/item/weapon/cell/small
+	suitable_cell = /obj/item/cell/small
 	toggleable = TRUE
 	use_power_cost = 0.4
 	passive_power_cost = 0.4
@@ -141,13 +141,13 @@
 	var/last_teleport
 	var/entropy_value = 3
 
-/obj/item/weapon/tool/knife/dagger/bluespace/on_embed(mob/user)
+/obj/item/tool/knife/dagger/bluespace/on_embed(mob/user)
 	embedded = user
 
-/obj/item/weapon/tool/knife/dagger/bluespace/on_embed_removal(mob/user)
+/obj/item/tool/knife/dagger/bluespace/on_embed_removal(mob/user)
 	embedded = null
 
-/obj/item/weapon/tool/knife/dagger/bluespace/Process()
+/obj/item/tool/knife/dagger/bluespace/Process()
 	..()
 	if(switched_on && embedded && cell)
 		if(last_teleport + max(3 SECONDS, embedded.mob_size*(cell.charge/cell.maxcharge)) < world.time)
@@ -160,7 +160,7 @@
 				go_to_bluespace(get_turf(embedded), entropy_value, TRUE, embedded, T)
 				anim(T,embedded,'icons/mob/mob.dmi',,"phasein",,embedded.dir)
 
-/obj/item/weapon/tool/knife/dagger/assassin
+/obj/item/tool/knife/dagger/assassin
 	name = "dagger"
 	desc = "A sharp implement, with a twist; The handle acts as a reservoir for reagents, and the blade injects those that it hits."
 	icon_state = "assdagger"
@@ -168,11 +168,11 @@
 	reagent_flags = INJECTABLE|TRANSPARENT
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/tool/knife/dagger/assassin/New()
+/obj/item/tool/knife/dagger/assassin/New()
 	..()
 	create_reagents(80)
 
-/obj/item/weapon/tool/knife/dagger/assassin/resolve_attackby(atom/target, mob/user)
+/obj/item/tool/knife/dagger/assassin/resolve_attackby(atom/target, mob/user)
 	.=..()
 	if(!target.reagents || !isliving(target))
 		return
@@ -194,7 +194,7 @@
 		admin_inject_log(user, target, src, reagents.log_list(), trans)
 		to_chat(user, SPAN_NOTICE("You inject [trans] units of the solution. [src] now contains [src.reagents.total_volume] units."))
 
-/obj/item/weapon/tool/knife/butterfly
+/obj/item/tool/knife/butterfly
 	name = "butterfly knife"
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
 	icon = 'icons/obj/weapons.dmi'
@@ -214,7 +214,7 @@
 	rarity_value = 25
 	spawn_tags = SPAWN_TAG_KNIFE_CONTRABAND
 
-/obj/item/weapon/tool/knife/butterfly/turn_on(mob/user)
+/obj/item/tool/knife/butterfly/turn_on(mob/user)
 	item_state = "[initial(item_state)]_on"
 	to_chat(user, SPAN_NOTICE("You flip out [src]."))
 	playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
@@ -230,7 +230,7 @@
 	update_icon()
 	update_wear_icon()
 
-/obj/item/weapon/tool/knife/butterfly/turn_off(mob/user)
+/obj/item/tool/knife/butterfly/turn_off(mob/user)
 	hitsound = initial(hitsound)
 	icon_state = initial(icon_state)
 	item_state = initial(item_state)
@@ -244,7 +244,7 @@
 	update_icon()
 	update_wear_icon()
 
-/obj/item/weapon/tool/knife/switchblade
+/obj/item/tool/knife/switchblade
 	name = "switchblade"
 	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
 	icon = 'icons/obj/weapons.dmi'
@@ -264,7 +264,7 @@
 	rarity_value = 30
 	spawn_tags = SPAWN_TAG_KNIFE_CONTRABAND
 
-/obj/item/weapon/tool/knife/switchblade/turn_on(mob/user)
+/obj/item/tool/knife/switchblade/turn_on(mob/user)
 	item_state = "[initial(item_state)]_on"
 	to_chat(user, SPAN_NOTICE("You press a button on the handle and [src] slides out."))
 	playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
@@ -280,7 +280,7 @@
 	update_icon()
 	update_wear_icon()
 
-/obj/item/weapon/tool/knife/switchblade/turn_off(mob/user)
+/obj/item/tool/knife/switchblade/turn_off(mob/user)
 	hitsound = initial(hitsound)
 	icon_state = initial(icon_state)
 	item_state = initial(item_state)
@@ -295,7 +295,7 @@
 	update_wear_icon()
 
 
-/obj/item/weapon/tool/spear
+/obj/item/tool/spear
 	name = "spear"
 	desc = "A piece of glass tied using cable coil onto two welded rods. Impressive work."
 	icon = 'icons/obj/weapons.dmi'

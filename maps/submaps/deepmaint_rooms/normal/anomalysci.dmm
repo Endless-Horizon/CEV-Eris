@@ -11,7 +11,7 @@
 "k" = (/turf/simulated/floor/tiled/dark/gray_platform,/area/deepmaint)
 "l" = (/obj/spawner/pack/machine,/turf/simulated/floor/tiled/dark/gray_perforated,/area/deepmaint)
 "m" = (/obj/structure/table/standard,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot/low_chance,/turf/simulated/floor/tiled/dark/gray_perforated,/area/deepmaint)
-"n" = (/obj/item/weapon/stool,/turf/simulated/floor/tiled/dark/gray_perforated,/area/deepmaint)
+"n" = (/obj/item/stool,/turf/simulated/floor/tiled/dark/gray_perforated,/area/deepmaint)
 "o" = (/obj/structure/table/standard,/obj/spawner/pack/rare,/turf/simulated/floor/tiled/dark/gray_perforated,/area/deepmaint)
 "p" = (/turf/simulated/floor/tiled/dark/gray_perforated,/area/deepmaint)
 "q" = (/obj/structure/table/standard,/obj/spawner/pack/rare/low_chance,/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/tiled/dark/gray_perforated,/area/deepmaint)

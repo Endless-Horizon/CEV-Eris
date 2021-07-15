@@ -57,7 +57,7 @@
 	onclose(user, "artanalyser")
 
 // Special paper for the science tool
-/obj/item/weapon/paper/artifact_info
+/obj/item/paper/artifact_info
 	var/artifact_type
 	var/artifact_first_effect
 	var/artifact_second_effect
@@ -80,12 +80,12 @@
 			results = get_scan_info(scanned_object)
 
 		src.visible_message("<b>[name]</b> states, \"Scanning complete.\"")
-		var/obj/item/weapon/paper/artifact_info/P = new(src.loc)
+		var/obj/item/paper/artifact_info/P = new(src.loc)
 		P.name = "[src] report #[++report_num]"
 		P.info = "<b>[src] analysis report #[report_num]</b><br>"
 		P.info += "<br>"
 		P.info += "\icon[scanned_object] [results]"
-		P.stamped = list(/obj/item/weapon/stamp)
+		P.stamped = list(/obj/item/stamp)
 		P.set_overlays(list("paper_stamped"))
 		if(scanned_object)
 			P.artifact_type = scanned_object.type

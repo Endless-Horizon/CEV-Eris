@@ -10,7 +10,7 @@
 	has_postspawn = TRUE
 
 /obj/spawner/rig/post_spawn(list/spawns)
-	for (var/obj/item/weapon/rig/module in spawns)
+	for (var/obj/item/rig/module in spawns)
 		var/cnd = rand(40,80)
 		module.lose_modules(cnd)
 		module.misconfigure(cnd)

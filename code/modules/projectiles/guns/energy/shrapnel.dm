@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/shrapnel
+/obj/item/gun/energy/shrapnel
 	name = "OR SDF \"Shellshock\" energy shotgun"
 	desc = "An Oberth Republic Self Defence Force design, this mat-fab shotgun tends to burn through cells with use. The matter contained in empty cells can be converted directly into ammunition as well, if the safety bolts are loosened."
 	icon = 'icons/obj/guns/energy/shrapnel.dmi'
@@ -12,8 +12,8 @@
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2, TECH_ENGINEERING = 4)
 	charge_cost = 25
-	suitable_cell = /obj/item/weapon/cell/small
-	cell_type = /obj/item/weapon/cell/small
+	suitable_cell = /obj/item/cell/small
+	cell_type = /obj/item/cell/small
 	projectile_type = /obj/item/projectile/bullet/shotgun
 	one_hand_penalty = 15 //full sized shotgun level
 	fire_delay = 12 //Equivalent to a pump then fire time
@@ -28,7 +28,7 @@
 	twohanded = TRUE
 	var/consume_cell = TRUE
 
-/obj/item/weapon/gun/energy/shrapnel/consume_next_projectile()
+/obj/item/gun/energy/shrapnel/consume_next_projectile()
 	if(!cell) return null
 	if(!ispath(projectile_type)) return null
 	if(consume_cell && !cell.checked_use(charge_cost))
@@ -43,7 +43,7 @@
 	else
 		return new projectile_type(src)
 
-/obj/item/weapon/gun/energy/shrapnel/attackby(obj/item/I, mob/user)
+/obj/item/gun/energy/shrapnel/attackby(obj/item/I, mob/user)
 	..()
 	if(I.has_quality(QUALITY_BOLT_TURNING))
 		if(I.use_tool(user, src, WORKTIME_NEAR_INSTANT, QUALITY_BOLT_TURNING, FAILCHANCE_VERY_EASY, required_stat = STAT_MEC))
@@ -54,7 +54,7 @@
 				consume_cell = TRUE
 				to_chat(user, SPAN_NOTICE("You loosen the safety bolts, allowing the weapon to destroy empty cells for use as ammunition."))
 
-/obj/item/weapon/gun/energy/shrapnel/mounted
+/obj/item/gun/energy/shrapnel/mounted
 	name = "SDF SC \"Schrapnell\""
 	desc = "An energy-based shotgun, employing a matter fabricator to pull shotgun rounds from thin air and energy."
 	icon_state = "shrapnel"
@@ -63,7 +63,7 @@
 	safety = FALSE
 	restrict_safety = TRUE
 	consume_cell = FALSE
-	cell_type = /obj/item/weapon/cell/small/high //Two shots
+	cell_type = /obj/item/cell/small/high //Two shots
 	spawn_blacklisted = TRUE
 	charge_cost = 50
 	twohanded = FALSE

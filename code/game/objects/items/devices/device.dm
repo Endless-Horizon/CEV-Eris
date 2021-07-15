@@ -3,7 +3,7 @@
 	spawn_tags = SPAWN_TAG_DIVICE
 	bad_type = /obj/item/device
 	var/starting_cell = TRUE
-	var/obj/item/weapon/cell/cell
+	var/obj/item/cell/cell
 	var/suitable_cell
 
 /obj/item/device/Initialize(mapload)

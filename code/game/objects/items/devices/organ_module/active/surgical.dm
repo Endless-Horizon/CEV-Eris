@@ -4,4 +4,4 @@
 	verb_name = "Deploy surgical omnitool"
 	icon_state = "multitool"
 	allowed_organs = list(BP_R_ARM, BP_L_ARM)
-	holding_type = /obj/item/weapon/tool/medmultitool/medimplant
+	holding_type = /obj/item/tool/medmultitool/medimplant

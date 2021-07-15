@@ -5,7 +5,7 @@
 #define SYRINGE_INJECT 1
 #define SYRINGE_BROKEN 2
 
-/obj/item/weapon/reagent_containers/syringe
+/obj/item/reagent_containers/syringe
 	name = "syringe"
 	desc = "A syringe."
 	icon = 'icons/obj/syringe.dmi'
@@ -26,22 +26,22 @@
 	var/visible_name = "a syringe"
 	var/time = 30
 
-/obj/item/weapon/reagent_containers/syringe/on_reagent_change()
+/obj/item/reagent_containers/syringe/on_reagent_change()
 	if(mode == SYRINGE_INJECT && !reagents.total_volume)
 		mode = SYRINGE_DRAW
 	else if(mode == SYRINGE_DRAW && !reagents.get_free_space())
 		mode = SYRINGE_INJECT
 	..()
 
-/obj/item/weapon/reagent_containers/syringe/pickup(mob/user)
+/obj/item/reagent_containers/syringe/pickup(mob/user)
 	..()
 	update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/dropped(mob/user)
+/obj/item/reagent_containers/syringe/dropped(mob/user)
 	..()
 	update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/attack_self(mob/user as mob)
+/obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
 	switch(mode)
 		if(SYRINGE_DRAW)
 			mode = SYRINGE_INJECT
@@ -51,14 +51,14 @@
 			return
 	update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/attack_hand()
+/obj/item/reagent_containers/syringe/attack_hand()
 	..()
 	update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
 	return
 
-/obj/item/weapon/reagent_containers/syringe/afterattack(atom/target, mob/user, proximity)
+/obj/item/reagent_containers/syringe/afterattack(atom/target, mob/user, proximity)
 	if(!proximity || !target.reagents)
 		return
 
@@ -133,7 +133,7 @@
 				to_chat(user, SPAN_NOTICE("The syringe is empty."))
 				mode = SYRINGE_DRAW
 				return
-			if(istype(target, /obj/item/weapon/implantcase/chem))
+			if(istype(target, /obj/item/implantcase/chem))
 				return
 
 			if(!ismob(target) && !target.is_injectable())
@@ -153,7 +153,7 @@
 				var/mob/living/carbon/human/H = target
 				if(istype(H))
 					var/obj/item/clothing/suit/space/SS = H.get_equipped_item(slot_wear_suit)
-					var/obj/item/weapon/rig/RIG = H.get_equipped_item(slot_back)
+					var/obj/item/rig/RIG = H.get_equipped_item(slot_back)
 					if((istype(RIG) && RIG.suit_is_deployed()) || istype(SS))
 						injtime = injtime * 2
 						var/obj/item/organ/external/affected = H.get_organ(BP_CHEST)
@@ -219,7 +219,7 @@
 			to_chat(user, SPAN_NOTICE("You inject [trans] units of the solution. [src] now contains [src.reagents.total_volume] units."))
 
 
-/obj/item/weapon/reagent_containers/syringe/on_update_icon()
+/obj/item/reagent_containers/syringe/on_update_icon()
 	..()
 	cut_overlays()
 
@@ -248,7 +248,7 @@
 		add_overlay(injoverlay)
 		update_wear_icon()
 
-/obj/item/weapon/reagent_containers/syringe/proc/syringestab(mob/living/carbon/target as mob, mob/living/carbon/user as mob)
+/obj/item/reagent_containers/syringe/proc/syringestab(mob/living/carbon/target as mob, mob/living/carbon/user as mob)
 	if(ishuman(target))
 
 		var/mob/living/carbon/human/H = target
@@ -293,7 +293,7 @@
 	admin_inject_log(user, target, src, contained_reagents, trans, violent=1)
 	break_syringe(target, user)
 
-/obj/item/weapon/reagent_containers/syringe/proc/break_syringe(mob/living/carbon/target, mob/living/carbon/user)
+/obj/item/reagent_containers/syringe/proc/break_syringe(mob/living/carbon/target, mob/living/carbon/user)
 	if(!breakable)
 		return
 
@@ -305,13 +305,13 @@
 		add_fingerprint(user)
 	update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/blitzshell
+/obj/item/reagent_containers/syringe/blitzshell
 	name = "blitzshell syringe"
 	desc = "A blitzshell syringe."
 	breakable = FALSE
 	spawn_tags = null
 
-/obj/item/weapon/reagent_containers/syringe/ld50_syringe
+/obj/item/reagent_containers/syringe/ld50_syringe
 	name = "lethal injection syringe"
 	desc = "A syringe used for lethal injections."
 	amount_per_transfer_from_this = 60
@@ -319,7 +319,7 @@
 	visible_name = "a giant syringe"
 	time = 300
 
-/obj/item/weapon/reagent_containers/syringe/ld50_syringe/afterattack(obj/target, mob/user, flag)
+/obj/item/reagent_containers/syringe/ld50_syringe/afterattack(obj/target, mob/user, flag)
 	if(mode == SYRINGE_DRAW && ismob(target)) // No drawing 50 units of blood at once
 		to_chat(user, SPAN_NOTICE("This needle isn't designed for drawing blood."))
 		return
@@ -328,7 +328,7 @@
 		return
 	..()
 
-/obj/item/weapon/reagent_containers/syringe/large
+/obj/item/reagent_containers/syringe/large
 	name = "large syringe"
 	desc = "A large syringe for those patients who needs a little more"
 	icon = 'icons/obj/large_syringe.dmi'
@@ -348,125 +348,125 @@
 /// Syringes. END
 ////////////////////////////////////////////////////////////////////////////////
 
-/obj/item/weapon/reagent_containers/syringe/inaprovaline
+/obj/item/reagent_containers/syringe/inaprovaline
 	name = "syringe (inaprovaline)"
 	desc = "Contains inaprovaline - a stimulant used to stabilize patients."
 	preloaded_reagents = list("inaprovaline" = 15)
 	spawn_tags = SPAWN_TAG_MEDICINE_COMMON
 	rarity_value = 10
 
-/obj/item/weapon/reagent_containers/syringe/antitoxin
+/obj/item/reagent_containers/syringe/antitoxin
 	name = "syringe (anti-toxin)"
 	desc = "Contains dylovene - a broad spectrum antitoxin."
 	preloaded_reagents = list("anti_toxin" = 15)
 	spawn_tags = SPAWN_TAG_MEDICINE_COMMON
 	rarity_value = 10
 
-/obj/item/weapon/reagent_containers/syringe/tricordrazine
+/obj/item/reagent_containers/syringe/tricordrazine
 	name = "syringe (tricordrazine)"
 	desc = "Contains tricordrazine - a stimulant that can be used to treat a wide range of injuries."
 	preloaded_reagents = list("tricordrazine" = 15)
 	spawn_tags = SPAWN_TAG_MEDICINE_COMMON
 	rarity_value = 15
 
-/obj/item/weapon/reagent_containers/syringe/spaceacillin
+/obj/item/reagent_containers/syringe/spaceacillin
 	name = "syringe (spaceacillin)"
 	desc = "Contains spaceacillin - an antibacterial agent."
 	preloaded_reagents = list("spaceacillin" = 15)
 	spawn_tags = SPAWN_TAG_MEDICINE
 	rarity_value = 20
 
-/obj/item/weapon/reagent_containers/syringe/hyperzine
+/obj/item/reagent_containers/syringe/hyperzine
 	name = "syringe (hyperzine)"
 	desc = "Contains hyperzine - a long lasting muscle stimulant."
 	preloaded_reagents = list("hyperzine" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/drugs
+/obj/item/reagent_containers/syringe/drugs
 	name = "syringe (drugs)"
 	desc = "Contains aggressive drugs meant for torture."
 	preloaded_reagents = list("space_drugs" = 5, "mindbreaker" = 5, "cryptobiolin" = 5)
 	spawn_tags = SPAWN_ITEM_CONTRABAND
 	rarity_value = 50
 
-/obj/item/weapon/reagent_containers/syringe/drugs_recreational
+/obj/item/reagent_containers/syringe/drugs_recreational
 	name = "syringe (drugs)"
 	desc = "Contains recreational drugs."
 	preloaded_reagents = list("space_drugs" = 15)
 	spawn_tags = SPAWN_ITEM_CONTRABAND
 	rarity_value = 40
 
-/obj/item/weapon/reagent_containers/syringe/ld50_syringe/choral
+/obj/item/reagent_containers/syringe/ld50_syringe/choral
 	preloaded_reagents = list("chloralhydrate" = 50)
 
-/obj/item/weapon/reagent_containers/syringe/stim
+/obj/item/reagent_containers/syringe/stim
 	name = "syringe (stim)"
 
-/obj/item/weapon/reagent_containers/syringe/stim/mbr
+/obj/item/reagent_containers/syringe/stim/mbr
 	name = "syringe (Machine binding ritual)"
 	desc = "Contains ethanol based stimulator. Used as ritual drink during technomancers initiation into tribe."
 	preloaded_reagents = list("machine binding ritual" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/cherrydrops
+/obj/item/reagent_containers/syringe/stim/cherrydrops
 	name = "syringe (Cherry Drops)"
 	desc = "Contains a cherry drops stimulator."
 	preloaded_reagents = list("cherry drops" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/pro_surgeon
+/obj/item/reagent_containers/syringe/stim/pro_surgeon
 	name = "syringe (ProSurgeon)"
 	desc = "Contains a prosurgeon stimulating drug, used to reduce tremor to minimum."
 	preloaded_reagents = list("prosurgeon" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/violence
+/obj/item/reagent_containers/syringe/stim/violence
 	name = "syringe (Violence)"
 	desc = "Contains stimulator famous for it's ability to increase peak muscle strength."
 	preloaded_reagents = list("violence" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/bouncer
+/obj/item/reagent_containers/syringe/stim/bouncer
 	name = "syringe (Bouncer)"
 	desc = "Contains stimulator that boost regenerative capabilities."
 	preloaded_reagents = list("bouncer" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/steady
+/obj/item/reagent_containers/syringe/stim/steady
 	name = "syringe (Steady)"
 	desc = "Contains stimulator with ability to enchant reaction time."
 	preloaded_reagents = list("steady" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/machine_spirit
+/obj/item/reagent_containers/syringe/stim/machine_spirit
 	name = "syringe (Machine Spirit)"
 	desc = "Contains ethanol based stimulator. Used to initiate technomancer into inner cirle."
 	preloaded_reagents = list("machine spirit" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/grape_drops
+/obj/item/reagent_containers/syringe/stim/grape_drops
 	name = "syringe (Grape Drops)"
 	desc = "Contains powerful stimulator which boosts creativity. Often used by scientists."
 	preloaded_reagents = list("grape drops" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/ultra_surgeon
+/obj/item/reagent_containers/syringe/stim/ultra_surgeon
 	name = "syringe (UltraSurgeon)"
 	desc = "Contains strong stimulating drug, which stabilizes muscle motility. Used as last resort during complex surgeries."
 	preloaded_reagents = list("ultrasurgeon" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/violence_ultra
+/obj/item/reagent_containers/syringe/stim/violence_ultra
 	name = "syringe (Violence Ultra)"
 	desc = "Contains effective electrolyte based muscle stimulant. Often used by most violent gangs"
 	preloaded_reagents = list("violence ultra" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/boxer
+/obj/item/reagent_containers/syringe/stim/boxer
 	name = "syringe (Boxer)"
 	desc = "Contains stimulator which boosts robustness of human body. Known for its use by boxers."
 	preloaded_reagents = list("boxer" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/turbo
+/obj/item/reagent_containers/syringe/stim/turbo
 	name = "syringe (TURBO)"
 	desc = "Contains potent mix of cardiovascular and neuro stimulators. Used by sharpshooters to increase accuracy."
 	preloaded_reagents = list("turbo" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/party_drops
+/obj/item/reagent_containers/syringe/stim/party_drops
 	name = "syringe (Party Drops)"
 	desc = "Contains stimulating substance which pumps intelectual capabilities to theoretical maximum. Used as delicacy by some high ranking scientists."
 	preloaded_reagents = list("party drops" = 15)
 
-/obj/item/weapon/reagent_containers/syringe/stim/menace
+/obj/item/reagent_containers/syringe/stim/menace
 	name = "syringe (MENACE)"
 	desc = "Contains awfully potent stimulant. Notorious for its usage by suicide troops."
 	preloaded_reagents = list("menace" = 15)
@@ -475,14 +475,14 @@
 /// Large Syringes.
 ////////////////////////////////////////////////////////////////////////////////
 
-/obj/item/weapon/reagent_containers/syringe/large/antitoxin
+/obj/item/reagent_containers/syringe/large/antitoxin
 	name = "large syringe (anti-toxin)"
 	desc = "Contains dylovene - a broad spectrum antitoxin."
 	preloaded_reagents = list("anti_toxin" = 30)
 	matter = list(MATERIAL_BIOMATTER = 5)
 	spawn_blacklisted = TRUE
 
-/obj/item/weapon/reagent_containers/syringe/large/dexalin_plus
+/obj/item/reagent_containers/syringe/large/dexalin_plus
 	name = "large syringe (dexalin+)"
 	desc = "Contains dexalin plus - a treatment of oxygen deprivation."
 	preloaded_reagents = list("dexalinp" = 30)

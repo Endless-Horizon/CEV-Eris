@@ -13,7 +13,7 @@ list/slot_data - список элементов инвентаря. С помо
 icon/icon -испольхуемый файл dmi
 HUDfrippery - Список элементов украшения ХУДа. С помощью данного списка заполняются HUDfrippery у моба
 HUDoverlays - Список "технических" элементов. С помощью данного списка заполняются HUDtech и дополняется HUDprocess у моба
-ConteinerData - Информация для функции /obj/item/weapon/storage/proc/space_orient_objs и /obj/item/weapon/storage/proc/slot_orient_objs.
+ConteinerData - Информация для функции /obj/item/storage/proc/space_orient_objs и /obj/item/storage/proc/slot_orient_objs.
 IconUnderlays - Список андерлеев для элемнтов ХУДа при "максимализированной" версии. Может быть пустым.
 MinStyleFlag - Флаг, обозначающий имеет ли данный тип ХУДа "минимализированную" версию. Принимает значение 1 или 0
 

@@ -35,8 +35,8 @@
 /area/template_noop)
 "by" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hos,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/bedsheet/hos,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -79,7 +79,7 @@
 /area/template_noop)
 "dI" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/deferred/rations,
+/obj/item/storage/deferred/rations,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -100,7 +100,7 @@
 	},
 /area/template_noop)
 "eg" = (
-/obj/item/weapon/storage/deferred/crate/alcohol,
+/obj/item/storage/deferred/crate/alcohol,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -109,7 +109,7 @@
 	},
 /area/template_noop)
 "eo" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/effect/decal/cleanable/vomit,
 /turf/unsimulated/floor{
 	icon_state = "lino"
@@ -117,19 +117,19 @@
 /area/template_noop)
 "fb" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka{
+/obj/item/reagent_containers/food/drinks/bottle/vodka{
 	pixel_x = 5;
 	pixel_y = 17
 	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka{
+/obj/item/reagent_containers/food/drinks/bottle/vodka{
 	pixel_x = 6;
 	pixel_y = 7
 	},
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass{
+/obj/item/reagent_containers/food/drinks/drinkingglass{
 	pixel_x = -5;
 	pixel_y = 1
 	},
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass{
+/obj/item/reagent_containers/food/drinks/drinkingglass{
 	pixel_x = -5;
 	pixel_y = 15
 	},
@@ -139,11 +139,11 @@
 /area/template_noop)
 "fM" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/snacks/mint,
-/obj/item/weapon/reagent_containers/food/condiment/saltshaker{
+/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = -3
 	},
-/obj/item/weapon/reagent_containers/food/condiment/peppermill{
+/obj/item/reagent_containers/food/condiment/peppermill{
 	pixel_x = 3
 	},
 /turf/unsimulated/floor{
@@ -171,11 +171,11 @@
 /area/template_noop)
 "iY" = (
 /obj/structure/table/standard,
-/obj/item/weapon/packageWrap,
-/obj/item/weapon/reagent_containers/food/condiment/enzyme{
+/obj/item/packageWrap,
+/obj/item/reagent_containers/food/condiment/enzyme{
 	layer = 5
 	},
-/obj/item/weapon/reagent_containers/food/condiment/enzyme{
+/obj/item/reagent_containers/food/condiment/enzyme{
 	layer = 5
 	},
 /obj/structure/cable/green,
@@ -185,7 +185,7 @@
 /area/template_noop)
 "js" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /obj/spawner/booze/low_chance,
 /turf/unsimulated/floor{
 	icon_state = "lino"
@@ -193,7 +193,7 @@
 /area/template_noop)
 "jP" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/deferred/crate/tools,
+/obj/item/storage/deferred/crate/tools,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -228,7 +228,7 @@
 /area/template_noop)
 "kO" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/drinkingglasses{
+/obj/item/storage/box/drinkingglasses{
 	pixel_x = 1;
 	pixel_y = 4
 	},
@@ -278,10 +278,10 @@
 /area/template_noop)
 "oL" = (
 /obj/structure/closet,
-/obj/item/weapon/tool/pickaxe/diamonddrill,
-/obj/item/weapon/tool/pickaxe/diamonddrill,
-/obj/item/weapon/storage/backpack/military,
-/obj/item/weapon/storage/backpack/military,
+/obj/item/tool/pickaxe/diamonddrill,
+/obj/item/tool/pickaxe/diamonddrill,
+/obj/item/storage/backpack/military,
+/obj/item/storage/backpack/military,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -333,7 +333,7 @@
 /area/template_noop)
 "rd" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /obj/item/clothing/head/ushanka,
 /turf/unsimulated/floor{
 	icon_state = "lino"
@@ -347,11 +347,11 @@
 /turf/simulated/floor/airless,
 /area/template_noop)
 "rL" = (
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka{
+/obj/item/reagent_containers/food/drinks/bottle/vodka{
 	pixel_x = 3;
 	pixel_y = 12
 	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/wine{
+/obj/item/reagent_containers/food/drinks/bottle/wine{
 	pixel_x = -1;
 	pixel_y = 8
 	},
@@ -376,7 +376,7 @@
 /area/template_noop)
 "ss" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/deferred/meds,
+/obj/item/storage/deferred/meds,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -409,7 +409,7 @@
 	},
 /area/template_noop)
 "um" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -424,24 +424,24 @@
 /area/template_noop)
 "vz" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/glass/beaker{
+/obj/item/reagent_containers/glass/beaker{
 	pixel_x = 5
 	},
-/obj/item/weapon/reagent_containers/glass/beaker{
+/obj/item/reagent_containers/glass/beaker{
 	pixel_x = 5
 	},
 /obj/machinery/light,
-/obj/item/weapon/material/kitchen/rollingpin,
+/obj/item/material/kitchen/rollingpin,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},
 /area/template_noop)
 "wR" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/belt/tactical,
-/obj/item/weapon/storage/belt/tactical,
-/obj/item/weapon/storage/belt/tactical,
-/obj/item/weapon/storage/pouch/large_generic,
+/obj/item/storage/belt/tactical,
+/obj/item/storage/belt/tactical,
+/obj/item/storage/belt/tactical,
+/obj/item/storage/pouch/large_generic,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -459,7 +459,7 @@
 /area/template_noop)
 "wX" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/cyan,
+/obj/item/folder/cyan,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -472,7 +472,7 @@
 	},
 /area/template_noop)
 "yJ" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/spawner/booze/low_chance,
 /turf/unsimulated/floor{
 	icon_state = "cult";
@@ -487,7 +487,7 @@
 	},
 /area/template_noop)
 "zJ" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/spawner/junkfood/rotten,
 /turf/unsimulated/floor{
 	icon_state = "cult";
@@ -507,7 +507,7 @@
 /turf/template_noop,
 /area/template_noop)
 "As" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -523,14 +523,14 @@
 /area/template_noop)
 "Bv" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /obj/item/clothing/under/serbiansuit/brown,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
 /area/template_noop)
 "Bz" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/spawner/booze/low_chance,
 /turf/simulated/floor/plating/under,
 /area/template_noop)
@@ -556,15 +556,15 @@
 /area/template_noop)
 "DP" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
 /area/template_noop)
 "Ee" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -579,7 +579,7 @@
 /area/template_noop)
 "Eo" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /obj/item/clothing/under/serbiansuit,
 /turf/unsimulated/floor{
 	icon_state = "lino"
@@ -609,7 +609,7 @@
 /obj/machinery/shower{
 	pixel_y = 32
 	},
-/obj/item/weapon/soap/deluxe,
+/obj/item/soap/deluxe,
 /obj/structure/curtain/open/shower,
 /turf/unsimulated/floor{
 	dir = 2;
@@ -700,7 +700,7 @@
 /area/template_noop)
 "PN" = (
 /obj/structure/table/standard,
-/obj/item/weapon/deck/cards,
+/obj/item/deck/cards,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -805,7 +805,7 @@
 /area/template_noop)
 "Yj" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/deferred/rations,
+/obj/item/storage/deferred/rations,
 /obj/machinery/light,
 /turf/unsimulated/floor{
 	icon_state = "cult";
@@ -813,7 +813,7 @@
 	},
 /area/template_noop)
 "Yp" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/spawner/junkfood/rotten,
 /turf/unsimulated/floor{
 	icon_state = "lino"

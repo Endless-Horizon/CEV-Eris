@@ -1,5 +1,5 @@
 //Warning! If you change icon_state or item_state, make sure you change path for sneath as well. icons/obj/sneath.dmi
-/obj/item/weapon/tool/sword/nt
+/obj/item/tool/sword/nt
 	name = "NT Shortsword"
 	desc = "A saint looking sword, made to do God's work."
 	icon = 'icons/obj/nt_melee.dmi'
@@ -13,7 +13,7 @@
 	price_tag = 300
 	matter = list(MATERIAL_BIOMATTER = 25, MATERIAL_STEEL = 5)
 
-/obj/item/weapon/tool/sword/nt/longsword
+/obj/item/tool/sword/nt/longsword
 	name = "NT Longsword"
 	desc = "A saint looking longsword, recommended by experianced crusaders."
 	icon_state = "nt_longsword"
@@ -25,7 +25,7 @@
 	matter = list(MATERIAL_BIOMATTER = 75, MATERIAL_STEEL = 10, MATERIAL_PLASTEEL = 5, MATERIAL_DIAMOND = 1)
 
 
-/obj/item/weapon/tool/knife/dagger/nt
+/obj/item/tool/knife/dagger/nt
 	name = "NT Dagger"
 	desc = "A saint looking dagger, even God have mercy."
 	icon = 'icons/obj/nt_melee.dmi'
@@ -37,7 +37,7 @@
 	price_tag = 120
 	matter = list(MATERIAL_BIOMATTER = 10, MATERIAL_STEEL = 1)
 
-/obj/item/weapon/tool/sword/nt/halberd
+/obj/item/tool/sword/nt/halberd
 	name = "NT Halberd"
 	desc = "A saint looking halberd, for emergency situation."
 	icon_state = "nt_halberd"
@@ -50,7 +50,7 @@
 	price_tag = 600
 	matter = list(MATERIAL_BIOMATTER = 80, MATERIAL_STEEL = 8, MATERIAL_WOOD = 10, MATERIAL_PLASTEEL = 2)
 
-/obj/item/weapon/tool/sword/nt/scourge
+/obj/item/tool/sword/nt/scourge
 	name = "NT Scourge"
 	desc = "A saint looking scourge, extreme punisment. Can be extended to slice stronger."
 	icon_state = "nt_scourge"
@@ -64,7 +64,7 @@
 	price_tag = 1000
 	matter = list(MATERIAL_BIOMATTER = 50, MATERIAL_STEEL = 5, MATERIAL_PLASTEEL = 2)
 
-/obj/item/weapon/tool/sword/nt/scourge/attack_self(mob/user)
+/obj/item/tool/sword/nt/scourge/attack_self(mob/user)
 	if(isBroken)
 		to_chat(user, SPAN_WARNING("\The [src] is broken."))
 		return
@@ -73,7 +73,7 @@
 	else
 		extend()
 
-/obj/item/weapon/tool/sword/nt/scourge/proc/extend()
+/obj/item/tool/sword/nt/scourge/proc/extend()
 	extended = TRUE
 	force += (force_extended - initial(force))
 	armor_penetration += (armor_penetration_extended - initial(armor_penetration))
@@ -81,7 +81,7 @@
 	w_class = ITEM_SIZE_HUGE
 	update_icon()
 
-/obj/item/weapon/tool/sword/nt/scourge/proc/unextend()
+/obj/item/tool/sword/nt/scourge/proc/unextend()
 	extended = FALSE
 	w_class = initial(w_class)
 	slot_flags = initial(slot_flags)
@@ -89,14 +89,14 @@
 	refresh_upgrades() //it's also sets all to default
 	update_icon()
 
-/obj/item/weapon/tool/sword/nt/scourge/on_update_icon()
+/obj/item/tool/sword/nt/scourge/on_update_icon()
 	if(extended)
 		icon_state = initial(icon_state) + "_extended"
 	else
 		icon_state = initial(icon_state)
 	..()
 
-/obj/item/weapon/shield/riot/nt
+/obj/item/shield/riot/nt
 	name = "NT Shield"
 	desc = "A saint looking shield, let the God protect you."
 	icon = 'icons/obj/nt_melee.dmi'
@@ -110,8 +110,8 @@
 	price_tag = 1000
 	base_block_chance = 40
 
-/obj/item/weapon/shield/riot/nt/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/melee/baton) || istype(W, /obj/item/weapon/tool/sword/nt))
+/obj/item/shield/riot/nt/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/melee/baton) || istype(W, /obj/item/tool/sword/nt))
 		on_bash(W, user)
 	else
 		..()

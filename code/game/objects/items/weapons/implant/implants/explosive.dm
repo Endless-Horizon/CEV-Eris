@@ -1,4 +1,4 @@
-/obj/item/weapon/implant/explosive
+/obj/item/implant/explosive
 	name = "explosive implant"
 	desc = "A military grade micro bio-explosive. Highly dangerous."
 	var/elevel = "Localized Limb"
@@ -8,15 +8,15 @@
 	is_legal = FALSE
 	origin_tech = list(TECH_MATERIAL=2, TECH_COMBAT=3, TECH_BIO=4, TECH_COVERT=4)
 
-/obj/item/weapon/implant/explosive/New()
+/obj/item/implant/explosive/New()
 	..()
 	add_hearing()
 
-/obj/item/weapon/implant/explosive/Destroy()
+/obj/item/implant/explosive/Destroy()
 	remove_hearing()
 	. = ..()
 
-/obj/item/weapon/implant/explosive/get_data()
+/obj/item/implant/explosive/get_data()
 	var/data = {"
 		<b>Implant Specifications:</b><BR>
 		<b>Name:</b> Robust Corp RX-78 Intimidation Class Implant<BR>
@@ -29,17 +29,17 @@
 		<b>Integrity:</b> Implant will occasionally be degraded by the body's immune system and thus will occasionally malfunction."}
 	return data
 
-/obj/item/weapon/implant/explosive/hear_talk(mob/M, msg, verb, datum/language/speaking, speech_volume)
+/obj/item/implant/explosive/hear_talk(mob/M, msg, verb, datum/language/speaking, speech_volume)
 	hear(msg)
 
-/obj/item/weapon/implant/explosive/hear(var/msg)
+/obj/item/implant/explosive/hear(var/msg)
 	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
 	msg = replace_characters(msg, replacechars)
 	if(findtext(msg,phrase))
 		activate()
 		qdel(src)
 
-/obj/item/weapon/implant/explosive/activate()
+/obj/item/implant/explosive/activate()
 	if (malfunction == MALFUNCTION_PERMANENT)
 		return
 
@@ -82,7 +82,7 @@
 	if(t)
 		t.hotspot_expose(3500,125)
 
-/obj/item/weapon/implant/explosive/on_install(mob/living/source)
+/obj/item/implant/explosive/on_install(mob/living/source)
 	elevel = alert("What sort of explosion would you prefer?", "Implant Intent", "Localized Limb", "Destroy Body", "Full Explosion")
 	phrase = input("Choose activation phrase:") as text
 	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
@@ -90,7 +90,7 @@
 	usr.mind.store_memory("Explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.", 0, 0)
 	to_chat(usr, "The implanted explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.")
 
-/obj/item/weapon/implant/explosive/proc/small_boom()
+/obj/item/implant/explosive/proc/small_boom()
 	if (ishuman(wearer) && part)
 		wearer.visible_message("<span class='warning'>Something beeps inside [wearer][part ? "'s [part.name]" : ""]!</span>")
 		playsound(loc, 'sound/items/countdown.ogg', 75, 1, -3)
@@ -105,7 +105,7 @@
 			explosion(get_turf(wearer), -1, -1, 2, 3)
 			qdel(src)
 
-/obj/item/weapon/implant/explosive/malfunction(severity)
+/obj/item/implant/explosive/malfunction(severity)
 	if (malfunction)
 		return
 	malfunction = MALFUNCTION_TEMPORARY
@@ -126,13 +126,13 @@
 		malfunction = MALFUNCTION_NONE
 
 
-/obj/item/weapon/implantcase/explosive
+/obj/item/implantcase/explosive
 	name = "glass case - 'explosive'"
 	desc = "A case containing an explosive implant."
-	implant = new /obj/item/weapon/implant/explosive
+	implant = new /obj/item/implant/explosive
 
 
-/obj/item/weapon/implanter/explosive
+/obj/item/implanter/explosive
 	name = "implanter (E)"
-	implant = /obj/item/weapon/implant/explosive
+	implant = /obj/item/implant/explosive
 	spawn_tags = null

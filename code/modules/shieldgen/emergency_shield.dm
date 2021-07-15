@@ -37,7 +37,7 @@
 	if(!height || air_group) return 0
 	else return ..()
 
-/obj/machinery/shield/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/shield/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return
 
 	//Calculate damage
@@ -312,7 +312,7 @@
 				to_chat(user, SPAN_NOTICE("You repair the [src]!"))
 				update_icon()
 
-	else if(istype(I, /obj/item/weapon/card/id) || istype(I, /obj/item/modular_computer))
+	else if(istype(I, /obj/item/card/id) || istype(I, /obj/item/modular_computer))
 		if(src.allowed(user))
 			src.locked = !src.locked
 			to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")

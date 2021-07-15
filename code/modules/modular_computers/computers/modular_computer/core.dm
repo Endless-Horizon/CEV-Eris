@@ -209,7 +209,7 @@
 		all_threads.Remove(PRG)
 
 	//Turn on all non-disabled hardware
-	for (var/obj/item/weapon/computer_hardware/H in src)
+	for (var/obj/item/computer_hardware/H in src)
 		if (H.enabled)
 			H.disabled()
 	if(loud)
@@ -222,7 +222,7 @@
 	update_icon()
 
 	//Turn on all non-disabled hardware
-	for (var/obj/item/weapon/computer_hardware/H in src)
+	for (var/obj/item/computer_hardware/H in src)
 		if (H.enabled)
 			H.enabled()
 
@@ -232,7 +232,7 @@
 	if(user)
 		ui_interact(user)
 
-/obj/item/modular_computer/proc/autorun_program(obj/item/weapon/computer_hardware/hard_drive/disk)
+/obj/item/modular_computer/proc/autorun_program(obj/item/computer_hardware/hard_drive/disk)
 	var/datum/computer_file/data/autorun = disk?.find_file_by_name("AUTORUN")
 	if(istype(autorun))
 		run_program(autorun.stored_data, disk)
@@ -248,7 +248,7 @@
 	if(istype(user))
 		ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
 
-/obj/item/modular_computer/proc/run_program(prog_name, obj/item/weapon/computer_hardware/hard_drive/disk)
+/obj/item/modular_computer/proc/run_program(prog_name, obj/item/computer_hardware/hard_drive/disk)
 	var/datum/computer_file/program/P = null
 	var/mob/user = usr
 
@@ -290,7 +290,7 @@
 		update_icon()
 	return TRUE
 
-/obj/item/modular_computer/proc/on_disk_disabled(obj/item/weapon/computer_hardware/hard_drive/disk)
+/obj/item/modular_computer/proc/on_disk_disabled(obj/item/computer_hardware/hard_drive/disk)
 	// Close all running apps before the disk is removed
 	for(var/p in all_threads)
 		var/datum/computer_file/program/PRG = p
@@ -298,7 +298,7 @@
 			PRG.event_disk_removed()
 
 /obj/item/modular_computer/proc/update_label()
-	var/obj/item/weapon/card/id/I = GetIdCard()
+	var/obj/item/card/id/I = GetIdCard()
 	if (istype(I))
 		SetName("[initial(name)]-[I.registered_name] ([I.assignment])")
 		return

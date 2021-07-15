@@ -210,9 +210,9 @@
 					user.visible_message(SPAN_DANGER("[user] has removed the electronics from \the [src]."),
 										"You have removed the electronics from [src].")
 					if (stat & BROKEN)
-						new /obj/item/weapon/electronics/circuitboard/broken(src.loc)
+						new /obj/item/electronics/circuitboard/broken(src.loc)
 					else
-						new/obj/item/weapon/electronics/airalarm(src.loc)
+						new/obj/item/electronics/airalarm(src.loc)
 					var/obj/structure/firedoor_assembly/FA = new/obj/structure/firedoor_assembly(src.loc)
 					FA.anchored = TRUE
 					FA.density = TRUE

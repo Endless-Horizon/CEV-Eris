@@ -19,20 +19,20 @@
 /obj/structure/scrap_cube/attackby(obj/item/W, mob/user)
 	user.do_attack_animation(src)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if(istype(W,/obj/item/weapon) && W.force >= 8)
+	if(istype(W,/obj/item) && W.force >= 8)
 		visible_message(SPAN_NOTICE("\The [user] smashes \the [src], restoring its original form."))
 		make_pile()
 	else
 		visible_message(SPAN_NOTICE("\The [user] smashes \the [src], but [W] is too weak to break it!"))
 
-/obj/item/weapon/scrap_lump
+/obj/item/scrap_lump
 	name = "unrefined scrap"
 	desc = "This thing is messed up beyond any recognition. Into the grinder it goes!"
 	icon = 'icons/obj/structures/scrap/refine.dmi'
 	icon_state = "unrefined"
 	w_class = ITEM_SIZE_BULKY
 
-/obj/item/weapon/scrap_lump/Initialize()
+/obj/item/scrap_lump/Initialize()
 	. = ..()
 	create_reagents(10)
 	var/reag_num = rand(0, 3)

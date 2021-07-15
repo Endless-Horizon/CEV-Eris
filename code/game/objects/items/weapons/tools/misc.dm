@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/omnitool
+/obj/item/tool/omnitool
 	name = "Asters \"Munchkin 5000\""
 	desc = "A fuel powered monster of a tool. Its welding attachment is capable of welding things without an eye-damaging flash, so no eye protection is required."
 	icon_state = "omnitool"
@@ -16,7 +16,7 @@
 	rarity_value = 96
 	spawn_tags = SPAWN_TAG_TOOL_ADVANCED
 
-/obj/item/weapon/tool/medmultitool
+/obj/item/tool/medmultitool
 	name = "One Star medmultitool"
 	desc = "A compact One Star medical multitool. It has all surgery tools."
 	icon_state = "medmulti"
@@ -32,7 +32,7 @@
 	spawn_frequency = 10
 	spawn_tags = SPAWN_TAG_OS_TOOL
 
-/obj/item/weapon/tool/medmultitool/medimplant
+/obj/item/tool/medmultitool/medimplant
 	name = "Medical Omnitool"
 	desc = "An all-in-one medical tool implant based on the legendary One Star model. While convenient, it is less efficient than more advanced surgical tools, such as laser scalpels, and requires a power cell."
 	icon_state = "medimplant"
@@ -47,12 +47,12 @@
 	workspeed = 0.8
 
 	use_power_cost = 1.2
-	suitable_cell = /obj/item/weapon/cell/medium
+	suitable_cell = /obj/item/cell/medium
 
 	max_upgrades = 1
 	spawn_tags = null
 
-/obj/item/weapon/tool/engimplant
+/obj/item/tool/engimplant
 	name = "Engineering Omnitool"
 	desc = "An all-in-one engineering tool implant. Convenient to use and more effective than the basics, but much less efficient than customized or more specialized tools."
 	icon_state = "engimplant"
@@ -64,7 +64,7 @@
 	workspeed = 0.8
 
 	use_power_cost = 0.8
-	suitable_cell = /obj/item/weapon/cell/medium
+	suitable_cell = /obj/item/cell/medium
 
 	max_upgrades = 1
 	spawn_tags = null
@@ -72,39 +72,39 @@
 	var/buffer_name
 	var/atom/buffer_object
 
-/obj/item/weapon/tool/engimplant/Destroy() // code for omnitool buffers was copied from multitools.dm
+/obj/item/tool/engimplant/Destroy() // code for omnitool buffers was copied from multitools.dm
 	unregister_buffer(buffer_object)
 	return ..()
 
-/obj/item/weapon/tool/engimplant/proc/get_buffer(typepath)
+/obj/item/tool/engimplant/proc/get_buffer(typepath)
 	get_buffer_name(TRUE)
 	if(buffer_object && (!typepath || istype(buffer_object, typepath)))
 		return buffer_object
 
-/obj/item/weapon/tool/engimplant/proc/get_buffer_name(null_name_if_missing = FALSE)
+/obj/item/tool/engimplant/proc/get_buffer_name(null_name_if_missing = FALSE)
 	if(buffer_object)
 		buffer_name = buffer_object.name
 	else if(null_name_if_missing)
 		buffer_name = null
 	return buffer_name
 
-/obj/item/weapon/tool/engimplant/proc/set_buffer(atom/buffer)
+/obj/item/tool/engimplant/proc/set_buffer(atom/buffer)
 	if(!buffer || istype(buffer))
 		buffer_name = buffer ? buffer.name : null
 		if(buffer != buffer_object)
 			unregister_buffer(buffer_object)
 			buffer_object = buffer
 			if(buffer_object)
-				GLOB.destroyed_event.register(buffer_object, src, /obj/item/weapon/tool/engimplant/proc/unregister_buffer)
+				GLOB.destroyed_event.register(buffer_object, src, /obj/item/tool/engimplant/proc/unregister_buffer)
 
-/obj/item/weapon/tool/engimplant/proc/unregister_buffer(atom/buffer_to_unregister)
+/obj/item/tool/engimplant/proc/unregister_buffer(atom/buffer_to_unregister)
 	// Only remove the buffered object, don't reset the name
 	// This means one cannot know if the buffer has been destroyed until one attempts to use it.
 	if(buffer_to_unregister == buffer_object && buffer_object)
 		GLOB.destroyed_event.unregister(buffer_object, src)
 		buffer_object = null
 
-/obj/item/weapon/tool/engimplant/resolve_attackby(atom/A, mob/user)
+/obj/item/tool/engimplant/resolve_attackby(atom/A, mob/user)
 	if(!isobj(A))
 		return ..(A, user)
 

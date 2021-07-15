@@ -1,9 +1,9 @@
 /decl/hierarchy/outfit/job/church
 	l_ear = /obj/item/device/radio/headset/church
-	id_type = /obj/item/weapon/card/id/church
+	id_type = /obj/item/card/id/church
 	pda_type = /obj/item/modular_computer/pda/church
 	hierarchy_type = /decl/hierarchy/outfit/job/church
-	backpack_contents = list(/obj/item/weapon/book/ritual/cruciform = 1)
+	backpack_contents = list(/obj/item/book/ritual/cruciform = 1)
 
 /decl/hierarchy/outfit/job/church/New()
 	..()
@@ -12,13 +12,13 @@
 /decl/hierarchy/outfit/job/church/chaplain
 	name = OUTFIT_JOB_NAME("NeoTheology Preacher")
 	l_ear = /obj/item/device/radio/headset/heads/preacher
-	id_type = /obj/item/weapon/card/id/chaplain
+	id_type = /obj/item/card/id/chaplain
 	head = /obj/item/clothing/head/preacher
 	uniform = /obj/item/clothing/under/rank/preacher
 	suit = /obj/item/clothing/suit/storage/neotheology_coat
 	shoes = /obj/item/clothing/shoes/reinforced
 	gloves = /obj/item/clothing/gloves/thick
-	backpack_contents = list(/obj/item/weapon/book/ritual/cruciform/priest = 1)
+	backpack_contents = list(/obj/item/book/ritual/cruciform/priest = 1)
 
 /decl/hierarchy/outfit/job/church/acolyte
 	name = OUTFIT_JOB_NAME("NeoTheology Acolyte")

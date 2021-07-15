@@ -31,9 +31,9 @@
 	playsound(loc, "robot_talk_heavy", 100, 2, 0)
 	var/turf/Tsec = get_turf(src)
 
-	new /obj/item/weapon/secbot_assembly/ed209_assembly(Tsec)
+	new /obj/item/secbot_assembly/ed209_assembly(Tsec)
 
-	var/obj/item/weapon/gun/energy/taser/G = new /obj/item/weapon/gun/energy/taser(Tsec)
+	var/obj/item/gun/energy/taser/G = new /obj/item/gun/energy/taser(Tsec)
 	G.cell.charge = 0
 	if(prob(50))
 		new /obj/item/robot_parts/l_leg(Tsec)
@@ -68,7 +68,7 @@
 	P.launch(A, def_zone)
 // Assembly
 
-/obj/item/weapon/secbot_assembly/ed209_assembly
+/obj/item/secbot_assembly/ed209_assembly
 	name = "ED-209 assembly"
 	desc = "Some sort of bizarre assembly."
 	icon = 'icons/obj/aibots.dmi'
@@ -77,10 +77,10 @@
 	created_name = "ED-209 Security Robot"
 	var/lasercolor = ""
 
-/obj/item/weapon/secbot_assembly/ed209_assembly/attackby(obj/item/I, mob/user)
+/obj/item/secbot_assembly/ed209_assembly/attackby(obj/item/I, mob/user)
 	..()
 
-	if(istype(I, /obj/item/weapon/pen))
+	if(istype(I, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
 		if(!t)
 			return
@@ -184,7 +184,7 @@
 				return
 
 		if(7)
-			if(istype(I, /obj/item/weapon/gun/energy/taser))
+			if(istype(I, /obj/item/gun/energy/taser))
 				name = "taser ED-209 assembly"
 				build_step++
 				to_chat(user, SPAN_NOTICE("You add [I] to [src]."))
@@ -195,7 +195,7 @@
 				qdel(I)
 
 		if(9)
-			if(istype(I, /obj/item/weapon/cell/large))
+			if(istype(I, /obj/item/cell/large))
 				build_step++
 				to_chat(user, SPAN_NOTICE("You complete the ED-209."))
 				var/turf/T = get_turf(src)

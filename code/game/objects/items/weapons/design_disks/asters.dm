@@ -1,5 +1,5 @@
 // Asters
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/tools
+/obj/item/computer_hardware/hard_drive/portable/design/tools
 	disk_name = "Asters Basic Tool Pack"
 	icon_state = "guild"
 	rarity_value = 5.5
@@ -30,7 +30,7 @@
 		/datum/design/autolathe/device/flamethrower
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/misc
+/obj/item/computer_hardware/hard_drive/portable/design/misc
 	disk_name = "Asters Miscellaneous Pack"
 	icon_state = "guild"
 	rarity_value = 3.5
@@ -64,7 +64,7 @@
 		/datum/design/autolathe/device/mechpainter
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/devices
+/obj/item/computer_hardware/hard_drive/portable/design/devices
 	disk_name = "Asters Devices and Instruments"
 	icon_state = "guild"
 	rarity_value = 3
@@ -91,7 +91,7 @@
 		/datum/design/autolathe/sec/hailer,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/robustcells
+/obj/item/computer_hardware/hard_drive/portable/design/robustcells
 	disk_name = "Asters Robustcells"
 	icon_state = "guild"
 	rarity_value = 3

@@ -13,11 +13,11 @@
 	icon_state = "emerg"
 
 /obj/structure/closet/wall_mounted/emcloset/populate_contents()
-	new /obj/item/weapon/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
 	new /obj/item/clothing/mask/breath(src)
-	new /obj/item/weapon/tank/emergency_oxygen(src)
+	new /obj/item/tank/emergency_oxygen(src)
 	new /obj/item/clothing/mask/breath(src)
-	new /obj/item/weapon/tool/crowbar(src)
+	new /obj/item/tool/crowbar(src)
 
 /obj/structure/closet/wall_mounted/emcloset/escape_pods
 	icon_state = "emerg-escape"
@@ -37,6 +37,6 @@
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/clothing/gloves/thick(src)
 	new /obj/item/clothing/suit/fire(src)
-	new /obj/item/weapon/tank/oxygen/red(src)
-	new /obj/item/weapon/extinguisher(src)
-	new /obj/item/weapon/extinguisher(src)
+	new /obj/item/tank/oxygen/red(src)
+	new /obj/item/extinguisher(src)
+	new /obj/item/extinguisher(src)

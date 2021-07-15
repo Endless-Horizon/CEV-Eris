@@ -70,7 +70,7 @@
 	icon_state = "0-2";
 	pixel_y = 0
 	},
-/obj/item/weapon/disk/autolathe_disk/excelsior,
+/obj/item/disk/autolathe_disk/excelsior,
 /mob/living/carbon/human/dummy,
 /turf/simulated/floor,
 /area/testing/first)
@@ -78,15 +78,15 @@
 /turf/simulated/floor,
 /area/testing/first)
 "ao" = (
-/obj/item/weapon/implantcase/excelsior,
+/obj/item/implantcase/excelsior,
 /turf/simulated/floor,
 /area/testing/first)
 "ap" = (
-/obj/item/weapon/implant/adrenalin,
+/obj/item/implant/adrenalin,
 /turf/simulated/floor,
 /area/testing/first)
 "aq" = (
-/obj/item/weapon/implant/compressed,
+/obj/item/implant/compressed,
 /turf/simulated/floor,
 /area/testing/first)
 "ar" = (
@@ -105,11 +105,11 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
-/obj/item/weapon/disk/autolathe_disk/blank,
+/obj/item/disk/autolathe_disk/blank,
 /turf/simulated/floor,
 /area/testing/first)
 "au" = (
-/obj/item/weapon/implanter/excelsior,
+/obj/item/implanter/excelsior,
 /turf/simulated/floor,
 /area/testing/first)
 "av" = (
@@ -134,7 +134,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/weapon/disk/autolathe_disk/blank,
+/obj/item/disk/autolathe_disk/blank,
 /obj/structure/cable,
 /obj/structure/cable{
 	icon_state = "0-4";
@@ -196,11 +196,11 @@
 /turf/simulated/floor,
 /area/space)
 "aD" = (
-/obj/item/weapon/mine,
+/obj/item/mine,
 /turf/simulated/floor,
 /area/testing/first)
 "aE" = (
-/obj/item/weapon/implanter,
+/obj/item/implanter,
 /turf/simulated/floor,
 /area/testing/first)
 "aF" = (
@@ -224,7 +224,7 @@
 /turf/simulated/floor,
 /area/testing/first)
 "aJ" = (
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor,
 /area/testing/first)
 "aK" = (
@@ -232,54 +232,54 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/item/weapon/mine,
+/obj/item/mine,
 /turf/simulated/floor,
 /area/testing/first)
 "aL" = (
-/obj/item/weapon/implant/revolution/excelsior,
+/obj/item/implant/revolution/excelsior,
 /turf/simulated/floor,
 /area/testing/first)
 "aM" = (
-/obj/item/weapon/mine,
+/obj/item/mine,
 /mob/living/carbon/human/dummy,
 /turf/simulated/floor,
 /area/testing/first)
 "aN" = (
-/obj/item/weapon/reagent_containers/glass/beaker/tungsten,
-/obj/item/weapon/tool/screwdriver,
+/obj/item/reagent_containers/glass/beaker/tungsten,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor,
 /area/testing/first)
 "aO" = (
-/obj/item/weapon/disk/autolathe_disk/security,
-/obj/item/weapon/stock_parts/scanning_module/adv,
-/obj/item/weapon/stock_parts/scanning_module/phasic,
+/obj/item/disk/autolathe_disk/security,
+/obj/item/stock_parts/scanning_module/adv,
+/obj/item/stock_parts/scanning_module/phasic,
 /turf/simulated/floor,
 /area/testing/first)
 "aP" = (
-/obj/item/weapon/disk/autolathe_disk/security,
-/obj/item/weapon/stock_parts/micro_laser/ultra,
-/obj/item/weapon/stock_parts/micro_laser/ultra,
+/obj/item/disk/autolathe_disk/security,
+/obj/item/stock_parts/micro_laser/ultra,
+/obj/item/stock_parts/micro_laser/ultra,
 /turf/simulated/floor,
 /area/testing/first)
 "aQ" = (
-/obj/item/weapon/stock_parts/micro_laser/high,
-/obj/item/weapon/stock_parts/micro_laser/high,
+/obj/item/stock_parts/micro_laser/high,
+/obj/item/stock_parts/micro_laser/high,
 /turf/simulated/floor,
 /area/testing/first)
 "aR" = (
-/obj/item/weapon/grenade/frag,
+/obj/item/grenade/frag,
 /turf/simulated/floor,
 /area/testing/first)
 "aS" = (
-/obj/item/weapon/grenade/explosive,
+/obj/item/grenade/explosive,
 /turf/simulated/floor,
 /area/testing/first)
 "aT" = (
-/obj/item/weapon/disk/autolathe_disk/basic,
+/obj/item/disk/autolathe_disk/basic,
 /turf/simulated/floor,
 /area/testing/first)
 "aU" = (
-/obj/item/weapon/reagent_containers/glass/beaker/water,
+/obj/item/reagent_containers/glass/beaker/water,
 /turf/simulated/floor,
 /area/testing/first)
 "aV" = (
@@ -297,7 +297,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/item/weapon/disk/autolathe_disk/lethal_ammo,
+/obj/item/disk/autolathe_disk/lethal_ammo,
 /turf/simulated/floor,
 /area/testing/first)
 "aX" = (
@@ -568,7 +568,7 @@
 /turf/simulated/floor,
 /area/testing/second)
 "bK" = (
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor,
 /area/testing/second)
 "bL" = (
@@ -635,7 +635,7 @@
 /turf/simulated/floor/hull,
 /area/space)
 "bW" = (
-/obj/item/weapon/book/ritual,
+/obj/item/book/ritual,
 /obj/landmark/join/late/cryo,
 /turf/simulated/floor,
 /area/testing/first)

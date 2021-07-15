@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/shotgun/pump/china
+/obj/item/gun/projectile/shotgun/pump/china
 	name = "China Lake"
 	desc = "This centuries-old design was recently rediscovered and adapted for use in modern battlefields. \
 		Working similar to a pump-action combat shotgun, its light weight and robust design quickly made it a popular weapon. \

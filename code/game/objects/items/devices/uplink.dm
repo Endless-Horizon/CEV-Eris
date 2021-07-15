@@ -255,12 +255,12 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 
-/obj/item/weapon/tool/multitool/uplink/New(loc, mind, crystal_amount)
+/obj/item/tool/multitool/uplink/New(loc, mind, crystal_amount)
 	..(loc)
 	hidden_uplink = new(src, mind, crystal_amount)
 
 
-/obj/item/weapon/tool/multitool/uplink/attack_self(mob/user as mob)
+/obj/item/tool/multitool/uplink/attack_self(mob/user as mob)
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 

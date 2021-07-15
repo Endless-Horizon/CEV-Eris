@@ -19,7 +19,7 @@
 	bad_type = /obj/item/rig_module
 
 	var/damage = 0
-	var/obj/item/weapon/rig/holder
+	var/obj/item/rig/holder
 
 	var/module_cooldown = 10
 	var/next_use = 0
@@ -153,12 +153,12 @@
 
 //Called before the module is installed in a suit
 //Return FALSE to deny the installation
-/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, var/mob/user, var/feedback = FALSE)
+/obj/item/rig_module/proc/can_install(var/obj/item/rig/rig, var/mob/user, var/feedback = FALSE)
 	return TRUE
 
 //Called before the module is removed from a suit
 //Return FALSE to deny the removal
-/obj/item/rig_module/proc/can_uninstall(var/obj/item/weapon/rig/rig, var/mob/user, var/feedback = FALSE)
+/obj/item/rig_module/proc/can_uninstall(var/obj/item/rig/rig, var/mob/user, var/feedback = FALSE)
 	return TRUE
 
 // Called after the module is installed into a suit. The holder var is already set to the new suit
@@ -168,7 +168,7 @@
 // Called after the module is removed from a suit.
 //The holder var is already set null
 //Former contains the suit we came from
-/obj/item/rig_module/proc/uninstalled(var/obj/item/weapon/rig/former, var/mob/living/user)
+/obj/item/rig_module/proc/uninstalled(var/obj/item/rig/former, var/mob/living/user)
 	return
 
 
@@ -259,11 +259,11 @@
 /mob/living/carbon/human/Stat()
 	. = ..()
 
-	if(. && istype(back,/obj/item/weapon/rig))
-		var/obj/item/weapon/rig/R = back
+	if(. && istype(back,/obj/item/rig))
+		var/obj/item/rig/R = back
 		SetupStat(R)
 
-/mob/proc/SetupStat(var/obj/item/weapon/rig/R)
+/mob/proc/SetupStat(var/obj/item/rig/R)
 	if(R && !R.canremove && R.installed_modules.len && statpanel("Hardsuit Modules"))
 		var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "ERROR"
 		stat("Suit charge", cell_status)

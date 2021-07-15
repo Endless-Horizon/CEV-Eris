@@ -5,7 +5,7 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "alert:0"
 	light_color = COLOR_LIGHTING_CYAN_MACHINERY
-	circuit = /obj/item/weapon/electronics/circuitboard/stationalert
+	circuit = /obj/item/electronics/circuitboard/stationalert
 	var/datum/nano_module/alarm_monitor/alarm_monitor
 	var/monitor_type = /datum/nano_module/alarm_monitor
 

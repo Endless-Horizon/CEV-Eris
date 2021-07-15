@@ -1,7 +1,7 @@
 /datum/ritual/cruciform/machines
 	name = "machines"
 	phrase = null
-	implant_type = /obj/item/weapon/implant/core_implant/cruciform
+	implant_type = /obj/item/implant/core_implant/cruciform
 	fail_message = "The Cruciform feels cold against your chest."
 	category = "Machinery"
 
@@ -14,7 +14,7 @@
 	desc = "A ritual of formation of a new body in a speclially designed machine.  Deceased person's cruciform has to be placed on the scanner then a prayer is to be uttered over the apparatus."
 	var/clone_damage = 60
 
-/datum/ritual/cruciform/machines/resurrection/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/machines/resurrection/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/list/OBJS = get_front(user)
 
 	var/obj/machinery/neotheology/cloner/pod = locate(/obj/machinery/neotheology/cloner) in OBJS
@@ -45,7 +45,7 @@
 	phrase = "Nos nostrae initium creatores."
 	desc = "A ritual, that commands cruciform forge to make a new empty cruciform."
 
-/datum/ritual/cruciform/machines/cruciformforge/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/machines/cruciformforge/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/list/OBJS = get_front(user)
 
 	var/obj/machinery/neotheology/cruciformforge/forge = locate(/obj/machinery/neotheology/cruciformforge) in OBJS
@@ -84,7 +84,7 @@
 	desc = "A ritual, that can activate or deactivate power biogenerator machine. You should be nearby its metrics screen."
 
 
-/datum/ritual/cruciform/machines/power_biogen_awake/perform(mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/machines/power_biogen_awake/perform(mob/living/carbon/human/H, obj/item/implant/core_implant/C)
 	var/obj/machinery/multistructure/biogenerator_part/console/biogen_screen = locate() in range(4, H)
 	if(biogen_screen && biogen_screen.MS)
 		var/datum/multistructure/biogenerator/biogenerator = biogen_screen.MS
@@ -105,7 +105,7 @@
 	name = "Bioreactor command"
 
 
-/datum/ritual/cruciform/machines/bioreactor/perform(mob/living/carbon/human/H, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/machines/bioreactor/perform(mob/living/carbon/human/H, obj/item/implant/core_implant/C)
 	var/obj/machinery/multistructure/bioreactor_part/console/bioreactor_screen = locate() in range(4, H)
 	if(bioreactor_screen && bioreactor_screen.MS)
 		var/datum/multistructure/bioreactor/bioreactor = bioreactor_screen.MS

@@ -908,12 +908,12 @@
 /area/map_template/hydrobase/station/growA)
 "cq" = (
 /obj/structure/closet/secure_closet/personal/hydroponics,
-/obj/item/weapon/tool/hatchet,
+/obj/item/tool/hatchet,
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/growF)
 "cr" = (
 /obj/structure/closet/secure_closet/personal/hydroponics,
-/obj/item/weapon/tool/shovel,
+/obj/item/tool/shovel,
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/growF)
 "cs" = (
@@ -926,7 +926,7 @@
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/growF)
 "ct" = (
-/obj/item/weapon/tool/knife/butch,
+/obj/item/tool/knife/butch,
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/growF)
@@ -1033,7 +1033,7 @@
 /obj/structure/catwalk,
 /obj/spawner/toolbox,
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn,
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
 /turf/simulated/floor/alium,
 /area/map_template/hydrobase/station/growF)
 "cH" = (
@@ -1067,7 +1067,7 @@
 /obj/item/seeds/random,
 /obj/item/seeds/random,
 /obj/item/seeds/random,
-/obj/item/weapon/gun/energy/floragun,
+/obj/item/gun/energy/floragun,
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/growF)
 "cK" = (
@@ -1509,7 +1509,7 @@
 /area/map_template/hydrobase/station/processing)
 "dM" = (
 /obj/structure/catwalk,
-/obj/item/weapon/material/kitchen/utensil/spoon,
+/obj/item/material/kitchen/utensil/spoon,
 /obj/structure/table/glass,
 /turf/simulated/floor/alium,
 /area/map_template/hydrobase/station/processing)
@@ -1549,12 +1549,12 @@
 /area/map_template/hydrobase/station/processing)
 "dQ" = (
 /obj/structure/table/glass,
-/obj/item/weapon/storage/box/pillbottles,
-/obj/item/weapon/storage/box/pillbottles,
-/obj/item/weapon/reagent_containers/glass/beaker/vial/random,
-/obj/item/weapon/reagent_containers/glass/beaker/vial/random,
-/obj/item/weapon/reagent_containers/glass/beaker/vial/random,
-/obj/item/weapon/reagent_containers/glass/beaker/vial/random,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/reagent_containers/glass/beaker/vial/random,
+/obj/item/reagent_containers/glass/beaker/vial/random,
+/obj/item/reagent_containers/glass/beaker/vial/random,
+/obj/item/reagent_containers/glass/beaker/vial/random,
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/processing)
 "dR" = (
@@ -1670,8 +1670,8 @@
 /area/map_template/hydrobase/station/growA)
 "eh" = (
 /obj/structure/catwalk,
-/obj/item/weapon/material/kitchen/rollingpin,
-/obj/item/weapon/tool/knife/butch,
+/obj/item/material/kitchen/rollingpin,
+/obj/item/tool/knife/butch,
 /obj/structure/table/glass,
 /turf/simulated/floor/alium,
 /area/map_template/hydrobase/station/processing)
@@ -2081,19 +2081,19 @@
 "eW" = (
 /obj/structure/catwalk,
 /obj/structure/closet/crate,
-/obj/item/weapon/reagent_containers/pill/happy,
-/obj/item/weapon/reagent_containers/pill/happy,
-/obj/item/weapon/reagent_containers/pill/happy,
-/obj/item/weapon/reagent_containers/pill/happy,
-/obj/item/weapon/reagent_containers/pill/methylphenidate,
-/obj/item/weapon/reagent_containers/pill/methylphenidate,
-/obj/item/weapon/reagent_containers/pill/methylphenidate,
+/obj/item/reagent_containers/pill/happy,
+/obj/item/reagent_containers/pill/happy,
+/obj/item/reagent_containers/pill/happy,
+/obj/item/reagent_containers/pill/happy,
+/obj/item/reagent_containers/pill/methylphenidate,
+/obj/item/reagent_containers/pill/methylphenidate,
+/obj/item/reagent_containers/pill/methylphenidate,
 /obj/spawner/booze,
 /obj/spawner/booze,
 /obj/spawner/booze,
-/obj/item/weapon/reagent_containers/pill/zoom,
-/obj/item/weapon/reagent_containers/pill/zoom,
-/obj/item/weapon/reagent_containers/pill/zoom,
+/obj/item/reagent_containers/pill/zoom,
+/obj/item/reagent_containers/pill/zoom,
+/obj/item/reagent_containers/pill/zoom,
 /obj/item/toy/crossbow{
 	desc = "A minature crossbow that fires some sort of dart from an internal magazine.";
 	name = "mini-crossbow"
@@ -2130,7 +2130,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/weapon/shreddedp,
+/obj/item/shreddedp,
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/processing)
 "fa" = (
@@ -2143,7 +2143,7 @@
 /obj/structure/window/reinforced/plasma{
 	dir = 8
 	},
-/obj/item/weapon/material/shard/plasma,
+/obj/item/material/shard/plasma,
 /turf/simulated/floor/alium,
 /area/map_template/hydrobase/station/processing)
 "fb" = (
@@ -2266,7 +2266,7 @@
 /area/map_template/hydrobase/station/processing)
 "fr" = (
 /obj/structure/catwalk,
-/obj/item/weapon/tool/knife/switchblade,
+/obj/item/tool/knife/switchblade,
 /obj/spawner/credits/c1000,
 /obj/spawner/credits/c500,
 /obj/structure/closet/crate/secure/weapon{
@@ -2275,7 +2275,7 @@
 	req_access = list("ACCESS_SYNDICATE")
 	},
 /obj/spawner/ammo/shotgun,
-/obj/item/weapon/tool/knife/tacknife,
+/obj/item/tool/knife/tacknife,
 /obj/spawner/credits/c100,
 /obj/spawner/credits/c100,
 /obj/spawner/credits/c500,
@@ -2306,18 +2306,18 @@
 	dir = 8
 	},
 /obj/structure/table/rack,
-/obj/item/weapon/storage/box/emps{
+/obj/item/storage/box/emps{
 	initial_amount = 3
 	},
 /obj/item/ammo_casing/shotgun/pellet/prespawned,
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/projectile/shotgun/doublebarrel,
 /obj/structure/window/reinforced/plasma{
 	dir = 4
 	},
-/obj/item/weapon/grenade/chem_grenade/antiweed,
-/obj/item/weapon/grenade/chem_grenade/incendiary,
+/obj/item/grenade/chem_grenade/antiweed,
+/obj/item/grenade/chem_grenade/incendiary,
 /obj/item/weedkiller/D24,
-/obj/item/weapon/material/shard/plasma,
+/obj/item/material/shard/plasma,
 /turf/simulated/floor/tiled/dark,
 /area/map_template/hydrobase/station/processing)
 "fu" = (
@@ -2517,7 +2517,7 @@
 	icon_state = "shower";
 	dir = 8
 	},
-/obj/item/weapon/bikehorn/rubberducky,
+/obj/item/bikehorn/rubberducky,
 /turf/simulated/floor/tiled/white/brown_platform,
 /area/map_template/hydrobase/station/shower)
 "fS" = (

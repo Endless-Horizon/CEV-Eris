@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/bonesetter
+/obj/item/tool/bonesetter
 	name = "bone setter"
 	icon_state = "bone setter"
 	item_state = "bone_setter"

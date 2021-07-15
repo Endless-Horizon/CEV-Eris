@@ -311,7 +311,7 @@
 
 //in fact, this is some kind of reinforced wires, so we can't take samples from it and inject something too
 //but we still can slice it with something sharp
-/obj/effect/plant/hivemind/attackby(obj/item/weapon/W, mob/user)
+/obj/effect/plant/hivemind/attackby(obj/item/W, mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	var/weapon_type

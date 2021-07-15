@@ -12,7 +12,7 @@
 "l" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
 "m" = (/obj/machinery/repair_station,/obj/spawner/mob/biome_spawner_mob/low_chance,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
 "n" = (/obj/machinery/recharge_station,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"o" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/item/weapon/storage/toolbox/mechanical,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
+"o" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/item/storage/toolbox/mechanical,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
 "p" = (/obj/structure/reagent_dispensers/fueltank,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
 "q" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot/low_chance,/obj/spawner/pack/tech_loot/low_chance,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
 "r" = (/obj/machinery/mech_recharger,/obj/spawner/exosuit/damaged,/turf/simulated/floor/tiled/steel,/area/deepmaint)

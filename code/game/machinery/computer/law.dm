@@ -5,7 +5,7 @@
 	desc = "Used to upload laws to the AI."
 	icon_keyboard = "rd_key"
 	icon_screen = "command"
-	circuit = /obj/item/weapon/electronics/circuitboard/aiupload
+	circuit = /obj/item/electronics/circuitboard/aiupload
 	var/mob/living/silicon/ai/current
 	var/opened = 0
 
@@ -25,12 +25,12 @@
 		return
 
 
-	attackby(obj/item/weapon/O as obj, mob/user as mob)
+	attackby(obj/item/O as obj, mob/user as mob)
 		if (user.z > 6)
 			to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 			return
-		if(istype(O, /obj/item/weapon/electronics/ai_module))
-			var/obj/item/weapon/electronics/ai_module/M = O
+		if(istype(O, /obj/item/electronics/ai_module))
+			var/obj/item/electronics/ai_module/M = O
 			M.install(src)
 		else
 			..()
@@ -59,12 +59,12 @@
 	desc = "Used to upload laws to Cyborgs."
 	icon_keyboard = "rd_key"
 	icon_screen = "command"
-	circuit = /obj/item/weapon/electronics/circuitboard/borgupload
+	circuit = /obj/item/electronics/circuitboard/borgupload
 	var/mob/living/silicon/robot/current = null
 
 
-	attackby(obj/item/weapon/electronics/ai_module/module as obj, mob/user as mob)
-		if(istype(module, /obj/item/weapon/electronics/ai_module))
+	attackby(obj/item/electronics/ai_module/module as obj, mob/user as mob)
+		if(istype(module, /obj/item/electronics/ai_module))
 			module.install(src)
 		else
 			return ..()

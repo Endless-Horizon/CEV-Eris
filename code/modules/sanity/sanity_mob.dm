@@ -60,7 +60,7 @@
 	var/resting = 0
 	var/max_resting = INFINITY
 
-	var/list/valid_inspirations = list(/obj/item/weapon/oddity)
+	var/list/valid_inspirations = list(/obj/item/oddity)
 	var/list/desires = list()
 	var/positive_prob = 20
 	var/positive_prob_multiplier = 1
@@ -321,7 +321,7 @@
 			else
 				add_rest(taste_tag, 4 * multiplier/E.taste_tag.len)
 
-/datum/sanity/proc/onEat(obj/item/weapon/reagent_containers/food/snacks/snack, snack_sanity_gain, snack_sanity_message)
+/datum/sanity/proc/onEat(obj/item/reagent_containers/food/snacks/snack, snack_sanity_gain, snack_sanity_message)
 	if(world.time > eat_time_message && snack_sanity_message)
 		eat_time_message = world.time + EAT_COOLDOWN_MESSAGE
 		to_chat(owner, "[snack_sanity_message]")
@@ -373,7 +373,7 @@
 		if(get_turf(M) in view(get_turf(owner)))
 			M.reg_break(owner)
 
-	for(var/obj/item/weapon/implant/carrion_spider/mindboil/S in GLOB.active_mindboil_spiders)
+	for(var/obj/item/implant/carrion_spider/mindboil/S in GLOB.active_mindboil_spiders)
 		if(get_turf(S) in view(get_turf(owner)))
 			S.reg_break(owner)
 

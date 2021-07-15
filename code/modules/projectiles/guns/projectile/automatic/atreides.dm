@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/atreides
+/obj/item/gun/projectile/automatic/atreides
 	name = "FS SMG .35 Auto \"Atreides\""
 	desc = "The Atreides is a replica of an old and popular SMG. Cheap and mass produced generic self-defence weapon. \
 			The overall design is so generic that it is neither considered good nor bad in comparison to other firearms. \
@@ -27,7 +27,7 @@
 		SEMI_AUTO_NODELAY,
 		)
 
-/obj/item/weapon/gun/projectile/automatic/atreides/on_update_icon()
+/obj/item/gun/projectile/automatic/atreides/on_update_icon()
 	..()
 
 	var/iconstring = initial(icon_state)
@@ -46,6 +46,6 @@
 	icon_state = iconstring
 	set_item_state(itemstring)
 
-/obj/item/weapon/gun/projectile/automatic/atreides/Initialize()
+/obj/item/gun/projectile/automatic/atreides/Initialize()
 	. = ..()
 	update_icon()

@@ -4,7 +4,7 @@
 	icon_keyboard = "teleport_key"
 	icon_screen = "eris_control"
 	light_color = COLOR_LIGHTING_CYAN_MACHINERY
-	circuit = /obj/item/weapon/electronics/circuitboard/helm
+	circuit = /obj/item/electronics/circuitboard/helm
 	var/obj/effect/overmap/ship/linked			//connected overmap object
 	var/autopilot = 0
 	var/manual_control = 0
@@ -232,7 +232,7 @@
 
 /obj/machinery/computer/navigation
 	name = "navigation console"
-	circuit = /obj/item/weapon/electronics/circuitboard/nav
+	circuit = /obj/item/electronics/circuitboard/nav
 	var/viewing = 0
 	var/obj/effect/overmap/ship/linked
 	icon_keyboard = "generic_key"

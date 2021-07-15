@@ -13,7 +13,7 @@ list/slot_data - a list of inventory elements. Using this list mob's HUDinventor
 icon/icon - used dmi file
 HUDfrippery - a list of HUD frippery. Using this list mob's HUDfrippery is filling
 HUDoverlays - a list of "technical" elements. Using this list mob's HUDtech is filling and mob's HUDprocess is complemented
-ConteinerData - information for functions /obj/item/weapon/storage/proc/space_orient_objs and /obj/item/weapon/storage/proc/slot_orient_objs.
+ConteinerData - information for functions /obj/item/storage/proc/space_orient_objs and /obj/item/storage/proc/slot_orient_objs.
 IconUnderlays - a list of underlays for HUD's elements via "max" version. May be empty.
 MinStyleFlag - a flag, which denotes if a HUD's type has "min" version. Take the values 1 or 0
 

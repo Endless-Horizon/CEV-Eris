@@ -1,14 +1,14 @@
-/obj/item/weapon/implant/tracking
+/obj/item/implant/tracking
 	name = "tracking implant"
 	desc = "Track people with this."
 	origin_tech = list(TECH_MATERIAL=2, TECH_MAGNET=2, TECH_DATA=2, TECH_BIO=2)
 	var/datum/gps_data/gps
 
-/obj/item/weapon/implant/tracking/Initialize()
+/obj/item/implant/tracking/Initialize()
 	. = ..()
 	gps = new /datum/gps_data/implant(src)
 
-/obj/item/weapon/implant/tracking/get_data()
+/obj/item/implant/tracking/get_data()
 	var/data = {"<b>Implant Specifications:</b><BR>
 		<b>Name:</b> Tracking Beacon<BR>
 		<b>Life:</b> 10 minutes after death of host<BR>
@@ -27,11 +27,11 @@
 
 	return data
 
-/obj/item/weapon/implant/tracking/Destroy()
+/obj/item/implant/tracking/Destroy()
 	QDEL_NULL(gps)
 	return ..()
 
-/obj/item/weapon/implant/tracking/emp_act(severity)
+/obj/item/implant/tracking/emp_act(severity)
 	if (malfunction)	//no, dawg, you can't malfunction while you are malfunctioning
 		return
 	malfunction = MALFUNCTION_TEMPORARY
@@ -55,7 +55,7 @@
 	prefix = "IMP"
 
 /datum/gps_data/implant/is_functioning()
-	var/obj/item/weapon/implant/I = holder
+	var/obj/item/implant/I = holder
 	if(!I.wearer)
 		return FALSE
 
@@ -66,7 +66,7 @@
 	return ..()
 
 /datum/gps_data/implant/get_coords()
-	var/obj/item/weapon/implant/I = holder
+	var/obj/item/implant/I = holder
 
 	// EMPed - pick a fake location
 	if(I.malfunction)
@@ -77,7 +77,7 @@
 
 	return ..()
 
-/obj/item/weapon/implantcase/tracking
+/obj/item/implantcase/tracking
 	name = "glass case - 'tracking'"
 	desc = "A case containing a tracking implant."
-	implant = /obj/item/weapon/implant/tracking
+	implant = /obj/item/implant/tracking

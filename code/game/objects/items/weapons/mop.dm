@@ -1,7 +1,7 @@
 #define MOPMODE_TILE 1
 #define MOPMODE_SWEEP 2
 
-/obj/item/weapon/mop
+/obj/item/mop
 	desc = "The world of janitalia wouldn't be complete without a mop."
 	name = "mop"
 	icon = 'icons/obj/janitor.dmi'
@@ -21,11 +21,11 @@
 	var/mopmode = MOPMODE_TILE
 	var/sweep_time = 7
 
-/obj/item/weapon/mop/Initialize()
+/obj/item/mop/Initialize()
 	. = ..()
 	create_reagents(30)
 
-/obj/item/weapon/mop/attack_self(var/mob/user)
+/obj/item/mop/attack_self(var/mob/user)
 	.=..()
 	if (mopmode == MOPMODE_TILE)
 		mopmode = MOPMODE_SWEEP
@@ -34,7 +34,7 @@
 		mopmode = MOPMODE_TILE
 		to_chat(user, SPAN_NOTICE("You will now thoroughly clean a single tile at a time"))
 
-/obj/item/weapon/mop/afterattack(atom/A, mob/user, proximity)
+/obj/item/mop/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
 	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
@@ -61,7 +61,7 @@
 		makeWet(A, user)
 
 
-/obj/item/weapon/mop/proc/sweep(var/mob/user, var/turf/target)
+/obj/item/mop/proc/sweep(var/mob/user, var/turf/target)
 	user.setClickCooldown(sweep_time)
 	var/direction = get_dir(get_turf(src),target)
 	var/list/turfs
@@ -116,7 +116,7 @@
 			to_chat(user, SPAN_DANGER("There's not enough space for broad sweeps here!"))
 			return
 
-/obj/item/weapon/mop/proc/makeWet(atom/A, mob/user)
+/obj/item/mop/proc/makeWet(atom/A, mob/user)
 	if(A.is_open_container())
 		if(A.reagents)
 			if(A.reagents.total_volume < 1)
@@ -132,7 +132,7 @@
 
 
 /obj/effect/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/mop) || istype(I, /obj/item/weapon/soap) || istype(I, /obj/item/weapon/holyvacuum))
+	if(istype(I, /obj/item/mop) || istype(I, /obj/item/soap) || istype(I, /obj/item/holyvacuum))
 		return
 	..()
 

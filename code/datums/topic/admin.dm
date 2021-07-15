@@ -1025,8 +1025,8 @@
 		to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 		return
 
-	if(!H.equip_to_slot_or_del( new /obj/item/weapon/reagent_containers/food/snacks/cookie(H), slot_l_hand ))
-		if(!H.equip_to_slot_or_del( new /obj/item/weapon/reagent_containers/food/snacks/cookie(H), slot_r_hand ))
+	if(!H.equip_to_slot_or_del( new /obj/item/reagent_containers/food/snacks/cookie(H), slot_l_hand ))
+		if(!H.equip_to_slot_or_del( new /obj/item/reagent_containers/food/snacks/cookie(H), slot_r_hand ))
 			log_admin("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(source.owner)].")
 			message_admins("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(source.owner)].")
 			return
@@ -1089,17 +1089,17 @@
 /datum/admin_topic/adminfaxview/Run(list/input)
 	var/obj/item/fax = locate(input["AdminFaxView"])
 
-	if (istype(fax, /obj/item/weapon/paper))
-		var/obj/item/weapon/paper/P = fax
+	if (istype(fax, /obj/item/paper))
+		var/obj/item/paper/P = fax
 		P.show_content(usr, TRUE)
-	else if (istype(fax, /obj/item/weapon/photo))
-		var/obj/item/weapon/photo/H = fax
+	else if (istype(fax, /obj/item/photo))
+		var/obj/item/photo/H = fax
 		H.show(usr)
-	else if (istype(fax, /obj/item/weapon/paper_bundle))
+	else if (istype(fax, /obj/item/paper_bundle))
 		//having multiple people turning pages on a paper_bundle can cause issues
 		//open a browse window listing the contents instead
 		var/data = ""
-		var/obj/item/weapon/paper_bundle/B = fax
+		var/obj/item/paper_bundle/B = fax
 
 		for (var/page = 1, page <= B.pages.len, page++)
 			var/obj/pageobj = B.pages[page]
@@ -1114,16 +1114,16 @@
 
 /datum/admin_topic/adminfaxviewpage/Run(list/input)
 	var/page = text2num(input["AdminFaxViewPage"])
-	var/obj/item/weapon/paper_bundle/bundle = locate(input["paper_bundle"])
+	var/obj/item/paper_bundle/bundle = locate(input["paper_bundle"])
 
 	if (!bundle)
 		return
 
-	if (istype(bundle.pages[page], /obj/item/weapon/paper))
-		var/obj/item/weapon/paper/P = bundle.pages[page]
+	if (istype(bundle.pages[page], /obj/item/paper))
+		var/obj/item/paper/P = bundle.pages[page]
 		P.show_content(source.owner, TRUE)
-	else if (istype(bundle.pages[page], /obj/item/weapon/photo))
-		var/obj/item/weapon/photo/H = bundle.pages[page]
+	else if (istype(bundle.pages[page], /obj/item/photo))
+		var/obj/item/photo/H = bundle.pages[page]
 		H.show(source.owner)
 
 
@@ -1142,7 +1142,7 @@
 	var/customname = input(source.owner, "Pick a title for the report", "Title") as text|null
 
 	// Create the reply message
-	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( null ) //hopefully the null loc won't cause trouble for us
+	var/obj/item/paper/P = new /obj/item/paper( null ) //hopefully the null loc won't cause trouble for us
 	P.name = "[command_name()]- [customname]"
 	P.info = msg
 	P.update_icon()
@@ -1152,7 +1152,7 @@
 	stampoverlay.icon_state = "paper_stamp-cent"
 	if(!P.stamped)
 		P.stamped = new
-	P.stamped += /obj/item/weapon/stamp
+	P.stamped += /obj/item/stamp
 	P.add_overlays(stampoverlay)
 	P.stamps += "<HR><i>This paper has been stamped by the Central Command Quantum Relay.</i>"
 

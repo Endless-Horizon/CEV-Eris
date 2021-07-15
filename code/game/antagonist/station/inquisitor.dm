@@ -26,7 +26,7 @@
 		if (report)
 			to_chat(report, SPAN_NOTICE("Failure: Parent can_become_antag returned false"))
 		return FALSE
-	if(!M.current.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform))
+	if(!M.current.get_core_implant(/obj/item/implant/core_implant/cruciform))
 		if (report)
 			to_chat(report, SPAN_NOTICE("Failure: [M] does not have a cruciform and this antag requires it"))
 		return FALSE
@@ -41,7 +41,7 @@
 	if(!owner.current)
 		return FALSE
 
-	var/obj/item/weapon/implant/core_implant/cruciform/C = owner.current.get_core_implant(/obj/item/weapon/implant/core_implant/cruciform)
+	var/obj/item/implant/core_implant/cruciform/C = owner.current.get_core_implant(/obj/item/implant/core_implant/cruciform)
 
 	if(!C)
 		return FALSE

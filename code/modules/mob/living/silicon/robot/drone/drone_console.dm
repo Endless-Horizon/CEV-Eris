@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(drones, list())
 	icon_keyboard = "power_key"
 	icon_screen = "dron_control_monitor"
 	req_access = list(access_engine_equip)
-	circuit = /obj/item/weapon/electronics/circuitboard/drone_control
+	circuit = /obj/item/electronics/circuitboard/drone_control
 
 	//Used when pinging drones.
 	var/drone_call_area = "Engineering"

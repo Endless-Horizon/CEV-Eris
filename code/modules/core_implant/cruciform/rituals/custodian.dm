@@ -10,7 +10,7 @@
 	desc = "Addictions are common afflictions among ship denizens. This littany helps those people by easing or removing their addictions."
 	power = 5
 
-/datum/ritual/cruciform/custodian/purging/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/custodian/purging/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/mob/living/carbon/human/T = get_front_human_in_range(user, 1)
 	if(!T)
 		fail("No target in front of you.", user, C)

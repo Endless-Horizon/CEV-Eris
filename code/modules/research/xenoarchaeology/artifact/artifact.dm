@@ -44,7 +44,7 @@
 	icon_state = "boulder[rand(1,4)]"
 	excavation_level = rand(5,50)
 
-/obj/structure/boulder/attackby(obj/item/weapon/I, mob/user )
+/obj/structure/boulder/attackby(obj/item/I, mob/user )
 
 	var/tool_type = I.get_tool_type(user, list(QUALITY_DIGGING, QUALITY_EXCAVATION), src)
 	switch(tool_type)

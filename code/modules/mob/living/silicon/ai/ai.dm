@@ -74,7 +74,7 @@ var/list/ai_verbs_default = list(
 	var/viewalerts = 0
 	var/icon/holo_icon//Default is assigned when AI is created.
 	var/mob/living/exosuit/controlled_mech //For controlled_mech a mech, to determine whether to relaymove or use the AI eye.
-	var/obj/item/weapon/tool/multitool/aiMulti = null
+	var/obj/item/tool/multitool/aiMulti = null
 	var/obj/item/device/radio/headset/heads/ai_integrated/aiRadio = null
 	var/camera_light_on = 0	//Defines if the AI toggled the light on the camera it's looking through.
 	var/datum/trackable/track = null
@@ -606,13 +606,13 @@ var/list/ai_verbs_default = list(
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
 
 
-/mob/living/silicon/ai/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/mob/living/silicon/ai/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/device/aicard))
 
 		var/obj/item/device/aicard/card = W
 		card.grab_ai(src, user)
 
-	else if(istype(W, /obj/item/weapon/tool/wrench))
+	else if(istype(W, /obj/item/tool/wrench))
 		if(anchored)
 			user.visible_message(SPAN_NOTICE("\The [user] starts to unbolt \the [src] from the plating..."))
 			if(!do_after(user,40, src))
@@ -711,7 +711,7 @@ var/list/ai_verbs_default = list(
 	set category = "IC"
 
 	resting = 0
-	var/obj/item/weapon/rig/rig = src.get_rig()
+	var/obj/item/rig/rig = src.get_rig()
 	if(rig)
 		rig.force_rest(src)
 

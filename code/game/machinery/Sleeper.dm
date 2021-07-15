@@ -5,10 +5,10 @@
 	icon_state = "sleeper_0"
 	density = TRUE
 	anchored = TRUE
-	circuit = /obj/item/weapon/electronics/circuitboard/sleeper
+	circuit = /obj/item/electronics/circuitboard/sleeper
 	var/mob/living/carbon/human/occupant = null
 	var/list/available_chemicals = list("inaprovaline2" = "Synth-Inaprovaline", "stoxin" = "Soporific", "paracetamol" = "Paracetamol", "anti_toxin" = "Dylovene", "dexalin" = "Dexalin", "tricordrazine" = "Tricordrazine")
-	var/obj/item/weapon/reagent_containers/glass/beaker = null
+	var/obj/item/reagent_containers/glass/beaker = null
 	var/filtering = 0
 
 	use_power = IDLE_POWER_USE
@@ -17,7 +17,7 @@
 
 /obj/machinery/sleeper/Initialize()
 	. = ..()
-	beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
+	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	update_icon()
 
 /obj/machinery/sleeper/Process()
@@ -119,7 +119,7 @@
 
 /obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
 	add_fingerprint(user)
-	if(istype(I, /obj/item/weapon/reagent_containers/glass))
+	if(istype(I, /obj/item/reagent_containers/glass))
 		if(!beaker)
 			beaker = I
 			user.drop_item()

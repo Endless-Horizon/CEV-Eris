@@ -1,4 +1,4 @@
-/obj/item/weapon/grenade/frag
+/obj/item/grenade/frag
 	name = "NT DFG \"Pomme\""
 	desc = "A military-grade defensive fragmentation grenade, designed to be thrown from cover."
 	icon_state = "frag"
@@ -13,7 +13,7 @@
 	//The radius of the circle used to launch projectiles. Lower values mean less projectiles are used but if set too low gaps may appear in the spread pattern
 	var/spread_range = 7
 
-/obj/item/weapon/grenade/frag/prime()
+/obj/item/grenade/frag/prime()
 	set waitfor = 0
 	..()
 
@@ -36,7 +36,7 @@
 
 	qdel(src)
 
-/obj/item/weapon/grenade/frag/nt
+/obj/item/grenade/frag/nt
 	name = "NT DFG \"Holy Thunder\""
 	desc = "A military-grade defensive fragmentation grenade, designed to be thrown from cover."
 	icon_state = "frag_nt"

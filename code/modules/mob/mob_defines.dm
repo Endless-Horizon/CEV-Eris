@@ -102,8 +102,8 @@ While it would be entirely possible to check the mob's move handlers list for th
 	var/obj/buckled //Living
 	var/obj/item/l_hand //Living
 	var/obj/item/r_hand //Living
-	var/obj/item/weapon/back //Human/Monkey
-	var/obj/item/weapon/storage/s_active //Carbon
+	var/obj/item/back //Human/Monkey
+	var/obj/item/storage/s_active //Carbon
 	var/obj/item/clothing/mask/wear_mask //Carbon
 
 

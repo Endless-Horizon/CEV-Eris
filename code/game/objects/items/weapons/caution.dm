@@ -1,4 +1,4 @@
-/obj/item/weapon/caution
+/obj/item/caution
 	desc = "Caution! Wet Floor!"
 	name = "wet floor sign"
 	icon = 'icons/obj/janitor.dmi'
@@ -12,7 +12,7 @@
 	rarity_value = 5
 	spawn_tags = SPAWN_TAG_JUNK
 
-/obj/item/weapon/caution/cone
+/obj/item/caution/cone
 	desc = "This cone is trying to warn you of something!"
 	name = "warning cone"
 	icon_state = "cone"

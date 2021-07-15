@@ -2,24 +2,24 @@
 
 var/list/disciples = list()
 
-/obj/item/weapon/implant/core_implant/cruciform
+/obj/item/implant/core_implant/cruciform
 	name = "cruciform"
 	icon_state = "cruciform_green"
 	desc = "Soul holder for every disciple. With the proper rituals, this can be implanted to induct a new believer into NeoTheology."
 	allowed_organs = list(BP_CHEST)
-	implant_type = /obj/item/weapon/implant/core_implant/cruciform
+	implant_type = /obj/item/implant/core_implant/cruciform
 	layer = ABOVE_MOB_LAYER
 	access = list(access_nt_disciple)
 	power = 50
 	max_power = 50
 	power_regen = 20/(1 MINUTES)
 	price_tag = 500
-	var/obj/item/weapon/cruciform_upgrade/upgrade
+	var/obj/item/cruciform_upgrade/upgrade
 
 	var/righteous_life = 0
 	var/max_righteous_life = 100
 
-/obj/item/weapon/implant/core_implant/cruciform/auto_restore_power()
+/obj/item/implant/core_implant/cruciform/auto_restore_power()
 	if(power >= max_power)
 		return
 
@@ -31,41 +31,41 @@ var/list/disciples = list()
 
 	restore_power(true_power_regen)
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/register_wearer()
+/obj/item/implant/core_implant/cruciform/proc/register_wearer()
 	RegisterSignal(wearer, COMSIG_CARBON_HAPPY, .proc/on_happy, TRUE)
 	RegisterSignal(wearer, COMSIG_GROUP_RITUAL, .proc/on_ritual, TRUE)
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/unregister_wearer()
+/obj/item/implant/core_implant/cruciform/proc/unregister_wearer()
 	UnregisterSignal(wearer, COMSIG_CARBON_HAPPY)
 	UnregisterSignal(wearer, COMSIG_GROUP_RITUAL)
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/on_happy(datum/reagent/happy, signal)
+/obj/item/implant/core_implant/cruciform/proc/on_happy(datum/reagent/happy, signal)
 	if(istype(happy, /datum/reagent/ethanol))
 		righteous_life = max(righteous_life - 0.1, 0)
 	else if(istype(happy, /datum/reagent/drug))
 		righteous_life = max(righteous_life - 0.5, 0)
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/on_ritual()
+/obj/item/implant/core_implant/cruciform/proc/on_ritual()
 	righteous_life = min(righteous_life + 25, max_righteous_life)
 
 
-/obj/item/weapon/implant/core_implant/cruciform/install(mob/living/target, organ, mob/user)
+/obj/item/implant/core_implant/cruciform/install(mob/living/target, organ, mob/user)
 	. = ..()
 	if(.)
 		target.stats.addPerk(/datum/perk/sanityboost)
 		register_wearer()
 
-/obj/item/weapon/implant/core_implant/cruciform/uninstall()
+/obj/item/implant/core_implant/cruciform/uninstall()
 	unregister_wearer()
 	wearer.stats.removePerk(/datum/perk/sanityboost)
 	wearer.stats.removePerk(/datum/perk/active_sanityboost)
 	return ..()
 
-/obj/item/weapon/implant/core_implant/cruciform/get_mob_overlay(gender)
+/obj/item/implant/core_implant/cruciform/get_mob_overlay(gender)
 	gender = (gender == MALE) ? "m" : "f"
 	return image('icons/mob/human_races/cyberlimbs/neotheology.dmi', "[icon_state]_[gender]")
 
-/obj/item/weapon/implant/core_implant/cruciform/hard_eject()
+/obj/item/implant/core_implant/cruciform/hard_eject()
 	if(!ishuman(wearer))
 		return
 	var/mob/living/carbon/human/H = wearer
@@ -80,7 +80,7 @@ var/list/disciples = list()
 	s.set_up(3, 1, src)
 	s.start()
 
-/obj/item/weapon/implant/core_implant/cruciform/activate()
+/obj/item/implant/core_implant/cruciform/activate()
 	var/observation_points = 200
 	if(!wearer || active)
 		return
@@ -103,7 +103,7 @@ var/list/disciples = list()
 		eotp.addObservation(observation_points*0.25)
 	return TRUE
 
-/obj/item/weapon/implant/core_implant/cruciform/examine(mob/user)
+/obj/item/implant/core_implant/cruciform/examine(mob/user)
 	..()
 	var/datum/core_module/cruciform/cloning/data = get_module(CRUCIFORM_CLONING)
 	if(data?.mind) // if there is cloning data and it has a mind
@@ -119,7 +119,7 @@ var/list/disciples = list()
 
 
 
-/obj/item/weapon/implant/core_implant/cruciform/deactivate()
+/obj/item/implant/core_implant/cruciform/deactivate()
 	if(!active || !wearer)
 		return
 	disciples.Remove(wearer)
@@ -127,7 +127,7 @@ var/list/disciples = list()
 		eotp.removeObservation(50)
 	..()
 
-/obj/item/weapon/implant/core_implant/cruciform/Process()
+/obj/item/implant/core_implant/cruciform/Process()
 	..()
 	if(active && round(world.time) % 5 == 0)
 		remove_cyber()
@@ -135,7 +135,7 @@ var/list/disciples = list()
 		if(wearer.stat == DEAD)
 			deactivate()
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/transfer_soul()
+/obj/item/implant/core_implant/cruciform/proc/transfer_soul()
 	if(!wearer || !activated)
 		return FALSE
 	var/datum/core_module/cruciform/cloning/data = get_module(CRUCIFORM_CLONING)
@@ -155,7 +155,7 @@ var/list/disciples = list()
 		if (activate())
 			return TRUE
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/remove_cyber()
+/obj/item/implant/core_implant/cruciform/proc/remove_cyber()
 	if(!wearer)
 		return
 	for(var/obj/O in wearer)
@@ -169,10 +169,10 @@ var/list/disciples = list()
 			wearer.visible_message(SPAN_DANGER("[wearer]'s [R.name] tears off."),
 			SPAN_DANGER("Your [R.name] tears off."))
 			R.droplimb()
-		if(istype(O, /obj/item/weapon/implant))
+		if(istype(O, /obj/item/implant))
 			if(O == src)
 				continue
-			var/obj/item/weapon/implant/R = O
+			var/obj/item/implant/R = O
 			if(R.wearer != wearer)
 				continue
 			if(R.cruciform_resist)
@@ -186,7 +186,7 @@ var/list/disciples = list()
 		var/mob/living/carbon/human/H = wearer
 		H.update_implants()
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/update_data()
+/obj/item/implant/core_implant/cruciform/proc/update_data()
 	if(!wearer)
 		return
 
@@ -196,16 +196,16 @@ var/list/disciples = list()
 //////////////////////////
 //////////////////////////
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/make_common()
+/obj/item/implant/core_implant/cruciform/proc/make_common()
 	remove_modules(CRUCIFORM_PRIEST)
 	remove_modules(CRUCIFORM_INQUISITOR)
 	remove_modules(CRUCIFORM_REDLIGHT)
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/make_priest()
+/obj/item/implant/core_implant/cruciform/proc/make_priest()
 	add_module(new CRUCIFORM_PRIEST)
 	add_module(new CRUCIFORM_REDLIGHT)
 
-/obj/item/weapon/implant/core_implant/cruciform/proc/make_inquisitor()
+/obj/item/implant/core_implant/cruciform/proc/make_inquisitor()
 	add_module(new CRUCIFORM_PRIEST)
 	add_module(new CRUCIFORM_INQUISITOR)
 	add_module(new /datum/core_module/cruciform/uplink())

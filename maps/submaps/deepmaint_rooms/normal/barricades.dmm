@@ -6,7 +6,7 @@
 "f" = (/turf/simulated/floor/tiled/techmaint,/area/deepmaint)
 "g" = (/obj/structure/table/rack/shelf,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot/low_chance,/obj/spawner/pack/tech_loot/low_chance,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
 "h" = (/obj/spawner/junk,/turf/simulated/floor/tiled/techmaint,/area/deepmaint)
-"i" = (/obj/item/weapon/stool,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
+"i" = (/obj/item/stool,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
 "j" = (/obj/spawner/mob/roaches/cluster/low_chance,/turf/simulated/floor/tiled/techmaint,/area/deepmaint)
 "k" = (/obj/structure/table/standard,/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
 "l" = (/obj/structure/table/standard,/obj/spawner/pack/rare/low_chance,/obj/spawner/pack/rare,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)

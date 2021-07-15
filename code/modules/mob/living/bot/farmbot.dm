@@ -267,8 +267,8 @@
 	playsound(loc, "robot_talk_heavy", 100, 2, 0)
 	var/turf/Tsec = get_turf(src)
 
-	new /obj/item/weapon/tool/minihoe(Tsec)
-	new /obj/item/weapon/reagent_containers/glass/bucket(Tsec)
+	new /obj/item/tool/minihoe(Tsec)
+	new /obj/item/reagent_containers/glass/bucket(Tsec)
 	new /obj/item/device/assembly/prox_sensor(Tsec)
 	new /obj/item/device/scanner/plant(Tsec)
 
@@ -307,7 +307,7 @@
 
 // Assembly
 
-/obj/item/weapon/farmbot_arm_assembly
+/obj/item/farmbot_arm_assembly
 	name = "water tank/robot arm assembly"
 	desc = "A water tank with a robot arm permanently grafted to it."
 	icon = 'icons/obj/aibots.dmi'
@@ -316,7 +316,7 @@
 	var/created_name = "Farmbot"
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/weapon/farmbot_arm_assembly/Initialize()
+/obj/item/farmbot_arm_assembly/Initialize()
 	. = ..()
 	var tank = locate(/obj/structure/reagent_dispensers/watertank) in contents
 	if(!tank)
@@ -328,7 +328,7 @@
 		..()
 		return
 
-	var/obj/item/weapon/farmbot_arm_assembly/A = new /obj/item/weapon/farmbot_arm_assembly(loc)
+	var/obj/item/farmbot_arm_assembly/A = new /obj/item/farmbot_arm_assembly(loc)
 
 	to_chat(user, "You add the robot arm to [src].")
 	playsound(src.loc, 'sound/effects/insert.ogg', 50, 1)
@@ -336,7 +336,7 @@
 	user.drop_from_inventory(S)
 	qdel(S)
 
-/obj/item/weapon/farmbot_arm_assembly/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/farmbot_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if((istype(W, /obj/item/device/scanner/plant)) && (build_step == 0))
 		build_step++
@@ -346,7 +346,7 @@
 		user.remove_from_mob(W)
 		qdel(W)
 
-	else if((istype(W, /obj/item/weapon/reagent_containers/glass/bucket)) && (build_step == 1))
+	else if((istype(W, /obj/item/reagent_containers/glass/bucket)) && (build_step == 1))
 		build_step++
 		to_chat(user, "You add a bucket to [src].")
 		playsound(src.loc, 'sound/effects/insert.ogg', 50, 1)
@@ -354,7 +354,7 @@
 		user.remove_from_mob(W)
 		qdel(W)
 
-	else if((istype(W, /obj/item/weapon/tool/minihoe)) && (build_step == 2))
+	else if((istype(W, /obj/item/tool/minihoe)) && (build_step == 2))
 		build_step++
 		to_chat(user, "You add a minihoe to [src].")
 		playsound(src.loc, 'sound/effects/insert.ogg', 50, 1)
@@ -375,7 +375,7 @@
 		qdel(W)
 		qdel(src)
 
-	else if(istype(W, /obj/item/weapon/pen))
+	else if(istype(W, /obj/item/pen))
 		var/t = input(user, "Enter new robot name", name, created_name) as text
 		t = sanitize(t, MAX_NAME_LEN)
 		if(!t)
@@ -385,5 +385,5 @@
 
 		created_name = t
 
-/obj/item/weapon/farmbot_arm_assembly/attack_hand(mob/user as mob)
+/obj/item/farmbot_arm_assembly/attack_hand(mob/user as mob)
 	return //it's a converted watertank, no you cannot pick it up and put it in your backpack

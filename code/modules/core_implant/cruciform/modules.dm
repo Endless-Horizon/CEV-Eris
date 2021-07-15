@@ -1,4 +1,4 @@
-/datum/core_module/cruciform/implant_type = /obj/item/weapon/implant/core_implant/cruciform
+/datum/core_module/cruciform/implant_type = /obj/item/implant/core_implant/cruciform
 
 
 /datum/core_module/cruciform/red_light/install()
@@ -117,12 +117,12 @@
 
 /datum/core_module/activatable/cruciform/priest_convert/activate()
 	..()
-	var/obj/item/weapon/implant/core_implant/cruciform/C = implant
+	var/obj/item/implant/core_implant/cruciform/C = implant
 	C.make_priest()
 
 /datum/core_module/activatable/cruciform/priest_convert/uninstall()
 	..()
-	var/obj/item/weapon/implant/core_implant/cruciform/C = implant
+	var/obj/item/implant/core_implant/cruciform/C = implant
 	C.make_common()
 
 
@@ -149,7 +149,7 @@
 ///////////
 
 /datum/core_module/rituals/cruciform
-	implant_type = /obj/item/weapon/implant/core_implant/cruciform
+	implant_type = /obj/item/implant/core_implant/cruciform
 	var/list/ritual_types = list()
 
 /datum/core_module/rituals/cruciform/set_up()

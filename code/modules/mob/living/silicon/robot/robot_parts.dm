@@ -48,7 +48,7 @@
 	body_part = "chest"
 	matter = list(MATERIAL_STEEL = 25)
 	var/wires = 0
-	var/obj/item/weapon/cell/large/cell
+	var/obj/item/cell/large/cell
 
 /obj/item/robot_parts/chest/is_ready(var/mob/living/user)
 	if(!wires)
@@ -117,7 +117,7 @@
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == MATERIAL_STEEL && !parts.len)
 		var/obj/item/stack/material/M = W
 		if (M.use(1))
-			var/obj/item/weapon/secbot_assembly/ed209_assembly/B = new(loc)
+			var/obj/item/secbot_assembly/ed209_assembly/B = new(loc)
 			B.forceMove(get_turf(src))
 			to_chat(user, SPAN_NOTICE("You armed the robot frame."))
 			if (user.get_inactive_hand() == src)
@@ -235,7 +235,7 @@
 
 		qdel(src)
 
-	if (istype(W, /obj/item/weapon/pen))
+	if (istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", src.name, src.created_name), MAX_NAME_LEN)
 		if (!t)
 			return
@@ -247,7 +247,7 @@
 	return
 
 /obj/item/robot_parts/chest/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/weapon/cell))
+	if(istype(W, /obj/item/cell))
 		if(src.cell)
 			to_chat(user, SPAN_WARNING("You have already inserted a cell!"))
 		else
@@ -310,7 +310,7 @@
 		else
 			to_chat(user, "<span class='warning'There is nothing to eject.</span>")
 
-	else if(istype(W, /obj/item/weapon/stock_parts/manipulator))
+	else if(istype(W, /obj/item/stock_parts/manipulator))
 		to_chat(user, SPAN_NOTICE("You install some manipulators and modify the head, creating a functional spider-bot!"))
 		new /mob/living/simple_animal/spiderbot(get_turf(loc))
 		user.drop_from_inventory(W)

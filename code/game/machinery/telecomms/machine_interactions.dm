@@ -24,7 +24,7 @@
 
 	// Hardcoded tool paths are bad, but the tcomm code relies a "buffer" function that only the actual multitool has
 	// I really don't want to try and fix that now, so it stays that way
-	if(istype(I, /obj/item/weapon/tool/multitool))
+	if(istype(I, /obj/item/tool/multitool))
 		attack_hand(user)
 		return
 
@@ -45,13 +45,13 @@
 	// You need a multitool to use this, or be silicon
 	if(!issilicon(user))
 		// istype returns false if the value is null
-		if(!istype(user.get_active_hand(), /obj/item/weapon/tool/multitool))
+		if(!istype(user.get_active_hand(), /obj/item/tool/multitool))
 			return
 
 	if(stat & (BROKEN|NOPOWER))
 		return
 
-	var/obj/item/weapon/tool/multitool/P = get_multitool(user)
+	var/obj/item/tool/multitool/P = get_multitool(user)
 
 	user.set_machine(src)
 	var/dat
@@ -132,15 +132,15 @@
 
 /obj/machinery/telecomms/proc/get_multitool(mob/user as mob)
 
-	var/obj/item/weapon/tool/multitool/P = null
+	var/obj/item/tool/multitool/P = null
 	// Let's double check
-	if(!issilicon(user) && istype(user.get_active_hand(), /obj/item/weapon/tool/multitool))
+	if(!issilicon(user) && istype(user.get_active_hand(), /obj/item/tool/multitool))
 		P = user.get_active_hand()
 	else if(isAI(user))
 		var/mob/living/silicon/ai/U = user
 		P = U.aiMulti
 	else if(isrobot(user) && in_range(user, src))
-		if(istype(user.get_active_hand(), /obj/item/weapon/tool/multitool))
+		if(istype(user.get_active_hand(), /obj/item/tool/multitool))
 			P = user.get_active_hand()
 	return P
 
@@ -225,13 +225,13 @@
 /obj/machinery/telecomms/Topic(href, href_list)
 
 	if(!issilicon(usr))
-		if(!istype(usr.get_active_hand(), /obj/item/weapon/tool/multitool))
+		if(!istype(usr.get_active_hand(), /obj/item/tool/multitool))
 			return
 
 	if(stat & (BROKEN|NOPOWER))
 		return
 
-	var/obj/item/weapon/tool/multitool/P = get_multitool(usr)
+	var/obj/item/tool/multitool/P = get_multitool(usr)
 
 	if(href_list["input"])
 		switch(href_list["input"])

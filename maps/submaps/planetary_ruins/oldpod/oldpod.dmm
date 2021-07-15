@@ -160,7 +160,7 @@
 /obj/item/frame/air_alarm,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/electronics/airalarm,
+/obj/item/electronics/airalarm,
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/map_template/oldpod)
 "az" = (
@@ -206,7 +206,7 @@
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
 /obj/spawner/pack/tech_loot,
-/obj/item/weapon/tool/pickaxe,
+/obj/item/tool/pickaxe,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/map_template/oldpod)
@@ -231,8 +231,8 @@
 	},
 /obj/item/frame/apc,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/cell/small,
-/obj/item/weapon/gun_upgrade/mechanism/battery_shunt,
+/obj/item/cell/small,
+/obj/item/gun_upgrade/mechanism/battery_shunt,
 /turf/simulated/floor/tiled/steel/techfloor,
 /area/map_template/oldpod)
 "aI" = (
@@ -248,7 +248,7 @@
 /area/map_template/oldpod)
 "aJ" = (
 /obj/landmark/corpse/pirate,
-/obj/item/weapon/gun/energy/retro,
+/obj/item/gun/energy/retro,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel/techfloor,
@@ -269,8 +269,8 @@
 /area/map_template/oldpod)
 "aM" = (
 /obj/landmark/corpse/scientist,
-/obj/item/weapon/material/wirerod,
-/obj/item/weapon/material/shard,
+/obj/item/material/wirerod,
+/obj/item/material/shard,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel/techfloor,
@@ -282,10 +282,10 @@
 /obj/item/stack/rods,
 /obj/item/stack/rods,
 /obj/item/stack/rods,
-/obj/item/weapon/material/shard,
-/obj/item/weapon/material/shard,
-/obj/item/weapon/material/shard,
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
+/obj/item/material/shard,
+/obj/item/material/shard,
+/obj/item/material/shard,
 /turf/simulated/floor/plating,
 /area/map_template/oldpod)
 "aO" = (
@@ -325,7 +325,7 @@
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white/techfloor,
 /area/map_template/oldpod)
@@ -348,9 +348,9 @@
 	},
 /obj/structure/closet/crate/freezer/rations,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn,
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
 /obj/item/clothing/glasses/eyepatch,
-/obj/item/weapon/melee/energy/sword/pirate,
+/obj/item/melee/energy/sword/pirate,
 /turf/simulated/floor/tiled/white/techfloor,
 /area/map_template/oldpod)
 "aU" = (
@@ -382,7 +382,7 @@
 	dir = 4
 	},
 /obj/structure/closet/crate,
-/obj/item/weapon/tank/oxygen,
+/obj/item/tank/oxygen,
 /turf/simulated/floor/plating,
 /area/map_template/oldpod)
 "aX" = (

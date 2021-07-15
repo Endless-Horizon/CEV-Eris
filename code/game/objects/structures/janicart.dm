@@ -10,9 +10,9 @@
 	climbable = TRUE
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
-	var/obj/item/weapon/storage/bag/trash/mybag	= null
-	var/obj/item/weapon/mop/mymop = null
-	var/obj/item/weapon/reagent_containers/spray/myspray = null
+	var/obj/item/storage/bag/trash/mybag	= null
+	var/obj/item/mop/mymop = null
+	var/obj/item/reagent_containers/spray/myspray = null
 	var/obj/item/device/lightreplacer/myreplacer = null
 	var/obj/structure/mopbucket/mybucket = null
 	var/has_items = FALSE
@@ -47,7 +47,7 @@
 		..()
 
 /obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/mop) || istype(I, /obj/item/weapon/reagent_containers/glass/rag) || istype(I, /obj/item/weapon/soap))
+	if(istype(I, /obj/item/mop) || istype(I, /obj/item/reagent_containers/glass/rag) || istype(I, /obj/item/soap))
 		if (mybucket)
 			if(I.reagents.total_volume < I.reagents.maximum_volume)
 				if(mybucket.reagents.total_volume < 1)
@@ -62,12 +62,12 @@
 			to_chat(user, "<span class='notice'>There is no bucket mounted here to dip [I] into!</span>")
 		return 1
 
-	else if (istype(I, /obj/item/weapon/reagent_containers/glass/bucket) && mybucket)
+	else if (istype(I, /obj/item/reagent_containers/glass/bucket) && mybucket)
 		I.afterattack(mybucket, usr, 1)
 		update_icon()
 		return 1
 
-	else if(istype(I, /obj/item/weapon/reagent_containers/spray) && !myspray)
+	else if(istype(I, /obj/item/reagent_containers/spray) && !myspray)
 		user.unEquip(I, src)
 		myspray = I
 		update_icon()
@@ -83,7 +83,7 @@
 		to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 		return 1
 
-	else if(istype(I, /obj/item/weapon/storage/bag/trash) && !mybag)
+	else if(istype(I, /obj/item/storage/bag/trash) && !mybag)
 		user.unEquip(I, src)
 		mybag = I
 		update_icon()
@@ -91,7 +91,7 @@
 		to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 		return 1
 
-	else if(istype(I, /obj/item/weapon/caution))
+	else if(istype(I, /obj/item/caution))
 		if(signs < 4)
 			user.unEquip(I, src)
 			signs++
@@ -121,7 +121,7 @@
 /obj/structure/janitorialcart/AltClick(mob/living/user)
 	if(user.incapacitated() || !Adjacent(user))	return
 	var/obj/I = usr.get_active_hand()
-	if(istype(I, /obj/item/weapon/mop))
+	if(istype(I, /obj/item/mop))
 		if(!mymop)
 			usr.drop_from_inventory(I,src)
 			mymop = I
@@ -132,8 +132,8 @@
 		else
 			to_chat(usr, "<span class='notice'>The cart already has a mop attached</span>")
 		return
-	else if(istype(I, /obj/item/weapon/reagent_containers) && mybucket)
-		var/obj/item/weapon/reagent_containers/C = I
+	else if(istype(I, /obj/item/reagent_containers) && mybucket)
+		var/obj/item/reagent_containers/C = I
 		C.afterattack(mybucket, usr, 1)
 		update_icon()
 
@@ -190,7 +190,7 @@
 					myreplacer = null
 			if("sign")
 				if(signs)
-					var/obj/item/weapon/caution/Sign = locate() in src
+					var/obj/item/caution/Sign = locate() in src
 					if(Sign)
 						user.put_in_hands(Sign)
 						to_chat(user, SPAN_NOTICE("You take \a [Sign] from [src]."))
@@ -256,7 +256,7 @@
 		mybucket = null
 
 	if (signs)
-		for (var/obj/item/weapon/caution/Sign in src)
+		for (var/obj/item/caution/Sign in src)
 			if (prob(min((chance*2),100)))
 				signs--
 				Sign.forceMove(dropspot)
@@ -305,7 +305,7 @@
 	reagent_flags = OPENCONTAINER
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
-	var/obj/item/weapon/storage/bag/trash/mybag	= null
+	var/obj/item/storage/bag/trash/mybag	= null
 	var/callme = "pimpin' ride"	//how do people refer to it?
 	applies_material_colour = 0
 
@@ -326,7 +326,7 @@
 /obj/structure/bed/chair/janicart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/key))
 		to_chat(user, "Hold [I] in one of your hands while you drive this [callme].")
-	else if(istype(I, /obj/item/weapon/storage/bag/trash))
+	else if(istype(I, /obj/item/storage/bag/trash))
 		to_chat(user, SPAN_NOTICE("You hook the trashbag onto the [callme]."))
 		user.drop_item()
 		I.loc = src

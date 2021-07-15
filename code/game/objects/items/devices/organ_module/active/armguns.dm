@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/automatic/armsmg
+/obj/item/gun/projectile/automatic/armsmg
 	icon = 'icons/obj/guns/projectile/armsmg.dmi'
 	icon_state = "armsmg"
 	item_state = null
@@ -30,4 +30,4 @@
 	icon_state = "armsmg"
 	matter = list(MATERIAL_PLASTEEL = 20, MATERIAL_PLASTIC = 5, MATERIAL_STEEL = 5)
 	allowed_organs = list(BP_R_ARM, BP_L_ARM)
-	holding_type = /obj/item/weapon/gun/projectile/automatic/armsmg
+	holding_type = /obj/item/gun/projectile/automatic/armsmg

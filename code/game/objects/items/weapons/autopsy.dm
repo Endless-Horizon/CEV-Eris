@@ -2,7 +2,7 @@
 //moved these here from code/defines/obj/weapon.dm
 //please preference put stuff where it's easy to find - C
 
-/obj/item/weapon/autopsy_scanner
+/obj/item/autopsy_scanner
 	name = "autopsy scanner"
 	desc = "Extracts information on wounds."
 	icon = 'icons/obj/autopsy_scanner.dmi'
@@ -16,7 +16,7 @@
 	var/target_name
 	var/timeofdeath
 
-/obj/item/weapon/paper/autopsy_report
+/obj/item/paper/autopsy_report
 	var/list/autopsy_data
 
 /datum/autopsy_data_scanner
@@ -41,7 +41,7 @@
 		W.time_inflicted = time_inflicted
 		return W
 
-/obj/item/weapon/autopsy_scanner/proc/add_data(var/obj/item/organ/external/O, mob/living/carbon/user)
+/obj/item/autopsy_scanner/proc/add_data(var/obj/item/organ/external/O, mob/living/carbon/user)
 	if(!O.autopsy_data.len && !O.trace_chemicals.len) return
 
 	for(var/V in O.autopsy_data)
@@ -79,7 +79,7 @@
 		if(O.trace_chemicals[V] > 0 && !chemtraces.Find(V))
 			chemtraces += V
 
-/obj/item/weapon/autopsy_scanner/verb/print_data()
+/obj/item/autopsy_scanner/verb/print_data()
 	set category = "Object"
 	set src in view(usr, 1)
 	set name = "Print Data"
@@ -161,7 +161,7 @@
 
 	sleep(10)
 
-	var/obj/item/weapon/paper/autopsy_report/P = new(usr.loc)
+	var/obj/item/paper/autopsy_report/P = new(usr.loc)
 	P.name = "Autopsy Data ([target_name])"
 	P.info = "<tt>[scan_data]</tt>"
 	P.autopsy_data = list() // Copy autopsy data for science tool
@@ -176,7 +176,7 @@
 	usr.put_in_hands(P)
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN*4) //To stop people spamclicking and generating tons of paper
 
-/obj/item/weapon/autopsy_scanner/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+/obj/item/autopsy_scanner/attack(mob/living/carbon/human/M, mob/living/carbon/user)
 	if(!istype(M))
 		return
 
@@ -209,5 +209,5 @@
 
 	return 1
 
-/obj/item/weapon/autopsy_scanner/attack_self()
+/obj/item/autopsy_scanner/attack_self()
 	print_data()

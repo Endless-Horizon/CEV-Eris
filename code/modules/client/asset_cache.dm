@@ -287,7 +287,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	..()
 
 /datum/asset/simple/tool_upgrades/register()
-	for(var/type in subtypesof(/obj/item/weapon/tool_upgrade))
+	for(var/type in subtypesof(/obj/item/tool_upgrade))
 		var/filename = sanitizeFileName("[type].png")
 		var/icon/I = getFlatTypeIcon(type)
 		assets[filename] = I

@@ -1,11 +1,11 @@
-/obj/item/weapon/material/kitchen
+/obj/item/material/kitchen
 	icon = 'icons/obj/kitchen.dmi'
-	bad_type = /obj/item/weapon/material/kitchen
+	bad_type = /obj/item/material/kitchen
 
 /*
  * Utensils
  */
-/obj/item/weapon/material/kitchen/utensil
+/obj/item/material/kitchen/utensil
 	w_class = ITEM_SIZE_TINY
 	thrown_force_divisor = 1
 	origin_tech = "materials=1"
@@ -15,18 +15,18 @@
 	force_divisor = 0.1 // 6 when wielded with hardness 60 (steel)
 	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
 	structure_damage_factor = STRUCTURE_DAMAGE_WEAK
-	bad_type = /obj/item/weapon/material/kitchen/utensil
+	bad_type = /obj/item/material/kitchen/utensil
 	spawn_tags = SPAWN_TAG_ITEM
 	var/loaded      //Descriptive string for currently loaded food object.
 	var/scoop_food = 1
 
-/obj/item/weapon/material/kitchen/utensil/New()
+/obj/item/material/kitchen/utensil/New()
 	..()
 	if (prob(60))
 		src.pixel_y = rand(0, 4)
 	create_reagents(5)
 
-/obj/item/weapon/material/kitchen/utensil/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/material/kitchen/utensil/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M))
 		return ..()
 
@@ -56,15 +56,15 @@
 		to_chat(user, SPAN_WARNING("You don't have anything on \the [src]."))	//if we have help intent and no food scooped up DON'T STAB OURSELVES WITH THE FORK
 		return
 
-/obj/item/weapon/material/kitchen/utensil/fork
+/obj/item/material/kitchen/utensil/fork
 	name = "fork"
 	desc = "It's a fork. Sure is pointy."
 	icon_state = "fork"
 
-/obj/item/weapon/material/kitchen/utensil/fork/plastic
+/obj/item/material/kitchen/utensil/fork/plastic
 	default_material = MATERIAL_PLASTIC
 
-/obj/item/weapon/material/kitchen/utensil/spoon
+/obj/item/material/kitchen/utensil/spoon
 	name = "spoon"
 	desc = "It's a spoon. You can see your own upside-down face in it."
 	icon_state = "spoon"
@@ -73,10 +73,10 @@
 	sharp = FALSE
 	force_divisor = 0.1 //2 when wielded with weight 20 (steel)
 
-/obj/item/weapon/material/kitchen/utensil/spoon/plastic
+/obj/item/material/kitchen/utensil/spoon/plastic
 	default_material = MATERIAL_PLASTIC
 
-/obj/item/weapon/material/kitchen/utensil/spoon/mre
+/obj/item/material/kitchen/utensil/spoon/mre
 	desc = "A wooden spoon, almost chalky."
 	icon_state = "mre_spoon"
 	applies_material_colour = FALSE
@@ -86,7 +86,7 @@
  * Rolling Pins
  */
 
-/obj/item/weapon/material/kitchen/rollingpin
+/obj/item/material/kitchen/rollingpin
 	name = "rolling pin"
 	desc = "Used to knock out the Bartender."
 	icon_state = "rolling_pin"
@@ -95,7 +95,7 @@
 	force_divisor = 0.7 // 10 when wielded with weight 15 (wood)
 	thrown_force_divisor = 1 // as above
 
-/obj/item/weapon/material/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
+/obj/item/material/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
 		to_chat(user, SPAN_WARNING("\The [src] slips out of your hand and hits your head."))
 		user.drop_from_inventory(src)

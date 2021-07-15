@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/revolver/havelock
+/obj/item/gun/projectile/revolver/havelock
 	name = "FS REV .35 Auto \"Havelock\""
 	desc = "A cheap Frozen Star knock-off of a Smith & Wesson Model 10. Uses .35 special rounds."
 	icon = 'icons/obj/guns/projectile/havelock.dmi'

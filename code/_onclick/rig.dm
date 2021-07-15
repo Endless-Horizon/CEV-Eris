@@ -71,7 +71,7 @@
 /mob/living/proc/HardsuitClickOn(var/atom/A, var/alert_ai = 0)
 	if(!can_use_rig())// || !can_click())  // This check is already done in mob/proc/ClickOn()
 		return 0
-	var/obj/item/weapon/rig/rig = get_rig()
+	var/obj/item/rig/rig = get_rig()
 	if(istype(rig) && !rig.offline && rig.selected_module)
 		if(src != rig.wearer)
 			if(rig.ai_can_move_suit(src, check_user_module = 1))

@@ -7,11 +7,11 @@
 /*
  * Classic Baton
  */
-/obj/item/weapon/melee
-	bad_type = /obj/item/weapon/melee
+/obj/item/melee
+	bad_type = /obj/item/melee
 	spawn_tags = SPAWN_TAG_WEAPON
 
-/obj/item/weapon/melee/classic_baton
+/obj/item/melee/classic_baton
 	name = "police baton"
 	desc = "A wooden truncheon for beating criminal scum."
 	icon = 'icons/obj/weapons.dmi'
@@ -21,7 +21,7 @@
 	force = WEAPON_FORCE_PAINFUL
 	structure_damage_factor = STRUCTURE_DAMAGE_BLUNT
 
-/obj/item/weapon/melee/classic_baton/attack(mob/M, mob/living/user)
+/obj/item/melee/classic_baton/attack(mob/M, mob/living/user)
 	if ((CLUMSY in user.mutations) && prob(50))
 		to_chat(user, SPAN_WARNING("You club yourself over the head."))
 		user.Weaken(3 * force)
@@ -34,7 +34,7 @@
 	return ..()
 
 //Telescopic baton
-/obj/item/weapon/melee/telebaton
+/obj/item/melee/telebaton
 	name = "telescopic baton"
 	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded."
 	icon = 'icons/obj/weapons.dmi'
@@ -47,7 +47,7 @@
 	var/on = FALSE
 
 
-/obj/item/weapon/melee/telebaton/attack_self(mob/user)
+/obj/item/melee/telebaton/attack_self(mob/user)
 	on = !on
 	if(on)
 		user.visible_message(
@@ -89,7 +89,7 @@
 
 	return
 
-/obj/item/weapon/melee/telebaton/attack(mob/target, mob/living/user)
+/obj/item/melee/telebaton/attack(mob/target, mob/living/user)
 	if(on)
 		if ((CLUMSY in user.mutations) && prob(50))
 			to_chat(user, SPAN_WARNING("You club yourself over the head."))

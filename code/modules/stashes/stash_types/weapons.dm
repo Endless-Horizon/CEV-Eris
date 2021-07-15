@@ -38,23 +38,23 @@
 /datum/stash/weapon/mutiny_AI
 	story_type = STORY_MALFUNCTION
 	lore = "AI ACTING UP. GO HERE, %D BRING OTHERS. RADIO SILENCE."
-	contents_list_base = list(/obj/item/weapon/gun/energy/ionrifle = 1,
-	/obj/item/weapon/storage/box/emps = 1,
+	contents_list_base = list(/obj/item/gun/energy/ionrifle = 1,
+	/obj/item/storage/box/emps = 1,
 	/obj/item/clothing/gloves/insulated = 1,
-	/obj/item/weapon/storage/toolbox/emergency = 1,
+	/obj/item/storage/toolbox/emergency = 1,
 	/obj/spawner/powercell = 4)
 
-	contents_list_random = list(/obj/item/weapon/storage/box/explosive = 40,
-	/obj/item/weapon/tool/fireaxe = 70,
+	contents_list_random = list(/obj/item/storage/box/explosive = 40,
+	/obj/item/tool/fireaxe = 70,
 	/obj/item/clothing/gloves/insulated = 50,
-	/obj/item/weapon/storage/box/emps = 30,
-	/obj/item/weapon/gun/energy/ionrifle = 70,
+	/obj/item/storage/box/emps = 30,
+	/obj/item/gun/energy/ionrifle = 70,
 	/obj/spawner/powercell = 70,
-	/obj/item/weapon/storage/toolbox/emergency = 50,
+	/obj/item/storage/toolbox/emergency = 50,
 	/obj/item/clothing/suit/armor/laserproof = 30,
 	/obj/item/clothing/suit/armor/laserproof = 30,
-	/obj/item/weapon/storage/belt/utility/full = 70,
-	/obj/item/weapon/storage/belt/utility/full = 70)
+	/obj/item/storage/belt/utility/full = 70,
+	/obj/item/storage/belt/utility/full = 70)
 
 //Variant of the above with slightly deeper story
 /datum/stash/weapon/mutiny_AI/robots
@@ -116,7 +116,7 @@
 /datum/stash/weapon/mutiny/starvation
  	//Make sure there's a shotgun with slugs in the stash, as described in the text.
  	//Also the wardens were hoarding food
- 	contents_list_extra = list(/obj/spawner/gun/shotgun = 1, /obj/item/weapon/storage/box/shotgunammo/slug = 1, /obj/spawner/rations = 6)
+ 	contents_list_extra = list(/obj/spawner/gun/shotgun = 1, /obj/item/storage/box/shotgunammo/slug = 1, /obj/spawner/rations = 6)
  	lore = "Convicts figured out the starvation rations are neither accidental nor temporary.<br>\
  Plan B is to shoot troublemakers until we balance the calorie equation.<br>\
  Just keep it semi-justifiable, don't leave any slugs in the walls, and stick the lethals back at %D when you're done.<br>\

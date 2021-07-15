@@ -16,7 +16,7 @@
 
 	var/boost_value = 1.5  // How much the aging process of the plant is sped up
 
-/datum/ritual/cruciform/agrolyte/accelerated_growth/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/agrolyte/accelerated_growth/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 
 	var/list/plants_around = list()
 	for(var/obj/machinery/portable_atmospherics/hydroponics/H in view(user))
@@ -50,7 +50,7 @@
 	desc = "Relieves the pain of a person in front of you."
 	power = 5
 
-/datum/ritual/cruciform/agrolyte/mercy/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C)
+/datum/ritual/cruciform/agrolyte/mercy/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C)
 	var/mob/living/carbon/human/T = get_front_human_in_range(user, 1)
 	if(!T)
 		fail("No target in front of you.", user, C)
@@ -69,7 +69,7 @@
 	desc = "Stabilizes the health of a person in front of you."
 	power = 10
 
-/datum/ritual/cruciform/agrolyte/absolution/perform(mob/living/carbon/human/user, obj/item/weapon/implant/core_implant/C,list/targets)
+/datum/ritual/cruciform/agrolyte/absolution/perform(mob/living/carbon/human/user, obj/item/implant/core_implant/C,list/targets)
 	var/mob/living/carbon/human/T = get_front_human_in_range(user, 1)
 	if(!T)
 		fail("No target in front of you.", user, C)

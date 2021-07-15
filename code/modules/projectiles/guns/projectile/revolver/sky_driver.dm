@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/revolver/sky_driver
+/obj/item/gun/projectile/revolver/sky_driver
 	name = "S REV .35 Auto \"Sky Driver\""
 	desc = "Old, Syndicate revolver made on lost tech before the Corporate war. Uses .35 special rounds."
 	icon = 'icons/obj/guns/projectile/sky_driver.dmi'
@@ -21,20 +21,20 @@
 	spawn_frequency = 0
 	spawn_blacklisted = TRUE
 	noricochet = TRUE
-	gun_parts = list(/obj/item/weapon/gun_upgrade/barrel/gauss = 3, /obj/item/stack/material/plasteel = 2)
+	gun_parts = list(/obj/item/gun_upgrade/barrel/gauss = 3, /obj/item/stack/material/plasteel = 2)
 
-/obj/item/weapon/gun/projectile/revolver/sky_driver/New()
+/obj/item/gun/projectile/revolver/sky_driver/New()
 	..()
 	GLOB.all_faction_items[src] = GLOB.department_security
 
-/obj/item/weapon/gun/projectile/revolver/sky_driver/Destroy()
+/obj/item/gun/projectile/revolver/sky_driver/Destroy()
 	for(var/mob/living/carbon/human/H in viewers(get_turf(src)))
 		SEND_SIGNAL(H, COMSIG_OBJ_FACTION_ITEM_DESTROY, src)
 	GLOB.all_faction_items -= src
 	GLOB.ironhammer_faction_item_loss++
 	..()
 
-/obj/item/weapon/gun/projectile/revolver/sky_driver/attackby(obj/item/I, mob/user, params)
+/obj/item/gun/projectile/revolver/sky_driver/attackby(obj/item/I, mob/user, params)
 	if(nt_sword_attack(I, user))
 		return FALSE
 	..()

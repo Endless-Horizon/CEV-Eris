@@ -84,7 +84,7 @@ obj/machinery/air_sensor/Destroy()
 
 	var/list/sensor_information = list()
 	var/datum/radio_frequency/radio_connection
-	circuit = /obj/item/weapon/electronics/circuitboard/air_management
+	circuit = /obj/item/electronics/circuitboard/air_management
 
 obj/machinery/computer/general_air_control/Destroy()
 	SSradio.remove_object(src, frequency)
@@ -169,7 +169,7 @@ obj/machinery/computer/general_air_control/Destroy()
 
 	var/input_flow_setting = 200
 	var/pressure_setting = ONE_ATMOSPHERE * 45
-	circuit = /obj/item/weapon/electronics/circuitboard/air_management/tank_control
+	circuit = /obj/item/electronics/circuitboard/air_management/tank_control
 
 
 /obj/machinery/computer/general_air_control/large_tank_control/return_text()
@@ -288,7 +288,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 
 	var/input_flow_setting = 700
 	var/pressure_setting = 100
-	circuit = /obj/item/weapon/electronics/circuitboard/air_management/supermatter_core
+	circuit = /obj/item/electronics/circuitboard/air_management/supermatter_core
 
 
 /obj/machinery/computer/general_air_control/supermatter_core/return_text()
@@ -406,7 +406,7 @@ Min Core Pressure: [pressure_limit] kPa<BR>"}
 
 	var/cutoff_temperature = 2000
 	var/on_temperature = 1200
-	circuit = /obj/item/weapon/electronics/circuitboard/air_management/injector_control
+	circuit = /obj/item/electronics/circuitboard/air_management/injector_control
 
 /obj/machinery/computer/general_air_control/fuel_injection/Process()
 	if(automation)

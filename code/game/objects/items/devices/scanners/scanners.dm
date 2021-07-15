@@ -14,7 +14,7 @@
 	origin_tech = list(TECH_BIO = 1)
 	bad_type = /obj/item/device/scanner
 
-	suitable_cell = /obj/item/weapon/cell/small
+	suitable_cell = /obj/item/cell/small
 
 	var/scan_title
 	var/scan_data
@@ -109,7 +109,7 @@
 	if(!scan_data)
 		to_chat(user, "There is no scan data to print.")
 		return
-	var/obj/item/weapon/paper/P = new(get_turf(src), scan_data, "paper - [scan_title]")
+	var/obj/item/paper/P = new(get_turf(src), scan_data, "paper - [scan_title]")
 	user.put_in_hands(P)
 	user.visible_message("\The [src] spits out a piece of paper.")
 
