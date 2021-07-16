@@ -18,6 +18,7 @@ var/list/ai_verbs_default = list(
 	/mob/living/silicon/ai/proc/ai_store_location,
 	/mob/living/silicon/ai/proc/ai_checklaws,
 	/mob/living/silicon/ai/proc/control_integrated_radio,
+	/mob/living/silicon/ai/proc/control_personal_drone,
 	/mob/living/silicon/ai/proc/core,
 	/mob/living/silicon/ai/proc/pick_icon,
 	/mob/living/silicon/ai/proc/sensor_mode,
@@ -106,6 +107,8 @@ var/list/ai_verbs_default = list(
 	var/carded
 
 	var/multitool_mode = 0
+
+	var/mob/living/silicon/robot/drone/aibound/bound_drone = null
 
 	defaultHUD = "Eris"
 
@@ -731,3 +734,17 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/proc/view_photos()
 	var/obj/item/device/camera/siliconcam/ai_camera/cam = aiCamera
 	cam.view_images()
+
+// Control a tiny drone
+/mob/living/silicon/ai/proc/control_personal_drone()
+	set name = "Control Personal Drone"
+	set desc = "Take control of your own AI-bound maintenance drone."
+	set category = "Silicon Commands"
+	
+	// Switch to drone or spawn a new one
+	if(!bound_drone)
+		try_drone_spawn(src, aibound = TRUE)
+	else if(src?.mind)
+		bound_drone.ckey = src.ckey
+		bound_drone.laws = src.laws // Resync laws in case they have been changed
+		src.mind.transfer_to(bound_drone) // Transfer mind to drone

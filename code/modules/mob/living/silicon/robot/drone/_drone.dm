@@ -392,3 +392,35 @@ var/list/mob_hat_cache = list()
 
 	verbs -= /mob/living/silicon/robot/drone/verb/choose_armguard
 	to_chat(src, "Your armguard has been set.")
+
+// AI-bound maintenance drone
+/mob/living/silicon/robot/drone/aibound
+
+	var/mob/living/silicon/ai/bound_ai = null
+
+/mob/living/silicon/robot/drone/aibound/verb/get_back_to_core()
+	set name = "Get Back To Core"
+	set desc = "Release drone control and get back to your main AI core."
+	set category = "Silicon Commands"
+
+	if(bound_ai && src.mind)
+		src.bound_ai.ckey = src.ckey
+		src.bound_ai.bound_drone = src
+		src.mind.transfer_to(bound_ai) // Transfer mind to AI core
+	else
+		to_chat(src, SPAN_WARNING("No AI core detected."))
+
+/mob/living/silicon/robot/drone/aibound/law_resync()
+	return
+
+/mob/living/silicon/robot/drone/aibound/shut_down()
+	return
+
+/mob/living/silicon/robot/drone/aibound/full_law_reset()
+	return
+
+/mob/living/silicon/robot/drone/aibound/SetName(pickedName as text)
+	to_chat(src, SPAN_WARNING("AI bound drones cannot be renamed."))
+
+/mob/living/silicon/robot/drone/aibound/emag_act(var/remaining_charges, var/mob/user)
+	to_chat(user, SPAN_DANGER("This drone is remotely controlled by the ship AI and cannot be directly subverted, the sequencer has no effect."))
