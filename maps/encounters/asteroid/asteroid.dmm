@@ -355,6 +355,7 @@
 	anchored = 1;
 	dir = 2;
 	icon_state = "0";
+	
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/abandoned)

@@ -1,40 +1,264 @@
-"a" = (/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"b" = (/obj/item/remains/xeno,/obj/spawner/junk,/turf/simulated/floor/tiled/white/techfloor_grid,/area/deepmaint)
-"c" = (/turf/simulated/wall,/area/deepmaint)
-"d" = (/obj/structure/kitchenspike,/turf/simulated/floor/tiled/white/techfloor_grid,/area/deepmaint)
-"e" = (/obj/machinery/gibber,/turf/simulated/floor/tiled/white/techfloor_grid,/area/deepmaint)
-"f" = (/obj/item/remains/human,/obj/spawner/junk,/turf/simulated/floor/tiled/white/techfloor_grid,/area/deepmaint)
-"g" = (/obj/item/remains/mouse,/obj/spawner/junk,/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"h" = (/obj/spawner/junk,/obj/spawner/junk,/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"i" = (/obj/spawner/junk,/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"j" = (/obj/item/remains/human,/obj/spawner/junk,/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"k" = (/obj/machinery/door/airlock{name = "Kitchen Freezer"; req_access = list(28)},/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"l" = (/obj/spawner/junk,/turf/simulated/floor/tiled/white/cargo,/area/deepmaint)
-"m" = (/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"n" = (/obj/spawner/junk,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"o" = (/obj/item/remains/human,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"p" = (/turf/simulated/floor/tiled/white/cargo,/area/deepmaint)
-"q" = (/obj/spawner/junk,/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"r" = (/obj/spawner/junk,/obj/spawner/junk,/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"s" = (/obj/structure/table/standard,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"t" = (/obj/structure/table/standard,/obj/spawner/junk,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"u" = (/turf/simulated/floor/tiled/white/panels,/area/deepmaint)
-"v" = (/obj/spawner/junk,/turf/simulated/floor/tiled/white/panels,/area/deepmaint)
-"w" = (/obj/item/remains/mouse,/turf/simulated/floor/tiled/white/panels,/area/deepmaint)
-"x" = (/obj/item/remains/mouse,/obj/spawner/junk,/obj/machinery/light/small{dir = 8},/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"y" = (/obj/spawner/junk,/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"z" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/white/cargo,/area/deepmaint)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"b" = (
+/obj/item/remains/xeno,
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/techfloor_grid,
+/area/deepmaint)
+"c" = (
+/turf/simulated/wall,
+/area/deepmaint)
+"d" = (
+/obj/structure/kitchenspike,
+/turf/simulated/floor/tiled/white/techfloor_grid,
+/area/deepmaint)
+"e" = (
+/obj/machinery/gibber,
+/turf/simulated/floor/tiled/white/techfloor_grid,
+/area/deepmaint)
+"f" = (
+/obj/item/remains/human,
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/techfloor_grid,
+/area/deepmaint)
+"g" = (
+/obj/item/remains/mouse,
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"h" = (
+/obj/spawner/junk,
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"i" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"j" = (
+/obj/item/remains/human,
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"k" = (
+/obj/machinery/door/airlock{
+	name = "Kitchen Freezer";
+	req_access = list(28)
+	},
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"l" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/cargo,
+/area/deepmaint)
+"m" = (
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"n" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"o" = (
+/obj/item/remains/human,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"p" = (
+/turf/simulated/floor/tiled/white/cargo,
+/area/deepmaint)
+"q" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"r" = (
+/obj/spawner/junk,
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"s" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"t" = (
+/obj/structure/table/standard,
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"u" = (
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
+"v" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
+"w" = (
+/obj/item/remains/mouse,
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
+"x" = (
+/obj/item/remains/mouse,
+/obj/spawner/junk,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"y" = (
+/obj/spawner/junk,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"z" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white/cargo,
+/area/deepmaint)
 
 (1,1,1) = {"
-aaaaaaaaaaa
-accccccccca
-acdedcdedca
-acdbdcdfdca
-acxhicigyca
-acijiciigca
-acckccckcca
-almnoznmnpq
-rcstscsssca
-auvwvuuvwvq
-qqraaqqqqaa
+a
+a
+a
+a
+a
+a
+a
+a
+r
+a
+q
+"}
+(2,1,1) = {"
+a
+c
+c
+c
+c
+c
+c
+l
+c
+u
+q
+"}
+(3,1,1) = {"
+a
+c
+d
+d
+x
+i
+c
+m
+s
+v
+r
+"}
+(4,1,1) = {"
+a
+c
+e
+b
+h
+j
+k
+n
+t
+w
+a
+"}
+(5,1,1) = {"
+a
+c
+d
+d
+i
+i
+c
+o
+s
+v
+a
+"}
+(6,1,1) = {"
+a
+c
+c
+c
+c
+c
+c
+z
+c
+u
+q
+"}
+(7,1,1) = {"
+a
+c
+d
+d
+i
+i
+c
+n
+s
+u
+q
+"}
+(8,1,1) = {"
+a
+c
+e
+f
+g
+i
+k
+m
+s
+v
+q
+"}
+(9,1,1) = {"
+a
+c
+d
+d
+y
+g
+c
+n
+s
+w
+q
+"}
+(10,1,1) = {"
+a
+c
+c
+c
+c
+c
+c
+p
+c
+v
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+q
+a
+q
+a
 "}

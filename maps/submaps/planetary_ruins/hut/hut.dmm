@@ -1,29 +1,150 @@
-"a" = (/obj/structure/closet/crate/freezer/rations,/obj/effect/decal/cleanable/cobweb2,/obj/spawner/booze,/obj/spawner/junkfood/rotten/low_chance,/obj/spawner/junkfood/low_chance,/obj/spawner/junkfood,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"b" = (/turf/simulated/wall/silver,/area/template_noop)
-"c" = (/obj/structure/table/rack,/obj/spawner/voidsuit,/obj/spawner/gun/energy_cheap/low_chance,/obj/spawner/gun/energy_cheap/low_chance,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"d" = (/obj/structure/table/marble,/obj/spawner/pack/tech_loot/onestar,/obj/spawner/booze,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"e" = (/obj/machinery/artifact_scanpad,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"f" = (/obj/machinery/r_n_d/server,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"g" = (/obj/structure/curtain/black,/turf/simulated/floor/carpet,/area/template_noop)
-"h" = (/obj/structure/inflatable/door,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"i" = (/obj/structure/filingcabinet,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"k" = (/obj/structure/bed/chair/wheelchair,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"m" = (/obj/structure/table/marble,/obj/item/weapon/paper_bin,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"n" = (/turf/template_noop,/area/template_noop)
-"o" = (/obj/structure/bookcase/manuals/xenoarchaeology,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"p" = (/obj/spawner/junk,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"q" = (/obj/item/weapon/pen/multi,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"r" = (/mob/living/bot/medbot,/turf/simulated/floor/tiled/dark,/area/template_noop)
-"t" = (/obj/structure/bed,/obj/item/weapon/bedsheet/rainbow,/turf/simulated/floor/carpet,/area/template_noop)
-"G" = (/turf/simulated/floor/tiled/dark,/area/template_noop)
-"K" = (/turf/simulated/floor/plating,/area/template_noop)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/closet/crate/freezer/rations,
+/obj/effect/decal/cleanable/cobweb2,
+/obj/spawner/booze,
+/obj/spawner/junkfood/rotten/low_chance,
+/obj/spawner/junkfood/low_chance,
+/obj/spawner/junkfood,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"b" = (
+/turf/simulated/wall/silver,
+/area/template_noop)
+"c" = (
+/obj/structure/table/rack,
+/obj/spawner/voidsuit,
+/obj/spawner/gun/energy_cheap/low_chance,
+/obj/spawner/gun/energy_cheap/low_chance,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"d" = (
+/obj/structure/table/marble,
+/obj/spawner/pack/tech_loot/onestar,
+/obj/spawner/booze,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"e" = (
+/obj/machinery/artifact_scanpad,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"f" = (
+/obj/machinery/r_n_d/server,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"g" = (
+/obj/structure/curtain/black,
+/turf/simulated/floor/carpet,
+/area/template_noop)
+"h" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"i" = (
+/obj/structure/filingcabinet,
+/obj/effect/decal/cleanable/cobweb,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"k" = (
+/obj/structure/bed/chair/wheelchair,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"m" = (
+/obj/structure/table/marble,
+/obj/item/weapon/paper_bin,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"n" = (
+/turf/template_noop,
+/area/template_noop)
+"o" = (
+/obj/structure/bookcase/manuals/xenoarchaeology,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"p" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"q" = (
+/obj/item/weapon/pen/multi,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"r" = (
+/mob/living/bot/medbot,
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"t" = (
+/obj/structure/bed,
+/obj/item/weapon/bedsheet/rainbow,
+/turf/simulated/floor/carpet,
+/area/template_noop)
+"G" = (
+/turf/simulated/floor/tiled/dark,
+/area/template_noop)
+"K" = (
+/turf/simulated/floor/plating,
+/area/template_noop)
 
 (1,1,1) = {"
-bbbbbnn
-bioabhb
-bpGGbhb
-KcGrGGb
-beqkbgb
-bfdmbtb
-bbbbbbb
+b
+b
+b
+K
+b
+b
+b
+"}
+(2,1,1) = {"
+b
+i
+p
+c
+e
+f
+b
+"}
+(3,1,1) = {"
+b
+o
+G
+G
+q
+d
+b
+"}
+(4,1,1) = {"
+b
+a
+G
+r
+k
+m
+b
+"}
+(5,1,1) = {"
+b
+b
+b
+G
+b
+b
+b
+"}
+(6,1,1) = {"
+n
+h
+h
+G
+g
+t
+b
+"}
+(7,1,1) = {"
+n
+b
+b
+b
+b
+b
+b
 "}

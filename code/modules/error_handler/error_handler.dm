@@ -77,12 +77,8 @@ var/total_runtimes_skipped = 0
 	var/list/desclines = list()
 	if(splitlines.len > 2) // If there aren't at least three lines, there's no info
 		for(var/line in splitlines)
-			if(length(line) < 3)
+			if(length(line) < 3 || findtext(line, "source file:") || findtext(line, "usr.loc:"))
 				continue // Blank line, skip it
-			if(findtext(line, "source file:"))
-				continue // Redundant, skip it
-			if(findtext(line, "usr.loc:"))
-				continue // Our usr.loc is better, skip it
 			if(findtext(line, "usr:"))
 				if(usrinfo)
 					desclines.Add(usrinfo)
@@ -105,13 +101,21 @@ var/total_runtimes_skipped = 0
 		desclines.Add(usrinfo)
 	if(silencing)
 		desclines += "  (This error will now be item_flags & SILENT for [ERROR_SILENCE_TIME / 600] minutes)"
-	// Now to actually output the error info...
-	log_to_dd("\[[time_stamp()]] Runtime in [e.file],[e.line]: [e]")
-	send2coders(message = "\[[time_stamp()]] Runtime in [e.file],[e.line]: [e]  \n [jointext(desclines, "\n")]", color = "#0000ff")
-	for(var/line in desclines)
-		log_to_dd(line)
 	if(error_cache)
 		error_cache.logError(e, desclines, e_src = e_src)
+
+	// Now to actually output the error info...
+	var/main_line = "\[[time_stamp()]] Runtime in [e.file],[e.line]: [e]"
+	log_to_dd(main_line)
+	send2coders(message = "[main_line] \n [jointext(desclines, "\n")]", color = "#0000ff")
+	for(var/line in desclines)
+		log_to_dd(line)
+
+#ifdef UNIT_TESTS
+	if(GLOB.current_test)
+		//good day, sir
+		GLOB.current_test.Fail("[main_line]\n[desclines.Join("\n")]")
+#endif
 #endif
 
 /proc/log_runtime(exception/e, datum/e_src, extra_info)

@@ -577,7 +577,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "goatzone";
 	name = "containment zone control";
-	pixel_w = 0;
 	pixel_x = 0;
 	pixel_y = 25
 	},

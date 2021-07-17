@@ -1,113 +1,975 @@
-"aa" = (/turf/simulated/floor/tiled/steel,/area/deepmaint)
-"ab" = (/turf/simulated/wall/r_wall,/area/deepmaint)
-"ac" = (/obj/structure/table/woodentable,/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"ad" = (/obj/item/modular_computer/console/preset/security/camera,/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"ae" = (/obj/structure/table/woodentable,/obj/item/device/lighting/toggleable/lamp/green,/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"af" = (/turf/simulated/wall,/area/deepmaint)
-"ag" = (/obj/structure/closet/secure_closet/freezer/meat,/obj/spawner/rations,/obj/spawner/rations,/obj/spawner/rations,/obj/spawner/rations/low_chance,/obj/spawner/rations/low_chance,/obj/spawner/rations/low_chance,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"ah" = (/obj/structure/table/standard,/obj/machinery/microwave{pixel_x = -3; pixel_y = 6},/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"ai" = (/obj/spawner/junk,/obj/machinery/light,/turf/simulated/floor/tiled/steel,/area/deepmaint)
-"aj" = (/obj/structure/table/standard,/obj/item/weapon/reagent_containers/glass/beaker{pixel_x = 5},/obj/item/weapon/reagent_containers/glass/beaker{pixel_x = 5},/obj/item/weapon/material/kitchen/rollingpin,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"ak" = (/obj/spawner/pack/machine,/turf/simulated/floor/tiled/techmaint_cargo,/area/deepmaint)
-"al" = (/obj/structure/table/rack,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot/low_chance,/obj/spawner/pack/tech_loot/low_chance,/turf/simulated/floor/tiled/techmaint_cargo,/area/deepmaint)
-"am" = (/obj/spawner/junk,/turf/simulated/floor/tiled/steel,/area/deepmaint)
-"an" = (/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"ao" = (/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"ap" = (/obj/structure/catwalk,/turf/simulated/floor/plating/under,/area/deepmaint)
-"aq" = (/obj/structure/table/woodentable,/obj/spawner/pack/rare,/obj/spawner/pack/rare,/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"ar" = (/turf/simulated/floor/wood,/area/deepmaint)
-"as" = (/obj/structure/flora/pottedplant{tag = "icon-plant-21"; icon_state = "plant-21"},/turf/simulated/floor/wood,/area/deepmaint)
-"at" = (/obj/machinery/door/airlock,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"au" = (/obj/structure/bed/chair/comfy/black{dir = 1},/turf/simulated/floor/wood,/area/deepmaint)
-"av" = (/obj/structure/table/rack,/obj/spawner/booze,/obj/spawner/booze,/obj/spawner/booze,/obj/spawner/booze/low_chance,/obj/spawner/booze/low_chance,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"aw" = (/obj/structure/bookcase,/turf/simulated/floor/wood,/area/deepmaint)
-"ax" = (/obj/structure/table/woodentable,/obj/machinery/librarypubliccomp,/turf/simulated/floor/wood,/area/deepmaint)
-"ay" = (/obj/machinery/door/airlock/glass,/obj/structure/girder,/obj/structure/barricade,/obj/machinery/door/airlock,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"az" = (/obj/machinery/deployable/barrier,/obj/structure/barricade,/turf/simulated/floor/tiled/steel/panels,/area/deepmaint)
-"aA" = (/obj/structure/girder,/obj/machinery/deployable/barrier,/obj/structure/barricade,/turf/simulated/floor/tiled/steel/panels,/area/deepmaint)
-"aB" = (/obj/structure/girder,/obj/machinery/door/airlock,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"aC" = (/obj/structure/table/standard,/obj/spawner/junkfood,/obj/spawner/junkfood,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"aD" = (/obj/structure/bed/chair/office/dark,/turf/simulated/floor/wood,/area/deepmaint)
-"aE" = (/obj/structure/girder,/obj/structure/barricade,/obj/machinery/door/airlock,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"aF" = (/turf/simulated/floor/tiled/steel/gray_perforated,/area/deepmaint)
-"aG" = (/obj/structure/table/woodentable,/turf/simulated/floor/wood,/area/deepmaint)
-"aH" = (/obj/structure/table/woodentable,/obj/item/weapon/paper_bin,/turf/simulated/floor/wood,/area/deepmaint)
-"aI" = (/obj/structure/girder,/turf/simulated/floor/wood,/area/deepmaint)
-"aJ" = (/obj/machinery/door/airlock/glass,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"aK" = (/obj/structure/barricade,/turf/simulated/floor/wood,/area/deepmaint)
-"aL" = (/obj/structure/bed/chair/comfy/black{dir = 4},/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"aM" = (/obj/machinery/vending/snack,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"aN" = (/obj/structure/flora/pottedplant{tag = "icon-plant-10"; icon_state = "plant-10"},/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"aO" = (/obj/structure/table/woodentable,/obj/spawner/pack/rare/low_chance,/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"aP" = (/obj/machinery/door/airlock/glass,/obj/structure/barricade,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"aQ" = (/obj/structure/table/woodentable,/obj/spawner/powercell,/obj/spawner/powercell,/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"aR" = (/obj/item/remains/human,/obj/structure/catwalk,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/turf/simulated/floor/plating/under,/area/deepmaint)
-"aS" = (/obj/machinery/vending/cola,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"aT" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood,/area/deepmaint)
-"aU" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/wood,/area/deepmaint)
-"aV" = (/obj/structure/table/woodentable,/obj/item/weapon/pen/blue{pixel_x = 5; pixel_y = 5},/obj/item/weapon/pen/red{pixel_x = 2; pixel_y = 6},/turf/simulated/floor/wood,/area/deepmaint)
-"aW" = (/obj/machinery/libraryscanner,/turf/simulated/floor/wood,/area/deepmaint)
-"aX" = (/obj/item/modular_computer/console/preset/civilian,/turf/simulated/floor/wood,/area/deepmaint)
-"aY" = (/obj/structure/table/woodentable,/obj/item/device/lighting/toggleable/lamp/green,/turf/simulated/floor/wood,/area/deepmaint)
-"aZ" = (/obj/structure/bed/chair/office/dark{dir = 1},/turf/simulated/floor/wood,/area/deepmaint)
-"ba" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/wood,/area/deepmaint)
-"bb" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled/steel,/area/deepmaint)
-"bc" = (/obj/item/remains/human,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/turf/simulated/floor/wood,/area/deepmaint)
-"bd" = (/obj/spawner/junk,/obj/spawner/junk,/turf/simulated/floor/wood,/area/deepmaint)
-"be" = (/obj/spawner/junk,/turf/simulated/floor/wood,/area/deepmaint)
-"bf" = (/obj/spawner/junk,/obj/spawner/junk,/obj/spawner/junk,/turf/simulated/floor/wood,/area/deepmaint)
-"bg" = (/obj/effect/window_lwall_spawn/reinforced,/turf/simulated/floor/plating,/area/deepmaint)
-"bh" = (/obj/structure/reagent_dispensers/water_cooler,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"bi" = (/obj/spawner/junk,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"bj" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/item/weapon/storage/firstaid/regular,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"bk" = (/obj/item/weapon/stool,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"bl" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/spawner/medical,/obj/spawner/medical,/obj/spawner/medical,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"bm" = (/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"bn" = (/obj/structure/bed/chair,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"bo" = (/obj/spawner/junk,/turf/simulated/floor/tiled/steel/gray_perforated,/area/deepmaint)
-"bp" = (/obj/spawner/junk,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/tiled/steel/gray_perforated,/area/deepmaint)
-"bq" = (/obj/structure/table/woodentable,/obj/machinery/light{dir = 8},/turf/simulated/floor/wood,/area/deepmaint)
-"br" = (/obj/item/remains/human,/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/blood,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/gun_loot,/turf/simulated/floor/wood,/area/deepmaint)
-"bs" = (/obj/spawner/mob/biome_spawner_mob/low_chance,/turf/simulated/floor/tiled/steel,/area/deepmaint)
-"bt" = (/obj/spawner/junk,/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"bu" = (/obj/structure/bed/chair{dir = 1},/obj/spawner/junk,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"bv" = (/obj/structure/bed/chair{dir = 1},/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"bw" = (/obj/item/remains/human,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/gun_loot,/turf/simulated/floor/wood,/area/deepmaint)
-"bx" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/blood,/obj/spawner/junk,/turf/simulated/floor/wood,/area/deepmaint)
-"by" = (/obj/item/remains/human,/obj/effect/decal/cleanable/blood,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/gun_loot,/turf/simulated/floor/wood,/area/deepmaint)
-"bz" = (/obj/item/remains/human,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/gun_loot,/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"bA" = (/obj/effect/decal/cleanable/blood,/obj/spawner/junk,/turf/simulated/floor/wood,/area/deepmaint)
-"bB" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"bC" = (/obj/spawner/junk,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/carpet/turcarpet,/area/deepmaint)
-"bD" = (/obj/structure/table/woodentable,/obj/spawner/pack/rare,/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/wood,/area/deepmaint)
-"bE" = (/obj/machinery/vending/coffee,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"bF" = (/obj/machinery/vending/cigarette,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"bG" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/steel,/area/deepmaint)
-"bH" = (/obj/spawner/traps/low_chance,/turf/simulated/floor/wood,/area/deepmaint)
-"bI" = (/obj/spawner/junk,/obj/spawner/junk,/obj/spawner/traps/low_chance,/turf/simulated/floor/tiled/steel/gray_perforated,/area/deepmaint)
-"bJ" = (/obj/spawner/mob/biome_spawner_mob/low_chance,/turf/simulated/floor/wood,/area/deepmaint)
-"bK" = (/obj/spawner/junk,/obj/landmark/loot_biomes/mob/roach/room{range = 10},/turf/simulated/floor/wood,/area/deepmaint)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"ab" = (
+/turf/simulated/wall/r_wall,
+/area/deepmaint)
+"ac" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"ad" = (
+/obj/item/modular_computer/console/preset/security/camera,
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"ae" = (
+/obj/structure/table/woodentable,
+/obj/item/device/lighting/toggleable/lamp/green,
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"af" = (
+/turf/simulated/wall,
+/area/deepmaint)
+"ag" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/spawner/rations,
+/obj/spawner/rations,
+/obj/spawner/rations,
+/obj/spawner/rations/low_chance,
+/obj/spawner/rations/low_chance,
+/obj/spawner/rations/low_chance,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"ah" = (
+/obj/structure/table/standard,
+/obj/machinery/microwave{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"ai" = (
+/obj/spawner/junk,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"aj" = (
+/obj/structure/table/standard,
+/obj/item/weapon/reagent_containers/glass/beaker{
+	pixel_x = 5
+	},
+/obj/item/weapon/reagent_containers/glass/beaker{
+	pixel_x = 5
+	},
+/obj/item/weapon/material/kitchen/rollingpin,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"ak" = (
+/obj/spawner/pack/machine,
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/deepmaint)
+"al" = (
+/obj/structure/table/rack,
+/obj/spawner/pack/tech_loot,
+/obj/spawner/pack/tech_loot,
+/obj/spawner/pack/tech_loot,
+/obj/spawner/pack/tech_loot/low_chance,
+/obj/spawner/pack/tech_loot/low_chance,
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/deepmaint)
+"am" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"an" = (
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"ao" = (
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"ap" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"aq" = (
+/obj/structure/table/woodentable,
+/obj/spawner/pack/rare,
+/obj/spawner/pack/rare,
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"ar" = (
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"as" = (
+/obj/structure/flora/pottedplant{
+	tag = "icon-plant-21";
+	icon_state = "plant-21"
+	},
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"at" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"au" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"av" = (
+/obj/structure/table/rack,
+/obj/spawner/booze,
+/obj/spawner/booze,
+/obj/spawner/booze,
+/obj/spawner/booze/low_chance,
+/obj/spawner/booze/low_chance,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"aw" = (
+/obj/structure/bookcase,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"ax" = (
+/obj/structure/table/woodentable,
+/obj/machinery/librarypubliccomp,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"ay" = (
+/obj/machinery/door/airlock/glass,
+/obj/structure/girder,
+/obj/structure/barricade,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"az" = (
+/obj/machinery/deployable/barrier,
+/obj/structure/barricade,
+/turf/simulated/floor/tiled/steel/panels,
+/area/deepmaint)
+"aA" = (
+/obj/structure/girder,
+/obj/machinery/deployable/barrier,
+/obj/structure/barricade,
+/turf/simulated/floor/tiled/steel/panels,
+/area/deepmaint)
+"aB" = (
+/obj/structure/girder,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"aC" = (
+/obj/structure/table/standard,
+/obj/spawner/junkfood,
+/obj/spawner/junkfood,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"aD" = (
+/obj/structure/bed/chair/office/dark,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aE" = (
+/obj/structure/girder,
+/obj/structure/barricade,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"aF" = (
+/turf/simulated/floor/tiled/steel/gray_perforated,
+/area/deepmaint)
+"aG" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aH" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/paper_bin,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aI" = (
+/obj/structure/girder,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aJ" = (
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"aK" = (
+/obj/structure/barricade,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aL" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"aM" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"aN" = (
+/obj/structure/flora/pottedplant{
+	tag = "icon-plant-10";
+	icon_state = "plant-10"
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"aO" = (
+/obj/structure/table/woodentable,
+/obj/spawner/pack/rare/low_chance,
+/obj/spawner/pack/rare/low_chance,
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"aP" = (
+/obj/machinery/door/airlock/glass,
+/obj/structure/barricade,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"aQ" = (
+/obj/structure/table/woodentable,
+/obj/spawner/powercell,
+/obj/spawner/powercell,
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"aR" = (
+/obj/item/remains/human,
+/obj/structure/catwalk,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"aS" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"aT" = (
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aU" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aV" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/pen/blue{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/weapon/pen/red{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aW" = (
+/obj/machinery/libraryscanner,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aX" = (
+/obj/item/modular_computer/console/preset/civilian,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aY" = (
+/obj/structure/table/woodentable,
+/obj/item/device/lighting/toggleable/lamp/green,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"aZ" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"ba" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bb" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"bc" = (
+/obj/item/remains/human,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bd" = (
+/obj/spawner/junk,
+/obj/spawner/junk,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"be" = (
+/obj/spawner/junk,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bf" = (
+/obj/spawner/junk,
+/obj/spawner/junk,
+/obj/spawner/junk,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bg" = (
+/obj/effect/window_lwall_spawn/reinforced,
+/turf/simulated/floor/plating,
+/area/deepmaint)
+"bh" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"bi" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"bj" = (
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/item/weapon/storage/firstaid/regular,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"bk" = (
+/obj/item/weapon/stool,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"bl" = (
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/spawner/medical,
+/obj/spawner/medical,
+/obj/spawner/medical,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"bm" = (
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"bn" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"bo" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel/gray_perforated,
+/area/deepmaint)
+"bp" = (
+/obj/spawner/junk,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/floor/tiled/steel/gray_perforated,
+/area/deepmaint)
+"bq" = (
+/obj/structure/table/woodentable,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"br" = (
+/obj/item/remains/human,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/gun_loot,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bs" = (
+/obj/spawner/mob/biome_spawner_mob/low_chance,
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"bt" = (
+/obj/spawner/junk,
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"bu" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"bv" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"bw" = (
+/obj/item/remains/human,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/gun_loot,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bx" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood,
+/obj/spawner/junk,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"by" = (
+/obj/item/remains/human,
+/obj/effect/decal/cleanable/blood,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/gun_loot,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bz" = (
+/obj/item/remains/human,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/gun_loot,
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"bA" = (
+/obj/effect/decal/cleanable/blood,
+/obj/spawner/junk,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bB" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"bC" = (
+/obj/spawner/junk,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/deepmaint)
+"bD" = (
+/obj/structure/table/woodentable,
+/obj/spawner/pack/rare,
+/obj/spawner/pack/rare/low_chance,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bE" = (
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"bF" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"bG" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"bH" = (
+/obj/spawner/traps/low_chance,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bI" = (
+/obj/spawner/junk,
+/obj/spawner/junk,
+/obj/spawner/traps/low_chance,
+/turf/simulated/floor/tiled/steel/gray_perforated,
+/area/deepmaint)
+"bJ" = (
+/obj/spawner/mob/biome_spawner_mob/low_chance,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"bK" = (
+/obj/spawner/junk,
+/obj/landmark/loot_biomes/mob/roach/room{
+	range = 10
+	},
+/turf/simulated/floor/wood,
+/area/deepmaint)
 
 (1,1,1) = {"
-aaaaaiaaaaaaaaaaambsaaaaamaaaaaaaaaaaaaaaa
-aaabababababababababababababababababababaa
-aaabaqadacaeafagahaCajabakakakalalalabaMaa
-aaabaOananaQafaoaoaoaoabapapapaRapapabaSam
-aaabaUarararasarararbaabatabababababababbb
-aaabbcauauararararbHbdafarbebebfbgbhbiabaa
-aaabavafafafafafafatafafaUawawawbgbjbkabaa
-aaabababaxarbeayazaAaAaBararbebebgblbmabaa
-aabnbnabaraDarafafaEafafarawawawafafaJabam
-aabobpabbqaHaGafbeaIbeafbearbebHbeaTbrabaa
-aaaFbIaJbHbearaJbHbearaJaraKawawawawawabaa
-aaaFboabaLanbtafbJbebKafbeaKarbearbebeabaa
-aabubvabaLbtaNafbearbcafbJawawawawawaIabaa
-aaabababafafafafafaPafafaUbearaGbebebwabaa
-aaabawawawawawawawbHawafarawawawbebxbyabaa
-aaabananbtanananbzananafbHararaIbAbybAabaa
-aaabbBanananbtanananbCabaJbgbgafafafababbb
-amabaraHaVaraHaVaraHaVabaUbDaWaxaXaXabbEaa
-aaabbwauaYarauaYarauaYabbeararaZbebwabbFaa
-aaabababababababababababababababababababaa
-aaambGaaaaaaaaaaaaamaaaabsaaaaaaaaaaaaaaaa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+am
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bn
+bo
+aF
+aF
+bu
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+am
+"}
+(3,1,1) = {"
+ai
+ab
+aq
+aO
+aU
+bc
+av
+ab
+bn
+bp
+bI
+bo
+bv
+ab
+aw
+an
+bB
+ar
+bw
+ab
+bG
+"}
+(4,1,1) = {"
+aa
+ab
+ad
+an
+ar
+au
+af
+ab
+ab
+ab
+aJ
+ab
+ab
+ab
+aw
+an
+an
+aH
+au
+ab
+aa
+"}
+(5,1,1) = {"
+aa
+ab
+ac
+an
+ar
+au
+af
+ax
+ar
+bq
+bH
+aL
+aL
+af
+aw
+bt
+an
+aV
+aY
+ab
+aa
+"}
+(6,1,1) = {"
+aa
+ab
+ae
+aQ
+ar
+ar
+af
+ar
+aD
+aH
+be
+an
+bt
+af
+aw
+an
+an
+ar
+ar
+ab
+aa
+"}
+(7,1,1) = {"
+aa
+ab
+af
+af
+as
+ar
+af
+be
+ar
+aG
+ar
+bt
+aN
+af
+aw
+an
+bt
+aH
+au
+ab
+aa
+"}
+(8,1,1) = {"
+aa
+ab
+ag
+ao
+ar
+ar
+af
+ay
+af
+af
+aJ
+af
+af
+af
+aw
+an
+an
+aV
+aY
+ab
+aa
+"}
+(9,1,1) = {"
+am
+ab
+ah
+ao
+ar
+ar
+af
+az
+af
+be
+bH
+bJ
+be
+af
+aw
+bz
+an
+ar
+ar
+ab
+aa
+"}
+(10,1,1) = {"
+bs
+ab
+aC
+ao
+ar
+bH
+at
+aA
+aE
+aI
+be
+be
+ar
+aP
+bH
+an
+an
+aH
+au
+ab
+am
+"}
+(11,1,1) = {"
+aa
+ab
+aj
+ao
+ba
+bd
+af
+aA
+af
+be
+ar
+bK
+bc
+af
+aw
+an
+bC
+aV
+aY
+ab
+aa
+"}
+(12,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+af
+af
+aB
+af
+af
+aJ
+af
+af
+af
+af
+af
+ab
+ab
+ab
+ab
+aa
+"}
+(13,1,1) = {"
+am
+ab
+ak
+ap
+at
+ar
+aU
+ar
+ar
+be
+ar
+be
+bJ
+aU
+ar
+bH
+aJ
+aU
+be
+ab
+bs
+"}
+(14,1,1) = {"
+aa
+ab
+ak
+ap
+ab
+be
+aw
+ar
+aw
+ar
+aK
+aK
+aw
+be
+aw
+ar
+bg
+bD
+ar
+ab
+aa
+"}
+(15,1,1) = {"
+aa
+ab
+ak
+ap
+ab
+be
+aw
+be
+aw
+be
+aw
+ar
+aw
+ar
+aw
+ar
+bg
+aW
+ar
+ab
+aa
+"}
+(16,1,1) = {"
+aa
+ab
+al
+aR
+ab
+bf
+aw
+be
+aw
+bH
+aw
+be
+aw
+aG
+aw
+aI
+af
+ax
+aZ
+ab
+aa
+"}
+(17,1,1) = {"
+aa
+ab
+al
+ap
+ab
+bg
+bg
+bg
+af
+be
+aw
+ar
+aw
+be
+be
+bA
+af
+aX
+be
+ab
+aa
+"}
+(18,1,1) = {"
+aa
+ab
+al
+ap
+ab
+bh
+bj
+bl
+af
+aT
+aw
+be
+aw
+be
+bx
+by
+af
+aX
+bw
+ab
+aa
+"}
+(19,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+bi
+bk
+bm
+aJ
+br
+aw
+be
+aI
+bw
+by
+bA
+ab
+ab
+ab
+ab
+aa
+"}
+(20,1,1) = {"
+aa
+ab
+aM
+aS
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bE
+bF
+ab
+aa
+"}
+(21,1,1) = {"
+aa
+aa
+aa
+am
+bb
+aa
+aa
+aa
+am
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bb
+aa
+aa
+aa
+aa
 "}

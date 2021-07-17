@@ -1,29 +1,216 @@
-"a" = (/obj/spawner/mob/roaches/cluster/low_chance,/turf/simulated/floor/wood,/area/deepmaint)
-"b" = (/turf/simulated/floor/wood,/area/deepmaint)
-"c" = (/obj/spawner/junk,/turf/simulated/floor/wood,/area/deepmaint)
-"d" = (/obj/spawner/junk,/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"e" = (/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"f" = (/obj/structure/bookcase,/turf/simulated/floor/wood,/area/deepmaint)
-"g" = (/obj/structure/barricade,/turf/simulated/floor/wood,/area/deepmaint)
-"h" = (/obj/spawner/pack/machine,/turf/simulated/floor/wood,/area/deepmaint)
-"i" = (/obj/structure/table/woodentable,/obj/structure/barricade,/turf/simulated/floor/wood,/area/deepmaint)
-"j" = (/obj/machinery/deployable/barrier,/turf/simulated/floor/wood,/area/deepmaint)
-"k" = (/obj/structure/table/woodentable,/obj/spawner/pack/rare,/obj/spawner/pack/rare,/obj/spawner/pack/rare/low_chance,/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"l" = (/obj/structure/table/woodentable,/obj/spawner/junkfood,/obj/spawner/junkfood,/obj/spawner/junkfood,/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"m" = (/obj/structure/table/woodentable,/obj/spawner/pack/gun_loot,/obj/spawner/pack/gun_loot,/obj/spawner/pack/gun_loot/low_chance,/obj/spawner/pack/gun_loot/low_chance,/obj/spawner/pack/gun_loot/low_chance,/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"n" = (/obj/item/remains,/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"o" = (/obj/structure/table/woodentable,/turf/simulated/floor/wood,/area/deepmaint)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/spawner/mob/roaches/cluster/low_chance,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"b" = (
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"c" = (
+/obj/spawner/junk,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"d" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"e" = (
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"f" = (
+/obj/structure/bookcase,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"g" = (
+/obj/structure/barricade,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"h" = (
+/obj/spawner/pack/machine,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"i" = (
+/obj/structure/table/woodentable,
+/obj/structure/barricade,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"j" = (
+/obj/machinery/deployable/barrier,
+/turf/simulated/floor/wood,
+/area/deepmaint)
+"k" = (
+/obj/structure/table/woodentable,
+/obj/spawner/pack/rare,
+/obj/spawner/pack/rare,
+/obj/spawner/pack/rare/low_chance,
+/obj/spawner/pack/rare/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"l" = (
+/obj/structure/table/woodentable,
+/obj/spawner/junkfood,
+/obj/spawner/junkfood,
+/obj/spawner/junkfood,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"m" = (
+/obj/structure/table/woodentable,
+/obj/spawner/pack/gun_loot,
+/obj/spawner/pack/gun_loot,
+/obj/spawner/pack/gun_loot/low_chance,
+/obj/spawner/pack/gun_loot/low_chance,
+/obj/spawner/pack/gun_loot/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"n" = (
+/obj/item/remains,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"o" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood,
+/area/deepmaint)
 
 (1,1,1) = {"
-abcbdedbbcb
-bbfgghggfab
-cffifffiffc
-bgigbbbggjb
-egfbklmbfhe
-ehfcenebfhd
-djfbeeebfge
-bjogcccggjb
-bffofffoffb
-bhfjhggjfbc
-bbcbedebcba
+a
+b
+c
+b
+e
+e
+d
+b
+b
+b
+b
+"}
+(2,1,1) = {"
+b
+b
+f
+g
+g
+h
+j
+j
+f
+h
+b
+"}
+(3,1,1) = {"
+c
+f
+f
+i
+f
+f
+f
+o
+f
+f
+c
+"}
+(4,1,1) = {"
+b
+g
+i
+g
+b
+c
+b
+g
+o
+j
+b
+"}
+(5,1,1) = {"
+d
+g
+f
+b
+k
+e
+e
+c
+f
+h
+e
+"}
+(6,1,1) = {"
+e
+h
+f
+b
+l
+n
+e
+c
+f
+g
+d
+"}
+(7,1,1) = {"
+d
+g
+f
+b
+m
+e
+e
+c
+f
+g
+e
+"}
+(8,1,1) = {"
+b
+g
+i
+g
+b
+b
+b
+g
+o
+j
+b
+"}
+(9,1,1) = {"
+b
+f
+f
+g
+f
+f
+f
+g
+f
+f
+c
+"}
+(10,1,1) = {"
+c
+a
+f
+j
+h
+h
+g
+j
+f
+b
+b
+"}
+(11,1,1) = {"
+b
+b
+c
+b
+e
+d
+e
+b
+b
+c
+a
 "}

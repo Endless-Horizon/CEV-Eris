@@ -1,40 +1,304 @@
-"a" = (/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"b" = (/turf/simulated/floor/tiled/white/cargo,/area/deepmaint)
-"c" = (/turf/simulated/wall,/area/deepmaint)
-"d" = (/turf/simulated/floor/tiled/white/techfloor_grid,/area/deepmaint)
-"e" = (/obj/machinery/atmospherics/unary/freezer{cooling = 1; dir = 2; set_temperature = 73},/turf/simulated/floor/tiled/white/cargo,/area/deepmaint)
-"f" = (/turf/simulated/floor/tiled/white/panels,/area/deepmaint)
-"g" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/manifold/visible{dir = 8},/turf/simulated/floor/plating/under,/area/deepmaint)
-"h" = (/obj/machinery/atmospherics/pipe/manifold/visible{dir = 1},/obj/structure/catwalk,/turf/simulated/floor/plating/under,/area/deepmaint)
-"i" = (/obj/machinery/atmospherics/pipe/manifold/visible{dir = 1},/obj/structure/catwalk,/obj/structure/catwalk,/turf/simulated/floor/plating/under,/area/deepmaint)
-"j" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/manifold/visible{dir = 4},/turf/simulated/floor/plating/under,/area/deepmaint)
-"k" = (/obj/structure/table/standard,/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{pixel_x = 7; pixel_y = 1},/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{pixel_x = 0; pixel_y = 0},/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"l" = (/obj/machinery/portable_atmospherics/canister/oxygen,/obj/machinery/atmospherics/portables_connector{dir = 1},/turf/simulated/floor/tiled/white/cargo,/area/deepmaint)
-"m" = (/obj/machinery/atmospherics/pipe/simple/visible,/obj/structure/catwalk,/turf/simulated/floor/plating/under,/area/deepmaint)
-"n" = (/obj/machinery/atmospherics/unary/cryo_cell,/turf/simulated/floor/tiled/white/cargo,/area/deepmaint)
-"o" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/simple/visible{tag = "icon-intact (NORTHEAST)"; icon_state = "intact"; dir = 5},/turf/simulated/floor/plating/under,/area/deepmaint)
-"p" = (/obj/structure/catwalk,/obj/machinery/atmospherics/pipe/manifold/visible,/turf/simulated/floor/plating/under,/area/deepmaint)
-"q" = (/obj/machinery/atmospherics/pipe/manifold/visible,/obj/structure/catwalk,/turf/simulated/floor/plating/under,/area/deepmaint)
-"r" = (/obj/machinery/atmospherics/pipe/simple/visible{tag = "icon-intact (NORTHWEST)"; icon_state = "intact"; dir = 9},/obj/structure/catwalk,/turf/simulated/floor/plating/under,/area/deepmaint)
-"s" = (/obj/structure/table/standard,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/rare,/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"t" = (/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"u" = (/obj/structure/table/standard,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/rare,/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"v" = (/obj/machinery/sleeper{icon_state = "sleeper_0"; dir = 4},/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"w" = (/obj/machinery/sleeper{dir = 8},/turf/simulated/floor/tiled/white/gray_platform,/area/deepmaint)
-"x" = (/obj/machinery/light/small{dir = 8},/turf/simulated/floor/tiled/white/techfloor_grid,/area/deepmaint)
-"y" = (/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/white/techfloor_grid,/area/deepmaint)
-"z" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/white/panels,/area/deepmaint)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"b" = (
+/turf/simulated/floor/tiled/white/cargo,
+/area/deepmaint)
+"c" = (
+/turf/simulated/wall,
+/area/deepmaint)
+"d" = (
+/turf/simulated/floor/tiled/white/techfloor_grid,
+/area/deepmaint)
+"e" = (
+/obj/machinery/atmospherics/unary/freezer{
+	cooling = 1;
+	dir = 2;
+	set_temperature = 73
+	},
+/turf/simulated/floor/tiled/white/cargo,
+/area/deepmaint)
+"f" = (
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
+"g" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 8
+	},
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"h" = (
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 1
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"i" = (
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 1
+	},
+/obj/structure/catwalk,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"j" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/manifold/visible{
+	dir = 4
+	},
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"k" = (
+/obj/structure/table/standard,
+/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"l" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white/cargo,
+/area/deepmaint)
+"m" = (
+/obj/machinery/atmospherics/pipe/simple/visible,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"n" = (
+/obj/machinery/atmospherics/unary/cryo_cell,
+/turf/simulated/floor/tiled/white/cargo,
+/area/deepmaint)
+"o" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	tag = "icon-intact (NORTHEAST)";
+	icon_state = "intact";
+	dir = 5
+	},
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"p" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/manifold/visible,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"q" = (
+/obj/machinery/atmospherics/pipe/manifold/visible,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"r" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	tag = "icon-intact (NORTHWEST)";
+	icon_state = "intact";
+	dir = 9
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"s" = (
+/obj/structure/table/standard,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/rare,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"t" = (
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"u" = (
+/obj/structure/table/standard,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/rare,
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"v" = (
+/obj/machinery/sleeper{
+	icon_state = "sleeper_0";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"w" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white/gray_platform,
+/area/deepmaint)
+"x" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white/techfloor_grid,
+/area/deepmaint)
+"y" = (
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/white/techfloor_grid,
+/area/deepmaint)
+"z" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
 
 (1,1,1) = {"
-aaaabbbaaaa
-acdedfdedca
-acxghihjyca
-ackllmllkca
-bccccmccccb
-bcnnnmnnncb
-bzoppqqqrzb
-asttsfsttua
-avttwfvttwa
-avttwfvttwa
-aaaabbbaaaa
+a
+a
+a
+a
+b
+b
+b
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+c
+c
+c
+c
+c
+z
+s
+v
+v
+a
+"}
+(3,1,1) = {"
+a
+d
+x
+k
+c
+n
+o
+t
+t
+t
+a
+"}
+(4,1,1) = {"
+a
+e
+g
+l
+c
+n
+p
+t
+t
+t
+a
+"}
+(5,1,1) = {"
+b
+d
+h
+l
+c
+n
+p
+s
+w
+w
+b
+"}
+(6,1,1) = {"
+b
+f
+i
+m
+m
+m
+q
+f
+f
+f
+b
+"}
+(7,1,1) = {"
+b
+d
+h
+l
+c
+n
+q
+s
+v
+v
+b
+"}
+(8,1,1) = {"
+a
+e
+j
+l
+c
+n
+q
+t
+t
+t
+a
+"}
+(9,1,1) = {"
+a
+d
+y
+k
+c
+n
+r
+t
+t
+t
+a
+"}
+(10,1,1) = {"
+a
+c
+c
+c
+c
+c
+z
+u
+w
+w
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+b
+b
+b
+a
+a
+a
+a
 "}

@@ -1,3 +1,4 @@
+// END_INCLUDE
 // BEGIN_INTERNALS
 // END_INTERNALS
 // BEGIN_FILE_DIR
@@ -7,6 +8,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\_compile_options.dm"
 #include "code\client_macros.dm"
 #include "code\global.dm"
 #include "code\hub.dm"
@@ -73,7 +75,6 @@
 #include "code\__DEFINES\topic.dm"
 #include "code\__DEFINES\trade.dm"
 #include "code\__DEFINES\turfs.dm"
-#include "code\__DEFINES\unit_testing.dm"
 #include "code\__DEFINES\weapons.dm"
 #include "code\__DEFINES\ZAS.dm"
 #include "code\__DEFINES\spawner\_spawner.dm"
@@ -511,6 +512,7 @@
 #include "code\game\skincmd.dm"
 #include "code\game\sound.dm"
 #include "code\game\supplyshuttle.dm"
+#include "code\game\world.dm"
 #include "code\game\antagonist\_antagonist_setup.dm"
 #include "code\game\antagonist\antagonist.dm"
 #include "code\game\antagonist\antagonist_create.dm"
@@ -1681,12 +1683,6 @@
 #include "code\modules\hydroponics\trays\tray_soil.dm"
 #include "code\modules\hydroponics\trays\tray_update_icons.dm"
 #include "code\modules\integrated\_defines.dm"
-#include "code\modules\integrated\integrated_circuits\arithmetic.dm"
-#include "code\modules\integrated\integrated_circuits\circuits.dm"
-#include "code\modules\integrated\integrated_circuits\converter.dm"
-#include "code\modules\integrated\integrated_circuits\data_transfer.dm"
-#include "code\modules\integrated\integrated_circuits\logic.dm"
-#include "code\modules\integrated\integrated_circuits\trig.dm"
 #include "code\modules\integrated\integrated_electronics\implantcircuits.dm"
 #include "code\modules\integrated\integrated_electronics\core\assemblies.dm"
 #include "code\modules\integrated\integrated_electronics\core\helpers.dm"
@@ -2682,6 +2678,7 @@
 #include "code\modules\tables\tables.dm"
 #include "code\modules\tables\update_triggers.dm"
 #include "code\modules\telesci\bcrystal.dm"
+#include "code\modules\unit_tests\_unit_tests.dm"
 #include "code\modules\telesci\circuits.dm"
 #include "code\modules\telesci\telepads.dm"
 #include "code\modules\telesci\telesci_computer.dm"
@@ -2708,7 +2705,6 @@
 #include "code\modules\trade\datums\trade_stations_presets\serbianship.dm"
 #include "code\modules\trade\datums\trade_stations_presets\suit_up.dm"
 #include "code\modules\trade\datums\trade_stations_presets\tb_cheapammofactorys.dm"
-#include "code\modules\trade\datums\trade_stations_presets\trash_refine.dm"
 #include "code\modules\trade\datums\trade_stations_presets\zarya.dm"
 #include "code\modules\trade\machinery\trade_beacon.dm"
 #include "code\modules\trade\machinery\circuits\trade_beacon.dm"
@@ -2736,18 +2732,6 @@
 #include "code\modules\wireless\interfaces.dm"
 #include "code\modules\xgm\xgm_gas_data.dm"
 #include "code\modules\xgm\xgm_gas_mixture.dm"
-#include "code\unit_tests\equipment_tests.dm"
-#include "code\unit_tests\expansions_tests.dm"
-#include "code\unit_tests\foundation_tests.dm"
-#include "code\unit_tests\loadout_tests.dm"
-#include "code\unit_tests\map_tests.dm"
-#include "code\unit_tests\mob_tests.dm"
-#include "code\unit_tests\movement_tests.dm"
-#include "code\unit_tests\observation_tests.dm"
-#include "code\unit_tests\test_obj.dm"
-#include "code\unit_tests\unique_tests.dm"
-#include "code\unit_tests\unit_test.dm"
-#include "code\unit_tests\zas_tests.dm"
 #include "code\ZAS\_docs.dm"
 #include "code\ZAS\Airflow.dm"
 #include "code\ZAS\Atom.dm"

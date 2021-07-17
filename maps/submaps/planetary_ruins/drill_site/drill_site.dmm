@@ -1,23 +1,117 @@
-"b" = (/obj/spawner/junk,/turf/template_noop,/area/template_noop)
-"d" = (/obj/spawner/oddities,/obj/spawner/junk,/turf/template_noop,/area/template_noop)
-"e" = (/obj/machinery/floodlight,/turf/template_noop,/area/template_noop)
-"f" = (/obj/machinery/mining/brace,/turf/template_noop,/area/template_noop)
-"g" = (/obj/structure/ore_box,/turf/template_noop,/area/template_noop)
-"j" = (/obj/spawner/tool,/turf/template_noop,/area/template_noop)
-"k" = (/obj/machinery/mining/drill,/turf/template_noop,/area/template_noop)
-"l" = (/turf/template_noop,/area/template_noop)
-"n" = (/obj/spawner/booze,/turf/template_noop,/area/template_noop)
-"s" = (/obj/spawner/oddities,/turf/template_noop,/area/template_noop)
-"y" = (/obj/spawner/cloth/head,/turf/template_noop,/area/template_noop)
-"H" = (/obj/spawner/powercell,/turf/template_noop,/area/template_noop)
-"O" = (/obj/spawner/toolbox,/turf/template_noop,/area/template_noop)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/obj/spawner/junk,
+/turf/template_noop,
+/area/template_noop)
+"d" = (
+/obj/spawner/oddities,
+/obj/spawner/junk,
+/turf/template_noop,
+/area/template_noop)
+"e" = (
+/obj/machinery/floodlight,
+/turf/template_noop,
+/area/template_noop)
+"f" = (
+/obj/machinery/mining/brace,
+/turf/template_noop,
+/area/template_noop)
+"g" = (
+/obj/structure/ore_box,
+/turf/template_noop,
+/area/template_noop)
+"j" = (
+/obj/spawner/tool,
+/turf/template_noop,
+/area/template_noop)
+"k" = (
+/obj/machinery/mining/drill,
+/turf/template_noop,
+/area/template_noop)
+"l" = (
+/turf/template_noop,
+/area/template_noop)
+"n" = (
+/obj/spawner/booze,
+/turf/template_noop,
+/area/template_noop)
+"s" = (
+/obj/spawner/oddities,
+/turf/template_noop,
+/area/template_noop)
+"y" = (
+/obj/spawner/cloth/head,
+/turf/template_noop,
+/area/template_noop)
+"H" = (
+/obj/spawner/powercell,
+/turf/template_noop,
+/area/template_noop)
+"O" = (
+/obj/spawner/toolbox,
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
-llbllll
-bldleHl
-lfglbbl
-lllsllb
-jbklljl
-lnllbbl
-llOllyl
+l
+b
+l
+l
+j
+l
+l
+"}
+(2,1,1) = {"
+l
+l
+f
+l
+b
+n
+l
+"}
+(3,1,1) = {"
+b
+d
+g
+l
+k
+l
+O
+"}
+(4,1,1) = {"
+l
+l
+l
+s
+l
+l
+l
+"}
+(5,1,1) = {"
+l
+e
+b
+l
+l
+b
+l
+"}
+(6,1,1) = {"
+l
+H
+b
+l
+j
+b
+y
+"}
+(7,1,1) = {"
+l
+l
+l
+b
+l
+l
+l
 "}

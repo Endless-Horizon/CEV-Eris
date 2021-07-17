@@ -1,23 +1,179 @@
-"a" = (/obj/spawner/junk/low_chance,/turf/simulated/floor/exoplanet/water/shallow/tar,/area/template_noop)
-"b" = (/turf/template_noop,/area/template_noop)
-"c" = (/obj/structure/flora/ausbushes/lavendergrass,/turf/template_noop,/area/template_noop)
-"d" = (/obj/machinery/artifact,/turf/simulated/floor/exoplanet/shrouded,/area/template_noop)
-"e" = (/obj/structure/flora/ausbushes/fullgrass,/turf/template_noop,/area/template_noop)
-"f" = (/turf/simulated/floor/exoplanet/water/shallow/tar,/area/template_noop)
-"g" = (/obj/spawner/toy/plushie,/turf/simulated/floor/exoplanet/water/shallow/tar,/area/template_noop)
-"h" = (/obj/spawner/oddities,/turf/simulated/floor/exoplanet/water/shallow/tar,/area/template_noop)
-"i" = (/obj/spawner/junk,/turf/simulated/floor/exoplanet/water/shallow/tar,/area/template_noop)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/spawner/junk/low_chance,
+/turf/simulated/floor/exoplanet/water/shallow/tar,
+/area/template_noop)
+"b" = (
+/turf/template_noop,
+/area/template_noop)
+"c" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/template_noop,
+/area/template_noop)
+"d" = (
+/obj/machinery/artifact,
+/turf/simulated/floor/exoplanet/shrouded,
+/area/template_noop)
+"e" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/template_noop,
+/area/template_noop)
+"f" = (
+/turf/simulated/floor/exoplanet/water/shallow/tar,
+/area/template_noop)
+"g" = (
+/obj/spawner/toy/plushie,
+/turf/simulated/floor/exoplanet/water/shallow/tar,
+/area/template_noop)
+"h" = (
+/obj/spawner/oddities,
+/turf/simulated/floor/exoplanet/water/shallow/tar,
+/area/template_noop)
+"i" = (
+/obj/spawner/junk,
+/turf/simulated/floor/exoplanet/water/shallow/tar,
+/area/template_noop)
 
 (1,1,1) = {"
-fbbbcfffbbb
-bbbffffffbf
-bcfffffffcb
-bfffafffffb
-bfffffffffb
-bffffdffgff
-ffffffffffb
-fffhfffiffb
-fffffffffbb
-efffffffcfb
-bbffbbcbbbb
+f
+b
+b
+b
+b
+b
+f
+f
+f
+e
+b
+"}
+(2,1,1) = {"
+b
+b
+c
+f
+f
+f
+f
+f
+f
+f
+b
+"}
+(3,1,1) = {"
+b
+b
+f
+f
+f
+f
+f
+f
+f
+f
+f
+"}
+(4,1,1) = {"
+b
+f
+f
+f
+f
+f
+f
+h
+f
+f
+f
+"}
+(5,1,1) = {"
+c
+f
+f
+a
+f
+f
+f
+f
+f
+f
+b
+"}
+(6,1,1) = {"
+f
+f
+f
+f
+f
+d
+f
+f
+f
+f
+b
+"}
+(7,1,1) = {"
+f
+f
+f
+f
+f
+f
+f
+f
+f
+f
+c
+"}
+(8,1,1) = {"
+f
+f
+f
+f
+f
+f
+f
+i
+f
+f
+b
+"}
+(9,1,1) = {"
+b
+f
+f
+f
+f
+g
+f
+f
+f
+c
+b
+"}
+(10,1,1) = {"
+b
+b
+c
+f
+f
+f
+f
+f
+b
+f
+b
+"}
+(11,1,1) = {"
+b
+f
+b
+b
+b
+f
+b
+b
+b
+b
+b
 "}

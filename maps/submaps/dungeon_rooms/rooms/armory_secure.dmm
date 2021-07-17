@@ -61,8 +61,8 @@
 /turf/simulated/floor/tiled/dark/cargo,
 /area/crawler)
 "n" = (
-/obj/spawner/mob/roomba, 
-/obj/spawner/contraband,
+/obj/spawner/mob/roomba,
+ /obj/spawner/contraband,
 /turf/simulated/floor/tiled/dark/brown_platform,
 /area/crawler)
 "o" = (

@@ -476,7 +476,7 @@
 /obj/structure/window/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4;
-	icon_state = "intact";
+	icon_state = "intact"
 	},
 /turf/simulated/floor/plating,
 /area/space)

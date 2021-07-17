@@ -55,6 +55,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/static/restart_timeout = 0
 	var/static/restart_count = 0
 
+	var/static/random_seed
+
 	//current tick limit, assigned before running a subsystem.
 	//used by CHECK_TICK as well so that the procs subsystems call can obey that SS's tick limits
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
@@ -62,6 +64,15 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 /datum/controller/master/New()
 	total_run_times = list()
 	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
+
+	if(!random_seed)
+		#ifdef UNIT_TESTS
+		random_seed = 29051994
+		#else
+		random_seed = rand(1, 1e9)
+		#endif
+		rand_seed(random_seed)
+
 	var/list/_subsystems = list()
 	subsystems = _subsystems
 	if (Master != src)
@@ -166,7 +177,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
-	report_progress("Initializing subsystems...")
+	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, /proc/cmp_subsystem_init)
@@ -182,8 +193,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	current_ticklimit = TICK_LIMIT_RUNNING
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
-	var/msg = "Initializations complete within [time] second\s!"
-	report_progress(msg)
+	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
+	to_chat(world, "<span class='boldannounce'>[msg]</span>")
 	log_world(msg)
 
 	if (!current_runlevel)
@@ -191,12 +202,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// Sort subsystems by display setting for easy access.
 	sortTim(subsystems, /proc/cmp_subsystem_display)
-	// Set world options.
-#ifdef UNIT_TEST
-	world.sleep_offline = FALSE
-#else
-	world.sleep_offline = TRUE
-#endif
 
 	world.tick_lag = config.Ticklag
 	// Fallback ITU value - will be overwritten next tick by extools lib if it's present
@@ -214,6 +219,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		old_runlevel = "NULL"
 
 	report_progress("MC: Runlevel changed from [old_runlevel] to [new_runlevel]")
+	testing("MC: Runlevel changed from [old_runlevel] to [new_runlevel]")
 	current_runlevel = log(2, new_runlevel) + 1
 	if(current_runlevel < 1)
 		CRASH("Attempted to set invalid runlevel: [new_runlevel]")

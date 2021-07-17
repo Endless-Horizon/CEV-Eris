@@ -1,30 +1,226 @@
-"a" = (/turf/simulated/floor/tiled/steel/monofloor,/area/deepmaint)
-"b" = (/obj/structure/barricade,/turf/simulated/floor/tiled/techmaint_panels,/area/deepmaint)
-"c" = (/turf/simulated/wall,/area/deepmaint)
-"d" = (/obj/spawner/junk,/turf/simulated/floor/tiled/techmaint_cargo,/area/deepmaint)
-"e" = (/obj/spawner/pack/machine,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
-"f" = (/turf/simulated/floor/tiled/techmaint,/area/deepmaint)
-"g" = (/obj/structure/table/rack/shelf,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot/low_chance,/obj/spawner/pack/tech_loot/low_chance,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
-"h" = (/obj/spawner/junk,/turf/simulated/floor/tiled/techmaint,/area/deepmaint)
-"i" = (/obj/item/weapon/stool,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
-"j" = (/obj/spawner/mob/roaches/cluster/low_chance,/turf/simulated/floor/tiled/techmaint,/area/deepmaint)
-"k" = (/obj/structure/table/standard,/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
-"l" = (/obj/structure/table/standard,/obj/spawner/pack/rare/low_chance,/obj/spawner/pack/rare,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
-"m" = (/obj/structure/table/rack/shelf,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth/low_chance,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
-"n" = (/turf/simulated/floor/tiled/techmaint_cargo,/area/deepmaint)
-"o" = (/obj/structure/table/rack/shelf,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot/low_chance,/obj/spawner/pack/tech_loot/low_chance,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
-"p" = (/obj/structure/table/rack/shelf,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth/low_chance,/obj/machinery/light/small,/turf/simulated/floor/tiled/techmaint_perforated,/area/deepmaint)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/tiled/steel/monofloor,
+/area/deepmaint)
+"b" = (
+/obj/structure/barricade,
+/turf/simulated/floor/tiled/techmaint_panels,
+/area/deepmaint)
+"c" = (
+/turf/simulated/wall,
+/area/deepmaint)
+"d" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/deepmaint)
+"e" = (
+/obj/spawner/pack/machine,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"f" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/deepmaint)
+"g" = (
+/obj/structure/table/rack/shelf,
+/obj/spawner/pack/tech_loot,
+/obj/spawner/pack/tech_loot,
+/obj/spawner/pack/tech_loot/low_chance,
+/obj/spawner/pack/tech_loot/low_chance,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"h" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/techmaint,
+/area/deepmaint)
+"i" = (
+/obj/item/weapon/stool,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"j" = (
+/obj/spawner/mob/roaches/cluster/low_chance,
+/turf/simulated/floor/tiled/techmaint,
+/area/deepmaint)
+"k" = (
+/obj/structure/table/standard,
+/obj/spawner/pack/rare/low_chance,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"l" = (
+/obj/structure/table/standard,
+/obj/spawner/pack/rare/low_chance,
+/obj/spawner/pack/rare,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"m" = (
+/obj/structure/table/rack/shelf,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth/low_chance,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"n" = (
+/turf/simulated/floor/tiled/techmaint_cargo,
+/area/deepmaint)
+"o" = (
+/obj/structure/table/rack/shelf,
+/obj/spawner/pack/tech_loot,
+/obj/spawner/pack/tech_loot,
+/obj/spawner/pack/tech_loot/low_chance,
+/obj/spawner/pack/tech_loot/low_chance,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
+"p" = (
+/obj/structure/table/rack/shelf,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth/low_chance,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techmaint_perforated,
+/area/deepmaint)
 
 (1,1,1) = {"
-abbbbbbbbba
-accdcccdcca
-acefgogfeca
-acefhfffeca
-acefiiifeca
-acejklkjeca
-acefiiifeca
-acehfjfheca
-acefmpmfeca
-accncccdcca
-abbbbbbbbba
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+b
+c
+c
+c
+c
+c
+c
+c
+c
+c
+b
+"}
+(3,1,1) = {"
+b
+c
+e
+e
+e
+e
+e
+e
+e
+c
+b
+"}
+(4,1,1) = {"
+b
+d
+f
+f
+f
+j
+f
+h
+f
+n
+b
+"}
+(5,1,1) = {"
+b
+c
+g
+h
+i
+k
+i
+f
+m
+c
+b
+"}
+(6,1,1) = {"
+b
+c
+o
+f
+i
+l
+i
+j
+p
+c
+b
+"}
+(7,1,1) = {"
+b
+c
+g
+f
+i
+k
+i
+f
+m
+c
+b
+"}
+(8,1,1) = {"
+b
+d
+f
+f
+f
+j
+f
+h
+f
+d
+b
+"}
+(9,1,1) = {"
+b
+c
+e
+e
+e
+e
+e
+e
+e
+c
+b
+"}
+(10,1,1) = {"
+b
+c
+c
+c
+c
+c
+c
+c
+c
+c
+b
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}

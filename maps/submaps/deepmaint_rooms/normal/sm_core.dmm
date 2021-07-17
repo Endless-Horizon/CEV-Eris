@@ -1,35 +1,248 @@
-"a" = (/turf/simulated/floor/tiled/dark/danger,/area/deepmaint)
-"b" = (/obj/spawner/junk,/turf/simulated/floor/tiled/dark/danger,/area/deepmaint)
-"c" = (/obj/spawner/mob/roaches/cluster/low_chance,/turf/simulated/floor/tiled/dark/cargo,/area/deepmaint)
-"d" = (/turf/simulated/floor/tiled/dark/cargo,/area/deepmaint)
-"e" = (/turf/simulated/floor/plating/under,/area/deepmaint)
-"f" = (/obj/spawner/pack/tech_loot/low_chance,/turf/simulated/floor/plating/under,/area/deepmaint)
-"g" = (/obj/structure/catwalk,/turf/simulated/floor/plating/under,/area/deepmaint)
-"h" = (/obj/spawner/junk,/turf/simulated/floor/plating/under,/area/deepmaint)
-"i" = (/obj/machinery/deployable/barrier,/turf/simulated/floor/plating/under,/area/deepmaint)
-"j" = (/obj/structure/girder,/turf/simulated/floor/plating/under,/area/deepmaint)
-"k" = (/obj/structure/catwalk,/obj/structure/barricade,/turf/simulated/floor/plating/under,/area/deepmaint)
-"l" = (/turf/simulated/wall/r_wall,/area/deepmaint)
-"m" = (/obj/effect/window_lwall_spawn/plasma,/obj/machinery/door/blast/regular{_wifi_id = null; icon_state = "pdoor1"; id = null; name = "Reactor Core"; p_open = 0},/turf/simulated/floor/plating,/area/deepmaint)
-"n" = (/obj/spawner/pack/rare,/turf/simulated/floor/reinforced{name = "engine floor"; oxygen = 0},/area/deepmaint)
-"o" = (/turf/simulated/floor/reinforced{name = "engine floor"; oxygen = 0},/area/deepmaint)
-"p" = (/obj/spawner/junk,/turf/simulated/floor/tiled/dark/cargo,/area/deepmaint)
-"q" = (/obj/machinery/power/supermatter/shard,/turf/simulated/floor/reinforced{name = "engine floor"; oxygen = 0},/area/deepmaint)
-"r" = (/obj/effect/window_lwall_spawn/plasma,/obj/machinery/door/blast/regular{_wifi_id = null; icon_state = "pdoor1"; id = null; name = "Reactor Core"; p_open = 0},/turf/simulated/floor/reinforced,/area/deepmaint)
-"t" = (/obj/structure/barricade,/turf/simulated/floor/plating/under,/area/deepmaint)
-"u" = (/obj/structure/girder/displaced,/turf/simulated/floor/plating/under,/area/deepmaint)
-"v" = (/obj/spawner/mob/roaches/cluster/low_chance,/turf/simulated/floor/tiled/dark/danger,/area/deepmaint)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/tiled/dark/danger,
+/area/deepmaint)
+"b" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/dark/danger,
+/area/deepmaint)
+"c" = (
+/obj/spawner/mob/roaches/cluster/low_chance,
+/turf/simulated/floor/tiled/dark/cargo,
+/area/deepmaint)
+"d" = (
+/turf/simulated/floor/tiled/dark/cargo,
+/area/deepmaint)
+"e" = (
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"f" = (
+/obj/spawner/pack/tech_loot/low_chance,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"g" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"h" = (
+/obj/spawner/junk,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"i" = (
+/obj/machinery/deployable/barrier,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"j" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"k" = (
+/obj/structure/catwalk,
+/obj/structure/barricade,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"l" = (
+/turf/simulated/wall/r_wall,
+/area/deepmaint)
+"m" = (
+/obj/effect/window_lwall_spawn/plasma,
+/obj/machinery/door/blast/regular{
+	_wifi_id = null;
+	icon_state = "pdoor1";
+	id = null;
+	name = "Reactor Core";
+	p_open = 0
+	},
+/turf/simulated/floor/plating,
+/area/deepmaint)
+"n" = (
+/obj/spawner/pack/rare,
+/turf/simulated/floor/reinforced{
+	name = "engine floor";
+	oxygen = 0
+	},
+/area/deepmaint)
+"o" = (
+/turf/simulated/floor/reinforced{
+	name = "engine floor";
+	oxygen = 0
+	},
+/area/deepmaint)
+"p" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/dark/cargo,
+/area/deepmaint)
+"q" = (
+/obj/machinery/power/supermatter/shard,
+/turf/simulated/floor/reinforced{
+	name = "engine floor";
+	oxygen = 0
+	},
+/area/deepmaint)
+"r" = (
+/obj/effect/window_lwall_spawn/plasma,
+/obj/machinery/door/blast/regular{
+	_wifi_id = null;
+	icon_state = "pdoor1";
+	id = null;
+	name = "Reactor Core";
+	p_open = 0
+	},
+/turf/simulated/floor/reinforced,
+/area/deepmaint)
+"t" = (
+/obj/structure/barricade,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"u" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating/under,
+/area/deepmaint)
+"v" = (
+/obj/spawner/mob/roaches/cluster/low_chance,
+/turf/simulated/floor/tiled/dark/danger,
+/area/deepmaint)
 
 (1,1,1) = {"
-ababcddabab
-aeefeghefea
-beiijkjjiea
-afjllmlljfb
-deilnonljhd
-pgkroqomkgd
-dhjlnonlted
-afullmlljfa
-bhtjukujjeb
-aeffhghfhfa
-vabadddbaav
+a
+a
+b
+a
+d
+p
+d
+a
+b
+a
+v
+"}
+(2,1,1) = {"
+b
+e
+e
+f
+e
+g
+h
+f
+h
+e
+a
+"}
+(3,1,1) = {"
+a
+e
+i
+j
+i
+k
+j
+u
+t
+f
+b
+"}
+(4,1,1) = {"
+b
+f
+i
+l
+l
+r
+l
+l
+j
+f
+a
+"}
+(5,1,1) = {"
+c
+e
+j
+l
+n
+o
+n
+l
+u
+h
+d
+"}
+(6,1,1) = {"
+d
+g
+k
+m
+o
+q
+o
+m
+k
+g
+d
+"}
+(7,1,1) = {"
+d
+h
+j
+l
+n
+o
+n
+l
+u
+h
+d
+"}
+(8,1,1) = {"
+a
+e
+j
+l
+l
+m
+l
+l
+j
+f
+b
+"}
+(9,1,1) = {"
+b
+f
+i
+j
+j
+k
+t
+j
+j
+h
+a
+"}
+(10,1,1) = {"
+a
+e
+e
+f
+h
+g
+e
+f
+e
+f
+a
+"}
+(11,1,1) = {"
+b
+a
+a
+b
+d
+d
+d
+a
+b
+a
+v
 "}

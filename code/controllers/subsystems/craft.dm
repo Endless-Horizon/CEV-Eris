@@ -25,5 +25,5 @@ SUBSYSTEM_DEF(craft)
 			categories[CR.category] = list()
 		categories[CR.category] += CR
 		CHECK_TICK
-
+	return ..()
 

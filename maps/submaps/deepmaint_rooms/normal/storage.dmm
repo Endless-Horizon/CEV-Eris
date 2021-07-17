@@ -1,29 +1,223 @@
-"a" = (/turf/simulated/floor/tiled/steel/brown_perforated,/area/deepmaint)
-"b" = (/turf/simulated/wall,/area/deepmaint)
-"c" = (/turf/simulated/floor/tiled/steel/monofloor,/area/deepmaint)
-"d" = (/obj/structure/table/rack/shelf,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth,/obj/spawner/pack/cloth/low_chance,/obj/spawner/pack/cloth/low_chance,/turf/simulated/floor/tiled/steel/techfloor,/area/deepmaint)
-"e" = (/obj/structure/table/rack/shelf,/obj/spawner/medical/low_chance,/obj/spawner/medical/low_chance,/obj/spawner/medical/low_chance,/obj/spawner/medical/low_chance,/turf/simulated/floor/tiled/steel/techfloor,/area/deepmaint)
-"f" = (/turf/simulated/floor/tiled/steel/techfloor,/area/deepmaint)
-"g" = (/obj/machinery/door/airlock/maintenance_common{name = "Service Maintenance"; req_access = list(12)},/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"h" = (/obj/structure/table/rack/shelf,/obj/spawner/pack/tech_loot/low_chance,/obj/spawner/pack/tech_loot/low_chance,/obj/spawner/pack/tech_loot/low_chance,/turf/simulated/floor/tiled/steel/techfloor,/area/deepmaint)
-"i" = (/obj/structure/table/rack/shelf,/obj/spawner/pack/gun_loot,/obj/spawner/pack/gun_loot,/obj/spawner/pack/gun_loot/low_chance,/obj/spawner/pack/gun_loot/low_chance,/obj/spawner/pack/gun_loot/low_chance,/turf/simulated/floor/tiled/steel/techfloor,/area/deepmaint)
-"j" = (/obj/structure/table/rack/shelf,/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/tiled/steel/brown_platform,/area/deepmaint)
-"k" = (/obj/spawner/mob/roaches/cluster/low_chance,/turf/simulated/floor/tiled/steel/panels,/area/deepmaint)
-"l" = (/turf/simulated/floor/tiled/steel/panels,/area/deepmaint)
-"m" = (/obj/machinery/light/small,/turf/simulated/floor/tiled/steel/brown_perforated,/area/deepmaint)
-"n" = (/obj/machinery/light/small,/turf/simulated/floor/tiled/steel/techfloor,/area/deepmaint)
-"o" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/steel/panels,/area/deepmaint)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/tiled/steel/brown_perforated,
+/area/deepmaint)
+"b" = (
+/turf/simulated/wall,
+/area/deepmaint)
+"c" = (
+/turf/simulated/floor/tiled/steel/monofloor,
+/area/deepmaint)
+"d" = (
+/obj/structure/table/rack/shelf,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth,
+/obj/spawner/pack/cloth/low_chance,
+/obj/spawner/pack/cloth/low_chance,
+/turf/simulated/floor/tiled/steel/techfloor,
+/area/deepmaint)
+"e" = (
+/obj/structure/table/rack/shelf,
+/obj/spawner/medical/low_chance,
+/obj/spawner/medical/low_chance,
+/obj/spawner/medical/low_chance,
+/obj/spawner/medical/low_chance,
+/turf/simulated/floor/tiled/steel/techfloor,
+/area/deepmaint)
+"f" = (
+/turf/simulated/floor/tiled/steel/techfloor,
+/area/deepmaint)
+"g" = (
+/obj/machinery/door/airlock/maintenance_common{
+	name = "Service Maintenance";
+	req_access = list(12)
+	},
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"h" = (
+/obj/structure/table/rack/shelf,
+/obj/spawner/pack/tech_loot/low_chance,
+/obj/spawner/pack/tech_loot/low_chance,
+/obj/spawner/pack/tech_loot/low_chance,
+/turf/simulated/floor/tiled/steel/techfloor,
+/area/deepmaint)
+"i" = (
+/obj/structure/table/rack/shelf,
+/obj/spawner/pack/gun_loot,
+/obj/spawner/pack/gun_loot,
+/obj/spawner/pack/gun_loot/low_chance,
+/obj/spawner/pack/gun_loot/low_chance,
+/obj/spawner/pack/gun_loot/low_chance,
+/turf/simulated/floor/tiled/steel/techfloor,
+/area/deepmaint)
+"j" = (
+/obj/structure/table/rack/shelf,
+/obj/spawner/pack/rare/low_chance,
+/turf/simulated/floor/tiled/steel/brown_platform,
+/area/deepmaint)
+"k" = (
+/obj/spawner/mob/roaches/cluster/low_chance,
+/turf/simulated/floor/tiled/steel/panels,
+/area/deepmaint)
+"l" = (
+/turf/simulated/floor/tiled/steel/panels,
+/area/deepmaint)
+"m" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel/brown_perforated,
+/area/deepmaint)
+"n" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel/techfloor,
+/area/deepmaint)
+"o" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel/panels,
+/area/deepmaint)
 
 (1,1,1) = {"
-aaaamaaaaaa
-abbbbcbbbba
-abddbcbeeba
-abfngcgnfba
-abbbbcbbbba
-abhhbcbiiba
-abfngcgnfba
-abbbbcbbbba
-abjjbcbjjba
-aklloclllka
-aaaaaaaaaaa
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+b
+b
+b
+b
+b
+b
+b
+b
+k
+a
+"}
+(3,1,1) = {"
+a
+b
+d
+f
+b
+h
+f
+b
+j
+l
+a
+"}
+(4,1,1) = {"
+a
+b
+d
+n
+b
+h
+n
+b
+j
+l
+a
+"}
+(5,1,1) = {"
+m
+b
+b
+g
+b
+b
+g
+b
+b
+o
+a
+"}
+(6,1,1) = {"
+a
+c
+c
+c
+c
+c
+c
+c
+c
+c
+a
+"}
+(7,1,1) = {"
+a
+b
+b
+g
+b
+b
+g
+b
+b
+l
+a
+"}
+(8,1,1) = {"
+a
+b
+e
+n
+b
+i
+n
+b
+j
+l
+a
+"}
+(9,1,1) = {"
+a
+b
+e
+f
+b
+i
+f
+b
+j
+l
+a
+"}
+(10,1,1) = {"
+a
+b
+b
+b
+b
+b
+b
+b
+b
+k
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}

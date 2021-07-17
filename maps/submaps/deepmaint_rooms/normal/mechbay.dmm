@@ -1,39 +1,274 @@
-"a" = (/turf/simulated/floor/tiled/steel/brown_perforated,/area/deepmaint)
-"b" = (/obj/machinery/light/small,/turf/simulated/floor/tiled/steel/brown_perforated,/area/deepmaint)
-"c" = (/turf/simulated/wall,/area/deepmaint)
-"d" = (/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"e" = (/obj/machinery/mech_recharger,/obj/spawner/exosuit/low_chance,/turf/simulated/floor/tiled/steel,/area/deepmaint)
-"f" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"g" = (/obj/spawner/traps/biome_spawner_trap/low_chance,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"h" = (/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"i" = (/obj/spawner/pack/machine,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"j" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/spawner/powercell,/obj/spawner/powercell,/obj/spawner/powercell,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"k" = (/obj/structure/reagent_dispensers/fueltank,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"l" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"m" = (/obj/machinery/repair_station,/obj/spawner/mob/biome_spawner_mob/low_chance,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"n" = (/obj/machinery/recharge_station,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"o" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/item/weapon/storage/toolbox/mechanical,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"p" = (/obj/structure/reagent_dispensers/fueltank,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"q" = (/obj/structure/table/standard{name = "plastic table frame"},/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot,/obj/spawner/pack/tech_loot/low_chance,/obj/spawner/pack/tech_loot/low_chance,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"r" = (/obj/machinery/mech_recharger,/obj/spawner/exosuit/damaged,/turf/simulated/floor/tiled/steel,/area/deepmaint)
-"s" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/steel/brown_perforated,/area/deepmaint)
-"t" = (/obj/spawner/junk,/turf/simulated/floor/tiled/steel/brown_perforated,/area/deepmaint)
-"u" = (/obj/machinery/door/airlock/maintenance_common{name = "Service Maintenance"; req_access = list(12)},/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"v" = (/obj/spawner/junk,/turf/simulated/floor/tiled/steel/cargo,/area/deepmaint)
-"w" = (/obj/spawner/junk,/turf/simulated/floor/tiled/steel/gray_platform,/area/deepmaint)
-"x" = (/obj/spawner/junk,/obj/spawner/junk,/turf/simulated/floor/tiled/steel/brown_perforated,/area/deepmaint)
-"y" = (/obj/landmark/loot_biomes/mob/roach{range = 6},/turf/simulated/wall,/area/deepmaint)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/tiled/steel/brown_perforated,
+/area/deepmaint)
+"b" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel/brown_perforated,
+/area/deepmaint)
+"c" = (
+/turf/simulated/wall,
+/area/deepmaint)
+"d" = (
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"e" = (
+/obj/machinery/mech_recharger,
+/obj/spawner/exosuit/low_chance,
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"f" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"g" = (
+/obj/spawner/traps/biome_spawner_trap/low_chance,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"h" = (
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"i" = (
+/obj/spawner/pack/machine,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"j" = (
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/spawner/powercell,
+/obj/spawner/powercell,
+/obj/spawner/powercell,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"k" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"l" = (
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/spawner/pack/rare/low_chance,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"m" = (
+/obj/machinery/repair_station,
+/obj/spawner/mob/biome_spawner_mob/low_chance,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"n" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"o" = (
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/item/weapon/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"p" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"q" = (
+/obj/structure/table/standard{
+	name = "plastic table frame"
+	},
+/obj/spawner/pack/tech_loot,
+/obj/spawner/pack/tech_loot,
+/obj/spawner/pack/tech_loot/low_chance,
+/obj/spawner/pack/tech_loot/low_chance,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"r" = (
+/obj/machinery/mech_recharger,
+/obj/spawner/exosuit/damaged,
+/turf/simulated/floor/tiled/steel,
+/area/deepmaint)
+"s" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel/brown_perforated,
+/area/deepmaint)
+"t" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel/brown_perforated,
+/area/deepmaint)
+"u" = (
+/obj/machinery/door/airlock/maintenance_common{
+	name = "Service Maintenance";
+	req_access = list(12)
+	},
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"v" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel/cargo,
+/area/deepmaint)
+"w" = (
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel/gray_platform,
+/area/deepmaint)
+"x" = (
+/obj/spawner/junk,
+/obj/spawner/junk,
+/turf/simulated/floor/tiled/steel/brown_perforated,
+/area/deepmaint)
+"y" = (
+/obj/landmark/loot_biomes/mob/roach{
+	range = 6
+	},
+/turf/simulated/wall,
+/area/deepmaint)
 
 (1,1,1) = {"
-taaababatat
-accccucccca
-aceecvceeca
-afddgdgddfa
-twhijklihha
-ahmncycnmha
-ahhiopqihha
-advdgdgdddt
-aceecdcerct
-xccccucccca
-ttttsasatxt
+t
+a
+a
+a
+t
+a
+a
+a
+a
+x
+t
+"}
+(2,1,1) = {"
+a
+c
+c
+f
+w
+h
+h
+d
+c
+c
+t
+"}
+(3,1,1) = {"
+a
+c
+e
+d
+h
+m
+h
+v
+e
+c
+t
+"}
+(4,1,1) = {"
+a
+c
+e
+d
+i
+n
+i
+d
+e
+c
+t
+"}
+(5,1,1) = {"
+b
+c
+c
+g
+j
+c
+o
+g
+c
+c
+s
+"}
+(6,1,1) = {"
+a
+u
+v
+d
+k
+y
+p
+d
+d
+u
+a
+"}
+(7,1,1) = {"
+b
+c
+c
+g
+l
+c
+q
+g
+c
+c
+s
+"}
+(8,1,1) = {"
+a
+c
+e
+d
+i
+n
+i
+d
+e
+c
+a
+"}
+(9,1,1) = {"
+t
+c
+e
+d
+h
+m
+h
+d
+r
+c
+t
+"}
+(10,1,1) = {"
+a
+c
+c
+f
+h
+h
+h
+d
+c
+c
+x
+"}
+(11,1,1) = {"
+t
+a
+a
+a
+a
+a
+a
+t
+t
+a
+t
 "}

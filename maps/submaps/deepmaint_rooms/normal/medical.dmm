@@ -1,33 +1,233 @@
-"a" = (/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"b" = (/obj/structure/table/standard,/obj/spawner/medical,/obj/spawner/medical,/obj/spawner/medical,/obj/spawner/medical/low_chance,/obj/spawner/medical/low_chance,/obj/spawner/medical/low_chance,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"c" = (/obj/structure/closet/crate/freezer,/obj/spawner/pack/rare/low_chance,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"d" = (/obj/structure/table/standard,/obj/spawner/surgery_tool,/obj/spawner/surgery_tool/low_chance,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"e" = (/obj/structure/table/standard,/obj/spawner/lowkeyrandom,/obj/spawner/lowkeyrandom,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"f" = (/obj/spawner/medical_lowcost,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"g" = (/obj/spawner/medical/low_chance,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"h" = (/turf/simulated/wall,/area/deepmaint)
-"i" = (/obj/effect/window_lwall_spawn/smartspawn,/turf/simulated/floor/plating,/area/deepmaint)
-"j" = (/mob/living/bot/medbot{on = 0},/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"k" = (/obj/structure/table/standard,/obj/spawner/surgery_tool,/obj/spawner/surgery_tool/low_chance,/turf/simulated/floor/tiled/white/panels,/area/deepmaint)
-"l" = (/obj/machinery/optable,/turf/simulated/floor/tiled/white/panels,/area/deepmaint)
-"m" = (/turf/simulated/floor/tiled/white/panels,/area/deepmaint)
-"n" = (/obj/spawner/mob/roaches/cluster/low_chance,/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
-"o" = (/turf/simulated/floor/tiled/steel/techfloor_grid,/area/deepmaint)
-"p" = (/obj/structure/table/standard,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"q" = (/obj/structure/medical_stand,/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"r" = (/turf/simulated/floor/tiled/white/brown_perforated,/area/deepmaint)
-"s" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/white/brown_platform,/area/deepmaint)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"b" = (
+/obj/structure/table/standard,
+/obj/spawner/medical,
+/obj/spawner/medical,
+/obj/spawner/medical,
+/obj/spawner/medical/low_chance,
+/obj/spawner/medical/low_chance,
+/obj/spawner/medical/low_chance,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"c" = (
+/obj/structure/closet/crate/freezer,
+/obj/spawner/pack/rare/low_chance,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"d" = (
+/obj/structure/table/standard,
+/obj/spawner/surgery_tool,
+/obj/spawner/surgery_tool/low_chance,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"e" = (
+/obj/structure/table/standard,
+/obj/spawner/lowkeyrandom,
+/obj/spawner/lowkeyrandom,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"f" = (
+/obj/spawner/medical_lowcost,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"g" = (
+/obj/spawner/medical/low_chance,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"h" = (
+/turf/simulated/wall,
+/area/deepmaint)
+"i" = (
+/obj/effect/window_lwall_spawn/smartspawn,
+/turf/simulated/floor/plating,
+/area/deepmaint)
+"j" = (
+/mob/living/bot/medbot{
+	on = 0
+	},
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"k" = (
+/obj/structure/table/standard,
+/obj/spawner/surgery_tool,
+/obj/spawner/surgery_tool/low_chance,
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
+"l" = (
+/obj/machinery/optable,
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
+"m" = (
+/turf/simulated/floor/tiled/white/panels,
+/area/deepmaint)
+"n" = (
+/obj/spawner/mob/roaches/cluster/low_chance,
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
+"o" = (
+/turf/simulated/floor/tiled/steel/techfloor_grid,
+/area/deepmaint)
+"p" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"q" = (
+/obj/structure/medical_stand,
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"r" = (
+/turf/simulated/floor/tiled/white/brown_perforated,
+/area/deepmaint)
+"s" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white/brown_platform,
+/area/deepmaint)
 
 (1,1,1) = {"
-aaaaaaaaaaa
-ahbbbcdeeha
-ahiiiiiiiha
-aafgaajaaaa
-aafaanaaaaa
-ahiiiaiiiha
-ahkliailkha
-ahmmiaimmha
-ahhohahohha
-apqrsnsrqpa
-aaaaaaaaaaa
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+h
+h
+a
+a
+h
+h
+h
+h
+p
+a
+"}
+(3,1,1) = {"
+a
+b
+i
+f
+f
+i
+k
+m
+h
+q
+a
+"}
+(4,1,1) = {"
+a
+b
+i
+g
+a
+i
+l
+m
+o
+r
+a
+"}
+(5,1,1) = {"
+a
+b
+i
+a
+a
+i
+i
+i
+h
+s
+a
+"}
+(6,1,1) = {"
+a
+c
+i
+a
+n
+a
+a
+a
+a
+n
+a
+"}
+(7,1,1) = {"
+a
+d
+i
+j
+a
+i
+i
+i
+h
+s
+a
+"}
+(8,1,1) = {"
+a
+e
+i
+a
+a
+i
+l
+m
+o
+r
+a
+"}
+(9,1,1) = {"
+a
+e
+i
+a
+a
+i
+k
+m
+h
+q
+a
+"}
+(10,1,1) = {"
+a
+h
+h
+a
+a
+h
+h
+h
+h
+p
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
 "}

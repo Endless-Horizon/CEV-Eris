@@ -458,7 +458,7 @@ ADMIN_VERB_ADD(/client/proc/cmd_admin_rejuvenate, R_ADMIN, FALSE)
 	if(!istype(M))
 		alert("Cannot revive a ghost")
 		return
-		
+
 	M.revive()
 
 	log_admin("[key_name(usr)] healed / revived [key_name(M)]")
@@ -752,7 +752,7 @@ ADMIN_VERB_ADD(/client/proc/admin_call_shuttle, R_ADMIN, FALSE)
 	return
 
 ADMIN_VERB_ADD(/client/proc/admin_cancel_shuttle, R_ADMIN, FALSE)
-//allows us to cancel the emergency shuttle, sending it back to centcomm
+//allows us to cancel the emergency shuttle, sending it back to centcom
 /client/proc/admin_cancel_shuttle()
 	set category = "Admin"
 	set name = "Cancel Evacuation"
