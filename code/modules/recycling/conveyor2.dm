@@ -255,7 +255,6 @@ GLOBAL_LIST_INIT(conveyor_switches, list())
 	// DEPRECATED: remove once map is updated
 	var/convdir
 
-
 /obj/machinery/conveyor_switch/New(newloc, new_id)
 	..(newloc)
 	GLOB.conveyor_switches += src

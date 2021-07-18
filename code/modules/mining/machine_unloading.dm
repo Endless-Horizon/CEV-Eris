@@ -7,6 +7,7 @@
 	icon_state = "unloader"
 	density = TRUE
 	anchored = TRUE
+	var/unload_amt = 10
 	var/input_dir = null
 	var/output_dir = null
 
@@ -32,13 +33,13 @@
 			var/i = 0
 			for(var/obj/item/weapon/ore/O in BOX.contents)
 				O.forceMove(output)
-				if(++i>=10)
+				if(++i>=unload_amt)
 					return
 
-		if(locate(/obj/item) in input)
-			var/obj/item/O
-			for(var/i = 0; i<10; i++)
-				O = locate(/obj/item) in input
+		if(locate(/obj/item/weapon/ore) in input)
+			var/obj/item/weapon/ore/O
+			for(var/i = 0; i<unload_amt; i++)
+				O = locate(/obj/item/weapon/ore) in input
 				if(O)
 					O.forceMove(get_step(src, output_dir))
 				else
