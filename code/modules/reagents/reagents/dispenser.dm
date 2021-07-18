@@ -430,21 +430,19 @@
 	glass_name = "sugar"
 	glass_desc = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
 
-/datum/reagent/organic/sugar/affect_blood(mob/living/carbon/M, alien, effect_multiplier)
-	M.adjustNutrition(1 * effect_multiplier)
-
-/datum/reagent/organic/sugar/overdose(mob/living/carbon/M, alien)
+/datum/reagent/organic/sugar/overdose(mob/living/carbon/M, alien, effect_multiplier)
 	..()
 	M.add_side_effect("Headache", 11)
 	M.make_jittery(5)
 	M.add_chemical_effect(CE_PULSE, 2)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/internal/heart/L = H.random_organ_by_process(OP_HEART)
-		if(istype(L))
-			L.take_damage(1, 0)
-	if(prob(5))
-		M.emote(pick("twitch", "blink_r", "shiver"))
+	if(prob(30))
+		to_chat(M, "<span class='danger'>You have too much sugar in your body.</span>")
+	if(prob(10))
+		to_chat(M, "<span class='danger'>A sweet yet disgusting taste o sugar comes to your mouth.</span>")
+		M.vomit()
+	
+	
+
 	
 /datum/reagent/sulfur
 	name = "Sulfur"
