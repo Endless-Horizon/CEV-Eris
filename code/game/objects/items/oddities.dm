@@ -485,7 +485,7 @@
 		STAT_MEC = 8,
 		STAT_BIO = 8
 	)
-	perk = /datum/perk/oddity/hive_born
+	perk = /datum/perk/hive_oddity/hive_born
 
 //i copied the entire thing because beforehand it just did not work
 /obj/item/weapon/oddity/hivemind/hive_core/Initialize()
