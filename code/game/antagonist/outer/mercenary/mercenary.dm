@@ -58,6 +58,11 @@
 	create_id("Soldier")
 	..()
 
+/datum/antagonist/mercenary/greet()
+	if(!owner || !owner.current)
+		return
+
+	owner.current << 'sound/misc/SerbAlert.ogg'
 
 /obj/item/weapon/card/id/merc
 	icon_state = "syndicate"
