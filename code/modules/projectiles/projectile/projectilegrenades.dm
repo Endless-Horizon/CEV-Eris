@@ -42,8 +42,9 @@
 	name = "frag shell"
 	var/range = 7
 	var/f_type = /obj/item/projectile/bullet/pellet/fragment/strong
-	var/f_amount = 100
-	var/f_damage = 4
+	var/f_amount = 50
+	var/f_damage = 15
+	var/f_penetration = 15
 	var/f_step = 2
 	var/same_turf_hit_chance = 15
 
@@ -51,8 +52,9 @@
 	name = "frag shell"
 	range = 7
 	f_type = /obj/item/projectile/bullet/pellet/fragment/strong
-	f_amount = 100
-	f_damage = 2
+	f_amount = 50
+	f_damage = 15
+	f_penetration = 10
 	f_step = 1
 	same_turf_hit_chance = 10
 

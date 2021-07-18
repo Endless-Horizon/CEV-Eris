@@ -6,8 +6,9 @@
 	loadable = TRUE
 
 	var/fragment_type = /obj/item/projectile/bullet/pellet/fragment/strong
-	var/num_fragments = 150  //total number of fragments produced by the grenade
-	var/fragment_damage = 5
+	var/num_fragments = 50  //total number of fragments produced by the grenade
+	var/fragment_damage = 15
+	var/fragment_penetration = 15
 	var/damage_step = 2      //projectiles lose a fragment each time they travel this distance. Can be a non-integer.
 
 	//The radius of the circle used to launch projectiles. Lower values mean less projectiles are used but if set too low gaps may appear in the spread pattern
@@ -42,5 +43,3 @@
 	icon_state = "frag_nt"
 	item_state = "frggrenade_nt"
 	matter = list(MATERIAL_BIOMATTER = 75)
-	fragment_damage = 7
-	damage_step = 3
