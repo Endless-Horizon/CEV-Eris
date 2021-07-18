@@ -88,7 +88,7 @@
 /datum/uplink_item/abstract/announcements/fake_ion_storm/get_goods(var/obj/item/device/uplink/U, var/loc)
 	ion_storm_announcement()
 	return 1
-
+/* STORYTODO
 /datum/uplink_item/abstract/announcements/fake_radiation
 	name = "Radiation Storm Announcement"
 	desc = "Interferes with the ship's radiation sensors. Triggers immediately upon investment."
@@ -98,7 +98,7 @@
 	var/datum/event/radiation_storm/syndicate/S =  new(null, EVENT_LEVEL_MODERATE)
 	S.Initialize()
 	return 1
-
+*/
 /datum/uplink_item/abstract/announcements/fake_serb
 	name = "Unknown ship Announcement"
 	desc = "Interferes with the ship's array sensors. Triggers immediately upon investment."

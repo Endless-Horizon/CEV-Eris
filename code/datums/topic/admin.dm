@@ -727,10 +727,10 @@
 /datum/admin_topic/check_antagonist
 	keyword = "check_antagonist"
 	require_perms = list(R_ADMIN)
-
+/* STORYTODO
 /datum/admin_topic/check_antagonist/Run(list/input)
 	GLOB.storyteller.storyteller_panel()
-
+*/
 
 /datum/admin_topic/c_mode
 	keyword = "c_mode"

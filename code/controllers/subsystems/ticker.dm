@@ -121,8 +121,8 @@ SUBSYSTEM_DEF(ticker)
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
 		if(GAME_STATE_PLAYING)
-			GLOB.storyteller.Process()
-			GLOB.storyteller.process_events()
+//storytodo			GLOB.storyteller.Process()
+//storytodo			GLOB.storyteller.process_events()
 
 			if(!process_empty_server())
 				return
@@ -197,7 +197,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/setup()
 	//Create and announce mode
-
+/* STORYTODO
 	if(!GLOB.storyteller)
 		set_storyteller(announce = FALSE)
 
@@ -216,7 +216,7 @@ SUBSYSTEM_DEF(ticker)
 		return FALSE
 
 	GLOB.storyteller.announce()
-
+*/
 	setup_economy()
 	newscaster_announcements = pick(newscaster_standard_feeds)
 	current_state = GAME_STATE_PLAYING
@@ -234,7 +234,7 @@ SUBSYSTEM_DEF(ticker)
 	callHook("roundstart")
 
 	spawn(0)//Forking here so we dont have to wait for this to finish
-		GLOB.storyteller.set_up()
+//storytodo		GLOB.storyteller.set_up()
 		to_chat(world, "<FONT color='blue'><B>Enjoy the game!</B></FONT>")
 		world << sound('sound/AI/welcome.ogg') // Skie
 		//Holiday Round-start stuff	~Carn
@@ -501,7 +501,7 @@ SUBSYSTEM_DEF(ticker)
 	if(dronecount)
 		to_chat(world, "<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round.</b>")
 
-	GLOB.storyteller.declare_completion()//To declare normal completion.
+//storytodo	GLOB.storyteller.declare_completion()//To declare normal completion.
 	scoreboard()//scores
 	//Ask the event manager to print round end information
 	SSevent.RoundEnd()

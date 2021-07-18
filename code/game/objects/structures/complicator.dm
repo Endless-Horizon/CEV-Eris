@@ -25,7 +25,7 @@
 	if(world.time >= (last_summon + cooldown))
 		var/mod = pick(EVENT_LEVEL_MUNDANE, EVENT_LEVEL_MODERATE, EVENT_LEVEL_MAJOR, EVENT_LEVEL_ROLESET)
 		var/rand_points = rand(10, 120)
-		GLOB.storyteller.points[mod] += rand_points
+//storytodo		GLOB.storyteller.points[mod] += rand_points
 		last_summon = world.time
 		visible_message(SPAN_DANGER("\the [user] presses \the [src]!"))
 		user.apply_effect((rand_points/10),IRRADIATE)

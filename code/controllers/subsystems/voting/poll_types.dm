@@ -34,7 +34,7 @@
 
 
 
-
+/* STORYTODO
 
 /*********************
 	Storyteller
@@ -147,7 +147,7 @@
 	world.save_storyteller(master_storyteller)
 
 
-
+*/
 
 
 

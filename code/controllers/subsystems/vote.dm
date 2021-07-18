@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(vote)
 			update_voters()
 
 /datum/controller/subsystem/vote/proc/autostoryteller()
-	start_vote(/datum/poll/storyteller)
+//storytodo 	start_vote(/datum/poll/storyteller)
 
 /datum/controller/subsystem/vote/proc/start_vote(newvote)
 	if(active_vote)

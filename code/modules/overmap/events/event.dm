@@ -123,7 +123,7 @@
 		new_event.enter(entering_ship)
 
 /decl/overmap_event_handler/proc/scan_loc(var/obj/effect/overmap/ship/S, var/turf/new_loc, var/can_scan)
-	
+
 	if(!can_scan) // No active scanner
 		// Everything is stage 2 (too far for sensors)
 		for(var/turf/T in range(PASSIVE_SCAN_RANGE+1, new_loc))
@@ -149,13 +149,13 @@
 				E.name = E.name_stages[1]
 				if(!passive_scan)
 					E.SetIconState(E.icon_stages[1])  // No outline
-				else					
+				else
 					E.SetIconState(E.icon_stages[1] + "_g")  // Green outline
 			for(var/obj/effect/overmap/E in T)
 				E.name = E.name_stages[1]
 				if((!passive_scan) || istype(E, /obj/effect/overmap/sector/exoplanet))
 					E.SetIconState(E.icon_stages[1])  // No outline
-				else					
+				else
 					E.SetIconState(E.icon_stages[1] + "_g")  // Green outline
 
 		// Stage 1 (limit range)
@@ -273,13 +273,13 @@
 	event_icon_stage0 = list("asteroid0", "asteroid1", "asteroid2", "asteroid3")
 	event_icon_stage1 = list("object")
 	event_name_stages = list("comet core", "unknown object", "unknown spatial phenomenon")
-
+/* STORYTODO
 /datum/overmap_event/meteor/enter(var/obj/effect/overmap/ship/victim)
 	..()
 	if(victims[victim])
 		var/datum/event/meteor_wave/overmap/E = victims[victim]
 		E.victim = victim
-
+*/
 /datum/overmap_event/electric
 	name = "electrical storm"
 	event = /datum/event/electrical_storm

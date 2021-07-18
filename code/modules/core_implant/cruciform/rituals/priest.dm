@@ -42,10 +42,10 @@
 	to_chat(CI.wearer, "<span class='info'>Your cruciform vibrates and warms up.</span>")
 
 	CI.activate()
-
+/* STORYTODO
 	if(get_storyteller())	//Call objectives update to check inquisitor objective completion
 		get_storyteller().update_objectives()
-
+*/
 	GLOB.new_neothecnology_convert++
 
 	return TRUE
