@@ -153,3 +153,22 @@
 /datum/design/autolathe/tool/rpd
 	name = "rapid piping device"
 	build_path = /obj/item/weapon/rpd
+	
+/datum/design/autolathe/tool/metal_fork
+	name = "steel fork"
+	build_path = /obj/item/weapon/material/kitchen/utensil/fork
+	
+/datum/design/autolathe/tool/plastic_fork
+	name = "plastic fork"
+	build_path = /obj/item/weapon/material/kitchen/utensil/fork/plastic
+	
+/datum/design/autolathe/tool/metal_spoon
+	name = "steel spoon"
+	build_path = /obj/item/weapon/material/kitchen/utensil/spoon
+	
+/datum/design/autolathe/tool/plastic_spoon
+	name = "plastic spoon"
+	build_path = /obj/item/weapon/material/kitchen/utensil/spoon/plastic
+	
+/datum/design/autolathe/tool/rollingpin
+	build_path = /obj/item/weapon/material/kitchen/rollingpin

@@ -14797,6 +14797,19 @@
 /obj/spawner/junk,
 /turf/simulated/floor/plating/under,
 /area/eris/maintenance/section4deck5starboard)
+"aKi" = (
+/obj/structure/closet/gmcloset,
+/obj/item/weapon/storage/box/shotgunammo/beanbags,
+/obj/item/weapon/reagent_containers/food/drinks/flask/barflask,
+/obj/item/weapon/reagent_containers/food/drinks/flask/barflask,
+/obj/machinery/camera/network/third_section{
+	dir = 4
+	},
+/obj/item/weapon/computer_hardware/hard_drive/portable/design/club/basic_barstuff,
+/obj/item/weapon/computer_hardware/hard_drive/portable/design/club/silverware,
+/obj/item/weapon/computer_hardware/hard_drive/portable/design/club/glassware,
+/turf/simulated/floor/carpet/sblucarpet,
+/area/eris/crew_quarters/barbackroom)
 "aKj" = (
 /obj/machinery/camera/network/command{
 	dir = 4
@@ -14980,6 +14993,23 @@
 /obj/spawner/traps/wire_splicing/low_chance,
 /turf/simulated/floor/plating/under,
 /area/eris/maintenance/section4deck5port)
+"aKK" = (
+/obj/structure/table/standard,
+/obj/item/weapon/reagent_containers/food/snacks/mint,
+/obj/item/weapon/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -3
+	},
+/obj/item/weapon/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3
+	},
+/obj/item/weapon/material/kitchen/rollingpin,
+/obj/item/weapon/reagent_containers/glass/beaker/large,
+/obj/item/weapon/reagent_containers/glass/beaker/large,
+/obj/item/weapon/reagent_containers/food/condiment/enzyme,
+/obj/item/weapon/reagent_containers/food/condiment/enzyme,
+/obj/item/weapon/packageWrap,
+/turf/simulated/floor/tiled/cafe,
+/area/eris/crew_quarters/kitchen)
 "aKL" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/meter,
@@ -27376,6 +27406,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/eris/engineering/construction)
+"bmd" = (
+/obj/structure/table/standard,
+/obj/structure/cable/green,
+/obj/machinery/power/apc{
+	name = "South APC";
+	pixel_y = -28
+	},
+/obj/item/weapon/computer_hardware/hard_drive/portable/design/club/basic_barstuff,
+/obj/item/weapon/computer_hardware/hard_drive/portable/design/club/glassware,
+/obj/item/weapon/computer_hardware/hard_drive/portable/design/club/silverware,
+/turf/simulated/floor/tiled/cafe,
+/area/eris/crew_quarters/kitchen)
 "bme" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -30133,6 +30175,11 @@
 	},
 /turf/simulated/floor/plating/under,
 /area/eris/maintenance/section3deck1central)
+"bsO" = (
+/obj/machinery/light,
+/obj/machinery/autolathe/loaded,
+/turf/simulated/floor/tiled/cafe,
+/area/eris/crew_quarters/kitchen)
 "bsP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -56652,17 +56699,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/eris/crew_quarters/hydroponics)
-"cCx" = (
-/obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/snacks/mint,
-/obj/item/weapon/reagent_containers/food/condiment/saltshaker{
-	pixel_x = -3
-	},
-/obj/item/weapon/reagent_containers/food/condiment/peppermill{
-	pixel_x = 3
-	},
-/turf/simulated/floor/tiled/cafe,
-/area/eris/crew_quarters/kitchen)
 "cCy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -93626,18 +93662,6 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/steel/gray_platform,
 /area/eris/hallway/side/section3starboard)
-"elY" = (
-/obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/glass/beaker{
-	pixel_x = 5
-	},
-/obj/item/weapon/reagent_containers/glass/beaker{
-	pixel_x = 5
-	},
-/obj/machinery/light,
-/obj/item/weapon/material/kitchen/rollingpin,
-/turf/simulated/floor/tiled/cafe,
-/area/eris/crew_quarters/kitchen)
 "elZ" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -96359,22 +96383,6 @@
 	},
 /turf/simulated/open,
 /area/eris/maintenance/section3deck1central)
-"esC" = (
-/obj/structure/table/standard,
-/obj/item/weapon/packageWrap,
-/obj/item/weapon/reagent_containers/food/condiment/enzyme{
-	layer = 5
-	},
-/obj/item/weapon/reagent_containers/food/condiment/enzyme{
-	layer = 5
-	},
-/obj/structure/cable/green,
-/obj/machinery/power/apc{
-	name = "South APC";
-	pixel_y = -28
-	},
-/turf/simulated/floor/tiled/cafe,
-/area/eris/crew_quarters/kitchen)
 "esD" = (
 /obj/structure/multiz/stairs/enter{
 	dir = 1
@@ -97843,16 +97851,6 @@
 	},
 /turf/simulated/floor/tiled/dark/golden,
 /area/eris/neotheology/chapel)
-"evS" = (
-/obj/structure/closet/gmcloset,
-/obj/item/weapon/storage/box/shotgunammo/beanbags,
-/obj/item/weapon/reagent_containers/food/drinks/flask/barflask,
-/obj/item/weapon/reagent_containers/food/drinks/flask/barflask,
-/obj/machinery/camera/network/third_section{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/sblucarpet,
-/area/eris/crew_quarters/barbackroom)
 "evT" = (
 /obj/structure/bed/padded,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -201988,7 +201986,7 @@ egr
 ehW
 cCf
 dNS
-cCx
+aKK
 wja
 abF
 abF
@@ -202190,7 +202188,7 @@ egl
 cBr
 cCg
 dYS
-esC
+bmd
 cAS
 abF
 abF
@@ -202392,7 +202390,7 @@ ehe
 cBr
 cCy
 cBr
-elY
+bsO
 cAS
 abF
 cwU
@@ -202984,7 +202982,7 @@ dGU
 dJp
 dOc
 cxA
-evS
+aKi
 dRS
 cxA
 cxi

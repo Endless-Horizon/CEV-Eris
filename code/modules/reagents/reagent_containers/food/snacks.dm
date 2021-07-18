@@ -391,6 +391,7 @@
 	desc = "Nougat, love it or hate it."
 	icon_state = "candy"
 	trash = /obj/item/trash/candy
+	matter = list(MATERIAL_PLASTIC = 1)
 	filling_color = "#7D5F46"
 	bitesize = 2
 	center_of_mass = list("x"=15, "y"=15)
@@ -425,6 +426,7 @@
 	desc = "Commander Riker's What-The-Crisps"
 	icon_state = "chips"
 	trash = /obj/item/trash/chips
+	matter = list(MATERIAL_PLASTIC = 1)
 	filling_color = "#E8C31E"
 	bitesize = 1
 	center_of_mass = list("x"=15, "y"=15)
@@ -1378,6 +1380,7 @@
 	icon_state = "sosjerky"
 	desc = "Beef jerky made from the finest space cows."
 	trash = /obj/item/trash/sosjerky
+	matter = list(MATERIAL_PLASTIC = 1)
 	filling_color = "#631212"
 	bitesize = 2
 	center_of_mass = list("x"=15, "y"=9)
@@ -1390,6 +1393,7 @@
 	icon_state = "4no_raisins"
 	desc = "Best raisins in the universe. Not sure why."
 	trash = /obj/item/trash/raisins
+	matter = list(MATERIAL_PLASTIC = 1)
 	filling_color = "#343834"
 	center_of_mass = list("x"=15, "y"=4)
 	nutriment_desc = list("dried raisins" = 6)
@@ -1413,6 +1417,7 @@
 	icon_state = "cheesie_honkers"
 	desc = "Bite sized cheesie snacks that will honk all over your mouth"
 	trash = /obj/item/trash/cheesie
+	matter = list(MATERIAL_PLASTIC = 1)
 	filling_color = "#FFA305"
 	bitesize = 2
 	center_of_mass = list("x"=15, "y"=9)
@@ -3434,6 +3439,7 @@
 	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy?"
 	icon_state = "liquidfood"
 	trash = /obj/item/trash/liquidfood
+	matter = list(MATERIAL_PLASTIC = 1)
 	filling_color = "#A8A8A8"
 	bitesize = 4
 	center_of_mass = list("x"=16, "y"=15)
@@ -3450,6 +3456,7 @@
 	desc = "Bread in a tube. Chewy...and surprisingly tasty."
 	icon_state = "tastybread"
 	trash = /obj/item/trash/tastybread
+	matter = list(MATERIAL_PLASTIC = 1)
 	filling_color = "#A66829"
 	bitesize = 2
 	center_of_mass = list("x"=17, "y"=16)

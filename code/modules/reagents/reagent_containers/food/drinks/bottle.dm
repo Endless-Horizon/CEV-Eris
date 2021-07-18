@@ -9,6 +9,7 @@
 	force = 5
 	rarity_value = 14
 	bad_type = /obj/item/weapon/reagent_containers/food/drinks/bottle
+	matter = list(MATERIAL_GLASS = 2) // so the bottles can be recycled for glass - big bottles worth 2 glass, small bottles (for beer and ale) worth 1 glass
 	var/smash_duration = 5 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
 	var/isGlass = 1 //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
 
@@ -377,6 +378,7 @@
 	flags = 0 //starts closed
 	rag_underlay = "rag_small"
 	bad_type = /obj/item/weapon/reagent_containers/food/drinks/bottle/small
+	matter = list(MATERIAL_GLASS = 1) // its a bottle, duh
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer
 	name = "space beer"

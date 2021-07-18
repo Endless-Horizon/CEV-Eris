@@ -279,6 +279,7 @@
 	volume = 60
 	center_of_mass = list("x"=17, "y"=7)
 	spawn_tags = SPAWN_TAG_JUNK
+	matter = list(MATERIAL_STEEL = 1)
 	rarity_value = 20
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/vacuumflask
@@ -286,6 +287,7 @@
 	desc = "Keeping your drinks at the perfect temperature since 1892."
 	icon_state = "vacuumflask"
 	volume = 60
+	matter = list(MATERIAL_STEEL = 1)
 	center_of_mass = list("x"=15, "y"=4)
 
 /obj/item/weapon/reagent_containers/food/drinks/mug
@@ -294,6 +296,7 @@
 	icon_state = "mug"
 	item_state = "coffee"
 	volume = 30
+	matter = list(MATERIAL_GLASS = 1)
 	center_of_mass = "x=15;y=13"
 	filling_states = "40;80;100"
 	base_name = "mug"
@@ -339,6 +342,7 @@
 	name = "metal mug"
 	desc = "A metal mug. You're not sure which metal."
 	icon_state = "mug_metal"
+	matter = list(MATERIAL_STEEL = 1)
 	flags = CONDUCT
 	base_name = "metal mug"
 

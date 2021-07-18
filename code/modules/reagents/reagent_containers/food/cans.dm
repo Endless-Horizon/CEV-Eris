@@ -3,6 +3,7 @@
 	amount_per_transfer_from_this = 5
 	reagent_flags = NONE //starts closed
 	spawn_tags = SPAWN_TAG_DRINK_SODA
+	matter = list(MATERIAL_STEEL = 1) // empty cans can be recycled now
 	bad_type = /obj/item/weapon/reagent_containers/food/drinks/cans
 
 //DRINKS
@@ -18,6 +19,7 @@
 	name = "bottled water"
 	desc = "A bottle of simple, clean water of unknown origin. You probably don't want to know where it came from."
 	icon_state = "waterbottle"
+	matter = list(MATERIAL_PLASTIC = 1) // it's a plastic bottle, not a can
 	center_of_mass = list("x"=15, "y"=8)
 	preloaded_reagents = list("water" = 30)
 
